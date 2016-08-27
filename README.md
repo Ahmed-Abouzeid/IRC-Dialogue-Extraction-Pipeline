@@ -24,33 +24,33 @@
 Go To /irc_process Then Run The Below:
 ####crawler.py On Ubuntu IRC####
 ```python
-python crawler.py -crawl yes -urls_file files_as_arguments/urls_ubuntu.txt -file_spider yes -target_format txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 3 -white_list_path files_as_arguments/white_list.txt
+python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_ubuntu.txt' -file_spider yes -target_format txt -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path -max_recursion_depth 3 -white_list_path 'files_as_arguments/white_list.txt'
 ```
 ####crawler.py On Lisp IRC####
 ```python
-python crawler.py -crawl yes -urls_file files_as_arguments/urls_lisp.txt -file_spider yes -target_format txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 1
+python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_lisp.txt' -file_spider yes -target_format txt -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1
 ```
 ####crawler.py On Perl6 IRC####
 ```python
-python crawler.py -crawl yes -urls_file files_as_arguments/urls_perl.txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 1 -allow_clean_url yes
+python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_perl.txt' -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1 -allow_clean_url yes
 ```
 ####crawler.py On Koha IRC####
 ```python
-python crawler.py -crawl yes -urls_file files_as_arguments/urls_koha.txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 1 -allow_clean_url yes
+python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_koha.txt' -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1 -allow_clean_url yes
 ```
 ####rawirc.py On ubuntu IRC####
 ```python
-python rawirc.py -raw_data_path /path_to/crawled_data -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path /output_path -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant yes
+python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant yes
 ```
 ####rawirc.py On Lisp IRC####
 ```python
-python rawirc.py -raw_data_path /path_to/crawled_data -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path /output_path -old_date_format %Y.%m.%d -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant yes -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg yes -rtrim_time 3
+python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -old_date_format %Y.%m.%d -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant yes -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg yes -rtrim_time 3
 ```
 ####rawirc.py On Koha IRC####
 ```python
-python rawirc.py -raw_data_path /path_to/crawled_data -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path /output_path -time_user_lines 1 -use_enchant yes
+python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -time_user_lines 1 -use_enchant yes
 ```
 ####rawirc.py On Perl6 IRC####
 ```python
-python rawirc.py -raw_data_path /path_to/crawled_data -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path /output_path -use_enchant yes
+python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -use_enchant yes
 ```
