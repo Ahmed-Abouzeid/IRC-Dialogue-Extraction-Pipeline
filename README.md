@@ -20,6 +20,7 @@
 - test_rawirc.py (tests major functions in rawer.py using mock data included in the repository)
 
 - test_dialogue.py (tests major functions in dialogue.py using mock data included in the repository)
+### The Software Has Been Tested And Designed To Work On Two Common IRC Logging Site Templates (Ubuntu like & Perl6 like) ###
 ### How To Use The Processing Scripts? ###
 Go To /irc_process Then Run The Below:
 ####crawler.py On Ubuntu IRC####
