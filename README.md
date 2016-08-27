@@ -20,8 +20,8 @@
 - test_rawirc.py (tests major functions in rawer.py using mock data included in the repository)
 
 - test_dialogue.py (tests major functions in dialogue.py using mock data included in the repository)
-### How To Use The Scripts? ###
-
+### How To Use The Processing Scripts? ###
+Go To /irc_process Then Run The Below:
 ####crawler.py On Ubuntu IRC####
 ```python
 python crawler.py -crawl yes -urls_file files_as_arguments/urls_ubuntu.txt -file_spider yes -target_format txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 3 -white_list_path files_as_arguments/white_list.txt
