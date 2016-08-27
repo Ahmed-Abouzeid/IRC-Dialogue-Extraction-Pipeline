@@ -23,19 +23,19 @@
 ### The Software Has Been Tested And Designed To Work On Two Common IRC Logging Site Templates (Ubuntu like & Perl6 like) ###
 ### How To Use The Processing Scripts? ###
 Go To /irc_process Then Run The Below:
-####crawler.py On Ubuntu IRC#### - https://irclogs.ubuntu.com
+####crawler.py On Ubuntu IRC - https://irclogs.ubuntu.com####
 ```python
 python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_ubuntu.txt' -file_spider yes -target_format txt -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path -max_recursion_depth 3 -white_list_path 'files_as_arguments/white_list.txt'
 ```
-####crawler.py On Lisp IRC#### - http://ccl.clozure.com/irc-logs/lisp/
+####crawler.py On Lisp IRC - http://ccl.clozure.com/irc-logs/lisp/####
 ```python
 python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_lisp.txt' -file_spider yes -target_format txt -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1
 ```
-####crawler.py On Perl6 IRC#### - https://irclog.perlgeek.de/perl6/
+####crawler.py On Perl6 IRC - https://irclog.perlgeek.de/perl6/####
 ```python
 python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_perl.txt' -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1 -allow_clean_url yes
 ```
-####crawler.py On Koha IRC#### - http://irc.koha-community.org/koha/
+####crawler.py On Koha IRC - http://irc.koha-community.org/koha/####
 ```python
 python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_koha.txt' -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1 -allow_clean_url yes
 ```
