@@ -3,16 +3,10 @@
 The IRC Processing Software Can Be Used By Running Three Python Scripts In The Following Order:
  -crawler.py (downloads irc logs)
  -rawirc.py (clean/transform/recognize recipients in logs)
- -dialogue.py (extract one/one dialogues for each pair of users in logs)
+ -dialogue.py (extract one-one dialogues for each pair of users in logs)
 
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
+### Run setup.py To Be Able To Use The Above Three Modules In Other Modules ###
 
 * Summary of set up
 * Configuration
