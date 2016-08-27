@@ -22,7 +22,10 @@
 - test_dialogue.py (tests major functions in dialogue.py using mock data included in the repository)
 ### How To Use The Scripts ###
 
-> cjdshcsdhckhccvf;glfk;gfk;gk fg;lfkg df;kgd; kg;d kg;fkg ;dfkg; dfkg;df kgd ;gk;dlf kg;fkg;df kg;df g;k g;dfkg;dfk ;dfkg;df kg;dfk gdfksdhcsdhckshcd\*
+```python
+s = "Python syntax highlighting"
+print s
+```
 
 ### Contribution guidelines ###
 
