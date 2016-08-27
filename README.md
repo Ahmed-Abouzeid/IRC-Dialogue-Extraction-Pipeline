@@ -22,12 +22,7 @@
 - test_dialogue.py (tests major functions in dialogue.py using mock data included in the repository)
 ### How To Use The Scripts ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+\*cjdshcsdhckhccvf;glfk;gfk;gk fg;lfkg df;kgd; kg;d kg;fkg ;dfkg; dfkg;df kgd ;gk;dlf kg;fkg;df kg;df g;k g;dfkg;dfk ;dfkg;df kg;dfk gdfksdhcsdhckshcd\*
 
 ### Contribution guidelines ###
 
