@@ -3,11 +3,11 @@
 
 ### The IRC Processing Software Can Be Used By Running Three Python Scripts (Can Be Found Under "irc_process" Folder) In The Following Order: ###
  
--crawler.py (downloads irc logs)
+- crawler.py (downloads irc logs)
  
--rawirc.py (clean/transform/recognize recipients in logs)
+- rawirc.py (clean/transform/recognize recipients in logs)
  
--dialogue.py (extract one-one dialogues for each pair of users in logs)
+- dialogue.py (extract one-one dialogues for each pair of users in logs)
 
 ### Run setup.py To Be Able To Use The Above Scripts From Other Modules ###
 
