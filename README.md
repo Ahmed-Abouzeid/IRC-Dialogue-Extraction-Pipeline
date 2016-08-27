@@ -45,7 +45,7 @@ python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\
 ```
 ####rawirc.py On Lisp IRC####
 ```python
-python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -old_date_format %Y.%m.%d -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant yes -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg yes -rtrim_time 3
+python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d.\d\d.\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -old_date_format %Y.%m.%d -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant yes -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg yes -rtrim_time 3 -sys_msg_path 'files_as_arguments/sysmsg.txt'
 ```
 ####rawirc.py On Koha IRC####
 ```python
