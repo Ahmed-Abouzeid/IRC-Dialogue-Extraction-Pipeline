@@ -1,5 +1,0 @@
-2007-01-01T08:57:00.000Z	ChesMan		Can someone help me get Kiba-Dock setup properly? i kep getting it as a black dock, and all the icons have black over it
-2007-01-01T08:58:00.000Z	Jowi	ChesMan	if you install it from a .deb try a different one. not all of them work for me either.
-2007-01-01T08:59:00.000Z	Jowi	ChesMan	kiba-dock_0.1cvs20061018-1_i386.deb is the only one that I have been able to get working in Dapper (never tried edgy)
-2007-01-01T08:59:00.000Z	ChesMan	Jowi	i tried Pricechilds that he has listed on the forums, everyon in the thread seems to be getting it to work, even after a reinstall it doesnt work .. :( lol
-2007-01-01T09:01:00.000Z	Jowi	ChesMan	you need composite turned on. check if /etc/X11/xorg.conf contain a Section Extensions with Composite Enabled in it.

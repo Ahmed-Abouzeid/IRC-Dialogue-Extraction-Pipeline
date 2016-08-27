@@ -1,5 +1,0 @@
-2007-01-01T03:51:00.000Z	Terminus	bjames_	a linux server generally doesn't have a GUI.
-2007-01-01T03:52:00.000Z	bjames_		and is normally only prodded via SSH or similar for maintenance
-2007-01-01T03:54:00.000Z	Terminus	bjames_	if you want to know what's useful to learn, i'd say learn how to use vi. it's probably the most generally available text editor on a linux box and you'll be using it extensively to edit configuration files.
-2007-01-01T03:54:00.000Z	bjames_	Terminus	I already use vim to edit config files
-2007-01-01T03:56:00.000Z	Terminus	bjames_	oh ok.

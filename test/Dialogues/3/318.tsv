@@ -1,6 +1,0 @@
-2007-01-01T03:17:00.000Z	cyrus4		hey   im new to ubuntu,  ive installed the nvidia drivers or whatever   just wondering if n e one knows y my screen saver and other full screen video apps are like  stuttering...  its v annoying
-2007-01-01T03:18:00.000Z	alecjw	cyrus4	and have you told x to use the nvidia drivers?
-2007-01-01T03:18:00.000Z	cyrus4		yep yep  my mate set it up for me couple of days ago   everything should be sweet and i have a 6600GT   but cant play videos and stuff fullscreen without stutter
-2007-01-01T03:19:00.000Z	alecjw	cyrus4	just to make sure, what happens if you type the command cat /etc/X11/xorg.conf | grep nvidia (sans quotes) in the terminal?
-2007-01-01T03:21:00.000Z	cyrus4	alecjw	yer   Driver     nvidia
-2007-01-01T03:21:00.000Z	alecjw	cyrus4	that's starnge... can't help0 you then, sorry.

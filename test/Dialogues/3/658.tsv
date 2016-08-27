@@ -1,3 +1,0 @@
-2007-01-01T06:04:00.000Z	Mike_		hello
-2007-01-01T06:05:00.000Z	Mike_		I am needing some help with the moint points. I don't want to screw up my windows install
-2007-01-01T06:06:00.000Z	kenthomson_	Mike_	mount your windows partition as /media/windows and don't click on the format checkbox next to it, and you should be ready

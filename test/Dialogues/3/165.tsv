@@ -1,4 +1,0 @@
-2007-01-01T08:20:00.000Z	acm		where do you specify what version of ubuntu you're using?
-2007-01-01T08:21:00.000Z	apokryphos	acm	do you mean specify or find out?
-2007-01-01T08:21:00.000Z	acm	apokryphos	specify for aptitude, apt-get, etc.
-2007-01-01T08:21:00.000Z	apokryphos	acm	why would you need to? It knows which  version you've got from your sources.list

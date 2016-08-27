@@ -1,5 +1,0 @@
-2007-01-01T11:56:00.000Z	hjmills		how do i list the size of all the images in a folder in a list?
-2007-01-01T11:57:00.000Z	Slart	hjmills	take some imagemagick.. add some bash magic and you're done =)
-2007-01-01T11:58:00.000Z	Slart	hjmills	there are probably easier ways though.. but I'm guessing that will work
-2007-01-01T11:59:00.000Z	hjmills	Slart	any idea what part of imagemagic?
-2007-01-01T12:00:00.000Z	Slart	hjmills	I'm looking.. I'll give it a try.. see if I can make it work.. you wanted a list with filename xsize ysize or something like that?

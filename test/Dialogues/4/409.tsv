@@ -1,4 +1,0 @@
-2007-01-01T12:53:00.000Z	tomplast		Goodmorning everyone. I have just inserted a new graphics card in my computer. I still have the old one (a s3 pci) in my computer and today I inserted a Geforce MX in the AGP slot. My VGA cable is connected to the Geforce MX but when I try to run sudo dpkg-reconfigure xserver-xorg it detects the card as a S3 but I want it to detect the Geforce MX (which is now supposed to be my primary graphics card). Can anyone help me getting xserve
-2007-01-01T12:53:00.000Z	jamey31	tomplast	instead of letting it autodetect the module, select the correct one in the list
-2007-01-01T12:55:00.000Z	tomplast	jamey31	So it's as simple as that ^^. I thought so but I wasnt sure
-2007-01-01T12:55:00.000Z	tomplast	jamey31	Thanks for the help ^^. Take care

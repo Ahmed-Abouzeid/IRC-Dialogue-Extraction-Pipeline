@@ -1,6 +1,0 @@
-2007-01-01T07:53:00.000Z	Mike_		can you set up Ubuntu so that when you change desktops it looks like you are changing to a different side of a cube
-2007-01-01T07:54:00.000Z	xtknight	Mike_	yes, use Beryl or XGL/compiz
-2007-01-01T07:54:00.000Z	Mike_		is it grapgics card dependant?
-2007-01-01T07:54:00.000Z	Mike_		*graphics
-2007-01-01T07:54:00.000Z	xtknight	Mike_	you need drivers that do accelerated opengl, i think only intel, nvidia and ati will work with it
-2007-01-01T07:55:00.000Z	Mike_		I have an ATI Radeon 200m express

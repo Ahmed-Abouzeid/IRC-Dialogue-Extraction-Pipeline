@@ -1,5 +1,0 @@
-2007-01-01T02:17:00.000Z	arrenlex	kitche	They are one in the same, I'm pretty sure. Intel released GPL drivers which the Linux developers integrated into their trees.
-2007-01-01T02:18:00.000Z	kitche	arrenlex	maybe but the xorg driver isn't the intel driver since xorg 7.1 was out before Intel released the drivers
-2007-01-01T02:28:00.000Z	kitche	arrenlex	mine did that also but after a few reboots it worked normally for some reason
-2007-01-01T02:28:00.000Z	arrenlex	kitche	...o__O
-2007-01-01T02:29:00.000Z	kitche	arrenlex	with just booting to shell first but then after about 3 or so boots it started gdm on boot

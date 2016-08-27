@@ -1,5 +1,0 @@
-2007-01-01T11:00:00.000Z	KenSentMe	Madpilot	shouldn't ubotu react on !bla things?
-2007-01-01T11:01:00.000Z	Madpilot	KenSentMe	it does - but it stopped sending a sent <foo> to <user> PM to you when you did !foo > bar
-2007-01-01T11:01:00.000Z	KenSentMe	Madpilot	what is the best syntacs now then?
-2007-01-01T11:02:00.000Z	Madpilot	KenSentMe	the bar | is fairly new, and useful - lots of new people have trouble figuring out PMs
-2007-01-01T11:03:00.000Z	KenSentMe	Madpilot	ok

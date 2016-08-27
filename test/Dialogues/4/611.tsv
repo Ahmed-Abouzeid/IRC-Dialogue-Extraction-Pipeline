@@ -1,8 +1,0 @@
-2007-01-01T12:32:00.000Z	viller		port forwarding=NAT mapping?
-2007-01-01T12:33:00.000Z	un_operateur	viller	are you asking if they are the same?
-2007-01-01T12:33:00.000Z	viller	un_operateur	yes
-2007-01-01T12:34:00.000Z	un_operateur	viller	well, yes, it's a uni-directional NApT -- network address/port translation
-2007-01-01T12:34:00.000Z	viller	un_operateur	so when I map I am forwarding ports as they call it?
-2007-01-01T12:35:00.000Z	un_operateur	viller	map is a very loose term, isn't it? depends on what you mean, really
-2007-01-01T12:35:00.000Z	viller	un_operateur	when I'm talking about NAT commands
-2007-01-01T12:37:00.000Z	un_operateur	viller	if you implement NAT, you are not portforwarding because NAT operates with IP/Network Addresses .. but when you port-forward, you need to have a NAT map for the outside port to be directed to an inside address, so NAT is necessary for port-forwarding but not vice-versa

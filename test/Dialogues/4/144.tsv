@@ -1,3 +1,0 @@
-2007-01-01T04:34:00.000Z	phr34ck		When I write: sudo apt-get install fakeroot, it fetches it from the dvd, I don't want that. How can I make it fetch from the Internet ?
-2007-01-01T04:34:00.000Z	Jimmey	phr34ck	comment out the CDROM line in /etc/apt/sources.list
-2007-01-01T04:35:00.000Z	phr34ck		then I do: sudo apt-get upgrade, yes ?

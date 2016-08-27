@@ -1,9 +1,0 @@
-2007-01-01T06:45:00.000Z	mwe	xtknight	it does
-2007-01-01T06:45:00.000Z	mwe	xtknight	the i8xx-i9xx do have accelerated 3d at least
-2007-01-01T06:51:00.000Z	xtknight	mwe	debs can contain source sometimes
-2007-01-01T06:51:00.000Z	mwe	xtknight	yeah source .debs
-2007-01-01T06:52:00.000Z	mwe	xtknight	the things you install with apt-get don't contain source code unless you specifically ask for it
-2007-01-01T06:52:00.000Z	xtknight	mwe	yeah i believe you can get the source with apt-get source
-2007-01-01T06:52:00.000Z	mwe	xtknight	right
-2007-01-01T06:52:00.000Z	xtknight	mwe	but correct the source is not in the regular debs, just that some people to put the source in debs (not debian or ubuntu maintainers though)
-2007-01-01T06:53:00.000Z	mwe	xtknight	that's my point. .debs are not just source code though source .debs contain source code

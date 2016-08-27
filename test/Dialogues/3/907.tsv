@@ -1,5 +1,0 @@
-2007-01-01T11:23:00.000Z	fritsch		and mount /dev/hda3 per default to this directory
-2007-01-01T11:23:00.000Z	mwe	fritsch	permissions of mount points have no effect once a file system is mounted ;)
-2007-01-01T11:23:00.000Z	mwe	fritsch	only options to mount do
-2007-01-01T11:24:00.000Z	mwe	fritsch	like umask etc
-2007-01-01T11:24:00.000Z	fritsch	mwe	you could be write, but chown after the mount should just be enough

@@ -1,4 +1,0 @@
-2007-01-01T01:23:00.000Z	Jordan_U	kitche	That is the default sh, not the default shell, a subtle but important difference :)
-2007-01-01T01:24:00.000Z	kitche	Jordan_U	sorry but I consider sh as shell since sh is a shell
-2007-01-01T01:25:00.000Z	Jordan_U	kitche	awilcox: what I mean is that if you open gnome terminal or a tty you get Bash.
-2007-01-01T01:27:00.000Z	kitche	Jordan_U	ok well I understand it now since dash actually got rid of sh I just read the page on it even though it seems to break shell scripts alot if the script doesn't do #!/bin/bash

@@ -1,3 +1,0 @@
-2007-01-01T09:02:00.000Z	LoneVVolf		Hey all...can someone help me with graphics drivers?
-2007-01-01T09:03:00.000Z	LoneVVolf		I have an old PC with Intel 815, and the default installation doesn't really seem to be speedy on updating.  Is there any way to get accelerated drivers?
-2007-01-01T09:03:00.000Z	arrenlex	LoneVVolf	The xserver-xorg-video-i810 package should give you drivers.

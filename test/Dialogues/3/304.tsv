@@ -1,9 +1,0 @@
-2007-01-01T12:02:00.000Z	con-man		whats wrong
-2007-01-01T12:02:00.000Z	crimsun	con-man	if you install from source, it's likely /usr/local/bin/wine
-2007-01-01T12:02:00.000Z	crimsun	con-man	``which wine''
-2007-01-01T12:02:00.000Z	con-man	crimsun	?
-2007-01-01T12:02:00.000Z	con-man	crimsun	0.9.28
-2007-01-01T12:06:00.000Z	crimsun	con-man	that shouldn't be a dir but an executable, i.e., the one you're looking for
-2007-01-01T12:06:00.000Z	con-man	crimsun	yes
-2007-01-01T12:06:00.000Z	con-man	crimsun	it is
-2007-01-01T12:07:00.000Z	con-man	crimsun	whats the fix

@@ -1,8 +1,0 @@
-2007-01-01T05:11:00.000Z	xtknight	BrianB04	not that hard, im running one right now
-2007-01-01T05:12:00.000Z	BrianB04	xtknight	So you just have to set it up as another resolution and it will work? I didn't know how well x.org handles 'non-standard' resolutions
-2007-01-01T05:12:00.000Z	xtknight		Brianb04: pretty much so, i think even vesa will allow 1680x1050, but i use the nvidia driver personally and it works great
-2007-01-01T05:13:00.000Z	BrianB04	xtknight	Very cool. I'm looking at 19 inchers, so 1280x...900 I think would be native.
-2007-01-01T05:13:00.000Z	xtknight		brainb04: 1440x900 19 widescreen?
-2007-01-01T05:13:00.000Z	BrianB04	xtknight	That's it, nevermind:)
-2007-01-01T05:13:00.000Z	BrianB04	xtknight	I run the nvidia ones.
-2007-01-01T05:14:00.000Z	BrianB04	xtknight	The default ones are...slow:)

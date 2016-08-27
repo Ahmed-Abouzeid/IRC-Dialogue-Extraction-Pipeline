@@ -1,5 +1,0 @@
-2007-01-01T02:08:00.000Z	fotofo		not sure of the syntax
-2007-01-01T02:08:00.000Z	slacker_nl	fotofo	vfat is correct
-2007-01-01T02:09:00.000Z	fotofo	slacker_nl	reading man... where's it go?
-2007-01-01T02:09:00.000Z	slacker_nl	fotofo	what nn says
-2007-01-01T02:10:00.000Z	slacker_nl	fotofo	or dou it manually: mount -t vfat /dev/device /mount/point

@@ -1,4 +1,0 @@
-2007-01-01T02:03:00.000Z	NkuMike		Also is there anyway to vpn to an ubuntu box so that I can play with ubuntu which will be installed on a headless box?
-2007-01-01T02:05:00.000Z	auTONYmous	NkuMike	Do an Ubuntu Server install (no Xorg), set up SSH-server
-2007-01-01T02:06:00.000Z	NkuMike	auTONYmous	do you know is there a way I can install it on the headless machine from my windows desktop over the LAN?
-2007-01-01T02:07:00.000Z	auTONYmous	NkuMike	There is, which requires network booting and mounting an ISO, I've seen it written up, but you'll have to search the Ubuntu WIKI for it

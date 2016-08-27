@@ -1,9 +1,0 @@
-2007-01-01T09:29:00.000Z	niko_m		so i just have to use partition commander to resize my windows partition to make space for xubuntu and then when i install linux it will make set xubuntu in the unused space right?
-2007-01-01T09:30:00.000Z	niko_m		as long as i don't tell it to use the whole hard drive
-2007-01-01T09:30:00.000Z	niko_m		i rather not use linux to mess with ntfs paritions
-2007-01-01T09:30:00.000Z	niko_m		i prefer to use partition commander
-2007-01-01T09:30:00.000Z	niko_m		then just run the xubuntu install and tell it to used the unused space and make whaterver paritions it wants for linux
-2007-01-01T09:31:00.000Z	niko_m		will xubuntu install grub?
-2007-01-01T09:31:00.000Z	niko_m		has anyone ever use system commander before?
-2007-01-01T09:31:00.000Z	niko_m		i'm wondering if its any good
-2007-01-01T09:32:00.000Z	MooUK	niko_m	if you're using an older machine, it's great. It is slightly harder in some cases to find appropriate software, however.

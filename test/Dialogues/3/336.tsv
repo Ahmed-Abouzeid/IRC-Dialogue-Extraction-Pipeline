@@ -1,7 +1,0 @@
-2007-01-01T03:40:00.000Z	dmc_		trippy:no...
-2007-01-01T03:42:00.000Z	arrenlex		KDE is life.
-2007-01-01T03:42:00.000Z	dmc_	arrenlex	how would i go about installing KDE?
-2007-01-01T03:43:00.000Z	dmc_		How would i go about installing KDE?
-2007-01-01T03:43:00.000Z	arrenlex	dmc_	KDE the desktop environment? KDE the application suite? Or Kubuntu the Linux distribution?
-2007-01-01T03:43:00.000Z	dmc_	arrenlex	just the desktop
-2007-01-01T03:43:00.000Z	arrenlex	dmc_	apt-get install kde-core

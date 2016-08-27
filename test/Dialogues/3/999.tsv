@@ -1,3 +1,0 @@
-2007-01-01T09:04:00.000Z	amanmehta		how to find out ?
-2007-01-01T09:06:00.000Z	noiesmo	amanmehta	type dpkg-query -l |grep samba without quotes in terminal will list the samba packages you have installed
-2007-01-01T09:07:00.000Z	amanmehta		thank you everyone for chipping in your help

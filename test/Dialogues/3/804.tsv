@@ -1,4 +1,0 @@
-2007-01-01T07:43:00.000Z	m4jqp		you need it to do almost anything
-2007-01-01T07:43:00.000Z	maddash	m4jqp	sudo passwd
-2007-01-01T07:44:00.000Z	m4jqp		said it didnt ask him to imput it
-2007-01-01T07:44:00.000Z	maddash	m4jqp	open a cmdline, do sudo passwd...su can be configured via sudo su.

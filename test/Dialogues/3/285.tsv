@@ -1,4 +1,0 @@
-2007-01-01T04:35:00.000Z	Aar0n444		On my laptop, I've installed using 'pci=noacpi' and that's all fine. Just my NIC doesn't work. It's not even recognised. Any ideas?
-2007-01-01T04:36:00.000Z	con-man	Aar0n444	is it turned on in the bios?
-2007-01-01T04:36:00.000Z	Aar0n444		Yeah
-2007-01-01T04:36:00.000Z	con-man	Aar0n444	and there is no power save thing? some laptops turn off the nic when on battery to save power

@@ -1,6 +1,0 @@
-2007-01-01T09:23:00.000Z	jannu1		any idea ill trying to get direct rendering working with my radeon 9500 pro, 2 dislpays and xinerama, when i replace driver ati -> fglrx i cant get even X ?
-2007-01-01T09:23:00.000Z	arrenlex	jannu1	Can you be more specific than can't even get X?
-2007-01-01T09:24:00.000Z	arrenlex	jannu1	Please include an error message.
-2007-01-01T09:24:00.000Z	arrenlex	jannu1	You could also try free drivers, if you want, but the acceleration would be slower.
-2007-01-01T09:27:00.000Z	jannu1	arrenlex	ill get some blue error screen, or only black screens
-2007-01-01T09:27:00.000Z	jannu1		i think driver cant find my dislpays

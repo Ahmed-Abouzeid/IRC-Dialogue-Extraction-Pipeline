@@ -1,8 +1,0 @@
-2007-01-01T05:57:00.000Z	elyon		I have already followed the instruction in the Ati Binary HowTo... no luck.
-2007-01-01T05:58:00.000Z	juanchito2006		!ati
-2007-01-01T05:59:00.000Z	juanchito2006	elyon	the howto has changed steadily, check it again
-2007-01-01T06:03:00.000Z	juanchito2006	elyon	try sudo chown (user) (directory)
-2007-01-01T06:04:00.000Z	elyon	juanchito2006	- I just used file browser to open it ;)
-2007-01-01T06:04:00.000Z	elyon	juanchito2006	- I'll try the HowTo again, but I did it yesterday and it messed things up.
-2007-01-01T06:11:00.000Z	elyon	juanchito2006	- what do I do when the HowTo instruction lead me to Errors were encountered?
-2007-01-01T06:15:00.000Z	juanchito2006	elyon	?

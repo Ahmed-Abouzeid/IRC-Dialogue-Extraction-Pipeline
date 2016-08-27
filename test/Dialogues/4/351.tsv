@@ -1,6 +1,0 @@
-2007-01-01T02:02:00.000Z	superkirbyartist		Anyone into AIGLX?
-2007-01-01T02:05:00.000Z	kitche	superkirbyartist	using AIGLX is easy just don't use XGL uninstall it or whatever you want open a terminal and type in beryl-manager you can make a script that starts beryl on login also
-2007-01-01T02:07:00.000Z	superkirbyartist		autonymous I don't know what to do to load AIGLX.
-2007-01-01T02:09:00.000Z	kitche	superkirbyartist	AIGLX is part of Xorg so you won't see anything in sessions
-2007-01-01T02:09:00.000Z	superkirbyartist	kitche	how do I use/load it?
-2007-01-01T02:09:00.000Z	kitche	superkirbyartist	if you use plain xorg your using AIGLX probably have to see your xorg.0.log to make sure

@@ -1,7 +1,0 @@
-2007-01-01T10:49:00.000Z	hyperb0lix	jasin	i like to run shred before partitioning/formatting
-2007-01-01T10:50:00.000Z	hyperb0lix	jasin	just personal preference - I'm paranoid :P
-2007-01-01T11:04:00.000Z	jasin		BHsp, swap shoudl be 2 times total memory installed, thats a standard rule of thumb.
-2007-01-01T11:04:00.000Z	hyperb0lix	jasin	not quite
-2007-01-01T11:04:00.000Z	hyperb0lix	jasin	I was reading the OpenBSD installation guide, and that's not true
-2007-01-01T11:05:00.000Z	jasin		if you want to swap all your memory or half of when you run out yes it does.
-2007-01-01T11:05:00.000Z	hyperb0lix	jasin	although I seem to have broken it with a 4.5 gig swap partition

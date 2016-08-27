@@ -1,4 +1,0 @@
-2007-01-01T10:24:00.000Z	ripperda	jasin	how do I do that reliably? I set that in the config file, but it doesn't seem to catch. I have to set it manually every time via iwconfig
-2007-01-01T10:25:00.000Z	jasin	ripperda	you have to put it in your network settings and also kwifi if you are ussing kde or kubuntu.
-2007-01-01T10:26:00.000Z	jasin	ripperda	you have to set it for eth1 if thats your wifi, too.
-2007-01-01T10:26:00.000Z	ripperda	jasin	unfortunately, not using kde/kubuntu. what do you mean by network settings? my wifi device is eth0

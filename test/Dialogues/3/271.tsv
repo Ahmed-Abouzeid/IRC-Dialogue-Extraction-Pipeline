@@ -1,8 +1,0 @@
-2007-01-01T04:26:00.000Z	chable		and if i choose 'erase entire disk , i dont have those 8 mbuffer anymore
-2007-01-01T04:27:00.000Z	adaptr	chable	how big is the HD ?
-2007-01-01T04:29:00.000Z	chable	adaptr	80 gb
-2007-01-01T04:29:00.000Z	adaptr	chable	all for Ubuntu ?
-2007-01-01T04:29:00.000Z	chable		yes
-2007-01-01T04:29:00.000Z	adaptr	chable	/: 8 GB, /home: everything else
-2007-01-01T04:30:00.000Z	chable		do i need those 8 mbuffer too ?
-2007-01-01T04:30:00.000Z	adaptr	chable	if you intend to experiment or add more linuxen later, set up a separate /boot of about 100MB

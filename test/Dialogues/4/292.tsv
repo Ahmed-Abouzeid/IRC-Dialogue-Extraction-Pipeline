@@ -1,6 +1,0 @@
-2007-01-01T09:37:00.000Z	sladen	mike-e	have a look in  /media
-2007-01-01T09:37:00.000Z	mike-e	sladen	i mounted them to a directory in the /home/accoutn
-2007-01-01T09:38:00.000Z	sladen	mike-e	then look in /home/accountn!  :)
-2007-01-01T09:38:00.000Z	mike-e	sladen	it wont let me get into it
-2007-01-01T09:39:00.000Z	sladen	mike-e	for security, normal users won't be able to see disk-partitions after they are mounted.  use    umask=0      or some such to allow everyone to view the partition when moujnted
-2007-01-01T09:39:00.000Z	mike-e	sladen	what would the syntax be?

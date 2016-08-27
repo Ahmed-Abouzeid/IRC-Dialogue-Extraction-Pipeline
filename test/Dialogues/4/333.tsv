@@ -1,8 +1,0 @@
-2007-01-01T04:02:00.000Z	sukarn		its built into the motherboard I think
-2007-01-01T04:02:00.000Z	Maheanuu	sukarn	if you are using a bios setting for raid, then the software raid in dapper cannot be used..  You must do everything from ubuntu, and forget about the softraid that bios wants to set up (or so it seems to me)
-2007-01-01T04:04:00.000Z	Maheanuu		I fought over the softraid bios and the softraid from Ubuntu for over 2 weeks
-2007-01-01T04:04:00.000Z	sukarn	Maheanuu	I am using feisty, not dapper
-2007-01-01T04:06:00.000Z	Maheanuu	sukarn	you might want to do a read on this  http://unthought.net/Software-RAID.HOWTO/Software-RAID.HOWTO.txt
-2007-01-01T04:07:00.000Z	sukarn	Maheanuu	Checking the link. Tanks
-2007-01-01T04:40:00.000Z	sukarn		you forgot the raid discussion we were having a while ago?
-2007-01-01T04:42:00.000Z	Maheanuu	sukarn	I disabled it on mine, and haven't had a hang since

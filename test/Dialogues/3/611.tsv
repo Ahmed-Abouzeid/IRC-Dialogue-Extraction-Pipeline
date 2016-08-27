@@ -1,3 +1,0 @@
-2007-01-01T08:25:00.000Z	ShiFTKey		does anyone here have any experience with samba?
-2007-01-01T08:25:00.000Z	johns^	ShiFTKey	just ask your question
-2007-01-01T08:26:00.000Z	ShiFTKey		i managed to get samba working, im able to connect using my other pc's, the problem is that when i leave it overnight, samba crashes and it wont let me restart the daemon

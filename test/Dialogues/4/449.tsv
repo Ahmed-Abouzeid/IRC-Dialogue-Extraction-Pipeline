@@ -1,9 +1,0 @@
-2007-01-01T10:20:00.000Z	ripperda		I'm seeing an annoying wireless ethernet problem, that I was hoping someone could help me with
-2007-01-01T10:21:00.000Z	tyme-	ripperda	ask the question
-2007-01-01T10:21:00.000Z	ripperda		I'm trying to run WEP, if I set the essid & wep key manually via iwconfig, everything works fine. but if I set those via the /etc/network/interfaces file, ifup doesn't seem to pick up the changes
-2007-01-01T10:22:00.000Z	ripperda		I'm sure I'm doing something stupid wrong, just can't quite figure it out
-2007-01-01T10:22:00.000Z	ripperda	tyme-	thanks for any tips
-2007-01-01T10:23:00.000Z	ripperda		I suspect that this is a config problem, rather than a device/driver problem
-2007-01-01T10:23:00.000Z	tyme-	ripperda	im not sure, not a linux guru. i could be consired a newbie =)
-2007-01-01T10:24:00.000Z	tyme-		i dont use NM
-2007-01-01T10:24:00.000Z	ripperda	tyme-	no problem :)

@@ -1,7 +1,0 @@
-2007-01-01T07:17:00.000Z	cmweb		Why would my machine have an active HDD light on if no processes but gaim are taking place? i mean it is really acting up i have no utilities that user the hardrive yet it is constantly doing this and slowing my machine down
-2007-01-01T07:18:00.000Z	khermans	cmweb	updatedb ?
-2007-01-01T07:18:00.000Z	khermans	cmweb	install iostat
-2007-01-01T07:19:00.000Z	cmweb	khermans	il try it
-2007-01-01T07:21:00.000Z	cmweb	khermans	iostat is not in my repositories, it has been doing this at every start up
-2007-01-01T07:21:00.000Z	khermans	cmweb	sudo aptitude install sysstat
-2007-01-01T07:51:00.000Z	cmweb	khermans	now what i got it installed

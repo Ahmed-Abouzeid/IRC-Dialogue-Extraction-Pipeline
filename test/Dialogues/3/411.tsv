@@ -1,9 +1,0 @@
-2007-01-01T09:48:00.000Z	gan|y|med		how is the username and password for phpmyadmin???
-2007-01-01T09:50:00.000Z	derrik	gan|y|med	the same as your mysql username and password
-2007-01-01T09:55:00.000Z	gan|y|med	derrik	and how are these?
-2007-01-01T09:55:00.000Z	gan|y|med	derrik	sorry, cannot google right now for the defaults in ubuntu
-2007-01-01T09:56:00.000Z	derrik	gan|y|med	You first need to add a mysql user and then you can use the username and password that you create to log into the phpmyadmin that you installed.
-2007-01-01T09:57:00.000Z	gan|y|med	derrik	i should hit my head. haven't read the error message properly. sorry. it seems that the socket in var is wrong again. why that? that is an age old problem
-2007-01-01T09:58:00.000Z	derrik	gan|y|med	ahh. socket in var is wrong again? i don't understand. but as long as it's working now
-2007-01-01T10:00:00.000Z	gan|y|med	derrik	mysql.sock points to the wrong file i think. i'll fix that. but thx a lot
-2007-01-01T10:00:00.000Z	derrik	gan|y|med	no problem

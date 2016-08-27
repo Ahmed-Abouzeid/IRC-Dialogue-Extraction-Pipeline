@@ -1,9 +1,0 @@
-2007-01-01T06:44:00.000Z	linuxnewbie756		is it possible to use lightscribe in ubuntu?
-2007-01-01T06:44:00.000Z	auTONYmous	linuxnewbie756	Yep
-2007-01-01T06:44:00.000Z	linuxnewbie756		how?
-2007-01-01T06:45:00.000Z	auTONYmous	linuxnewbie756	I forget which (nerolinux, gnomebaker or otherwise), but one of the burning programs supports it
-2007-01-01T06:46:00.000Z	linuxnewbie756		autonymous, i have a hp drive, and before you can actually use that software, you have to download somesort of lightscribe software, and off the lightscribe.com website, only rpm is supported
-2007-01-01T06:46:00.000Z	auTONYmous	linuxnewbie756	man alien
-2007-01-01T06:47:00.000Z	linuxnewbie756		but is that safe? has anyone verified it works for lightscribe?
-2007-01-01T06:47:00.000Z	auTONYmous	linuxnewbie756	alien will (possibly) allow you convert the RPM to a .deb
-2007-01-01T06:47:00.000Z	auTONYmous	linuxnewbie756	Then you can install on Ubuntu

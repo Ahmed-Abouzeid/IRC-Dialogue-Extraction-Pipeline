@@ -1,5 +1,0 @@
-2007-01-01T08:56:00.000Z	meleeglow		is it possible
-2007-01-01T08:56:00.000Z	Jowi	meleeglow	yes
-2007-01-01T08:56:00.000Z	meleeglow		how do I set two masters
-2007-01-01T08:57:00.000Z	meleeglow		or how would it work
-2007-01-01T08:57:00.000Z	Jowi	meleeglow	put xp on first master hdd, ubuntu on the second. use a bootmanager such as grub to chose which one to boot

@@ -1,4 +1,0 @@
-2007-01-01T11:53:00.000Z	bobbyd		how could I go about fixing this?
-2007-01-01T11:56:00.000Z	pike_	bobbyd	package: mythtv is in multiverse repo
-2007-01-01T11:59:00.000Z	bobbyd	pike_	I have multiverse enabled, but it doesn't show up :(
-2007-01-01T12:00:00.000Z	pike_	bobbyd	you said 'sudo apt-get update' showed no errors?

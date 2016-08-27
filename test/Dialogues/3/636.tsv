@@ -1,5 +1,0 @@
-2007-01-01T03:10:00.000Z	HawkeV	kenthomson	mkdir /mnt/ubuntu; mount /dev/hda1 /mnt/ubuntu
-2007-01-01T03:10:00.000Z	HawkeV		in a console
-2007-01-01T03:12:00.000Z	kenthomson	HawkeV	ok
-2007-01-01T03:13:00.000Z	kenthomson	HawkeV	How do i give read/write access to that partition you just mounted?
-2007-01-01T03:19:00.000Z	kenthomson	HawkeV	mount /dev/hda1 /mnt/ubuntu  -o umask=000, gives full access right?

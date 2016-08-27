@@ -1,9 +1,0 @@
-2007-01-01T04:42:00.000Z	theflyingfool		what does it mean if an ntfs is unclean
-2007-01-01T04:42:00.000Z	theflyingfool		and how do i fix it
-2007-01-01T04:43:00.000Z	cafuego_	theflyingfool	Boot wodnwos, fix disk.
-2007-01-01T04:43:00.000Z	theflyingfool		i dont have windows
-2007-01-01T04:43:00.000Z	theflyingfool		its on an external hdd
-2007-01-01T04:43:00.000Z	cafuego_	theflyingfool	Plug it into windows box, fix disk
-2007-01-01T04:46:00.000Z	theflyingfool		do i need to create an entry in fstab for an external drive?
-2007-01-01T04:47:00.000Z	cafuego_	theflyingfool	Normally it woul dget automounted under /media and listed on the desktop.
-2007-01-01T04:47:00.000Z	theflyingfool		even if its ntfs?

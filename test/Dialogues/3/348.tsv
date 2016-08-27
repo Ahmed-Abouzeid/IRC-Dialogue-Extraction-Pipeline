@@ -1,9 +1,0 @@
-2007-01-01T10:16:00.000Z	doviende	Alzi2	which package and which ubuntu version?
-2007-01-01T10:16:00.000Z	Alzi2	doviende	Xubuntu, flashplugin-nonfree
-2007-01-01T10:16:00.000Z	Alzi2	doviende	Edgy
-2007-01-01T10:19:00.000Z	Alzi2	doviende	you there?
-2007-01-01T10:21:00.000Z	doviende	Alzi2	edit your /etc/apt/sources.list
-2007-01-01T10:22:00.000Z	Alzi2		i didn't know about backports
-2007-01-01T10:22:00.000Z	doviende	Alzi2	i just installed flash last night and it worked fine.  i just enabled all the extra sources in /etc/apt/sources.list
-2007-01-01T10:22:00.000Z	Alzi2		so then everything gets updated?
-2007-01-01T10:23:00.000Z	doviende	Alzi2	i didn't have to update that much

@@ -1,9 +1,0 @@
-2007-01-01T02:35:00.000Z	fotoflo_	nn	i rebooted and that all worked
-2007-01-01T02:35:00.000Z	nn	fotoflo_	good stuff
-2007-01-01T02:35:00.000Z	fotoflo_		err rather, my modified fstab worked
-2007-01-01T02:37:00.000Z	fotoflo_		no
-2007-01-01T02:37:00.000Z	nn	fotoflo_	i usually use ps auwwx|grep httpd
-2007-01-01T02:37:00.000Z	nn		or apache2
-2007-01-01T02:37:00.000Z	nn		very likely the path/etc makes it too long to show
-2007-01-01T02:39:00.000Z	nn		i'll have to check out mined, i personally use joe
-2007-01-01T02:39:00.000Z	nn		but i grew up wif wordstar

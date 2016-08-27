@@ -1,6 +1,0 @@
-2007-01-01T01:48:00.000Z	LinAsH	auTONYmous	trying the radeon driver first
-2007-01-01T01:49:00.000Z	auTONYmous		okay
-2007-01-01T01:51:00.000Z	LinAsH	auTONYmous	He was using the vesa driver
-2007-01-01T01:52:00.000Z	auTONYmous	LinAsH	specified in Xorg.conf, or defaulting due to missing radeon driver?
-2007-01-01T01:52:00.000Z	LinAsH	auTONYmous	-> http://pastebin.com/848739
-2007-01-01T01:52:00.000Z	LinAsH	auTONYmous	specified

@@ -1,8 +1,0 @@
-2007-01-01T08:12:00.000Z	Moosebuntu		What is sh ?
-2007-01-01T08:12:00.000Z	linuxeatswindows		I installed frostwire with autamatix
-2007-01-01T08:13:00.000Z	Moosebuntu		So, when I exec # sh /usr/local/games/quake3/linuxq3apoint-1.32b-3.x86.run does this just execute the script in this package?
-2007-01-01T08:13:00.000Z	Moosebuntu		or is there something else in this file?
-2007-01-01T08:14:00.000Z	linuxeatswindows	Moosebuntu	you can turn off beryl then turn it back on and it works for me
-2007-01-01T08:14:00.000Z	Moosebuntu		thanks!
-2007-01-01T08:14:00.000Z	Moosebuntu		Linuxeatswindows> beryl?
-2007-01-01T08:14:00.000Z	linuxeatswindows	Moosebuntu	yea the xgl window manager

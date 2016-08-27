@@ -1,3 +1,0 @@
-2007-01-01T12:35:00.000Z	Grok_		how would i find out what the $arch (Kn) be if the cpu is listed as Mobile AMD Athlon XP-M?
-2007-01-01T12:36:00.000Z	crimsun	Grok_	uname -m
-2007-01-01T12:36:00.000Z	Grok_	crimsun	thank you very much
