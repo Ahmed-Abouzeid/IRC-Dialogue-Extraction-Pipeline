@@ -24,7 +24,7 @@
 
 ####crawler.py On Ubuntu IRC####
 ```python
-python crawler.py -urls_file ./urls_ubuntu.txt -file_spider yes -target_format txt -ignored_links_file path_to/ignore.txt -time_out 60 -work_path /output_path max_recursion_depth 3 white_list_path path_to/white_list.txt
+python crawler.py -urls_file path_to/urls_ubuntu.txt -file_spider yes -target_format txt -ignored_links_file path_to/ignore.txt -time_out 60 -work_path /output_path max_recursion_depth 3 white_list_path path_to/white_list.txt
 ```
 ####crawler.py On Lisp IRC####
 ```python
