@@ -10,7 +10,7 @@
 -dialogue.py (extract one-one dialogues for each pair of users in logs)
 
 
-### Run setup.py To Be Able To Use The Above Three Modules In Other Modules ###
+### How To Use The Scripts ###
 
 * Summary of set up
 * Configuration
