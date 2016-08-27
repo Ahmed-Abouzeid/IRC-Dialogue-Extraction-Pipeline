@@ -1,7 +1,7 @@
 # IRC Processing Software Is A Tool For Gathering And Processing IRC Channels Conversations For Creating One/One Dialogues Files That Can Be Used As Training Data-Set For Deep Neural Networks Used In Dialogue Systems#
 
 
-### The IRC Processing Software Can Be Used By Running Three Python Scripts (Can Be Found Under "irc_process" Folder) In The Following Order: ###
+### The IRC Processing Software Can Be Used By Running Three Python Scripts (Located On /irc_process) In The Following Order: ###
  
 - crawler.py (downloads irc logs)
  
@@ -11,7 +11,7 @@
 
 ### Run setup.py To Be Able To Use The Above Scripts From Other Modules ###
 
-### For Testing Purposes, Below Are Unit-Test & Verification Modules Can Be Found Under "test" Folder ###
+### For Testing Purposes, Below Are Unit-Test & Verification Modules Located On /test ###
 
 - compare_dialogues.py (compares two extracted dialogues from the same irc logs but from different algorithms maybe, and report the matched records and the mismatches)
 
