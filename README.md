@@ -20,20 +20,9 @@
 - test_rawirc.py (tests major functions in rawer.py using mock data included in the repository)
 
 - test_dialogue.py (tests major functions in dialogue.py using mock data included in the repository)
-### How To Use The Scripts ###
+### How To Use The Scripts? ###
 
+#crawler.py#
 ```python
-s = "Python syntax highlighting"
-print s
+python crawler.py -urls_file /path_to/urls.txt
 ```
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
