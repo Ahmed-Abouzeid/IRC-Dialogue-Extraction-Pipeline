@@ -22,7 +22,7 @@
 - test_dialogue.py (tests major functions in dialogue.py using mock data included in the repository)
 ### How To Use The Scripts? ###
 
-####crawler.py####
+####crawler.py On Ubuntu IRC####
 ```python
-python crawler.py -urls_file /path_to/urls.txt
+python crawler.py -urls_file ./urls_ubuntu.txt -file_spider yes -target_format txt -ignored_links_file ./ignore.txt -time_out 60 -work_path /output_path max_recursion_depth 3 white_list_path ./white_list.txt
 ```
