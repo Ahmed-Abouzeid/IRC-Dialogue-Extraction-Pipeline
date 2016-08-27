@@ -28,7 +28,7 @@ python crawler.py -crawl yes -urls_file files_as_arguments/urls_ubuntu.txt -file
 ```
 ####crawler.py On Lisp IRC####
 ```python
-python crawler.py -crawl yes -urls_file files_as_arguments/urls_lisp.txt -file_spider yes -target_format txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 2
+python crawler.py -crawl yes -urls_file files_as_arguments/urls_lisp.txt -file_spider yes -target_format txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 1
 ```
 ####crawler.py On Perl6 IRC####
 ```python
