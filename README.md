@@ -24,17 +24,17 @@
 
 ####crawler.py On Ubuntu IRC####
 ```python
-python crawler.py -urls_file path_to/urls_ubuntu.txt -file_spider yes -target_format txt -ignored_links_file path_to/ignore.txt -time_out 60 -work_path /output_path max_recursion_depth 3 white_list_path path_to/white_list.txt
+python crawler.py -urls_file files_as_arguments/urls_ubuntu.txt -file_spider yes -target_format txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 3 white_list_path files_as_arguments/white_list.txt
 ```
 ####crawler.py On Lisp IRC####
 ```python
-python crawler.py -urls_file path_to/urls_lisp.txt -file_spider yes -target_format txt -ignored_links_file path_to/ignore.txt -time_out 60 -work_path /output_path max_recursion_depth 2
+python crawler.py -urls_file files_as_arguments/urls_lisp.txt -file_spider yes -target_format txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 2
 ```
 ####crawler.py On Perl6 IRC####
 ```python
-python crawler.py -urls_file path_to/urls_perl6.txt -ignored_links_file path_to/ignore.txt -time_out 60 -work_path /output_path max_recursion_depth 1 -allow_clean_url yes
+python crawler.py -urls_file files_as_arguments/urls_perl6.txt -ignored_links_file files_as_arguments/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 1 -allow_clean_url yes
 ```
 ####crawler.py On Koha IRC####
 ```python
-python crawler.py -urls_file path_to/urls_koha.txt -ignored_links_file path_to/ignore.txt -time_out 60 -work_path /output_path max_recursion_depth 1 -allow_clean_url yes
+python crawler.py -urls_file path_to/urls_koha.txt -ignored_links_file path_to/ignore.txt -time_out 60 -work_path /output_path -max_recursion_depth 1 -allow_clean_url yes
 ```
