@@ -37,3 +37,4 @@ python crawler.py -urls_file path_to/urls_perl6.txt -ignored_links_file path_to/
 ####crawler.py On Koha IRC####
 ```python
 python crawler.py -urls_file path_to/urls_koha.txt -ignored_links_file path_to/ignore.txt -time_out 60 -work_path /output_path max_recursion_depth 1 -allow_clean_url yes
+```
