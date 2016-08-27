@@ -17,9 +17,9 @@
 
 - count_users_in_dialogues.py (report if there is any dialogue with only one user or more than two users talking, that should be considered as an error)
 
-- test_rawirc (tests major functions in rawer.py using mock data included in the repository)
+- test_rawirc.py (tests major functions in rawer.py using mock data included in the repository)
 
-- test_dialogue (tests major functions in dialogue.py using mock data included in the repository)
+- test_dialogue.py (tests major functions in dialogue.py using mock data included in the repository)
 ### How To Use The Scripts ###
 
 * Summary of set up
