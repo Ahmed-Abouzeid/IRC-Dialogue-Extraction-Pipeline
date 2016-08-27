@@ -1,0 +1,4 @@
+2007-01-01T07:50:00.000Z	m12		how do you change window managers?  I just downloaded one, and then restarted X.org, but i'm still in gnome now.
+2007-01-01T07:50:00.000Z	HymnToLife	m12	you choose which DE you want to start at the login screen
+2007-01-01T07:51:00.000Z	m12		ohh ok, i thought that was a gnome login screen.
+2007-01-01T07:52:00.000Z	HymnToLife	m12	the login screen won't change unless you tel it to

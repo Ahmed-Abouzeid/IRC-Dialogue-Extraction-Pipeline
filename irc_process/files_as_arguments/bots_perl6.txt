@@ -1,0 +1,14 @@
+dalek
+hugme
+ilbot2
+ilogger2
+lambdabot
+lisppaste3
+masak
+p6eval
+phenny
+pointme
+pugs_svn
+zaslon
+camelia
+yoleaux

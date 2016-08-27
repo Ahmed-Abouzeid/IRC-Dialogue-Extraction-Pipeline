@@ -1,0 +1,28 @@
+2007-01-01T01:51:00.000Z	nn	NineTeen67Come1	i run postfix
+2007-01-01T01:52:00.000Z	NineTeen67Come1	nn	postfix .. that sends the mail for you? (smtp) ..
+2007-01-01T01:52:00.000Z	nn	NineTeen67Come1	It can be configured in many roles, local only, full internet site, etc
+2007-01-01T01:52:00.000Z	NineTeen67Come1	nn	I tried to follow this how-to and my gawed . it got ugly .. http://flurdy.com/docs/postfix/
+2007-01-01T01:53:00.000Z	NineTeen67Come1	nn	I just need to mainly send mail out to people that want to register, have server questions and the like.. if need be I can write them back on my regular e-mail ..
+2007-01-01T01:53:00.000Z	nn	NineTeen67Come1	my postfix configs have always been quick and easy
+2007-01-01T01:54:00.000Z	NineTeen67Come1	nn	can I just aptitude install postfix .. and start there? .. I know it asks me internet smart server etc etc .. I don't know really which to select .. it's a web server .. so internet I assume?
+2007-01-01T01:54:00.000Z	nn		you're an Internet host
+2007-01-01T01:54:00.000Z	NineTeen67Come1	nn	it is a web server ..
+2007-01-01T01:54:00.000Z	nn	NineTeen67Come1	yea, and it'll be getting incoming mail, correct?
+2007-01-01T01:55:00.000Z	NineTeen67Come1	nn	Incomming would be a bonus .. sending is important because plone sends them their passwd ..
+2007-01-01T01:55:00.000Z	nn	NineTeen67Come1	Then pick internet host, follow the settings. all done
+2007-01-01T01:55:00.000Z	NineTeen67Come1	nn	I'll give 'er a try .. thanks for the confidance booster .. heheheh
+2007-01-01T01:56:00.000Z	nn		which puts my projects on hold bc ya. i'm poor :)
+2007-01-01T01:57:00.000Z	NineTeen67Come1	nn	shoot .. looks like it's already installed .. by chance you know how to re-institute the settings? ..
+2007-01-01T01:57:00.000Z	nn	NineTeen67Come1	dpkg-reconfigure postfix
+2007-01-01T01:57:00.000Z	NineTeen67Come1	nn	awesome thanks .. I always forget avout dpkg-stuff ..
+2007-01-01T01:57:00.000Z	nn	NineTeen67Come1	:)
+2007-01-01T01:59:00.000Z	NineTeen67Come1	nn	it only gives me No config / Internet Site / Internet with smarthost / Satellite system and local only .. internet site?
+2007-01-01T02:00:00.000Z	nn	NineTeen67Come1	internet site
+2007-01-01T02:00:00.000Z	NineTeen67Come1	nn	rodger .. thank you ..
+2007-01-01T02:05:00.000Z	NineTeen67Come1	nn	I'm really sorry to bug you .. but do you know a good how-to on using postfix? It's all hooked up and I think I got everything entered correctly (a couple things didn't look familiar but I think I'll know the error when I see it) ..
+2007-01-01T02:05:00.000Z	nn	NineTeen67Come1	http://www.tldp.org should have something good, probably in the mini-howto's
+2007-01-01T02:05:00.000Z	nn	NineTeen67Come1	and it's quite alright
+2007-01-01T02:06:00.000Z	NineTeen67Come1	nn	thanks much ..
+2007-01-01T02:06:00.000Z	NineTeen67Come1		you too HymnToLife ..
+2007-01-01T02:30:00.000Z	NineTeen67Come1		thanks much nn .. it's running, now I gotta figure out how to get it sending correctly .. (it times out right now .. my isp might be stomping on it) .. have good night .
+2007-01-01T02:31:00.000Z	nn	NineTeen67Come1	enjoy!

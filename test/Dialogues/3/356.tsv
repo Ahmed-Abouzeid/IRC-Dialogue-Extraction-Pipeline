@@ -1,0 +1,8 @@
+2007-01-01T08:47:00.000Z	elyon		Does the Linux kernel in Ubuntu get updated automatically?
+2007-01-01T08:47:00.000Z	BHSPitMonkey	elyon	it comes through the update manager
+2007-01-01T08:48:00.000Z	elyon		Okay... and the actual update is automatic?  Or does it require a tutorial to do it? :P
+2007-01-01T08:48:00.000Z	BHSPitMonkey	elyon	familiar with the update manager? the orange square in the notification area?
+2007-01-01T08:48:00.000Z	elyon	BHSPitMonkey	- vaguely familiar... it's popped up a few times for me to update software.
+2007-01-01T08:49:00.000Z	BHSPitMonkey	elyon	the orange square will light up in the notification area, by the clock.  you'll click on it, put in your password, and see the updates at hand.
+2007-01-01T08:49:00.000Z	BHSPitMonkey	elyon	from there you can re-check, or click Install Updates
+2007-01-01T08:49:00.000Z	BHSPitMonkey	elyon	for kernels, it will tell you that it won't take effect until after a reboot

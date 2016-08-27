@@ -1,0 +1,13 @@
+2007-01-01T08:18:00.000Z	l33t		this room is too damn crowded
+2007-01-01T08:18:00.000Z	Jordan_U	l33t	What do you need help with specifically? listen to me and I will try to sift out the suggestions and give you one answer :)
+2007-01-01T08:20:00.000Z	l33t		it doesn't have an option to enable universe
+2007-01-01T08:20:00.000Z	Jordan_U	l33t	https://help.ubuntu.com/community/FrostWire has full instructions
+2007-01-01T08:21:00.000Z	l33t		what?
+2007-01-01T08:21:00.000Z	Jordan_U	l33t	BHSPitMonkey's way is the easiest :)
+2007-01-01T08:24:00.000Z	l33t		update?
+2007-01-01T08:24:00.000Z	Jordan_U	l33t	sudo apt-get update
+2007-01-01T08:25:00.000Z	l33t		IT AINT THERE
+2007-01-01T08:26:00.000Z	Jordan_U	l33t	Did you do what BHSPitMonkey suggested and open synaptic, go to Settings>Repositories, and then check all the boxes.
+2007-01-01T08:26:00.000Z	Jordan_U		?
+2007-01-01T08:28:00.000Z	l33t		done installing
+2007-01-01T08:28:00.000Z	Jordan_U	l33t	once it is doubnloaded you just need to double click it and select unstall package in the window that pops up

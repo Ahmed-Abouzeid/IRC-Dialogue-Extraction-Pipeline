@@ -1,0 +1,23 @@
+2007-01-01T07:36:00.000Z	gnomefreak	eniac	sudo dpkg-reconfigure xserver-xorg
+2007-01-01T07:38:00.000Z	eniac	gnomefreak	xserver-xorg isn't installed
+2007-01-01T07:38:00.000Z	eniac		when I do sudo apt-get install xserver-xorg it doesn't exist
+2007-01-01T07:38:00.000Z	gnomefreak	eniac	than install X
+2007-01-01T07:38:00.000Z	gnomefreak	eniac	what DE do you want?
+2007-01-01T07:38:00.000Z	gnomefreak	eniac	you want gnome, kde,xfce?
+2007-01-01T07:39:00.000Z	eniac	gnomefreak	I want a working ubuntu
+2007-01-01T07:39:00.000Z	eniac	gnomefreak	I want a working X11
+2007-01-01T07:39:00.000Z	gnomefreak	eniac	sudo apt-get install ubuntu-desktop
+2007-01-01T07:39:00.000Z	gnomefreak	eniac	that will install X and everything else you need
+2007-01-01T07:39:00.000Z	eniac	gnomefreak	gonne try that thanks
+2007-01-01T07:40:00.000Z	gnomefreak		kacgrep just searches dont think you need to be expert
+2007-01-01T07:40:00.000Z	eniac	gnomefreak	doesn't do the trick
+2007-01-01T07:40:00.000Z	gnomefreak	eniac	what does it say
+2007-01-01T07:41:00.000Z	eniac	gnomefreak	it's in dutch
+2007-01-01T07:42:00.000Z	gnomefreak	eniac	give me the round about of what it says
+2007-01-01T07:42:00.000Z	eniac	gnomefreak	say's someting like 0 packets this 0 packets that
+2007-01-01T07:42:00.000Z	eniac	gnomefreak	and 2 packets not upgraded
+2007-01-01T07:42:00.000Z	gnomefreak	eniac	sudo apt-get update && sudo apt-get dist-upgrade
+2007-01-01T07:42:00.000Z	gnomefreak	eniac	does it tell you anything else?
+2007-01-01T07:44:00.000Z	gnomefreak	eniac	can you paste the error to pastebin
+2007-01-01T07:47:00.000Z	eniac	gnomefreak	done that , startx gives me the same result
+2007-01-01T07:48:00.000Z	gnomefreak	eniac	and the error is?

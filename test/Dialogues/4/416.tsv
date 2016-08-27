@@ -1,0 +1,3 @@
+2007-01-01T10:50:00.000Z	trev__		nolimitsoya:thx
+2007-01-01T10:50:00.000Z	mnoir	trev__	by convention, every user belongs to a group of the same name as the user.  the first user you make when installing also belongs to many other groups
+2007-01-01T10:51:00.000Z	mnoir	trev__	to see, in terminal type 'grep username /etc/group'

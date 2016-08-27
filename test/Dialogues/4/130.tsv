@@ -1,0 +1,30 @@
+2007-01-01T01:37:00.000Z	php-freak		can someone tell me how i can download all ftp files from clie?
+2007-01-01T01:37:00.000Z	php-freak		from my server
+2007-01-01T01:37:00.000Z	php-freak		i tried wget, but it only downloads like 3 files, then quites
+2007-01-01T01:37:00.000Z	nn	php-freak	wget -c -m -np ftp://your-url
+2007-01-01T01:38:00.000Z	php-freak		whats the -c -np mean?
+2007-01-01T01:38:00.000Z	php-freak		what about -r?
+2007-01-01T01:38:00.000Z	nn	php-freak	-c is continue, you can really ommit it, -np means don't go up the directory tree, only down
+2007-01-01T01:38:00.000Z	php-freak		only downloaded like 3 files, then quit
+2007-01-01T01:39:00.000Z	php-freak		it only downloaded a index.html file, and nothing else????????????????
+2007-01-01T01:39:00.000Z	php-freak		any one here know how to donwload ftp files cli?
+2007-01-01T01:40:00.000Z	nn	php-freak	did you put ftp:// on the url?
+2007-01-01T01:40:00.000Z	php-freak		well duh
+2007-01-01T01:40:00.000Z	php-freak		wget -R -C -M -NP ftp://test:test@url.com:21
+2007-01-01T01:40:00.000Z	php-freak		i trried that
+2007-01-01T01:40:00.000Z	nn		why caps?
+2007-01-01T01:41:00.000Z	nn		-m -np
+2007-01-01T01:41:00.000Z	php-freak		wget -R ftp://blah:blah@blah.com:21
+2007-01-01T01:41:00.000Z	php-freak		I tried small caps too
+2007-01-01T01:41:00.000Z	nn	php-freak	just -m -np should be fine
+2007-01-01T01:41:00.000Z	php-freak		I tried wget -R -c -m -np
+2007-01-01T01:41:00.000Z	php-freak		done tried it
+2007-01-01T01:41:00.000Z	php-freak		but ill try it again
+2007-01-01T01:41:00.000Z	nn		if not, your ftp sever is on crack, MS FTP by chance?
+2007-01-01T01:41:00.000Z	nn	php-freak	Don't put the -r
+2007-01-01T01:42:00.000Z	php-freak		for crying out loud its download this time
+2007-01-01T01:42:00.000Z	php-freak		i need to read a book no this stuff
+2007-01-01T01:42:00.000Z	php-freak		whats the -m -np mean again?
+2007-01-01T01:42:00.000Z	nn		-m is mirror, it makes a nice directory tree and gets all files, -np prevents going back up the directory tree
+2007-01-01T01:43:00.000Z	nn		793318 -rw-r--r-- 1 root root 811562110 2007-01-01 07:16 sql-commit.log
+2007-01-01T01:43:00.000Z	nn		hah.. 793mb log file

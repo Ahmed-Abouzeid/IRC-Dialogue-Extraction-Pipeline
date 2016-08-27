@@ -1,0 +1,10 @@
+2007-01-01T04:29:00.000Z	e\ectro_		is there a way to speed up NFS mounting in ubuntu?/
+2007-01-01T04:29:00.000Z	e\ectro_		for some reason, it takes 40-60 seconds to mount an NFS share
+2007-01-01T04:30:00.000Z	johns^	e\ectro_	install portmap
+2007-01-01T04:30:00.000Z	e\ectro_	johns^	/etc/init.d/portmap ?
+2007-01-01T04:31:00.000Z	e\ectro_		wasnt installed by default
+2007-01-01T04:31:00.000Z	e\ectro_		wow
+2007-01-01T04:31:00.000Z	johns^	e\ectro_	allready installed? then it could be some nameresolving issue
+2007-01-01T04:31:00.000Z	e\ectro_	johns^	it was portmap, wasnt installed by default
+2007-01-01T04:31:00.000Z	johns^	e\ectro_	I know :)
+2007-01-01T04:31:00.000Z	e\ectro_		I havent been impressed with the ubuntu 64 bit release though

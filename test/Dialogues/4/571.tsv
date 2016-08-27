@@ -1,0 +1,6 @@
+2007-01-01T10:02:00.000Z	ugarit		are the linux-headers* packages the source code for the kernel?
+2007-01-01T10:02:00.000Z	frying_fish	ugarit	no, but close enough for most things that you will need
+2007-01-01T10:03:00.000Z	ugarit	frying_fish	even to comple kqemu?
+2007-01-01T10:04:00.000Z	ugarit	frying_fish	even to compile kqemu?
+2007-01-01T10:04:00.000Z	frying_fish	ugarit	yes, it has the header files, which will be what the program wants to compile against
+2007-01-01T10:04:00.000Z	frying_fish		and link them in, so it should be fine.

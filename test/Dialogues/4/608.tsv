@@ -1,0 +1,46 @@
+2007-01-01T01:49:00.000Z	vanberge		so... what is the key to enable syntax highligting in vi ?
+2007-01-01T01:50:00.000Z	slacker_nl		set vanberge echo syntax enable >> ~/.vimrc
+2007-01-01T01:50:00.000Z	slacker_nl		s/set //
+2007-01-01T01:51:00.000Z	vanberge	slacker_nl	well, if i editedt /etc/vim/vimrc and uncommented taht line shouldn't that do the trick?
+2007-01-01T01:51:00.000Z	slacker_nl	vanberge	believe so, its the globale vimrc
+2007-01-01T01:51:00.000Z	slacker_nl		so thats for every user
+2007-01-01T01:51:00.000Z	vanberge	slacker_nl	well, i did that, but no syntax highlighting...  :-(
+2007-01-01T01:52:00.000Z	vanberge	slacker_nl	better yet... i try to 'vim filename.php' and i get  syntax on, this command is not valid'
+2007-01-01T01:52:00.000Z	slacker_nl	vanberge	in the /etc/vim/vimrc its callesd syntax on
+2007-01-01T01:53:00.000Z	slacker_nl	vanberge	grep -i syntax /etc/vim/vimrc , you will see the line you need to change
+2007-01-01T01:56:00.000Z	vanberge	slacker_nl	it is not working.  i see the line and i un-commented it... but i get no syntax color
+2007-01-01T01:57:00.000Z	vanberge	slacker_nl	do i have to run something other than vim?
+2007-01-01T01:57:00.000Z	vanberge		when i uncomment taht line it says syntax on is not a valid command
+2007-01-01T01:58:00.000Z	slacker_nl	vanberge	hold on letme give it a try
+2007-01-01T01:59:00.000Z	slacker_nl	vanberge	works for me...
+2007-01-01T01:59:00.000Z	slacker_nl	vanberge	could you put your /etc/vim/vimrc in a pastebin (/topic)
+2007-01-01T02:00:00.000Z	vanberge	slacker_nl	yeah hold on just a sec
+2007-01-01T02:02:00.000Z	vanberge	slacker_nl	http://pastebin.com/848910
+2007-01-01T02:02:00.000Z	vanberge	slacker_nl	ty for looking at this with me
+2007-01-01T02:04:00.000Z	slacker_nl	vanberge	*click*
+2007-01-01T02:05:00.000Z	slacker_nl	vanberge	looks good to me
+2007-01-01T02:07:00.000Z	slacker_nl	vanberge	could you open a file (.pl, .zsh, .sh, anything that needs syntax highlighting)
+2007-01-01T02:08:00.000Z	vanberge	slacker_nl	yes
+2007-01-01T02:09:00.000Z	vanberge	slacker_nl	i have a php file open
+2007-01-01T02:09:00.000Z	slacker_nl	vanberge	in vi, now do :set syntax
+2007-01-01T02:10:00.000Z	vanberge	slacker_nl	E519:  Option not supported: syntax
+2007-01-01T02:10:00.000Z	slacker_nl	vanberge	are you using vim or vi?
+2007-01-01T02:11:00.000Z	slacker_nl	vanberge	:set syntax in vim should return syntax=php
+2007-01-01T02:13:00.000Z	vanberge	slacker_nl	i thought they were one in the same?  i am typing vi from command line
+2007-01-01T02:14:00.000Z	slacker_nl	vanberge	type: which vi
+2007-01-01T02:15:00.000Z	slacker_nl		<nn> slacker_nl: /msg nickserv help <-- ??
+2007-01-01T02:15:00.000Z	vanberge	slacker_nl	/usr/bin/vi
+2007-01-01T02:16:00.000Z	slacker_nl	vanberge	ls -altr /usr/bin/vi , what does that give you?
+2007-01-01T02:17:00.000Z	vanberge	slacker_nl	/usr/bin/vi -> /etc/alternatives/vi
+2007-01-01T02:17:00.000Z	vanberge	slacker_nl	should i symlink vi to vim?
+2007-01-01T02:18:00.000Z	slacker_nl	vanberge	ls -altr /etc/alternatives/vi this should be a symlink to /usr/bin/vim
+2007-01-01T02:18:00.000Z	slacker_nl	vanberge	do you have that?
+2007-01-01T02:19:00.000Z	vanberge	slacker_nl	no...     /etc/alternatives/vi -> /usr/bin/vim.tiny
+2007-01-01T02:21:00.000Z	slacker_nl	vanberge	ok... I think vim.tiny shoudl also support syntax highlighting
+2007-01-01T02:21:00.000Z	slacker_nl	vanberge	any reason to use vim.tiny?
+2007-01-01T02:21:00.000Z	slacker_nl	vanberge	otherwise remove vim.tiny and install vim regular
+2007-01-01T02:22:00.000Z	vanberge	slacker_nl	i have no reasons... im just on a default ubuntu install
+2007-01-01T02:23:00.000Z	vanberge	slacker_nl	psh... sudo apt-get install vim fixed it
+2007-01-01T02:24:00.000Z	slacker_nl	vanberge	hehe, kewl :)
+2007-01-01T02:24:00.000Z	vanberge	slacker_nl	ty for helping me.
+2007-01-01T02:24:00.000Z	slacker_nl	vanberge	yw and enjoy vim :)

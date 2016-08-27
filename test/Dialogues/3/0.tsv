@@ -1,0 +1,61 @@
+2007-01-01T11:14:00.000Z	AidanL		There was a fatal error when doing sudo modprove ndiswrapper. There was an invalid argument.
+2007-01-01T11:15:00.000Z	BHSPitLappy	AidanL	have you set up your card yet, in ndiswrapper? given it the driver, etc?
+2007-01-01T11:15:00.000Z	AidanL		No
+2007-01-01T11:15:00.000Z	AidanL		I don't know where to find the driver. That is a problem I am having/
+2007-01-01T11:15:00.000Z	BHSPitLappy	AidanL	you get the driver from the manufacturer's CD or site...
+2007-01-01T11:15:00.000Z	AidanL		Tritium, I did yes.
+2007-01-01T11:15:00.000Z	AidanL		I see.
+2007-01-01T11:16:00.000Z	AidanL		I will do that now then. I am very sorry about this. I am new to Ubuntu.
+2007-01-01T11:16:00.000Z	AidanL		:)
+2007-01-01T11:17:00.000Z	BHSPitLappy	AidanL	no problem. Ndiswrapper isn't a wireless driver, it's something that lets you use Windows wireless card drivers in linux.
+2007-01-01T11:17:00.000Z	BHSPitLappy	AidanL	did you get that link I sent out earlier? It contains ndisgtk, it makes it a -tad- easier, and it also includes some other useful wifi packages.
+2007-01-01T11:18:00.000Z	BHSPitLappy	AidanL	http://bhs2007.googlepages.com/edgy-wifi.zip
+2007-01-01T11:18:00.000Z	AidanL		It is telling me that HArdware isn't present. Although it is.
+2007-01-01T11:19:00.000Z	BHSPitLappy	AidanL	hmm. and you gave it the proper .inf file?
+2007-01-01T11:20:00.000Z	AidanL		I dragged it into the blank white area and it was trying to install.
+2007-01-01T11:20:00.000Z	BHSPitLappy	AidanL	ah, it's a belkin...
+2007-01-01T11:20:00.000Z	AidanL		Yeah...
+2007-01-01T11:20:00.000Z	AidanL		It now says HArdware PResent.
+2007-01-01T11:21:00.000Z	AidanL		Although I don't know what to do next...
+2007-01-01T11:21:00.000Z	BHSPitLappy	AidanL	did you get that link I sent you earlier
+2007-01-01T11:21:00.000Z	AidanL		Yeah
+2007-01-01T11:22:00.000Z	AidanL		Do I install all of the packages on there?
+2007-01-01T11:22:00.000Z	BHSPitLappy	AidanL	it contains network-manager-gnome, you'll want that.
+2007-01-01T11:22:00.000Z	AidanL		Righty Ill install that and report back:)
+2007-01-01T11:22:00.000Z	BHSPitLappy		aye aye.
+2007-01-01T11:24:00.000Z	BHSPitLappy	AidanL	just make sure to say my name in here, so I'll notice.
+2007-01-01T11:24:00.000Z	AidanL	BHSPitLappy	Ah, it tells me the Dependency is not satisfyable: network Manager.
+2007-01-01T11:25:00.000Z	BHSPitLappy	AidanL	all the dependencies are in that archive.
+2007-01-01T11:25:00.000Z	AidanL	BHSPitLappy	Do i need to put all of the .deb packages from the zipped file onto Ubuntu?
+2007-01-01T11:26:00.000Z	BHSPitLappy	AidanL	pretty much... do all except for wifi-radar for now.
+2007-01-01T11:27:00.000Z	AidanL	BHSPitLappy	Should I place all of the packages on my desktop?
+2007-01-01T11:28:00.000Z	BHSPitLappy	AidanL	you can place them all in some directory if you want, and you can install them all at once with a command, or just double click them.
+2007-01-01T11:28:00.000Z	BHSPitLappy	AidanL	the desktop will work fine.
+2007-01-01T11:35:00.000Z	AidanL	BHSPitLappy	I am installing them now.
+2007-01-01T11:35:00.000Z	AidanL		BHSPITLappy: It keeps telling me that Software Channel is not available. YEt they do install...
+2007-01-01T11:35:00.000Z	AidanL		No ignore me I read it wrong.
+2007-01-01T11:36:00.000Z	BHSPitLappy	AidanL	okay
+2007-01-01T11:37:00.000Z	AidanL	BHSPitLappy	I have a problem with: wpagui. It tells me there is an Error: Dependency is not satisfiable: libqt4-core.
+2007-01-01T11:40:00.000Z	AidanL	BHSPitLappy	What do I do next?
+2007-01-01T11:41:00.000Z	BHSPitLappy	AidanL	push ALT+F2, and run nm-applet using it
+2007-01-01T11:42:00.000Z	AidanL	BHSPitLappy	The NetworkManager applet could not find some required resources. It cannot continue.
+2007-01-01T11:42:00.000Z	AidanL		I had a problem with one of the packages.
+2007-01-01T11:43:00.000Z	BHSPitLappy	AidanL	screw the required resources! I give up!
+2007-01-01T11:43:00.000Z	AidanL		Could someone help me to get ndiswrapper working properly so that I can get my wireless working?
+2007-01-01T11:45:00.000Z	BHSPitLappy	AidanL	it -might- help to log off and/or reboot at this point.  Can't promise anything, though
+2007-01-01T11:45:00.000Z	AidanL	BHSPitLappy	Would it have made any difference of wpagui wouldn't install?
+2007-01-01T11:46:00.000Z	BHSPitLappy	AidanL	not really
+2007-01-01T11:46:00.000Z	BHSPitLappy	AidanL	that one wasn't tied in with the others
+2007-01-01T11:48:00.000Z	AidanL	BHSPitLappy	It didn't work. Thanks all the same.
+2007-01-01T11:56:00.000Z	BHSPitLappy	AidanL	oh, sorry to hear that.  I didn't even realize it was USB
+2007-01-01T11:56:00.000Z	AidanL		Yeah it is...
+2007-01-01T11:56:00.000Z	AidanL		I am guessing it is a bad thing.
+2007-01-01T11:56:00.000Z	BHSPitLappy	AidanL	type ifconfig in a  terminal
+2007-01-01T11:57:00.000Z	BHSPitLappy	AidanL	let's see if ndiswrapper created any interfaces for it
+2007-01-01T11:57:00.000Z	AidanL	BHSPitLappy	There is eth0 and some writing and Lo with some writing. There are no bytes on the eth0 however there is a small amount of packets and bytes.
+2007-01-01T11:58:00.000Z	AidanL		There is a small amount of packets and bytes on the Lo one - BHSPITLAPPY
+2007-01-01T11:58:00.000Z	BHSPitLappy	AidanL	try sudo modprobe ndiswrapper and then try again
+2007-01-01T11:58:00.000Z	BHSPitLappy	AidanL	eth0 is probably your ethernet, and lo is just loopback- your machine
+2007-01-01T11:58:00.000Z	AidanL	BHSPitLappy	Fatal Error
+2007-01-01T11:58:00.000Z	AidanL		I see.
+2007-01-01T12:00:00.000Z	AidanL	BHSPitLappy	When I type sudo modprobe ndiswrapper the fatal error I receive is : /lib/modules/2.6.17.10-generic/kernel/drivers/ndiswrapper/ndiswrapper.ko : invalid argument.

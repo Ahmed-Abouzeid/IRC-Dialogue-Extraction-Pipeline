@@ -1,0 +1,49 @@
+2007-01-01T01:29:00.000Z	elyon		Does anyone know of a good Bible software for Linux?
+2007-01-01T01:29:00.000Z	awilcox	elyon	(this is a joke), cat /dev/bible?
+2007-01-01T01:31:00.000Z	awilcox	elyon	actually it's GnomesWord, like you know, The Word, and what package is conflicting?
+2007-01-01T01:33:00.000Z	elyon	awilcox	- Synaptic says it depends on libsword5c2a but it is not installable.
+2007-01-01T01:33:00.000Z	awilcox		hmm...have you ran   sudo apt-get update   lately, elyon?
+2007-01-01T01:33:00.000Z	elyon	awilcox	- yesterday.  I'll try it again.
+2007-01-01T01:34:00.000Z	elyon		alwilcox - although, isn't that the same as clicking Reload in Synaptic?
+2007-01-01T01:34:00.000Z	awilcox	elyon	not sure, I don't use GUI tools for package management
+2007-01-01T01:35:00.000Z	elyon	awilcox	okay, I ran that and tried again... still says its uninstallable.
+2007-01-01T01:35:00.000Z	awilcox	elyon	hmm you may have to add multiverse, not sure, do you have multiverse?
+2007-01-01T01:36:00.000Z	elyon	awilcox	- I've had that enabled for a while.
+2007-01-01T01:38:00.000Z	elyon	awilcox	- Any other ideas?
+2007-01-01T01:39:00.000Z	awilcox	elyon	you may need to add more sources, or distupgrade to edgy :-( , but I'm really not sure
+2007-01-01T01:40:00.000Z	elyon	awilcox	- I'm running Edgy right now, if that's what you mean.
+2007-01-01T01:41:00.000Z	awilcox	elyon	hmm maybe it needs Dapper
+2007-01-01T03:06:00.000Z	elyon		grrr... now Firefox won't even run.  What the hell is wrong with this OS??
+2007-01-01T03:06:00.000Z	awilcox	elyon	calm down, what does Firefox do?
+2007-01-01T03:07:00.000Z	awilcox	elyon	
+2007-01-01T03:07:00.000Z	awilcox	elyon	attempt to start it from the terminal
+2007-01-01T03:07:00.000Z	elyon	awilcox	- that just does the same thing.
+2007-01-01T03:08:00.000Z	awilcox	elyon	it gives NO errors on stdio?
+2007-01-01T03:08:00.000Z	elyon		stdio?
+2007-01-01T03:08:00.000Z	awilcox	elyon	sorry geeky term, the command line
+2007-01-01T03:08:00.000Z	elyon	awilcox	ah.  Nope... nothing on the command line at all.
+2007-01-01T03:08:00.000Z	awilcox	elyon	for full info (you have no browser haha) http://en.wikipedia.org/wiki/stdio
+2007-01-01T03:10:00.000Z	elyon	awilcox	- should I try to reinstall it with Synaptic?
+2007-01-01T03:10:00.000Z	awilcox	elyon	sure
+2007-01-01T03:12:00.000Z	awilcox		AND will they not just say reinstall it and charge $255 like Micro$loth?
+2007-01-01T03:12:00.000Z	elyon	awilcox	- nope... does the same thing after reinstalling.
+2007-01-01T03:13:00.000Z	elyon	awilcox	- are there error logs somewhere that I can look to fix Firefox?
+2007-01-01T03:13:00.000Z	awilcox	elyon	not that I'm aware of; except things like /var/log/daemon.log and stuff like that (and tail | dmesg)
+2007-01-01T03:14:00.000Z	awilcox		will anybody LOOK if I pastebin Xorg.conf?
+2007-01-01T03:14:00.000Z	elyon		Why the heck would it just STOP working like that?
+2007-01-01T03:15:00.000Z	elyon	awilcox	- In System Monitor, it reports that firefox-bin is Sleeping
+2007-01-01T03:15:00.000Z	elyon		Should I try stopping that?
+2007-01-01T03:16:00.000Z	awilcox	elyon	type into terminal: sudo killall -9 firefox-bin
+2007-01-01T03:24:00.000Z	awilcox		!netsplit
+2007-01-01T03:24:00.000Z	elyon	awilcox	- Just to let you know, Firefox just decided to start working again... go figure.
+2007-01-01T03:34:00.000Z	awilcox		!automatix
+2007-01-01T03:34:00.000Z	elyon	awilcox	- hehe, where was that when this channel suggested it to me? lol
+2007-01-01T03:34:00.000Z	elyon		Of course, I haven't had any problems with it at all.
+2007-01-01T03:35:00.000Z	awilcox	elyon	hehe
+2007-01-01T03:36:00.000Z	awilcox	elyon	)  np
+2007-01-01T03:36:00.000Z	elyon		Moving my family from WinXP to Ubuntu has been interesting to say the least.
+2007-01-01T03:36:00.000Z	awilcox	elyon	I just did that too
+2007-01-01T03:36:00.000Z	awilcox	elyon	even my Grandma likes Ubuntu more than XP, she is *SICK* of Bill Gates :)
+2007-01-01T03:37:00.000Z	elyon		My mother, who is COMPLETELY computer illiterate (Where's the power button?) doesn't have a problem with Ubuntu either.
+2007-01-01T03:37:00.000Z	awilcox	elyon	hehe
+2007-01-01T03:37:00.000Z	awilcox	elyon	well my grandma isn't illiterate, she did programming in DOS

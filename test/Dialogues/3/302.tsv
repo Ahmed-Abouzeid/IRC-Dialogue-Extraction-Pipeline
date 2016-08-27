@@ -1,0 +1,9 @@
+2007-01-01T12:49:00.000Z	crimsun	Jordan_U	more specifically?
+2007-01-01T12:50:00.000Z	Jordan_U	crimsun	I just get a blinking white cursor and I have to switch to a tty and shut down when I try to hybernate from gnome
+2007-01-01T12:50:00.000Z	Jordan_U	crimsun	I used to get an error that I did not have enough memory
+2007-01-01T12:51:00.000Z	crimsun	Jordan_U	have you checked if your specific laptop has known issues suspending to disk with the version of Ubuntu you're using?
+2007-01-01T12:52:00.000Z	Jordan_U	crimsun	I have not found any info either way about it ( macbook pro )
+2007-01-01T12:52:00.000Z	Jordan_U	crimsun	But it did work at one point
+2007-01-01T12:56:00.000Z	crimsun	Jordan_U	you haven't found any at all? That seems difficult to fathom...
+2007-01-01T12:56:00.000Z	crimsun	Jordan_U	in any case, what you'd want is dmesg output
+2007-01-01T01:00:00.000Z	Jordan_U	crimsun	Anything specific I should be greping for?

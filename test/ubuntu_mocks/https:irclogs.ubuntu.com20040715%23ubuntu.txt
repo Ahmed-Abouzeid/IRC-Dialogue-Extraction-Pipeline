@@ -1,0 +1,21 @@
+=== Keybuk [scott@descent.netsplit.com]  has joined #ubuntu
+=== npmccallum [~npmccallu@000-083-480.area2.spcsdns.net]  has joined #ubuntu
+=== warthylog [~warthylog@port1845.ds1-khk.adsl.cybercity.dk]  has joined #ubuntu
+=== Topic for #ubuntu: SSDS | https://chinstrap.warthogs.hbd.com/~fabbione/warty-rcbugs/ <- now with an index.html
+=== Topic (#ubuntu): set by fabbione at Tue Jun 22 14:57:00 2004
+=== warthylog [~warthylog@port1845.ds1-khk.adsl.cybercity.dk]  has joined #ubuntu
+=== Topic for #ubuntu: SSDS | https://chinstrap.warthogs.hbd.com/~fabbione/warty-rcbugs/ <- now with an index.html
+=== Topic (#ubuntu): set by fabbione at Tue Jun 22 14:57:00 2004
+=== SteveA [~steve@adsl-213-190-44-43.takas.lt]  has joined #ubuntu
+=== fabbione [~fabbione@port1845.ds1-khk.adsl.cybercity.dk]  has joined #ubuntu
+=== Kamion [~cjwatson@host81-153-126-221.range81-153.btcentralplus.com]  has joined #ubuntu
+=== bob2 [rob@bob2.registered]  has joined #ubuntu
+=== seb128 [~seb128@ANancy-111-1-17-176.w80-13.abo.wanadoo.fr]  has joined #ubuntu
+=== jdub_ [~jdub@host217-37-231-29.in-addr.btopenworld.com]  has joined #ubuntu
+=== npmccallum [~npmccallu@000-067-623.area2.spcsdns.net]  has joined #ubuntu
+=== seb128_ [~seb128@ANancy-111-1-9-106.w81-250.abo.wanadoo.fr]  has joined #ubuntu
+=== seb128_ is now known as seb128
+=== Keybuk [scott@syndicate.netsplit.com]  has joined #ubuntu
+=== warthylog [~warthylog@port1845.ds1-khk.adsl.cybercity.dk]  has joined #ubuntu
+=== Topic for #ubuntu: SSDS | https://chinstrap.warthogs.hbd.com/~fabbione/warty-rcbugs/ <- now with an index.html
+=== Topic (#ubuntu): set by fabbione at Tue Jun 22 14:57:00 2004

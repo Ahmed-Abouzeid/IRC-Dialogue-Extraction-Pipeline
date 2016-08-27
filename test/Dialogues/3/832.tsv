@@ -1,0 +1,9 @@
+2007-01-01T05:35:00.000Z	clouseau_		any idea how to actually start apache?
+2007-01-01T05:37:00.000Z	marelo	clouseau_	some systems is httpd start, some others is apache start
+2007-01-01T05:37:00.000Z	marelo	clouseau_	or still apache2 start, but you have to pay atetion to the path...
+2007-01-01T05:39:00.000Z	marelo	clouseau_	first you need to know where the apache2 binary is located
+2007-01-01T05:42:00.000Z	marelo	clouseau_	that's because your system don't know where it is, but that doesn't means it isn't there ;)
+2007-01-01T05:42:00.000Z	marelo	clouseau_	try finding trough konqueror (or similar) I think is easier than LSing in shell
+2007-01-01T05:44:00.000Z	marelo	clouseau_	no need than. i would just be easier...
+2007-01-01T05:45:00.000Z	marelo	clouseau_	try find / -iname 'apache2'
+2007-01-01T05:45:00.000Z	marelo	clouseau_	sudo find...........

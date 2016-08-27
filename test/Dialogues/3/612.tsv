@@ -1,0 +1,13 @@
+2007-01-01T04:25:00.000Z	johns^	chable	/, /home and swap
+2007-01-01T04:26:00.000Z	chable	johns^	so i will choose manual partitioning
+2007-01-01T04:26:00.000Z	chable		i have an empty hdd
+2007-01-01T04:26:00.000Z	johns^	chable	you could
+2007-01-01T04:26:00.000Z	chable		and if i choose 'erase entire disk , i dont have those 8 mbuffer anymore
+2007-01-01T04:27:00.000Z	johns^	chable	a seperate /home is important
+2007-01-01T04:27:00.000Z	chable	johns^	what size should / be ?
+2007-01-01T04:27:00.000Z	johns^	chable	one moment
+2007-01-01T04:28:00.000Z	johns^	chable	mine is 6,5 GB with tons of stuff installed (including a ltsp root for my network) and I've got 1GB left
+2007-01-01T04:30:00.000Z	chable		so i dont need swap ?
+2007-01-01T04:31:00.000Z	johns^	chable	you do need swap
+2007-01-01T04:32:00.000Z	chable		laters
+2007-01-01T04:32:00.000Z	johns^	chable	have fun

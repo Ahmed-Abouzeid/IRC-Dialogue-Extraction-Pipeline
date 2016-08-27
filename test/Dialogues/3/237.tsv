@@ -1,0 +1,6 @@
+2007-01-01T03:24:00.000Z	brianMan		I wish they could leave out the quit spam on netsplits
+2007-01-01T03:25:00.000Z	DarthLappy	brianMan	irssi does.  Doesn't always eat the join spam though.
+2007-01-01T03:26:00.000Z	brianMan	DarthLappy	That irssi doesn't show the quit/join spam doesn't mean it doesn't still get the data (which lags some people off) :(
+2007-01-01T03:26:00.000Z	DarthLappy	brianMan	That's true.  But there has to be some way...
+2007-01-01T03:27:00.000Z	DarthLappy		(To get the data to the users)
+2007-01-01T03:27:00.000Z	brianMan	DarthLappy	I'm sure it's possible to make the server silently remove people when it's a netsplit and silently rejoin them on merge

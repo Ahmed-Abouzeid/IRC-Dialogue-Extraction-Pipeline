@@ -1,0 +1,485 @@
+2004-09-22T12:06:00.000Z	fabbione		i can't believe that in the last 3 weeks everything, and i mean everything, couldn't go worst
+2004-09-22T12:07:00.000Z	npmccallum	mdz	good, I've been working with thom on the initscript stuff today
+2004-09-22T12:07:00.000Z	npmccallum	mdz	I'll have another batch in tonight
+2004-09-22T12:07:00.000Z	npmccallum	mdz	with this batch it *should* be all of warty main
+2004-09-22T12:35:00.000Z	lamont__		am I really here?
+2004-09-22T12:35:00.000Z	fabbione		yup
+2004-09-22T12:35:00.000Z	lamont__		159kB/s. give or take, 20 minutes more of sitting in the street outside someone's house., and I'm smarter now, in that I know the 70W inverter just doesn't cut it when the vaio is running flat out..., but then, 3*19 should be < 70 W..., well, 19.5, found a part of the CD that hadn't changed..., 2MB/s
+2004-09-22T12:44:00.000Z	fabbione		ehhe, i have 2MB/s here anyway :-))
+2004-09-22T12:46:00.000Z	lamont__	fabbione	megabits, or bytes?
+2004-09-22T12:47:00.000Z	fabbione		bits
+2004-09-22T12:47:00.000Z	lamont__		the burst I got was bytes.. :-)
+2004-09-22T12:47:00.000Z	fabbione		ok something here is seriously fucked
+2004-09-22T12:48:00.000Z	lamont__	fabbione	you working on X again??? :-)
+2004-09-22T12:48:00.000Z	fabbione		i have been building this package all the day and it was working, now it doesn't compile anymore
+2004-09-22T12:48:00.000Z	fabbione	lamont__	hehehe no
+2004-09-22T12:48:00.000Z	lamont__		no updated depends or anything?
+2004-09-22T12:48:00.000Z	fabbione		i really don't understand wtf is wrong
+2004-09-22T12:48:00.000Z	fabbione	lamont__	it's the damn nvidia driver, it was building fine until 1 hour ago, when the raid on my server died
+2004-09-22T12:49:00.000Z	fabbione	Mithrandir	, 1) the server does not have the source, ops, s/Mithrandir/ The server/, 2) it doesn't build
+2004-09-22T12:50:00.000Z	lamont__		although when you're bored, anything you can tell me to make an ATI Radeon 7500 or ATI Rage Mobility P/M go faster than stock-warty would be cool.
+2004-09-22T12:50:00.000Z	Mithrandir	fabbione	replaced me with a server
+2004-09-22T12:50:00.000Z	fabbione		3) i only logged out and logged in on my workstation, AH, and i didn't even change the debian/rules or anything, that's the funny part
+2004-09-22T12:51:00.000Z	lamont__		so it's the environment, then?
+2004-09-22T12:53:00.000Z	fabbione		it didn't change..., Your kernel was configured to include rivafb support!, IT DOESN, IT DOESN'T!, grrrrrrrrrrrrrrrrrrrrrr, before this check was passing, and it gets that info from -headers, AH AH, got it
+2004-09-22T12:58:00.000Z	mdz	fabbione	what was it?
+2004-09-22T01:02:00.000Z	lamont__	mdz	yet another initrd-tools uploaded
+2004-09-22T01:03:00.000Z	fabbione	mdz	something that was not cleaned/reinstalled correctly
+2004-09-22T01:06:00.000Z	fabbione	mdz	i also left something for you in the source package
+2004-09-22T01:06:00.000Z	mdz	fabbione	for me? you shouldn't have
+2004-09-22T01:06:00.000Z	fabbione	mdz	README-for-security-teams_or_to-update-the-nvidia-driver
+2004-09-22T01:07:00.000Z	mdz		but it's not my birthday yet!
+2004-09-22T01:07:00.000Z	fabbione	mdz	ehheheh
+2004-09-22T01:07:00.000Z	fabbione	mdz	just a few notes of what to check for security updates or driver update, the nvidia stuff is NOT simple and linear
+2004-09-22T01:08:00.000Z	mdz		README.NMU seems to be an emerging standard for documentation like that
+2004-09-22T01:08:00.000Z	fabbione		linux-restricted-modules-2.6.8.1-2.6.8.1 -> linux-restricted-modules-2.6.8.1-2.6.8.1.0
+2004-09-22T01:08:00.000Z	mdz		though that name is perhaps not applicable to ubuntu :-)
+2004-09-22T01:08:00.000Z	fabbione		as source version
+2004-09-22T01:08:00.000Z	mdz		fine with me
+2004-09-22T01:08:00.000Z	fabbione		is that ok for you?
+2004-09-22T01:08:00.000Z	mdz		or .1, or +nvidiaX, or whatever
+2004-09-22T01:08:00.000Z	fabbione		.0, :-)
+2004-09-22T01:09:00.000Z	mdz		it probably shouldn't have 2.6.8.1 in it at all; it doesn't correspond to the kernel really, not in the source package, but 2.6.8.1.0 is more than OK with me
+2004-09-22T01:11:00.000Z	lucas_		hi
+2004-09-22T01:14:00.000Z	seb128		hey lucas_ 
+2004-09-22T01:22:00.000Z	lamont__	Kamion	you awake still?
+2004-09-22T01:23:00.000Z	thom		FUCKING DAN JACOBSON
+2004-09-22T01:24:00.000Z	fabbione		dan... dan..., it's not a new name
+2004-09-22T01:24:00.000Z	Clint		jidanni
+2004-09-22T01:25:00.000Z	thom	fabbione	see #1148-1150, http://bugs.debian.org/cgi-bin/pkgreport.cgi?submitter=jidanni@jidanni.org
+2004-09-22T01:29:00.000Z	fabbione		AHAHAHAHAHA, i want his crack!, i want his crack!, i want his crack!
+2004-09-22T01:29:00.000Z	thom		too right
+2004-09-22T01:30:00.000Z	mdz		he just tried to bump this silly, ancient mirror bug up to severity: critical, this guy did not get enough attention as a child
+2004-09-22T01:30:00.000Z	Clint		at least he's not lazarus long
+2004-09-22T01:31:00.000Z	mdz		how do you know?
+2004-09-22T01:31:00.000Z	Clint		if he is, then I will be suitably impressed.
+2004-09-22T01:32:00.000Z	mdz		:-), he is at least as bad
+2004-09-22T01:32:00.000Z	Clint		less hostile
+2004-09-22T01:32:00.000Z	mdz		I remember lazarus long filing pointless bugs, but not going around and screwing up bug severities
+2004-09-22T01:32:00.000Z	Clint		though I didn't really expect him to look like http://jidanni.org/me/images/20040321dan.jpg, no, lazarus long would frequently file minor things as critical and be very adamant about the severity
+2004-09-22T01:33:00.000Z	lucas_		Computer -> System configuration -> Login screen setup -> "Failed to run gdmsetup as user root: Child terminated with 1 status". Somebody can reproduce ?
+2004-09-22T01:33:00.000Z	mdz	Clint	dan jacobson repeatedly fucks with the severity after somebody fixes it, though
+2004-09-22T01:33:00.000Z	mdz	lucas_	works for me; did you enter the correct password?
+2004-09-22T01:33:00.000Z	Clint		well, he's not wrong 100% of the time
+2004-09-22T01:34:00.000Z	mdz		he's close enough, I am completely fed up with him filing bugs against apt
+2004-09-22T01:34:00.000Z	lucas_	mdz	yes, I double checked
+2004-09-22T01:34:00.000Z	mdz	lucas_	your password, and not the root password?
+2004-09-22T01:34:00.000Z	fabbione	mdz	you got an email :-), and i am off to sleep
+2004-09-22T01:34:00.000Z	lucas_	mdz	sorry for this =)
+2004-09-22T01:34:00.000Z	Clint		heh, I've gotten private warning mails about his bugs
+2004-09-22T01:35:00.000Z	lucas_		bbiaf
+2004-09-22T01:36:00.000Z	thom		lazarus is certainly more irritating
+2004-09-22T01:36:00.000Z	mdz		but he went away, didn't he?, or did I just killfile him?, I don't seem to have, so apparently he went away
+2004-09-22T01:37:00.000Z	thom		yeah, he seems to come and go 
+2004-09-22T01:37:00.000Z	mdz		I don't think he ever filed the quantity of bugs that dan jacobson has, either
+2004-09-22T01:38:00.000Z	thom		oh sure. but jacobson has never refused to help debug problems afaik
+2004-09-22T01:38:00.000Z	mdz		he's in the top 5 of all time, he certainly has, almost all of the bugs I have received from him are not even bugs, so he can't exactly help debug them, he will file a severity: grave bug against apt saying I THINK THIS COMMAND LINE OPTION SHOULD BE DIFFERENT
+2004-09-22T01:39:00.000Z	fabbione		ahahha
+2004-09-22T01:39:00.000Z	Clint		either he went away or changed his name
+2004-09-22T01:40:00.000Z	mdz		he was also the one who went around filing bugs about whitespace, whitespace!, he said it slowed his computer down, or wasted space or something
+2004-09-22T01:40:00.000Z	thom		hahah
+2004-09-22T01:40:00.000Z	mdz		I shit you not
+2004-09-22T01:40:00.000Z	thom		that's awesome
+2004-09-22T01:40:00.000Z	mdz		that was not the word I used for it at the time
+2004-09-22T01:41:00.000Z	thom		no, i imagine not, i think lazarus long's irssi "no, i won't tell you what additonal modules i have loaded to cause irssi to crash" was the all time winner
+2004-09-22T01:42:00.000Z	mdz		if you check my recent debian bugs or usenet postings, you'll see that, i have caught many 'whitespace slobs' e.g. fetchmail who adds up to, two for each line in syslog... also i suggested this as a lintian or, deb policy reminder item. anyways, i'm pointing it out now as who, knows, next month i might turn my (setq-default, show-trailing-whitespace t) emacs x-ray specs off and then be as blind, as everybody else to this minor, but still wasteful area in creating, the common goal of a sleek fine tuned debian., http://jidanni.org/ Taiwan(04)25854780, is that a telephone number?
+2004-09-22T01:43:00.000Z	thom		some people have *far* too much time on their hands, yeah, looks like it should be
+2004-09-22T01:43:00.000Z	mdz		I didn't notice that at the time
+2004-09-22T01:44:00.000Z	Clint		or you would have called him?
+2004-09-22T01:44:00.000Z	thom	mdz	probably a good thing
+2004-09-22T01:44:00.000Z	elmo		dan's never replied to any of my replies to his bugs
+2004-09-22T01:44:00.000Z	mdz		I don't know if I would have _called_ him, per se, he might have started to receive more phone calls than he might have otherwise
+2004-09-22T01:45:00.000Z	thom		*g*
+2004-09-22T01:45:00.000Z	Clint		I actually haven't found him to be too annoying when I haven't ignored him., or maybe I've blocked that out
+2004-09-22T01:46:00.000Z	mdz		maybe we should calling you Job rather than Clint, s/calling/start &/
+2004-09-22T01:47:00.000Z	Clint		I certainly don't have a knee-jerk fuming anger reaction when I get a bug from him.
+2004-09-22T01:47:00.000Z	mdz		I really tried to help him at first, I did
+2004-09-22T01:47:00.000Z	Clint		which I can't say about everyone
+2004-09-22T01:47:00.000Z	mdz		I pointed him to all sorts of good documentation about how to write good bug reports, since he seemed to _want_ to help, but he ignored everything I told him, repeatedly, it seems that when he gets bored, he sits down and writes a few hundred bug reports in batch mode, and then dials up his modem and uploads them, he never checks whether his bug has been filed, because he would need to dial up
+2004-09-22T01:49:00.000Z	Clint		doesn't he work for an ISP?
+2004-09-22T01:49:00.000Z	mdz		given that he complains about his internet access constantly, I didn't think so, he filed a bunch of bugs about packages being too big for his modem
+2004-09-22T01:50:00.000Z	Clint		I must be thinking of some other twit in .tw
+2004-09-22T01:50:00.000Z	mdz		asking that things be split up in the most useless ways so that he could avoid downloading another 10k
+2004-09-22T01:51:00.000Z	Clint		hmm, I should do something about #213700
+2004-09-22T01:53:00.000Z	elmo		nah, Dan's on a modem, there's no way he works for an ISP
+2004-09-22T01:54:00.000Z	Clint	elmo	yeah, somehow I merged him with Jason Lim in my head
+2004-09-22T01:54:00.000Z	mdz		he does occasionally stumble on a real bug from time to time, apparently through sheer luck, but chances are it's already been reported anyway
+2004-09-22T01:55:00.000Z	elmo	mdz	I think he once admitted to not checking the BTS before filing because it took up too much BW
+2004-09-22T01:55:00.000Z	mdz	elmo	yes, he has admitted that he never does, that's also his excuse for not reading about how to use the BTS
+2004-09-22T01:55:00.000Z	Clint		what the hell speed modem is he on?
+2004-09-22T01:57:00.000Z	elmo		something slow enough that each pixel of whitespace that's rendered causes him offence
+2004-09-22T02:04:00.000Z	thom		i'm surprised he's not filed a bug about bugs.d.o not doing gzip Content-Encoding
+2004-09-22T02:06:00.000Z	Clint	thom	email him immediately to suggest it
+2004-09-22T02:07:00.000Z	elmo		oh, i finally just read d-d to see what you mean.. yeesh
+2004-09-22T02:09:00.000Z	thom	Clint	tempting, but Colin knows where I live, he'll come and kill me
+2004-09-22T02:10:00.000Z	Clint		tricky
+2004-09-22T02:16:00.000Z	Kamion	elmo	seeds fixed, (mea culpa, etc.)
+2004-09-22T02:16:00.000Z	Kamion	lamont__	?, if Dan argues, he goes in the control@bugs sin-bin
+2004-09-22T02:18:00.000Z	elmo		dude, aj would never euphemize @gFuckHeads as 'control@bugs sin-bin' :)
+2004-09-22T02:20:00.000Z	Kamion		heh, I wish he had, then people wouldn't believe it did other things ..., I did make a start on general debbugs access control recently, to stop people abusing sarge-ignore I think
+2004-09-22T02:22:00.000Z	elmo		cool
+2004-09-22T02:23:00.000Z	thom		night folk
+2004-09-22T02:23:00.000Z	lamont__	Kamion	question answered
+2004-09-22T02:23:00.000Z	elmo		night thom
+2004-09-22T02:47:00.000Z	Kamion		what's the python idiom for "make a shallow copy of this sequence"?
+2004-09-22T02:48:00.000Z	spiv		list(seq)
+2004-09-22T02:49:00.000Z	Kamion		ah yes, I knew I'd seen it before, thanks, the documentation mentions seq[:]  (the sequence in this case happens to be a list); is that considered obscure?
+2004-09-22T02:51:00.000Z	spiv		Well, it's a known idiom, but I don't find it as readable., I mean, if you understand slicing syntax it's clear what it does (and has the potential advatage that it'll return the same type of sequence, rather than casting to a list)... but it's just looks odd to my eye., s/casting/converting/
+2004-09-22T02:54:00.000Z	Kamion	spiv	right, thought so
+2004-09-22T03:05:00.000Z	Kamion	elmo	is the lvmcfg sync request still in your queue? sorry, I sent the request while the package was still in Debian incoming
+2004-09-22T03:08:00.000Z	elmo		kamion: gar, sorry, no, it's just I've been redoing my mail filtering based on canonical.com stuff and it went to a folder I don't usually check for syncs ... done now
+2004-09-22T03:10:00.000Z	Kamion		ta
+2004-09-22T03:20:00.000Z	dieman	lamont__	you just need to get an ubertv and then you can avoid that, :)
+2004-09-22T03:20:00.000Z	lamont__	dieman	Bourne Supremacy is not on TV yet...
+2004-09-22T03:21:00.000Z	dieman		ahh, yeah, there is that, we just do netflix, ive got the same tv bdale has, found his glowing comments on it from his website and was sold, we were trying to figure out wich one to get, but when the first link back for the tv is a DD, how can you argue?, (or one of the first)
+2004-09-22T03:38:00.000Z	spiv		Whee... I'm seeing "Error activating XKB configuration" even with the version that bug 1089 claims fixes it.
+2004-09-22T03:47:00.000Z	mdz	lamont	gone yet?
+2004-09-22T03:53:00.000Z	lamont	mdz	just got home, will be leaving in about 20-30, who claims linux-restricted-modules-2.6.8.1_2.6.8.1.0-1
+2004-09-22T04:01:00.000Z	elmo		dude, it's already been fixed
+2004-09-22T04:01:00.000Z	lamont		even better
+2004-09-22T04:01:00.000Z	elmo		linux-restricted-modules-2.6.8.1 | 2.6.8.1.0-2 | warty/restricted | source
+2004-09-22T04:02:00.000Z	lamont		nvidia-settings is ftbfs on ppc..., or rather, 1.0-3 was.
+2004-09-22T04:03:00.000Z	elmo		night all
+2004-09-22T04:04:00.000Z	lamont		g'night elmo
+2004-09-22T04:13:00.000Z	mdz	lifeless	around?
+2004-09-22T04:14:00.000Z	lamont	mdz	why were you looking for me, I wonder???
+2004-09-22T04:14:00.000Z	mdz	lamont	linux-restricted-modules and friends
+2004-09-22T04:16:00.000Z	lamont	mdz	ah, ok.
+2004-09-22T04:17:00.000Z	lamont	mdz	could it be that growisofs is broken differently?, growisofs -Z /dev/hdc foo, :-( unable to INQUIRY: Bad file descriptor
+2004-09-22T04:19:00.000Z	mdz	lamont	it's been working perfectly for me today, shouldn't that be growisofs -Z /dev/hdc=foo?
+2004-09-22T04:19:00.000Z	lamont		if foo was an ISO..
+2004-09-22T04:20:00.000Z	mdz		oh, it's a directory?, dunno, but I've burned 4 or 5 things today with growisofs under warty and haven't encountered that problem, but all ISOs
+2004-09-22T04:20:00.000Z	lamont		5.19.4.9.7-2ubuntu2, ??
+2004-09-22T04:20:00.000Z	mdz	lifeless	ipw2200 0.7 isn't working for me, while 0.4 did
+2004-09-22T04:21:00.000Z	mdz	lamont	the one where I fixed the open mode, rebooting that box right now, Version: 5.19.4.9.7-2ubuntu2
+2004-09-22T04:23:00.000Z	spiv	mdz	My gf has had lots of trouble with her ipw2200 on her new laptop.  She needs to reboot on average once an hour to get it to work.  Seems like the ipw2200 driver is still rather rough :(
+2004-09-22T04:24:00.000Z	lamont		open("/dev/hdc", O_RDONLY|O_LARGEFILE)  = 4, fstat64(4, {st_mode=S_IFBLK|0660, st_rdev=makedev(22, 0), ...}) = 0, open("/dev/hdc", O_RDWR|O_LARGEFILE)    = -1 EROFS (Read-only file system), ioctl(-1, 0x2285, 0xbffff768)           = -1 EBADF (Bad file descriptor), write(2, ":-( unable to INQUIRY: ", 23:-( unable to INQUIRY: ) = 23, write(2, "Bad file descriptor\n", 20Bad file descriptor, looks like you missed one...
+2004-09-22T04:24:00.000Z	mdz		that one's all yours
+2004-09-22T04:24:00.000Z	lamont		yeah - I'm working on it.
+2004-09-22T04:24:00.000Z	mdz		I've had enough GOTO for the week, there are two definitions of that function, but the other one seems to be #ifdef'd for BSD
+2004-09-22T04:26:00.000Z	lamont		oh, gag., what if I just make all of the opens RDWR?, 1/4 :-), off to the movies - will deal with it when I get back.
+2004-09-22T05:27:00.000Z	daniels		#(*@$IOJDF HEISENBUG
+2004-09-22T05:28:00.000Z	npmccallum		lol
+2004-09-22T05:31:00.000Z	mdz	daniels	have you done a fresh Warty install recently?
+2004-09-22T05:39:00.000Z	daniels	mdz	yes, when i got home, roughly a fortnight ago
+2004-09-22T05:40:00.000Z	mdz	daniels	that's not recently :-)
+2004-09-22T05:40:00.000Z	mdz	daniels	I think doing a fresh install would be a good step in debugging this, maybe you'll run into the problem too
+2004-09-22T05:40:00.000Z	daniels		um, a) unless we get jigdo working for my local mirror, downloading the iso is non-trivial for me (involves being somewhere else, really), b) would you like me to reinstall my development machine?, i've added debugging to xresprobe, and the version of X i hope to upload today will have debugging also
+2004-09-22T05:41:00.000Z	mdz		a) you were supposed to have your bandwidth situation sorted out a long time ago, and yet you were still spending time on it yesterday, b) everyone needs to be doing installation testing
+2004-09-22T05:41:00.000Z	daniels		i can rsync and upload, that's fine, i have that aspect sorted out, but if i suddenly need to be pulling 600MB and have it done quickly, I need to find someone who's at home and bum off their DSL, given both of my housemates are out today and I thus have no car, in general, it's fine, but I can't cop 650MB spikes on no notice, and I plan to gain another machine with my next paypacket -> installer testing
+2004-09-22T05:43:00.000Z	mdz		look, we have a public release in 5 days
+2004-09-22T06:35:00.000Z	cef	daniels	I should be able to download you a copy of the iso and drop it around
+2004-09-22T06:36:00.000Z	cef	daniels	and I can give short term a celeron on an i815 m/board with a 6 gig drive
+2004-09-22T06:36:00.000Z	daniels	cef	dude, that would be absolutely sensational, thanks
+2004-09-22T06:36:00.000Z	cef	mdz	which image does he need?
+2004-09-22T06:36:00.000Z	daniels	cef	sounder 8
+2004-09-22T06:37:00.000Z	cef		I've got sounder8 burnt, but if you need a daily, can be done
+2004-09-22T06:37:00.000Z	daniels		nah, sounder 8 is fine
+2004-09-22T06:37:00.000Z	cef		cool.. already downloaded then
+2004-09-22T06:37:00.000Z	daniels		rad, i should be home all day, so whenever's fine for you
+2004-09-22T06:38:00.000Z	cef		cool. I've got to do some washing shortly, so I can drop past then.
+2004-09-22T06:39:00.000Z	daniels		sure, that'd be great, thanks :)
+2004-09-22T06:39:00.000Z	cef		do you need the celeron too? it's not assembled at the mo, but that's no biggie
+2004-09-22T06:39:00.000Z	daniels		that would really help, yeah
+2004-09-22T06:40:00.000Z	cef		ok.. only got 128 meg of ram in it tho.. but should be enuff for a test methinks... soon to be my router *grin*, bbk
+2004-09-22T06:41:00.000Z	daniels		heh :), fo'sho
+2004-09-22T06:41:00.000Z	cef		tis 1/2 height pci, so nice and small.. always good for a router
+2004-09-22T06:42:00.000Z	daniels		heh, nice, yeah, i've never really had small pcs
+2004-09-22T06:42:00.000Z	cef		btw: if you need not-so-hot AGP video cards of weird descriptions (eg: voodoo3's and the like).. ask, cos we have a whole heap of shit at work we're throwing shortly.. and the cards are fine, just not really used anymore, thinking they might be useful for someone working with X.. *grin*
+2004-09-22T06:44:00.000Z	daniels		cool, thanks, yeah ... if you're chucking any ont, more cards is always a good thing, especially, nvidia, much as I dislike them; all I have right now is my radeon 8500, and a 9000 at home, both r200
+2004-09-22T06:45:00.000Z	cef		no probs.. they're all at work, so I'll bring em home monday
+2004-09-22T06:46:00.000Z	daniels		awesome, cheers
+2004-09-22T06:46:00.000Z	cef		cool.. got a few tnt's, tnt2's, possibly a 440mx, an old pci matrox millenium, a few voodoo 3's, possibly a voodoo4, lots of S3 Trio64's, and some ATI mach64 chipset cards. and that's just off the top of my head
+2004-09-22T06:47:00.000Z	daniels		wow, could i please grab a tnt2, a 440mx if you have it, the milennium, a voodoo3, a trio64, and a mach64?, :)
+2004-09-22T06:47:00.000Z	cef		and of course, as we're moving, we've gotta throw all this shit out, so... *grin*, I'll justy grab all the video cards and you can have the lot. *grin*
+2004-09-22T06:49:00.000Z	daniels		heh! awesome, cheers :), lemme know if there's anything you need
+2004-09-22T06:49:00.000Z	cef		no probs
+2004-09-22T06:49:00.000Z	daniels		although i've mostly been cleaned out ... pretty much all i have left is a usb nic, a volcano 9 ...
+2004-09-22T06:50:00.000Z	cef		heh, couldn't find the 6gig drive.. so you'll have to live with 10, *grin*
+2004-09-22T07:05:00.000Z	daniels		heh :) wot pain!
+2004-09-22T07:06:00.000Z	cef		just make sure the cdrom will read the bootdisk, ouch just hit a possible bug, twas using the ubuntu installer just going to departition the disk.. it hanging during detecting hardware.. hrm.. could be an ide cable problem.. bbk
+2004-09-22T07:09:00.000Z	daniels		5hm, anything from dmes,g or was it a solid lock?
+2004-09-22T07:10:00.000Z	cef		solid lock.. I've had this beforfe with ide cables, and this one isn't in the best of condition, and I've got like 4 spare *grin*
+2004-09-22T07:10:00.000Z	daniels		heh :), you should put it in bz - computers suck
+2004-09-22T07:11:00.000Z	cef		moved my desktop to round ide cables, so all these spare flat ones are hanging about
+2004-09-22T07:13:00.000Z	daniels		ah, heh, i got some rounded ones - rally did cut down on the clutter
+2004-09-22T07:14:00.000Z	cef		same, ahh looks much better now, and yeah, broken/damaged wires in the ide cable
+2004-09-22T07:15:00.000Z	daniels		heh, in the rounded cable?
+2004-09-22T07:16:00.000Z	cef		nah, a flat one that was in this machine I'm loaning you
+2004-09-22T07:17:00.000Z	daniels		ah, rad, broken rounded cables wouldn't be so cool -- when i got mine, they were like 15 or 20 bucks a pop for halfway decent ones
+2004-09-22T07:18:00.000Z	cef		yeah.., just having something to eat, then I'll head over
+2004-09-22T07:45:00.000Z	lifeless	mdz	yo, still here?
+2004-09-22T07:46:00.000Z	daniels	cef	cool, ta
+2004-09-22T07:46:00.000Z	daniels	lifeless	it's 0200
+2004-09-22T07:47:00.000Z	lifeless		I don't know these things :}, besides hes cto of the distro: how can he have time to sleep just now
+2004-09-22T07:47:00.000Z	cef		yeah, but given the type of people we have here, you have to always check *grin*, hrm, do we have any ppl from alsa-devel in the ubuntu team, pref within australia?
+2004-09-22T07:53:00.000Z	kagou		hi
+2004-09-22T07:53:00.000Z	daniels	cef	nope
+2004-09-22T07:53:00.000Z	cef		just realised I've got a few spare sound cards as well that are looking for a good home.. *grin*
+2004-09-22T07:53:00.000Z	daniels	cef	heh, yeah. given our team meeting the other day started at 0200, my bedtimes have been 0340, 0220, 0200 and 0557 the past couple of days
+2004-09-22T07:53:00.000Z	daniels	cef	heh :)
+2004-09-22T07:57:00.000Z	cef		btw: once I get this machine in place as a router, I'll have the current machine free.. Athlon 500 on an amd/via combo chipset board. if you're interested, you're welcome to it once it's decommisisoned, got too much hardware here.. need to get rid of some, got 2 machines sitting here for colin charles actually.. he needs to get off his read and come pick em up, and we'l be chucking out some more machines at work soon
+2004-09-22T08:00:00.000Z	lamont	mdz	still around?
+2004-09-22T08:03:00.000Z	daniels		oooer, does the via board have a via video chipset?
+2004-09-22T08:09:00.000Z	cef		nah.. currently got a nvidia tnt in it.. no on board.. if I see anything obscure like that, I'll pass it your way
+2004-09-22T08:10:00.000Z	lamont		if (fp->f_mode & FMODE_WRITE) {, ret = -EROFS;, sigh.
+2004-09-22T08:13:00.000Z	cef	daniels	ok, cya in 10
+2004-09-22T08:18:00.000Z	daniels	cef	rad, thanks :)
+2004-09-22T09:05:00.000Z	fabbione		morning guys
+2004-09-22T09:07:00.000Z	lamont		night fabbione
+2004-09-22T09:07:00.000Z	fabbione		night lamont
+2004-09-22T09:09:00.000Z	AndyFitz		http://216.239.39.104/translate_c?hl=en&u=http://perso.wanadoo.fr/kitone/sabrina/site/features.html&prev=/search%3Fq%3Dlinuxgraphic.org%26hl%3Den%26lr%3D%26ie%3DUTF-8, /me drools, night lamont
+2004-09-22T09:28:00.000Z	mdz	lamont	here now
+2004-09-22T09:58:00.000Z	cef	daniels	how'd it go?
+2004-09-22T10:03:00.000Z	jdub		yo alextreme 
+2004-09-22T10:03:00.000Z	alextreme		gmorning :), cool, hope it works for you :)
+2004-09-22T10:26:00.000Z	daniels	cef	yeah, worked well, thanks :), couldn't find any of these bugs
+2004-09-22T11:04:00.000Z	kagou		hi
+2004-09-22T11:04:00.000Z	kagou	mdz	is that you managing pppoeconf ?
+2004-09-22T11:21:00.000Z	debianist		morning folks
+2004-09-22T11:35:00.000Z	kagou		hello debianist
+2004-09-22T11:36:00.000Z	debianist		hi kagou
+2004-09-22T11:37:00.000Z	kagou		i'v problem with pppoeconf... do i post a bug report on "ppp" ?
+2004-09-22T11:37:00.000Z	debianist		nvidia drivers are in restricted already? can I try and install them?
+2004-09-22T11:37:00.000Z	kagou		*i don't knox, i don't know
+2004-09-22T11:37:00.000Z	debianist	kagou	try look for pppoeconf
+2004-09-22T11:37:00.000Z	Kamion	kagou	if the component doesn't exist, please use UNKNOWN.
+2004-09-22T11:37:00.000Z	debianist		yes,, and that's also :)
+2004-09-22T11:37:00.000Z	kagou		ok Kamion
+2004-09-22T11:38:00.000Z	debianist		morning Kamion
+2004-09-22T11:38:00.000Z	Kamion		(rather than picking a similarly-named package at random), morning, the nvidia drivers went into restricted last night
+2004-09-22T11:38:00.000Z	debianist	Kamion	cool
+2004-09-22T11:38:00.000Z	debianist	Kamion	any how on the wiki for installing? (I reckon it'd be good idead for the new users to have one there)
+2004-09-22T11:38:00.000Z	Mithrandir		moo
+2004-09-22T11:39:00.000Z	debianist		moo Mithrandir
+2004-09-22T11:39:00.000Z	Kamion	debianist	not on the public wiki yet; it's part of the preparation for the preview-release launch
+2004-09-22T11:41:00.000Z	kagou		ati drivers are in process ?
+2004-09-22T11:41:00.000Z	debianist	Kamion	kool , i'll try install them now :) 
+2004-09-22T11:53:00.000Z	Mithrandir		I have a weird problem.. when I burn a cd, my USB controller freaks out:, uhci_hcd 0000:00:10.1: host controller halted, very bad!, uhci_hcd 0000:00:10.2: host system error, PCI problems?, uhci_hcd 0000:00:10.2: host controller process error, something bad happened!, a reboot doesn't fix it, I have to power off
+2004-09-22T01:08:00.000Z	pitti		Hi guys!
+2004-09-22T01:10:00.000Z	debianist		hey pitti
+2004-09-22T01:28:00.000Z	Keybuk		"I just moved into the area and the aircraft noise is TERRIBLE!  My children can't SLEEP at night!", ... perhaps you shouldn't have moved into the village at the end of the runway then?
+2004-09-22T01:29:00.000Z	debianist		:)
+2004-09-22T01:45:00.000Z	pitti	doko	there?
+2004-09-22T01:51:00.000Z	doko		pitte: yes
+2004-09-22T01:52:00.000Z	doko	pitti	yes
+2004-09-22T01:52:00.000Z	pitti	doko	I just read about your DSA script, does it filter out the non-relevant packages?, or even the version number where it got fixed?
+2004-09-22T01:53:00.000Z	doko		both, I could sort out 70% of the DSA for 2003
+2004-09-22T01:53:00.000Z	pitti	doko	debianist is processing the 2002 DSAs right now, I think he would welcome it
+2004-09-22T01:53:00.000Z	pitti	doko	if that saves to much time, *GIVE IT TO ME* :-))
+2004-09-22T01:53:00.000Z	doko		ok, I send it.
+2004-09-22T01:54:00.000Z	pitti	doko	that's great! thanks
+2004-09-22T01:54:00.000Z	pitti	doko	debianist has a new mail address now
+2004-09-22T01:54:00.000Z	pitti	debianist	please give doko your new mail
+2004-09-22T01:54:00.000Z	debianist	doko	sivang@gmail.com
+2004-09-22T02:03:00.000Z	doko	pitti	debianist: mail sent.
+2004-09-22T02:03:00.000Z	debianist	doko	thanks
+2004-09-22T02:07:00.000Z	pitti	doko	thanks!
+2004-09-22T02:09:00.000Z	pitti	doko	I did not yet get it. Where did you sent it to?
+2004-09-22T02:11:00.000Z	debianist	doko	me nither..
+2004-09-22T02:12:00.000Z	doko		ok, I sent it from another address.
+2004-09-22T02:14:00.000Z	debianist	doko	got it
+2004-09-22T02:15:00.000Z	pitti	doko	got it, thanks a lot!
+2004-09-22T02:17:00.000Z	lifeless	daniels	around?
+2004-09-22T02:18:00.000Z	doko	lifeless	while you are around: where should libsvncpp{0,-dev} go?
+2004-09-22T02:18:00.000Z	lifeless	doko	hell., they are eveeeeeel
+2004-09-22T02:19:00.000Z	doko		?
+2004-09-22T02:19:00.000Z	lifeless		what sort of answer were you expecting ?
+2004-09-22T02:21:00.000Z	doko		well, you wanted them, you got them, only comment: "eve^6l"
+2004-09-22T02:21:00.000Z	lifeless		so, are you asking "which suite they should go in" , or which dir?, or ... ?
+2004-09-22T02:26:00.000Z	doko		yes, which suite ...
+2004-09-22T02:29:00.000Z	lifeless	doko	ok, erm. for warty it probably should be universe, for debian it should be optional
+2004-09-22T02:31:00.000Z	doko		ok, fine.
+2004-09-22T02:33:00.000Z	lifeless		cool.. thank you, I wasn't meaning to be unappreciative.. it was just my 'unqualified question, silly answer' reflex
+2004-09-22T02:38:00.000Z	doko		I think I got used to it on the conference, even without questions ;)
+2004-09-22T03:01:00.000Z	daniels	lifeless	um, sort of
+2004-09-22T03:01:00.000Z	daniels	lifeless	if you need me, call me
+2004-09-22T03:06:00.000Z	lifeless		nothing major, just get corrupt screen shots, was wondering about causes., only menus are problematic
+2004-09-22T04:02:00.000Z	debianist		how can I know the original package a ubuntu one is based on? how can I see which patches has been applied on the move from the sid package, to the ubuntu one?
+2004-09-22T04:09:00.000Z	Kamion	debianist	look at the version number and drop ubuntu*; download the two source packages, run debdiff (from the devscripts package)
+2004-09-22T04:10:00.000Z	debianist	Kamion	thank you :)
+2004-09-22T04:18:00.000Z	daniels	lifeless	screen shots, or actual display? using which version of x?, (any more questions and I'll be helping you debug tla problems or some shit), does your doctor's surname have a z in the third or seventh positions? ;)
+2004-09-22T04:20:00.000Z	HrdwrBoB		if so, you should seek help immeadietly
+2004-09-22T04:20:00.000Z	Kamion		... from a different doctor
+2004-09-22T04:21:00.000Z	HrdwrBoB		yes!
+2004-09-22T04:22:00.000Z	daniels		it would also explain why your pristine inode revlib caches are corrupt
+2004-09-22T04:33:00.000Z	Kamion		hm, at least I think that's what it is ...
+2004-09-22T04:44:00.000Z	daniels		oh, duh
+2004-09-22T04:45:00.000Z	daniels	spiv	try s/hpi6/inet(hpi6)/ ?
+2004-09-22T04:46:00.000Z	Kamion		I think we need a bit more support in netcfg to get prism2_usb devices going, given that they apparently don't support the standard wireless extensions interface
+2004-09-22T04:48:00.000Z	daniels	Kamion	where are the base modules set? i'm trying to fix #1139, but neither d-i nore base-config have any mention of psmouse
+2004-09-22T04:49:00.000Z	Kamion		can you detect whether psmouse is needed?, if not, is it harmful to load it on systems that don't have a PS/2 mouse?
+2004-09-22T04:50:00.000Z	Mithrandir		shouldn't be
+2004-09-22T04:51:00.000Z	daniels	Kamion	with mdetect, but then if you plug one in later, you don't get it loaded, and no
+2004-09-22T04:51:00.000Z	daniels	Kamion	i can't see why it shouldn't be loaded unconditionally
+2004-09-22T04:51:00.000Z	Kamion		then do that in ddetect, there are similar examples there already, basically run 'register-module psmouse' somewhere appropriate, if you could avoid doing it for powermacs I'd appreciate it; there's already an if arch = powerpc there
+2004-09-22T04:54:00.000Z	spiv	daniels	Just did; see my update to the bug :)
+2004-09-22T05:02:00.000Z	doko		how do I enter i bug report for a non fixed DSA in ubuntu, which is in universe, but not in warty? I can't enter the component ...
+2004-09-22T05:02:00.000Z	Mithrandir	doko	UNKNOWN
+2004-09-22T05:02:00.000Z	HrdwrBoB		put UNKNOWN
+2004-09-22T05:02:00.000Z	doko		thanks, ugh, bugzilla already cleared out the form :-(((
+2004-09-22T05:12:00.000Z	HrdwrBoB		hm, I think having gamma in gnome-display-properties would be nice
+2004-09-22T06:06:00.000Z	daniels	spiv	cheers
+2004-09-22T06:06:00.000Z	daniels	Kamion	rad, thanks
+2004-09-22T06:08:00.000Z	daniels	Kamion	just to make sure i'm not totally on crack, is the i386 $SUBARCH, i386(?, er, i386?, er, i386*
+2004-09-22T06:08:00.000Z	Kamion		i386/*, and you probably want amd64/* too, I assume you're looking in get_input_info, oh, and don't echo "psmouse:whatever"; that's for when you want the module loaded in d-i too
+2004-09-22T06:09:00.000Z	daniels	Kamion	cheers, right
+2004-09-22T06:10:00.000Z	Kamion		if you worked that out, congratulations, you're smarter than Sven Luther ... ;-)
+2004-09-22T06:32:00.000Z	spiv	daniels	Have you seen thedailywtf.com?
+2004-09-22T06:34:00.000Z	Clint		wow, Kamion with the sanity on -policy
+2004-09-22T06:48:00.000Z	Kamion		my god, you and Thomas B *both* think it makes sense?, the world must be ending
+2004-09-22T06:54:00.000Z	Clint		I didn't say it made sense; I said you brought sanity.
+2004-09-22T06:58:00.000Z	Kamion	Clint	:-)
+2004-09-22T06:59:00.000Z	doko		the 20040910 test build works like a net-installer CD, about 550MB size, but installs only about 400MB (unpacked) and starts downloading things after the reboot... anyone knows what is going wrong?
+2004-09-22T07:00:00.000Z	Clint		and now I get to remove 11 more operators from posh's "test"
+2004-09-22T07:00:00.000Z	Kamion	doko	updates from ftp.no-name-yet.com? it adds that to sources.list
+2004-09-22T07:00:00.000Z	Kamion	doko	the CD contains stuff (the Ship seed) that isn't installed by default
+2004-09-22T07:01:00.000Z	doko		ok, but that's the current CD to test? no X installed/configured?
+2004-09-22T07:04:00.000Z	Kamion		uh, it should definitely install X ...
+2004-09-22T07:09:00.000Z	doko		is there a newer cd for download?
+2004-09-22T07:10:00.000Z	Kamion		20040911 will be the latest, not significantly different from 20040910 that I'm aware of, though
+2004-09-22T07:12:00.000Z	doko		ok, there is 11-Sep-2004 08:25, I'll try that one.
+2004-09-22T07:14:00.000Z	Kamion		I'm just booting it now
+2004-09-22T07:16:00.000Z	Clint		does prism2_usb not work with hostap?
+2004-09-22T07:20:00.000Z	Kamion		I can give it a try, there's no mention of USB in ieee80211.dpatch though, hm, no, that's not the hostap code though, do we actually have hostap in our kernels?, <cjwatson@riva ~/src/canonical/linux-source-2.6.8.1/linux-source-2.6.8.1-2.6.8.1>$ find -name \*hostap\*
+2004-09-22T07:22:00.000Z	Clint		no, you don't
+2004-09-22T07:22:00.000Z	Kamion		<cjwatson@riva ~/src/canonical/linux-source-2.6.8.1/linux-source-2.6.8.1-2.6.8.1>$, tricky to try it in d-i then :)
+2004-09-22T07:22:00.000Z	Clint		I just thought it would integrate better than wlan-ng
+2004-09-22T07:22:00.000Z	Kamion		might well do, http://lists.shmoo.com/pipermail/hostap/2004-March/006076.html, seems not
+2004-09-22T07:23:00.000Z	Clint		ah well
+2004-09-22T07:30:00.000Z	doko		kamion: should the installer ask for a proxy before trying to start the download during the installation?
+2004-09-22T07:35:00.000Z	Kamion		yes, please file a bug on base-conifg, base-config, fabbione's changes were on a different code path and so totally bypassed the proxy code
+2004-09-22T07:39:00.000Z	doko		kamion: is there a question in this path as well, which "mirror" to use for the downloads (i.e use my configured apt-proxy)?
+2004-09-22T07:40:00.000Z	Kamion		nope
+2004-09-22T07:41:00.000Z	doko		hmm, reinstalling now, I think I know what I did differently during the first install: I did break the download, edited my sources.list to use the aptproxy, and tried to restart. but what if the connection breaks and it's not a break of your choice?
+2004-09-22T07:43:00.000Z	Kamion		that should drop you into aptitude, shouldn't it?
+2004-09-22T07:44:00.000Z	doko		yes
+2004-09-22T07:44:00.000Z	Kamion		if that happens, install the ubuntu-desktop task, we'll document this in the installation manual ...
+2004-09-22T07:45:00.000Z	doko		ok, I did reinstall and I get to the desktop
+2004-09-22T07:49:00.000Z	mdz		morning folks
+2004-09-22T07:50:00.000Z	doko		good evening ;)
+2004-09-22T07:51:00.000Z	npmccallum		good afternoon
+2004-09-22T07:51:00.000Z	doko	npmccallum	east coast?
+2004-09-22T07:54:00.000Z	npmccallum	doko	yeah :)
+2004-09-22T07:59:00.000Z	doko	mdz	npmccallum: concerning the ISDN support, I'll continue the work tonight and tomorrow, but I'm now uncertain that we will get something useful for warty, so I would like to concentrate to get the components into universe in such a way, that they are available and usable. however, it would be nice to prepare the init scripts (currently isdnutils-basse, isdnactivecards, maybe misdn not yet available) to follow the conventions for init script, s. would it be possible that npmccallum cleans up these scripts?
+2004-09-22T08:00:00.000Z	mdz	doko	there is much to do for the Wednesday preview release; I think we should revisit this issue after then, if we are not overwhelmed by the feedback from the preview, we can consider this, otherwise, we can make it a goal for Hoary
+2004-09-22T08:01:00.000Z	doko		thats ok, so the goal for warty (IMO) should be to have the packages available in universe, whithout configuration assistance.
+2004-09-22T08:06:00.000Z	mdz	daniels	Kamion: is 1.03ubuntu5 the right solution to the problem?, (ddetect)
+2004-09-22T08:06:00.000Z	Kamion	mdz	works for me
+2004-09-22T08:06:00.000Z	mdz		ok
+2004-09-22T08:07:00.000Z	Kamion		if it isn't autodetectable and loading it is harmless, then ...
+2004-09-22T08:07:00.000Z	mdz		but why now?, it autoloads fine for me on i386, and I haven't seen any reports to the contrary, I guess i am asking what problem it is solving, Steve McIntyre reported that it was not autoloaded for him on amd64
+2004-09-22T08:10:00.000Z	mdz	thom	ping?
+2004-09-22T08:10:00.000Z	Mithrandir		is "it" psmouse?
+2004-09-22T08:12:00.000Z	Kamion		hotplug appears to know how to load psmouse under some circumstances?, it's in the isapnp code, I can well believe that isapnp doesn't work on amd64
+2004-09-22T08:15:00.000Z	mdz	Mithrandir	yes, psmouse uses the serio hooks to get autoloaded, I really don't know how that works, but presumably something on amd64 should notice there is a serial port and call that stuff
+2004-09-22T08:27:00.000Z	kagou		hi guys
+2004-09-22T09:32:00.000Z	debianist	mdz	i have a package which according to bugtrail have been patched and there
+2004-09-22T09:32:00.000Z	debianist	mdz	's even a web spot to download the patched one 
+2004-09-22T09:32:00.000Z	Mithrandir	mdz	ooo-amd64 is uploaded now, btw.  It probably needs a bit of NEW love, though
+2004-09-22T09:32:00.000Z	debianist	mdz	however i cannot find it on p.d.o, debian havn't updated it yet?
+2004-09-22T09:33:00.000Z	mdz	debianist	can you be more specific?
+2004-09-22T09:33:00.000Z	mdz	Mithrandir	it probably needs 6 hours to build, too :-)
+2004-09-22T09:33:00.000Z	Mithrandir	mdz	nope, builds in about 30 secs.
+2004-09-22T09:34:00.000Z	Mithrandir	mdz	as you have to prepare the package on i386
+2004-09-22T09:34:00.000Z	mdz	Mithrandir	hmmm?
+2004-09-22T09:34:00.000Z	mdz	Mithrandir	does it use the binaries built for the i386 deb or something?
+2004-09-22T09:34:00.000Z	Mithrandir		yes., but it ships the sources with the .debs, so we're ok in that regard., fucking ugly, (ok, license-wise, I mesan), s/mesan/mean/
+2004-09-22T09:35:00.000Z	mdz		so -m32 was not sufficient?, what do we do when we need to do a security update on oo.o, what is the procedure?
+2004-09-22T09:35:00.000Z	debianist	mdz	ofcourse. bugzilla 2.16.6-1_all.deb the patched one, available under http://www.tzi.de/~jmm/debian/ . however sid has  2.16.5-2: all, - warty is using that.
+2004-09-22T09:36:00.000Z	Mithrandir		debuild on i386, put the sources in srcs/, the i386 binaries in pkgs/, build on amd64., that is, debuild ooo on i386, it's documented in debian/README.build
+2004-09-22T09:38:00.000Z	debianist	mdz	this is #260773
+2004-09-22T09:39:00.000Z	Kamion		hm, current installations are supposed to pop up a window on the desktop when I insert a USB stick, right?
+2004-09-22T09:40:00.000Z	debianist		it did for me :)
+2004-09-22T09:41:00.000Z	Kamion		shows up in /dev, is pmountable, but doesn't automount ...
+2004-09-22T09:41:00.000Z	debianist	Kamion	however I had problem umounting it. couldn't find it's mount point, and nothing on the desktop to handle it :(
+2004-09-22T09:42:00.000Z	Kamion		whoa, what happened to hald?, it's segfaulting, great
+2004-09-22T09:47:00.000Z	daniels	spiv	heh, no
+2004-09-22T09:54:00.000Z	mdz	Kamion	that would explain it
+2004-09-22T09:54:00.000Z	mdz	debianist	I'll look at the bug, one moment
+2004-09-22T09:54:00.000Z	Mithrandir	mdz	you seemed unhappy about OOO, or?
+2004-09-22T09:55:00.000Z	mdz	Mithrandir	it is obviously not ideal, but as long as the procedure is documented
+2004-09-22T09:55:00.000Z	mdz	Mithrandir	then I can live with it for Warty
+2004-09-22T09:55:00.000Z	debianist	mdz	thanks.
+2004-09-22T09:55:00.000Z	mdz	Mithrandir	so is it actually built from a different source package on amd64?
+2004-09-22T09:55:00.000Z	Mithrandir	mdz	yes
+2004-09-22T09:56:00.000Z	Mithrandir	mdz	I'm not happy with it either, but I don't think implementing multiarch $RSN is a real option.
+2004-09-22T09:56:00.000Z	mdz	Mithrandir	we don't need multiarch, we just need ooo to build and work on amd64 :-)
+2004-09-22T09:56:00.000Z	Mithrandir		yeah, and we want gcc to be able to cross-compile stuff.
+2004-09-22T09:57:00.000Z	mdz	debianist	the patch is here: http://bugzilla.mozilla.org/show_bug.cgi?id=235265
+2004-09-22T09:57:00.000Z	mdz	debianist	it is straightforward and we can use that patch in warty
+2004-09-22T09:57:00.000Z	Mithrandir		it's probably less work to implement multiarch than fixing OOO. :)
+2004-09-22T09:58:00.000Z	mdz		ooo will get fixed on its own, maybe for hoary if we are lucky
+2004-09-22T09:58:00.000Z	debianist	mdz	ok, so tag it fixed?
+2004-09-22T09:58:00.000Z	mdz	debianist	no?, we have the bug in warty and need to fix it before we can tag it fixed :-), likewise for Debian
+2004-09-22T09:58:00.000Z	debianist	mdz	ofcourse
+2004-09-22T09:59:00.000Z	debianist	mdz	but what about the "fixed" pacakges by MOritz?
+2004-09-22T09:59:00.000Z	mdz	debianist	file a bug in Warty bugzilla with the URL of the patch
+2004-09-22T09:59:00.000Z	mdz	debianist	there is no reason to bring in some unofficial packages with a new upstream release to fix this simple issue; we can patch it
+2004-09-22T09:59:00.000Z	debianist	mdz	so it become standard debian?
+2004-09-22T09:59:00.000Z	mdz	debianist	public release in _four days_ :-)
+2004-09-22T10:00:00.000Z	debianist	mdz	i know mdz, i'll open a bug and continue the overnight rush :)
+2004-09-22T10:00:00.000Z	mdz	debianist	I don't understand your question about standard debian
+2004-09-22T10:00:00.000Z	debianist	mdz	nevermind. I just didn't understand why we cannot check the unofficial package and make it official debian
+2004-09-22T10:01:00.000Z	debianist	mdz	if the job has already been done
+2004-09-22T10:01:00.000Z	mdz	debianist	there are two things here
+2004-09-22T10:01:00.000Z	mdz	debianist	one is a new upstream release, with the fix _and_ other changes
+2004-09-22T10:01:00.000Z	mdz	debianist	the other is a patch which only has the fix
+2004-09-22T10:01:00.000Z	debianist	mdz	ok
+2004-09-22T10:02:00.000Z	mdz	debianist	hmm
+2004-09-22T10:02:00.000Z	mdz	debianist	according to the changelog there are actually three bugs, not one, CAN-2004-0704, CAN-2004-0705, CAN-2004-0706, in this case perhaps we should take the new upstream
+2004-09-22T10:05:00.000Z	mdz	justdave	around?
+2004-09-22T10:06:00.000Z	debianist	mdz	you're looking at the CAN site?
+2004-09-22T10:09:00.000Z	mdz	debianist	I looked at the changelog for the unofficial package, there is also CAN-2004-0707, SQL injection vulnerability in editusers.cgi in Bugzilla 2.16.x before 2.16.6, and 2.18 before 2.18rc1, allows remote attackers with privileges to grant membership to any group to execute arbitrary SQL.
+2004-09-22T10:10:00.000Z	mdz	debianist	have you filed a bug yet?  if not, I will do it so that I can record these findings
+2004-09-22T10:11:00.000Z	debianist	mdz	doing it right now, would you like me to reference it to the other bugs?
+2004-09-22T10:11:00.000Z	mdz	debianist	just open the bug, so that I can add comments to it
+2004-09-22T10:11:00.000Z	debianist	mdz	sure.
+2004-09-22T10:23:00.000Z	mdz	debianist	what's the bug number?
+2004-09-22T10:24:00.000Z	debianist	mdz	darn. bugzilla just sent me back due to "bad component name" i'll re enter
+2004-09-22T10:25:00.000Z	debianist	mdz	we don't bugzilla on the components list
+2004-09-22T10:25:00.000Z	mdz	debianist	use UNKNOWN
+2004-09-22T10:28:00.000Z	debianist	mdz	#1161
+2004-09-22T10:28:00.000Z	mdz	debianist	thanks
+2004-09-22T10:29:00.000Z	debianist	mdz	sorry about the UNKNOWN thingy, I just went and started typing, not noticing bugzilla was not identified..
+2004-09-22T10:34:00.000Z	debianist	mdz	the patch addresses all 4 CANs?
+2004-09-22T10:34:00.000Z	mdz	debianist	no, there are three, and they are all addressed in 2.16.6, and also with patches in upstream bugzilla, CAN-2004-0706 does not apply to 2.16.x, only 2.17.x
+2004-09-22T10:35:00.000Z	debianist		k
+2004-09-22T10:40:00.000Z	justdave	mdz	am now
+2004-09-22T10:40:00.000Z	mdz	justdave	wanted to ask about CAN-2004-0704, CAN-2004-0705, and CAN-2004-0707 (now #1161 in warty bugzilla)
+2004-09-22T10:40:00.000Z	mdz	justdave	is 2.16.6 a safe bet for a near-to-release update to Warty?
+2004-09-22T10:41:00.000Z	justdave		yeah, that has all those addressed., Rmi hasn't put one up yet?, hmm, nope, looks like he hasn't., unless he backported the fixes to 2.16.5 (which would be silly since that's the only change between it and 2.16.6 anyway :)
+2004-09-22T10:45:00.000Z	mdz	justdave	remi seems to be on vacation
+2004-09-22T10:45:00.000Z	mdz	justdave	see http://bugs.debian.org/235265
+2004-09-22T10:46:00.000Z	justdave		kdemultimedia?, that the right bug number?
+2004-09-22T10:47:00.000Z	mdz		er
+2004-09-22T10:47:00.000Z	justdave		260772, 260773, 260774 I see
+2004-09-22T10:47:00.000Z	mdz		#260773, yes, 235265 is the bugzilla.mozilla.org bug number for one of them
+2004-09-22T10:48:00.000Z	mdz	justdave	I confirmed that 2.16.6 fixes the bugs, but how much of a risk are we taking with other changes?, since 2.16.6 isn't in Debian yet, it has probably seen relatively little testing in Debian environments
+2004-09-22T10:49:00.000Z	justdave		not much, that's the stable branch, it doesn't get touched except for security and low-risk stuff..., but it depends on how much of the fixes hit spots near stuff he's patched, 2.18 isn't as bad to debianize, but 2.16.x had to be hacked up pretty bad to make it fit in Debian, when I grab a deb-src, does it have the patch applied already on the directory it unpacks?, bah, no patches, just the big diff, the debian patch applies to a 2.16.6 tarball with no conflicts, +  * Include complete copyright statements collected from the sources, +    (Closes: #253841)
+2004-09-22T11:09:00.000Z	debianist	justdave	you patched the bugzil pkg?
+2004-09-22T11:10:00.000Z	justdave		I did locally, I haven't put it anywhere yet.  I'm comparing it to the one Moritz posted right now
+2004-09-22T11:11:00.000Z	debianist	justdave	great. let me know when  you have it verified.
+2004-09-22T11:15:00.000Z	justdave		ok, only differences between mine and his are the addition of that copyright file and a permissions fix in the cgi-bin directory in the postinst, which isn't mentioned in his changelog
+2004-09-22T11:17:00.000Z	debianist	mdz	if he uploads the new package we can close #1611 and i'll remove it from the wiki
+2004-09-22T11:17:00.000Z	justdave	mdz	what's permissions policy for the cgi-bin directory?
+2004-09-22T11:17:00.000Z	debianist	justdave	see #1611 that i filed and mdz changed.
+2004-09-22T11:18:00.000Z	justdave		world-executable okay or should it be group executable to www-data only?
+2004-09-22T11:18:00.000Z	debianist		i'd say group executable to www-data, but we better ask mdz about this.
+2004-09-22T11:19:00.000Z	justdave		Moritz's added line to the postinst makes it world executable
+2004-09-22T11:19:00.000Z	mdz	justdave	yes, it applies all the patches when it unpacks it
+2004-09-22T11:20:00.000Z	mdz	justdave	yes, I saw that postinst change and I don't understand what it's for
+2004-09-22T11:20:00.000Z	mdz	justdave	I don't think that system() should be there, the files should be in the .deb with proper permissions
+2004-09-22T11:22:00.000Z	justdave		hmm, he has the /var/cache/bugzilla permissions fix in there twice, too., the unpacked tarball appears to have everything with owner-only execute permissions, but it looks to be chowning everything to www-data:www-data anyway
+2004-09-22T11:24:00.000Z	mdz		the CGIs should obviously not be owned by www-data, I hope he hasn't done that
+2004-09-22T11:25:00.000Z	justdave		fix_www_data_perm('/var/lib/bugzilla');   #this should be done by checksetup.pl, fix_www_data_perm('/var/cache/bugzilla'); #but I dislike the way this is done., sub fix_www_data_perm {, my $path = shift;, system(qq{chown -R www-data.www-data $path}) == 0
+2004-09-22T11:25:00.000Z	mdz		hmm, bugzilla is not in warty/main
+2004-09-22T11:25:00.000Z	justdave		that's one ugly postinst, this is actually the first time I've taken a good look at the debian directory in the bugzilla.deb
+2004-09-22T11:27:00.000Z	mdz		the package has always been a bit of a mess, because as you say, it was difficult to map bugzilla to FHS and debian policy, but you say it's easier with the new releases, so hopefully it'll clean up
+2004-09-22T11:29:00.000Z	justdave		what checksetup.pl does is a lot cleaner/more secure than what he's doing in the postinst (which actually runs checksetup.pl first), but he's got that entire section commented out in checksetup.pl, probably would have worked better to fix the pathnames in checksetup.pl and let it do it., it chowns the user doing the install, and chgrps to www-data (group name is configurable) with it only accessible to the group, how long will Debian support woody with security fixes after sarge is released?
+2004-09-22T11:45:00.000Z	mdz		in theory, 6 months or so
+2004-09-22T11:47:00.000Z	mdz	debianist	the changelog in the unofficial 2.16.6 package
+2004-09-22T11:47:00.000Z	debianist	mdz	k
+2004-09-22T11:47:00.000Z	mdz	debianist	also http://bugs.debian.org/cgi-bin/pkgreport.cgi?src=bugzilla
+2004-09-22T11:50:00.000Z	debianist	mdz	k,tnx again
+2004-09-22T11:57:00.000Z	justdave		Rmi has a 2.17.7 deb up on alioth, that's prior to the advisory though, so some of the same bugs still, (not to mention, that's the development branch)

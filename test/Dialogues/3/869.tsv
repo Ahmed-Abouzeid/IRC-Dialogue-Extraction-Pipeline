@@ -1,0 +1,9 @@
+2007-01-01T02:19:00.000Z	cybercod		should be ~/.wine/c_drive/program files/.......
+2007-01-01T02:20:00.000Z	mmzin	cybercod	i have to install steam on the same partition that linux are, right
+2007-01-01T02:23:00.000Z	cybercod		mmzin... it wouldn't show up as steam.. it would show up as wine or cedega
+2007-01-01T02:25:00.000Z	mmzin	cybercod	hmm right, i think that can be a incompatibility of gnome with steam to not apper in the tray
+2007-01-01T02:25:00.000Z	mmzin	cybercod	steam makes all the updates but when finished, he dissapear
+2007-01-01T02:30:00.000Z	mmzin	cybercod	i think i fix it
+2007-01-01T02:32:00.000Z	mmzin	cybercod	are u there my steam get an ERROR
+2007-01-01T02:33:00.000Z	cybercod		kenthomson... did you get wine to work right with that?
+2007-01-01T02:33:00.000Z	mmzin	cybercod	Steam.exe (main exception): Unable to start Steam Engine: *SteamStarEngine(0x750ba8) faled with error 200: Connection Reset, WinSock Error 10054 Connection reset by peer

@@ -1,0 +1,5 @@
+2007-01-01T01:35:00.000Z	nn	kakalto	that's APM
+2007-01-01T01:35:00.000Z	kakalto	nn	ahk, cool... any ideas how to mess with it?
+2007-01-01T01:36:00.000Z	nn	kakalto	edit /etc/console-tools/config
+2007-01-01T01:36:00.000Z	nn	kakalto	find 'BLANK_TIME'
+2007-01-01T01:37:00.000Z	kakalto	nn	thanks very much for your help :

@@ -1,0 +1,38 @@
+2007-01-01T04:51:00.000Z	lord_ceiphas		the 2.6.17 does not work together with the jmicron-pata-controller, that manages ide-atapi-devices on all core2dou-boards
+2007-01-01T04:51:00.000Z	xtknight	lord_ceiphas	Jmicron problems?  now im famiilar with those ;)
+2007-01-01T04:52:00.000Z	lord_ceiphas	xtknight	i disabled my whole usb-controller so i could install
+2007-01-01T04:52:00.000Z	xtknight	lord_ceiphas	like disabled usb mouse and usb keyboard in bios?
+2007-01-01T04:52:00.000Z	xtknight	lord_ceiphas	i heard that was one fix , but i didnt have to disable my usb.  i had to install from a usb cdrom
+2007-01-01T04:53:00.000Z	lord_ceiphas	xtknight	in my bios i only can disable usb completely
+2007-01-01T04:53:00.000Z	xtknight	lord_ceiphas	:what motherboard?
+2007-01-01T04:53:00.000Z	lord_ceiphas	xtknight	abit ab9pro
+2007-01-01T04:54:00.000Z	xtknight	lord_ceiphas	so have u gotten ubuntu installed?  dapper/edgy?  hows its it working on the C2d?
+2007-01-01T04:55:00.000Z	lord_ceiphas	xtknight	works fine... just running it, but to get your usb back you have to make your own kernel... and thats a bit ugly here atm
+2007-01-01T04:56:00.000Z	xtknight	lord_ceiphas	realy? is there some c2d usb patch or something?
+2007-01-01T04:57:00.000Z	lord_ceiphas	xtknight	no the fix was made in 2.6.28 kernel as long as you use a higher kernel, you can use your usb, blew makes problems
+2007-01-01T04:58:00.000Z	lord_ceiphas		thats the cause the ubuntu-users with new boards are so angry because nobody just upgrades ubuntu /kubuntu.. to 2.6.18 and you have to be good to get this working
+2007-01-01T04:59:00.000Z	xtknight	lord_ceiphas	so you
+2007-01-01T04:59:00.000Z	xtknight	lord_ceiphas	so you're using an old kernel now?
+2007-01-01T04:59:00.000Z	lord_ceiphas	xtknight	no, i run 2.6.19.1 but that makes problems with my x-server
+2007-01-01T05:01:00.000Z	xtknight	lord_ceiphas	problems with x server?  very odd...u dont mean proprietary nvidia/ati drivers right?
+2007-01-01T05:04:00.000Z	xtknight		was anyone able to install Feisty on their Core 2 Duo?  I just got errors in both the GUI and alternate installers but feisty livecd booted fine
+2007-01-01T05:04:00.000Z	lord_ceiphas	xtknight	i have no tty1-6 and sometimes my x-server crashes completely without a chance to get logs
+2007-01-01T05:13:00.000Z	lord_ceiphas		why widescreen, 1600x1200 see more/get more ;-)
+2007-01-01T05:15:00.000Z	xtknight	lord_ceiphas	crt though, right?
+2007-01-01T05:38:00.000Z	lord_ceiphas		i just made a typo and now dont want to reboot
+2007-01-01T05:39:00.000Z	lord_ceiphas		rm -rf /usr instead of rm -rf /usr/src/linux-2.6.19.1
+2007-01-01T05:39:00.000Z	lord_ceiphas		i made a crtl-c after 3secs, but dont know what has been killed
+2007-01-01T05:39:00.000Z	xtknight	lord_ceiphas	uhhhh do sudo apt-get --reinstall install ubuntu-desktop
+2007-01-01T05:40:00.000Z	lord_ceiphas		i have kubuntu, but thanks, ill try that
+2007-01-01T05:40:00.000Z	xtknight	lord_ceiphas	should restore basic functionality, /usr shouldnt usually contain too much personal stuff that shuold be in /home
+2007-01-01T05:40:00.000Z	xtknight	lord_ceiphas	try kubuntu-desktop then
+2007-01-01T07:09:00.000Z	lord_ceiphas	xtknight	i installed your kernel-package, but now i have the problem, that i have to install the nvidi-moduke on every boot
+2007-01-01T07:10:00.000Z	xtknight	lord_ceiphas	that's odd... i dont have the issue but i also use nvidia
+2007-01-01T07:11:00.000Z	lord_ceiphas	xtknight	i had to re-compile the kernel with your config only to compile my own modules
+2007-01-01T07:12:00.000Z	xtknight	lord_ceiphas	sorry, but if a sensory overload here.....i forgot which problem u were having that required a kernel compile?
+2007-01-01T07:13:00.000Z	lord_ceiphas	xtknight	i needed to recompile to make my own modules (ralink-wlan / nvidia)
+2007-01-01T07:14:00.000Z	xtknight	lord_ceiphas	you had to recompile a kernel in order to compile modules?
+2007-01-01T07:15:00.000Z	lord_ceiphas	xtknight	yes, very odd, but without it, it would not work, and even with that i have to manually set the sources-directory
+2007-01-01T07:17:00.000Z	lord_ceiphas	xtknight	can you repackage an unofficial cd of edgy with 2.6.19?
+2007-01-01T07:18:00.000Z	lord_ceiphas		i dont know how that works
+2007-01-01T07:18:00.000Z	xtknight	lord_ceiphas	i tried doing that, but i didnt have much success....very difficult... i dont know how Muto managed to repackage sarge with newer kernels

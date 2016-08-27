@@ -1,0 +1,24 @@
+2007-01-01T10:16:00.000Z	jasin		i'm a student so I have tohave a working word processer and abi-word seems to be the best in linux but it still dont work as good as word 2003, so i'll probably have to run vista in a separate system.
+2007-01-01T10:17:00.000Z	arrenlex	jasin	openoffice.org-writer is the best word processor in Linux
+2007-01-01T10:17:00.000Z	jasin	arrenlex	open office slows down the system.
+2007-01-01T10:17:00.000Z	arrenlex	jasin	It shouldn't. Is this an old computer?
+2007-01-01T10:17:00.000Z	jasin		In linux I use gnome office
+2007-01-01T10:18:00.000Z	arrenlex	jasin	If your system can't handle OOo, how do you expect to run Vista?! xD
+2007-01-01T10:19:00.000Z	jasin	arrenlex	oh my system can handel it just fine I just choose not to hog up resources having it installed.
+2007-01-01T10:20:00.000Z	arrenlex	jasin	Vista running in a virtual environment is, in your opinion, less of a resource hog?
+2007-01-01T08:02:00.000Z	arrenlex	jasin	On a normal desktop system, you will not even notice a difference. 64-bit only matters if you have unusual demands, like 4GB RAM, or if you're running a sever.
+2007-01-01T08:04:00.000Z	jasin	arrenlex	not on winblows you wont
+2007-01-01T08:04:00.000Z	arrenlex	jasin	?
+2007-01-01T08:04:00.000Z	jasin	arrenlex	64 xp is crap
+2007-01-01T08:04:00.000Z	arrenlex	jasin	I wouldn't know. Regardless, 64-bit does not pose significant benefits for desktop users. It just makes the executables bigger.
+2007-01-01T08:05:00.000Z	jasin	arrenlex	the bit width  the cpu can chunk is larger, I know how it works.
+2007-01-01T08:42:00.000Z	jasin		The X.Org X server -- ATI display driver will do 3d on the radeon 9200, however, the fglrx driver provides better 3d support. You can get either one off of synaptics, just do a search for ati
+2007-01-01T08:43:00.000Z	jasin		The X.Org X server -- ATI display driver will do 3d on the radeon 9200, however, the fglrx driver provides better 3d support. You can get either one off of synaptics, just do a search for ati
+2007-01-01T08:43:00.000Z	arrenlex	jasin	fglrx will not accelerate 9200.
+2007-01-01T08:43:00.000Z	arrenlex	jasin	Too old.
+2007-01-01T08:43:00.000Z	arrenlex	jasin	fglrx only goes to 9500 and higher
+2007-01-01T08:45:00.000Z	jasin	arrenlex	really? then why was I able to use it with my 9100 igp
+2007-01-01T08:45:00.000Z	arrenlex	jasin	You get 3D acceleration with that card?
+2007-01-01T08:45:00.000Z	jasin	arrenlex	yep
+2007-01-01T08:45:00.000Z	jasin		frOstie, yes it does
+2007-01-01T08:47:00.000Z	jasin		9500 and above, what a load of bs that is.

@@ -1,0 +1,9 @@
+2007-01-01T10:57:00.000Z	seshomaru		is there a gnome application that allows me to connect rempotly to other boxes graphically?
+2007-01-01T10:58:00.000Z	KenSentMe		!vnc > seshomaru
+2007-01-01T10:58:00.000Z	seshomaru	KenSentMe	do i need to apt-get it?
+2007-01-01T11:00:00.000Z	seshomaru	KenSentMe	does the remote machine need to have VNC as well?
+2007-01-01T11:00:00.000Z	KenSentMe	seshomaru	on the machine you want to connect to, go to System - Preferences - Remote Desktop and do the right settings. Then use Applications - Internet - Terminal server client to connect
+2007-01-01T11:01:00.000Z	seshomaru	KenSentMe	the other box is in another country ,can do the settings thru command line?
+2007-01-01T11:04:00.000Z	KenSentMe	seshomaru	i don't know that. Probably there is a way
+2007-01-01T11:05:00.000Z	KenSentMe	seshomaru	maybe check here: https://help.ubuntu.com/community/VNCOverSSH or https://help.ubuntu.com/community/VNC
+2007-01-01T11:06:00.000Z	seshomaru	KenSentMe	thanx

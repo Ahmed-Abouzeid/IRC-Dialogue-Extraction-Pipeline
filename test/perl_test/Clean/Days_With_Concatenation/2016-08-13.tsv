@@ -1,0 +1,284 @@
+2016-08-13T00:14:00.000Z	skids		m: use NativeCall; class C is repr("CStruct") { has int32 $.a }; class D is repr("CStruct") { has C $.b; method set_b ($v) { $!b := $v }}; my C $c .= new; my D $d .= new; $d.b.perl.say; $d.set_b($c); # :-/  I guess the docs are a bit ahead of the implementation?
+2016-08-13T00:14:00.000Z	camelia		rakudo-moar be7ce0: OUTPUT«C␤Can only store CStruct attribute in CStruct slot in CStruct␤  in method set_b at <tmp> line 1␤  in block <unit> at <tmp> line 1␤␤»
+2016-08-13T00:20:00.000Z	MasterDuke	unmatched}	thanks for the PRs, i didn't know trailing commas aren't valid JSON
+2016-08-13T00:24:00.000Z	timotimo		yeah, json kind of sucks that way ;(
+2016-08-13T00:32:00.000Z	unmatched}	MasterDuke	I frequently find them in META files (and myself fall to the same issue), And this doesn't sound like a bad idea: https://twitter.com/jnthnwrthn​gtn/status/764240079841787904
+2016-08-13T00:49:00.000Z	dalek		doc: 5a41939 | Altai-man++ | doc/Type/ (6 files):, doc: Make examples compile, doc: review: https://github.com/perl6/doc/commit/5a419392f0, doc: 3ef4a0c | Altai-man++ | doc/Type/IO.pod6:, doc: Fix example identation, doc: review: https://github.com/perl6/doc/commit/3ef4a0c55d, doc: 38a6482 | (Wenzel P. P. Peppmeyer)++ | doc/Type/Callable.pod6:, doc: better example for .assuming, doc: review: https://github.com/perl6/doc/commit/38a6482ee8, doc: 410a848 | (Wenzel P. P. Peppmeyer)++ | doc/Language/typesystem.pod6:, doc: classes are packages (kind of), doc: review: https://github.com/perl6/doc/commit/410a848d60
+2016-08-13T05:12:00.000Z	andrzejku		hi, :), hi :)
+2016-08-13T05:43:00.000Z	sammers		ola
+2016-08-13T05:45:00.000Z	andrzejku		I am looking for Perl friend
+2016-08-13T06:01:00.000Z	titsuki		Hi #perl6. I have a question. Does anyone know how to handle void* in the context of using NativeCall ? Just using "Pointer is rw" as an argument seems insufficient, because it needs a conversion such as P6 Str to C void* internally., I'm creating the Perl 6 interface of this line: https://github.com/jtsiomb/kdt​ree/blob/master/kdtree.c#L211
+2016-08-13T06:42:00.000Z	holyghost		gm, have a nice weekend, we have a holiday on monday :-)
+2016-08-13T07:06:00.000Z	Woodi	titsuki	OpaquePointer ?  https://perl6advent.wordpress.com/2015/12​/21/day-21-nativecall-backs-and-beyond-c/
+2016-08-13T07:08:00.000Z	titsuki	Woodi	Thanks. However OpaquePointer is deprecated and same as Pointer functionally., Perl 6 has a cast subroutine for converting a C stuff to a P6 stuff, but I'm not sure how to dot it in the case of converting P6 to C stuff., m: use NativeCall; my $a = Pointer.new; nativecast(Str, $a).WHAT.say
+2016-08-13T07:26:00.000Z	camelia		rakudo-moar baeabb: OUTPUT«(Str)␤»
+2016-08-13T07:27:00.000Z	titsuki		*do it
+2016-08-13T08:03:00.000Z	ab5tract	skids	regarding nativecall, I believe that limitation is only for repr('CStruct'), not repr('CPonter'), ah, nevermind. you can't add attributes there wither, *either
+2016-08-13T08:17:00.000Z	dalek		Inline-Perl5: ca3950f | niner++ | META.info:, Inline-Perl5: Version 0.10, Inline-Perl5: review: https://github.com/niner/Inl​ine-Perl5/commit/ca3950fa32, doc: 338a351 | (Wenzel P. P. Peppmeyer)++ | util/list-missing-methods.p6:, doc: allow comments in util/ignored-methods.txt, doc: review: https://github.com/perl6/doc/commit/338a351305, doc: e24b596 | (Wenzel P. P. Peppmeyer)++ | util/ignored-methods.txt:, doc: ignore some methods in Str, doc: review: https://github.com/perl6/doc/commit/e24b596a96, doc: 70d3629 | (Wenzel P. P. Peppmeyer)++ | util/list-missing-methods.p6:, doc: comment on comments, doc: review: https://github.com/perl6/doc/commit/70d3629b31, doc: 67306ab | (Wenzel P. P. Peppmeyer)++ | doc/Type/Str.pod6:, doc: make file parseable, doc: review: https://github.com/perl6/doc/commit/67306aba53, doc: 9441261 | (Wenzel P. P. Peppmeyer)++ | util/ignored-methods.txt:, doc: forgot one method to ignore, doc: review: https://github.com/perl6/doc/commit/94412613fd
+2016-08-13T08:51:00.000Z	gfldex		m: my $l = List; dd $l(1,2,3);
+2016-08-13T08:51:00.000Z	camelia		rakudo-moar baeabb: OUTPUT«(1, 2, 3)␤»
+2016-08-13T08:58:00.000Z	hankache		m: my $a = 1,2,3; say $a.WHAT;
+2016-08-13T08:58:00.000Z	camelia		rakudo-moar baeabb: OUTPUT«WARNINGS for <tmp>:␤Useless use of constant integer 2 in sink context (lines 1, 1)␤Useless use of constant integer 3 in sink context (lines 1, 1)␤(Int)␤»
+2016-08-13T09:00:00.000Z	hankache		m: my @a = 1,2,3; say @a.WHAT;
+2016-08-13T09:00:00.000Z	camelia		rakudo-moar baeabb: OUTPUT«(Array)␤»
+2016-08-13T09:00:00.000Z	hankache		any idea why ^^ ?
+2016-08-13T09:01:00.000Z	ab5tract	hankache	this is a bit shocking to me.. I don't remember a scalar context there, in the first case
+2016-08-13T09:02:00.000Z	hankache		why does = have higher precedence over the comma when it comes to scalars but not arrays?
+2016-08-13T09:02:00.000Z	dalek		doc: 24cce0f | (Wenzel P. P. Peppmeyer)++ | util/list-missing-methods.p6:, doc: split returns empty strings that are defined, doc: review: https://github.com/perl6/doc/commit/24cce0f919, doc: 64080eb | (Wenzel P. P. Peppmeyer)++ | util/ignored-methods.txt:, doc: add to be ignored methods for Array
+2016-08-13T09:02:00.000Z	ab5tract		but perhaps it's an evolution of the first-arg rules
+2016-08-13T09:02:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/64080ebacd, doc: 0dc31df | (Wenzel P. P. Peppmeyer)++ | CONTRIBUTING.md:, doc: tell contributors about list-missing-methods.p6, doc: review: https://github.com/perl6/doc/commit/0dc31dfd40
+2016-08-13T09:02:00.000Z	gfldex		because the compiler knows what a @-sigil is for, that's one of the many reasons to have the @-sigiled container
+2016-08-13T09:03:00.000Z	hankache	ab5tract	yeah I thought it would take the whole list
+2016-08-13T09:03:00.000Z	ab5tract	hankache	it is similar to what happens in p5: @a on the LHS of '=' puts the RHS in list context, in p5 you get the length of the list in scalar, but here it looks like we pull the first one
+2016-08-13T09:04:00.000Z	huf		(you totally dont get the length of a list in scalar context in p5)
+2016-08-13T09:04:00.000Z	hankache	gfldex	so this is normal?
+2016-08-13T09:04:00.000Z	gfldex		it's intentional and works the same way as in signatures
+2016-08-13T09:04:00.000Z	ab5tract		elements of array
+2016-08-13T09:05:00.000Z	gfldex		m: my ($i, @a) = 1,2,3; dd @a;
+2016-08-13T09:05:00.000Z	camelia		rakudo-moar baeabb: OUTPUT«Array @a = [2, 3]␤»
+2016-08-13T09:06:00.000Z	gfldex		m: my ($i, $j) = 1,2,3; dd $i, $j;
+2016-08-13T09:06:00.000Z	camelia		rakudo-moar baeabb: OUTPUT«Int $i = 1␤Int $j = 2␤»
+2016-08-13T09:06:00.000Z	hankache		ok thanks
+2016-08-13T09:06:00.000Z	gfldex		the @-sigiled behaviour is the odd one out acutally (as it is magical)
+2016-08-13T09:09:00.000Z	ab5tract	huf	yes, that's a good point. if it is an actual "list" on the RHS, you do not get the length of that.
+2016-08-13T09:10:00.000Z	ab5tract	gfldex	now that you point it out, it's quite familiar indeed, I got it mixed up with never really needing parens on the RHS when assigning into an @
+2016-08-13T09:13:00.000Z	nine		Turns out, mapping a runtime construct like Perl 5 subroutine attributes to a compile time thing like Perl 6 traits is not easy at all.
+2016-08-13T09:19:00.000Z	nadim		Good Morning all, good to be back after 2 months away.
+2016-08-13T09:21:00.000Z	hankache		welcome back nadim
+2016-08-13T09:21:00.000Z	nadim		is panda still the favorit installer? and why isn't it copied to /home/.../rakudo/install/share/perl6/site/bin after boostrapping?, hankache++
+2016-08-13T09:21:00.000Z	gfldex		zef works better and understand META6
+2016-08-13T09:21:00.000Z	nadim		zef it is then
+2016-08-13T09:21:00.000Z	gfldex		both wont tell you what $PATH to set
+2016-08-13T09:23:00.000Z	nadim		panda does but there is nothing in that path
+2016-08-13T09:23:00.000Z	hankache		I think the REPL is a bit broken: my $a = 1,2,3; returns (1,2,3)
+2016-08-13T09:23:00.000Z	gfldex		do you got $HOME/.perl6 ?
+2016-08-13T09:24:00.000Z	ab5tract	hankache	the return value of the expression is the list itself. if you check $a, it should only be 1 still
+2016-08-13T09:24:00.000Z	gfldex		the REPL is incomplete
+2016-08-13T09:25:00.000Z	hankache	ab5tract	yes $a is still 1
+2016-08-13T09:25:00.000Z	nadim	gfldex	yes there's a .perl6 but empty after panda bootstrap
+2016-08-13T09:26:00.000Z	ab5tract		this is a pretty interesting case though:, m: my ($a,$b) = my $c = (1,2,3); dd $a, $b, $c
+2016-08-13T09:26:00.000Z	camelia		rakudo-moar baeabb: OUTPUT«Int $a = 1␤Int $b = 2␤List $c = $(1, 2, 3)␤»
+2016-08-13T09:27:00.000Z	hankache		in addition if you write my $a = 1; [hit enter] and then write say $a; it says variable $a not recognized. I remember this working before, no?
+2016-08-13T09:27:00.000Z	ab5tract	hankache	yeah, strict mode is on everywhere now.
+2016-08-13T09:29:00.000Z	nadim		bleah! seg fault for the first thing I want to do, well second, installing zef.
+2016-08-13T09:34:00.000Z	AlexDaniel	ab5tract	so what is interesting about it?
+2016-08-13T09:56:00.000Z	nine	nadim	sounds decidedly odd. Did panda's bootstrap complete successfully?
+2016-08-13T10:32:00.000Z	stmuk_		is there anyway of passing a "no pragma" from the command line?
+2016-08-13T10:35:00.000Z	geekosaur		-X and prefix with No, usually, whoops, wrong channel :/
+2016-08-13T10:35:00.000Z	stmuk_		5to6-nutshell suggests not
+2016-08-13T10:36:00.000Z	geekosaur		no, I don't think there's a way to do it currently
+2016-08-13T10:48:00.000Z	nadim	nine	 no it didnät. it seemed to succeed, tells me to add some path in my $PATH but that one is empty after running bootstrap
+2016-08-13T12:12:00.000Z	masak	TimToady	long-term, how many of the S02/Grammatical Categories would you expect to be definable as subs?
+2016-08-13T12:13:00.000Z	dalek		doc: fb86f5e | gfldex++ | doc/Language/typesystem.pod6:, doc: link to Submethod, doc: review: https://github.com/perl6/doc/commit/fb86f5ec86
+2016-08-13T12:13:00.000Z	masak		(currently we have normal operators (but not metaoperators) and terms in Rakudo, I believe), oh, and trait_mods, I ask because probably many of these could be definable as macros, as long as we figure out decent parameters for them.
+2016-08-13T12:24:00.000Z	dalek		whateverable: d1d936c | (Daniel Green)++ | Bisectable.p6:, whateverable: We shouldn't provide any stdin when we test the starting points, whateverable: review: https://github.com/perl6/wha​teverable/commit/d1d936c76b
+2016-08-13T12:25:00.000Z	gfldex		m: dd (my method {});
+2016-08-13T12:25:00.000Z	camelia		rakudo-moar 32902f: OUTPUT«Method <anon> = method <anon> (Mu $: *%_) { #`(Method|47560688) ... }␤»
+2016-08-13T12:26:00.000Z	pmurias	masak	re having 007 target js, maybe it would be interesting if I made 007 also target QAST (so it would support js, moarvm and jvm)
+2016-08-13T12:26:00.000Z	masak	pmurias	most certainly. let me know what I can do to help.
+2016-08-13T12:27:00.000Z	masak	pmurias	offhand, I'm thinking it might be easier for you if I write the JS backend first -- extending it a second time will be way simpler.
+2016-08-13T12:28:00.000Z	pmurias		write any backend would make subsequent ones easier as that would help define the line between backend and interpreter
+2016-08-13T12:28:00.000Z	masak		right
+2016-08-13T12:29:00.000Z	masak	pmurias	I just created https://github.com/masak/007/issues/169 to track this
+2016-08-13T12:35:00.000Z	RabidGravy		oh I half typed something last night in reply to something, forgot to press enter then got distracted, oh well
+2016-08-13T12:42:00.000Z	pmurias	masak	I'll look it it more closely once I do the current nqp-js cleanup/hack removal
+2016-08-13T12:46:00.000Z	masak		cool., I'll bump up the priority of the JS backend, then., as I hint at in that issue -- https://github.com/masak/007/issues/166 -- the task feels like 90% straightforward and 10% real tough work, so I might be able to code up something Mostly Working quite rapidly, enough to be useful
+2016-08-13T13:47:00.000Z	masak	stmuk_	, (hope this invisible ink works)
+2016-08-13T13:48:00.000Z	stmuk_		I can't find Acme::Bleach for p6! :(
+2016-08-13T14:31:00.000Z	timotimo		https://github.com/thundergnat/Acme-Scrub
+2016-08-13T14:31:00.000Z	timotimo	stmuk_	-^, yo mst, would you like to throw out Guest_84847? they're doing the "X is not doing allah is doing" routine, over in #krita
+2016-08-13T15:02:00.000Z	lucs		Is something like this for example implementable?: ｢q:c<>'a<$b>c'｣, the idea being to have something other than curly brackets to do closure interpolation?
+2016-08-13T15:04:00.000Z	* lucs		likes to build up LaTeX strings, but having to escape all the ordinary curlies is quite annoying.
+2016-08-13T15:16:00.000Z	mst	timotimo	seems to've gone already. it helps if you use 'mst:' to hilight me so I actually see the request
+2016-08-13T15:17:00.000Z	timotimo		ah! i'll try to remember that the next time, and yes, an op in #krita has appeared in the mean time
+2016-08-13T15:48:00.000Z	ugexe	gfldex	nadim: zef will tell you where it installed bin files (what $PATH to set), and what bin files it installed to that path, if you give it multiple install locations it will give you *all* the paths it installed bin files to even: https://gist.github.com/ugexe/b​0bf45798d3b97e22c15127fa4b3620d
+2016-08-13T15:56:00.000Z	AlexDaniel		TIL brotli is a great general purpose compression algorithm: https://github.com/perl6/whateverab​le/issues/23#issuecomment-239627248
+2016-08-13T16:10:00.000Z	ab5tract	AlexDaniel	The interesting bit is that in that expression, the scalar $c does end up with the list, When I golfed that, I was trying to verify that the RHS List really was the return value of the expression, Putting another '=' to the left puts the 'my $ = List' into RHS which gives the usual scalar-LHS-list-RHS semantics but leaves the return value of the original expression in $c as it is evaluated, Which feels nicely Perlish to me :), Gar, how did those RHS parens slip in.. Nevermind, my reasoning was based on a grave misunderstanding
+2016-08-13T16:35:00.000Z	TimToady		.tell hankache the original motivation for making $ assignment tighter than @ assignment was actually so that things like loop ($i = 100, $j = 0; $i; --$i, ++$j) {} would work the way C/P5 people expect, while not requiring parens on @foo = 1,2,3
+2016-08-13T16:35:00.000Z	yoleaux	TimToady	I'll pass your message to hankache.
+2016-08-13T16:43:00.000Z	nadim	ugexe	there is nothing in the path
+2016-08-13T16:43:00.000Z	TimToady	masak	well, macros and methods are subs too, they're just using funny dispatchers to call them at funny times with funny arguments, after all, on some level it's all functions in the FP view of reality
+2016-08-13T16:44:00.000Z	mst	timotimo	yeah, some people hilight on their nick anywhere but, er, that results in my scrollback being full of people talking about cpan modules I worked on ;)
+2016-08-13T16:48:00.000Z	TimToady	masak	that's not to say that some grammatical categories can't benefit greatly from regex/macro sugar in terms of readability
+2016-08-13T16:48:00.000Z	AlexDaniel		m: my $c = (1,2,3); dd $c
+2016-08-13T16:48:00.000Z	camelia		rakudo-moar e89721: OUTPUT«List $c = $(1, 2, 3)␤»
+2016-08-13T16:49:00.000Z	mst	TimToady	this is why I really enjoy fexpr based lisps, an fexpr gets handed its arguments plus an environment, so you can control what's evaluated then
+2016-08-13T16:49:00.000Z	AlexDaniel	ab5tract	:)
+2016-08-13T16:50:00.000Z	mst		generalises macros and functions at the cost of being hilariously difficult to optimise
+2016-08-13T16:55:00.000Z	TimToady		in our case, we parse everything with a Cursor that contains (in theory) everything you need to know about the current language and parse state, and it's just the action routines you fire off at reduction time that decide how to bake in various abstraction policies, I say "in theory" because we still pass a few things down through dynamic variables that really ought to attach to the Cursor, like %*LANG
+2016-08-13T17:08:00.000Z	BenGoldberg		m: dd %*LANG
+2016-08-13T17:08:00.000Z	camelia		rakudo-moar e89721: OUTPUT«Failure.new(exception => X::Dynamic::NotFound.new(name => "\%*LANG"), backtrace => Backtrace.new)␤»
+2016-08-13T17:13:00.000Z	TimToady		it's in the compiler, not your code, m: BEGIN %*LANG<Regex>.^name.say
+2016-08-13T17:15:00.000Z	camelia		rakudo-moar e89721: OUTPUT«Perl6::RegexGrammar␤»
+2016-08-13T17:17:00.000Z	TimToady		arguably BEGIN should not be able to poke up into the compiler like that, at least without some kind of MONKEY, m: BEGIN %*LANG<Regex> := grammar Oops { token unbalanced($x) { $x { say "haha" } } }; /foo/
+2016-08-13T17:22:00.000Z	camelia		rakudo-moar e89721: OUTPUT«===SORRY!===␤P6opaque: no such attribute '$!from' in type NQPCursor when trying to get a value␤»
+2016-08-13T17:22:00.000Z	TimToady		m: BEGIN %*LANG<Regex> := grammar Oops { method unbalanced($x) { die "haha" } }; /foo/
+2016-08-13T17:22:00.000Z	camelia		rakudo-moar e89721: OUTPUT«===SORRY!===␤haha␤»
+2016-08-13T17:23:00.000Z	TimToady		and you shouldn't be able to change the language your parents think they're parsing like that, currently it's just "with great power comes great responsibility" :)
+2016-08-13T17:25:00.000Z	* TimToady		suspects we rely on that power currently to get as far with slangs as we do...
+2016-08-13T17:28:00.000Z	ugexe	nadim	it sounds like your rakudo environment is borked if neither zef or panda are giving you bin/ files, infact zef and panda have nothing to do with the actual files in bin/; rakudo itself installs wrappers to that location that point to the actual scripts, https://github.com/rakudo/rakudo/blob/nom/src/​core/CompUnit/Repository/Installation.pm#L268
+2016-08-13T17:49:00.000Z	BenGoldberg		m: my @fib := (1, 1, *+* ...^ *).cache; say @fib[^10];
+2016-08-13T17:49:00.000Z	camelia		rakudo-moar e89721: OUTPUT«(1 1 2 3 5 8 13 21 34 55)␤»
+2016-08-13T17:50:00.000Z	BenGoldberg		m: my @fib := (1, 1, *+* ...^ *);
+2016-08-13T17:50:00.000Z	camelia		rakudo-moar e89721: OUTPUT«Type check failed in binding; expected Positional but got Seq (?)␤  in block <unit> at <tmp> line 1␤␤»
+2016-08-13T17:51:00.000Z	BenGoldberg		m: my $fib := (1, 1, *+* ...^ *); say $fib[^10];
+2016-08-13T17:51:00.000Z	camelia		rakudo-moar e89721: OUTPUT«(1 1 2 3 5 8 13 21 34 55)␤»
+2016-08-13T17:51:00.000Z	BenGoldberg		m: my $fib := (1, 1, *+* ...^ *); say $fib[^5] for 1..2;
+2016-08-13T17:51:00.000Z	camelia		rakudo-moar e89721: OUTPUT«(1 1 2 3 5)␤(1 1 2 3 5)␤»
+2016-08-13T17:52:00.000Z	BenGoldberg		m: my $fib := (1, 1, *+* ...^ *); say $fib.WHAT
+2016-08-13T17:52:00.000Z	camelia		rakudo-moar e89721: OUTPUT«(Seq)␤»
+2016-08-13T17:54:00.000Z	BenGoldberg		m: my $fib := (1, 1, *+* ...^ *); for $fib { .say; last if ++ $ > 5 }; for $fib { .say; last if ++ $ > 5 };
+2016-08-13T17:54:00.000Z	camelia		rakudo-moar e89721: OUTPUT«1␤1␤2␤3␤5␤8␤This Seq has already been iterated, and its values consumed␤(you might solve this by adding .cache on usages of the Seq, or␤by assigning the Seq into an array)␤  in block <unit> at <tmp> line 1␤␤»
+2016-08-13T17:55:00.000Z	BenGoldberg		m: my $fib := (1, 1, *+* ...^ *); dd $fib
+2016-08-13T17:55:00.000Z	camelia		rakudo-moar e89721: OUTPUT«(1, 1, 2, 3, 5, 8, 13, 21, 34, 55... (lazy list)␤»
+2016-08-13T17:55:00.000Z	BenGoldberg		m: my $fib := 1, 1, *+* ...^ *; dd $fib
+2016-08-13T17:55:00.000Z	camelia		rakudo-moar e89721: OUTPUT«(1, 1, 2, 3, 5, 8, 13, 21, 34, 55... (lazy list)␤»
+2016-08-13T17:55:00.000Z	* BenGoldberg		wonders why he could print out $fib[^5] twice.
+2016-08-13T18:22:00.000Z	dataangel		I noticed that Perl six will detect some things at compile time, but not something obvious like this: my $test = 3 + "hello"; # why not? Doesn't seem to rely on anything dynamic.
+2016-08-13T18:24:00.000Z	raiph	dataangel	Most Perl 6 string and numeric types implicitly coerce between string and numeric interpretations by default; you have to be explicit if you don't want that
+2016-08-13T18:26:00.000Z	dataangel	raiph	that code produces an error at runtime though
+2016-08-13T18:27:00.000Z	dataangel	raiph	I'm just wondering if it could be compile time instead
+2016-08-13T18:30:00.000Z	TimToady		we could probably do better there, we do know the exact candidate list at compile time, but currently the checks are only on nominal type, and Cool is cool with both numbers and strings
+2016-08-13T18:32:00.000Z	dataangel		Interesting
+2016-08-13T18:32:00.000Z	TimToady	BenGoldberg	I believe .[^5] implies a .cache
+2016-08-13T18:33:00.000Z	dataangel		Why does the syntax for hashes have the values in quotes but not the keys? e.g.: my %capitals = (UK => 'London', Germany => 'Berlin');
+2016-08-13T18:33:00.000Z	* dataangel		is working his way through the introduction
+2016-08-13T18:33:00.000Z	TimToady		=> autoquotes an identifier on the left
+2016-08-13T18:34:00.000Z	dataangel		Interesting feature but if you're going to have it why only the left?, Do hashes usually only have string keys?
+2016-08-13T18:35:00.000Z	TimToady		because keys are much more likely to be identifiers than values are, and because we also use them for named arguments in many situations, in the :foo(1) form it's enforced to be an identifier too, you'll note, you have to use the => form if you want 'United States' => 'Washington', or 42 => 43
+2016-08-13T18:36:00.000Z	dataangel		Not sure what you mean when you say they are more likely to be identifiers, you mean they are more likely to be strings? I would usually consider the word "identifier" to mean something like local variable
+2016-08-13T18:37:00.000Z	TimToady		identifiers are a subset of strings, but we only autoquote identifiers, because, well, otherwise you'd have quotes anyway..., for similar reasons, normal hashes default to string keys, and you have to work a little harder to use objects as keys, it's merely that people often use them that way, so it's a reasonable default
+2016-08-13T18:39:00.000Z	dataangel		hmm I see, p6: my @a; say @a.WHAT; my @b[5]; say @b.WHAT; my @c[5;3]; say @c.WHAT; # all of these are the same type?
+2016-08-13T18:44:00.000Z	camelia		rakudo-moar e89721: OUTPUT«(Array)␤(Array)␤(Array)␤»
+2016-08-13T18:48:00.000Z	TimToady		m: my @a; say @a.shape; my @b[5]; say @b.shape; my @c[5;3]; say @c.shape;
+2016-08-13T18:48:00.000Z	camelia		rakudo-moar e89721: OUTPUT«(*)␤(5)␤(5 3)␤»
+2016-08-13T18:48:00.000Z	TimToady		depends on how you define "type", nominally, they're the same type
+2016-08-13T18:59:00.000Z	dalek		whateverable: 700cb30 | (Daniel Green)++ | Benchable.p6:, whateverable: Add the ability to benchmark different snippets of code to each other at HEAD, whateverable: review: https://github.com/perl6/wha​teverable/commit/700cb30ade
+2016-08-13T19:29:00.000Z	timotimo		ooooh!
+2016-08-13T19:47:00.000Z	dataangel		p6: sub my-test (Int:D $x) { say $x; }; my Int $y; my-test $y; # why is the error complaining about receiving a type object, instead of violating the defined constraint?
+2016-08-13T19:47:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«Parameter '$x' requires an instance of type Int, but a type object was passed.  Did you forget a .new?␤  in sub my-test at <tmp> line 1␤  in block <unit> at <tmp> line 1␤␤»
+2016-08-13T19:48:00.000Z	timotimo		that's exactly what violating a definedness constraint means
+2016-08-13T19:50:00.000Z	dataangel	timotimo	but I didn't pass a type object did I?, I don't see how a type object comes into it
+2016-08-13T19:50:00.000Z	timotimo		m: my Int $y; say $y.perl
+2016-08-13T19:50:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«Int␤»
+2016-08-13T19:50:00.000Z	dataangel		Assuming that a type object is an object that represents a type, like what I assume is being returned by WHAT
+2016-08-13T19:50:00.000Z	timotimo		a scalar variable starts out with the type object in it as the default value
+2016-08-13T19:50:00.000Z	geekosaur		no, a type object is a typed "undefined"
+2016-08-13T19:51:00.000Z	TimToady		it's like a gluon that just carries color charge without being a "real" particle
+2016-08-13T19:52:00.000Z	dataangel	geekosaur	I see, and (T) is the string representation for a type object for a type T?
+2016-08-13T19:52:00.000Z	geekosaur		in general, yes
+2016-08-13T19:52:00.000Z	TimToady		it's the gist, if you actually try to convert to string, it carps, m: print Any
+2016-08-13T19:53:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«Use of uninitialized value of type Any in string context.␤Methods .^name, .perl, .gist, or .say can be used to stringify it to something meaningful.  in block <unit> at <tmp> line 1␤»
+2016-08-13T19:53:00.000Z	TimToady		m: print Any.gist
+2016-08-13T19:53:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«(Any)»
+2016-08-13T19:55:00.000Z	dataangel		Coming from python, it's not surprising to me that you can do print Any.gist, but that you can write it that way suggests to me that the type object is an object that represents a type like I said before, even if it also doubles as the initial value for unassigned variables. But maybe I misunderstand?, Is there something like dir(foo) in python, that lists all of the methods on an object?
+2016-08-13T19:56:00.000Z	TimToady		m: say Int.^methods
+2016-08-13T19:56:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«(Int Num Rat FatRat abs Bridge chr sqrt base polymod expmod is-prime floor ceiling round lsb msb narrow Range sign sin tan cotan acosech conj atan2 cosec pred asec acotan cosh acos acosec sech unpolar log10 atanh log exp acosh truncate sinh tanh acotanh Re…»
+2016-08-13T19:56:00.000Z	TimToady		m: say 42.^methods
+2016-08-13T19:56:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«(Int Num Rat FatRat abs Bridge chr sqrt base polymod expmod is-prime floor ceiling round lsb msb narrow Range sign sin tan cotan acosech conj atan2 cosec pred asec acotan cosh acos acosec sech unpolar log10 atanh log exp acosh truncate sinh tanh acotanh Re…»
+2016-08-13T19:57:00.000Z	TimToady		m: say Int.^mro
+2016-08-13T19:57:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«((Int) (Cool) (Any) (Mu))␤»
+2016-08-13T19:57:00.000Z	dataangel		huh, wouldn't have expected those to be the same
+2016-08-13T19:57:00.000Z	timotimo		those meaning Int.^methods vs 42.^methods?
+2016-08-13T19:57:00.000Z	dataangel		Yes
+2016-08-13T19:57:00.000Z	TimToady		yes, Int is an undefined 42, m: say Int ~~ Cool
+2016-08-13T19:58:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«True␤»
+2016-08-13T19:58:00.000Z	TimToady		this is just like asking 'Is Socrates a man?', well, Socrates is more like 42 there
+2016-08-13T19:58:00.000Z	dataangel		Yeah that output is consistent with that, interesting. So separately is there a notion of objects that represent types, like what you would get back in python from calling type(foo), or writing foo.__type__?
+2016-08-13T19:58:00.000Z	TimToady		m: say 42 ~~ Cool
+2016-08-13T19:58:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«True␤»
+2016-08-13T19:59:00.000Z	TimToady		but we can reason about classes without having an instance of it, .^ gets you to the metaobject, and you can also go really deep to get the representation, which is orthogonal to the other kinds of type, m: say 42.REPR
+2016-08-13T20:00:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«P6opaque␤»
+2016-08-13T20:01:00.000Z	TimToady		note that the representation is largely invisible even to the class definition itself, our object system is agnostic about whether the underlying object is represented like a C++ object or a Python object, s/object/class/, "representational polymorphism", to use the 50¢ phrase
+2016-08-13T20:03:00.000Z	dataangel		p6: my $x = Int.^ # can I get a reference to the meta-object itself?
+2016-08-13T20:03:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Malformed postfix call␤at <tmp>:1␤------> 3my $x = Int.^7⏏5 # can I get a reference to the meta-obj␤»
+2016-08-13T20:03:00.000Z	TimToady		m: say Int.HOW
+2016-08-13T20:03:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«Perl6::Metamodel::ClassHOW.new␤»
+2016-08-13T20:04:00.000Z	dataangel		Why in the word HOW?
+2016-08-13T20:04:00.000Z	TimToady		$x.^foo($y) is short for $x.HOW($x, $y), it's how it works!
+2016-08-13T20:05:00.000Z	dataangel		Although I guess it is consistent with the capitalized question words, e.g. WHAT
+2016-08-13T20:05:00.000Z	TimToady		but if you want an acronym, it's Higher Order Workings, that too, almost nothing in p6 is done for a single reason
+2016-08-13T20:05:00.000Z	dataangel		Pretty cool so far
+2016-08-13T20:05:00.000Z	timotimo		everything also has the additional reason of "larry wall is simply bonkers"
+2016-08-13T20:06:00.000Z	dataangel		lol
+2016-08-13T20:06:00.000Z	timotimo		i mean that in a loving manner
+2016-08-13T20:07:00.000Z	dataangel		Does Perl six have a GIL? Like if I create multiple threads will they really run at the same time, or will they end up running lockstep like in python?
+2016-08-13T20:08:00.000Z	timotimo		no GIL to speak of, which also means you have to be a bit careful, or suffer data loss, at the moment, arrays being resized by multiple threads at the same time can cause a segfault, but we're very close to landing a little redesign of the internals for arrays that makes that "only" lose data, not crash
+2016-08-13T20:08:00.000Z	dataangel	timotimo	just the usual threading race condition sort of stuff, or can I actually crash the VM?, Beat me to it ;)
+2016-08-13T20:09:00.000Z	timotimo		other than that, we have excellent data structures and mechanisms to go with "nothing shared" style of coding, promises, channels (a little bit like Go), supplies (like observables or "reactive" streams or what have you), stuff like that, a fair bit of asynchronous I/O, like with sockets and processes
+2016-08-13T20:10:00.000Z	AlexDaniel	dataangel	well, if your goal is to crash it then you will ;)
+2016-08-13T20:10:00.000Z	timotimo		yes, you'll definitely be able to crash the VM by trying., m: use NativeCall; my Pointer $foo .= new(0); say $foo; say $foo[0]
+2016-08-13T20:10:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«NativeCall::Types::Pointer<NUL​L>␤NativeCall::Types::Pointer<NULL>␤»
+2016-08-13T20:10:00.000Z	timotimo		hmm, m: use NativeCall; my Pointer $foo .= new(12345); say $foo; say $foo[0]
+2016-08-13T20:10:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«NativeCall::Types::Pointer<0x303​9>␤NativeCall::Types::Pointer<0x3039>␤»
+2016-08-13T20:11:00.000Z	timotimo		how do i ...
+2016-08-13T20:11:00.000Z	TimToady		you're incompetent at being incompetent
+2016-08-13T20:11:00.000Z	timotimo		i can't even get that wrong ;(
+2016-08-13T20:11:00.000Z	dataangel		What I mean is, with python if you managed to crash the interpreter without using FFI/ctypes, that would be considered a bug to eventually be fixed, is that also the case for Perl 6?
+2016-08-13T20:12:00.000Z	TimToady		yes
+2016-08-13T20:12:00.000Z	timotimo		we're striving to make the VM uncrashable, but it's still possible in this current state, in more ways than we find acceptable, but that's just a matter of not having enough programmers bang their heads against it
+2016-08-13T20:12:00.000Z	dataangel		understood, which is totally reasonable
+2016-08-13T20:13:00.000Z	timotimo		many improvements we want to have fall into the SMOP category, there's also enough opportunities for internal redesigns to gain more performance; for example NativeCall has much more overhead than it needs to have
+2016-08-13T20:14:00.000Z	dataangel		I prototyped yet another build system in python and the single threaded version was beautiful, but there was no efficient way to do the multithreaded version (in this system a lot of work would actually be done directly in python code rather than an external programs, so being able to have two threads run python code at the same time was actually essential). Finally gave me the motivation to look into Perl 6 ;)
+2016-08-13T20:19:00.000Z	timotimo		cool :)
+2016-08-13T20:56:00.000Z	masak	dataangel	that sounds like quite a nice use case :)
+2016-08-13T20:57:00.000Z	masak	TimToady	re http://irclog.perlgeek.de/p​erl6/2016-08-13#i_13018211 -- I was more wondering what categories you envision being available as sugar
+2016-08-13T20:57:00.000Z	masak	TimToady	in other good news, the `is parsed` picture is finally coming into focus (in 007)
+2016-08-13T20:58:00.000Z	* TimToady		still kinda hates 'is parsed' insofar as it's an inside-out interface from the viewpoint of the grammar
+2016-08-13T20:59:00.000Z	TimToady		I suppose metaops are an obvious HOP candidate for functionalization
+2016-08-13T20:59:00.000Z	masak		it is inside-out, but it's still on the grammar's terms, IIUC, in that it can only happen at the "cutpoints" created by the grammatical categories, what concerns me more is that many people will probably naïvely write `is parsed` regexes that handle the happy path, but fail to gracefully handle parse failures, aka "writing parsers is hard"
+2016-08-13T21:03:00.000Z	TimToady		part of the reason I'd like people to get into it via 'slang token {...}' to at least get ratcheting on by default, then what we think of as the macro body is really just the action routine, being able to write those action routines in a better AST is of course a goal
+2016-08-13T21:06:00.000Z	masak		from the point of view of the macro, it will want to get Q nodes as parameters, it'll be interesting to see how that works out in 007 -- whether there needs to be something between the `is parsed` regex and the macro itself that builds those Q nodes, I feel I have a clearer picture of it than a week ago, so it's heading in the right direction
+2016-08-13T21:08:00.000Z	MasterDuke		.seen moritz
+2016-08-13T21:08:00.000Z	yoleaux		I saw moritz 11 Aug 2016 18:18Z in #perl6: <moritz> ctrl+c = exit that program, unless you have a *very* good reason not to
+2016-08-13T21:09:00.000Z	masak		famous last words :P, still not sure how the parts of the `is parsed` regex end up turning into macro parameters. but I guess we'll find out by experimenting.
+2016-08-13T21:18:00.000Z	brrt		hey masak, on an earlier moment in these days, i had an awesome idea about macros, i kind of forgot, but it revolved around having nicer/subtler/perlisher interaces to make code, between quasis and directly manipulating ASTs
+2016-08-13T21:23:00.000Z	MasterDuke		.tell moritz i'm trying to use SVG::Plot, but even the example doesn't produce an SVG with data, just the header with the width and height set. i see a merged PR that looked like it was for the same issue, but i'm still seeing it
+2016-08-13T21:23:00.000Z	yoleaux	MasterDuke	I'll pass your message to moritz.
+2016-08-13T21:31:00.000Z	masak	brrt	hey hey
+2016-08-13T21:31:00.000Z	masak	brrt	let me know if you remember more :>
+2016-08-13T21:32:00.000Z	brrt		:-)
+2016-08-13T21:32:00.000Z	masak	brrt	and keep in mind that I react really well to concrete examples and actual use cases
+2016-08-13T21:32:00.000Z	brrt		oh yes, my basic idea is that raw template macros are on the lower end of interesting
+2016-08-13T21:33:00.000Z	masak		I can agree to that, have you seen my "three kinds of macros" gist?
+2016-08-13T21:33:00.000Z	brrt		the problem with use cases is that... i'm kind of wondering myself what i'd want it for, i think i have but i don't hink i completely recall its contents, link?
+2016-08-13T21:33:00.000Z	masak		the 007 issue queue is full of use cases at this point :>
+2016-08-13T21:34:00.000Z	* masak		hunts down the link
+2016-08-13T21:34:00.000Z	* brrt		looks at the 007 issue queue
+2016-08-13T21:35:00.000Z	masak	brrt	https://gist.github.com/masak/13210c51f034f931af0c
+2016-08-13T21:37:00.000Z	brrt		in what phase in 007 is the macro evaluated?, alright, i renemeber now
+2016-08-13T21:41:00.000Z	tailgate		How can i generate all combinations of n length of 1..255 wtih repeating?
+2016-08-13T21:42:00.000Z	brrt		ehm, by a loop, i'd think, although i realise you're looking for an 'easy' way, and i don't know that :-)
+2016-08-13T21:42:00.000Z	TimToady		m: .say for 1..255 X 1..255 X 1.255, oopsie
+2016-08-13T21:43:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«(1 1 1.255)␤(1 2 1.255)␤(1 3 1.255)␤(1 4 1.255)␤(1 5 1.255)␤(1 6 1.255)␤(1 7 1.255)␤(1 8 1.255)␤(1 9 1.255)␤(1 10 1.255)␤(1 11 1.255)␤(1 12 1.255)␤(1 13 1.255)␤(1 14 1.255)␤(1 15 1.255)␤(1 16 1.255)␤(1 17 1.255)␤(1 18 1.25…»
+2016-08-13T21:43:00.000Z	TimToady		m: say (1..255 X 1..255 X 1..255)[^100]
+2016-08-13T21:43:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«((1 1 1) (1 1 2) (1 1 3) (1 1 4) (1 1 5) (1 1 6) (1 1 7) (1 1 8) (1 1 9) (1 1 10) (1 1 11) (1 1 12) (1 1 13) (1 1 14) (1 1 15) (1 1 16) (1 1 17) (1 1 18) (1 1 19) (1 1 20) (1 1 21) (1 1 22) (1 1 23) (1 1 24) (1 1 25) (1 1 26) (1 1 27) (1 1 28) (1 1 29) (1 …»
+2016-08-13T21:44:00.000Z	TimToady		you mean repeating like that?
+2016-08-13T21:44:00.000Z	tailgate		nah, sampling the item in the combinations, i.e. 1 1 1 is a valid 3-combination
+2016-08-13T21:44:00.000Z	TimToady		but order doens't matter?
+2016-08-13T21:44:00.000Z	gfldex		say [^100] is redundant
+2016-08-13T21:44:00.000Z	brrt		also, textual macro's aint' that bad :-P
+2016-08-13T21:44:00.000Z	tailgate		order is important
+2016-08-13T21:45:00.000Z	TimToady		m: say (1..255 X 1..255 X 1..255)
+2016-08-13T21:45:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«((1 1 1) (1 1 2) (1 1 3) (1 1 4) (1 1 5) (1 1 6) (1 1 7) (1 1 8) (1 1 9) (1 1 10) (1 1 11) (1 1 12) (1 1 13) (1 1 14) (1 1 15) (1 1 16) (1 1 17) (1 1 18) (1 1 19) (1 1 20) (1 1 21) (1 1 22) (1 1 23) (1 1 24) (1 1 25) (1 1 26) (1 1 27) (1 1 28) (1 1 29) (1 …»
+2016-08-13T21:45:00.000Z	TimToady		I guess it is :)
+2016-08-13T21:45:00.000Z	masak	brrt	routine macros are evaluated ASAP, which is either as soon as all the arguments have parsed, or (in the case of when the macro was in a quasi) when the quasi gets spliced into the mainline and suddenly all of its unquotes are present as Qnodes
+2016-08-13T21:46:00.000Z	masak	brrt	visitor macros are evaluated sometime aroung CHECK time. I've found things that want to run before them and things that want to run after them.
+2016-08-13T21:46:00.000Z	brrt		what bad would happen in routine macros are evaluated at CHECK time?
+2016-08-13T21:50:00.000Z	masak		I bet some anaphoric things would fail, sorry, I realize "anaphoric" is not part of normal vocabulary... :), let me unpack that for you, let's say the macro has decided to unhygienically introduce a variable `$foo` into the body of a block, if it gets to run before the block is parsed, everything is fine, if it runs at CHECK time, not so much
+2016-08-13T21:52:00.000Z	brrt		uhuh, why not?
+2016-08-13T21:52:00.000Z	masak		because the parser doesn't wait until CHECK time in verifying whether `$foo` has been declared or not, and so it'd die
+2016-08-13T21:55:00.000Z	brrt		hmm... why doesn't the parser wait?, there is probably a good reason
+2016-08-13T21:55:00.000Z	masak		ask TimToady :), m: $foo; my $foo
+2016-08-13T21:55:00.000Z	camelia		rakudo-moar fe90be: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Variable '$foo' is not declared␤at <tmp>:1␤------> 3<BOL>7⏏5$foo; my $foo␤»
+2016-08-13T21:56:00.000Z	masak		heh, `map` in Perl *5* is actually a good example of an anaphoric macro. it makes `$_` appear out of nowhere inside its block, and the user doesn't have to declare it., in Perl 6, the `$_` management has been made part of the general block handling instead.
+2016-08-13T21:59:00.000Z	gfldex		this may be useful in conjunction with NativeCall https://github.com/endrazine/w​cc#wld--the-witchcraft-linker
+2016-08-13T22:00:00.000Z	brrt		hmmm, alright, use case, suppose i want to make a macro that takes a parameters and adds code in a loop, how'd i do that?, and how easy would it be for me to do that
+2016-08-13T22:05:00.000Z	masak	brrt	let me try to understand your use case -- the macro accepts an iteration count $N and some code, and emits that code $N times?
+2016-08-13T22:05:00.000Z	brrt		yes, or code-modified, or something like that
+2016-08-13T22:06:00.000Z	masak		sir, let me direct you to the appropriate github issue, https://github.com/masak/007/issues/167, now, admittedly there are more questions than answers there, but at least that's a very solid use case (IMO) for code modification
+2016-08-13T22:10:00.000Z	* brrt		reads
+2016-08-13T22:11:00.000Z	brrt		okay, i see what that is like, hmm, seems like something for visitor macros
+2016-08-13T22:19:00.000Z	masak	brrt	yes.
+2016-08-13T22:20:00.000Z	brrt		hmm, i like visitor macros in principle, but yeah, can be hard, hmm, well, thanks for sharing the queue anyway, i may have more useful ideas in the future
+2016-08-13T22:27:00.000Z	masak		\o/, I'm a macros use case collector :)

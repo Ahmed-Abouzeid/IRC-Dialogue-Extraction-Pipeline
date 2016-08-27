@@ -1,0 +1,3 @@
+2007-01-01T11:48:00.000Z	ubotu	lipe_	Compiling software from source? Read the tips at https://help.ubuntu.com/community/CompilingSoftware (But remember to search for pre-built !packages first: not all !repositories are enabled by default!)
+2007-01-01T11:48:00.000Z	ubotu		Qt is the Q toolkit, which forms the base of KDE and is used by many applications to provide a !GUI. Install the libqt3-mt-dev package to compile Qt applications
+2007-01-01T11:49:00.000Z	lipe_	ubotu	thx u very much !!

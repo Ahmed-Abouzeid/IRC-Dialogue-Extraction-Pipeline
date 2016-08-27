@@ -1,0 +1,252 @@
+2010-12-01T17:20:00.000Z	Fade		perhaps a repo name that doesn't overlap the slime upstream would facilitate optionally loading your fork via quicklisp?, slime is kind of a nasty choke-point for politics. :/
+2010-12-01T17:25:00.000Z	beach		Good evening everyone!
+2010-12-01T17:25:00.000Z	e-user	beach	good evening!
+2010-12-01T17:26:00.000Z	stassats		it's so crazy i can't describe it
+2010-12-01T17:28:00.000Z	beach	stassats	That must be a *very* crazy bug!
+2010-12-01T17:29:00.000Z	Fade		well, now I'm seriously curious.
+2010-12-01T17:29:00.000Z	attila_lendvai	Fade	well, first ask Xach's opinion about including a slime fork into the quicklisp ecosystem... :) I'm sure we can work out the technical details in a fraction of the time of the political discussion...
+2010-12-01T17:30:00.000Z	Fade		well, it's the political discussion that always causes the most problems.
+2010-12-01T17:30:00.000Z	stassats		as always with crazy bugs, they turn out to be not that crazy
+2010-12-01T17:30:00.000Z	Fade		I haven't been involved at all in slime dev... i've just generally been happy to have it.
+2010-12-01T17:31:00.000Z	stassats		looks like autodoc interns some symbols which it shouldn't intern, or it doesn't
+2010-12-01T17:35:00.000Z	attila_lendvai	Fade	same here. but we also have a tendency of looking at the code of anything that doesn't work as good as we would like it to work... and slime fell pray for this tendency of ours, because we work quite a lot with it.
+2010-12-01T17:36:00.000Z	Fade		well, after sbcl/ccl/cmucl etc. I guess slime is probably the most important package in the free lisp ecology.
+2010-12-01T17:36:00.000Z	attila_lendvai		every time there's some recurring annoyance in the tool I'm using, e.g. slime, then I open a varying, but not so long session to fix it.
+2010-12-01T17:37:00.000Z	Fade		marco's slime movie was the thing that brought me back to lisp.
+2010-12-01T17:37:00.000Z	stassats		that's the same reason i became a slime developer/committer/whatever-it's-called-nowadays
+2010-12-01T17:37:00.000Z	attila_lendvai		if I hit a wall, then I put it in the back of my brain and get back to the original issue I've been working on. later on I may come up with a solution, or just learn to live with the annoyance
+2010-12-01T17:38:00.000Z	attila_lendvai	stassats	yeah, most of the slime comitters think like that. except Helmut...
+2010-12-01T17:38:00.000Z	Fade		is the issue that helmut doesn't accept patches? or is it just a style issue?
+2010-12-01T17:40:00.000Z	attila_lendvai	Fade	he uses slme in a simple way, and he cries out regularly for keeping the slime codebase simple to minimalize his maintainership load. (but he fails to see that he's driving away several people who would be happy to help maintaining an evolving slime...), stuff like the fancy inspector and the repl are very typical examples of this
+2010-12-01T17:41:00.000Z	Fade		normally i'd say that forking is a sane thing to do, but forking a critical lisp system also forks a fairly small number of eyeballs.
+2010-12-01T17:41:00.000Z	attila_lendvai		a useful inspector is key in a managed environment like lisp. now it's in a contrib which is not loaded by default...
+2010-12-01T17:42:00.000Z	Fade		I've been loading 'slime-fancy for almost as long as I've been using slime.
+2010-12-01T17:45:00.000Z	Guthur		having to load slime contribs explicitly isn't exactly much of a headache
+2010-12-01T17:45:00.000Z	stassats		if you know that you should load it
+2010-12-01T17:46:00.000Z	Fade		not having a slime repl after successfully installing slime is probably the most frequently asked slime question by newbs in this channel.
+2010-12-01T17:46:00.000Z	Guthur		maybe there needs to be better visibility of the setting up process
+2010-12-01T17:46:00.000Z	Fade		I've long thought that default was nonsensical.
+2010-12-01T17:46:00.000Z	Guthur		including the most popular contribs
+2010-12-01T17:47:00.000Z	Fade		i'm not even sure what the rationale could be.
+2010-12-01T17:47:00.000Z	Guthur		hehe, to be honest I kind of load everything and haven't even much idea what is what
+2010-12-01T17:47:00.000Z	Fade		I guess that's why the 'slime-fancy contrib was defined., perhaps a formalised plugin architecture for slime would be something that could get plugged in upstream., it sounds like the current situation is somewhat haphazzard., certainly seems like something that'd cut down the politics for changing the slime core.
+2010-12-01T17:49:00.000Z	stassats		you can easily plugin your own contribs, the problems with the contribs distributed with slime, and actually not with them, but whether they're loaded by default
+2010-12-01T17:50:00.000Z	Fade		that's one issue, for sure., it sounds like contribs for certain features require changes outside the contrib, though. formalising interfaces to things like the inspector might make things more generic.
+2010-12-01T17:52:00.000Z	stassats		formalizing means maintaining a stable API, but slime doesn't even have releases, so that's not an option
+2010-12-01T17:53:00.000Z	Fade		it seems to me that quicklisp is likely to change that culture somewhat.
+2010-12-01T17:53:00.000Z	stassats		unless somebody is willing to step up and do slime release management
+2010-12-01T17:54:00.000Z	Guthur		the volunteers don't seem to be falling over themselves to come forward
+2010-12-01T17:55:00.000Z	Fade		well, before quicklisp, I think doing system releases for critical projects was probably a very difficult problem., now that infrastructure is in place, there's at least a reasonable mechanism in place to normalise that operation.
+2010-12-01T17:57:00.000Z	stassats		and my crazy bug turned out to be in CCL itself, not in Slime
+2010-12-01T17:59:00.000Z	tic		from where does Quicklisp pull its packages?
+2010-12-01T17:59:00.000Z	Fade	Xach	builds up tarballs from various repositories, and hosts them on the amazon s3 system.
+2010-12-01T18:01:00.000Z	tic		Yeah, it's the "Xach builds tarballs" part I'm thinking of.
+2010-12-01T18:03:00.000Z	Fade		well, long term I have no idea how Xach scales, but I think the ability to form sub-dists in quicklisp probably means that it won't be a huge issue.
+2010-12-01T18:10:00.000Z	homie		why do i get always failures with flexi-streams external-format thing ?
+2010-12-01T18:10:00.000Z	stassats		because you have bad karma
+2010-12-01T18:11:00.000Z	homie		((labels:sb-c::sub) (iso8859-1 . #hashbla)), is that it awaits iso8859-1 or that i did compile sbcl in utf-8 enabled konsole ?
+2010-12-01T18:14:00.000Z	stassats		you need a better description of your problem
+2010-12-01T18:16:00.000Z	homie		it tells me hash-table:test eql:count 256 is not of type list
+2010-12-01T18:16:00.000Z	stassats		what tells you?
+2010-12-01T18:17:00.000Z	homie		the toplevel-debugger ?!
+2010-12-01T18:18:00.000Z	stassats		what makes the toplevel-debugger say such things?
+2010-12-01T18:20:00.000Z	homie		why do you babble so much ?
+2010-12-01T18:22:00.000Z	stassats		i didn't realize that you weren't asking for help, i am sorry
+2010-12-01T18:22:00.000Z	homie		you realize too much
+2010-12-01T18:24:00.000Z	schmrkc		What the.
+2010-12-01T18:24:00.000Z	homie		it checks on ascii, iso8859-1 and koi-8r only, and proceeds with whatever that resulted in, the :utf8 checks won't even get executed
+2010-12-01T18:25:00.000Z	schmrkc	homie	Please go away. Come back again with some politeness and some actual description on your issue.
+2010-12-01T18:26:00.000Z	homie		fya
+2010-12-01T18:37:00.000Z	pepone		Hi, i new to common lisp, is there something similar to enums?
+2010-12-01T18:38:00.000Z	stassats		you can just use symbols
+2010-12-01T18:39:00.000Z	pepone		how is that stassats?, i whant to map the states of a connection
+2010-12-01T18:40:00.000Z	stassats		symbols have identity, if you're using enums for identity
+2010-12-01T18:41:00.000Z	pepone		mm but you can asign any symbol, the point of using enums is that the range of values is limited
+2010-12-01T18:42:00.000Z	stassats		then check whether the symbols you get are the symbols you want
+2010-12-01T19:03:00.000Z	necroforest		Is there a way to list all symbols in a package?
+2010-12-01T19:03:00.000Z	beach	necroforest	The way to figure things like that out is to go to the permuted index and look under symbol or package.
+2010-12-01T19:04:00.000Z	stassats		(loop for symbol being the symbols in package collect symbol)
+2010-12-01T19:04:00.000Z	beach	necroforest	If you do that, you will find do-symbols, do-external-symbols, etc.
+2010-12-01T19:05:00.000Z	necroforest		starseek1r,  thanks
+2010-12-01T19:06:00.000Z	beach		You mean stassats?
+2010-12-01T19:10:00.000Z	necroforest		yes :), SBCL can't find sdl-ttf:initialise-default-font, even though it's specified in the documentation..., hmm
+2010-12-01T19:13:00.000Z	beach	necroforest	What does it say when it can't find it?
+2010-12-01T19:14:00.000Z	necroforest		Symbol "INITIALISE-DEFAULT-FONT" not found in the LISPBUILDER-SDL-TTF package.
+2010-12-01T19:14:00.000Z	beach	necroforest	Perhaps you didn't load the file that defines the package?
+2010-12-01T19:14:00.000Z	necroforest		i did:, (ql:quickload "lispbuilder-sdl") (ql:quickload "lispbuilder-sdl-ttf"), that should load it correct?
+2010-12-01T19:15:00.000Z	beach		I don't know actually.  I don't know what ql:quickload does.
+2010-12-01T19:16:00.000Z	gigamonkey	necroforest	It should., As far as I know, ql:quickload will download the thing and its dependencies, if necessary, and then asdf load the approprate system.
+2010-12-01T19:25:00.000Z	necroforest		there's a few symbols in sdl-ttf, but nothing that's particularly useful, liek load-default-font, err, intialise
+2010-12-01T19:26:00.000Z	jimrthy	necroforest	I just tried it. I don't see that symbol in that package either.
+2010-12-01T19:27:00.000Z	necroforest		i just see load-library, init-ttf, and a few other related ones
+2010-12-01T19:27:00.000Z	jimrthy		ttf-font.lisp has an "initialise-font" method, but it doesn't seem to be exported. Not that I know enough about packaging or system definitions to have much of a clue, I'll go back into lurk mode now...sorry for the interruption
+2010-12-01T19:28:00.000Z	Bronsa		guys, as you know, is there a way to know the directory where a loaded file cames from?
+2010-12-01T19:29:00.000Z	pjb		(pathname-directory *load-pathname*)
+2010-12-01T19:29:00.000Z	Bronsa		thanks
+2010-12-01T19:29:00.000Z	pjb	Bronsa	but it's not a pathname, if that's what you want.
+2010-12-01T19:30:00.000Z	Bronsa	pjb	pjb seen, but i can use it, thanks
+2010-12-01T19:38:00.000Z	necroforest		OHH, the LISPBUILDER-SDL-TTF  puts all of its symbols in the sdl: package, they also apparently don't update their documentation....
+2010-12-01T19:40:00.000Z	freiksenet	necroforest	are you using google-code documentation?, there used to be two copies of lispbuilder docs flying around, on of which were more google relevant, but was outdated and useless
+2010-12-01T19:41:00.000Z	necroforest		http://lispbuilder.sourceforge.net/lispbuilder-sdl-ttf.html, that's what i'm reading
+2010-12-01T19:42:00.000Z	freiksenet		"This is an old webpage. As of 2008-12-05 17:45, this project may now be found at: http://code.google.com/p/lispbuilder/', on top of the page
+2010-12-01T19:42:00.000Z	Hexstream		Hum. Is it okay to give a stupidly long name to a definition macro you know will be used only once in a blue moon or even less?... What about define-multiple-value-rebind-binding-var-finder?
+2010-12-01T19:42:00.000Z	freiksenet		I have no idea why they didn't take down the old site., probably they are following haskell motto of "never get popular" or promoting myth about unusability of cl libraries :D
+2010-12-01T19:44:00.000Z	necroforest	freiksenet	it doesn't say that on the page i'm looking at....
+2010-12-01T19:44:00.000Z	freiksenet		http://lispbuilder.sourceforge.net/, ok it does it here
+2010-12-01T19:45:00.000Z	necroforest		oh, well, i didn't look at that page ;)
+2010-12-01T19:45:00.000Z	freiksenet		trust me, sourceforge docs are old, as I said - I dunno why they didn't take down old pages., but the fact is - old pages are still more google relevant than new ones :D
+2010-12-01T19:50:00.000Z	Hexstream		I guess define-mvrebind-finder will be much saner ;P
+2010-12-01T19:53:00.000Z	stassats	Hexstream	how about defmvrf?
+2010-12-01T19:53:00.000Z	Hexstream		Hum, no, that's even stupider than the stupid long name.
+2010-12-01T19:53:00.000Z	p_l|home	stassats	sounds like something from bell labs
+2010-12-01T19:54:00.000Z	Hexstream		The biggest problem with that name, though, is that you left a vowel., I'm sure PG would be happy with that name, though., I don't know why autoindent fails so consistently on backquoted forms. That's really annoying.
+2010-12-01T20:08:00.000Z	seangrove		I can't programmatically add things to the export list of the package I'm currently working in, can I?
+2010-12-01T20:08:00.000Z	Hexstream		Yes, you can., clhs export
+2010-12-01T20:08:00.000Z	specbot		http://www.lispworks.com/reference/HyperSpec/Body/f_export.htm
+2010-12-01T20:09:00.000Z	seangrove		Ah, awesome, alright, a slightly more twisted question then..., If I have a macro in package "vana", and it creates ~3 functions, but I want to use it in another package "lash" so that the 3 functions will be created in (and exported from) the "lash" package - is this the default behavior?, I keep thinking it is, but then packages turn around and bite me
+2010-12-01T20:11:00.000Z	Hexstream		Make the macro take 3 args which will name the functions., Well, that would be the most conventional and safe way. You could also use INTERN to create the names in the current package.
+2010-12-01T20:14:00.000Z	seangrove		I believe I do use intern, Yup, I use intern for 'em
+2010-12-01T20:15:00.000Z	Hexstream		Well then, INTERN without a package arg creates symbols in the current package. So if you invoke your macro from the lash package and the macro uses INTERN with 1 argument, then the symbols will be created in the lash package.
+2010-12-01T20:15:00.000Z	seangrove		very cool, that makes a lot of sense
+2010-12-01T20:15:00.000Z	Hexstream		So what's the question then?
+2010-12-01T20:15:00.000Z	seangrove		... or my brain has just been twisted beyond being capable of recognizing sensible things, The question was just where the symbol would end up being interned
+2010-12-01T20:16:00.000Z	Hexstream		Ok, so I guess I answered that. :), You can verify what package a symbol has been interned in with SYMBOL-PACKAGE.
+2010-12-01T20:20:00.000Z	seangrove		Oh, nice, And what's the best way to look at what symbols a package is exporting?
+2010-12-01T20:21:00.000Z	Hexstream		clhs 11.2
+2010-12-01T20:21:00.000Z	specbot		Sorry, I couldn't find anything for 11.2.
+2010-12-01T20:21:00.000Z	Hexstream		clhs section 11.2, What the hell...
+2010-12-01T20:21:00.000Z	seangrove		Looking it up manually :)
+2010-12-01T20:22:00.000Z	Hexstream		clhs do-external-symbols
+2010-12-01T20:22:00.000Z	specbot		http://www.lispworks.com/reference/HyperSpec/Body/m_do_sym.htm
+2010-12-01T20:24:00.000Z	seangrove		Oh, I just meant from the repl, something like (inspect (find-package :vana)), Except just to list the exported symbols from that package
+2010-12-01T20:24:00.000Z	Hexstream		Oh. C-c shift-I., Then enter the symbol of the package, quoted., 'cl, say. And you'll be in the slime inspector.
+2010-12-01T20:26:00.000Z	seangrove		Wow, awesome
+2010-12-01T20:26:00.000Z	Hexstream		Use Q when you're done with the inspector., C-h m while in the inspector (or any other buffer) will give you a summary of commands available there., I might be interested in doing some specbot development. Any pointers? Like where the source code is and stuff., and/or minion.
+2010-12-01T20:34:00.000Z	jeti		http://www.cliki.net/minion
+2010-12-01T20:39:00.000Z	Hexstream		I can't seem to find the specbot sources or well, anything about it related to the project's development itself., I want to add support for "some-guy: clhs symbol", Oh, so specbot is part of the emacs project or something, apparently. I thought it was written in CL.
+2010-12-01T21:05:00.000Z	Bronsa		uhm, I have a problem.
+2010-12-01T21:27:00.000Z	ehu		heh. don't we all.
+2010-12-01T21:27:00.000Z	Bronsa		I want to get the file path of a lisp file loaded with asdf, and i can't understand how to do this.
+2010-12-01T21:34:00.000Z	sanchaz		hi, if i do a return in a loop thats in a loop where do i end up?
+2010-12-01T21:41:00.000Z	gigamonkey	sanchaz	in the outer loop
+2010-12-01T21:42:00.000Z	sanchaz		humm k thx
+2010-12-01T21:42:00.000Z	Bronsa	gigamonkey	you know how I can get the true pathname of a lispfile loaded with asdf?
+2010-12-01T21:44:00.000Z	gigamonkey	Bronsa	you mean while it's being loaded?, *load-truename* in that case., Otherwise, starting from what?
+2010-12-01T21:45:00.000Z	Bronsa		I mean, the path where the lisp file is when the fasl is created
+2010-12-01T21:46:00.000Z	gigamonkey		Okay, that sounds like when it's being loaded., What are you actually trying to do?
+2010-12-01T21:48:00.000Z	Bronsa	gigamonkey	suppose i have this in ~/lol/lol.asd, (defsystem :lol :components ((:file "lol"))), and this and this in ~/lol/lol.lisp, (defun lol () (print *load-truename*)), if I do, (asdf:operate 'asdf:load-op 'lol) (lol), i get nil, i need to get "/home/[user]/lol/lol.lisp", and I can't understand how to do this
+2010-12-01T21:50:00.000Z	gigamonkey		Ah, never mind, that's not going to be the .lisp file, that'd be the .fasl file.
+2010-12-01T21:51:00.000Z	Bronsa		there is no way to do it, maybe using some eval-when dark magic?
+2010-12-01T21:51:00.000Z	gigamonkey		There's also *compile-file-truename*, What happens if in your file you do an (eval-when (:compile) (setf cl-user:*my-location* *compile-file-truename*))
+2010-12-01T21:54:00.000Z	Bronsa		I get an ubound marker (?)
+2010-12-01T21:54:00.000Z	gigamonkey		Yeah, defvar cl-user:*my-location* before you do it., Sorry., You still haven't answered my question though, what are you really trying to do. I.e. why do you need this information?
+2010-12-01T21:55:00.000Z	_6502_		hello: what's wrong with "(sb-ext:save-lisp-and-die "sbcl-mandelbrot" :executable t :toplevel #'doit)" ? the resulting program keeps starting the standard REPL instead of calling (doit) ...
+2010-12-01T21:55:00.000Z	Bronsa	gigamonkey	I'm trying to make stumpwm ./configure free, and I need to know the source dir to be able to know where the contrib dir is, nothing changed, (defvar *my-location*) (eval-when (:compile-toplevel) (setf *my-location* *compile-file-truename*)) (print *my-location*) => #<unbound marker {52}>
+2010-12-01T22:00:00.000Z	gigamonkey		Try this: (eval-when (:compile-toplevel) (defvar *my-location* *compile-file-truename*)), That may not by 100% right if the compile-time environment is different from the runtime environment.
+2010-12-01T22:00:00.000Z	Bronsa		I get an "Undefined variable: *MY-LOCATION*"
+2010-12-01T22:01:00.000Z	gigamonkey		From a DEFVAR?!
+2010-12-01T22:01:00.000Z	Bronsa		seems like the defvar is not executed
+2010-12-01T22:01:00.000Z	gigamonkey		What Lisp?
+2010-12-01T22:01:00.000Z	Bronsa		sbcl
+2010-12-01T22:01:00.000Z	gigamonkey		And you did a compile-file?
+2010-12-01T22:02:00.000Z	Bronsa		wait., I do this (asdf:operate 'asdf:load-op 'lol) (lol)
+2010-12-01T22:02:00.000Z	gigamonkey		You probably need to do compile-op, Or add :load-toplevel to the eval-when and change *compile-file-truename* to (or *compile-file-truename* *load-truename*), The latter probably being better., Though, like I said, this is still not, I don't think, guaranteed to work., But it may work in practice.
+2010-12-01T22:04:00.000Z	_6502_		hmmm
+2010-12-01T22:04:00.000Z	Bronsa		It is not., lol
+2010-12-01T22:05:00.000Z	gigamonkey		Does it work when you just do a compile-file?, That works for me.
+2010-12-01T22:05:00.000Z	Bronsa		yes
+2010-12-01T22:06:00.000Z	Bronsa	gigamonkey	doesn't matter, I will find another way to handle this
+2010-12-01T22:10:00.000Z	gigamonkey	Bronsa	in general it seems like the right thing is to copy files from the source directory to wherever the fasls end up. Then you can use *load-pathname* at load time to find things., But maybe that will be just as much of a pain.
+2010-12-01T22:11:00.000Z	Bronsa		hmh, I may try
+2010-12-01T09:18:00.000Z	Guthur		how does one expand the minibuffer to see all the function signature
+2010-12-01T09:18:00.000Z	sykopomp	Guthur	right-click on bottom right of window, expand size?
+2010-12-01T09:19:00.000Z	tcr	Guthur	C-c C-d A
+2010-12-01T09:19:00.000Z	Guthur		cheers sykopomp  and tcr, the key chord is what I was hoping for, sweet, now to try and commit it to memory
+2010-12-01T11:13:00.000Z	tcr	stassats	are you here?, Can anyone explain the :simple-parser option of define-foreign-type to me?, If I look at the definition of foreign-string-type, it has (:simple-parser :string), which I guess means that the foreign-type :STRING will be translated to an instance of type FOREIGN-STRING-TYPE
+2010-12-01T11:27:00.000Z	stassats	tcr	i am somewhat here
+2010-12-01T11:28:00.000Z	tcr	stassats	Just wondering when going up/down the xref buffer, it does not highlight the form in the source buffer anymore, only when pressing SPC
+2010-12-01T11:30:00.000Z	stassats		i have displaying the source on moving up/down disabled, so it'd be better to open a ticket, or i'll forget it
+2010-12-01T11:34:00.000Z	tcr		why did you do it?
+2010-12-01T11:37:00.000Z	stassats	tcr	because i don't want to visit all the places when i only want one in the middle, which is both distracting and slow
+2010-12-01T11:39:00.000Z	tcr		fair point
+2010-12-01T11:49:00.000Z	luis	tcr	macroexpanding the define-foreign-type form will show you what :simple-parser does
+2010-12-01T11:49:00.000Z	Kruno		Hello, I have another question I can not seem to find any information on, splitting symbols.
+2010-12-01T11:49:00.000Z	Zhivago		symbol-name might be useful.
+2010-12-01T11:50:00.000Z	Kruno		ahh, I see. Convert symbol to string and then split the string. Nice one. Thanks. :), Was pulling my hair out trying to split the symbol itself.
+2010-12-01T11:52:00.000Z	tcr	luis	Yeah sure, it just didn't match my use case
+2010-12-01T11:56:00.000Z	luis	tcr	what's your use case?
+2010-12-01T11:57:00.000Z	tcr	luis	I have liked it to expand to (define-parse-method ,name (&optional (actual-type ,) &rest initargs) (apply #'make-instance :actual-type actual-type initargs)
+2010-12-01T12:15:00.000Z	luis		that lambda list doesn't look right
+2010-12-01T12:17:00.000Z	Kruno		How do I create a constant in the loop macro. The form, for x = (length stuff), will be evaluated every iteration.
+2010-12-01T12:18:00.000Z	luis	tcr	doesn't that mean you'd have to pass the actual-type argument if you wanted to pass other initargs?
+2010-12-01T12:18:00.000Z	luis	Kruno	with x = foo will only be evaluated at the beginning, but it's not a constant
+2010-12-01T12:18:00.000Z	Kruno		ahh, thanks, it will serve its purpose.
+2010-12-01T12:20:00.000Z	tcr	luis	It's ok I just did my own define-parser-method; I'm not familiar with cffi, just diving in :-)
+2010-12-01T12:21:00.000Z	luis	tcr	yeah, cool. Let me know if you have suggestions on how to improve the documentation; it's always useful to have feedback from a new user perspective.
+2010-12-01T14:01:00.000Z	yvdriess		little style question, I've noticed a little irritating pattern when recursing with a function that uses a &rest parameter
+2010-12-01T14:01:00.000Z	tcr		I set LD_LIBRARY_PATH to a directory with a libfoo.so inside; yet (cffi:use-foreign-library "libfoo.so") fails because it cannot find the library. What am I missing?
+2010-12-01T14:02:00.000Z	yvdriess		besides using (apply #'recur-func rest-args)
+2010-12-01T14:02:00.000Z	tcr	yvdriess	Use a local function which takes the args as a list rather than as a &rest
+2010-12-01T14:02:00.000Z	yvdriess		a local iter function?
+2010-12-01T14:02:00.000Z	_3b	tcr	set in such a way that it is visible to the lisp? also, see cffi:*foreign-library-directories*
+2010-12-01T14:02:00.000Z	tcr		Or, perhaps, don't use recursion
+2010-12-01T14:02:00.000Z	yvdriess		oh my, has scheme thought me nothing?! :)
+2010-12-01T14:03:00.000Z	tcr	_3b	Yeah but I'd like not to use that one. (In fact its documentation says it should not be used)
+2010-12-01T14:03:00.000Z	_3b		ah, didn't know that
+2010-12-01T14:03:00.000Z	yvdriess	tcr	I first tried it with loop, but sometimes it's easier to just use recursion
+2010-12-01T14:06:00.000Z	tcr	_3b	I set it via sb-posix:setenv
+2010-12-01T14:11:00.000Z	_3b	tcr	hmm, maybe run file on the .so just to make sure it is right arch and not otherwise strange?
+2010-12-01T14:22:00.000Z	_3b	tcr	hmm, possibly it is something to do with using setenv
+2010-12-01T14:26:00.000Z	_3b	tcr	yeah, looks like setenv doesn't affect dlopen
+2010-12-01T14:49:00.000Z	mason		does anybody use the 'memoize' package often?
+2010-12-01T14:50:00.000Z	stassats		i don't know what memoize package you're talking about, but i write my own memoization when i need one
+2010-12-01T14:50:00.000Z	mason		the one that comes in quicklisp, anyway, it seems fundamentally broken for non-unary functions
+2010-12-01T14:51:00.000Z	Xach		there's a memoize project in quicklisp?
+2010-12-01T14:53:00.000Z	mason		erm... does quickload check for previously asdf-installed packages first?, maybe I get it from there?, Based on comparing the source code, I believe it's from here: http://www.tfeb.org/lisp/hax.html#MEMOIZE
+2010-12-01T14:53:00.000Z	Xach	mason	it will load locally available systems, yes.
+2010-12-01T14:54:00.000Z	mason		xach: ahh okay, that must be it, bleh, apparently it's not broken, it just has a terrible default
+2010-12-01T15:00:00.000Z	stassats		everything in Common Lisp has this "terrible" default
+2010-12-01T15:01:00.000Z	mason	stassats	???, I just meant this memoize package in particular, it defaults to only memoizing based on the first argument, rather than all of them
+2010-12-01T15:03:00.000Z	pjb	mason	this is often the default choosen for memoizing libraries.
+2010-12-01T15:03:00.000Z	mason	pjb	really?
+2010-12-01T15:03:00.000Z	pjb	mason	Yes.  Notice that hash-table may behave badly on lists, when the test is not :eql.
+2010-12-01T15:04:00.000Z	mason	pjb	mmmmm
+2010-12-01T15:04:00.000Z	mason	pjb	unfortunate
+2010-12-01T15:05:00.000Z	pjb		Now, for 2-element lists we could expect from the implementations to deal with them correctly, but specific time complexity is specified.
+2010-12-01T15:05:00.000Z	stassats	mason	i was referring to the default hash-function of hash-table being EQL
+2010-12-01T15:07:00.000Z	mason	pjb	where can I find more information on how hash-tables perform when using lists as keys
+2010-12-01T15:08:00.000Z	pjb		http://www.lispworks.com/documentation/HyperSpec/Body/18_.htm
+2010-12-01T15:09:00.000Z	stassats	mason	in your implementation documentation or source code
+2010-12-01T15:10:00.000Z	tcr		(require :sb-posix) does not emit style-warnings whereas (asdf:load-system :sb-posix) does, seems like REQUIRE loads contrib/sb-posix/sb-posix.fasl
+2010-12-01T15:11:00.000Z	EOF-sensei		somebody tell me why preceeding operations with their operators is a good idea...
+2010-12-01T15:11:00.000Z	tcr		I'm wondering what it is that creates sb-posix.fasl, though? Might that be what the :pathname option in a defsystem does?
+2010-12-01T15:11:00.000Z	stassats	EOF-sensei	i can't make any sense out of your question
+2010-12-01T15:12:00.000Z	tcr	EOF-sensei	Because you also write f(x) in maths
+2010-12-01T15:12:00.000Z	EOF-sensei		but you don't write (+ 1 2)
+2010-12-01T15:12:00.000Z	stassats		but i do
+2010-12-01T15:12:00.000Z	EOF-sensei		i'm sure
+2010-12-01T15:13:00.000Z	tcr	EOF-sensei	In Lisp, + is just a function; it's a design decision
+2010-12-01T15:13:00.000Z	stassats		because i don't want to write "+" n times, because i don't want to memorize all precedence rules
+2010-12-01T15:14:00.000Z	pkhuong_	EOF-sensei	if that's a significant issue when you're coding, I'd really like to know what challenges you're solving.
+2010-12-01T15:14:00.000Z	stassats		although, in smalltalk you can write 1 + 2, and not memorize different precedence rules, but it becomes confusing
+2010-12-01T15:15:00.000Z	EOF-sensei		i'll stick with C and Python
+2010-12-01T15:15:00.000Z	pkhuong_	EOF-sensei	good stuff.
+2010-12-01T15:15:00.000Z	EOF-sensei		it's worked 'til now
+2010-12-01T15:15:00.000Z	tcr		Then why did you come here?
+2010-12-01T15:15:00.000Z	stassats		if that's the reason, it's a stupid reason
+2010-12-01T15:15:00.000Z	EOF-sensei		to piss you off of course
+2010-12-01T15:16:00.000Z	Krystof	tcr	contrib/asdf-stub.lisp
+2010-12-01T15:16:00.000Z	Xach	EOF-sensei	Go away.
+2010-12-01T15:16:00.000Z	EOF-sensei	Xach	can't take a joke, i just wanted to see if i was missing the point of the only other official GNU system language
+2010-12-01T15:17:00.000Z	Xach	EOF-sensei	You have your answer.
+2010-12-01T15:18:00.000Z	froydnj		see, even IRC has prefix operations
+2010-12-01T15:18:00.000Z	Xach	froydnj	Should I start using froydware from git?
+2010-12-01T15:19:00.000Z	froydnj	Xach	sure, why not?  you weren't before?
+2010-12-01T15:19:00.000Z	Xach	froydnj	I like using real releases if available.
+2010-12-01T15:19:00.000Z	froydnj		ah, releases
+2010-12-01T15:20:00.000Z	Xach		If they are way out of date I can use something else.
+2010-12-01T15:23:00.000Z	Guthur		umm does Lisp often get recognized as a GNU system language, maybe I'm reading 'system language' wrong
+2010-12-01T15:24:00.000Z	Krystof		the original gnu manifesto said that the gnu system would be progammable with C and Lisp, I think, "Both C and Lisp will be available as system programming languages."
+2010-12-01T15:25:00.000Z	froydnj	Xach	there's not much difference between git and releases...maybe a little for ironclad
+2010-12-01T15:26:00.000Z	Xach	froydnj	The issue came up yesterday. I'll review and see what project it was for.
+2010-12-01T15:27:00.000Z	Guthur	Krystof	Yes originally, we had a discussion about it here a few moons ago, but I think the fact is often overlooked

@@ -1,0 +1,5 @@
+2007-01-01T07:40:00.000Z	hacked`		ya but theres like 1 million options
+2007-01-01T07:40:00.000Z	hacked`		cause like i have a directory called test, and in that dir, there are subdirs, and in each of those subdirs i have a dir called specific, is there any way that to use grep to find files like .tlg in the specific dirs?
+2007-01-01T07:41:00.000Z	MarcN	hacked`	so what is your grep question?
+2007-01-01T07:41:00.000Z	hacked`		see what im saying, i just want to search /hi/*/specific/*.tlg*
+2007-01-01T07:42:00.000Z	MarcN	hacked`	look at find and use something like   find . -iname '*.tlg' -printf grep -H test %p\n | sh

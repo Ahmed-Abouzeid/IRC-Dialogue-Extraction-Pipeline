@@ -1,0 +1,9 @@
+2007-01-01T04:13:00.000Z	lord_ceiphas		me too
+2007-01-01T04:13:00.000Z	lord_ceiphas		i had this mouse working completely under fedora, but lost my old xorg.conf *grml*
+2007-01-01T04:14:00.000Z	IndyGunFreak	lord_ceiphas	is ti a USB or PS2 mouse?
+2007-01-01T04:14:00.000Z	lord_ceiphas		its a bluetooth-mouse, but is recognizes as a usb-mouse... the logitech mx1000 laser
+2007-01-01T04:15:00.000Z	IndyGunFreak	lord_ceiphas	i've had problems with PS 2 mice being detected properly, but never USB.  Maybe try a PS2 adapter
+2007-01-01T04:16:00.000Z	lord_ceiphas	IndyGunFreak	yes.. ill put the bluetooth-hub into a ps/2-adapter.... im sure this wont work
+2007-01-01T04:16:00.000Z	IndyGunFreak		oh you're running it through a hub
+2007-01-01T04:16:00.000Z	IndyGunFreak	lord_ceiphas	i thought the mouse was directly plugged intot he PC.
+2007-01-01T04:16:00.000Z	lord_ceiphas	IndyGunFreak	(16:14:57)  lord_ceiphas:  its a bluetooth-mouse, but is recognizes as a usb-mouse... the logitech mx1000 laser

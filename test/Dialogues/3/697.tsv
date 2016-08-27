@@ -1,0 +1,33 @@
+2007-01-01T01:39:00.000Z	kitsune1		http://img157.imageshack.us/my.php?image=dsc00186ly1.jpg
+2007-01-01T01:42:00.000Z	cybercod	kitsune1	... i'm thinking incompatible graphics driver
+2007-01-01T01:52:00.000Z	cybercod		wait a moment foto.. i'll find you a link
+2007-01-01T01:52:00.000Z	kitsune1	cybercod	what should i do coz i cant move the mouse very gd, how can i change the drivers, at the moment me using windows
+2007-01-01T01:54:00.000Z	cybercod		no problem
+2007-01-01T01:54:00.000Z	kitsune1	cybercod	the screens i sent is from 6.06, when i try and run 6.10 it goes into a black screen and says video video not avalible
+2007-01-01T01:54:00.000Z	kitsune1	cybercod	its a nvidia xfx geforce 6600 gt 256mb
+2007-01-01T01:55:00.000Z	cybercod		kitsume .. you're on a different pc right?
+2007-01-01T01:55:00.000Z	kitsune1	cybercod	no same pc in windows
+2007-01-01T01:56:00.000Z	cybercod		foto... try  http://ubuntuguide.org/wiki/Ubuntu_Edgy then find FAT on the page
+2007-01-01T01:56:00.000Z	kitsune1		?
+2007-01-01T01:56:00.000Z	cybercod		Kitsume... what is your graphics card?  did i miss you saying ?
+2007-01-01T01:57:00.000Z	kitsune1	cybercod	ol yes its a nvidia xfx geforce 6600 gt 256mb
+2007-01-01T01:57:00.000Z	cybercod		Kitsume... one moment... I shall look
+2007-01-01T01:58:00.000Z	kitsune1		thanks alot
+2007-01-01T01:58:00.000Z	kitsune1		:)
+2007-01-01T02:04:00.000Z	cybercod		nn... i'm no god here... i'm pretty new myself... i came in here to ask a question and have been in here several hours answering others as best as i can
+2007-01-01T02:06:00.000Z	kitsune1	cybercod	ok but how can i do this because i need to navigate in linux and stuff but i cant coz of the screen and the mouse stops moving after couple of minutes
+2007-01-01T02:07:00.000Z	cybercod		you'll need to find and print the instructions for doing it in the command line... and you can press Ctrl+alt+F5 to get command line access
+2007-01-01T02:08:00.000Z	cybercod		glad to hear it fotofo
+2007-01-01T02:08:00.000Z	cybercod		kitsume  you'll need to find and print the instructions for doing it in the command line... and you can press Ctrl+alt+F5 to get command line access
+2007-01-01T02:09:00.000Z	cybercod		thats one I don't know... I'd try to get hands on alternate disk, does anyone know a way to install from command line on live CD?
+2007-01-01T02:10:00.000Z	kitsune1	cybercod	which drivers should i try
+2007-01-01T02:33:00.000Z	kitsune1	cybercod	cant find a way to install nvidis drivers through command line on live cd
+2007-01-01T03:04:00.000Z	cybercod		next step will be to type in                       mined /etc/apt/sources.list
+2007-01-01T03:04:00.000Z	kitsune1	cybercod	ubuntu works nicely in VMware
+2007-01-01T03:04:00.000Z	cybercod		aaaaaahh...
+2007-01-01T03:06:00.000Z	cybercod		you're gonna look for sources that end in restricted and remove the # in front of them
+2007-01-01T03:06:00.000Z	cybercod		you'll need to save the file
+2007-01-01T03:07:00.000Z	cybercod		then you'll want to type in          sudo apt-get update
+2007-01-01T03:18:00.000Z	kitsune1	cybercod	thanks alot m8 for ur help im away to try it
+2007-01-01T04:13:00.000Z	kitsune1	cybercod	on?
+2007-01-01T04:14:00.000Z	kitsune1	cybercod	OMG Thanks alot m8 its all working now

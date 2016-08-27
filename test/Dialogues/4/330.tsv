@@ -1,0 +1,29 @@
+2007-01-01T03:38:00.000Z	sukarn		i've explained everything there
+2007-01-01T03:40:00.000Z	adaptr	sukarn	good point; run dstat while doing disk-related things to see what causes the slowdown
+2007-01-01T03:41:00.000Z	sukarn	adaptr	i'll do that just now
+2007-01-01T03:41:00.000Z	adaptr	sukarn	you may have to apt-get dstat first
+2007-01-01T03:50:00.000Z	sukarn	adaptr	I have posted the output of dstat here - http://www.ubuntuforums.org/showthread.php?t=326894 at the end of the last post on the page (3rd post on the page)
+2007-01-01T03:50:00.000Z	adaptr	sukarn	so, what does it tell you ?
+2007-01-01T03:51:00.000Z	sukarn	adaptr	I don't get any errors, but I cannot understand what its telling me either.
+2007-01-01T03:51:00.000Z	adaptr	sukarn	dstat tells you where it is spending its time
+2007-01-01T03:58:00.000Z	sukarn	adaptr	This is the raid controller of my system (I think) - 00:0f.0 RAID bus controller: VIA Technologies, Inc. VT8251 AHCI/SATA 4-Port Controller
+2007-01-01T03:58:00.000Z	adaptr	sukarn	okay...
+2007-01-01T03:59:00.000Z	sukarn	adaptr	but I have no idea whether it needs any arrays to work correctly or not.
+2007-01-01T03:59:00.000Z	adaptr	sukarn	it should never *need* an array to just access hard drives
+2007-01-01T04:00:00.000Z	adaptr	sukarn	but there could be BIOS options to switch the controller between normal mode and RAID mode
+2007-01-01T04:10:00.000Z	sukarn		oh yeah, i meant adaptr as well
+2007-01-01T04:10:00.000Z	adaptr	sukarn	you're welcome
+2007-01-01T04:39:00.000Z	sukarn	adaptr	LameBMX - do you think I need to disable acpi apic support in BIOS?
+2007-01-01T04:40:00.000Z	adaptr	sukarn	to achieve what ?
+2007-01-01T04:40:00.000Z	sukarn	adaptr	you forgot the raid discussion we were having a while ago?
+2007-01-01T04:41:00.000Z	adaptr	sukarn	well, discussion is a big word.. but yeah, so what is making you suspect ACPI ?
+2007-01-01T04:42:00.000Z	sukarn	adaptr	a while ago someone said that i should not have raid enabled in BIOS
+2007-01-01T04:44:00.000Z	adaptr	sukarn	that depends on what you want to do, and whether the RAID controller is supported well (or at all) in the Linux kernel
+2007-01-01T04:44:00.000Z	adaptr	sukarn	if it is not well supported then you definitely want to get it out of the way, yes
+2007-01-01T04:45:00.000Z	sukarn	adaptr	then i have to figure out how to get x working without acpi apic in BIOS
+2007-01-01T04:46:00.000Z	sukarn	adaptr	i tried sudo dpkg-reconfigure nvidia-glx linux-restricted-modules-`uname -r` linux-image-`uname -r`, but that didn't work
+2007-01-01T04:46:00.000Z	adaptr	sukarn	didn't work tells me nothing
+2007-01-01T04:47:00.000Z	sukarn	adaptr	I mean i still could not start x after a reboot
+2007-01-01T04:48:00.000Z	adaptr	sukarn	waay to coarse-grained.. you need to start doing steps one at a time, verify them, and see if they correspond to expected results
+2007-01-01T04:54:00.000Z	sukarn	adaptr	LameBMX, disabling acpi apic in BIOS has made everything faster. But do I always have to use noapic nolapic in the boot line?
+2007-01-01T04:55:00.000Z	sukarn	adaptr	LameBMX: disabling acpi apic in BIOS has made everything faster. But do I always have to use noapic nolapic in the boot line? (my previous message seemed to have been damaged somehow)

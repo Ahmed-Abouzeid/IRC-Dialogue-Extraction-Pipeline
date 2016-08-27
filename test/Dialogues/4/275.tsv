@@ -1,0 +1,9 @@
+2007-01-01T06:48:00.000Z	deathplanter		i got no sound on ubuntu using xserver tools,although mpg321 is able to play mp3s and i can hear them. what could be wrong?
+2007-01-01T06:49:00.000Z	skarface	deathplanter	check your PCI volume
+2007-01-01T06:49:00.000Z	skarface		can anyone tell me why gnome might be ignoring my session startup and the shortcut keys no longer work?
+2007-01-01T06:49:00.000Z	deathplanter	skarface	it's all set to max
+2007-01-01T06:51:00.000Z	deathplanter	skarface	http://img358.imageshack.us/img358/8437/zrzutekranuxg2.png what could that mean?
+2007-01-01T06:52:00.000Z	skarface	deathplanter	don't know. you have no mixer options?
+2007-01-01T06:53:00.000Z	deathplanter	skarface	rather no mixers
+2007-01-01T06:53:00.000Z	skarface	deathplanter	right... well I guess you could try reinstalling alsa or something
+2007-01-01T06:53:00.000Z	skarface		oops

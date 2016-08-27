@@ -1,0 +1,6 @@
+2007-01-01T07:21:00.000Z	JosefK		are there any HTTP based LVM/Samba tools in the repo's?  I'm looking to turn a Ubuntu box into into a NAS, instead of having to use OpenFiler
+2007-01-01T07:22:00.000Z	JosefK		7.04 next
+2007-01-01T07:22:00.000Z	JosefK		not sure about the next LTS though Core
+2007-01-01T07:22:00.000Z	Core		The next release showld be in december, 6.12 LTS, don't?
+2007-01-01T07:22:00.000Z	JosefK	Core	7.04 next
+2007-01-01T07:23:00.000Z	JosefK		!vim

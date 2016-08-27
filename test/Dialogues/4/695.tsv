@@ -1,0 +1,16 @@
+2007-01-01T07:19:00.000Z	asc__		I need to automagically setup a wireless network using the command line.  The ESSID and key are known.  Does anybody have *any* idea how to do this?
+2007-01-01T07:19:00.000Z	xtknight	asc__	look at iwconfig, the manual is at `man iwconfig`
+2007-01-01T07:19:00.000Z	asc__	xtknight	it's too durned complicated for me :p
+2007-01-01T07:20:00.000Z	xtknight	asc__	do you know the interface name of your wireless card?
+2007-01-01T07:20:00.000Z	asc__	xtknight	Oh, yeah.  Yes.
+2007-01-01T07:21:00.000Z	asc__	xtknight	it's made more difficult because I'm trying to walk somebody else through it and I've never set up a wireless network before. :p
+2007-01-01T07:21:00.000Z	xtknight	asc__	iwconfig eth0 essid SSIDNAME
+2007-01-01T07:21:00.000Z	xtknight	asc__	iwconfig eth0 ap any
+2007-01-01T07:21:00.000Z	xtknight	asc__	and then watch iw..log i think it is....iw then press tab, theres a wireless interface log
+2007-01-01T07:22:00.000Z	asc__	xtknight	Okay, thanks
+2007-01-01T07:34:00.000Z	asc__	xtknight	should 'sudo iwconfig interface [essid]  [essid]  key [key] ;sudo ifup [interface] ' work, in your estimation?
+2007-01-01T07:34:00.000Z	xtknight	asc__	it is: 'sudo iwconfig interface essid [essid] '....im not sure what u need to do after that
+2007-01-01T07:35:00.000Z	asc__	xtknight	Okay.  Thanks.
+2007-01-01T07:35:00.000Z	xtknight	asc__	i would do `sudo ifdown interface`, then `sudo dhclient interface`...u should be good to go
+2007-01-01T07:35:00.000Z	xtknight	asc__	after the ESSID thing that is..and watch the wireless interface log
+2007-01-01T07:36:00.000Z	xtknight	asc__	that would be at `iwevent`

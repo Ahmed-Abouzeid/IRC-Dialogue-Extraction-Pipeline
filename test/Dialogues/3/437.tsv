@@ -1,0 +1,53 @@
+2007-01-01T06:48:00.000Z	Innomen		i see no gnome in the list of things ot add tot he bar
+2007-01-01T06:48:00.000Z	Innomen		perhaps i didnt install it properly
+2007-01-01T06:49:00.000Z	h3xis	Innomen	you did
+2007-01-01T06:49:00.000Z	Innomen		is there a something like run where i can send command lin stuff from within the gui?
+2007-01-01T06:49:00.000Z	h3xis	Innomen	run nm-applet from terminal
+2007-01-01T06:49:00.000Z	Innomen		thank you
+2007-01-01T06:50:00.000Z	Innomen		could not find nm-applet
+2007-01-01T06:50:00.000Z	h3xis	Innomen	as sudo?
+2007-01-01T06:50:00.000Z	Innomen		err could not open location
+2007-01-01T06:50:00.000Z	Innomen		define as sudo
+2007-01-01T06:51:00.000Z	Innomen		!sudo
+2007-01-01T06:51:00.000Z	h3xis	Innomen	sudo nm-applet
+2007-01-01T06:51:00.000Z	Innomen		i see
+2007-01-01T06:51:00.000Z	Innomen		one moment
+2007-01-01T06:51:00.000Z	Innomen		no error no nothing
+2007-01-01T06:52:00.000Z	Innomen		!gnome
+2007-01-01T06:52:00.000Z	Innomen		!wpa
+2007-01-01T06:52:00.000Z	h3xis	Innomen	do you have something new in your system tray?
+2007-01-01T06:53:00.000Z	Innomen		not that i can tell
+2007-01-01T06:53:00.000Z	Innomen		ONE MOMENT
+2007-01-01T06:53:00.000Z	Innomen		sorry caps
+2007-01-01T07:13:00.000Z	Innomen		this is not good
+2007-01-01T07:13:00.000Z	Innomen		i still cant start the network manager
+2007-01-01T07:13:00.000Z	Innomen		http://www.linux.org.mt/node/82
+2007-01-01T07:13:00.000Z	Innomen		i get to step 7 basicly
+2007-01-01T07:13:00.000Z	Innomen		gnome-network-manager showing available wireless networks
+2007-01-01T07:14:00.000Z	Innomen		i dont have gnome-network-manager
+2007-01-01T07:14:00.000Z	Innomen		apprently
+2007-01-01T07:14:00.000Z	h3xis	Innomen	it's not called that. you want network-manager-gnome
+2007-01-01T07:14:00.000Z	Innomen		An applet will show up in the gnome notification area.
+2007-01-01T07:14:00.000Z	Innomen		where is this notification area
+2007-01-01T07:15:00.000Z	Innomen	h3xis	i found it and installed it but i dont know how to start it
+2007-01-01T07:15:00.000Z	h3xis	Innomen	gimme a sec to find it
+2007-01-01T07:15:00.000Z	h3xis	Innomen	are you in edgy?
+2007-01-01T07:15:00.000Z	Innomen		see in wdonows it would be start programs Etc, or program files, where in the hell does ubuntu hide installed apps?
+2007-01-01T07:15:00.000Z	Innomen		one moment
+2007-01-01T07:19:00.000Z	h3xis	Innomen	what version of ubuntu are you using?
+2007-01-01T07:20:00.000Z	Innomen	h3xis	give me your answers for each version i would answer with
+2007-01-01T07:20:00.000Z	Innomen		assume i said whatever it is you want to hear
+2007-01-01T07:20:00.000Z	h3xis	Innomen	if youre in edgy you already have it running
+2007-01-01T07:20:00.000Z	h3xis	Innomen	edgy is the latest
+2007-01-01T07:20:00.000Z	Innomen		cus when i click the card i get nothing
+2007-01-01T07:20:00.000Z	h3xis	Innomen	are you on wired or wireless
+2007-01-01T07:21:00.000Z	Innomen		wireless
+2007-01-01T07:21:00.000Z	h3xis	Innomen	do you see something that looks like bars like on a cell phone interface?
+2007-01-01T07:21:00.000Z	h3xis	Innomen	showing a signal strength
+2007-01-01T07:21:00.000Z	Innomen		i do not
+2007-01-01T07:21:00.000Z	h3xis	Innomen	one sec
+2007-01-01T07:22:00.000Z	h3xis	Innomen	so when you run sudo nm-applet what do you get
+2007-01-01T07:22:00.000Z	Innomen		nothing happens
+2007-01-01T07:22:00.000Z	h3xis	Innomen	what do you mean
+2007-01-01T07:23:00.000Z	Innomen		bbl
+2007-01-01T07:23:00.000Z	h3xis	Innomen	this is not finished!

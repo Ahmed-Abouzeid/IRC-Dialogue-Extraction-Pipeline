@@ -1,0 +1,1439 @@
+2015-05-07T00:02:05Z dkcl quit (Remote host closed the connection)
+2015-05-07T00:04:28Z remi`bd quit (Remote host closed the connection)
+2015-05-07T00:08:25Z k-dawg joined #lisp
+2015-05-07T00:08:39Z _sjs_ quit (Ping timeout: 246 seconds)
+2015-05-07T00:11:13Z vdamewood joined #lisp
+2015-05-07T00:13:32Z drmeister: jasom: Methyl ethyl ketone?  Nope - too reactive.
+2015-05-07T00:14:10Z isaac_rks joined #lisp
+2015-05-07T00:15:15Z Goopyo joined #lisp
+2015-05-07T00:15:20Z Karl_Dscc quit (Remote host closed the connection)
+2015-05-07T00:23:49Z nell joined #lisp
+2015-05-07T00:24:41Z leafybasil joined #lisp
+2015-05-07T00:24:51Z isaac_rks quit (Quit: My Mac has gone to sleep. ZZZzzzâ¦)
+2015-05-07T00:26:23Z ebrasca quit (Remote host closed the connection)
+2015-05-07T00:35:22Z stardiviner quit (Quit: Weird in coding now, or make love, only two things push me away from IRC.)
+2015-05-07T00:35:58Z stardiviner joined #lisp
+2015-05-07T00:40:30Z clop2 joined #lisp
+2015-05-07T00:42:22Z jdm_ quit (Ping timeout: 256 seconds)
+2015-05-07T00:46:31Z orthecreedence joined #lisp
+2015-05-07T00:48:01Z orthecreedence: hi everybody. i'm on slackware 64 14.1 and when trying to run the latest clozure cl (1.10) i get "remap spjump: Operation not permitted"
+2015-05-07T00:48:29Z orthecreedence: when i copy over an old version from a previous slack install (14.0) it doesn't work either
+2015-05-07T00:48:44Z orthecreedence: (i'm running the lx86cl64 file)
+2015-05-07T00:48:48Z katco: in common lisp, i'm outputting a string and i get a "^" character after every word... any idea why?
+2015-05-07T00:48:59Z yeticry quit (Ping timeout: 245 seconds)
+2015-05-07T00:49:11Z orthecreedence: any ideas? i think it may have something to do with the fact that i had the multilib installed in the old OS and i've avoided it in the new one
+2015-05-07T00:49:38Z orthecreedence: katco: where are you getting the string? any chance there are strange characters being put in there?
+2015-05-07T00:49:52Z orthecreedence: also, what implementation are you using?
+2015-05-07T00:50:03Z orthecreedence: and what print function?
+2015-05-07T00:50:08Z katco: orthecreedence: i'm reading it in off a socket (i'm typing on the other side), sbcl
+2015-05-07T00:50:17Z katco: orthecreedence: (format t ("~a" foo))
+2015-05-07T00:50:42Z katco: orthecreedence: but strangely, this doesn't always happen. it's just in one function
+2015-05-07T00:50:53Z katco: orthecreedence: i was hoping someone would go "oh that's a FOO directive" or something
+2015-05-07T00:51:07Z yeticry joined #lisp
+2015-05-07T00:51:24Z orthecreedence: weird. no, nothing immediately jumps out at me. how are you encoding your strings to binary?
+2015-05-07T00:51:40Z katco: orthecreedence: i'm not... telnet protocol
+2015-05-07T00:51:48Z orthecreedence: oh got it
+2015-05-07T00:52:02Z katco: hm. i'm probably doing something stupid.
+2015-05-07T00:52:09Z orthecreedence: what i would do is take the output and instead of reading it as a string, read it as raw bytes and see what's coming through
+2015-05-07T00:52:18Z katco: good idea, thanks
+2015-05-07T00:52:24Z orthecreedence: np
+2015-05-07T00:52:25Z {}grant quit (Remote host closed the connection)
+2015-05-07T00:52:31Z katco: weird that it only happens in this one function though
+2015-05-07T00:52:35Z katco: the other strings coming through seem fine
+2015-05-07T00:52:52Z orthecreedence: that is fishy
+2015-05-07T00:53:22Z harish_ quit (Ping timeout: 272 seconds)
+2015-05-07T00:54:26Z katco: oh god.
+2015-05-07T00:54:32Z katco: i think i know what happened
+2015-05-07T00:54:57Z katco: elsewhere: (format nil "~{~a^ ~}" foo)... now what am i doing wrong :)
+2015-05-07T00:55:34Z rotty quit (Quit: WeeChat 1.2-rc1)
+2015-05-07T00:55:42Z {[]}grant joined #lisp
+2015-05-07T00:55:59Z xificurC quit (Read error: Connection reset by peer)
+2015-05-07T00:56:06Z rotty joined #lisp
+2015-05-07T00:56:28Z xificurC joined #lisp
+2015-05-07T00:57:09Z orthecreedence: :)
+2015-05-07T00:57:20Z katco is learning CL by fire :)
+2015-05-07T00:59:15Z Niac joined #lisp
+2015-05-07T01:03:29Z BlueRavenGT quit (Ping timeout: 250 seconds)
+2015-05-07T01:04:09Z nyef: The number of times I've had to learn some system by being dumped in at the deep end...
+2015-05-07T01:04:24Z nyef: And, yes, I realize that it's a completely different element. (-:
+2015-05-07T01:06:41Z pjb` is now known as pjb
+2015-05-07T01:09:00Z {[]}grant quit (Ping timeout: 256 seconds)
+2015-05-07T01:09:09Z hlavaty quit (Ping timeout: 256 seconds)
+2015-05-07T01:09:42Z rtra quit (Ping timeout: 252 seconds)
+2015-05-07T01:10:17Z rtra joined #lisp
+2015-05-07T01:10:48Z pjb: Happily, Bjarne Stroustrup has only two kidneys, AFAWK.
+2015-05-07T01:11:34Z Zhivago: Why is that a happily occurrence?
+2015-05-07T01:15:54Z joneshf-laptop joined #lisp
+2015-05-07T01:16:17Z dkcl joined #lisp
+2015-05-07T01:19:16Z isaac_rks joined #lisp
+2015-05-07T01:19:50Z Jesin quit (Quit: Leaving)
+2015-05-07T01:20:47Z isaac_rks quit (Client Quit)
+2015-05-07T01:22:45Z m_zr0: in case you need one of them for your own, you know he has one to spare.
+2015-05-07T01:23:23Z m_zr0: but if he had more, well, that might cause him some health issues, and you couldn't trust
+2015-05-07T01:23:56Z eudoxia: i'd never trust anyone with three kidneys. what'd ya need one more for? greedy fucks
+2015-05-07T01:24:57Z fourier joined #lisp
+2015-05-07T01:25:26Z eudoxia: Zhivago: drmeister up there said stroustrup would rather sell his kidneys than break backwards compat in C++
+2015-05-07T01:26:01Z m_zr0: haha i was kind of wondering about that, too.  pop in and see the most random statement ever
+2015-05-07T01:26:43Z scoofy: then maybe correct sentence would have been: "Bjarne Stroustrup still has two kidneys."
+2015-05-07T01:27:24Z eudoxia: <smugweenie>not that he uses them for good or anything!!1!</smugweenie>
+2015-05-07T01:28:33Z m_zr0: hahah
+2015-05-07T01:29:20Z ichthyozar001 quit (Quit: Connection closed for inactivity)
+2015-05-07T01:29:31Z Zhivago: Just for taking the piss.
+2015-05-07T01:30:06Z Zhivago: Although I'm not sure it's really true, re: backward compatibility.
+2015-05-07T01:30:11Z fourier quit (Ping timeout: 264 seconds)
+2015-05-07T01:30:34Z aap_ joined #lisp
+2015-05-07T01:31:22Z cmatei quit (Ping timeout: 265 seconds)
+2015-05-07T01:31:58Z Zhivago: They're removing 'export', for example.
+2015-05-07T01:32:57Z pjb: katco: read clhs format.
+2015-05-07T01:34:16Z aap quit (Ping timeout: 265 seconds)
+2015-05-07T01:34:26Z pjb: scoofy: no, the hope is that we only have to press him twice to be able to convert C++ into lisp.
+2015-05-07T01:34:40Z akkad: clhs.org
+2015-05-07T01:37:26Z eschatologist joined #lisp
+2015-05-07T01:42:12Z kohryu quit (Remote host closed the connection)
+2015-05-07T01:51:33Z orthecreedence quit (Quit: KVIrc 4.2.0 Equilibrium http://www.kvirc.net/)
+2015-05-07T01:53:04Z harish_ joined #lisp
+2015-05-07T01:54:37Z eudoxia quit (Quit: Leaving)
+2015-05-07T02:00:58Z Denommus` joined #lisp
+2015-05-07T02:01:09Z jleija joined #lisp
+2015-05-07T02:02:33Z Davidbrcz quit (Ping timeout: 240 seconds)
+2015-05-07T02:03:43Z clop2 quit (Ping timeout: 250 seconds)
+2015-05-07T02:06:11Z linux_dream joined #lisp
+2015-05-07T02:10:15Z frkout joined #lisp
+2015-05-07T02:12:31Z echo-area joined #lisp
+2015-05-07T02:13:06Z Jesin joined #lisp
+2015-05-07T02:15:27Z clop2 joined #lisp
+2015-05-07T02:16:59Z badkins quit
+2015-05-07T02:18:42Z emaczen quit (Ping timeout: 256 seconds)
+2015-05-07T02:31:52Z innertracks joined #lisp
+2015-05-07T02:33:02Z innertracks quit (Client Quit)
+2015-05-07T02:34:12Z loke: Zhivago: Removing export? Why?
+2015-05-07T02:34:39Z Zhivago: Dunno. Maybe they were annoyed by people saying that they never broke backward compatibility?
+2015-05-07T02:37:08Z c74d quit (Remote host closed the connection)
+2015-05-07T02:37:52Z freehck joined #lisp
+2015-05-07T02:38:41Z stardiviner quit (Ping timeout: 256 seconds)
+2015-05-07T02:39:13Z c74d joined #lisp
+2015-05-07T02:39:43Z freehck: Hello people.
+2015-05-07T02:40:14Z freehck: I'm trying to use GSLL and found an example for polynomial division:
+2015-05-07T02:40:29Z freehck: (let* ((xa #m(0.16d0 0.97d0 1.94d0 2.74d0 3.58d0 3.73d0 4.70d0))
+2015-05-07T02:40:29Z freehck: 	(ya #m(0.73d0 1.11d0 1.49d0 1.84d0 2.30d0 2.41d0 3.07d0))
+2015-05-07T02:40:29Z freehck: 	(dd (divided-difference xa ya)))
+2015-05-07T02:40:29Z freehck:        dd)
+2015-05-07T02:40:49Z linux_dream quit (Quit: Leaving)
+2015-05-07T02:40:58Z freehck: 1) I cannot understand what #m construction does. Could anybody explain?
+2015-05-07T02:41:50Z freehck: 2) This example is interrupted with this error: There is no applicable method for the generic function
+2015-05-07T02:41:50Z freehck:   #<STANDARD-GENERIC-FUNCTION GRID:FOREIGN-POINTER (1)>
+2015-05-07T02:42:20Z freehck: How too look out where this symbol has been defined?
+2015-05-07T02:42:58Z linux_dream joined #lisp
+2015-05-07T02:42:58Z Zhivago: I'd look for a GRID package.
+2015-05-07T02:42:59Z freehck: I mean, I hadn't found the definition in gsll git repo even using grep.
+2015-05-07T02:43:30Z freehck: but I dont have it in my quicklisp directory.
+2015-05-07T02:43:32Z Zhivago: As for #m, look for a reader macro.
+2015-05-07T02:44:39Z freehck: Oh, I found it in one of subdirectories. Thank you.
+2015-05-07T02:44:46Z blackwolf quit (Quit: ERC Version 5.3 (IRC client for Emacs))
+2015-05-07T02:47:52Z freehck: Zhivago: I tried to type this macro in in my repl, but it was evaluated into a vector. Could it be a wrong behaviour?
+2015-05-07T02:48:05Z Zhivago: That sounds plausible.
+2015-05-07T02:48:09Z freehck: Maybe it should be evaluated in something else?
+2015-05-07T02:48:24Z Zhivago: It's probably a matrix represented as a vector.
+2015-05-07T02:48:34Z freehck: How to found a definition?
+2015-05-07T02:48:55Z pjb: more likely, a foreign vector to be sent to the GPU.
+2015-05-07T02:48:56Z freehck: can I just grep quicklisp directory for string '#m'?
+2015-05-07T02:49:00Z Zhivago: But look for set-dispatch-macro-character.
+2015-05-07T02:49:05Z pjb: freehck: no.
+2015-05-07T02:49:14Z pjb: freehck: it is probably defined in gsll.
+2015-05-07T02:49:33Z Zhivago: You should be able to see where #m is set up as a dispatch macro on #\m.
+2015-05-07T02:50:14Z pjb: or #\M reader macros and dispatching reader macros are not case sensitive.
+2015-05-07T02:51:19Z pjb: (at least, the standard dispatching reader macros.  One could write a dispatching reader macro that would have the subchar case sensitive).
+2015-05-07T02:52:14Z stardiviner joined #lisp
+2015-05-07T02:52:22Z freehck: Found it in grid system in package antik. )
+2015-05-07T02:57:49Z freehck: Hm... I still cannot understand how load this reader macro to use in my repl. :(
+2015-05-07T02:57:59Z freehck: *how to
+2015-05-07T02:58:07Z Zhivago: If it expanded, you alreaded loaded it.
+2015-05-07T02:58:15Z freehck: It does not.
+2015-05-07T02:58:52Z freehck: Maybe it'd be better to restart repl...
+2015-05-07T03:00:02Z freehck: Yes, it expanted right after load.
+2015-05-07T03:00:11Z freehck: CLF> #m(1 1)
+2015-05-07T03:00:11Z freehck: #(1.0 1.0)
+2015-05-07T03:00:36Z BlueRavenGT joined #lisp
+2015-05-07T03:01:54Z BitPuffin|osx quit (Ping timeout: 245 seconds)
+2015-05-07T03:02:03Z mikaelj quit (Ping timeout: 244 seconds)
+2015-05-07T03:02:51Z ajtulloc_ quit (Read error: Connection reset by peer)
+2015-05-07T03:03:23Z ajtulloch joined #lisp
+2015-05-07T03:09:26Z mikaelj joined #lisp
+2015-05-07T03:10:12Z jleija quit (Quit: leaving)
+2015-05-07T03:11:26Z beach joined #lisp
+2015-05-07T03:11:33Z beach: Good morning everyone!
+2015-05-07T03:11:33Z nyef: Hello beach.
+2015-05-07T03:11:33Z minion: beach, memo from jasom: you have some tests for ANSI conformance; are they runnable without asdf?
+2015-05-07T03:12:04Z beach: jasom: Yes.  I started adding ASDF definitions, but I haven't removed any existing code.
+2015-05-07T03:12:06Z nyef: Heh. 23:11. Aside from being 11:11 PM, it's also a chunk of the fib sequence, backwards.
+2015-05-07T03:12:23Z clop2 quit (Ping timeout: 246 seconds)
+2015-05-07T03:12:30Z nyef: Well, semi-backwards.
+2015-05-07T03:13:54Z beach: nyef: When I look at my (digital) alarm clock, I often recognize digit sequences like 747, 3.14, etc.
+2015-05-07T03:14:17Z nyef: Yeah, same effect as 11:11, but 11:11 is more prevalent.
+2015-05-07T03:14:36Z loke: Or 22:22
+2015-05-07T03:15:48Z loke: with a proper clock, 07:47 or 03:14 isn't that exiting
+2015-05-07T03:16:14Z nyef: 12:34 is workable, though.
+2015-05-07T03:16:46Z freehck: Oh, people. Actually I look for a method to divide one polynom by another. And as the example shown in GSLL does not work, could somebody give me an advice?
+2015-05-07T03:20:41Z slimetree joined #lisp
+2015-05-07T03:20:42Z freehck: Hm... It seems that all functions from any system, that should work with #m() reader macro, actually doesn't work in my repl...
+2015-05-07T03:20:48Z freehck: wtf?
+2015-05-07T03:24:26Z linux_dream quit (Quit: Leaving)
+2015-05-07T03:25:35Z ajtulloc_ joined #lisp
+2015-05-07T03:25:37Z Davidbrcz joined #lisp
+2015-05-07T03:27:54Z eschatologist quit (Quit: Textual IRC Client: www.textualapp.com)
+2015-05-07T03:27:56Z nell is now known as alusion
+2015-05-07T03:28:49Z pjb: freehck: do you know packages?
+2015-05-07T03:29:07Z ajtulloch quit (Ping timeout: 256 seconds)
+2015-05-07T03:29:34Z bgs100 quit (Quit: bgs100)
+2015-05-07T03:30:15Z ajtulloc_ quit (Ping timeout: 256 seconds)
+2015-05-07T03:30:32Z ajtulloch joined #lisp
+2015-05-07T03:33:48Z freehck: pjb: yes: this macro is defined in grid package (atnik project).
+2015-05-07T03:34:31Z freehck: hm... no, "grid" is the system.
+2015-05-07T03:34:40Z freehck: antik is a package.
+2015-05-07T03:35:05Z freehck: oh, I'm muddled. :(
+2015-05-07T03:36:07Z pjb: what function do you want to use?
+2015-05-07T03:36:59Z freehck: i want to use a function `divided-difference' from GSLL system.
+2015-05-07T03:37:34Z ajtulloch quit (Read error: Connection reset by peer)
+2015-05-07T03:37:50Z pjb: Functions are named by symbols.  Symbols are interned or imported into packages.
+2015-05-07T03:38:11Z pjb: Symbols are named by strings.
+2015-05-07T03:38:16Z ajtulloch joined #lisp
+2015-05-07T03:38:29Z pjb: What is the package where a symbol named "DIVIDED-DIFFERENCE" is interned?
+2015-05-07T03:39:28Z pjb: freehck: you can find eg. with (apropos "DIVIDED-DIFFERENCE")
+2015-05-07T03:40:06Z freehck: GSLL:DIVIDED-DIFFERENCE (fbound)
+2015-05-07T03:40:18Z innertracks joined #lisp
+2015-05-07T03:40:25Z pjb: So this symbol is interned in the gsll package, and it is exported (a single colon).
+2015-05-07T03:41:21Z freehck: And if it's not exported, 2 colons are used?
+2015-05-07T03:41:21Z pjb: You can have access to it, from a package that would USE the gsll package, or by importing that symbol, or by qualifying it, ie. by writing gsll:divided-difference instead of merely divided-difference.
+2015-05-07T03:41:42Z pjb: yes, if it's not exported, two colons are needed.
+2015-05-07T03:42:25Z freehck: yes, I tried to use divided-difference from my own package that USEd gsll.
+2015-05-07T03:43:21Z slimetree quit (Ping timeout: 240 seconds)
+2015-05-07T03:48:06Z gingerale joined #lisp
+2015-05-07T03:50:53Z smokeink joined #lisp
+2015-05-07T03:52:03Z bjorkintosh quit (Quit: Leaving)
+2015-05-07T03:52:07Z freehck: I got the problem: I needed to evaluate (setf grid:*default-grid-type* 'grid:foreign-array).
+2015-05-07T03:52:41Z s1n4 joined #lisp
+2015-05-07T03:53:43Z mbuf joined #lisp
+2015-05-07T03:57:27Z s1n4 quit (Ping timeout: 256 seconds)
+2015-05-07T04:01:50Z sheilong quit (Remote host closed the connection)
+2015-05-07T04:03:10Z s1n4 joined #lisp
+2015-05-07T04:03:10Z rszeno left #lisp
+2015-05-07T04:03:44Z sdothum quit (Quit: ZNC - 1.6.0 - http://znc.in)
+2015-05-07T04:07:41Z Zhivago: freehck: Well done. :)
+2015-05-07T04:07:41Z mega1 quit (Ping timeout: 246 seconds)
+2015-05-07T04:11:53Z qubitnerd joined #lisp
+2015-05-07T04:12:18Z pjb quit (Ping timeout: 276 seconds)
+2015-05-07T04:13:33Z innertracks quit (Quit: innertracks)
+2015-05-07T04:13:39Z bjorkintosh joined #lisp
+2015-05-07T04:14:01Z innertracks joined #lisp
+2015-05-07T04:16:03Z pjb joined #lisp
+2015-05-07T04:16:43Z ajtulloch quit (Ping timeout: 256 seconds)
+2015-05-07T04:19:34Z innertracks quit (Quit: innertracks)
+2015-05-07T04:24:54Z ajtulloch joined #lisp
+2015-05-07T04:27:22Z theos quit (Disconnected by services)
+2015-05-07T04:27:48Z theos joined #lisp
+2015-05-07T04:29:51Z c74d quit (Ping timeout: 276 seconds)
+2015-05-07T04:33:34Z c74d joined #lisp
+2015-05-07T04:33:54Z nyef quit (Ping timeout: 272 seconds)
+2015-05-07T04:34:52Z rszeno joined #lisp
+2015-05-07T04:38:27Z A205B064 joined #lisp
+2015-05-07T04:41:38Z psy_ quit (Ping timeout: 246 seconds)
+2015-05-07T04:46:12Z k-dawg quit (Quit: This computer has gone to sleep)
+2015-05-07T04:47:13Z defaultxr quit (Quit: gnight)
+2015-05-07T04:49:00Z isaac_rks joined #lisp
+2015-05-07T04:49:12Z k-dawg joined #lisp
+2015-05-07T04:50:32Z cluck quit (Remote host closed the connection)
+2015-05-07T04:56:01Z manuel_ joined #lisp
+2015-05-07T04:56:19Z manuel_ quit (Client Quit)
+2015-05-07T04:58:14Z myrk2 quit (Remote host closed the connection)
+2015-05-07T04:59:38Z slimetree joined #lisp
+2015-05-07T05:00:21Z myrk2 joined #lisp
+2015-05-07T05:00:57Z ajtulloch quit (Remote host closed the connection)
+2015-05-07T05:01:19Z ajtulloch joined #lisp
+2015-05-07T05:03:45Z manuel_ joined #lisp
+2015-05-07T05:08:12Z oleo quit (Quit: Leaving)
+2015-05-07T05:08:22Z paulo_ joined #lisp
+2015-05-07T05:08:46Z paulo_ is now known as Guest3396
+2015-05-07T05:09:39Z Davidbrcz quit (Quit: Leaving)
+2015-05-07T05:09:47Z loke: Will there be an ILS this year?
+2015-05-07T05:12:15Z Guest70936 quit (Ping timeout: 256 seconds)
+2015-05-07T05:13:43Z mj-0 joined #lisp
+2015-05-07T05:17:51Z mj-0 quit (Ping timeout: 250 seconds)
+2015-05-07T05:21:29Z BlueRavenGT quit (Read error: Connection reset by peer)
+2015-05-07T05:22:23Z mbuf quit (Ping timeout: 264 seconds)
+2015-05-07T05:25:57Z loke: *** Eval error ***  Cannot open load file: No such file or directory, gorgon
+2015-05-07T05:26:16Z loke: Ooops
+2015-05-07T05:26:18Z loke: wrong channel
+2015-05-07T05:28:10Z Quadrescence quit (Quit: Leaving)
+2015-05-07T05:30:36Z schaueho joined #lisp
+2015-05-07T05:31:24Z kushal joined #lisp
+2015-05-07T05:33:16Z beach: What is ILS?
+2015-05-07T05:33:42Z beach: Instrument Landing System?
+2015-05-07T05:34:11Z mbuf joined #lisp
+2015-05-07T05:34:25Z beach: minion: What does ILS stand for?
+2015-05-07T05:34:26Z minion: Inestimability Lissoflagellate Soldado
+2015-05-07T05:35:33Z mbuf: International Lisp Conference?
+2015-05-07T05:36:07Z lieven quit (Changing host)
+2015-05-07T05:36:07Z lieven joined #lisp
+2015-05-07T05:36:33Z _sjs joined #lisp
+2015-05-07T05:37:51Z drmeister: Hi beach
+2015-05-07T05:37:57Z drmeister: Hey everyone
+2015-05-07T05:38:12Z beach: mbuf: Sonference?
+2015-05-07T05:38:36Z mbuf: beach, sorry, Sonference?
+2015-05-07T05:38:51Z beach: mbuf: loke said "ILS".
+2015-05-07T05:39:09Z mbuf: beach, ohh! okay
+2015-05-07T05:39:24Z mbuf: beach, I thought that was a typo
+2015-05-07T05:39:49Z loke: Isn't it intranational lisp sumposium?
+2015-05-07T05:39:59Z loke left #lisp
+2015-05-07T05:40:03Z loke joined #lisp
+2015-05-07T05:40:07Z loke: Oh, ILC
+2015-05-07T05:40:37Z beach: drmeister: When do you leave for California?
+2015-05-07T05:42:22Z drmeister: Tomorrow morning.
+2015-05-07T05:42:57Z drmeister: Someone in #llvm told me that the Windows x86 calling convention in LLVM supports both varargs and TCO - I need to verify this.
+2015-05-07T05:43:53Z Bike: i'd be kind of surprised if it didn't? those are pretty basic things.
+2015-05-07T05:45:27Z beach: loke: Usually, ILC is every two years.  The previous one was August 2014 in Montreal.
+2015-05-07T05:45:41Z mbuf quit (Ping timeout: 256 seconds)
+2015-05-07T05:45:48Z quazimod1 quit (Ping timeout: 252 seconds)
+2015-05-07T05:46:04Z sdemarre joined #lisp
+2015-05-07T05:46:29Z quazimodo quit (Read error: No route to host)
+2015-05-07T05:46:35Z Fare joined #lisp
+2015-05-07T05:48:32Z quazimodo joined #lisp
+2015-05-07T05:49:03Z loke: beach: Thanks
+2015-05-07T05:49:11Z loke: I wish I could have joined ELS
+2015-05-07T05:49:19Z loke: I will go next year
+2015-05-07T05:49:34Z loke: Has the locaition been decided yet?
+2015-05-07T05:50:14Z loke: I might skip next year's ILC though, since it takes me 25 hours or so to get to .ca
+2015-05-07T05:50:39Z loke: 23 hours to montreal with 1 stop
+2015-05-07T05:51:16Z loke: Oh wait. Then I have to take a US airline
+2015-05-07T05:52:21Z Ukari quit (Quit: Leaving.)
+2015-05-07T05:52:49Z beach: KrakÃ³w
+2015-05-07T05:53:09Z beach: for ELS.
+2015-05-07T05:53:58Z beach: loke: What makes you think the next ILC is in California?
+2015-05-07T05:54:12Z Jesin quit (Quit: Leaving)
+2015-05-07T05:54:28Z loke: beach: God I hope not. Then I will definitely not attend.
+2015-05-07T05:54:41Z loke: What makes you think I want it to be in the US?
+2015-05-07T05:54:44Z H4ns: What's wrong with California?
+2015-05-07T05:54:48Z pranavrc joined #lisp
+2015-05-07T05:54:48Z pranavrc quit (Changing host)
+2015-05-07T05:54:48Z pranavrc joined #lisp
+2015-05-07T05:55:01Z Bike: traffic?
+2015-05-07T05:55:04Z loke: H4ns: It's in the US. Meaning I have to go to a US airport.
+2015-05-07T05:55:17Z H4ns: loke: and you hate that?  uh.
+2015-05-07T05:55:21Z loke: If I wanted to be treated like a criminal I'd just rob a bank.
+2015-05-07T05:55:37Z Harag joined #lisp
+2015-05-07T05:55:52Z mj-0 joined #lisp
+2015-05-07T05:55:54Z resttime quit (Quit: resttime)
+2015-05-07T05:58:10Z mbuf joined #lisp
+2015-05-07T06:00:41Z mj-0 quit (Remote host closed the connection)
+2015-05-07T06:01:27Z juliuscaezar001 joined #lisp
+2015-05-07T06:01:29Z munksgaard joined #lisp
+2015-05-07T06:02:06Z mj-0 joined #lisp
+2015-05-07T06:02:16Z Shinmera joined #lisp
+2015-05-07T06:03:44Z burtons quit (Remote host closed the connection)
+2015-05-07T06:03:58Z aeth quit (Ping timeout: 265 seconds)
+2015-05-07T06:04:00Z H4ns: Last time I went to Thailand, the border procedure was just like in the US
+2015-05-07T06:04:16Z H4ns: Not that this'd be particularly on-topic :)
+2015-05-07T06:04:35Z Bike: thailand is presently under military rule, so that hardly says anything good about the US :p
+2015-05-07T06:04:51Z H4ns: Bike: when I went there, it was a flourishing democracy
+2015-05-07T06:05:14Z Zhivago: Did they steal your shampoo?
+2015-05-07T06:05:15Z H4ns: oh, and yes, japan, just recently.  just like in the us
+2015-05-07T06:05:28Z Bike: and they had a TSA, and what happened? junta. be afraid!
+2015-05-07T06:05:47Z H4ns: Zhivago: i don't take shampoo to the airport and i am confused if i am not forced to get out of my shoes :)
+2015-05-07T06:05:49Z aeth joined #lisp
+2015-05-07T06:07:55Z Zhivago: Hmm, you mustn't travel much. I only have to take my shoes off when traveling to or from the US.
+2015-05-07T06:08:09Z Zhivago: Ah. You may have been confused in Japan, etc -- were you traveling to the US? :)
+2015-05-07T06:08:31Z H4ns: i am frequently traveling to the us, thus i got used to the shoe thing.
+2015-05-07T06:08:49Z Zhivago: Yeah. Then they apply the US procedure.
+2015-05-07T06:09:01Z Zhivago: If you were traveling from Japan to a civilized country, it wouldn't have applied.
+2015-05-07T06:09:02Z Jesin joined #lisp
+2015-05-07T06:10:06Z cadadar joined #lisp
+2015-05-07T06:13:59Z ahungry quit (Ping timeout: 264 seconds)
+2015-05-07T06:14:57Z jackdaniel: does anyone has talk about ECL by Joanjo from eclm2008? filename is eclm2008.pdf, (dead) link is http://ecls.wiki.sourceforge.net/space/showimage/eclm2008.pdf
+2015-05-07T06:15:00Z jackdaniel: ? â
+2015-05-07T06:15:17Z sdemarre quit (Ping timeout: 244 seconds)
+2015-05-07T06:18:34Z pranavrc quit
+2015-05-07T06:19:01Z pranavrc joined #lisp
+2015-05-07T06:22:11Z pillton: jackdaniel: You can try contacting him via email. I always found him civil and approachable.
+2015-05-07T06:22:34Z brucem: H4ns, Bike, loke: I live in Thailand. Nothing wrong with the military rule here.
+2015-05-07T06:23:06Z jackdaniel: pillton: yes, that's a backplan, tought someone has it on disk, or I'm not aware of some mirror
+2015-05-07T06:23:38Z isaac_rks quit (Quit: My Mac has gone to sleep. ZZZzzzâ¦)
+2015-05-07T06:24:04Z quazimodo quit (Ping timeout: 256 seconds)
+2015-05-07T06:26:09Z pillton wonders if the person with the nick, someone, actually enjoys being referenced accidentally.
+2015-05-07T06:27:30Z ahungry joined #lisp
+2015-05-07T06:27:41Z jackdaniel: oh, that's funny indeed, didn't know there's such a nick
+2015-05-07T06:29:03Z jackdaniel: I remember an accidential joke: "<xxx> Nobody is perfect...\n<nobody> thx :)"
+2015-05-07T06:31:00Z mishoo_ joined #lisp
+2015-05-07T06:40:51Z vdamewood quit (Quit: Computer has gone to sleep.)
+2015-05-07T06:41:29Z slimetree quit (Ping timeout: 250 seconds)
+2015-05-07T06:44:30Z selat joined #lisp
+2015-05-07T06:44:33Z Bahman joined #lisp
+2015-05-07T06:45:07Z srenatus joined #lisp
+2015-05-07T06:45:11Z aeth quit (Ping timeout: 256 seconds)
+2015-05-07T06:46:52Z cmatei joined #lisp
+2015-05-07T06:51:13Z aap_ is now known as aap
+2015-05-07T06:52:28Z ajtulloch quit (Remote host closed the connection)
+2015-05-07T06:52:53Z beach left #lisp
+2015-05-07T06:53:00Z aeth joined #lisp
+2015-05-07T06:55:26Z xinau joined #lisp
+2015-05-07T06:55:46Z mj-0 quit (Remote host closed the connection)
+2015-05-07T06:56:48Z cods_ is now known as cods
+2015-05-07T06:58:58Z jackdaniel: minion: memo for beach: are you going to submit http://metamodular.com/environments.pdf to https://common-lisp.net/project/cdr/ ?
+2015-05-07T06:58:59Z minion: Remembered. I'll tell beach when he/she/it next speaks.
+2015-05-07T07:04:50Z cadadar quit (Quit: Leaving.)
+2015-05-07T07:05:03Z cadadar joined #lisp
+2015-05-07T07:06:04Z mrSpec joined #lisp
+2015-05-07T07:10:01Z yakcc joined #lisp
+2015-05-07T07:10:02Z protist joined #lisp
+2015-05-07T07:11:02Z ajtulloch joined #lisp
+2015-05-07T07:11:27Z innertracks joined #lisp
+2015-05-07T07:11:36Z larion quit (Ping timeout: 252 seconds)
+2015-05-07T07:12:08Z quazimodo joined #lisp
+2015-05-07T07:12:25Z loke: brucem: Well, I live in Singapore and the procedure here is quite wonderful. When arriving I don't have to interact with a single living person.
+2015-05-07T07:13:08Z loke: When departing there is the security check, but it's over in a matter of seconds. The most annoying part of that is the need to take my laptop(s) out of my bag.
+2015-05-07T07:14:32Z pt1 joined #lisp
+2015-05-07T07:14:44Z Shinmera had his best experience at the Luxembourg airport. Large, not many people around, friendly personell, easy to find things and quick to board.
+2015-05-07T07:15:00Z Shinmera: *staff
+2015-05-07T07:15:41Z loke: Sounds nice
+2015-05-07T07:15:45Z loke: I'd like to visit lx
+2015-05-07T07:16:28Z manuel_ quit (Quit: manuel_)
+2015-05-07T07:17:50Z loke: I like how the passport check is completely automated here so you don't have to interact with humans. :-)
+2015-05-07T07:17:54Z loke hates people
+2015-05-07T07:18:13Z H4ns: loke: tell you what: the US border has that, too.
+2015-05-07T07:19:27Z protist: Denommus: I just noticed you are mentioned in http://www.wtfpl.net/faq/
+2015-05-07T07:19:32Z protist: Denommus: it says you are not right
+2015-05-07T07:19:39Z protist: Denommus: I have no idea what it is getting at lol
+2015-05-07T07:19:43Z loke: I'm sure they do, but unless the US airports/airlines has become significantly better since last time I was there (in 2000) I don't want to go again.
+2015-05-07T07:21:18Z protist: Xach: if someone uses quicklisp to use my project, will it show up on my github stats for the project?...if so in what way
+2015-05-07T07:21:31Z loke: protist: no
+2015-05-07T07:21:47Z Ven joined #lisp
+2015-05-07T07:22:00Z protist: loke: not in clone number or any other way?
+2015-05-07T07:22:21Z loke: protist: No. It's cloned once and serves from QL
+2015-05-07T07:22:55Z RenRenJuan quit (Quit: Hibernate, etc.)
+2015-05-07T07:23:20Z protist: loke: if I push a change to my project...will quicklisp pick up on it?
+2015-05-07T07:23:24Z innertracks quit (Quit: innertracks)
+2015-05-07T07:23:44Z loke: protist: Yes. On next update
+2015-05-07T07:23:47Z loke: usually next month
+2015-05-07T07:24:03Z protist: loke: ah sad...so people go without the changes for a while
+2015-05-07T07:24:09Z loke: protist: Yes
+2015-05-07T07:24:15Z Shinmera: That is for the best.
+2015-05-07T07:24:16Z protist: loke: that makes my docs slightly mismatch the functionality they are running with right now
+2015-05-07T07:24:38Z loke: protist: Make the docs part of the package
+2015-05-07T07:24:50Z loke: Or have multiple versions of the docs
+2015-05-07T07:24:51Z ehu joined #lisp
+2015-05-07T07:24:55Z protist: loke: ah, they are
+2015-05-07T07:25:05Z protist: loke: makes sense now
+2015-05-07T07:25:16Z protist: loke: so they have to go to github to get the newest version
+2015-05-07T07:25:17Z isaac_rks joined #lisp
+2015-05-07T07:25:20Z loke: protist: Which package is this.
+2015-05-07T07:25:25Z protist: loke: cl-durian
+2015-05-07T07:25:35Z loke: ah
+2015-05-07T07:25:41Z loke: Your first QL package?
+2015-05-07T07:25:44Z protist: loke: I upgraded it to handle some cases xach pointed out more gracefully
+2015-05-07T07:25:48Z protist: loke: yes sir :)
+2015-05-07T07:25:49Z loke has 4, I think.
+2015-05-07T07:25:58Z protist: loke: I'm playing with making another
+2015-05-07T07:26:08Z mj-0 joined #lisp
+2015-05-07T07:26:11Z protist: loke: keeping this project secret for now, so no one will beat me to it ;)
+2015-05-07T07:26:16Z mj-0 quit (Read error: Connection reset by peer)
+2015-05-07T07:26:37Z mj-0 joined #lisp
+2015-05-07T07:26:52Z protist: Shinmera: makes sense now
+2015-05-07T07:26:57Z pillton: protist: Beware of Bike. He beat me with my last one.
+2015-05-07T07:27:05Z protist: pillton: lol
+2015-05-07T07:27:12Z protist: pillton: did you blab before you were done?
+2015-05-07T07:27:21Z protist: pillton: I may have :/...trying to be more careful now ;)
+2015-05-07T07:27:21Z pillton: No.
+2015-05-07T07:27:33Z protist: pillton: ah he was clairovoyant
+2015-05-07T07:27:41Z pillton: protist: Bike finished before I started. :)
+2015-05-07T07:27:48Z protist: pillton: hahaha
+2015-05-07T07:27:55Z protist: pillton: then he should beware of you ;)
+2015-05-07T07:28:44Z protist: pillton: in my new project I am attempting to create it in a way that any offshoots should be able to be incorporated
+2015-05-07T07:28:54Z protist: pillton: but it is a pretty general thing...so the interface is key
+2015-05-07T07:29:06Z ic2000 joined #lisp
+2015-05-07T07:29:08Z scymtym joined #lisp
+2015-05-07T07:29:11Z ic2000 left #lisp
+2015-05-07T07:29:23Z pillton: You should read the opening chapter of the AMOP book about "being general."
+2015-05-07T07:29:40Z eazar001 quit (Ping timeout: 255 seconds)
+2015-05-07T07:29:46Z protist: pillton: does it take of FORTH mentality of "don't" hahaha
+2015-05-07T07:29:53Z protist: pillton: forgot the `?' somewhere in there
+2015-05-07T07:30:29Z futpib joined #lisp
+2015-05-07T07:30:53Z xinau quit (Ping timeout: 250 seconds)
+2015-05-07T07:31:30Z munksgaard quit (Ping timeout: 256 seconds)
+2015-05-07T07:32:08Z pillton: No, it makes a nice argument about providing a means for users to extend, just not all conceivable extensions.
+2015-05-07T07:32:18Z protist: pillton: ah
+2015-05-07T07:32:48Z protist: pillton: I have one package that uses others...few general functions are user-facing....keywords to dispatch out
+2015-05-07T07:32:50Z k-stz joined #lisp
+2015-05-07T07:32:56Z pillton: Design is about reuse, but it is also about minimising connections to other "components".
+2015-05-07T07:33:06Z BlueRavenGT joined #lisp
+2015-05-07T07:33:38Z protist: pillton: I will read the first chapter...torrenting it for later :)
+2015-05-07T07:33:38Z Patzy quit (Read error: Connection reset by peer)
+2015-05-07T07:33:45Z protist: pillton: may read the whole thing
+2015-05-07T07:33:55Z protist: pillton: CLOS has destroyed my predjudice against all clos
+2015-05-07T07:34:02Z protist: pillton: against all OOP*
+2015-05-07T07:34:08Z Patzy joined #lisp
+2015-05-07T07:34:23Z Cymew joined #lisp
+2015-05-07T07:34:25Z protist: pillton: still hate some types...but don't hate CLOS
+2015-05-07T07:34:53Z mj-0 quit (Ping timeout: 246 seconds)
+2015-05-07T07:35:02Z pillton: You can take more away from AMOP then just CLOS.
+2015-05-07T07:35:17Z pillton: The design pattern is very useful for your own languages.
+2015-05-07T07:35:30Z pillton: I've used it 4 times now.
+2015-05-07T07:35:49Z Goopyo quit (Quit: Goopyo)
+2015-05-07T07:36:05Z larion joined #lisp
+2015-05-07T07:36:22Z protist: pillton: nice :)
+2015-05-07T07:37:03Z taij33n joined #lisp
+2015-05-07T07:37:19Z mbuf: are there any examples of websites built with ningle or clack or caveman?
+2015-05-07T07:37:34Z cadadar quit (Quit: Leaving.)
+2015-05-07T07:37:50Z cadadar joined #lisp
+2015-05-07T07:38:02Z Harag quit (Ping timeout: 246 seconds)
+2015-05-07T07:40:59Z futpib quit (Ping timeout: 264 seconds)
+2015-05-07T07:41:47Z Beetny joined #lisp
+2015-05-07T07:45:22Z eazar001 joined #lisp
+2015-05-07T07:47:40Z smokeink quit (Remote host closed the connection)
+2015-05-07T07:47:52Z Shinmera: Quickdocs is, iirc
+2015-05-07T07:50:58Z stepnem joined #lisp
+2015-05-07T07:51:44Z quazimodo quit (Remote host closed the connection)
+2015-05-07T07:52:12Z mvilleneuve joined #lisp
+2015-05-07T07:53:51Z stardiviner quit (Ping timeout: 250 seconds)
+2015-05-07T07:55:03Z angavrilov joined #lisp
+2015-05-07T07:57:37Z f3lp joined #lisp
+2015-05-07T07:58:41Z cadadar quit (Quit: Leaving.)
+2015-05-07T07:59:33Z manuel_ joined #lisp
+2015-05-07T07:59:34Z cadadar joined #lisp
+2015-05-07T07:59:55Z ndrei quit (Ping timeout: 250 seconds)
+2015-05-07T08:03:23Z larion quit (Ping timeout: 256 seconds)
+2015-05-07T08:07:14Z freehck: People, I used a lot of defun's inside my function. How to suppress warnings about redefinition every time I evaluate this function?
+2015-05-07T08:07:15Z selat quit (Quit: Lost terminal)
+2015-05-07T08:07:39Z Shinmera: Don't use defun inside of a function to begin with.
+2015-05-07T08:07:57Z loke: freehck: For local functions, use FLET or LABELS
+2015-05-07T08:09:07Z freehck: loke: thank you.
+2015-05-07T08:09:08Z protist: freehck: former Schemer?
+2015-05-07T08:09:16Z protist: freehck: yeah flet and labels are your friends
+2015-05-07T08:09:19Z freehck: protist: yes.
+2015-05-07T08:09:34Z protist: freehck: labels if you want to use a labels function in another labels function
+2015-05-07T08:09:38Z protist: freehck: flet otherwise
+2015-05-07T08:10:00Z myrk2: Is there a link or better keywords for the amop being general thing?
+2015-05-07T08:10:11Z protist: freehck: (defun add (a b) (flet ((plus (x y) (+ x y))) (plus a b)))
+2015-05-07T08:10:30Z protist: alright...time to work out
+2015-05-07T08:10:33Z protist: cya #lisp
+2015-05-07T08:12:47Z Harag joined #lisp
+2015-05-07T08:20:48Z clog quit (Ping timeout: 256 seconds)
+2015-05-07T08:21:12Z remi`bd joined #lisp
+2015-05-07T08:31:22Z mj-0 joined #lisp
+2015-05-07T08:34:18Z Harag1 joined #lisp
+2015-05-07T08:34:54Z mtd_ is now known as mtd
+2015-05-07T08:35:18Z Harag quit (Ping timeout: 244 seconds)
+2015-05-07T08:35:49Z mj-0 quit (Ping timeout: 244 seconds)
+2015-05-07T08:36:51Z stardiviner joined #lisp
+2015-05-07T08:36:59Z stardiviner quit (Client Quit)
+2015-05-07T08:37:37Z larion joined #lisp
+2015-05-07T08:37:45Z zacharias joined #lisp
+2015-05-07T08:38:57Z Adlai quit (Ping timeout: 240 seconds)
+2015-05-07T08:42:19Z Karl_Dscc joined #lisp
+2015-05-07T08:42:36Z mvilleneuve quit (Ping timeout: 240 seconds)
+2015-05-07T08:42:56Z cadadar quit (Quit: Leaving.)
+2015-05-07T08:43:04Z cadadar joined #lisp
+2015-05-07T08:45:57Z mvilleneuve joined #lisp
+2015-05-07T08:48:44Z _sjs quit (Ping timeout: 244 seconds)
+2015-05-07T08:49:46Z jack-zhang joined #lisp
+2015-05-07T08:49:47Z Bahman quit (Quit: Ave atque vale)
+2015-05-07T08:52:36Z Harag joined #lisp
+2015-05-07T08:52:56Z Harag1 quit (Ping timeout: 272 seconds)
+2015-05-07T08:53:08Z gabriel_laddel quit (Ping timeout: 265 seconds)
+2015-05-07T08:54:47Z axion: how do i use an output stream as input when i'm done writing to it?
+2015-05-07T08:55:28Z Fare quit (Ping timeout: 272 seconds)
+2015-05-07T08:55:37Z A205B064 quit (Ping timeout: 255 seconds)
+2015-05-07T08:56:17Z jdz: axion: did you specify :direction :io?
+2015-05-07T08:56:31Z axion: i'm using flexi-streams. how do i do that?
+2015-05-07T08:57:12Z leafybasil quit (Remote host closed the connection)
+2015-05-07T08:57:35Z H4ns: axion: if in doubt, create an input stream after you're done creating the buffer
+2015-05-07T08:57:48Z mrSpec quit (Read error: No route to host)
+2015-05-07T08:58:48Z axion: i'm really not sure how to create a non-file-stream in lisp other than flexi-streams:make-in-memory-input/output-stream
+2015-05-07T08:59:26Z H4ns: axion: you don't need more than that.
+2015-05-07T08:59:58Z H4ns: axion: when you're done writing to the in-memory-output-stream, grab the buffer and create an in-memory-input stream on it
+2015-05-07T09:00:45Z axion: that expects a vector...not sure what to pass to it
+2015-05-07T09:01:17Z jdz: get-output-stream-sequence?
+2015-05-07T09:01:54Z axion: ah thank you
+2015-05-07T09:02:17Z d4ryus__ joined #lisp
+2015-05-07T09:02:25Z mrSpec joined #lisp
+2015-05-07T09:03:40Z ajtulloc_ joined #lisp
+2015-05-07T09:04:29Z cadadar quit (Read error: Connection reset by peer)
+2015-05-07T09:04:42Z cadadar joined #lisp
+2015-05-07T09:05:13Z k-stz quit (Ping timeout: 264 seconds)
+2015-05-07T09:05:59Z Adlai joined #lisp
+2015-05-07T09:06:06Z d4ryus quit (Ping timeout: 276 seconds)
+2015-05-07T09:06:36Z jack-zhang quit (Read error: Connection reset by peer)
+2015-05-07T09:07:25Z ajtulloch quit (Ping timeout: 256 seconds)
+2015-05-07T09:10:35Z cadadar quit (Quit: Leaving.)
+2015-05-07T09:11:52Z yakcc quit (Read error: Connection reset by peer)
+2015-05-07T09:12:28Z yakcc joined #lisp
+2015-05-07T09:14:37Z Ven quit (Quit: My MacBook has gone to sleep. ZZZzzzâ¦)
+2015-05-07T09:17:42Z Harag1 joined #lisp
+2015-05-07T09:18:15Z fooasasasdas joined #lisp
+2015-05-07T09:18:25Z fooasasasdas quit (Client Quit)
+2015-05-07T09:18:47Z Harag quit (Ping timeout: 264 seconds)
+2015-05-07T09:20:19Z Karl_Dscc quit (Remote host closed the connection)
+2015-05-07T09:20:20Z leafybasil joined #lisp
+2015-05-07T09:20:52Z leafybasil quit (Remote host closed the connection)
+2015-05-07T09:21:18Z leafybasil joined #lisp
+2015-05-07T09:22:30Z ebrasca joined #lisp
+2015-05-07T09:24:43Z pranavrc_ joined #lisp
+2015-05-07T09:24:43Z pranavrc quit (Read error: Connection reset by peer)
+2015-05-07T09:30:06Z ehu quit (Quit: Leaving.)
+2015-05-07T09:33:52Z Adlai quit (Ping timeout: 252 seconds)
+2015-05-07T09:34:20Z yakcc left #lisp
+2015-05-07T09:34:21Z Adlai joined #lisp
+2015-05-07T09:34:42Z pranavrc_ quit (Read error: Connection reset by peer)
+2015-05-07T09:38:39Z ehu joined #lisp
+2015-05-07T09:44:49Z Karl_Dscc joined #lisp
+2015-05-07T09:47:03Z mj-0 joined #lisp
+2015-05-07T09:47:13Z Adlai quit (Ping timeout: 264 seconds)
+2015-05-07T09:51:08Z smokeink joined #lisp
+2015-05-07T09:51:19Z Karl_Dscc quit (Remote host closed the connection)
+2015-05-07T09:51:31Z Harag1 quit (Quit: Harag1)
+2015-05-07T09:53:49Z pranavrc joined #lisp
+2015-05-07T09:53:49Z pranavrc quit (Changing host)
+2015-05-07T09:53:49Z pranavrc joined #lisp
+2015-05-07T09:54:17Z robot-beethoven quit (Quit: ERC (IRC client for Emacs 24.5.1))
+2015-05-07T09:58:48Z Ven joined #lisp
+2015-05-07T09:59:22Z lancetw joined #lisp
+2015-05-07T10:01:26Z Niac quit (Remote host closed the connection)
+2015-05-07T10:01:53Z qubitnerd quit (Ping timeout: 246 seconds)
+2015-05-07T10:03:00Z ndrei joined #lisp
+2015-05-07T10:03:25Z gravicappa joined #lisp
+2015-05-07T10:04:19Z leafybas_ joined #lisp
+2015-05-07T10:06:42Z k-dawg quit (Quit: This computer has gone to sleep)
+2015-05-07T10:07:20Z qubitnerd joined #lisp
+2015-05-07T10:07:29Z leafybasil quit (Ping timeout: 246 seconds)
+2015-05-07T10:14:56Z Ven quit (Quit: My MacBook has gone to sleep. ZZZzzzâ¦)
+2015-05-07T10:15:44Z zadock joined #lisp
+2015-05-07T10:16:27Z alexherbo2 quit (Quit: WeeChat 1.1.1)
+2015-05-07T10:16:33Z Adlai joined #lisp
+2015-05-07T10:17:08Z clog joined #lisp
+2015-05-07T10:17:14Z Alfr joined #lisp
+2015-05-07T10:21:37Z Adlai quit (Ping timeout: 250 seconds)
+2015-05-07T10:22:50Z alexherbo2 joined #lisp
+2015-05-07T10:23:45Z Adlai joined #lisp
+2015-05-07T10:27:38Z karswell joined #lisp
+2015-05-07T10:27:51Z nyef joined #lisp
+2015-05-07T10:29:45Z mvilleneuve quit (Quit: This computer has gone to sleep)
+2015-05-07T10:30:44Z CEnnis91 quit (Quit: Connection closed for inactivity)
+2015-05-07T10:31:08Z Adlai quit (Ping timeout: 256 seconds)
+2015-05-07T10:33:37Z harish_ quit (Ping timeout: 244 seconds)
+2015-05-07T10:45:59Z Adlai joined #lisp
+2015-05-07T10:53:28Z kushal quit (Quit: Leaving)
+2015-05-07T10:56:22Z leafybas_ quit (Read error: Connection reset by peer)
+2015-05-07T10:56:37Z leafybasil joined #lisp
+2015-05-07T10:56:38Z EvW joined #lisp
+2015-05-07T10:56:41Z sdothum joined #lisp
+2015-05-07T10:57:05Z cadadar joined #lisp
+2015-05-07T10:57:48Z Adlai quit (Ping timeout: 264 seconds)
+2015-05-07T11:02:05Z ndrei quit (Ping timeout: 246 seconds)
+2015-05-07T11:02:35Z ajtulloc_ quit (Remote host closed the connection)
+2015-05-07T11:03:34Z ggole joined #lisp
+2015-05-07T11:03:36Z cadadar1 joined #lisp
+2015-05-07T11:03:51Z cadadar quit (Quit: Leaving.)
+2015-05-07T11:05:02Z ndrei joined #lisp
+2015-05-07T11:05:35Z Karl_Dscc joined #lisp
+2015-05-07T11:06:37Z isaac_rks quit (Quit: My Mac has gone to sleep. ZZZzzzâ¦)
+2015-05-07T11:07:04Z isaac_rks joined #lisp
+2015-05-07T11:07:13Z isaac_rks quit (Client Quit)
+2015-05-07T11:09:21Z mikaelj quit (Ping timeout: 240 seconds)
+2015-05-07T11:10:16Z mvilleneuve joined #lisp
+2015-05-07T11:10:55Z Ethan- joined #lisp
+2015-05-07T11:11:27Z mikaelj joined #lisp
+2015-05-07T11:12:53Z Vutral quit (Ping timeout: 244 seconds)
+2015-05-07T11:14:40Z ndrei quit (Ping timeout: 255 seconds)
+2015-05-07T11:17:43Z leafybasil quit (Remote host closed the connection)
+2015-05-07T11:18:09Z leafybasil joined #lisp
+2015-05-07T11:18:44Z BlueRavenGT quit (Remote host closed the connection)
+2015-05-07T11:22:15Z ndrei joined #lisp
+2015-05-07T11:22:57Z ajtulloch joined #lisp
+2015-05-07T11:22:58Z harish_ joined #lisp
+2015-05-07T11:27:57Z ajtulloch quit (Ping timeout: 256 seconds)
+2015-05-07T11:29:33Z Vutral joined #lisp
+2015-05-07T11:32:06Z attila_lendvai joined #lisp
+2015-05-07T11:32:06Z attila_lendvai quit (Changing host)
+2015-05-07T11:32:06Z attila_lendvai joined #lisp
+2015-05-07T11:32:55Z mj-0 quit (Remote host closed the connection)
+2015-05-07T11:35:17Z Harag joined #lisp
+2015-05-07T11:35:44Z pt1 quit (Remote host closed the connection)
+2015-05-07T11:37:57Z antgreen joined #lisp
+2015-05-07T11:39:16Z antgreen quit (Remote host closed the connection)
+2015-05-07T11:39:45Z yati joined #lisp
+2015-05-07T11:43:15Z scymtym quit (Ping timeout: 256 seconds)
+2015-05-07T11:44:06Z psy_ joined #lisp
+2015-05-07T11:44:54Z yappy joined #lisp
+2015-05-07T11:45:30Z Adlai joined #lisp
+2015-05-07T11:46:39Z smokeink quit (Ping timeout: 256 seconds)
+2015-05-07T11:47:17Z mbuf quit (Quit: Ex-Chat)
+2015-05-07T11:47:49Z freehck: To be more accurate: is the difference between `labels' and `flet' the same that is between `let' and `let*'?
+2015-05-07T11:48:38Z freehck: I mean, if I use `labels', the next defined local function will know about the previously defined one. Right?
+2015-05-07T11:48:51Z Shinmera: It's not the same
+2015-05-07T11:49:00Z Shinmera: Any labels function will know about all other labels functions including itself.
+2015-05-07T11:49:26Z freehck: So it could be defined recursively?
+2015-05-07T11:49:31Z Shinmera: No?
+2015-05-07T11:49:48Z freehck: Okay, I got.
+2015-05-07T11:50:01Z freehck: But is there something like flet*?
+2015-05-07T11:50:07Z Shinmera: No.
+2015-05-07T11:50:13Z freehck: Thanks.
+2015-05-07T11:50:46Z smokeink joined #lisp
+2015-05-07T11:52:55Z milosn quit (Quit: leaving)
+2015-05-07T11:52:55Z mj-0 joined #lisp
+2015-05-07T11:53:18Z Vutral quit (Ping timeout: 256 seconds)
+2015-05-07T11:53:57Z edgar-rft joined #lisp
+2015-05-07T11:54:40Z ziocroc joined #lisp
+2015-05-07T11:57:19Z pranavrc quit (Ping timeout: 245 seconds)
+2015-05-07T11:59:22Z juliuscaezar001 quit (Quit: Connection closed for inactivity)
+2015-05-07T12:01:44Z kushal joined #lisp
+2015-05-07T12:03:11Z Vutral joined #lisp
+2015-05-07T12:03:45Z kushal quit (Read error: Connection reset by peer)
+2015-05-07T12:04:37Z kushal joined #lisp
+2015-05-07T12:04:49Z Adlai quit (Ping timeout: 245 seconds)
+2015-05-07T12:07:19Z ebrasca quit (Ping timeout: 255 seconds)
+2015-05-07T12:08:00Z EvW quit (Ping timeout: 264 seconds)
+2015-05-07T12:08:47Z Adlai joined #lisp
+2015-05-07T12:09:42Z scymtym joined #lisp
+2015-05-07T12:10:25Z genericus joined #lisp
+2015-05-07T12:10:52Z theos quit (Ping timeout: 256 seconds)
+2015-05-07T12:11:41Z yappy quit (Remote host closed the connection)
+2015-05-07T12:13:36Z Adlai quit (Ping timeout: 240 seconds)
+2015-05-07T12:13:41Z theos joined #lisp
+2015-05-07T12:13:51Z yeticry quit (Ping timeout: 256 seconds)
+2015-05-07T12:13:59Z g-the-2nd joined #lisp
+2015-05-07T12:14:01Z g-the-2nd quit (Client Quit)
+2015-05-07T12:14:16Z Vutral quit (Excess Flood)
+2015-05-07T12:14:17Z Adlai joined #lisp
+2015-05-07T12:14:37Z yeticry joined #lisp
+2015-05-07T12:15:54Z echo-area quit (Remote host closed the connection)
+2015-05-07T12:18:10Z jdm_ joined #lisp
+2015-05-07T12:18:34Z ineiros quit (Ping timeout: 255 seconds)
+2015-05-07T12:19:16Z ndrei quit (Ping timeout: 240 seconds)
+2015-05-07T12:19:55Z mbuf joined #lisp
+2015-05-07T12:20:22Z cadadar1 quit (Quit: Leaving.)
+2015-05-07T12:20:24Z yappy joined #lisp
+2015-05-07T12:22:44Z knobo joined #lisp
+2015-05-07T12:23:24Z knobo: Would a cl-ppcre to cl-irregsexp converter be a good idea? (Since it looks like cl-irregsexp is faster)
+2015-05-07T12:23:49Z ajtulloch joined #lisp
+2015-05-07T12:25:02Z Beetny quit (Ping timeout: 256 seconds)
+2015-05-07T12:25:11Z yappy quit (Remote host closed the connection)
+2015-05-07T12:26:08Z ndrei joined #lisp
+2015-05-07T12:27:17Z larion quit (Ping timeout: 244 seconds)
+2015-05-07T12:31:14Z jackdaniel: freehck: but it would be trivial to write a macro implementing flet*, if you really need it
+2015-05-07T12:31:37Z jackdaniel: that'd be just nested flet calling
+2015-05-07T12:32:33Z ziocroc quit (Ping timeout: 256 seconds)
+2015-05-07T12:32:43Z Vutral joined #lisp
+2015-05-07T12:33:44Z manuel__ joined #lisp
+2015-05-07T12:34:30Z Adlai quit (Quit: Insufficient entropy for sufficient reason)
+2015-05-07T12:36:37Z ziocroc joined #lisp
+2015-05-07T12:37:01Z manuel_ quit (Ping timeout: 255 seconds)
+2015-05-07T12:37:01Z manuel__ is now known as manuel_
+2015-05-07T12:38:08Z mbuf quit (Remote host closed the connection)
+2015-05-07T12:39:57Z attila_lendvai quit (Quit: Leaving.)
+2015-05-07T12:40:02Z attila_lendvai1 joined #lisp
+2015-05-07T12:40:02Z attila_lendvai1 is now known as attila_lendvai
+2015-05-07T12:40:02Z attila_lendvai quit (Changing host)
+2015-05-07T12:40:02Z attila_lendvai joined #lisp
+2015-05-07T12:42:02Z Vutral quit (Ping timeout: 256 seconds)
+2015-05-07T12:45:38Z ebrasca joined #lisp
+2015-05-07T12:47:28Z mj-0 quit (Remote host closed the connection)
+2015-05-07T12:48:21Z ineiros joined #lisp
+2015-05-07T12:50:46Z pranavrc joined #lisp
+2015-05-07T12:51:02Z mood: I'm having some issues with cl-launch not finding its own cl-launch/dispatch system. Just quickloading cl-launch/dispatch from a REPL does work
+2015-05-07T12:51:48Z hlavaty joined #lisp
+2015-05-07T12:53:46Z genericus left #lisp
+2015-05-07T12:53:56Z ziocroc quit (Ping timeout: 240 seconds)
+2015-05-07T12:55:25Z Vutral joined #lisp
+2015-05-07T12:56:07Z Vutral quit (Excess Flood)
+2015-05-07T12:58:35Z Vutral joined #lisp
+2015-05-07T13:03:27Z LiamH joined #lisp
+2015-05-07T13:04:50Z cluck joined #lisp
+2015-05-07T13:07:47Z yati quit (Quit: Leaving)
+2015-05-07T13:07:54Z jdm_ quit (Ping timeout: 276 seconds)
+2015-05-07T13:09:41Z attila_lendvai quit (Quit: Leaving.)
+2015-05-07T13:09:44Z attila_lendvai1 joined #lisp
+2015-05-07T13:09:45Z attila_lendvai1 is now known as attila_lendvai
+2015-05-07T13:09:45Z attila_lendvai quit (Changing host)
+2015-05-07T13:09:45Z attila_lendvai joined #lisp
+2015-05-07T13:10:12Z k-stz joined #lisp
+2015-05-07T13:14:44Z kami joined #lisp
+2015-05-07T13:15:55Z kami: Hello #lisp
+2015-05-07T13:21:21Z pranavrc quit
+2015-05-07T13:24:52Z scoofy: hello
+2015-05-07T13:26:15Z CEnnis91 joined #lisp
+2015-05-07T13:29:04Z ndrei quit (Ping timeout: 256 seconds)
+2015-05-07T13:30:15Z BitPuffin|osx joined #lisp
+2015-05-07T13:31:08Z larion joined #lisp
+2015-05-07T13:31:56Z Guest3396 quit (Quit: Leaving)
+2015-05-07T13:32:36Z qubitnerd quit (Ping timeout: 240 seconds)
+2015-05-07T13:33:22Z jtza8 joined #lisp
+2015-05-07T13:34:14Z Fare joined #lisp
+2015-05-07T13:34:41Z Alfr quit (Quit: Leaving)
+2015-05-07T13:34:50Z badkins joined #lisp
+2015-05-07T13:36:24Z mood: Fare: I'm having some problems with the system cl-launch/dispatch not being found when using cl-launch
+2015-05-07T13:36:34Z mood: I can load it perfectly fine from the REPL
+2015-05-07T13:37:09Z BitPuffin|osx quit (Ping timeout: 256 seconds)
+2015-05-07T13:37:33Z ndrei joined #lisp
+2015-05-07T13:39:59Z mood: I take that last part back, I can't load it from the REPL, apparently
+2015-05-07T13:44:29Z yappy joined #lisp
+2015-05-07T13:44:50Z antgreen joined #lisp
+2015-05-07T13:45:12Z Karl_Dscc quit (Remote host closed the connection)
+2015-05-07T13:45:14Z mood: I seem to have fixed my problem. I first had to copy dispatch.lisp to somewhere ASDF could find it, and not use the --source-registry option
+2015-05-07T13:45:49Z oGMo: hmm, (setf (ldb ..) ..) seems to cons a lot in sbcl
+2015-05-07T13:46:05Z oGMo: i should probably upgrade though
+2015-05-07T13:46:31Z H4ns: oGMo: that certainly depends on the argument types and type declarations.
+2015-05-07T13:46:57Z H4ns: oGMo: if you're properly declaring everything as fixnums, (setf (ldb ...) ...) will not cons at all.
+2015-05-07T13:47:04Z oGMo: hrm
+2015-05-07T13:47:10Z rszeno quit (Quit: Leaving.)
+2015-05-07T13:47:25Z oGMo: oh, it's specifically fixnums? that seems.. limiting
+2015-05-07T13:48:13Z H4ns: not sure what you're expecting.
+2015-05-07T13:49:02Z oGMo: e.g., (unsigned-byte x) where x is a common 2**n
+2015-05-07T13:49:27Z oGMo: i'm just rewriting this to use logior and ash, which seems to not cons
+2015-05-07T13:50:07Z cadadar joined #lisp
+2015-05-07T13:50:34Z Fare: mood: did ypu install it properly?
+2015-05-07T13:50:46Z Fare: how did you install it?
+2015-05-07T13:50:49Z cadadar quit (Client Quit)
+2015-05-07T13:50:55Z mood: Fare: I ran 'make install' in the source directory
+2015-05-07T13:51:08Z Shinmera: For a system's dependencies through :depends-on, how does ASDF determine the operation necessary to fulfil that dependency? Is there a way to specify that I depend on a specific operation being fulfilled on the system, rather than what seems to be the default (load-op)?
+2015-05-07T13:51:50Z cadadar joined #lisp
+2015-05-07T13:52:05Z Fare: did you have write access to /usr/local ?
+2015-05-07T13:52:33Z Fare: Shinmera: yes and no
+2015-05-07T13:52:39Z mood: Fare: Yes, 'sudo make install'. It worked just fine, as long as I didn't touch the -DE stuff
+2015-05-07T13:52:47Z Fare: Shinmera: if your top-level command is load-op, it will load-op
+2015-05-07T13:53:07Z Shinmera: Fare: So it will inherit the operation of the dependant system being operated on?
+2015-05-07T13:53:13Z Fare: however, if you use build-op with asdf:make, then you can specify :build-operation
+2015-05-07T13:53:40Z Shinmera: Hrm, ok.
+2015-05-07T13:53:55Z Fare: for dependencies, there's also :in-order-to
+2015-05-07T13:54:06Z Shinmera: Right.
+2015-05-07T13:54:32Z cadadar quit (Client Quit)
+2015-05-07T13:55:24Z Fare: mood: the code must be installed in a place reachable by your source-registry configuration
+2015-05-07T13:55:29Z eudoxia joined #lisp
+2015-05-07T13:55:47Z Fare: which should be the case of /usr/local/share/common-lisp/source/ by default
+2015-05-07T13:55:59Z Fare: which ASDF are you using? There might be bugs in it, too
+2015-05-07T13:56:09Z mood: Fare: Yes, but dispatch.lisp isn't copied over to there with make install
+2015-05-07T13:56:14Z mood: I'm using ASDF 3.1.3
+2015-05-07T13:56:24Z Fare: oh, make install fails to copy it? Oops.
+2015-05-07T13:58:32Z failproofshark: Ã hello
+2015-05-07T13:58:37Z ASau` joined #lisp
+2015-05-07T13:58:43Z cadadar joined #lisp
+2015-05-07T14:00:34Z kami: failproofshark: Ã hello to you too
+2015-05-07T14:01:30Z failproofshark: kami: heh, not sure where that stray accented a came from
+2015-05-07T14:01:39Z kami: :)
+2015-05-07T14:01:49Z mood: I think it was an anaphoric hello, or something
+2015-05-07T14:02:03Z failproofshark: hah
+2015-05-07T14:02:05Z ASau quit (Ping timeout: 256 seconds)
+2015-05-07T14:02:13Z failproofshark: so how are things kami and  mood ?
+2015-05-07T14:02:45Z oleo joined #lisp
+2015-05-07T14:02:58Z kami: failproofshark: I'm struggling with cl-libssh2 (http://www.bytebucket.org/alxchk/cl-libssh2)
+2015-05-07T14:02:59Z frkout quit (Remote host closed the connection)
+2015-05-07T14:03:04Z kami: to add sftp support
+2015-05-07T14:03:15Z mood: failproofshark: I'm fine, doing a bit of lisp at work :D
+2015-05-07T14:03:25Z frkout joined #lisp
+2015-05-07T14:04:16Z kami: Fare: is there some info on the details of how versioned depends-on works (as in ':depends-on ((:version :some-system "1.3"))') ?
+2015-05-07T14:04:28Z cadadar quit (Quit: Leaving.)
+2015-05-07T14:04:38Z cadadar joined #lisp
+2015-05-07T14:04:48Z failproofshark: cool
+2015-05-07T14:07:22Z failproofshark: kami: i this your repository?
+2015-05-07T14:07:32Z failproofshark: mood: for fun or for profit or both?
+2015-05-07T14:07:33Z Fare: kami: I believe the manual touches the topic briefly
+2015-05-07T14:07:36Z frkout quit (Ping timeout: 240 seconds)
+2015-05-07T14:07:43Z failproofshark: *is that
+2015-05-07T14:07:56Z kami: failproofshark: no, I found it when searching for a lib with sftp support
+2015-05-07T14:08:04Z failproofshark: ah ok
+2015-05-07T14:08:24Z mood: failproofshark: both
+2015-05-07T14:08:55Z kami: Fare: yes, I thought you might have written a blog entry or alike
+2015-05-07T14:10:02Z kami: Fare: so I can have multiple versions of the same lib in the source-registry and if a system :depends-on a specific version, then the correct one is loaded?
+2015-05-07T14:10:06Z cadadar quit (Quit: Leaving.)
+2015-05-07T14:10:14Z Fare: no, unhappily not
+2015-05-07T14:10:21Z Fare: asdf checks version consistency
+2015-05-07T14:10:31Z Fare: but doesn't solve version constraints
+2015-05-07T14:10:42Z kami: I see.
+2015-05-07T14:13:39Z kami: Fare: how is uiop:command-line-arguments related to the library command-line-arguments? Does uiop:c-l-a provide everything which is in c-l-a?
+2015-05-07T14:15:49Z jlongster joined #lisp
+2015-05-07T14:18:24Z yappy quit (Remote host closed the connection)
+2015-05-07T14:18:25Z k-stz quit (Ping timeout: 264 seconds)
+2015-05-07T14:19:17Z EvW joined #lisp
+2015-05-07T14:20:33Z Karl_Dscc joined #lisp
+2015-05-07T14:21:00Z ASau` is now known as ASau
+2015-05-07T14:24:34Z Fare makes a quick release of cl-launch 4.1.3.1
+2015-05-07T14:24:52Z Fare: kami: the library does parsing of the arguments
+2015-05-07T14:25:45Z Fare: Note that I'm pushing for CLON to adopt the few things where my library is still superior, and I hope to then declare my library obsolete in favor of CLON.
+2015-05-07T14:26:01Z Fare: right now, I still prefer my library, for many reasons.
+2015-05-07T14:26:04Z kami: Fare: good to know
+2015-05-07T14:26:13Z hlavaty quit (Remote host closed the connection)
+2015-05-07T14:26:18Z Fare: but CLON has a lot of perks
+2015-05-07T14:27:19Z kami: There is something I would appreciate: a way of specifying the configuration options /either/ as command line args /or/ as a configuration file
+2015-05-07T14:28:25Z Fare: oh, my library doesn't do it, and I don't think CLON does either, though CLON makes it easy to have defaults from $ENVIRONMENT_VARIABLES
+2015-05-07T14:28:26Z kami: or maybe even a combination of a config file /and/ command line options
+2015-05-07T14:28:49Z Fare: for configuration files, you might want to reuse the uiop infrastructure
+2015-05-07T14:29:25Z Fare: though the API of UIOP is being updated right now, with slight pathname incompatibilities on Windows.
+2015-05-07T14:30:55Z kami: Fare: will look into it. I read your 'Why Lisp is an acceptable ...' paper with great interest
+2015-05-07T14:33:07Z Ven joined #lisp
+2015-05-07T14:36:16Z k-dawg joined #lisp
+2015-05-07T14:36:36Z smokeink quit (Quit: Lost terminal)
+2015-05-07T14:39:27Z eudoxia: kami: i have a more up-to-date, working copy of cl-libssh2 in my trivial-ssh project, you might find it easier to work with
+2015-05-07T14:39:44Z eudoxia: https://github.com/eudoxia0/trivial-ssh
+2015-05-07T14:39:59Z ahungry_ joined #lisp
+2015-05-07T14:41:01Z kami: eudoxia: does it support sftp?
+2015-05-07T14:41:06Z mj-0 joined #lisp
+2015-05-07T14:41:08Z eudoxia: no
+2015-05-07T14:41:15Z eudoxia: just saying maybe you want to work from there
+2015-05-07T14:41:23Z eudoxia: cause it at least builds
+2015-05-07T14:42:13Z kami: eudoxia: I didn't have any build problems on current SBCL.
+2015-05-07T14:42:38Z eudoxia: huh
+2015-05-07T14:43:07Z kami: I loaded and tried the (meager) examples.lisp
+2015-05-07T14:43:31Z kami: Although I got dizzy from all the 'with-...' macros
+2015-05-07T14:43:58Z kami: I cannot open the github link from where I am currently.
+2015-05-07T14:49:33Z kami cannot access github because of a firewall around a whole country
+2015-05-07T14:49:43Z milosn joined #lisp
+2015-05-07T14:50:21Z kami: eudoxia: just cloned it. It is not based on cl-libssh2, but another impl, right?
+2015-05-07T14:50:34Z eudoxia: kami: it is
+2015-05-07T14:50:43Z eudoxia: there's a slightly modified copy of cl-libssh2 in the libssh2 dir
+2015-05-07T14:50:52Z kami: eudoxia: I see
+2015-05-07T14:51:11Z cadadar joined #lisp
+2015-05-07T14:51:28Z cadadar quit (Client Quit)
+2015-05-07T14:51:57Z ski joined #lisp
+2015-05-07T14:52:07Z schjetne: kami: blocked IP or just DNS? You can't access 192.30.252.131?
+2015-05-07T14:52:22Z nightshade427 quit (Quit: bye)
+2015-05-07T14:52:26Z kami: schjetne: thank you. I solved my problem.
+2015-05-07T14:52:57Z Karl_Dscc quit (Remote host closed the connection)
+2015-05-07T14:53:07Z kami: eudoxia: did you contact the original author? Is s/he unresponsive?
+2015-05-07T14:54:49Z xinau joined #lisp
+2015-05-07T14:55:27Z eudoxia: kami: yes, i sent him a message on bitbucket and he never replied. idk what it was about at this point.
+2015-05-07T14:56:25Z akkad quit (Excess Flood)
+2015-05-07T14:57:06Z mvilleneuve_ joined #lisp
+2015-05-07T14:57:44Z mvilleneuve quit (Ping timeout: 245 seconds)
+2015-05-07T14:58:01Z araujo joined #lisp
+2015-05-07T14:58:12Z kami: eudoxia: I see. Then it seems reasonable to fork.
+2015-05-07T14:58:19Z araujo quit (Max SendQ exceeded)
+2015-05-07T14:58:27Z shka joined #lisp
+2015-05-07T15:00:33Z Fare: kami: thanks for your interest :-)
+2015-05-07T15:00:59Z Fare: and yes, I'm putting my scripting where my mouth is and using CL
+2015-05-07T15:01:24Z srcerer quit (Ping timeout: 264 seconds)
+2015-05-07T15:01:58Z aksatac quit (Quit: Connection closed for inactivity)
+2015-05-07T15:02:16Z innertracks joined #lisp
+2015-05-07T15:03:31Z akkad joined #lisp
+2015-05-07T15:04:03Z kami: eudoxia: is trivial-ssh available with quicklisp?
+2015-05-07T15:04:23Z mj-0 quit (Remote host closed the connection)
+2015-05-07T15:04:51Z eudoxia: not yet i think
+2015-05-07T15:04:58Z eudoxia: https://github.com/quicklisp/quicklisp-projects/issues/768
+2015-05-07T15:05:26Z kami: eudoxia: now I remember the loading issue!
+2015-05-07T15:05:36Z schaueho quit (Ping timeout: 240 seconds)
+2015-05-07T15:05:59Z kami: I had to rename libssh2.cffi.lisp to libssh2-cffi.lisp
+2015-05-07T15:06:22Z eudoxia: hah yeah
+2015-05-07T15:07:26Z gravicappa quit (Remote host closed the connection)
+2015-05-07T15:07:30Z jlongste` joined #lisp
+2015-05-07T15:07:52Z jlongster quit (Ping timeout: 272 seconds)
+2015-05-07T15:07:55Z Fare: I don't know what trivial-ssh does, but I've been using ssh via inferior-shell just fine.
+2015-05-07T15:08:33Z eudoxia: that is certainly simpler
+2015-05-07T15:09:02Z akkad quit (Excess Flood)
+2015-05-07T15:09:03Z eudoxia quit (Quit: Leaving)
+2015-05-07T15:09:20Z Fare: trivial-ssh looks like it will give you better control, via libssh2
+2015-05-07T15:09:31Z akkad joined #lisp
+2015-05-07T15:09:41Z kami: Fare: libssh2 is a client lib with finer grained control. You create an ssh session and can perform different operations through that connection
+2015-05-07T15:09:55Z Fare: ok. nice.
+2015-05-07T15:10:00Z kami: e.g. get an sftp directory listing, retrieving single files
+2015-05-07T15:10:13Z kami: deleting ones etc.
+2015-05-07T15:10:28Z kami: I have just finished the sftp dir listing and retrieval
+2015-05-07T15:11:17Z kami: minion: message for eudoxia: I will then fork trivial-ssh and create a pull request with my sftp additions
+2015-05-07T15:11:19Z minion: you speak nonsense
+2015-05-07T15:11:21Z salva: kami: libssh2 support for sftp is quite rudimentary
+2015-05-07T15:11:38Z kami: salva: it works fine, here
+2015-05-07T15:11:38Z SAL9000: kami: "memo" not "message"
+2015-05-07T15:11:40Z salva: I know because I am the author of several SSH related Perl modules
+2015-05-07T15:11:40Z jlongste` quit (Read error: Connection reset by peer)
+2015-05-07T15:11:45Z kami: SAL9000: thanks
+2015-05-07T15:11:59Z salva: some working on top of libssh2
+2015-05-07T15:12:16Z kami: minion: memo for eudoxia: I will then fork trivial-ssh and create a pull request with my sftp additions
+2015-05-07T15:12:16Z minion: Remembered. I'll tell eudoxia when he/she/it next speaks.
+2015-05-07T15:13:07Z kami: salva: I have not implemented much; just an sftp dir listing and retrieval of individual files. And didn't have any special issues other than getting to know the C API.
+2015-05-07T15:14:00Z frkout joined #lisp
+2015-05-07T15:14:02Z salva: at least, ensure you are using the latest version released some weeks ago
+2015-05-07T15:14:38Z jlongste` joined #lisp
+2015-05-07T15:14:39Z kami: salva: thanks for the hint. Will do.
+2015-05-07T15:15:57Z mvilleneuve_ quit (Quit: This computer has gone to sleep)
+2015-05-07T15:16:16Z cadadar joined #lisp
+2015-05-07T15:17:20Z jlongste` is now known as jlongster
+2015-05-07T15:19:09Z frkout quit (Ping timeout: 256 seconds)
+2015-05-07T15:20:27Z akkad: lw and sqlite do not work well on arm
+2015-05-07T15:21:29Z Ethan- quit (Remote host closed the connection)
+2015-05-07T15:21:41Z Cymew quit (Quit: Konversation terminated!)
+2015-05-07T15:21:58Z Cymew joined #lisp
+2015-05-07T15:23:09Z nyef: akkad: Separately, or only in conjunction?
+2015-05-07T15:23:31Z nyef: ... And is this different from other platforms?
+2015-05-07T15:27:03Z Cymew quit (Ping timeout: 265 seconds)
+2015-05-07T15:27:30Z ndrei quit (Ping timeout: 256 seconds)
+2015-05-07T15:28:07Z mj-0 joined #lisp
+2015-05-07T15:28:38Z akkad: oops sorry, I know lw is verboten here
+2015-05-07T15:29:02Z nyef: It's not quite verboten, but rarely talked about.
+2015-05-07T15:30:06Z k-dawg quit (Quit: This computer has gone to sleep)
+2015-05-07T15:32:53Z dlowe: lw is great. More power to them.
+2015-05-07T15:37:00Z akkad: at least they let you demo stuff, I'm 4 blocks from Franz and those guys act like you need to sign over your first born to look at their products of "62bit version lisp"
+2015-05-07T15:38:09Z dlowe: akkad: they're mostly selling to the government, not really to individuals or companies
+2015-05-07T15:38:29Z rszeno joined #lisp
+2015-05-07T15:43:58Z kushal quit (Excess Flood)
+2015-05-07T15:44:27Z srcerer joined #lisp
+2015-05-07T15:45:39Z kdas_ joined #lisp
+2015-05-07T15:45:49Z kdas_ quit (Read error: Connection reset by peer)
+2015-05-07T15:46:27Z kushal joined #lisp
+2015-05-07T15:47:41Z jtza8 quit (Ping timeout: 246 seconds)
+2015-05-07T15:51:19Z Bicyclidine joined #lisp
+2015-05-07T15:51:33Z jtza8 joined #lisp
+2015-05-07T15:52:24Z ziocroc joined #lisp
+2015-05-07T15:53:06Z _sjs joined #lisp
+2015-05-07T15:53:09Z Denommus` quit (Ping timeout: 256 seconds)
+2015-05-07T15:55:38Z Ven quit (Quit: My MacBook has gone to sleep. ZZZzzzâ¦)
+2015-05-07T15:56:01Z mvilleneuve joined #lisp
+2015-05-07T15:56:13Z rhllor joined #lisp
+2015-05-07T15:57:25Z Ukari joined #lisp
+2015-05-07T15:59:00Z happy-dude joined #lisp
+2015-05-07T15:59:45Z Goopyo joined #lisp
+2015-05-07T16:00:31Z larion quit (Ping timeout: 256 seconds)
+2015-05-07T16:08:09Z kami quit (Ping timeout: 245 seconds)
+2015-05-07T16:11:04Z m_zr0 quit (Ping timeout: 272 seconds)
+2015-05-07T16:11:18Z EvW quit (Quit: EvW)
+2015-05-07T16:11:36Z ziocroc quit (Ping timeout: 264 seconds)
+2015-05-07T16:15:24Z m_zr0 joined #lisp
+2015-05-07T16:21:42Z linux_dream joined #lisp
+2015-05-07T16:22:02Z protist quit (Quit: Konversation terminated!)
+2015-05-07T16:23:36Z kushal quit (Ping timeout: 264 seconds)
+2015-05-07T16:25:50Z remi`bd quit (Quit: leaving)
+2015-05-07T16:28:37Z gravicappa joined #lisp
+2015-05-07T16:36:29Z kushal joined #lisp
+2015-05-07T16:37:21Z Jaskologist_ quit (Ping timeout: 244 seconds)
+2015-05-07T16:39:17Z zadock quit (Quit: Leaving)
+2015-05-07T16:39:44Z karswell quit (Read error: Connection reset by peer)
+2015-05-07T16:39:57Z Goopyo quit (Quit: Goopyo)
+2015-05-07T16:40:01Z jasom: I think lw and allegro are on topic
+2015-05-07T16:42:01Z Fare: congrats to lw for their 7.0 release.
+2015-05-07T16:42:15Z Fare: and for thereby killing asdf2
+2015-05-07T16:43:45Z Fare: has anyone had success using gcl recently?
+2015-05-07T16:46:15Z rszeno: here building gcl fail with some frame messages whatever i do
+2015-05-07T16:46:34Z rszeno: from a long time
+2015-05-07T16:47:10Z leafybasil quit (Ping timeout: 244 seconds)
+2015-05-07T16:51:58Z innertracks quit (Quit: innertracks)
+2015-05-07T16:52:10Z kvsari quit (Ping timeout: 255 seconds)
+2015-05-07T16:53:15Z Shinmera: Fare: I tried to build it just a few days ago and it didn't succeed. Didn't really bother to see what the problem was though.
+2015-05-07T16:53:57Z ebrasca quit (Remote host closed the connection)
+2015-05-07T16:55:02Z m_zr0 quit (Quit: leaving)
+2015-05-07T16:55:31Z hlavaty joined #lisp
+2015-05-07T16:56:41Z innertracks joined #lisp
+2015-05-07T16:58:02Z m_zr0 joined #lisp
+2015-05-07T17:01:43Z mj-0 quit (Read error: Connection reset by peer)
+2015-05-07T17:08:28Z Jaskologist joined #lisp
+2015-05-07T17:14:24Z selat joined #lisp
+2015-05-07T17:14:49Z m_zr0 quit (Quit: test)
+2015-05-07T17:16:52Z salv0 joined #lisp
+2015-05-07T17:19:29Z mrSpec quit (Quit: mrSpec)
+2015-05-07T17:25:58Z sheilong joined #lisp
+2015-05-07T17:26:24Z Fare just succeeded at building from clean
+2015-05-07T17:26:31Z Fare: tried a few days ago and failed
+2015-05-07T17:26:34Z Fare: dunno why
+2015-05-07T17:27:07Z Shinmera: I guess I'll run a build from CVS.
+2015-05-07T17:28:08Z Fare: from git -- they moved to git
+2015-05-07T17:28:33Z Fare: now testing asdf with it...
+2015-05-07T17:28:34Z Shinmera: Well the AUR only has a package for CVS
+2015-05-07T17:28:59Z Fare: AUR ?
+2015-05-07T17:29:05Z Shinmera: Arch User Repository.
+2015-05-07T17:29:18Z Fare: needs be updated then
+2015-05-07T17:29:34Z Shinmera: A neat thing that makes building all sorts of things that aren't in the official repos a task of a single command.
+2015-05-07T17:29:59Z Fare: like?
+2015-05-07T17:30:09Z Shinmera: Well yeah. I guess the person who initially made the package hasn't bothered to update it.
+2015-05-07T17:30:45Z Shinmera: Fare: https://aur.archlinux.org/packages/
+2015-05-07T17:31:36Z qubitnerd joined #lisp
+2015-05-07T17:32:20Z ehu wants to add spam detection to lisppaste and ponders copying in gigamonkey's spam detection example verbatim
+2015-05-07T17:33:07Z Shinmera: Fare: I recently added a package for clasp to it.
+2015-05-07T17:34:01Z bobbysmith007 joined #lisp
+2015-05-07T17:34:02Z linux_dream quit (Ping timeout: 272 seconds)
+2015-05-07T17:34:04Z ehu: anybody around implemented spam detection one way or another in CL?
+2015-05-07T17:34:22Z Shinmera: I followed PCL's chapter, but I didn't really do anything more with it.
+2015-05-07T17:35:20Z larion joined #lisp
+2015-05-07T17:35:54Z resttime joined #lisp
+2015-05-07T17:36:12Z madnificent joined #lisp
+2015-05-07T17:38:51Z srenatus quit (Quit: Connection closed for inactivity)
+2015-05-07T17:39:31Z ehu: Shinmera: you mean you used the pcl chapter to implement it?
+2015-05-07T17:39:38Z Shinmera: Yes.
+2015-05-07T17:39:53Z ehu: ok. do you have any idea how well it works?
+2015-05-07T17:40:06Z Davidbrcz joined #lisp
+2015-05-07T17:40:15Z Shinmera: I did some tests, but I forgot again. I don't think I saved the sources either, sorry.
+2015-05-07T17:40:31Z ehu: I'm having trouble getting SpamBayes running
+2015-05-07T17:40:39Z ehu: lots of bugs I'm running into.
+2015-05-07T17:41:48Z mj-0 joined #lisp
+2015-05-07T17:41:57Z ehu: so, I thought that if there's no good library, I might as well build one.
+2015-05-07T17:42:21Z gingerale quit (Remote host closed the connection)
+2015-05-07T17:42:46Z ehu: or rather, copy one :-)
+2015-05-07T17:44:53Z Goopyo joined #lisp
+2015-05-07T17:47:32Z ajtulloch quit (Remote host closed the connection)
+2015-05-07T17:47:40Z innertracks quit (Quit: innertracks)
+2015-05-07T17:47:47Z ajtulloch joined #lisp
+2015-05-07T17:49:31Z josemanuel joined #lisp
+2015-05-07T17:49:51Z innertracks joined #lisp
+2015-05-07T17:49:51Z innertracks quit (Client Quit)
+2015-05-07T17:52:26Z hrr4 joined #lisp
+2015-05-07T17:53:41Z Goopyo quit (Ping timeout: 246 seconds)
+2015-05-07T17:54:31Z leafybasil joined #lisp
+2015-05-07T17:54:46Z ehu: ok. the algorithm pcl lists is actually the spambayes algorithm, not the spamassassin algorithm which is Graham's original algorithm.
+2015-05-07T17:55:23Z ehu: so, implementing/copying pcl does seem like an attractive alternative for trying to hook in spambayes.
+2015-05-07T17:58:56Z leafybasil quit (Ping timeout: 246 seconds)
+2015-05-07T18:00:00Z ggole quit (Ping timeout: 246 seconds)
+2015-05-07T18:03:56Z Denommus: does anybody remember the minimal amount of special forms that we need, and which are they?
+2015-05-07T18:04:19Z Bicyclidine: you only "need" function, so you can do lambda calculus
+2015-05-07T18:05:31Z Denommus: Bicyclidine: to create a Lisp, I mean
+2015-05-07T18:05:42Z Denommus: Bicyclidine: we also need eval and quote, don't we?
+2015-05-07T18:06:00Z Bicyclidine: lambda calculus is turing complete. if you want more than that, be more specific than "a lisp"
+2015-05-07T18:06:20Z Denommus: I think I'm finding myself unable to form a proper question
+2015-05-07T18:06:38Z Bicyclidine: that happens a lot with these minimization questions.
+2015-05-07T18:08:19Z jasom: There are 25 special operators in Common Lisp
+2015-05-07T18:08:31Z jasom: many of them can be implemented in terms of others though
+2015-05-07T18:08:50Z Denommus: I remember an article describing that, to implement a new Lisp (including homoiconicity) there were a given number of special operators that must be implemented, and everything else can be implemented in terms of these special operators
+2015-05-07T18:09:03Z Bicyclidine: there's more than one minimal set.
+2015-05-07T18:09:09Z Denommus: IIRC, the author implemented this Lisp in Python
+2015-05-07T18:09:15Z oleo: heh
+2015-05-07T18:09:19Z therik joined #lisp
+2015-05-07T18:09:23Z jasom: Denommus: I'm sure there was an article that said that; however, they probably didn't define what was a "lisp"
+2015-05-07T18:09:25Z dlowe: it depends on what feature set you want, too
+2015-05-07T18:09:29Z Bicyclidine: sort of like logic. you can implement boolean operators out of and, or, and not, or you can use nand, or you can use nor, or a few other things.
+2015-05-07T18:09:32Z therik: Petit_Dejeuner, hey
+2015-05-07T18:09:50Z dlowe: just because you've defined lambda doesn't mean you automatically have lexical binding
+2015-05-07T18:10:16Z therik: Petit_Dejeuner, just wanna thanks again for that reference to that book
+2015-05-07T18:10:20Z jasom: Denommus: you are probably talking about this article? http://www.michaelnielsen.org/ddi/lisp-as-the-maxwells-equations-of-software/
+2015-05-07T18:10:40Z Adlai joined #lisp
+2015-05-07T18:11:15Z oleo_ joined #lisp
+2015-05-07T18:11:16Z Bicyclidine: i guess that's not a bad metaphor, given that there are two distinct formulations of maxwell's equations that aren't particularly better or worse than one another, and with some differential geometry you can get two completely different looking ones instead of those four
+2015-05-07T18:11:17Z jasom: You can see page 18 of this: http://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Programmers%20Manual.pdf
+2015-05-07T18:12:13Z oleo is now known as Guest41763
+2015-05-07T18:12:21Z oleo_ quit (Changing host)
+2015-05-07T18:12:21Z oleo_ joined #lisp
+2015-05-07T18:12:25Z Goopyo joined #lisp
+2015-05-07T18:12:25Z Denommus: jasom: maybe it was this one: http://norvig.com/lispy.html
+2015-05-07T18:12:51Z oleo_ is now known as oleo
+2015-05-07T18:13:15Z Bicyclidine: dF = 0, d*F = \mu_0J. so minimal
+2015-05-07T18:13:16Z Guest41763 quit (Ping timeout: 240 seconds)
+2015-05-07T18:13:39Z oleo: right
+2015-05-07T18:13:55Z jasom: node also that in LISP 1.5 functions could have an indifinite number of arguments, so that increased what needed to be a special form
+2015-05-07T18:16:47Z Fare quit (Ping timeout: 246 seconds)
+2015-05-07T18:17:35Z jasom: clhs 3.1.2.1.2.1
+2015-05-07T18:17:53Z jasom: the specbot is down?
+2015-05-07T18:18:01Z Bicyclidine: Colleen: do clhs 3.1.2.1.2.1
+2015-05-07T18:18:01Z Colleen:  http://www.lispworks.com/documentation/HyperSpec/Body/03_ababa.htm
+2015-05-07T18:18:12Z Goopyo quit (Ping timeout: 264 seconds)
+2015-05-07T18:18:13Z Bicyclidine: i think specbot is down, yeah, dunno why.
+2015-05-07T18:19:08Z jasom: Denommus: anyway see that link for the special forms in common lisp.  Some of them are trivially implementable in terms of the remaining ones though
+2015-05-07T18:19:17Z Bicyclidine: you can see several implementations of some of thos especial operators in terms of each other at http://www.pipeline.com/~hbaker1/MetaCircular.html
+2015-05-07T18:19:24Z ebrasca joined #lisp
+2015-05-07T18:19:43Z jasom: Though you can't use Baker's as-is since he simplifies a lot of them
+2015-05-07T18:20:36Z jasom: his if-in-terms-of lambda is really sneaky
+2015-05-07T18:20:43Z Goopyo joined #lisp
+2015-05-07T18:21:17Z Bicyclidine: it's pretty similar to how you'd do it in lambda calculus, the only complication being dealing with having to use t and nil instead of functions.
+2015-05-07T18:21:37Z Bicyclidine: well, how you'd do it in lambda calculus assuming you cared about order of evaluation somehow.
+2015-05-07T18:21:50Z jasom: well I was thinking the whole using plists on t and nil
+2015-05-07T18:22:16Z Bicyclidine: yeah.
+2015-05-07T18:22:39Z Denommus: jasom: I am aware of Common Lisp's special forms
+2015-05-07T18:22:44Z jasom: I suppose you could use a hash-table as well
+2015-05-07T18:23:10Z jasom: Denommus: Note you will need a lot of functions as well as special forms.
+2015-05-07T18:23:42Z jasom: e.g. there is no way to implement OPEN in terms of other lisp primitives
+2015-05-07T18:23:49Z jasom: but OPEN need not be a special form
+2015-05-07T18:24:36Z Denommus: hm, makes sense
+2015-05-07T18:26:52Z nikki93_ joined #lisp
+2015-05-07T18:29:39Z radioninja joined #lisp
+2015-05-07T18:30:14Z zacharias quit (Ping timeout: 265 seconds)
+2015-05-07T18:31:48Z cosmicexplorer joined #lisp
+2015-05-07T18:32:01Z Petit_Dejeuner: therik, No problem. You'll probably finish it before I do.
+2015-05-07T18:32:18Z tsumetai quit (Ping timeout: 272 seconds)
+2015-05-07T18:34:20Z therik: Petit_Dejeuner, I was talking to my gf an hour ago, apparently she's Hofstadter's student... :o
+2015-05-07T18:34:49Z Petit_Dejeuner: lol
+2015-05-07T18:35:02Z Petit_Dejeuner: Maybe you can get a signature
+2015-05-07T18:35:13Z therik: ex-student
+2015-05-07T18:35:52Z therik: not really, first I have to get the book in paper
+2015-05-07T18:36:02Z therik: online pdf's are broken... then I have to read it
+2015-05-07T18:36:13Z therik: then go to US and find hofstadter haha
+2015-05-07T18:36:19Z Petit_Dejeuner: Life is hard.
+2015-05-07T18:36:30Z therik: yup. but it's fun
+2015-05-07T18:39:44Z a2015_ joined #lisp
+2015-05-07T18:43:03Z therik quit (Remote host closed the connection)
+2015-05-07T18:45:48Z rhllor quit (Quit: rhllor)
+2015-05-07T18:46:40Z whartung quit (Quit: whartung)
+2015-05-07T18:46:58Z futpib joined #lisp
+2015-05-07T18:47:56Z cosmicexplorer: i've been playing with bouncing an AST from c/c++ source using libclang to a sexp and printing to stdout reading it into lisp
+2015-05-07T18:47:59Z cosmicexplorer: it works for c programs, but on c++ programs the ast from just the standard header files is massive and sbcl dies of stack exhaustion
+2015-05-07T18:48:30Z cosmicexplorer: this is because read is actually a recursive function; are there any iterative alternatives? i was half a hour into rolling my own but realized i might as well ask first
+2015-05-07T18:48:37Z oGMo: cosmicexplorer: what for?
+2015-05-07T18:49:13Z oGMo: if you're trying to convert C to lisp then probably not
+2015-05-07T18:49:14Z cosmicexplorer: i'm trying to write a clone of http://lxr.free-electrons.com/ident?i=kmalloc and wanted to use lisp
+2015-05-07T18:49:21Z jasom: whoa, eclipse generages *huge* call stacks; any invocation of funcall puts 32768 pointers on the stack.
+2015-05-07T18:49:48Z cosmicexplorer: no i'm using libclang to get the ast directly and i have a wrapper program to convert that representation into a sexp
+2015-05-07T18:50:37Z oGMo: cosmicexplorer: well, close .. i have c2ffi which does that but doesn't delve into definitions ... it's only meant for pulling declarations for generating wrappers
+2015-05-07T18:50:40Z jasom: cosmicexplorer: you can keep track of your depth in the tree via a stack in a list or a vector
+2015-05-07T18:51:02Z oGMo: cosmicexplorer: in theory you could extend it to read defs too for generating who-calls, if that's what you're after, but
+2015-05-07T18:51:12Z cosmicexplorer: yeah that's the idea haha
+2015-05-07T18:51:55Z cosmicexplorer: jasom: yeah i was about to do that i was just wondering if there was some builtin i could use instead of doing that lol
+2015-05-07T18:52:11Z jasom: cosmicexplorer: it's probably possible to increase the stack size of sbcl
+2015-05-07T18:52:26Z whartung joined #lisp
+2015-05-07T18:53:08Z oleo: it is
+2015-05-07T18:53:28Z jasom: sbcl --control-stack-size 64
+2015-05-07T18:53:29Z oleo: but the total stack space exhaustion won't go away just by that....
+2015-05-07T18:53:30Z cosmicexplorer: yeah there's an option you get if you run sbcl --help but for some reason that wasn't working for me, even when i tried using prlimit
+2015-05-07T18:53:44Z oleo: if it is occuring systematically in your code.....
+2015-05-07T18:53:49Z cosmicexplorer: it's just whenever the recursion gets 100 functions deep it dies
+2015-05-07T18:53:50Z oGMo: if it's recursive and you don't catch it, no stack size increase is likely to help though :P
+2015-05-07T18:54:06Z oleo: right
+2015-05-07T18:54:06Z jasom: oGMo: he's traversing a very deeply nested structure; not runaway recursion
+2015-05-07T18:54:19Z oGMo: probably shouldn't do that
+2015-05-07T18:54:52Z oGMo: best to drop a reference to another record, and look at that when you need it
+2015-05-07T18:54:55Z jasom: I already suggested keeping track of nesting off-stack
+2015-05-07T18:55:06Z kushal quit (Quit: Leaving)
+2015-05-07T18:55:08Z cosmicexplorer: yeah exactly just flatten the tree
+2015-05-07T18:55:23Z oGMo: right but i'm saying you shouldn't look recursively _at all_, unless the declaration is in-place (which happens)
+2015-05-07T18:55:51Z oGMo: mostly because why would you, though clang makes it a bit of a pain to tell
+2015-05-07T18:55:52Z cosmicexplorer: yeah the recursion isn't from my code it's from calling (read)
+2015-05-07T18:55:58Z oGMo: ah
+2015-05-07T18:56:05Z jasom: oh!
+2015-05-07T18:56:48Z rwiker joined #lisp
+2015-05-07T18:57:37Z cosmicexplorer: yeah i mean it won't take too long to write an iterative version of (read) if i don't try to error-check i'll probs just keep working on that
+2015-05-07T18:58:52Z Petit_Dejeuner: I think someone just asked this the other day, but what socket libraries are y ou guys using?
+2015-05-07T19:00:51Z Petit_Dejeuner: Probably just going to use usocket.
+2015-05-07T19:02:45Z hiroakip joined #lisp
+2015-05-07T19:03:05Z rwiker quit (Quit: Leaving)
+2015-05-07T19:04:45Z jasom: Petit_Dejeuner: usocket is fine if you don't need non-blocking
+2015-05-07T19:04:55Z jasom: Petit_Dejeuner: I use basic-binary-ipc for non-blocking sockets
+2015-05-07T19:05:21Z rwiker joined #lisp
+2015-05-07T19:05:41Z Xach wants to use basic-binary-ipc more
+2015-05-07T19:05:49Z Bicyclidine quit (Ping timeout: 256 seconds)
+2015-05-07T19:06:08Z Davidbrcz quit (Ping timeout: 246 seconds)
+2015-05-07T19:08:39Z schaueho joined #lisp
+2015-05-07T19:10:16Z Davidbrcz joined #lisp
+2015-05-07T19:10:25Z zadock joined #lisp
+2015-05-07T19:11:39Z Bicyclidine joined #lisp
+2015-05-07T19:16:00Z Jaskologist quit (Ping timeout: 272 seconds)
+2015-05-07T19:16:39Z dnm joined #lisp
+2015-05-07T19:17:23Z innertracks joined #lisp
+2015-05-07T19:18:45Z mj-0 quit (Remote host closed the connection)
+2015-05-07T19:20:35Z nikki93_ quit (Remote host closed the connection)
+2015-05-07T19:21:06Z Fare joined #lisp
+2015-05-07T19:22:20Z alexherbo2 quit (Ping timeout: 272 seconds)
+2015-05-07T19:26:54Z jtza8 quit (Ping timeout: 272 seconds)
+2015-05-07T19:28:25Z innertracks quit (Quit: innertracks)
+2015-05-07T19:31:52Z ehu: whoa! why are lisppaste's pastes stored in XML format with multiple roots in a single file! That means hardly any other tools than lisppaste itself will read the files!
+2015-05-07T19:32:48Z ehu has been working the last hours to find a suitable library to read them without being required to code it all over by himself
+2015-05-07T19:33:03Z oleo: there are xml libs
+2015-05-07T19:33:16Z oleo: cxml
+2015-05-07T19:33:19Z H4ns: ehu: xml files cannot have multiple roots.  you need to wrap them in a root element or split at each root
+2015-05-07T19:33:21Z oleo: for example
+2015-05-07T19:33:36Z H4ns: oleo: cxml needs well-formed files.  a well-formed file has one root.
+2015-05-07T19:34:00Z p_l: ehu: does the root element use an unique name?
+2015-05-07T19:34:33Z ehu: p_l: nope. the first root is called "paste", but all further roots are called "annotation"
+2015-05-07T19:34:39Z oleo: aaah
+2015-05-07T19:34:40Z p_l: then it might be easy to split it with just awk. Or just wrap it around some bogus element for purposes of translating
+2015-05-07T19:34:49Z p_l: ehu: still could work with awk :)
+2015-05-07T19:35:08Z Jaskologist joined #lisp
+2015-05-07T19:35:10Z p_l: or you can just wrap it in a tag :)
+2015-05-07T19:35:21Z ehu: actually, that might be a really good idea. I'll strip off the xml version declaration and wrap the rest of the file in a new root.
+2015-05-07T19:35:55Z ehu: I'll just copy the pastes somewhere else so I can process them this way and read them consistently.
+2015-05-07T19:35:58Z ehu: I like it.
+2015-05-07T19:36:19Z zacharias joined #lisp
+2015-05-07T19:36:25Z ehu: thanks for getting me out of my tunnel vision.
+2015-05-07T19:37:15Z nikki93_ joined #lisp
+2015-05-07T19:37:32Z p_l: np
+2015-05-07T19:37:56Z d4ryus__ quit (Ping timeout: 240 seconds)
+2015-05-07T19:38:51Z nikki93_ quit (Remote host closed the connection)
+2015-05-07T19:38:55Z d4ryus joined #lisp
+2015-05-07T19:42:00Z m_zr0 joined #lisp
+2015-05-07T19:42:13Z ajtulloc_ joined #lisp
+2015-05-07T19:42:53Z Shinmera: Plump should be able to grok it fine otherwise.
+2015-05-07T19:43:00Z Shinmera: It doesn't care about XML validity.
+2015-05-07T19:43:34Z alexherbo2 joined #lisp
+2015-05-07T19:45:18Z linux_dream joined #lisp
+2015-05-07T19:45:35Z cadadar quit (Quit: Leaving.)
+2015-05-07T19:46:03Z ajtulloch quit (Ping timeout: 256 seconds)
+2015-05-07T19:46:31Z ehu: Shinmera: neither does lxml apparently, since that's what lisppaste is using, but I'm doing some quick experiments trying to submit to spambayes. Spambayes and the examples are pretty much copy/paste, if I can get to the content I want to paste...
+2015-05-07T19:46:33Z Karl_Dscc joined #lisp
+2015-05-07T19:47:17Z m_zr0 quit (Quit: leaving)
+2015-05-07T19:47:32Z Shinmera: Well, for Plump the story is that it should be lenient. So anything it cannot grok indicates a bug in Plump :)
+2015-05-07T19:48:30Z Jesin quit (Quit: Leaving)
+2015-05-07T19:48:45Z rwiker left #lisp
+2015-05-07T19:48:56Z rwiker joined #lisp
+2015-05-07T19:50:00Z sdemarre joined #lisp
+2015-05-07T19:50:01Z linux_dream quit (Client Quit)
+2015-05-07T19:50:16Z innertracks joined #lisp
+2015-05-07T19:50:36Z knobo quit (Ping timeout: 264 seconds)
+2015-05-07T19:50:48Z rwiker quit (Quit: Leaving)
+2015-05-07T19:51:13Z ajtulloch joined #lisp
+2015-05-07T19:51:57Z linux_dream joined #lisp
+2015-05-07T19:54:33Z ajtulloc_ quit (Ping timeout: 256 seconds)
+2015-05-07T19:54:34Z xificurC quit (Remote host closed the connection)
+2015-05-07T19:55:03Z xificurC joined #lisp
+2015-05-07T19:55:07Z francogrex joined #lisp
+2015-05-07T19:56:45Z josemanuel quit (Quit: Saliendo)
+2015-05-07T19:57:46Z Jesin joined #lisp
+2015-05-07T20:04:49Z alexherbo2 quit (Quit: WeeChat 1.1.1)
+2015-05-07T20:04:51Z nikki93_ joined #lisp
+2015-05-07T20:05:03Z s1n4 quit (Ping timeout: 244 seconds)
+2015-05-07T20:05:24Z nikki93_ quit (Remote host closed the connection)
+2015-05-07T20:05:37Z knobo joined #lisp
+2015-05-07T20:06:04Z ndrei joined #lisp
+2015-05-07T20:06:56Z fjames joined #lisp
+2015-05-07T20:06:58Z alexherbo2 joined #lisp
+2015-05-07T20:08:12Z fjames quit (Client Quit)
+2015-05-07T20:08:32Z francogrex quit (Quit: ERC Version 5.3 (IRC client for Emacs))
+2015-05-07T20:11:13Z Harag quit (Ping timeout: 264 seconds)
+2015-05-07T20:11:30Z s1n4 joined #lisp
+2015-05-07T20:12:41Z Goopyo quit (Ping timeout: 256 seconds)
+2015-05-07T20:13:14Z Goopyo joined #lisp
+2015-05-07T20:13:41Z ziocroc joined #lisp
+2015-05-07T20:13:58Z shka quit (Quit: Konversation terminated!)
+2015-05-07T20:15:18Z Goopyo quit (Client Quit)
+2015-05-07T20:16:29Z mrSpec joined #lisp
+2015-05-07T20:17:58Z binghe joined #lisp
+2015-05-07T20:18:25Z jtza8 joined #lisp
+2015-05-07T20:19:39Z logand` joined #lisp
+2015-05-07T20:19:54Z logand` left #lisp
+2015-05-07T20:20:20Z s1n4 quit (Ping timeout: 246 seconds)
+2015-05-07T20:20:58Z yappy joined #lisp
+2015-05-07T20:26:29Z schaueho quit (Ping timeout: 245 seconds)
+2015-05-07T20:26:42Z Davidbrcz quit (Ping timeout: 256 seconds)
+2015-05-07T20:26:56Z Bicyclidine quit (Ping timeout: 272 seconds)
+2015-05-07T20:28:04Z Bicyclidine joined #lisp
+2015-05-07T20:29:54Z EvW joined #lisp
+2015-05-07T20:33:51Z blackwolf joined #lisp
+2015-05-07T20:34:02Z Jesin quit (Quit: Leaving)
+2015-05-07T20:35:22Z ASau quit (Ping timeout: 255 seconds)
+2015-05-07T20:36:25Z gniourf_gniourf joined #lisp
+2015-05-07T20:36:59Z pllx joined #lisp
+2015-05-07T20:38:05Z tsumetai joined #lisp
+2015-05-07T20:38:48Z yrdz quit (Ping timeout: 265 seconds)
+2015-05-07T20:40:17Z blackwolf: I managed to edit a number of files under quicklisp's dists/quicklisp/software/ directory.  is there a command to reload/reinstall, or can I just delete the directory and untar the file from dists/quicklisp/archives/? (I guess the question is: does quicklisp perform any post-installation patching?)
+2015-05-07T20:43:35Z yrdz joined #lisp
+2015-05-07T20:45:03Z ASau joined #lisp
+2015-05-07T20:45:24Z angavrilov quit (Remote host closed the connection)
+2015-05-07T20:47:19Z madnificent: blackwolf: I've not been following it closely, but as far as I know, it just downloads and unpacks the systems you download.
+2015-05-07T20:47:36Z Bicyclidine quit (Ping timeout: 240 seconds)
+2015-05-07T20:48:52Z blackwolf: madnificent: I'd assumed so. to be safe, I'll do a recursive diff.  thx
+2015-05-07T20:48:57Z sdemarre quit (Ping timeout: 265 seconds)
+2015-05-07T20:52:35Z hrr4 quit (Remote host closed the connection)
+2015-05-07T20:52:42Z hrr4` joined #lisp
+2015-05-07T20:53:52Z s1n4 joined #lisp
+2015-05-07T20:54:21Z cadadar joined #lisp
+2015-05-07T20:58:41Z eaz0r0astr1an joined #lisp
+2015-05-07T20:58:45Z pt1 joined #lisp
+2015-05-07T20:59:33Z Bicyclidine joined #lisp
+2015-05-07T21:00:23Z Xach: blackwolf: you can use (ql:uninstall "system-name") to remove, and quickload will fetch it fresh.
+2015-05-07T21:00:31Z Xach: blackwolf: quicklisp does not do any post-install patching.
+2015-05-07T21:01:28Z pt1 quit (Remote host closed the connection)
+2015-05-07T21:02:16Z selat quit (Quit: Lost terminal)
+2015-05-07T21:02:25Z mvilleneuve quit (Quit: This computer has gone to sleep)
+2015-05-07T21:03:40Z blackwolf: ah, cool - thanks
+2015-05-07T21:03:42Z ahungry_ quit (Quit: leaving)
+2015-05-07T21:04:06Z blackwolf: will uninstall remove the .tgz?
+2015-05-07T21:04:18Z cadadar quit (Quit: Leaving.)
+2015-05-07T21:05:00Z blackwolf: (going to try to clean this up on my train ride home, wondering if I'll need to tether my laptop)
+2015-05-07T21:06:31Z vdamewood joined #lisp
+2015-05-07T21:06:46Z Fare: is there a good portable CL library for globbing?
+2015-05-07T21:08:21Z Davidbrcz joined #lisp
+2015-05-07T21:12:53Z yappy quit (Remote host closed the connection)
+2015-05-07T21:13:59Z gravicappa quit (Ping timeout: 245 seconds)
+2015-05-07T21:14:43Z blackwolf quit (Quit: ERC Version 5.3 (IRC client for Emacs))
+2015-05-07T21:16:19Z Bicyclidine quit (Ping timeout: 255 seconds)
+2015-05-07T21:16:57Z pjb: Fare: like shell globbing?
+2015-05-07T21:17:17Z Jesin joined #lisp
+2015-05-07T21:17:19Z pjb: IIRC, somebody wrote a POSIX shell in CL, so he should have implemented it.
+2015-05-07T21:17:59Z Bicyclidine joined #lisp
+2015-05-07T21:19:24Z knobo quit (Ping timeout: 265 seconds)
+2015-05-07T21:20:26Z ziocroc quit (Quit: ziocroc)
+2015-05-07T21:20:55Z jlarocco_work: what does "portable" mean there?
+2015-05-07T21:21:06Z jlarocco_work: i thought different shells on different platforms did it differently
+2015-05-07T21:21:12Z jtza8 quit (Ping timeout: 264 seconds)
+2015-05-07T21:21:47Z p_l: jlarocco_work: probably meaning it is portable between CL implementations
+2015-05-07T21:21:56Z pjb: Fare: there's also: eshell/em-cmpl.lisp which you would have to port to CL.
+2015-05-07T21:22:28Z pjb: jlarocco_work: portable means 1- conforming, and 2- when not conforming, using a portability library.
+2015-05-07T21:22:57Z linux_dream quit (Ping timeout: 256 seconds)
+2015-05-07T21:23:15Z jtza8 joined #lisp
+2015-05-07T21:23:34Z pllx quit (Quit: zz)
+2015-05-07T21:24:29Z pjb: Fare: sorry, I meant eshell/em-glob.lisp (wrong line copy-pasted)
+2015-05-07T21:27:19Z alexherbo2 quit (Ping timeout: 245 seconds)
+2015-05-07T21:29:25Z bgs100 joined #lisp
+2015-05-07T21:31:02Z ASau quit (Ping timeout: 272 seconds)
+2015-05-07T21:31:03Z pt1 joined #lisp
+2015-05-07T21:31:48Z nightshade427 joined #lisp
+2015-05-07T21:32:56Z Karl_Dscc quit (Remote host closed the connection)
+2015-05-07T21:33:02Z yasha9 joined #lisp
+2015-05-07T21:34:42Z gniourf_gniourf quit (Ping timeout: 272 seconds)
+2015-05-07T21:34:47Z leafybasil joined #lisp
+2015-05-07T21:34:57Z futpib quit (Ping timeout: 244 seconds)
+2015-05-07T21:35:19Z bb010g joined #lisp
+2015-05-07T21:35:36Z Bicyclidine quit (Ping timeout: 264 seconds)
+2015-05-07T21:39:16Z stepnem quit (Ping timeout: 240 seconds)
+2015-05-07T21:40:24Z EvW quit (Ping timeout: 264 seconds)
+2015-05-07T21:41:21Z johs quit (Remote host closed the connection)
+2015-05-07T21:42:09Z ASau joined #lisp
+2015-05-07T21:43:13Z ndrei quit (Ping timeout: 244 seconds)
+2015-05-07T21:45:04Z DruidGreeneyes joined #lisp
+2015-05-07T21:45:14Z mrSpec quit (Quit: mrSpec)
+2015-05-07T21:45:28Z ndrei joined #lisp
+2015-05-07T21:47:45Z DruidGreeneyes quit (Remote host closed the connection)
+2015-05-07T21:48:14Z genericus joined #lisp
+2015-05-07T21:50:18Z ovenpasta1 joined #lisp
+2015-05-07T21:50:42Z DruidGreeneyes joined #lisp
+2015-05-07T21:52:31Z LiamH quit (Quit: Leaving.)
+2015-05-07T21:53:20Z linux_dream joined #lisp
+2015-05-07T21:55:43Z a2015_ quit (Ping timeout: 246 seconds)
+2015-05-07T21:57:15Z pt1 quit (Remote host closed the connection)
+2015-05-07T22:00:38Z zadock quit (Quit: Leaving)
+2015-05-07T22:05:22Z sheilong quit (Quit: Konversation terminated!)
+2015-05-07T22:06:22Z innertracks quit (Quit: innertracks)
+2015-05-07T22:08:49Z yappy joined #lisp
+2015-05-07T22:10:41Z ehu: hmm. with a bit of training it seems spambayes isn't able to cope with 15% of its input from the paste database. That's a pretty high percentage, I think. but with what it does do, it's classifying (correctly) more than half the pastes as spam.
+2015-05-07T22:12:49Z linux_dream quit (Quit: Leaving)
+2015-05-07T22:13:09Z madnificent quit (Ping timeout: 250 seconds)
+2015-05-07T22:13:18Z dim: ehu: tried CRM114 yet? ;-)
+2015-05-07T22:13:36Z ovenpasta1 quit (Ping timeout: 240 seconds)
+2015-05-07T22:13:48Z ehu: dim: CRM114?
+2015-05-07T22:14:16Z dim: as in http://crm114.sourceforge.net/ -- CRM114 - the Controllable Regex Mutilator
+2015-05-07T22:14:16Z A205B064 joined #lisp
+2015-05-07T22:17:02Z ehu: hmm. it says it's fully programmable. I'm thinking so is most of my other tooling. However, I want it to be a tool, not a programming language!
+2015-05-07T22:18:27Z Shinmera quit (Quit: ãã¤ããããªããã°ãªããªããã§ãã)
+2015-05-07T22:21:58Z dim: as a programmer the tools I prefer often happen to be programming languages, even if sometimes in disguise (Emacs, PostgreSQL, Common Lisp...)
+2015-05-07T22:25:11Z linux_dream joined #lisp
+2015-05-07T22:27:41Z kephra: is'nt filename globbing part of pathname translation?
+2015-05-07T22:30:26Z ehu: dim: Sure, however, I think the solution that I want (a spam filter) is too many manyears away from what bare common lisp provides
+2015-05-07T22:30:33Z ehu: although a SMOP, of course.
+2015-05-07T22:31:02Z dim: yeah, just port (parts of) CRM114 so that you have a general programming interface to achieve that and more in CL?
+2015-05-07T22:32:02Z ajtulloch quit (Remote host closed the connection)
+2015-05-07T22:32:18Z tsumetai quit (Ping timeout: 244 seconds)
+2015-05-07T22:32:25Z cadadar joined #lisp
+2015-05-07T22:35:51Z m_zr0 joined #lisp
+2015-05-07T22:36:52Z hiroakip quit (Ping timeout: 255 seconds)
+2015-05-07T22:38:47Z cadadar quit (Quit: Leaving.)
+2015-05-07T22:40:11Z tsumetai joined #lisp
+2015-05-07T22:44:03Z ajtulloch joined #lisp
+2015-05-07T22:44:41Z stardiviner joined #lisp
+2015-05-07T22:47:05Z jtza8 quit (Remote host closed the connection)
+2015-05-07T22:51:22Z innertracks joined #lisp
+2015-05-07T22:55:02Z rtra quit (Ping timeout: 252 seconds)
+2015-05-07T22:55:19Z agumonkey quit (Ping timeout: 255 seconds)
+2015-05-07T22:56:40Z agumonkey joined #lisp
+2015-05-07T23:00:31Z defaultxr joined #lisp
+2015-05-07T23:01:04Z agumonkey quit (Ping timeout: 245 seconds)
+2015-05-07T23:03:11Z agumonkey joined #lisp
+2015-05-07T23:05:11Z ehu: hmm. ok. so, with my initial training, 20%+ gets classified as spam (that's 10% of the total paste set classified)
+2015-05-07T23:05:42Z ehu: however, 10% of all pastes goes into the "Unsure" bucket, with ~300 pastes classified.
+2015-05-07T23:05:49Z ehu: (which took all evening, unfortunately)
+2015-05-07T23:06:47Z innertracks quit (Quit: innertracks)
+2015-05-07T23:07:04Z ehu: but the experiment is definitely interesting. I should look into it more.
+2015-05-07T23:07:43Z ajtulloch quit (Remote host closed the connection)
+2015-05-07T23:11:04Z larion quit (Ping timeout: 255 seconds)
+2015-05-07T23:13:51Z mishoo_ quit (Quit: (save-lisp-and-die))
+2015-05-07T23:19:07Z ebrasca quit (Remote host closed the connection)
+2015-05-07T23:21:51Z rtra joined #lisp
+2015-05-07T23:26:03Z pt1 joined #lisp
+2015-05-07T23:26:51Z yappy quit (Remote host closed the connection)
+2015-05-07T23:34:48Z _sjs quit (Read error: Connection reset by peer)
+2015-05-07T23:36:13Z pt1 quit (Remote host closed the connection)
+2015-05-07T23:37:26Z linux_dream quit (Quit: Leaving)
+2015-05-07T23:39:34Z _sjs joined #lisp
+2015-05-07T23:39:39Z EvW joined #lisp
+2015-05-07T23:48:04Z Jirachier joined #lisp
+2015-05-07T23:48:04Z Jirachier quit (Client Quit)
+2015-05-07T23:48:25Z jlongster quit (Ping timeout: 264 seconds)
+2015-05-07T23:49:06Z Jirachier joined #lisp
+2015-05-07T23:49:09Z Jirachier quit (Client Quit)
+2015-05-07T23:51:17Z ehu quit (Quit: Leaving.)
+2015-05-07T23:52:40Z jasom: If you can really cut out 2/3 of the spam, that would be worthwhile
+2015-05-07T23:57:15Z hrr4` quit (Ping timeout: 276 seconds)
+2015-05-07T23:58:04Z Longlius quit (Ping timeout: 256 seconds)

@@ -1,0 +1,11 @@
+2007-01-01T05:57:00.000Z	elyon		I have already followed the instruction in the Ati Binary HowTo... no luck.
+2007-01-01T05:57:00.000Z	rchf	elyon	you got more of a response that I did.  Video problems may be to individual for the forum?
+2007-01-01T05:57:00.000Z	rchf		I have a similar problem but not as bad.
+2007-01-01T05:58:00.000Z	elyon	rchf	- its strange because everyone I talk to hasn't had any problems with 3D performance, but I have on EVERY distro I've tried.
+2007-01-01T05:59:00.000Z	rchf	elyon	I was about to start installing the ATI drivers to see how that went.  You saying its a bad course?  I haven't tried 3D much so not much help there - sorry.
+2007-01-01T05:59:00.000Z	elyon	rchf	- I wouldn't say it was a bad thing... just hasn't helped.  The how to caused a lot of problems for me, that's all.
+2007-01-01T06:01:00.000Z	elyon		Feliz ano nuevo
+2007-01-01T06:01:00.000Z	rchf	elyon	wish the howtos had some why in there as well.  I'm using an Inspiron 9400 with an ATI Mobility Radeon x1400 - you?  (happy new year)
+2007-01-01T06:01:00.000Z	elyon	rchf	- I'm using a Radeon 9600
+2007-01-01T06:03:00.000Z	elyon		Permission denied when trying to open xorg.conf?  I'm in super user mode
+2007-01-01T06:04:00.000Z	rchf	elyon	did you you try to run through the guidance in the FixVideoResolutionHowTo (https://help.ubuntu.com/community/FixVideoResolutionHowto)?

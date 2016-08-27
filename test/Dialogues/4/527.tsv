@@ -1,0 +1,5 @@
+2007-01-01T01:48:00.000Z	cybercod		install package kubuntu-desktop in synaptic
+2007-01-01T01:48:00.000Z	cybercod		then select kde session before logging in
+2007-01-01T01:49:00.000Z	ubotu		To install the Ati/NVidia drivers for your video card, see https://help.ubuntu.com/community/BinaryDriverHowto
+2007-01-01T01:50:00.000Z	ubotu	cybercod	If you need to run graphical applications as root, use gksudo, as it will set up the environment more appropriately. Avoid ever using sudo <GUI-application>
+2007-01-01T01:51:00.000Z	ubotu		Font installation basics here: https://help.ubuntu.com/community/FontInstallHowto - No fonts in Flash? Install msttcorefonts (from !Multiverse), gsfonts, and gsfonts-x11. No fonts in MPlayer? see !MPlayer

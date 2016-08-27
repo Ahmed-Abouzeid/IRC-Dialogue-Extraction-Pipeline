@@ -1,0 +1,79 @@
+2007-01-01T12:26:00.000Z	cybercod		if ubuntu has a driver for it that isn't working, you'd need to blacklist it before using ndiswrapper
+2007-01-01T12:26:00.000Z	kenthomson	cybercod	I want to navigate the contents of that partition from the terminal, what should i enter cd /media/hdb1? or what?
+2007-01-01T12:27:00.000Z	kenthomson	cybercod	ok that works! now what i want to do is create a mount point in my home directory for that hdb1 partition, how do i do that?
+2007-01-01T12:28:00.000Z	cybercod		create the folder first
+2007-01-01T12:28:00.000Z	cybercod		then its in fstab...
+2007-01-01T12:28:00.000Z	kenthomson	cybercod	i have created a folder called mkdir ~/windowsPartition
+2007-01-01T12:28:00.000Z	cybercod		i think its sudo gedit /etc/fstab
+2007-01-01T12:28:00.000Z	kenthomson	cybercod	what do i do in fstab?
+2007-01-01T12:29:00.000Z	kenthomson	cybercod	i simply want to manually mount the windows drive
+2007-01-01T12:29:00.000Z	cybercod		you'll see the current entry for the fat32 partition just change the path there
+2007-01-01T12:30:00.000Z	cybercod		if you want to manually mount it you can use Disks
+2007-01-01T12:30:00.000Z	cybercod		just make the folder first
+2007-01-01T12:30:00.000Z	cybercod		if you can't create a folder in /media then hit Alt+F2 then type in gksudo nautilus
+2007-01-01T12:31:00.000Z	kenthomson	cybercod	i want to manually mount the partition hdb1 to a folder called ~/windowsPartition
+2007-01-01T12:31:00.000Z	cybercod		Kenthomson... get to know the utility called Disks.
+2007-01-01T12:32:00.000Z	cybercod		come in there jason with the MondoLinks!
+2007-01-01T12:32:00.000Z	kenthomson	cybercod	i thought there was a simplec command like mount <partition> <mount point>
+2007-01-01T12:33:00.000Z	cybercod		jame1... you could just reboot... or Ctrl+Alt+Backspace may do it... there's probably a mount command but I don't know it
+2007-01-01T12:34:00.000Z	cybercod		kenthomson... i'm sure there is... i'm just familiar with the gui... i'm learning the command line little by little
+2007-01-01T12:34:00.000Z	cybercod		i'm not a guru in here or anything
+2007-01-01T12:34:00.000Z	cybercod		just slightly ahead of the curve
+2007-01-01T12:46:00.000Z	cybercod		kenthomson... shoot
+2007-01-01T12:46:00.000Z	kenthomson	cybercod	one more thing, i want to access System>administration>Disks, but the item disks is not listed, moreover from edit menus also there is no entry for Disks under Administration, how do i get that utility?
+2007-01-01T12:49:00.000Z	cybercod		kenthomson... try sudo disks-admin in terminal
+2007-01-01T12:49:00.000Z	kenthomson	cybercod	one more thing, i want to access System>administration>Disks, but the item disks is not listed, moreover from edit menus also there is no entry for Disks under Administration, how do i get that utility?
+2007-01-01T12:49:00.000Z	kenthomson	cybercod	no WAIT wrong PASTE :(
+2007-01-01T12:50:00.000Z	kenthomson	cybercod	ken@ken-ubuntu:~$ sudo disks-admin
+2007-01-01T12:51:00.000Z	cybercod		ok.. ken.. one moment... currently logged into my linux box with xfce... so i'm having trouble finding it
+2007-01-01T12:52:00.000Z	kenthomson	cybercod	i can wait :0
+2007-01-01T12:57:00.000Z	cybercod	kenthomson	try disks-conf
+2007-01-01T12:57:00.000Z	kenthomson	cybercod	command not found
+2007-01-01T12:58:00.000Z	cybercod		perhaps you don't have it installed... else it would be in your menu
+2007-01-01T12:58:00.000Z	kenthomson	cybercod	command not found
+2007-01-01T12:58:00.000Z	cybercod		try looking for it in the repos
+2007-01-01T12:59:00.000Z	kenthomson	cybercod	i looked for disks in the repos but got obscure results
+2007-01-01T01:01:00.000Z	cybercod		kenthomson... it is definately disks-admin... look for it in repos
+2007-01-01T01:01:00.000Z	kenthomson	cybercod	no result found in synaptic
+2007-01-01T01:02:00.000Z	cybercod		you got weird repos?
+2007-01-01T01:02:00.000Z	kenthomson	cybercod	no my repos are not broken nor malfunctioning, they are perfectly fine
+2007-01-01T01:03:00.000Z	kenthomson	cybercod	thelinuxguy: now where do i get that disks thing in System>administration?
+2007-01-01T01:04:00.000Z	cybercod		Ken its disks-admin in repos
+2007-01-01T01:04:00.000Z	cybercod		there we go
+2007-01-01T01:04:00.000Z	cybercod		nice
+2007-01-01T01:04:00.000Z	kenthomson	cybercod	there is nothing like disks-admin in repos
+2007-01-01T01:04:00.000Z	cybercod		ok.. sorry for misinforming
+2007-01-01T01:06:00.000Z	cybercod		i love those forums
+2007-01-01T01:07:00.000Z	cybercod		i wish I was in gnome but i can't change now
+2007-01-01T01:07:00.000Z	cybercod		its not in menu ?
+2007-01-01T01:07:00.000Z	kenthomson	cybercod	nothing in menu
+2007-01-01T02:19:00.000Z	cybercod		should be ~/.wine/c_drive/program files/.......
+2007-01-01T02:20:00.000Z	kenthomson	cybercod	let me try
+2007-01-01T02:20:00.000Z	cybercod		mmzini don't have world of warcraft installed on same partition
+2007-01-01T02:20:00.000Z	cybercod		and it still works
+2007-01-01T02:21:00.000Z	cybercod		mmzin.. is there a preset for Steam?
+2007-01-01T02:22:00.000Z	kenthomson	cybercod	what do i do? wine: could not load Lc:\\windows\\system32\\firefox.exe: Module not found
+2007-01-01T02:22:00.000Z	kenthomson		
+2007-01-01T02:22:00.000Z	cybercod		kenthomson... put it in quotes... it can't handle the space in Program Files
+2007-01-01T02:23:00.000Z	cybercod		mmzin... it wouldn't show up as steam.. it would show up as wine or cedega
+2007-01-01T02:33:00.000Z	cybercod		kenthomson... did you get wine to work right with that?
+2007-01-01T02:34:00.000Z	kenthomson	cybercod	yeah wine worked, but i cant configure shockwave to work correctly, can you help?
+2007-01-01T02:34:00.000Z	cybercod		sorry ken.. no ... my braincells are misfiring... its dawn here
+2007-01-01T02:34:00.000Z	kenthomson	cybercod	:(
+2007-01-01T02:34:00.000Z	cybercod		!nvidia
+2007-01-01T03:00:00.000Z	cybercod		you need to be logged into the live disk to do this... narf
+2007-01-01T03:01:00.000Z	cybercod		you wouldn't... apt-get will download it... problem is
+2007-01-01T03:01:00.000Z	cybercod		problem is you won't be able to talk to us because of your errors
+2007-01-01T03:01:00.000Z	cybercod		and coming back in here will nullify getting mined because it will just be in ram-drive
+2007-01-01T03:02:00.000Z	kenthomson	cybercod	How do i access Ubuntu's (on HDD) FileSystem from a Ubuntu LIve CD?
+2007-01-01T03:02:00.000Z	cybercod		so wait
+2007-01-01T03:02:00.000Z	cybercod		lemme get you more instructions first
+2007-01-01T03:02:00.000Z	kenthomson	cybercod	assume liveCD is running and Ubuntu FS (the one on HDD) is on hda1
+2007-01-01T03:02:00.000Z	cybercod		cancel out the CTRL+ALT+F7 part
+2007-01-01T03:08:00.000Z	cybercod		then you're gonna type in             sudo apt-get install nvidia-glx
+2007-01-01T03:09:00.000Z	cybercod		next you'll type in            sudo nvidia-glx-config enable
+2007-01-01T03:09:00.000Z	kenthomson	cybercod	How do i access Ubuntu's (on HDD) FileSystem from a Ubuntu LIve CD?
+2007-01-01T03:09:00.000Z	kenthomson	cybercod	assume liveCD is running and Ubuntu FS (the one on HDD) is on hda1
+2007-01-01T03:10:00.000Z	cybercod		and at this point you should be able to hit CTRL+ALT+F7 and get graphical interface back up with the new drivers
+2007-01-01T03:11:00.000Z	cybercod		once you are at this point you should be able to install like normal... though I'd appreciate it if you start up GAIM and come tell us if it worked before starting the install.
+2007-01-01T03:11:00.000Z	cybercod		did you get all of that kitsune1?

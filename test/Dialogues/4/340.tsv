@@ -1,0 +1,6 @@
+2007-01-01T10:34:00.000Z	superjoe		I'm a noob, how do I connect my ubuntu hp laptop to my wireless network
+2007-01-01T10:34:00.000Z	fr500__	superjoe	does ubuntu see your wireless nic?
+2007-01-01T10:35:00.000Z	superjoe		i don't think so, where do I look/
+2007-01-01T10:35:00.000Z	fr500__	superjoe	open the network control panel and see if it appears there
+2007-01-01T10:37:00.000Z	superjoe		fr500:i'm sorry how do I get to network control panel?
+2007-01-01T10:37:00.000Z	fr500__	superjoe	System-Admnistration-Network

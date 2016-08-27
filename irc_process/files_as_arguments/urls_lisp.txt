@@ -1,0 +1,1 @@
+http://ccl.clozure.com/irc-logs/lisp/

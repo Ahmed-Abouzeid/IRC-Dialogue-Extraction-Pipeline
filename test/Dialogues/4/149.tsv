@@ -1,0 +1,51 @@
+2007-01-01T01:07:00.000Z	phr34ck		What am I suppose to do ?
+2007-01-01T01:07:00.000Z	crimsun	phr34ck	install build-essential
+2007-01-01T01:08:00.000Z	crimsun	phr34ck	if you do, then ``gcc -v'' should work fine
+2007-01-01T01:08:00.000Z	phr34ck	crimsun	the thing is that I'm launching the configure file found inside the folder.
+2007-01-01T01:09:00.000Z	phr34ck		so it checks and everything, and then it stops on C compiler./
+2007-01-01T01:09:00.000Z	crimsun	phr34ck	what are you trying to compile?
+2007-01-01T01:10:00.000Z	crimsun	phr34ck	err, why? gcc 4.1.1 is included with ubuntu.
+2007-01-01T01:10:00.000Z	phr34ck	crimsun	how can I know that?
+2007-01-01T01:10:00.000Z	phr34ck		feeling*
+2007-01-01T01:11:00.000Z	crimsun	phr34ck	what's the output from gcc -v ?
+2007-01-01T01:13:00.000Z	phr34ck		C compiler cannot create executables.
+2007-01-01T01:13:00.000Z	crimsun	phr34ck	that should not be the output from ``gcc -v''
+2007-01-01T01:14:00.000Z	phr34ck		what are you looking for ?
+2007-01-01T01:14:00.000Z	crimsun	phr34ck	the very last (bottom) line
+2007-01-01T01:15:00.000Z	crimsun	phr34ck	are you using dapper?
+2007-01-01T01:17:00.000Z	phr34ck	crimsun	yes
+2007-01-01T01:17:00.000Z	crimsun	phr34ck	and can't dist-upgrade to edgy?
+2007-01-01T01:18:00.000Z	phr34ck	crimsun	what ?
+2007-01-01T01:18:00.000Z	crimsun	phr34ck	dapper doesn't have 4.1.1, but edgy does.
+2007-01-01T01:18:00.000Z	phr34ck	crimsun	it's available on their website.
+2007-01-01T01:19:00.000Z	phr34ck		Why I cannot use it ?
+2007-01-01T01:19:00.000Z	crimsun	phr34ck	I'm not talking about upstream; I'm talking about Ubuntu.
+2007-01-01T01:19:00.000Z	phr34ck	crimsun	I have no idea what you're talking about man.
+2007-01-01T01:20:00.000Z	crimsun	phr34ck	obviously if you want to bootstrap gcc 4.1.1, you're free to do so. Just make sure your toolchain's configured properly first, which means you need a working compiler, binutils, and l-k-h
+2007-01-01T01:20:00.000Z	crimsun	phr34ck	if your compiler doesn't work, --reinstall gcc and cpp
+2007-01-01T01:21:00.000Z	crimsun	phr34ck	and make very sure that the toolchain components are properly installed (binutils, gcc, libc6-dev, linux-kernel-headers)
+2007-01-01T01:21:00.000Z	phr34ck	crimsun	since gcc 4.0.3 is installed .. how can I write C++ program.
+2007-01-01T01:21:00.000Z	phr34ck	crimsun	I think I have them.
+2007-01-01T01:21:00.000Z	phr34ck		The thing is that everything is soo messed up now. I'm totally new and installing packages here and there.
+2007-01-01T01:21:00.000Z	crimsun	phr34ck	you don't need gcc-4.1.1 to write C++ programs
+2007-01-01T01:21:00.000Z	phr34ck		no idea what I'm doing.
+2007-01-01T01:22:00.000Z	crimsun	phr34ck	all you needed to compile C++ programs is 'build-essential'
+2007-01-01T01:22:00.000Z	crimsun	phr34ck	what in the world are you attempting to do?
+2007-01-01T01:23:00.000Z	phr34ck	crimsun	I'm getting familiar with Linux ;p
+2007-01-01T01:23:00.000Z	phr34ck		What's next ?
+2007-01-01T01:23:00.000Z	crimsun	phr34ck	you still haven't stated what you're attempting to do...
+2007-01-01T01:24:00.000Z	phr34ck		I wanted to have a decent C++ compiler. So I downloaded gcc and I'm here to see how to install it. I had no idea that there is a built in compiler
+2007-01-01T01:24:00.000Z	crimsun	phr34ck	the C++ compiler is g++
+2007-01-01T01:26:00.000Z	crimsun	phr34ck	you -already- have a working C++ compiler installed
+2007-01-01T01:26:00.000Z	phr34ck	crimsun	okay how to I work with it?
+2007-01-01T01:26:00.000Z	phr34ck		where is it ?
+2007-01-01T01:26:00.000Z	crimsun	phr34ck	g++
+2007-01-01T01:27:00.000Z	phr34ck		or just a built in one ?
+2007-01-01T01:27:00.000Z	crimsun	phr34ck	what do you mean by high end?
+2007-01-01T01:28:00.000Z	crimsun	phr34ck	it's part of all Ubuntu installs
+2007-01-01T01:28:00.000Z	phr34ck	crimsun	I mean a very decent C++ compiler
+2007-01-01T01:29:00.000Z	crimsun	phr34ck	GCC is very good
+2007-01-01T01:29:00.000Z	crimsun	phr34ck	it's not shoddy software if that's what you're asking
+2007-01-01T01:29:00.000Z	phr34ck	crimsun	but you said that GCC is not a C++ compiler?
+2007-01-01T01:29:00.000Z	phr34ck		g++ is the same as gcc ?
+2007-01-01T01:29:00.000Z	crimsun	phr34ck	no, gcc != g++ just as C != C++

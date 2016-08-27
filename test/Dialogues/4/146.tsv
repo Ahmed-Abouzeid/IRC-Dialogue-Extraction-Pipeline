@@ -1,0 +1,23 @@
+2007-01-01T01:29:00.000Z	phr34ck		g++ is the same as gcc ?
+2007-01-01T01:29:00.000Z	nn	phr34ck	g++ is
+2007-01-01T01:29:00.000Z	nn	phr34ck	g++ is a part of gcc
+2007-01-01T01:29:00.000Z	nn	phr34ck	GCC is the GNU Compiler Collection
+2007-01-01T01:30:00.000Z	phr34ck		How can I take advantage of it >?
+2007-01-01T01:30:00.000Z	nn	phr34ck	that's gcj
+2007-01-01T01:30:00.000Z	phr34ck		it's not included in the GCC ?
+2007-01-01T01:30:00.000Z	nn	phr34ck	it's part of gcc, but a seperate package
+2007-01-01T01:31:00.000Z	phr34ck		Why do I have to write this : ./testing ? why not just testing ?
+2007-01-01T01:31:00.000Z	nn	phr34ck	it's a safety feature
+2007-01-01T01:32:00.000Z	phr34ck	nn	what does it mean ?
+2007-01-01T01:32:00.000Z	nn	phr34ck	./whatever means run 'whatever' from the current directory (.)
+2007-01-01T01:32:00.000Z	phr34ck	nn	I see.
+2007-01-01T01:32:00.000Z	nn	phr34ck	if you have '.' in your $PATH (DANGEROUS) someone could put a nasty program in the directory (which could compromise your machine)
+2007-01-01T01:32:00.000Z	nn	phr34ck	and it would be ran instead of the program you want
+2007-01-01T01:33:00.000Z	phr34ck	nn	thanks.
+2007-01-01T01:33:00.000Z	phr34ck		These are Linux in general, and not just Ubuntu, yes >?
+2007-01-01T01:33:00.000Z	nn	phr34ck	yes.
+2007-01-01T01:33:00.000Z	nn	phr34ck	it's a safety feature
+2007-01-01T01:34:00.000Z	phr34ck		where I can find Java interpreter ?
+2007-01-01T01:34:00.000Z	nn	phr34ck	so that if you really want to run something from the current directory, you have to knowingly do so by say './whatever' (run whatever from current directory (.)
+2007-01-01T01:34:00.000Z	phr34ck	nn	I understand mate.
+2007-01-01T01:35:00.000Z	nn	phr34ck	you probably want jre, unless doing java development, then jdk might be better bet for you

@@ -1,0 +1,6 @@
+2007-01-01T06:23:00.000Z	nolimitsoya	Maul555	i thought you would. why else would you be here?
+2007-01-01T06:23:00.000Z	Maul555		I installed my ati drivers, and now when it tries to startx, i get a blank screen, but can hear the os booting up behind it...
+2007-01-01T06:23:00.000Z	nolimitsoya	Maul555	boot recoverymode and reconfugre your xserver
+2007-01-01T06:23:00.000Z	Maul555		how
+2007-01-01T06:23:00.000Z	nolimitsoya	Maul555	dpkg-reconfigure xserver-xorg
+2007-01-01T06:23:00.000Z	Maul555		awsome, ill try that, thx

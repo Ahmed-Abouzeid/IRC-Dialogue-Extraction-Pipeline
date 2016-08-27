@@ -1,0 +1,6 @@
+2007-01-01T07:31:00.000Z	jasin		a cisco vpn in ubuntu???? say what.
+2007-01-01T07:33:00.000Z	nnacht	jasin	I tried to complie a module, but it failed
+2007-01-01T07:33:00.000Z	jasin	nnacht	that sucks
+2007-01-01T07:34:00.000Z	nnacht	jasin	yes, it seems that the kernel should be patched, i just don't know how
+2007-01-01T07:34:00.000Z	jasin		patching the kernel is relativly easy,  patch -p0
+2007-01-01T07:35:00.000Z	jasin		http://www.linuxhelp.net/guides/kernelpatch/

@@ -1,0 +1,13 @@
+2007-01-01T12:14:00.000Z	basvg		um, I just upgraded from dapper to edgy... now I have 2 problems. Whenver I start a terminal I get 'To run a command as administrator (user root), use sudo <command>.' ... quite annoying. Any idea how to turn that off
+2007-01-01T12:14:00.000Z	basvg		the other issue is that every time I login I get the mail-notification popup
+2007-01-01T12:15:00.000Z	samuel	basvg	must be in your .bashrc file or perhaps the system bashrc
+2007-01-01T12:15:00.000Z	basvg	samuel	didn't change my .bashrc .... I'll check /etc/
+2007-01-01T12:15:00.000Z	basvg		of course
+2007-01-01T12:16:00.000Z	samuel		thats only 1 problem though
+2007-01-01T12:16:00.000Z	basvg		the other one is the mail-notificaton popup... if I start gnome-session-properties then I see 'mail-notification --sm-disable' in the startup programs... and I can't seem to remove it
+2007-01-01T12:17:00.000Z	samuel	basvg	preferences -- sessions
+2007-01-01T12:17:00.000Z	samuel		should be in there
+2007-01-01T12:17:00.000Z	samuel		just get rid of it
+2007-01-01T12:18:00.000Z	samuel		i know feisty fawn now is like sid, but is there a constant sid that you dont need to change your sources lines?
+2007-01-01T12:18:00.000Z	basvg	samuel	that s the same as running gnome-session-properties... trying to just disable it brb
+2007-01-01T12:18:00.000Z	samuel		yes

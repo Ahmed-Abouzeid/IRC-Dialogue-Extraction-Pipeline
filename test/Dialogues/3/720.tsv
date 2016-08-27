@@ -1,0 +1,64 @@
+2007-01-01T08:21:00.000Z	l33t		hello
+2007-01-01T08:21:00.000Z	l33t		I need some assistance please.
+2007-01-01T08:22:00.000Z	l33t		yeah
+2007-01-01T08:22:00.000Z	l33t		but not with Linux
+2007-01-01T08:22:00.000Z	l33t		only on XP
+2007-01-01T08:22:00.000Z	l33t		I need assistance installing the Nvidia driver for ubuntu
+2007-01-01T08:22:00.000Z	BHSPitMonkey	l33t	sudo apt-get install nvidia-glx?
+2007-01-01T08:23:00.000Z	l33t		I already installed that package via Package Manager
+2007-01-01T08:23:00.000Z	BHSPitMonkey	l33t	oh, you need to edit your xorg.conf still?
+2007-01-01T08:24:00.000Z	l33t		I did that and it gave me an error
+2007-01-01T08:24:00.000Z	BHSPitMonkey	l33t	run sudo gedit /etc/X11/xorg.conf in a terminal (no quotes)
+2007-01-01T08:25:00.000Z	l33t		unfortunately
+2007-01-01T08:25:00.000Z	BHSPitMonkey	l33t	scroll down to Section Device
+2007-01-01T08:25:00.000Z	BHSPitMonkey	l33t	and where it says Driver there, change nv to nvidia
+2007-01-01T08:27:00.000Z	l33t		hello?
+2007-01-01T08:27:00.000Z	BHSPitMonkey	l33t	ah. is the picture coming out of the nvidia card??
+2007-01-01T08:28:00.000Z	l33t		so what I exactly do I do that now?
+2007-01-01T08:28:00.000Z	BHSPitMonkey	l33t	open another terminal tab or something, and run lspci
+2007-01-01T08:28:00.000Z	l33t		but I didn't change that first thing
+2007-01-01T08:28:00.000Z	l33t		Section Device
+2007-01-01T08:28:00.000Z	l33t		Identifier
+2007-01-01T08:28:00.000Z	l33t		Driver
+2007-01-01T08:28:00.000Z	l33t		BusID
+2007-01-01T08:28:00.000Z	l33t		that should be changed right?
+2007-01-01T08:28:00.000Z	BHSPitMonkey	l33t	join #ubuntu-xgl , I'll talk you through this there
+2007-01-01T08:28:00.000Z	BHSPitMonkey		I've done this exact thing before
+2007-01-01T08:10:00.000Z	l33t		????
+2007-01-01T08:11:00.000Z	BHSPitMonkey	l33t	what are you confused on
+2007-01-01T08:11:00.000Z	l33t		it aint in there
+2007-01-01T08:12:00.000Z	BHSPitMonkey	l33t	he means frostwire.
+2007-01-01T08:14:00.000Z	l33t		HELP
+2007-01-01T08:15:00.000Z	BHSPitMonkey	l33t	calm the poo down
+2007-01-01T08:17:00.000Z	l33t		everyone keeps telling me something different, lol
+2007-01-01T08:17:00.000Z	BHSPitMonkey	l33t	all people have done for the past 5 minutes is address this for you, and all you've managed to do is ? HELP ?????????????
+2007-01-01T08:18:00.000Z	l33t		this room is too damn crowded
+2007-01-01T08:19:00.000Z	BHSPitMonkey	l33t	step 1, install java (it's called j2re in synaptic), step 2, pick limewire or frostwire (they're identical, frost is just open source, no ads or nags), step 3, depends on your choice.
+2007-01-01T08:19:00.000Z	l33t		I want frostwire
+2007-01-01T08:19:00.000Z	BHSPitMonkey	l33t	then get frostwire from apt-get or synaptic
+2007-01-01T08:19:00.000Z	l33t		it's not in the package manager
+2007-01-01T08:19:00.000Z	BHSPitMonkey	l33t	have you enabled universe
+2007-01-01T08:20:00.000Z	l33t		opened
+2007-01-01T08:21:00.000Z	BHSPitMonkey	l33t	open synaptic, go to Settings>Repositories, and then check all the boxes.
+2007-01-01T08:22:00.000Z	l33t		too much chat
+2007-01-01T08:22:00.000Z	BHSPitMonkey	l33t	we've all been highlighting you, our instructions should be in red.
+2007-01-01T08:22:00.000Z	l33t		so what do I do in Synaptic?
+2007-01-01T08:22:00.000Z	BHSPitMonkey	l33t	open synaptic, go to Settings>Repositories, and then check all the boxes.
+2007-01-01T08:23:00.000Z	l33t		I did that
+2007-01-01T08:23:00.000Z	BHSPitMonkey	l33t	then close the settings window, click the Reload button, then look for frostwire
+2007-01-01T08:24:00.000Z	BHSPitMonkey		I'm really not convinced, but that's fine.
+2007-01-01T08:24:00.000Z	l33t		update?
+2007-01-01T08:25:00.000Z	BHSPitMonkey	l33t	the RELOAD button at the top in synaptic
+2007-01-01T08:25:00.000Z	l33t		why dont you believe me
+2007-01-01T08:25:00.000Z	BHSPitMonkey	l33t	if you still can't find it, then go to frostwire.com and get it there.
+2007-01-01T08:25:00.000Z	BHSPitMonkey	l33t	we don't believe you because we can all see it there.
+2007-01-01T08:26:00.000Z	l33t		I checked all of them
+2007-01-01T08:26:00.000Z	BHSPitMonkey	l33t	see if they're still checked. Maybe you did something wrong and they didn't stick
+2007-01-01T08:26:00.000Z	l33t		they are still checked
+2007-01-01T08:27:00.000Z	BHSPitMonkey	l33t	just download it from frostwire.com
+2007-01-01T08:28:00.000Z	l33t		done installing
+2007-01-01T08:29:00.000Z	BHSPitMonkey	l33t	uhh... run it and get pr0n?
+2007-01-01T08:31:00.000Z	l33t		it doesn't require java?
+2007-01-01T08:31:00.000Z	BHSPitMonkey	l33t	what?
+2007-01-01T08:31:00.000Z	l33t		Frostwire doesn't need java?
+2007-01-01T08:31:00.000Z	BHSPitMonkey	l33t	of course it does, it's written in java.

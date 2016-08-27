@@ -1,0 +1,10 @@
+2007-01-01T11:53:00.000Z	cybercod		koyo... you've got the broadcom right?
+2007-01-01T11:54:00.000Z	cybercod		makes no difference who made the PC... its broadcom wireless
+2007-01-01T11:54:00.000Z	cybercod		right?
+2007-01-01T11:54:00.000Z	AidanL		How do I add windows to the grub?
+2007-01-01T11:54:00.000Z	cybercod		built in? or card?
+2007-01-01T11:55:00.000Z	cybercod	AidanL	sudo gedit /boot/grub/grub.lst
+2007-01-01T11:55:00.000Z	cybercod		may be grub.list  not sure
+2007-01-01T11:55:00.000Z	AidanL		I see but there is an error when the comptuer is booting up...
+2007-01-01T11:55:00.000Z	AidanL		a Grub error.
+2007-01-01T11:55:00.000Z	cybercod		there will be an example for windows booting... the name doesn't matter thats just the label for the option. ... something to do with chainloader

@@ -1,0 +1,888 @@
+17:16:43 ccl-logbot [~ccl-logbo@setf.clozure.com] has joined #lisp
+17:16:43 
+17:16:43 -!- names: ccl-logbot krl chrnybo Zephyrus huangjs` koollman Yuuhi Trystam gnooth_ SecretAg1nt tvaalen_ delYsid` koning_robot leo2007 azuk` starseek1r dmiles Maxux `Fuco` gigamonkey pizzledizzle fgump Ginei_Morioka HET2 pnkfelix SolarBoom molbdnilo nuba rfg ziarkaen kmwallio churib petercoulton Jabberwockey attila_lendvai AntiSpamMeta pdo ehu xan_ sdsds Nshag hargettp dfkjjkfd_ powerje urandom__ benny carlocci rff ASau _s1gma upwardindex1 p_l|home bgs100 gravicappa
+17:16:43 -!- names: sabalaba e-user Torque fiveop jcazevedo LiamH Patzy Soulman1 gozek easyE nmg npoektop jewel pchrist abeaumont drdo Guthur homie kaemo morphling nha billitch lhz dto PCChris taus bsod1 H4ns`` cmm mishoo cibs insomniaSalt chemuduguntar araujo REPLeffect eugu mrSpec daniel mega1 stassats Vicfred xinming clop3 mitre slyrus az lemoinem rtoym replete billstclair sellout Madsy^ SpitfireWP sbahra guaqua PuffTheMagic moah arbscht Fullma ianmcorvidae ramus
+17:16:43 -!- names: lolsuper_ Intensity sonnym c|mell Euthydemus hugod HDurer_home TeMPOraL illuminati11_13 Onyxyte mathrick nowhereman peterhil katesmith zc00gii DJ_Ice oconnore ajmorgan TraumaPony udzinari necroforest Salamander talyz bzzbzz boysetsfrog tritchey anonymouse89 silentbicycle strlen prip Krystof s0ber museun ZabaQ redline6561 jomat rdd antgreen prokos Xach dlowe pjb drl felipe madnificent katofiad m4thrick pierrep scode mindCrime MetalDust cYmen eno dcrawford
+17:16:43 -!- names: schmrkc xristos lharc ivan4th timchen1` ddv mbohun Demosthenes ve cataska [df] Ralith tsuru` Quadrescence srcerer entrosca luis quasi_ zvrba devinus adeht Borbus mpedersen abeaumont_ froydnj mitre_ djinni` spiaggia mgr incandenza gor[e] BrianRice gz Draggor thom_logn Pepe_ coyo cpt_nemo reb lusory housel Zhivago Kovensky tychoish Amadiro minion defn Fade spcshpopr8r jesusabdullah pok ineiros sepi l_a_m specbot frodef lispmeister_ baley beach Yamazaki-kun
+17:16:43 -!- names: shachaf cipher nickaugust theBlackDragon fihi09``` guther ace4016 qebab galdor yan_ mreggen Aisling mal__ ``Erik karbak erk_ snorble_ onteria derrida fe[nl]ix stepnem albino gju_ antifuchs fmu__ phadthai codemonkeyx eli |3b| kloeri acieroid quasisane zbigniew joast fmu Quetzalcoatl_ gds deepfire boyscared rotty johs vert2_ elly mornfall gonzojive1 fnordus spacebat eldragon vsync_ sid3k tessier_ trigen _8david whee_ PissedNumlock hohum cods bigjust_ tomaw
+17:16:43 -!- names: z0d franki^ herbieB nullman rabite hdurer`` amaron Axioplase_ blitz_ Tordek ozzloy Dodek mtd ecraven Zahl_ lonstein kencausey krappie_ rafl foom lianj sentry _3b Khisanth kae_ petter` Obfuscate jrockway setheus pr sykopomp ejohnson OliverUv dostoyevsky Buganini svk_ euphidime rokstar vandemar rapacity jamief cky peddie symbole DrForr yahooooo antoszka Odin- Tasunteld njan Bucciarati Adrinael jsnell
+17:16:43 tic [~tic@c83-249-196-184.bredband.comhem.se] has joined #lisp
+17:16:56 ignas [~ignas@ctv-79-132-160-221.vinita.lt] has joined #lisp
+17:17:05 bfein [~morik@ita4fw1.itasoftware.com] has joined #lisp
+17:17:33 -!- AntiSpamMeta [~MetaBot@unaffiliated/afterdeath/bot/antispambot] has quit [Excess Flood]
+17:18:02 V-ille [~ville@dsl-olubrasgw1-fe4efb00-215.dhcp.inet.fi] has joined #lisp
+17:18:16 pkhuong [~pkhuong@gravelga.xen.prgmr.com] has joined #lisp
+17:18:16 mejalx [~mejalx@li175-121.members.linode.com] has joined #lisp
+17:19:42 AntiSpamMeta [~MetaBot@unaffiliated/afterdeath/bot/antispambot] has joined #lisp
+17:20:48 <Fade> perhaps a repo name that doesn't overlap the slime upstream would facilitate optionally loading your fork via quicklisp?
+17:20:55 axiom [~axiom@plum.csbnet.se] has joined #lisp
+17:20:56 -!- axiom is now known as majoh
+17:21:07 gemelen [~shelta@shpd-78-36-167-9.static.vologda.ru] has joined #lisp
+17:21:33 <Fade> slime is kind of a nasty choke-point for politics. :/
+17:22:14 em [~em@unaffiliated/emma] has joined #lisp
+17:23:12 jconrad [~jconrad@host109-156-1-248.range109-156.btcentralplus.com] has joined #lisp
+17:24:17 borism [~boris@ec2-79-125-58-77.eu-west-1.compute.amazonaws.com] has joined #lisp
+17:25:43 <beach> Good evening everyone!
+17:25:56 <e-user> beach: good evening!
+17:26:08 *stassats* ran into a crazy bug
+17:26:35 <stassats> it's so crazy i can't describe it
+17:27:55 -!- pnkfelix [~Adium@c-71-225-45-140.hsd1.nj.comcast.net] has quit [Ping timeout: 240 seconds]
+17:28:03 <beach> stassats: That must be a *very* crazy bug!
+17:29:04 -!- upwardindex1 [~Adium@modemcable004.209-80-70.mc.videotron.ca] has quit [Quit: Leaving.]
+17:29:16 -!- Amadiro [~whoppix@ti0021a380-dhcp3255.bb.online.no] has quit [Read error: Connection reset by peer]
+17:29:22 <Fade> well, now I'm seriously curious.
+17:29:23 <attila_lendvai> Fade: well, first ask Xach's opinion about including a slime fork into the quicklisp ecosystem... :) I'm sure we can work out the technical details in a fraction of the time of the political discussion...
+17:30:22 upwardindex [~Adium@modemcable004.209-80-70.mc.videotron.ca] has joined #lisp
+17:30:28 <Fade> well, it's the political discussion that always causes the most problems.
+17:30:41 <stassats> as always with crazy bugs, they turn out to be not that crazy
+17:30:50 <Fade> I haven't been involved at all in slime dev... i've just generally been happy to have it.
+17:31:54 <stassats> looks like autodoc interns some symbols which it shouldn't intern
+17:32:19 jconrad_ [~jconrad@host109-153-59-37.range109-153.btcentralplus.com] has joined #lisp
+17:33:07 -!- jconrad [~jconrad@host109-156-1-248.range109-156.btcentralplus.com] has quit [Ping timeout: 240 seconds]
+17:33:07 -!- jconrad_ is now known as jconrad
+17:34:29 <stassats> or it doesn't
+17:35:44 b-man_ [~b-man@189.34.55.65] has joined #lisp
+17:35:47 <attila_lendvai> Fade: same here. but we also have a tendency of looking at the code of anything that doesn't work as good as we would like it to work... and slime fell pray for this tendency of ours, because we work quite a lot with it.
+17:36:40 <Fade> well, after sbcl/ccl/cmucl etc. I guess slime is probably the most important package in the free lisp ecology.
+17:36:41 <attila_lendvai> every time there's some recurring annoyance in the tool I'm using, e.g. slime, then I open a varying, but not so long session to fix it.
+17:37:18 <Fade> marco's slime movie was the thing that brought me back to lisp.
+17:37:23 <stassats> that's the same reason i became a slime developer/committer/whatever-it's-called-nowadays
+17:37:53 compmstr [~compmstr@adsl-074-185-008-197.sip.clt.bellsouth.net] has joined #lisp
+17:37:53 <attila_lendvai> if I hit a wall, then I put it in the back of my brain and get back to the original issue I've been working on. later on I may come up with a solution, or just learn to live with the annoyance
+17:38:17 <attila_lendvai> stassats: yeah, most of the slime comitters think like that. except Helmut...
+17:38:36 <Fade> is the issue that helmut doesn't accept patches? or is it just a style issue?
+17:40:26 gonzojive [~red@adsl-75-6-248-33.dsl.pltn13.sbcglobal.net] has joined #lisp
+17:40:36 <attila_lendvai> Fade: he uses slme in a simple way, and he cries out regularly for keeping the slime codebase simple to minimalize his maintainership load. (but he fails to see that he's driving away several people who would be happy to help maintaining an evolving slime...)
+17:40:55 <attila_lendvai> stuff like the fancy inspector and the repl are very typical examples of this
+17:40:56 freiksenet [~freiksene@cs181130165.pp.htv.fi] has joined #lisp
+17:41:32 <Fade> normally i'd say that forking is a sane thing to do, but forking a critical lisp system also forks a fairly small number of eyeballs.
+17:41:34 <attila_lendvai> a useful inspector is key in a managed environment like lisp. now it's in a contrib which is not loaded by default...
+17:42:19 <Fade> I've been loading 'slime-fancy for almost as long as I've been using slime.
+17:44:02 -!- Torque [~evilbooge@74.40.36.166] has left #lisp
+17:45:15 Amadiro [~whoppix@ti0021a380-dhcp3255.bb.online.no] has joined #lisp
+17:45:18 <Guthur> having to load slime contribs explicitly isn't exactly much of a headache
+17:45:39 <stassats> if you know that you should load it
+17:45:53 Taiyou` [~Taiyou@bas3-toronto47-1242432918.dsl.bell.ca] has joined #lisp
+17:46:02 <Fade> not having a slime repl after successfully installing slime is probably the most frequently asked slime question by newbs in this channel.
+17:46:29 <Guthur> maybe there needs to be better visibility of the setting up process
+17:46:36 jimrthy [~jimrthy@ip68-13-249-220.ok.ok.cox.net] has joined #lisp
+17:46:42 <Fade> I've long thought that default was nonsensical.
+17:46:43 <Guthur> including the most popular contribs
+17:46:47 pnkfelix [~Adium@c-71-225-45-140.hsd1.nj.comcast.net] has joined #lisp
+17:47:09 <Fade> i'm not even sure what the rationale could be.
+17:47:09 inaccessibly [~watchwise@wrongplanet/CrazyEddy] has joined #lisp
+17:47:13 <Guthur> hehe, to be honest I kind of load everything and haven't even much idea what is what
+17:47:36 <Fade> I guess that's why the 'slime-fancy contrib was defined.
+17:48:45 <Fade> perhaps a formalised plugin architecture for slime would be something that could get plugged in upstream.
+17:48:47 mitre__ [~chatzilla@204.51.92.251] has joined #lisp
+17:48:55 <Fade> it sounds like the current situation is somewhat haphazzard.
+17:49:32 <Fade> certainly seems like something that'd cut down the politics for changing the slime core.
+17:49:37 <stassats> you can easily plugin your own contribs
+17:49:51 <stassats> the problems with the contribs distributed with slime
+17:50:27 <stassats> and actually not with them, but whether they're loaded by default
+17:50:29 SolarBoom1 [~Nurlan@85.132.44.35] has joined #lisp
+17:50:31 -!- mitre [~chatzilla@fl-74-4-76-189.dhcp.embarqhsd.net] has quit [Ping timeout: 265 seconds]
+17:50:41 <Fade> that's one issue, for sure.
+17:50:44 -!- mitre__ is now known as mitre
+17:51:20 <Fade> it sounds like contribs for certain features require changes outside the contrib, though. formalising interfaces to things like the inspector might make things more generic.
+17:51:29 -!- SolarBoom [~Nurlan@85.132.44.35] has quit [Ping timeout: 260 seconds]
+17:52:39 <stassats> formalizing means maintaining a stable API, but slime doesn't even have releases, so that's not an option
+17:53:01 <Fade> it seems to me that quicklisp is likely to change that culture somewhat.
+17:53:10 <stassats> unless somebody is willing to step up and do slime release management
+17:54:07 <Guthur> the volunteers don't seem to be falling over themselves to come forward
+17:54:08 Bronsa [~bronsa@host241-183-dynamic.21-79-r.retail.telecomitalia.it] has joined #lisp
+17:55:19 <Fade> well, before quicklisp, I think doing system releases for critical projects was probably a very difficult problem.
+17:56:05 -!- mega1 [~quassel@catv4E5CABA2.pool.t-online.hu] has quit [Ping timeout: 245 seconds]
+17:56:07 <Fade> now that infrastructure is in place, there's at least a reasonable mechanism in place to normalise that operation.
+17:57:56 <stassats> and my crazy bug turned out to be in CCL itself, not in Slime
+17:58:25 -!- Khisanth [~Khisanth@pool-96-246-8-177.nycmny.east.verizon.net] has quit [Ping timeout: 252 seconds]
+17:58:34 -!- hargettp [~anonymous@pool-71-184-189-59.bstnma.east.verizon.net] has quit [Quit: hargettp]
+17:59:04 <tic> from where does Quicklisp pull its packages?
+17:59:31 <Fade> Xach builds up tarballs from various repositories
+17:59:42 <Fade> and hosts them on the amazon s3 system.
+18:01:23 <tic> Yeah, it's the "Xach builds tarballs" part I'm thinking of.
+18:01:32 -!- SolarBoom1 [~Nurlan@85.132.44.35] has quit [Ping timeout: 240 seconds]
+18:02:05 -!- jconrad [~jconrad@host109-153-59-37.range109-153.btcentralplus.com] has quit [Quit: jconrad]
+18:03:05 <Fade> well, long term I have no idea how Xach scales, but I think the ability to form sub-dists in quicklisp probably means that it won't be a huge issue.
+18:03:09 -!- mitre_ [~chatzilla@74.112.63.251] has quit [Quit: ChatZilla 0.9.86 [Firefox 3.6.12/20101026210630]]
+18:03:37 SolarBoom [~Nurlan@85.132.44.35] has joined #lisp
+18:06:06 davazp [~user@36.Red-79-153-149.dynamicIP.rima-tde.net] has joined #lisp
+18:06:21 -!- leo2007 [~leo@cpc1-cmbg13-0-0-cust596.5-4.cable.virginmedia.com] has quit [Quit: reboot emacs]
+18:07:10 sacho [~sacho@79-100-173-234.btc-net.bg] has joined #lisp
+18:07:27 leo2007 [~leo@cpc1-cmbg13-0-0-cust596.5-4.cable.virginmedia.com] has joined #lisp
+18:10:27 <homie> why do i get always failures with flexi-streams external-format thing ?
+18:10:41 <stassats> because you have bad karma
+18:11:42 <homie> ((labels:sb-c::sub) (iso8859-1 . #hashbla))
+18:12:08 <homie> is that it awaits iso8859-1 or that i did compile sbcl in utf-8 enabled konsole ?
+18:14:13 <stassats> you need a better description of your problem
+18:16:06 -!- davazp [~user@36.Red-79-153-149.dynamicIP.rima-tde.net] has quit [Remote host closed the connection]
+18:16:12 <homie> it tells me hash-table:test eql:count 256 is not of type list
+18:16:48 <stassats> what tells you?
+18:17:12 <homie> the toplevel-debugger ?!
+18:18:01 -!- leo2007 [~leo@cpc1-cmbg13-0-0-cust596.5-4.cable.virginmedia.com] has quit [Quit: rcirc on GNU Emacs 23.2.90.2]
+18:18:23 <stassats> what makes the toplevel-debugger say such things?
+18:19:24 -!- `Fuco` is now known as Fuco
+18:20:58 <homie> why do you babble so much ?
+18:21:17 leo2007 [~leo@cpc1-cmbg13-0-0-cust596.5-4.cable.virginmedia.com] has joined #lisp
+18:21:55 -!- molbdnilo [~Ove@c80-216-195-64.bredband.comhem.se] has quit [Ping timeout: 240 seconds]
+18:22:06 <stassats> i didn't realize that you weren't asking for help, i am sorry
+18:22:45 <homie> you realize too much
+18:22:55 -!- Bronsa [~bronsa@host241-183-dynamic.21-79-r.retail.telecomitalia.it] has quit [Quit: Lost terminal]
+18:24:19 dto1 [~dto@pool-96-252-62-25.bstnma.fios.verizon.net] has joined #lisp
+18:24:33 <schmrkc> What the.
+18:24:35 <homie> it checks on ascii, iso8859-1 and koi-8r only, and proceeds with whatever that resulted in, the :utf8 checks won't even get executed
+18:25:57 <schmrkc> homie: Please go away. Come back again with some politeness and some actual description on your issue.
+18:26:51 <homie> fya
+18:27:32 srolls [~user@c-76-126-221-48.hsd1.ca.comcast.net] has joined #lisp
+18:31:19 jconrad [~jconrad@host86-163-162-130.range86-163.btcentralplus.com] has joined #lisp
+18:35:37 pepone [~pepone@121.246.218.87.dynamic.jazztel.es] has joined #lisp
+18:35:45 molbdnilo [~Ove@c80-216-195-64.bredband.comhem.se] has joined #lisp
+18:36:13 -!- ASau [~user@95-27-197-147.broadband.corbina.ru] has quit [Remote host closed the connection]
+18:36:55 ASau [~user@95-27-197-147.broadband.corbina.ru] has joined #lisp
+18:37:26 <pepone> Hi, i new to common lisp, is there something similar to enums?
+18:38:32 <stassats> you can just use symbols
+18:39:18 <pepone> how is that stassats?
+18:39:47 <pepone> i whant to map the states of a connection
+18:40:26 <stassats> symbols have identity, if you're using enums for identity
+18:41:39 <pepone> mm but you can asign any symbol, the point of using enums is that the range of values is limited
+18:42:22 <stassats> then check whether the symbols you get are the symbols you want
+18:42:56 molbdnilo_ [~Ove@c80-216-195-64.bredband.comhem.se] has joined #lisp
+18:43:38 brandonz [~brandon@c-76-102-192-48.hsd1.ca.comcast.net] has joined #lisp
+18:43:50 andoo [~eric@p4FC5D535.dip.t-dialin.net] has joined #lisp
+18:44:12 -!- fgump [~gump@cpat001.wlan.net.ed.ac.uk] has quit [Ping timeout: 250 seconds]
+18:44:25 -!- dto1 [~dto@pool-96-252-62-25.bstnma.fios.verizon.net] has quit [Ping timeout: 245 seconds]
+18:45:32 -!- molbdnilo [~Ove@c80-216-195-64.bredband.comhem.se] has quit [Ping timeout: 240 seconds]
+18:45:32 -!- molbdnilo_ is now known as molbdnilo
+18:46:26 pnq [~nick@AC8175E4.ipt.aol.com] has joined #lisp
+18:48:20 -!- andoo [~eric@p4FC5D535.dip.t-dialin.net] has quit [Quit: b]
+18:49:04 SpitfireWP_ [~Spitfire@wikipedia/spitfire] has joined #lisp
+18:51:50 -!- SpitfireWP [~Spitfire@wikipedia/spitfire] has quit [Ping timeout: 255 seconds]
+18:57:01 loxs [~loxs@78.90.124.178] has joined #lisp
+19:00:24 -!- gemelen [~shelta@shpd-78-36-167-9.static.vologda.ru] has quit [Read error: Operation timed out]
+19:03:07 <necroforest> Is there a way to list all symbols in a package?
+19:03:10 -!- jconrad [~jconrad@host86-163-162-130.range86-163.btcentralplus.com] has quit [Ping timeout: 245 seconds]
+19:03:46 <beach> necroforest: The way to figure things like that out is to go to the permuted index and look under symbol or package.
+19:04:06 <stassats> (loop for symbol being the symbols in package collect symbol)
+19:04:45 <beach> necroforest: If you do that, you will find do-symbols, do-external-symbols, etc.
+19:05:32 <necroforest> starseek1r,  thanks
+19:06:00 <beach> You mean stassats?
+19:06:16 -!- tsuru` [~charlie@adsl-179-29-10.bna.bellsouth.net] has quit [Remote host closed the connection]
+19:07:48 -!- Guthur [~Guthur@host86-133-248-102.range86-133.btcentralplus.com] has quit [Quit: Leaving]
+19:08:56 gemelen [~shelta@shpd-78-36-177-34.static.vologda.ru] has joined #lisp
+19:10:26 <necroforest> yes :)
+19:12:18 jconrad [~jconrad@host86-164-95-33.range86-164.btcentralplus.com] has joined #lisp
+19:12:53 clog [nef@bespin.org] has joined #lisp
+19:13:04 <necroforest> SBCL can't find sdl-ttf:initialise-default-font, even though it's specified in the documentation...
+19:13:05 <necroforest> hmm
+19:13:51 <beach> necroforest: What does it say when it can't find it?
+19:14:08 Bronsa [~bronsa@host241-183-dynamic.21-79-r.retail.telecomitalia.it] has joined #lisp
+19:14:12 <necroforest> Symbol "INITIALISE-DEFAULT-FONT" not found in the LISPBUILDER-SDL-TTF package.
+19:14:36 horze [~kim@c-0b1072d5.24-87-64736c10.cust.bredbandsbolaget.se] has joined #lisp
+19:14:36 <beach> necroforest: Perhaps you didn't load the file that defines the package?
+19:14:44 <necroforest> i did:
+19:14:58 <necroforest> (ql:quickload "lispbuilder-sdl") (ql:quickload "lispbuilder-sdl-ttf")
+19:15:01 <necroforest> that should load it correct?
+19:15:44 <beach> I don't know actually.  I don't know what ql:quickload does.
+19:16:55 <gigamonkey> necroforest: It should.
+19:17:26 <gigamonkey> As far as I know, ql:quickload will download the thing and its dependencies, if necessary, and then asdf load the approprate system.
+19:20:08 mitre_ [~chatzilla@fl-74-4-76-189.dhcp.embarqhsd.net] has joined #lisp
+19:22:20 -!- mitre [~chatzilla@204.51.92.251] has quit [Ping timeout: 240 seconds]
+19:22:20 -!- mitre_ is now known as mitre
+19:25:20 -!- SpitfireWP_ [~Spitfire@wikipedia/spitfire] has quit [Ping timeout: 240 seconds]
+19:25:48 <necroforest> there's a few symbols in sdl-ttf
+19:25:58 <necroforest> but nothing that's particularly useful
+19:26:02 <necroforest> liek load-default-font
+19:26:06 <necroforest> err, intialise
+19:26:32 <jimrthy> necroforest: I just tried it. I don't see that symbol in that package either.
+19:27:01 <necroforest> i just see load-library, init-ttf, and a few other related ones
+19:27:54 <jimrthy> ttf-font.lisp has an "initialise-font" method, but it doesn't seem to be exported. Not that I know enough about packaging or system definitions to have much of a clue
+19:28:08 <jimrthy> I'll go back into lurk mode now...sorry for the interruption
+19:28:18 <Bronsa> guys
+19:28:25 -!- chemuduguntar [~ravi@118-92-3-79.dsl.dyn.ihug.co.nz] has quit [Remote host closed the connection]
+19:28:38 <Bronsa> as you know, is there a way to know the directory where a loaded file cames from?
+19:28:59 seangrove [~user@c-67-188-1-148.hsd1.ca.comcast.net] has joined #lisp
+19:29:12 jeti [~user@p54B462F4.dip.t-dialin.net] has joined #lisp
+19:29:13 <pjb> (pathname-directory *load-pathname*)
+19:29:32 <Bronsa> thanks
+19:29:54 <pjb> Bronsa: but it's not a pathname, if that's what you want.
+19:30:16 -!- rfg [~rfg@host81-102-106-221.not-set-yet.ntli.net] has quit [Quit: rfg]
+19:30:17 <Bronsa> pjb: pjb seen
+19:30:20 <Bronsa> but i can use it
+19:30:21 <Bronsa> thanks
+19:35:07 ak70 [~ak70@46.11.10.227] has joined #lisp
+19:35:47 -!- snorble_ [~snorble@s83-179-14-105.cust.tele2.se] has quit [Quit: Lämnar]
+19:36:22 jconrad_ [~jconrad@host86-177-65-79.range86-177.btcentralplus.com] has joined #lisp
+19:37:18 -!- HET2 [~diman@cpc1-cdif12-2-0-cust125.5-1.cable.virginmedia.com] has quit [Quit: This computer has gone to sleep]
+19:38:10 -!- jconrad [~jconrad@host86-164-95-33.range86-164.btcentralplus.com] has quit [Ping timeout: 245 seconds]
+19:38:10 -!- ziarkaen [~ziarkaen@87.113.184.8] has quit [Ping timeout: 245 seconds]
+19:38:34 <necroforest> OHH
+19:38:51 <necroforest> the LISPBUILDER-SDL-TTF  puts all of its symbols in the sdl: package
+19:39:08 <necroforest> they also apparently don't update their documentation....
+19:40:20 <freiksenet> necroforest: are you using google-code documentation?
+19:40:33 <freiksenet> there used to be two copies of lispbuilder docs flying around
+19:40:40 <freiksenet> on of which were more google relevant
+19:40:46 <freiksenet> but was outdated and useless
+19:40:58 jconrad [~jconrad@host109-153-44-31.range109-153.btcentralplus.com] has joined #lisp
+19:41:03 <necroforest> http://lispbuilder.sourceforge.net/lispbuilder-sdl-ttf.html
+19:41:07 <necroforest> that's what i'm reading
+19:41:08 Hexstream [~hexstream@modemcable075.97-200-24.mc.videotron.ca] has joined #lisp
+19:42:16 <freiksenet> "This is an old webpage. As of 2008-12-05 17:45, this project may now be found at: http://code.google.com/p/lispbuilder/'
+19:42:21 <freiksenet> on top of the page
+19:42:35 -!- jconrad_ [~jconrad@host86-177-65-79.range86-177.btcentralplus.com] has quit [Ping timeout: 255 seconds]
+19:42:46 <Hexstream> Hum. Is it okay to give a stupidly long name to a definition macro you know will be used only once in a blue moon or even less?... What about define-multiple-value-rebind-binding-var-finder?
+19:42:52 <freiksenet> I have no idea why they didn't take down the old site.
+19:43:22 -!- katesmith [~katesmith@unaffiliated/costume] has quit [Read error: Connection reset by peer]
+19:43:25 <freiksenet> probably they are following haskell motto of "never get popular" or promoting myth about unusability of cl libraries :D
+19:44:15 katesmith [~katesmith@unaffiliated/costume] has joined #lisp
+19:44:16 Khisanth [~Khisanth@pool-96-250-31-162.nycmny.east.verizon.net] has joined #lisp
+19:44:36 <necroforest> freiksenet, it doesn't say that on the page i'm looking at....
+19:44:39 -!- Zephyrus [~emanuele@unaffiliated/zephyrus] has quit [Ping timeout: 260 seconds]
+19:44:54 <freiksenet> http://lispbuilder.sourceforge.net/, ok it does it here
+19:45:07 -!- b-man_ [~b-man@189.34.55.65] has quit [Remote host closed the connection]
+19:45:10 <necroforest> oh
+19:45:17 <necroforest> well, i didn't look at that page ;)
+19:45:18 <freiksenet> trust me, sourceforge docs are old
+19:45:27 <freiksenet> as I said - I dunno why they didn't take down old pages.
+19:45:40 <freiksenet> but the fact is - old pages are still more google relevant than new ones :D
+19:47:48 -!- pnkfelix [~Adium@c-71-225-45-140.hsd1.nj.comcast.net] has quit [Quit: Leaving.]
+19:48:47 b-man_ [~b-man@189.34.55.65] has joined #lisp
+19:49:25 HET2 [~diman@cpc1-cdif12-2-0-cust125.5-1.cable.virginmedia.com] has joined #lisp
+19:50:00 <Hexstream> I guess define-mvrebind-finder will be much saner ;P
+19:50:07 Zephyrus [~emanuele@unaffiliated/zephyrus] has joined #lisp
+19:50:54 varjag [~eugene@4.169.249.62.customer.cdi.no] has joined #lisp
+19:52:40 -!- morphling [~stefan@gssn-5f755938.pool.mediaWays.net] has quit [Remote host closed the connection]
+19:53:29 <stassats> Hexstream: how about defmvrf?
+19:53:50 <Hexstream> Hum, no, that's even stupider than the stupid long name.
+19:53:57 <p_l|home> stassats: sounds like something from bell labs
+19:53:59 -!- freiksenet [~freiksene@cs181130165.pp.htv.fi] has quit [Quit: WeeChat 0.3.2]
+19:54:39 <Hexstream> The biggest problem with that name, though, is that you left a vowel.
+19:55:29 khisanth_ [~Khisanth@pool-96-250-25-228.nycmny.east.verizon.net] has joined #lisp
+19:56:45 morphling [~stefan@gssn-5f755938.pool.mediaWays.net] has joined #lisp
+19:56:53 rfg [~rfg@81.102.108.60] has joined #lisp
+19:57:18 pnkfelix [~Adium@c-71-225-45-140.hsd1.nj.comcast.net] has joined #lisp
+19:57:22 -!- Khisanth [~Khisanth@pool-96-250-31-162.nycmny.east.verizon.net] has quit [Ping timeout: 265 seconds]
+19:57:45 -!- khisanth_ is now known as Khisanth
+20:00:28 <Hexstream> I'm sure PG would be happy with that name, though.
+20:00:28 Edward [~ed@AAubervilliers-154-1-35-95.w90-3.abo.wanadoo.fr] has joined #lisp
+20:01:50 -!- pnkfelix [~Adium@c-71-225-45-140.hsd1.nj.comcast.net] has quit [Client Quit]
+20:04:53 chemuduguntar [~user@smtp.touchcut.com] has joined #lisp
+20:04:56 -!- ASau [~user@95-27-197-147.broadband.corbina.ru] has quit [Remote host closed the connection]
+20:05:31 ASau [~user@95-27-197-147.broadband.corbina.ru] has joined #lisp
+20:06:11 <Hexstream> I don't know why autoindent fails so consistently on backquoted forms. That's really annoying.
+20:08:20 <seangrove> I can't programmatically add things to the export list of the package I'm currently working in, can I?
+20:08:51 <Hexstream> Yes, you can.
+20:08:52 tgg [~tgg@pool-71-174-251-39.bstnma.fios.verizon.net] has joined #lisp
+20:08:54 <Hexstream> clhs export
+20:08:55 <specbot> http://www.lispworks.com/reference/HyperSpec/Body/f_export.htm
+20:09:08 <seangrove> Ah, awesome
+20:09:21 <seangrove> alright, a slightly more twisted question then...
+20:09:38 -!- bsod1 [~osa1@188.58.252.233] has quit [Remote host closed the connection]
+20:09:55 -!- fiveop [~fiveop@178.2.112.11] has quit [Ping timeout: 240 seconds]
+20:11:21 <seangrove> If I have a macro in package "vana", and it creates ~3 functions, but I want to use it in another package "lash" so that the 3 functions will be created in (and exported from) the "lash" package - is this the default behavior?
+20:11:29 <seangrove> I keep thinking it is, but then packages turn around and bite me
+20:11:53 <Hexstream> Make the macro take 3 args which will name the functions.
+20:12:54 <Hexstream> Well, that would be the most conventional and safe way. You could also use INTERN to create the names in the current package.
+20:13:30 -!- Bronsa [~bronsa@host241-183-dynamic.21-79-r.retail.telecomitalia.it] has quit [Quit: leaving]
+20:13:35 -!- cmm [~cmm@bzq-109-67-205-172.red.bezeqint.net] has quit [Ping timeout: 245 seconds]
+20:14:01 <seangrove> I believe I do use intern
+20:14:12 -!- inaccessibly [~watchwise@wrongplanet/CrazyEddy] has quit [Ping timeout: 240 seconds]
+20:14:20 -!- brandonz [~brandon@c-76-102-192-48.hsd1.ca.comcast.net] has quit [Ping timeout: 240 seconds]
+20:14:37 cmm [~cmm@109.67.205.172] has joined #lisp
+20:15:02 <seangrove> Yup, I use intern for 'em
+20:15:08 Phoodus [~foo@174-17-245-93.phnx.qwest.net] has joined #lisp
+20:15:16 <Hexstream> Well then, INTERN without a package arg creates symbols in the current package. So if you invoke your macro from the lash package and the macro uses INTERN with 1 argument, then the symbols will be created in the lash package.
+20:15:29 <seangrove> very cool, that makes a lot of sense
+20:15:30 <Hexstream> So what's the question then?
+20:15:46 <seangrove> ... or my brain has just been twisted beyond being capable of recognizing sensible things
+20:16:00 <seangrove> The question was just where the symbol would end up being interned
+20:16:14 <Hexstream> Ok, so I guess I answered that. :)
+20:17:20 <Hexstream> You can verify what package a symbol has been interned in with SYMBOL-PACKAGE.
+20:19:23 -!- Ginei_Morioka [~irssi_log@78.115.218.66] has quit [Ping timeout: 265 seconds]
+20:20:06 <seangrove> Oh, nice
+20:20:13 zophy [~sy@host-27-92-2-96.midco.net] has joined #lisp
+20:20:44 <seangrove> And what's the best way to look at what symbols a package is exporting?
+20:21:00 Ginei_Morioka [~irssi_log@78.114.152.177] has joined #lisp
+20:21:11 <Hexstream> clhs 11.2
+20:21:12 <specbot> Sorry, I couldn't find anything for 11.2.
+20:21:19 <Hexstream> clhs section 11.2
+20:21:27 <Hexstream> What the hell...
+20:21:44 SpitfireWP [~Spitfire@wikipedia/spitfire] has joined #lisp
+20:21:53 fiveop [~fiveop@178.2.112.11] has joined #lisp
+20:21:59 <seangrove> Looking it up manually :)
+20:22:00 <Hexstream> clhs do-external-symbols
+20:22:00 <specbot> http://www.lispworks.com/reference/HyperSpec/Body/m_do_sym.htm
+20:23:05 -!- V-ille [~ville@dsl-olubrasgw1-fe4efb00-215.dhcp.inet.fi] has quit [Quit: Leaving.]
+20:23:19 V-ille [~ville@dsl-olubrasgw1-fe4efb00-215.dhcp.inet.fi] has joined #lisp
+20:24:20 <seangrove> Oh, I just meant from the repl, something like (inspect (find-package :vana))
+20:24:32 -!- Onyxyte [~Onyxyte@r75-110-112-109.rmntcmtc02.rcmtnc.ab.dh.suddenlink.net] has quit [Remote host closed the connection]
+20:24:48 <seangrove> Except just to list the exported symbols from that package
+20:24:53 <Hexstream> Oh. C-c shift-I.
+20:25:10 <Hexstream> Then enter the symbol of the package, quoted.
+20:25:15 -!- xan_ [~xan@155.99.117.91.static.mundo-r.com] has quit [Ping timeout: 245 seconds]
+20:25:28 <Hexstream> 'cl, say. And you'll be in the slime inspector.
+20:26:05 <seangrove> Wow, awesome
+20:26:37 <Hexstream> Use Q when you're done with the inspector.
+20:27:12 jconrad_ [~jconrad@host86-179-139-138.range86-179.btcentralplus.com] has joined #lisp
+20:27:38 <Hexstream> C-h m while in the inspector (or any other buffer) will give you a summary of commands available there.
+20:27:45 -!- jewel [~jewel@196-210-134-67.dynamic.isadsl.co.za] has quit [Ping timeout: 245 seconds]
+20:28:58 *seangrove* feels like a child in a candy store
+20:29:07 -!- jconrad [~jconrad@host109-153-44-31.range109-153.btcentralplus.com] has quit [Ping timeout: 240 seconds]
+20:29:07 -!- jconrad_ is now known as jconrad
+20:31:55 <Hexstream> I might be interested in doing some specbot development. Any pointers? Like where the source code is and stuff.
+20:32:15 -!- moah [~gnu@dslb-084-061-245-213.pools.arcor-ip.net] has quit [Quit: "Anail nachroc, uthvass bethudd, dochiel dienve."]
+20:33:08 <Hexstream> and/or minion.
+20:34:06 <jeti> http://www.cliki.net/minion
+20:34:06 timor1 [~timor@port-92-195-115-44.dynamic.qsc.de] has joined #lisp
+20:36:29 kleppari [~spa@bitbucket.is] has joined #lisp
+20:39:40 <Hexstream> I can't seem to find the specbot sources or well, anything about it related to the project's development itself.
+20:39:50 scaphe [~soaexpert@201-27-100-98.dsl.telesp.net.br] has joined #lisp
+20:40:43 <Hexstream> I want to add support for "some-guy: clhs symbol"
+20:43:19 faux [~user@c-219c70d5.035-128-67626713.cust.bredbandsbolaget.se] has joined #lisp
+20:44:25 -!- Edward [~ed@AAubervilliers-154-1-35-95.w90-3.abo.wanadoo.fr] has quit [Ping timeout: 245 seconds]
+20:48:44 <Hexstream> Oh, so specbot is part of the emacs project or something, apparently. I thought it was written in CL.
+20:49:30 -!- morphling [~stefan@gssn-5f755938.pool.mediaWays.net] has quit [Remote host closed the connection]
+20:50:18 morphling [~stefan@gssn-5f755938.pool.mediaWays.net] has joined #lisp
+20:50:45 mejja [~chatzilla@c-b4b5e555.023-82-73746f38.cust.bredbandsbolaget.se] has joined #lisp
+20:53:32 chjames [~cliff@c-69-140-227-64.hsd1.md.comcast.net] has joined #lisp
+20:53:43 dfox_ [~dfox@ip-213-220-225-182.net.upcbroadband.cz] has joined #lisp
+20:55:11 -!- Zephyrus [~emanuele@unaffiliated/zephyrus] has quit [Ping timeout: 272 seconds]
+20:55:40 -!- scaphe [~soaexpert@201-27-100-98.dsl.telesp.net.br] has quit [Ping timeout: 245 seconds]
+20:55:51 scaphe [~soaexpert@201-92-250-157.dsl.telesp.net.br] has joined #lisp
+20:56:02 -!- SolarBoom [~Nurlan@85.132.44.35] has quit [Ping timeout: 240 seconds]
+20:56:21 sanchaz [sanchaz@gateway/shell/shellium.org/x-jdnmophdlqqmudks] has joined #lisp
+20:56:35 Zephyrus [~emanuele@unaffiliated/zephyrus] has joined #lisp
+20:56:53 -!- Hexstream [~hexstream@modemcable075.97-200-24.mc.videotron.ca] has left #lisp
+21:00:34 -!- e-user [~e-user@port-87-234-24-237.static.qsc.de] has quit [Quit: Leaving.]
+21:04:22 moxiemk1 [~moxiemk1@ETSY.RES.CMU.EDU] has joined #lisp
+21:05:26 Bronsa [~bronsa@host241-183-dynamic.21-79-r.retail.telecomitalia.it] has joined #lisp
+21:05:49 <Bronsa> uhm
+21:08:51 -!- scaphe [~soaexpert@201-92-250-157.dsl.telesp.net.br] has quit [Read error: Connection reset by peer]
+21:08:55 -!- ignas [~ignas@ctv-79-132-160-221.vinita.lt] has quit [Ping timeout: 265 seconds]
+21:10:23 -!- ak70 [~ak70@46.11.10.227] has left #lisp
+21:12:18 Edward [~ed@AAubervilliers-154-1-20-133.w90-3.abo.wanadoo.fr] has joined #lisp
+21:12:47 -!- Phoodus [~foo@174-17-245-93.phnx.qwest.net] has quit [Ping timeout: 265 seconds]
+21:13:55 -!- chjames [~cliff@c-69-140-227-64.hsd1.md.comcast.net] has quit [Ping timeout: 240 seconds]
+21:16:18 -!- kmwallio [~kmwallio@host113-70.brownlie.fit.edu] has quit [Remote host closed the connection]
+21:18:31 snorble [~snorble@s83-179-14-105.cust.tele2.se] has joined #lisp
+21:18:45 Guthur [~Guthur@cpc11-belf9-2-0-cust855.2-1.cable.virginmedia.com] has joined #lisp
+21:19:46 -!- rff [~rff@ip72-207-243-174.br.br.cox.net] has quit [Ping timeout: 250 seconds]
+21:20:12 -!- attila_lendvai [~attila_le@adsl-89-132-7-202.monradsl.monornet.hu] has quit [Read error: Connection reset by peer]
+21:20:59 kmwallio [~kmwallio@host113-70.brownlie.fit.edu] has joined #lisp
+21:21:27 ignas [~ignas@ctv-79-132-160-221.vinita.lt] has joined #lisp
+21:22:32 cls_ [~cs397@raptor.ukc.ac.uk] has joined #lisp
+21:24:09 -!- molbdnilo [~Ove@c80-216-195-64.bredband.comhem.se] has quit [Quit: tubby bye-bye!]
+21:24:17 -!- zophy [~sy@host-27-92-2-96.midco.net] has quit [Ping timeout: 255 seconds]
+21:24:44 -!- c|mell [~cmell@88-96-216-86.dsl.zen.co.uk] has quit [Quit: Leaving]
+21:25:07 zophy [~sy@host-27-92-2-96.midco.net] has joined #lisp
+21:26:59 <Bronsa> I have a problem.
+21:27:11 <ehu> heh. don't we all.
+21:27:46 <Bronsa> I want to get the file path of a lisp file loaded with asdf
+21:28:02 stis [~stis@1-1-1-39a.veo.vs.bostream.se] has joined #lisp
+21:28:13 <Bronsa> and i can't understand how to do this.
+21:30:41 Snamich [~Snamich@75-128-11-42.dhcp.snlo.ca.charter.com] has joined #lisp
+21:31:24 -!- mishoo [~mishoo@host133-108-dynamic.54-79-r.retail.telecomitalia.it] has quit [Ping timeout: 260 seconds]
+21:34:20 -!- churib [~tg@dslc-082-082-119-140.pools.arcor-ip.net] has quit [Ping timeout: 240 seconds]
+21:34:39 <sanchaz> hi
+21:35:04 <sanchaz> if i do a return in a loop thats in a loop where do i end up?
+21:35:05 -!- zophy [~sy@host-27-92-2-96.midco.net] has quit [Ping timeout: 255 seconds]
+21:38:29 -!- rfg [~rfg@81.102.108.60] has quit [Quit: rfg]
+21:39:12 holycow [~new@poco208-2.fredcanhelp.com] has joined #lisp
+21:40:43 craiggles [~craig@host81-141-115-9.wlms-broadband.com] has joined #lisp
+21:41:43 <gigamonkey> sanchaz: in the outer loop
+21:42:02 <sanchaz> humm k thx
+21:42:45 <Bronsa> gigamonkey: you know how I can get the true pathname of a lispfile loaded with asdf?
+21:44:07 rmarianski [~rmariansk@user-387h3rc.cable.mindspring.com] has joined #lisp
+21:44:22 <gigamonkey> Bronsa: you mean while it's being loaded?
+21:44:54 <gigamonkey> *load-truename* in that case.
+21:44:59 <gigamonkey> Otherwise, starting from what?
+21:45:20 <Bronsa> I mean, the path where the lisp file is when the fasl is created
+21:46:39 <gigamonkey> Okay, that sounds like when it's being loaded.
+21:47:12 -!- tgg [~tgg@pool-71-174-251-39.bstnma.fios.verizon.net] has quit [Quit: tgg]
+21:47:14 <gigamonkey> What are you actually trying to do?
+21:48:17 <Bronsa> gigamonkey: suppose i have this in ~/lol/lol.asd
+21:48:25 <Bronsa> (defsystem :lol :components ((:file "lol")))
+21:48:48 <Bronsa> and this and this in ~/lol/lol.lisp
+21:48:54 <Bronsa> (defun lol () (print *load-truename*))
+21:49:02 <Bronsa> if I do
+21:49:18 <Bronsa> (asdf:operate 'asdf:load-op 'lol) (lol)
+21:49:20 <Bronsa> i get nil
+21:50:01 <Bronsa> i need to get "/home/[user]/lol/lol.lisp"
+21:50:11 <Bronsa> and I can't understand how to do this
+21:50:28 <gigamonkey> Ah, never mind, that's not going to be the .lisp file, that'd be the .fasl file.
+21:50:42 disumu [~disumu@pD4B9E0C8.dip.t-dialin.net] has joined #lisp
+21:51:14 <Bronsa> there is no way to do it, maybe using some eval-when dark magic?
+21:51:21 <gigamonkey> There's also *compile-file-truename*
+21:52:02 <gigamonkey> What happens if in your file you do an (eval-when (:compile) (setf cl-user:*my-location* *compile-file-truename*))
+21:53:30 _6502_ [5e24ed3a@gateway/web/freenode/ip.94.36.237.58] has joined #lisp
+21:54:09 <Bronsa> I get an ubound marker (?)
+21:54:55 <gigamonkey> Yeah, defvar cl-user:*my-location* before you do it.
+21:54:57 <gigamonkey> Sorry.
+21:55:24 <gigamonkey> You still haven't answered my question though, what are you really trying to do. I.e. why do you need this information?
+21:55:26 <_6502_> hello: what's wrong with "(sb-ext:save-lisp-and-die "sbcl-mandelbrot" :executable t :toplevel #'doit)" ? the resulting program keeps starting the standard REPL instead of calling (doit) ...
+21:55:55 <Bronsa> gigamonkey: I'm trying to make stumpwm ./configure free
+21:56:28 <Bronsa> and I need to know the source dir to be able to know where the contrib dir is
+21:58:14 <Bronsa> nothing changed
+21:58:33 <Bronsa> (defvar *my-location*) (eval-when (:compile-toplevel) (setf *my-location* *compile-file-truename*)) (print *my-location*) => #<unbound marker {52}>
+21:58:45 -!- b-man_ [~b-man@189.34.55.65] has quit [Remote host closed the connection]
+22:00:00 <gigamonkey> Try this: (eval-when (:compile-toplevel) (defvar *my-location* *compile-file-truename*))
+22:00:46 <gigamonkey> That may not by 100% right if the compile-time environment is different from the runtime environment.
+22:00:55 <Bronsa> I get an "Undefined variable: *MY-LOCATION*"
+22:01:09 <gigamonkey> From a DEFVAR?!
+22:01:32 <Bronsa> seems like the defvar is not executed
+22:01:39 <gigamonkey> What Lisp?
+22:01:42 <Bronsa> sbcl
+22:01:51 <gigamonkey> And you did a compile-file?
+22:02:22 <Bronsa> wait.
+22:02:34 <Bronsa> I do this (asdf:operate 'asdf:load-op 'lol) (lol)
+22:02:57 <gigamonkey> You probably need to do compile-op
+22:03:32 <gigamonkey> Or add :load-toplevel to the eval-when and change *compile-file-truename* to (or *compile-file-truename* *load-truename*)
+22:03:41 <gigamonkey> The latter probably being better.
+22:03:58 <gigamonkey> Though, like I said, this is still not, I don't think, guaranteed to work.
+22:04:09 <gigamonkey> But it may work in practice.
+22:04:23 <_6502_> hmmm
+22:04:50 -!- Guthur [~Guthur@cpc11-belf9-2-0-cust855.2-1.cable.virginmedia.com] has quit [Disconnected by services]
+22:04:50 <Bronsa> It is not.
+22:04:52 <Bronsa> lol
+22:04:59 Guthur [~Guthur@cpc11-belf9-2-0-cust855.2-1.cable.virginmedia.com] has joined #lisp
+22:05:14 <gigamonkey> Does it work when you just do a compile-file?
+22:05:17 <gigamonkey> That works for me.
+22:05:47 <Bronsa> yes
+22:06:10 <Bronsa> gigamonkey: doesn't matter
+22:06:19 <Bronsa> I will find another way to handle this
+22:08:34 -!- ASau [~user@95-27-197-147.broadband.corbina.ru] has quit [Remote host closed the connection]
+22:08:53 -!- jcazevedo [~jcazevedo@bl12-86-166.dsl.telepac.pt] has quit [Quit: Leaving]
+22:09:15 ASau [~user@95-27-197-147.broadband.corbina.ru] has joined #lisp
+22:10:10 fiveop_ [~fiveop@178.2.127.170] has joined #lisp
+22:10:19 <gigamonkey> Bronsa: in general it seems like the right thing is to copy files from the source directory to wherever the fasls end up. Then you can use *load-pathname* at load time to find things.
+22:10:27 <gigamonkey> But maybe that will be just as much of a pain.
+22:11:01 <Bronsa> hmh, I may try
+22:13:00 -!- fiveop [~fiveop@178.2.112.11] has quit [Ping timeout: 240 seconds]
+22:13:12 -!- pdo [~pdo@dyn-62-56-50-141.dslaccess.co.uk] has quit [Ping timeout: 265 seconds]
+22:13:41 killerboy [~mateusz@smrw-91-193-87-5.smrw.lodz.pl] has joined #lisp
+22:13:43 -!- ASau [~user@95-27-197-147.broadband.corbina.ru] has quit [Remote host closed the connection]
+22:13:55 ziga [~user@BSN-142-187-153.dial-up.dsl.siol.net] has joined #lisp
+22:14:20 ASau [~user@95-27-197-147.broadband.corbina.ru] has joined #lisp
+22:17:16 rme [~rme@pool-70-106-138-18.chi01.dsl-w.verizon.net] has joined #lisp
+22:17:46 -!- fiveop_ [~fiveop@178.2.127.170] has quit [Quit: humhum]
+22:17:55 -!- mejja [~chatzilla@c-b4b5e555.023-82-73746f38.cust.bredbandsbolaget.se] has quit [Remote host closed the connection]
+22:19:23 pdo [~pdo@dyn-62-56-50-141.dslaccess.co.uk] has joined #lisp
+22:19:33 -!- nha [~prefect@250-194.105-92.cust.bluewin.ch] has quit [Remote host closed the connection]
+22:19:47 -!- starseek1r is now known as starseeker
+08:48:16 ccl-logbot [~ccl-logbo@setf.clozure.com] has joined #lisp
+08:48:16 
+08:48:16 -!- names: ccl-logbot boysetsfrog jsnell baley felipe leo2007 acieroid wvdschel aerique ehu ignas pdo dto gravicappa abeaumont_ freiksenet tessier mega1 nefo ecraven e-user tcr Beetny AntiSpamMeta mvilleneuve DarthShrine flip214 varjag cmm mrSpec notsonerdysunny lambda-avenger rokstar Vivitron simplechat rapacity luis zvrba Patzy mathrick kleppari meadowlark vert2__ vlion` plage` kushal murilasso Salamander_ TraumaPony slyrus mindCrime_ gonzojive joast ineiros
+08:48:16 -!- names: TeMPOraL joshe Zhivago tomaw erk koning_robot austinh_ Lochy|irssi z0d fds herbieB Axioplase_ Zahl_ kencausey lianj _3b jrockway ejohnson euphidime cky DrForr Tasunteld hohum boyscared deepfire gds zbigniew |3b| eli fmu__ @antifuchs gju_ albino derrida theBlackDragon shachaf l_a_m Fade lusory froydnj mindCrime talyz PuffTheMagic cibs Tristam unalmsed Intensity abeaumont svk_ dym [df] adeht Draggor jayne ivan4th ironChicken yahooooo OliverUv chrnybo
+08:48:16 -!- names: cataska kae trigen gnooth johanbev krl HDurer_home lnostdal schme npoektop compmstr Quadrescence Obfuscate sigjuice alexsuraci ramus amaron Ralith replete rahul peterhil Fullma xinming lolsuper_ billstclair lichtblau pjb yan_ bigjust_` delYsid mg4001 redline6561 housel arbscht mitre NNshag easyE pchrist lharc pdo` silentbicycle somnium` peddie dmiles_afk hdurer`` p_l|backup snorble Euthydemus` quasi_ guaqua_ clog katesmith tsuru La0fer rrice eldragon
+08:48:16 -!- names: benny mitre_ Jasko c|mell iNtERrUpT rread jhuni sonnym homie didi entrosca Ginei_Morioka nowhereman hugod timjstewart legumbre_ bzzbzz rotty_ Pepe_ majoh kooll defn_ em_ stepnem rtoym_ sacho ianmcorvidae|alt ebzzry eno_ Borbus ``Erik_ borism xristos gz reb prip pmd incandenza superflit xyxxyyy Kerrick pr_ nullman blitz_ foom petter` setheus dostoyevsky PissedNumlock spacebat Quetzalcoatl_ nickaugust timchen1` mtd Posterdati spcshpopr8r Krystof Caffeine
+08:48:16 -!- names: akkartik araujo codemonk1yx ozzloy krappie_ Buganini sid3k vsync_ fmu kloeri karbak qebab tychoish gor[e] Khisanth ve mgr_ ASau Landr strlen_ bulibuta tritchey mon_key Phoodus kanru ace4016 galdor pkhuong_ Tordek Dodek sentry antoszka mornfall elly phadthai guther Yamazaki-kun lispmeister_ rabite quasisane tvaalen sellout Modius nuba sword sykopomp insomniaSalt V-ille cYmen SpitfireWP djinni` daniel_ fe[nl]ix SsvRrwQ scode_ pok_ clop2 johs_ SecretAg1nt
+08:48:16 -!- names: az neoesque jesusabdullah rdd s0ber starseeker jamief m4thrick_ Kovensky Adrinael cpt_nemo zc00gii jomat sepi mreggen cods Bucciarati rafl lonstein ddv njan- dcrawford bfein slyrus_ spradnyesh drdo puddingpimp Demosthenes frodef mal__ JuanDaugherty tic pierrep
+08:49:31 Athas [~athas@shop3.diku.dk] has joined #lisp
+08:49:49 echo-area [~user@114.251.86.0] has joined #lisp
+08:50:11 cinch [~cinch@85-127-114-28.dynamic.xdsl-line.inode.at] has joined #lisp
+08:50:30 edlinde [~edlinde@90-227-7-243-no15.tbcn.telia.com] has joined #lisp
+08:50:36 -!- az [~az@p5796C8DF.dip.t-dialin.net] has quit [Quit: WeeChat 0.3.3]
+08:50:39 -!- sepi [~sepiultru@hcl-club.lu] has quit [Ping timeout: 272 seconds]
+08:51:19 Koven [~kovensky@abraxo.bluebottle.net.au] has joined #lisp
+08:51:28 sepi [~sepiultru@hcl-club.lu] has joined #lisp
+08:51:46 -!- edlinde [~edlinde@90-227-7-243-no15.tbcn.telia.com] has quit [Client Quit]
+08:53:02 -!- cods [~cods@rsbac/developer/cods] has quit [Remote host closed the connection]
+08:53:07 cods [~cods@tuxee.net] has joined #lisp
+08:53:09 az [~az@p5796C8DF.dip.t-dialin.net] has joined #lisp
+08:53:11 -!- Kovensky [~kovensky@abraxo.bluebottle.net.au] has quit [Remote host closed the connection]
+08:53:21 -!- s0ber [~s0ber@111-240-205-247.dynamic.hinet.net] has quit [Remote host closed the connection]
+08:53:46 s0ber [~s0ber@111-240-205-247.dynamic.hinet.net] has joined #lisp
+08:54:17 -!- e-user [~akahl@nat/nokia/x-qialmunpigtyjcam] has quit [Remote host closed the connection]
+08:54:25 Guthur [c743cb8c@gateway/web/freenode/ip.199.67.203.140] has joined #lisp
+08:54:25 -!- plage` [~user@113.161.72.89] has quit [Ping timeout: 245 seconds]
+08:54:35 e-user [~akahl@nat/nokia/x-tkynacsvsddqlfos] has joined #lisp
+08:55:14 insomnia1alt [~milan@port-92-204-6-77.dynamic.qsc.de] has joined #lisp
+08:55:43 -!- az [~az@p5796C8DF.dip.t-dialin.net] has quit [Excess Flood]
+08:56:21 -!- m4thrick_ [~mathrick@users177.kollegienet.dk] has quit [Ping timeout: 272 seconds]
+08:56:59 -!- johs_ [~johs@hawk.netfonds.no] has quit [Ping timeout: 272 seconds]
+08:57:06 m4thrick_ [~mathrick@users177.kollegienet.dk] has joined #lisp
+08:57:35 johs [~johs@hawk.netfonds.no] has joined #lisp
+08:58:32 az [~az@p5796C8DF.dip.t-dialin.net] has joined #lisp
+08:58:49 -!- insomniaSalt [~milan@port-92-204-42-77.dynamic.qsc.de] has quit [Ping timeout: 260 seconds]
+08:58:49 -!- insomnia1alt is now known as insomniaSalt
+09:01:28 -!- Phoodus [~foo@68.107.217.139] has quit [Read error: Connection reset by peer]
+09:01:47 Phoodus [~foo@68.107.217.139] has joined #lisp
+09:04:40 Jabberwockey [~jgrabarsk@selene.ftk.de] has joined #lisp
+09:04:59 -!- bulibuta [~bulibuta@unaffiliated/bulibuta] has quit [Ping timeout: 265 seconds]
+09:07:05 edlinde [~edlinde@90-227-7-243-no15.tbcn.telia.com] has joined #lisp
+09:07:42 rootzlevel [~hpd@91-66-218-51-dynip.superkabel.de] has joined #lisp
+09:07:52 joergen [~joergen@e178068223.adsl.alicedsl.de] has joined #lisp
+09:08:43 Hun [~Hun@80.81.19.29] has joined #lisp
+09:08:59 s1ugg0 [~user@c-75-64-77-87.hsd1.tn.comcast.net] has joined #lisp
+09:10:53 -!- Lochy|irssi [~lochy@59.94.105.107] has quit [Ping timeout: 255 seconds]
+09:12:36 Lochy [~lochy@59.94.101.117] has joined #lisp
+09:18:18 <Guthur> how does one expand the minibuffer to see all the function signature
+09:18:51 <sykopomp> Guthur: right-click on bottom right of window, expand size?
+09:19:31 <tcr> Guthur: C-c C-d A
+09:19:33 -!- Lochy [~lochy@59.94.101.117] has quit [Read error: Connection reset by peer]
+09:19:49 <Guthur> cheers sykopomp  and tcr
+09:20:04 <Guthur> the key chord is what I was hoping for
+09:21:13 <Guthur> sweet, now to try and commit it to memory
+09:23:27 -!- e-user [~akahl@nat/nokia/x-tkynacsvsddqlfos] has quit [Ping timeout: 250 seconds]
+09:23:28 e-user1 [~akahl@nat/nokia/x-apbwifyvwdqtvpkk] has joined #lisp
+09:23:34 -!- iNtERrUpT [~interrupt@61.43.139.4] has quit [Remote host closed the connection]
+09:23:50 ch077179 [~urs@adsl-89-217-162-91.adslplus.ch] has joined #lisp
+09:24:01 Lochy [~lochy@59.94.104.180] has joined #lisp
+09:24:22 mcsontos [~mcsontos@nat/redhat/x-dgqmnqjjuzfrqrde] has joined #lisp
+09:24:47 -!- jhuni [~jhuni@udp217774uds.hawaiiantel.net] has quit [Remote host closed the connection]
+09:25:01 -!- neoesque [~neoesque@210.59.147.232] has quit [Remote host closed the connection]
+09:28:08 -!- mrSpec [~Spec@unaffiliated/mrspec] has quit [Remote host closed the connection]
+09:29:19 -!- s1ugg0 [~user@c-75-64-77-87.hsd1.tn.comcast.net] has quit [Quit: rst]
+09:34:40 hlavaty [~user@95-88-27-48-dynip.superkabel.de] has joined #lisp
+09:38:03 -!- DarthShrine [~angus@pdpc/supporter/student/DarthShrine] has quit [Quit: DarthShrine]
+09:39:17 iNtERrUpT [~interrupt@61.43.139.3] has joined #lisp
+09:39:26 stassats [~stassats@wikipedia/stassats] has joined #lisp
+09:40:06 -!- echo-area [~user@114.251.86.0] has quit [Remote host closed the connection]
+09:40:18 -!- edlinde [~edlinde@90-227-7-243-no15.tbcn.telia.com] has quit [Quit: edlinde]
+09:41:58 astoon [~astoon@213.141.244.246] has joined #lisp
+09:43:08 lanthan_afh [~ze@p50992b91.dip0.t-ipconnect.de] has joined #lisp
+09:47:01 Frakk [~Frakk@host28-49-dynamic.11-87-r.retail.telecomitalia.it] has joined #lisp
+09:49:08 zomgbie [~jesus@h081217131002.dyn.cm.kabsi.at] has joined #lisp
+10:07:54 plage [~user@113.161.65.230] has joined #lisp
+10:11:05 -!- zomgbie [~jesus@h081217131002.dyn.cm.kabsi.at] has quit [Ping timeout: 240 seconds]
+10:21:24 jobf [~jfranck@c-9fbde555.03-87-73746f38.cust.bredbandsbolaget.se] has joined #lisp
+10:22:29 nha [~prefect@imamac13.epfl.ch] has joined #lisp
+10:30:10 ccl-logbot [~ccl-logbo@setf.clozure.com] has joined #lisp
+10:30:10 
+10:30:10 -!- names: ccl-logbot edlinde nha jobf plage Frakk lanthan_afh astoon stassats iNtERrUpT hlavaty mcsontos Lochy ch077179 e-user1 Hun joergen rootzlevel Jabberwockey Phoodus az johs m4thrick_ insomniaSalt Guthur s0ber cods sepi Koven cinch Athas boysetsfrog jsnell baley felipe leo2007 acieroid wvdschel aerique ehu ignas pdo dto gravicappa abeaumont_ freiksenet tessier mega1 nefo ecraven tcr Beetny AntiSpamMeta mvilleneuve flip214 varjag cmm notsonerdysunny
+10:30:10 -!- names: lambda-avenger rokstar Vivitron simplechat rapacity luis zvrba Patzy mathrick kleppari meadowlark vert2__ vlion` kushal murilasso Salamander_ TraumaPony slyrus mindCrime_ gonzojive joast ineiros TeMPOraL joshe Zhivago tomaw erk SecretAg1nt jesusabdullah rdd starseeker jamief Adrinael cpt_nemo zc00gii jomat mreggen Bucciarati rafl lonstein ddv njan- dcrawford bfein slyrus_ spradnyesh drdo puddingpimp Demosthenes frodef mal__ JuanDaugherty tic pierrep clop2
+10:30:10 -!- names: pok_ scode_ SsvRrwQ fe[nl]ix daniel_ djinni` SpitfireWP cYmen V-ille sykopomp sword nuba Modius sellout tvaalen quasisane rabite lispmeister_ Yamazaki-kun guther phadthai elly mornfall antoszka sentry Dodek Tordek pkhuong_ galdor ace4016 kanru mon_key tritchey strlen_ Landr ASau mgr_ ve Khisanth gor[e] tychoish qebab karbak kloeri fmu vsync_ sid3k Buganini krappie_ ozzloy codemonk1yx araujo akkartik Caffeine Krystof spcshpopr8r Posterdati mtd timchen1`
+10:30:10 -!- names: nickaugust Quetzalcoatl_ spacebat PissedNumlock dostoyevsky setheus petter` foom blitz_ nullman pr_ Kerrick xyxxyyy superflit incandenza pmd prip reb gz xristos borism ``Erik_ Borbus koning_robot austinh_ eno_ ebzzry ianmcorvidae|alt sacho rtoym_ stepnem em_ defn_ kooll majoh Pepe_ rotty_ bzzbzz legumbre_ timjstewart hugod nowhereman Ginei_Morioka entrosca didi homie sonnym rread c|mell Jasko mitre_ benny eldragon rrice La0fer tsuru katesmith clog guaqua_
+10:30:10 -!- names: quasi_ Euthydemus` snorble p_l|backup hdurer`` dmiles_afk peddie somnium` silentbicycle pdo` lharc pchrist easyE NNshag mitre arbscht housel redline6561 mg4001 delYsid bigjust_` yan_ pjb lichtblau billstclair lolsuper_ xinming Fullma peterhil rahul replete Ralith amaron ramus alexsuraci sigjuice Obfuscate Quadrescence compmstr npoektop schme lnostdal HDurer_home krl johanbev gnooth trigen kae cataska chrnybo OliverUv yahooooo ironChicken ivan4th jayne
+10:30:10 -!- names: Draggor adeht [df] dym svk_ abeaumont Intensity unalmsed Tristam cibs PuffTheMagic talyz mindCrime froydnj lusory Fade l_a_m shachaf theBlackDragon derrida albino gju_ @antifuchs fmu__ eli |3b| zbigniew gds deepfire boyscared hohum Tasunteld DrForr cky euphidime ejohnson jrockway _3b lianj kencausey Zahl_ Axioplase_ herbieB fds z0d
+10:43:23 Harag [~user@wbs-41-208-211-15.wbs.co.za] has joined #lisp
+10:45:04 -!- lanthan_afh [~ze@p50992b91.dip0.t-ipconnect.de] has quit [Read error: Connection reset by peer]
+10:45:56 BrandLeeJones [~BrandLeeJ@84.114.246.246] has joined #lisp
+10:46:12 oskar__ [~oskar@c83-250-205-17.bredband.comhem.se] has joined #lisp
+10:46:43 -!- ehu [~ehuels@109.33.139.97] has quit [Ping timeout: 240 seconds]
+10:51:37 -!- astoon [~astoon@213.141.244.246] has quit [Ping timeout: 272 seconds]
+10:53:29 lanthan_afh [~ze@p50992b91.dip0.t-ipconnect.de] has joined #lisp
+10:55:38 -!- iNtERrUpT [~interrupt@61.43.139.3] has quit [Remote host closed the connection]
+10:57:04 -!- eldragon [~eldragon@84.79.67.254] has quit [Read error: Connection reset by peer]
+11:01:29 -!- vert2__ [vert2@gateway/shell/bshellz.net/x-zkjpapxhblfewtcd] has quit [Ping timeout: 240 seconds]
+11:01:54 -!- guther [guther@gateway/shell/bshellz.net/x-lcmnwwnnrlsucayk] has quit [Ping timeout: 260 seconds]
+11:02:47 -!- mg4001 [~mg4001@cpe-76-93-28-217.socal.res.rr.com] has quit [Quit: Leaving]
+11:03:16 sixpoint8 [~jaykub@ip68-12-204-131.ok.ok.cox.net] has joined #lisp
+11:03:25 -!- Salamander_ is now known as Salamander
+11:04:52 iNtERrUpT [~interrupt@61.43.139.3] has joined #lisp
+11:07:32 -!- gravicappa [~gravicapp@80.90.116.82] has quit [Remote host closed the connection]
+11:07:50 gravicappa [~gravicapp@80.90.116.82] has joined #lisp
+11:08:44 -!- dto [~dto@pool-96-252-62-25.bstnma.fios.verizon.net] has quit [Read error: No route to host]
+11:09:21 dto [~dto@pool-96-252-62-25.bstnma.fios.verizon.net] has joined #lisp
+11:12:24 churib [~tg@dslc-082-082-099-065.pools.arcor-ip.net] has joined #lisp
+11:12:27 churib_ [~tg@dslc-082-082-099-065.pools.arcor-ip.net] has joined #lisp
+11:13:46 <tcr> stassats: are you here?
+11:15:03 -!- tsuru [~charlie@adsl-179-29-10.bna.bellsouth.net] has quit [Quit: ERC Version 5.3 (IRC client for Emacs)]
+11:15:10 mitre__ [~chatzilla@74.112.63.251] has joined #lisp
+11:15:46 mitre___ [~chatzilla@74.4.76.189] has joined #lisp
+11:16:11 tsuru [~charlie@adsl-179-29-10.bna.bellsouth.net] has joined #lisp
+11:16:28 -!- spradnyesh [~pradyus@nat/yahoo/x-kxyydhkcvipufbqv] has left #lisp
+11:17:20 -!- mitre_ [~chatzilla@74.112.63.251] has quit [Ping timeout: 245 seconds]
+11:17:22 -!- mitre__ is now known as mitre_
+11:17:25 -!- araujo [~araujo@gentoo/developer/araujo] has quit [Ping timeout: 250 seconds]
+11:17:29 -!- mitre [~chatzilla@fl-74-4-76-189.dhcp.embarqhsd.net] has quit [Ping timeout: 264 seconds]
+11:17:43 -!- mitre___ is now known as mitre
+11:19:57 <tcr> Can anyone explain the :simple-parser option of define-foreign-type to me?
+11:20:37 <tcr> If I look at the definition of foreign-string-type, it has (:simple-parser :string)
+11:21:10 <tcr> which I guess means that the foreign-type :STRING will be translated to an instance of type FOREIGN-STRING-TYPE
+11:22:33 -!- Athas [~athas@shop3.diku.dk] has quit [Remote host closed the connection]
+11:22:44 morphling [~stefan@gssn-5f75478c.pool.mediaWays.net] has joined #lisp
+11:24:15 -!- entrosca [~entrosca@ip98-167-231-101.ph.ph.cox.net] has quit [Read error: Connection reset by peer]
+11:24:25 araujo [~araujo@gentoo/developer/araujo] has joined #lisp
+11:24:43 entrosca [~entrosca@ip98-167-231-101.ph.ph.cox.net] has joined #lisp
+11:25:27 -!- gnooth [~gnooth@ip98-176-79-151.sd.sd.cox.net] has quit [Read error: Operation timed out]
+11:25:53 gnooth [~gnooth@ip98-176-79-151.sd.sd.cox.net] has joined #lisp
+11:27:06 <stassats> tcr: i am somewhat here
+11:27:28 -!- e-user1 [~akahl@nat/nokia/x-apbwifyvwdqtvpkk] has quit [Quit: Leaving.]
+11:27:30 Yuuhi [benni@p5483A788.dip.t-dialin.net] has joined #lisp
+11:27:45 e-user [~akahl@nat/nokia/x-xxhoruxbvxqvmrxn] has joined #lisp
+11:28:14 -!- xyxxyyy [~xyxu@58.41.15.242] has quit [Quit: Leaving.]
+11:28:30 <tcr> stassats: Just wondering when going up/down the xref buffer, it does not highlight the form in the source buffer anymore, only when pressing SPC
+11:28:47 tritchey_ [~tritchey@c-68-51-118-114.hsd1.in.comcast.net] has joined #lisp
+11:28:47 -!- tritchey [~tritchey@c-68-51-118-114.hsd1.in.comcast.net] has quit [Read error: Connection reset by peer]
+11:28:47 -!- tritchey_ is now known as tritchey
+11:29:58 ZabaQ [~john.conn@playboxgames.com] has joined #lisp
+11:30:59 <stassats> i have displaying the source on moving up/down disabled
+11:31:41 <stassats> so it'd be better to open a ticket, or i'll forget it
+11:34:32 <tcr> why did you do it?
+11:34:39 zomgbie [~jesus@212095007030.public.telering.at] has joined #lisp
+11:35:18 -!- lambda-avenger [~roman@adsl-99-8-229-167.dsl.pltn13.sbcglobal.net] has quit [Quit: Leaving.]
+11:36:00 e-user1 [~akahl@nat/nokia/x-cdfleoflungouryg] has joined #lisp
+11:36:19 -!- e-user [~akahl@nat/nokia/x-xxhoruxbvxqvmrxn] has quit [Ping timeout: 240 seconds]
+11:37:59 <stassats> tcr: because i don't want to visit all the places when i only want one in the middle
+11:38:24 <stassats> which is both distracting and slow
+11:39:20 <tcr> fair point
+11:39:47 e-user [~akahl@nat/nokia/x-hxikhseebulvketh] has joined #lisp
+11:39:47 -!- e-user1 [~akahl@nat/nokia/x-cdfleoflungouryg] has quit [Remote host closed the connection]
+11:48:45 Kruno [dced8607@gateway/web/freenode/ip.220.237.134.7] has joined #lisp
+11:48:59 bulibuta [~bulibuta@unaffiliated/bulibuta] has joined #lisp
+11:49:32 <luis> tcr: macroexpanding the define-foreign-type form will show you what :simple-parser does
+11:49:43 <Kruno> Hello, I have another question I can not seem to find any information on, splitting symbols.
+11:49:52 <Zhivago> symbol-name might be useful.
+11:50:36 <Kruno> ahh, I see. Convert symbol to string and then split the string. Nice one. Thanks. :)
+11:51:45 <Kruno> Was pulling my hair out trying to split the symbol itself.
+11:52:30 charliekilo [~charlieki@70-89-224-81-BusName-panjde.hfc.comcastbusiness.net] has joined #lisp
+11:52:32 <tcr> luis: Yeah sure, it just didn't match my use case
+11:53:14 -!- iNtERrUpT [~interrupt@61.43.139.3] has quit [Remote host closed the connection]
+11:54:01 iNtERrUpT [~interrupt@61.43.139.3] has joined #lisp
+11:54:20 paradoja [~paradoja@211.pool80-103-161.dynamic.orange.es] has joined #lisp
+11:55:57 DarthShrine [~angus@60-242-109-62.tpgi.com.au] has joined #lisp
+11:55:57 -!- DarthShrine [~angus@60-242-109-62.tpgi.com.au] has quit [Changing host]
+11:55:57 DarthShrine [~angus@pdpc/supporter/student/DarthShrine] has joined #lisp
+11:56:31 <luis> tcr: what's your use case?
+11:56:49 astoon [~astoon@213.141.244.246] has joined #lisp
+11:56:59 -!- daniel_ is now known as daniel
+11:57:18 zeroish [~zeroish@135.207.174.50] has joined #lisp
+11:57:45 -!- e-user [~akahl@nat/nokia/x-hxikhseebulvketh] has quit [Quit: Leaving.]
+11:57:57 <tcr> luis: I have liked it to expand to (define-parse-method ,name (&optional (actual-type ,) &rest initargs) (apply #'make-instance :actual-type actual-type initargs)
+11:58:00 e-user [~akahl@nat/nokia/x-nwnbffacaxoepuhu] has joined #lisp
+12:03:38 -!- Harag [~user@wbs-41-208-211-15.wbs.co.za] has quit [Remote host closed the connection]
+12:04:07 -!- e-user [~akahl@nat/nokia/x-nwnbffacaxoepuhu] has quit [Ping timeout: 276 seconds]
+12:05:16 -!- joergen [~joergen@e178068223.adsl.alicedsl.de] has quit [Quit: leaving]
+12:05:28 homie` [~user@xdsl-78-35-187-231.netcologne.de] has joined #lisp
+12:06:22 -!- homie [~user@xdsl-78-35-130-48.netcologne.de] has quit [Ping timeout: 255 seconds]
+12:06:51 gemelen [~shelta@shpd-92-101-132-114.vologda.ru] has joined #lisp
+12:07:23 -!- Lochy [~lochy@59.94.104.180] has quit [Read error: Connection reset by peer]
+12:08:28 -!- edlinde [~edlinde@90-227-7-243-no15.tbcn.telia.com] has quit [Quit: edlinde]
+12:08:39 _mathrick [~mathrick@users177.kollegienet.dk] has joined #lisp
+12:09:05 -!- mathrick [~mathrick@users177.kollegienet.dk] has quit [Read error: Connection reset by peer]
+12:10:56 Lochy [~lochy@59.94.106.89] has joined #lisp
+12:14:05 -!- mitre [~chatzilla@74.4.76.189] has quit [Ping timeout: 240 seconds]
+12:15:17 mitre [~chatzilla@fl-74-4-76-189.dhcp.embarqhsd.net] has joined #lisp
+12:15:35 billitch [~billitch@rob92-1-82-67-155-88.fbx.proxad.net] has joined #lisp
+12:15:57 <luis> that lambda list doesn't look right
+12:16:22 -!- _mathrick is now known as mathrick
+12:17:53 <Kruno> How do I create a constant in the loop macro. The form, for x = (length stuff), will be evaluated every iteration.
+12:18:08 <luis> tcr: doesn't that mean you'd have to pass the actual-type argument if you wanted to pass other initargs?
+12:18:34 <luis> Kruno: with x = foo will only be evaluated at the beginning
+12:18:40 <luis> but it's not a constant
+12:18:56 <Kruno> ahh, thanks, it will serve its purpose.
+12:20:01 <tcr> luis: It's ok I just did my own define-parser-method; I'm not familiar with cffi, just diving in :-)
+12:20:17 -!- plage [~user@113.161.65.230] has quit [Ping timeout: 272 seconds]
+12:21:46 <luis> tcr: yeah, cool. Let me know if you have suggestions on how to improve the documentation; it's always useful to have feedback from a new user perspective.
+12:23:03 -!- morphling [~stefan@gssn-5f75478c.pool.mediaWays.net] has quit [Remote host closed the connection]
+12:24:05 dfkjjkfd [~paulh@145.120.22.22] has joined #lisp
+12:24:16 schoppenhauer [~christoph@unaffiliated/schoppenhauer] has joined #lisp
+12:24:23 -!- BrandLeeJones [~BrandLeeJ@84.114.246.246] has quit [Quit: BrandLeeJones]
+12:32:47 xan_ [~xan@38.Red-80-25-35.staticIP.rima-tde.net] has joined #lisp
+12:34:27 e-user [~akahl@nat/nokia/x-fiqlczohkesoskmm] has joined #lisp
+12:38:31 antgreen [~user@184.163.178.103] has joined #lisp
+12:42:48 xyxxyyy [~xyxu@114.93.130.227] has joined #lisp
+12:45:46 ziarkaen [~ziarkaen@87.113.174.138] has joined #lisp
+12:52:42 -!- PissedNumlock [~resteven@134.184.49.32] has quit [Read error: Connection reset by peer]
+12:52:58 PissedNumlock [~resteven@igwe32.vub.ac.be] has joined #lisp
+12:54:30 -!- Kruno [dced8607@gateway/web/freenode/ip.220.237.134.7] has quit [Quit: Page closed]
+12:54:47 mtk [~mtk@ool-182c8e6c.dyn.optonline.net] has joined #lisp
+12:55:35 -!- Jabberwockey [~jgrabarsk@selene.ftk.de] has quit [Read error: Connection reset by peer]
+12:56:29 -!- Lochy [~lochy@59.94.106.89] has quit [Ping timeout: 265 seconds]
+12:57:55 -!- Jasko [~tjasko@c-174-59-223-208.hsd1.pa.comcast.net] has quit [Quit: Leaving]
+12:57:56 Lochy [~lochy@59.94.105.34] has joined #lisp
+12:59:33 carlocci [~nes@93.37.196.130] has joined #lisp
+12:59:57 Jasko [~tjasko@c-174-59-223-208.hsd1.pa.comcast.net] has joined #lisp
+13:01:18 -!- ZabaQ [~john.conn@playboxgames.com] has left #lisp
+13:02:38 madnificent [~madnifice@83.101.62.132] has joined #lisp
+13:03:11 -!- schoppenhauer [~christoph@unaffiliated/schoppenhauer] has quit [Quit: leaving]
+13:03:22 jdz [~jdz@193.206.22.97] has joined #lisp
+13:04:22 mheld [~mheld@pool-173-76-224-45.bstnma.fios.verizon.net] has joined #lisp
+13:04:38 -!- e-user [~akahl@nat/nokia/x-fiqlczohkesoskmm] has quit [Remote host closed the connection]
+13:04:54 e-user [~akahl@nat/nokia/x-qcnlnjurentumdcl] has joined #lisp
+13:06:24 -!- incandenza [~quassel@ip68-231-109-244.ph.ph.cox.net] has quit [Read error: Connection reset by peer]
+13:10:54 e-user1 [~akahl@nat/nokia/x-eqqwrpbefmetwjtw] has joined #lisp
+13:11:04 -!- e-user [~akahl@nat/nokia/x-qcnlnjurentumdcl] has quit [Ping timeout: 276 seconds]
+13:11:44 incandenza [~quassel@ip68-231-109-244.ph.ph.cox.net] has joined #lisp
+13:11:58 -!- varjag [~eugene@122.62-97-226.bkkb.no] has quit [Ping timeout: 265 seconds]
+13:13:09 varjag [~eugene@122.62-97-226.bkkb.no] has joined #lisp
+13:15:04 eldragon [~eldragon@84.79.67.254] has joined #lisp
+13:17:42 -!- varjag [~eugene@122.62-97-226.bkkb.no] has quit [Client Quit]
+13:18:40 LiamH [~healy@129-2-134-246.wireless.umd.edu] has joined #lisp
+13:18:46 plage [~user@113.161.65.230] has joined #lisp
+13:24:56 Xach [~xach@pdpc/supporter/professional/xach] has joined #lisp
+13:25:00 -!- xan_ [~xan@38.Red-80-25-35.staticIP.rima-tde.net] has quit [Ping timeout: 265 seconds]
+13:25:15 cinch- [~cinch@85-127-103-77.dynamic.xdsl-line.inode.at] has joined #lisp
+13:28:09 -!- cinch [~cinch@85-127-114-28.dynamic.xdsl-line.inode.at] has quit [Ping timeout: 240 seconds]
+13:30:39 -!- iNtERrUpT [~interrupt@61.43.139.3] has quit [Ping timeout: 260 seconds]
+13:30:59 iNtERrUpT [~interrupt@61.43.139.3] has joined #lisp
+13:35:23 ikki [~ikki@201.144.87.46] has joined #lisp
+13:42:03 edlinde [~edlinde@90-227-7-243-no15.tbcn.telia.com] has joined #lisp
+13:45:23 ramkrsna [~ramkrsna@unaffiliated/ramkrsna] has joined #lisp
+13:46:43 -!- zomgbie [~jesus@212095007030.public.telering.at] has quit [Ping timeout: 255 seconds]
+13:57:58 wedgeV [~wedge@cpe-24-193-116-182.nyc.res.rr.com] has joined #lisp
+14:00:08 yvdriess [~Beef@soft85.vub.ac.be] has joined #lisp
+14:00:08 -!- yvdriess is now known as Beeff
+14:00:14 -!- Beeff is now known as yvdriess
+14:00:55 -!- wedgeV [~wedge@cpe-24-193-116-182.nyc.res.rr.com] has quit [Client Quit]
+14:01:26 <yvdriess> little style question, I've noticed a little irritating pattern when recursing with a function that uses a &rest parameter
+14:01:38 <tcr> I set LD_LIBRARY_PATH to a directory with a libfoo.so inside; yet (cffi:use-foreign-library "libfoo.so") fails because it cannot find the library. What am I missing?
+14:02:13 <yvdriess> besides using (apply #'recur-func rest-args)
+14:02:35 <tcr> yvdriess: Use a local function which takes the args as a list rather than as a &rest
+14:02:38 makao007 [~makao007@61.142.209.146] has joined #lisp
+14:02:46 <yvdriess> a local iter function?
+14:02:51 <_3b> tcr: set in such a way that it is visible to the lisp? also, see cffi:*foreign-library-directories*
+14:02:54 <tcr> Or, perhaps, don't use recursion
+14:02:59 <yvdriess> oh my, has scheme thought me nothing?! :)
+14:03:19 <tcr> _3b: Yeah but I'd like not to use that one. (In fact its documentation says it should not be used)
+14:03:38 <_3b> ah, didn't know that
+14:03:41 <yvdriess> tcr, I first tried it with loop, but sometimes it's easier to just use recursion
+14:04:55 -!- yvdriess [~Beef@soft85.vub.ac.be] has quit [Client Quit]
+14:06:04 jweiss [~jweiss@cpe-069-134-009-048.nc.res.rr.com] has joined #lisp
+14:06:08 <tcr> _3b: I set it via sb-posix:setenv
+14:06:28 yvdriess [~Beef@soft85.vub.ac.be] has joined #lisp
+14:08:31 ebzzry_ [~ebzzry@180.193.223.241] has joined #lisp
+14:08:56 -!- ebzzry [~ebzzry@203.213.202.186] has quit [Disconnected by services]
+14:08:58 -!- ebzzry_ is now known as ebzzry
+14:09:13 ebzzry_ [~ebzzry@203.213.202.186] has joined #lisp
+14:10:08 -!- billitch [~billitch@rob92-1-82-67-155-88.fbx.proxad.net] has quit [Ping timeout: 255 seconds]
+14:10:59 dlowe [~dlowe@ita4fw1.itasoftware.com] has joined #lisp
+14:11:25 -!- Beetny [~Beetny@ppp118-208-158-218.lns20.bne1.internode.on.net] has quit [Ping timeout: 240 seconds]
+14:11:36 <_3b> tcr: hmm, maybe run file on the .so just to make sure it is right arch and not otherwise strange?
+14:12:22 *_3b* usually uses define-foreign-library first rather than passing lib name directly to use-foreign-library, but it doesn't look like that should matter
+14:12:49 xan_ [~xan@65.141.165.83.dynamic.mundo-r.com] has joined #lisp
+14:15:32 -!- yvdriess [~Beef@soft85.vub.ac.be] has quit [Quit: This computer has gone to sleep]
+14:15:59 -!- makao007 [~makao007@61.142.209.146] has left #lisp
+14:16:07 kmwallio [~kmwallio@pool-96-241-63-3.washdc.fios.verizon.net] has joined #lisp
+14:16:26 -!- rrice [~rrice@adsl-99-164-39-219.dsl.akrnoh.sbcglobal.net] has quit [Ping timeout: 240 seconds]
+14:17:45 -!- e-user1 [~akahl@nat/nokia/x-eqqwrpbefmetwjtw] has quit [Ping timeout: 240 seconds]
+14:19:37 rrice [~rrice@99.164.39.219] has joined #lisp
+14:19:40 mrSpec [~Spec@89-75-35-251.dynamic.chello.pl] has joined #lisp
+14:19:40 -!- mrSpec [~Spec@89-75-35-251.dynamic.chello.pl] has quit [Changing host]
+14:19:40 mrSpec [~Spec@unaffiliated/mrspec] has joined #lisp
+14:19:42 billitch [~billitch@rob92-1-82-67-155-88.fbx.proxad.net] has joined #lisp
+14:19:48 -!- sixpoint8 [~jaykub@ip68-12-204-131.ok.ok.cox.net] has quit [Quit: Someone roundhouse kick SMB for me. :p]
+14:21:05 -!- ignas [~ignas@85-206-23-33.static.zebra.lt] has quit [Ping timeout: 245 seconds]
+14:22:00 <_3b> tcr: hmm, possibly it is something to do with using setenv
+14:22:22 -!- kanru [~kanru@61-30-10-70.static.tfn.net.tw] has quit [Quit: WeeChat 0.3.2]
+14:22:34 hargettp [~hargettp@dhcp-174.mirrorimage.net] has joined #lisp
+14:25:25 -!- legumbre_ [~leo@r190-135-23-162.dialup.adsl.anteldata.net.uy] has quit [Ping timeout: 265 seconds]
+14:26:03 ehu [~ehuels@109.33.139.97] has joined #lisp
+14:26:07 <_3b> tcr: yeah, looks like setenv doesn't affect dlopen
+14:27:31 -!- notsonerdysunny [~chatzilla@59.96.57.144] has quit [Ping timeout: 240 seconds]
+14:28:19 -!- kushal [~kdas@fedora/kushal] has quit [Ping timeout: 265 seconds]
+14:30:18 -!- ebzzry [~ebzzry@180.193.223.241] has quit [Read error: Connection reset by peer]
+14:30:41 -!- mindCrime_ [~chatzilla@cpe-075-189-213-049.nc.res.rr.com] has quit [Ping timeout: 264 seconds]
+14:31:33 zomgbie [~jesus@chello212186106204.11.vie.surfer.at] has joined #lisp
+14:32:20 -!- ehu [~ehuels@109.33.139.97] has quit [Ping timeout: 245 seconds]
+14:32:20 -!- billitch [~billitch@rob92-1-82-67-155-88.fbx.proxad.net] has quit [Ping timeout: 245 seconds]
+14:33:34 ehu [~ehuels@109.33.139.97] has joined #lisp
+14:34:25 -!- oskar__ [~oskar@c83-250-205-17.bredband.comhem.se] has quit [Ping timeout: 255 seconds]
+14:35:07 Adamant [~Adamant@c-68-51-145-83.hsd1.ga.comcast.net] has joined #lisp
+14:35:07 -!- Adamant [~Adamant@c-68-51-145-83.hsd1.ga.comcast.net] has quit [Changing host]
+14:35:07 Adamant [~Adamant@unaffiliated/adamant] has joined #lisp
+14:37:09 jewel [~jewel@196-210-134-54.dynamic.isadsl.co.za] has joined #lisp
+14:38:10 oskar__ [~oskar@c83-250-205-17.bredband.comhem.se] has joined #lisp
+14:39:06 -!- ikki [~ikki@201.144.87.46] has quit [Ping timeout: 240 seconds]
+14:39:31 -!- zomgbie [~jesus@chello212186106204.11.vie.surfer.at] has quit [Ping timeout: 240 seconds]
+14:40:21 -!- flip214 [~marek@unaffiliated/flip214] has quit [Remote host closed the connection]
+14:41:11 -!- Posterdati [~tapioca@host127-230-dynamic.16-87-r.retail.telecomitalia.it] has quit [Remote host closed the connection]
+14:42:02 powerje [~powerj@rrcs-74-218-15-82.central.biz.rr.com] has joined #lisp
+14:42:52 -!- iNtERrUpT [~interrupt@61.43.139.3] has quit [Remote host closed the connection]
+14:42:59 -!- antgreen [~user@184.163.178.103] has quit [Ping timeout: 260 seconds]
+14:44:50 -!- astoon [~astoon@213.141.244.246] has quit [Quit: Leaving]
+14:44:59 EngiNerd [~quassel@cpe-76-179-25-166.maine.res.rr.com] has joined #lisp
+14:45:07 -!- EngiNerd [~quassel@cpe-76-179-25-166.maine.res.rr.com] has left #lisp
+14:45:46 -!- edlinde [~edlinde@90-227-7-243-no15.tbcn.telia.com] has quit [Quit: edlinde]
+14:46:15 wedgeV [~wedge@user-387hcrh.cable.mindspring.com] has joined #lisp
+14:48:08 -!- wedgeV [~wedge@user-387hcrh.cable.mindspring.com] has quit [Client Quit]
+14:48:42 mason [~user@col-69-141.ResHall.Berkeley.EDU] has joined #lisp
+14:49:01 <mason> does anybody use the 'memoize' package often?
+14:49:53 Posterdati [~tapioca@host127-230-dynamic.16-87-r.retail.telecomitalia.it] has joined #lisp
+14:50:27 <stassats> i don't know what memoize package you're talking about, but i write my own memoization when i need one
+14:50:50 <mason> the one that comes in quicklisp
+14:51:21 <mason> anyway, it seems fundamentally broken for non-unary functions
+14:51:27 jmckitrick [~user@adsl-92-243-131.asm.bellsouth.net] has joined #lisp
+14:51:35 <Xach> there's a memoize project in quicklisp?
+14:51:46 *Xach* doesn't see it in apropos or releases.html
+14:52:22 e-user [~akahl@nat/nokia/x-ausbquwrkjcyeqtb] has joined #lisp
+14:53:08 muhdik [~IceChat7@parkmobile-usa.oneringnetworks.net] has joined #lisp
+14:53:09 <mason> erm... does quickload check for previously asdf-installed packages first?
+14:53:18 <mason> maybe I get it from there?
+14:53:44 <mason> Based on comparing the source code, I believe it's from here: http://www.tfeb.org/lisp/hax.html#MEMOIZE
+14:53:49 -!- jmckitrick [~user@adsl-92-243-131.asm.bellsouth.net] has quit [Client Quit]
+14:53:58 <Xach> mason: it will load locally available systems, yes.
+14:54:01 stis [~stis@1-1-1-39a.veo.vs.bostream.se] has joined #lisp
+14:54:09 <mason> xach: ahh okay, that must be it
+14:54:10 -!- benny [~benny@i577A71B9.versanet.de] has quit [Read error: Connection reset by peer]
+14:57:25 joeygibson [~joeygibso@208.52.139.50] has joined #lisp
+14:59:34 iNtERrUpT [~interrupt@61.43.139.3] has joined #lisp
+15:00:06 <mason> bleh, apparently it's not broken, it just has a terrible default
+15:00:28 -!- sonnym [~evissecer@rrcs-184-74-137-167.nys.biz.rr.com] has quit [Read error: Connection reset by peer]
+15:00:58 <stassats> everything in Common Lisp has this "terrible" default
+15:01:35 <mason> stassats: ???, I just meant this memoize package in particular
+15:01:37 kanru [~kanru@118-168-238-114.dynamic.hinet.net] has joined #lisp
+15:01:46 <mason> it defaults to only memoizing based on the first argument, rather than all of them
+15:03:02 ignas [~ignas@78-60-36-123.static.zebra.lt] has joined #lisp
+15:03:04 <pjb> mason: this is often the default choosen for memoizing libraries.
+15:03:20 <mason> pjb: really?
+15:03:49 <pjb> mason: Yes.  Notice that hash-table may behave badly on lists, when the test is not :eql.
+15:04:54 <mason> pjb: mmmmm
+15:04:57 <mason> pjb: unfortunate
+15:05:01 <pjb> Now, for 2-element lists we could expect from the implementations to deal with them correctly, but specific time complexity is specified.
+15:05:49 <stassats> mason: i was referring to the default hash-function of hash-table being EQL
+15:06:19 zomgbie [~jesus@chello212186106204.11.vie.surfer.at] has joined #lisp
+15:07:42 <mason> pjb: where can I find more information on how hash-tables perform when using lists as keys
+15:08:08 <pjb> http://www.lispworks.com/documentation/HyperSpec/Body/18_.htm
+15:09:13 <stassats> mason: in your implementation documentation or source code
+15:09:40 -!- LiamH [~healy@129-2-134-246.wireless.umd.edu] has quit [Quit: Leaving.]
+15:09:55 -!- nefo [~nefo@unaffiliated/nefo] has quit [Remote host closed the connection]
+15:10:05 kushal [~kdas@fedora/kushal] has joined #lisp
+15:10:21 -!- iNtERrUpT [~interrupt@61.43.139.3] has quit [Remote host closed the connection]
+15:10:35 EOF-sensei [EOF-sensei@dsl-173-206-247-60.tor.primus.ca] has joined #lisp
+15:10:42 <tcr> (require :sb-posix) does not emit style-warnings whereas (asdf:load-system :sb-posix) does
+15:10:51 milanj [~milanj_@109-92-122-253.dynamic.isp.telekom.rs] has joined #lisp
+15:10:57 -!- wvdschel [~wim@unaffiliated/yukito] has quit [Quit: Leaving]
+15:10:58 <tcr> seems like REQUIRE loads contrib/sb-posix/sb-posix.fasl
+15:11:16 <EOF-sensei> somebody tell me why preceeding operations with their operators is a good idea...
+15:11:20 <tcr> I'm wondering what it is that creates sb-posix.fasl, though? Might that be what the :pathname option in a defsystem does?
+15:11:54 <stassats> EOF-sensei: i can't make any sense out of your question
+15:12:07 <tcr> EOF-sensei: Because you also write f(x) in maths
+15:12:36 <EOF-sensei> but you don't write (+ 1 2)
+15:12:42 <stassats> but i do
+15:12:48 <EOF-sensei> i'm sure
+15:13:16 <tcr> EOF-sensei: In Lisp, + is just a function; it's a design decision
+15:13:27 <stassats> because i don't want to write "+" n times, because i don't want to memorize all precedence rules
+15:13:55 sabalaba [~sabalaba@221.220.249.53] has joined #lisp
+15:14:07 <pkhuong_> EOF-sensei: if that's a significant issue when you're coding, I'd really like to know what challenges you're solving.
+15:14:18 <stassats> although, in smalltalk you can write 1 + 2, and not memorize different precedence rules
+15:14:49 <stassats> but it becomes confusing
+15:15:33 <EOF-sensei> i'll stick with C and Python
+15:15:42 <pkhuong_> EOF-sensei: good stuff.
+15:15:46 <EOF-sensei> it's worked 'til now
+15:15:46 <tcr> Then why did you come here?
+15:15:55 <stassats> if that's the reason, it's a stupid reason
+15:15:55 <EOF-sensei> to piss you off of course
+15:15:58 barandis [~thomas@66.208.14.74] has joined #lisp
+15:16:00 <Krystof> tcr: contrib/asdf-stub.lisp
+15:16:23 <Xach> EOF-sensei: Go away.
+15:16:35 <EOF-sensei> Xach can't take a joke
+15:17:04 <EOF-sensei> i just wanted to see if i was missing the point of the only other official GNU system language
+15:17:08 -!- ChanServ has set mode +o Krystof
+15:17:17 -!- Krystof has set mode +b *!*@dsl-173-206-247-60.tor.primus.ca
+15:17:19 <Xach> EOF-sensei: You have your answer.
+15:17:41 -!- Krystof has set mode -o Krystof
+15:18:18 <froydnj> see, even IRC has prefix operations
+15:18:40 <Xach> froydnj: Should I start using froydware from git?
+15:18:47 -!- EOF-sensei [EOF-sensei@dsl-173-206-247-60.tor.primus.ca] has left #lisp
+15:19:10 -!- jobf [~jfranck@c-9fbde555.03-87-73746f38.cust.bredbandsbolaget.se] has quit [Quit: leaving]
+15:19:13 billitch [~billitch@rob92-1-82-67-155-88.fbx.proxad.net] has joined #lisp
+15:19:25 <froydnj> Xach: sure, why not?  you weren't before?
+15:19:48 <Xach> froydnj: I like using real releases if available.
+15:19:57 <froydnj> ah, releases
+15:20:24 -!- oskar__ [~oskar@c83-250-205-17.bredband.comhem.se] has quit [Quit: Leaving]
+15:20:37 s1ugg0 [~user@net-216-37-86-189.in-addr.worldspice.net] has joined #lisp
+15:20:40 <Xach> If they are way out of date I can use something else.
+15:22:17 -!- c|mell [~cmell@188-220-238-74.zone11.bethere.co.uk] has quit [Ping timeout: 264 seconds]
+15:23:20 -!- Hun [~Hun@80.81.19.29] has quit [Read error: Connection reset by peer]
+15:23:33 <Guthur> umm does Lisp often get recognized as a GNU system language
+15:23:52 <Guthur> maybe I'm reading 'system language' wrong
+15:24:31 <Krystof> the original gnu manifesto said that the gnu system would be progammable with C and Lisp
+15:24:33 <Krystof> I think
+15:25:06 <Krystof> "Both C and Lisp will be available as system programming languages."
+15:25:27 <froydnj> Xach: there's not much difference between git and releases...maybe a little for ironclad
+15:26:26 <Xach> froydnj: The issue came up yesterday. I'll review and see what project it was for.
+15:27:51 <Guthur> Krystof: Yes originally, we had a discussion about it here a few moons ago
+15:27:58 *Xach* can't find it
+15:28:10 <Guthur> but I think the fact is often overlooked
+15:30:09 borkamaniac [~user@S0106001111de1fc8.cg.shawcable.net] has joined #lisp

@@ -1,0 +1,25 @@
+2007-01-01T10:42:00.000Z	fredl		if you want to check out what it is, check http://glue.3dn.nl
+2007-01-01T10:43:00.000Z	fredl		it's not the fastest site on the planet since it's at my DSL connection :-)
+2007-01-01T10:43:00.000Z	nolimitsoya	fredl	whats the purpouse of this project?
+2007-01-01T10:44:00.000Z	fredl	nolimitsoya	the purpose is described on http://wiki.3dn.nl/index.php/GLUE
+2007-01-01T10:44:00.000Z	fredl	nolimitsoya	the description is fairly terse however.
+2007-01-01T10:45:00.000Z	fredl		Either way, 'GLUE' is supposed to be a layer on top of the so many existing version control / bugtracking / SCM products.
+2007-01-01T10:46:00.000Z	fredl		does that make enough sense?
+2007-01-01T10:46:00.000Z	fredl		IDE?
+2007-01-01T10:47:00.000Z	fredl		yeah.. haha, text based IDE = bash
+2007-01-01T10:47:00.000Z	fredl		anybody have any comment/questions on GLUE ?
+2007-01-01T10:48:00.000Z	nolimitsoya	fredl	im not sure... what would be diffrent from, say, launchpad?
+2007-01-01T10:48:00.000Z	fredl	nolimitsoya	well it's not a bugtracking system OR a version control system itself.....
+2007-01-01T10:49:00.000Z	nolimitsoya	fredl	right... so its just a web interface?
+2007-01-01T10:49:00.000Z	fredl	nolimitsoya	it's supposed to be an application that keeps track of software modules, in which version control system they're kept, which bugtracking system is used for it etc.
+2007-01-01T10:50:00.000Z	fredl	nolimitsoya	nope, not quite. When the database is populated, GLUE should be able to use all this information to generate 'releases' coming from different repositories/bugtracking systems.
+2007-01-01T10:52:00.000Z	fredl	nolimitsoya	additionally, GLUE should be able to generate (automatically) things like RPM's, DEB's etc. depending on the component's settings.
+2007-01-01T10:54:00.000Z	fredl	nolimitsoya	am I making any sense? :-)
+2007-01-01T10:54:00.000Z	nolimitsoya	fredl	some. :) a more stringent description on the website, and a link to a faq, would probably be helpfull in generating more intrest :)
+2007-01-01T10:55:00.000Z	fredl	nolimitsoya	hey I built what I have in 4 days and I'm just cranking away at coding, I have no time to document stuff yet!
+2007-01-01T10:55:00.000Z	fredl		:)
+2007-01-01T10:56:00.000Z	nolimitsoya	fredl	but without it, you wont have much luck recruiting, and thats what you wanted, wasnt it?
+2007-01-01T10:56:00.000Z	fredl	nolimitsoya	just imagine... 'glue build UBUNTU.ubuntu.org'
+2007-01-01T10:57:00.000Z	fredl		that should hopefully explain it better :) that command should get a list of all components in UBUNTU.ubuntu.org, for each of the components it should check all packages for open bugs, check out the revisions from the respective version control systems, and build debs!
+2007-01-01T10:58:00.000Z	fredl	nolimitsoya	but you're right.... I'll document the purpose more clearly and come back and ask more :)
+2007-01-01T10:58:00.000Z	fredl		drapper?

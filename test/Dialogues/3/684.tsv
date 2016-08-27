@@ -1,0 +1,5 @@
+2007-01-01T02:36:00.000Z	emacla		How do i remove a directory from a USB-memory stick trought the Terminal?
+2007-01-01T02:37:00.000Z	kitche	emacla	sudo rmdir <dir> or rm -r <dir>
+2007-01-01T02:38:00.000Z	emacla	kitche	Says, directory is not empty. I know. But i want to remove all the files in it too.
+2007-01-01T02:38:00.000Z	kitche	emacla	with what rmdir?
+2007-01-01T02:38:00.000Z	kitche	emacla	you want the rm -r <dir> one then

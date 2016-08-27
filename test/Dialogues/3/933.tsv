@@ -1,0 +1,11 @@
+2007-01-01T09:55:00.000Z	byp		one*
+2007-01-01T09:56:00.000Z	mwe	byp	I don't know why they don't have a minimal install cd
+2007-01-01T09:56:00.000Z	byp		yup
+2007-01-01T09:56:00.000Z	mwe	byp	ubuntu has a hugh dvd as well as the small install cd
+2007-01-01T09:56:00.000Z	byp		some of my comps don't have DVD drives
+2007-01-01T09:57:00.000Z	mwe	byp	but ubuntu has apt-get so if you have internet you don't need to have all the software on a dvd
+2007-01-01T10:09:00.000Z	mwe		aptitude is not the same as apt-get. aptitude keeps a seperate log which makes it possible to aptitidu install kubuntu-desktop then aptitude remove kubuntu-desktop if you decide you don't want it. try that with apt-get and you'll see it's doesn't remove kde
+2007-01-01T10:10:00.000Z	byp		like yum is a wrapper for rpm
+2007-01-01T10:10:00.000Z	mwe	byp	kinda yeah
+2007-01-01T10:11:00.000Z	mwe	byp	does yum enable you to install something over the internet or only local rpms?
+2007-01-01T10:11:00.000Z	mwe	byp	then I think it's similar

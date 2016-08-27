@@ -1,0 +1,16 @@
+2007-01-01T04:36:00.000Z	matsyes		i have a vaio and i installed ubuntu edgy eft on it ..but the wierdest things happening ...it works fine when i connect the ac voltage but not when i start it from battery ..however if i start it using ac it works fine and then when i switch to battery it continues to run ...
+2007-01-01T04:37:00.000Z	Jowi	matsyes	does it die or hangs at a precise moment?
+2007-01-01T04:38:00.000Z	matsyes		are there any other details that i could provide ????
+2007-01-01T04:39:00.000Z	Jowi	matsyes	when does it hang?
+2007-01-01T04:40:00.000Z	matsyes		when i did the recovery mode it once gave me a graphical prob
+2007-01-01T04:40:00.000Z	Jowi	matsyes	and this only when booting on battery?
+2007-01-01T04:40:00.000Z	matsyes		yup only with battery
+2007-01-01T04:40:00.000Z	Jowi	matsyes	do you have this problem booting any other operating system or live cd on battery?
+2007-01-01T04:41:00.000Z	matsyes		jowi:i havent tried live cd but no probs with windows
+2007-01-01T04:42:00.000Z	Jowi	matsyes	is the sata drive internal or external?
+2007-01-01T04:44:00.000Z	matsyes		when i do recovery boot ..then i have no probs it comes to the command prompt
+2007-01-01T04:46:00.000Z	Jowi	matsyes	that is strange indeed. normally a laptop can hang during boot if it does not get enough juice from the battery. this usually happen when the drives/cd/dvd spins up and there is a power spike. it seems, from your description, to be the case, however it only happen on the drive check on an internal sata which doesn't need much power. I would suggest that you skip the drivecheck when on battery. don't know if you got yourself a b
+2007-01-01T04:46:00.000Z	Jowi		ad battery or not.
+2007-01-01T04:48:00.000Z	Jowi	matsyes	do you have any external devices connected? if so try to disconnect them to see if that helps
+2007-01-01T04:50:00.000Z	Jowi	matsyes	can still be bad even when fully charged if it does not provide enough output to power your drive during check. i suspect this since it works on AC
+2007-01-01T04:51:00.000Z	Jowi	matsyes	did you install laptop-mode to see if that helps? it has got some power managment for laptop drives in it.

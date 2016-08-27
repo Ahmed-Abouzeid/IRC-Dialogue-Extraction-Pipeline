@@ -1,0 +1,15 @@
+2007-01-01T11:17:00.000Z	Everflex		how do i make a Volume behave like the /home directory (so i can write to it without root)
+2007-01-01T11:17:00.000Z	fritsch	Everflex	you have to mount it correctly
+2007-01-01T11:18:00.000Z	Everflex	fritsch	i'm mounting it with fstab, but i just can't find an option that does what i want.
+2007-01-01T11:18:00.000Z	fritsch	Everflex	umask set correctly?
+2007-01-01T11:19:00.000Z	fritsch	Everflex	/dev/sda2 /media/sda2     ntfs    defaults,nls=utf8,umask=007,gid=46 0       1
+2007-01-01T11:19:00.000Z	fritsch	Everflex	this is an example
+2007-01-01T11:19:00.000Z	fritsch	Everflex	the device /dev/Sda2 is mounted to /media/sda2 <- this is a local directory, this must exist
+2007-01-01T11:20:00.000Z	Everflex	fritsch	yeah.. i have the drive mounted and all (it's ext3) but i can only write to it with root.,.
+2007-01-01T11:20:00.000Z	Everflex	fritsch	is it possible to use umask with ext3?
+2007-01-01T11:21:00.000Z	fritsch	Everflex	you do not need to, just look, that the directory you mount to has the correct permissions
+2007-01-01T11:22:00.000Z	Everflex	fritsch	so what should i use to change the permissions to that, chmod?
+2007-01-01T11:22:00.000Z	fritsch	Everflex	chown and chmod
+2007-01-01T11:22:00.000Z	fritsch	Everflex	chown ist enough
+2007-01-01T11:22:00.000Z	fritsch	Everflex	lets say you want to mount /dev/hda3 to /media/lala
+2007-01-01T11:22:00.000Z	fritsch	Everflex	an the user heinz should be able to write to this directory

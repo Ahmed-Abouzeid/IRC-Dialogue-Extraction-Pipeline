@@ -1,0 +1,6 @@
+2007-01-01T03:48:00.000Z	tyme-		has anyone successfully installed ATI drivers on Ubuntu 6.10?
+2007-01-01T03:50:00.000Z	genericuser	tyme-	try apt-get install xorg-driver-fglrx?
+2007-01-01T03:50:00.000Z	tyme-	genericuser	it's already installed.
+2007-01-01T03:50:00.000Z	genericuser	tyme-	you edited xorg.conf to enable it?
+2007-01-01T03:51:00.000Z	tyme-		driver fglrx is in xorg.conf
+2007-01-01T03:51:00.000Z	genericuser	tyme-	is there a specific reason you need fglrx? did you follow the instructions on the fglrx wiki page?

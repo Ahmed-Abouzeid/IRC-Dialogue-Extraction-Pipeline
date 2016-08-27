@@ -1,0 +1,11 @@
+2007-01-01T11:56:00.000Z	mnoir	sharp15	no
+2007-01-01T11:56:00.000Z	mnoir	sharp15	and ubuntu is debian based, using the gnome window manager, among others :)
+2007-01-01T11:57:00.000Z	sharp15	mnoir	that's what i meant.
+2007-01-01T11:57:00.000Z	mnoir	sharp15	so what is sshd doing (or not) :}
+2007-01-01T11:58:00.000Z	sharp15	mnoir	failing before connection attempt.  may have something to do with xinetd.
+2007-01-01T11:58:00.000Z	mnoir	sharp15	maybe - log messages?
+2007-01-01T11:58:00.000Z	mnoir	sharp15	sshd is usually rock solid
+2007-01-01T11:58:00.000Z	sharp15	mnoir	it's not being run by xinetd, but inetd has thrown a huge number of errors.
+2007-01-01T11:59:00.000Z	mnoir	sharp15	oic :(
+2007-01-01T12:00:00.000Z	sharp15	mnoir	either way. i can't find error messages from either sshd or proftpd.  both init scripts print Starting service   [fail] 
+2007-01-01T12:01:00.000Z	mnoir	sharp15	possible problem in the conf file - it sounds like to me

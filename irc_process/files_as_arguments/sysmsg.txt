@@ -1,0 +1,30 @@
+joined #lisp
+\[Remote closed the connection\]
+\[Connection timed out\]
+quit \(Ping timeout:
+left #lisp
+\(Excess Flood\)
+\(K-Lined\)
+quit \(Client Quit\)
+quit \(Quit:
+quit \(Read error:
+quit \(Remote host
+quit \(Changing host\)
+is now known as
+Connection reset by peer
+\(Max SendQ exceeded\)
+has quit \[
+joined #scummvm
+join #scummvm
+left #scummvm
+left irc:
+new commits to master:
+Nick change:
+#scummvm:
+irc: Remote host closed the connection
+irc: Quit: Page closed
+irc: Ping timeout:
+irc: Changing host
+left irc:
+Read error: 110 (Connection timed out)
+\[00:00\] ---

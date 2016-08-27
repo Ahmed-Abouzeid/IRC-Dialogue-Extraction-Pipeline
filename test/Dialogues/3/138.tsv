@@ -1,0 +1,3 @@
+2007-01-01T04:05:00.000Z	Dicander		Where does Ubuntu store desktop programs such as democracy player, i.e. is there an equivalent of Applications folder on OSX?
+2007-01-01T04:06:00.000Z	adaptr	Dicander	all applications are stored under /usr/bin, /usr/lib, and such
+2007-01-01T04:06:00.000Z	adaptr	Dicander	nothing like the Windows scheme exists, no

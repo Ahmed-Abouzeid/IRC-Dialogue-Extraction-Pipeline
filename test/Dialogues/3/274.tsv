@@ -1,0 +1,19 @@
+2007-01-01T04:58:00.000Z	bruenig		locate
+2007-01-01T04:58:00.000Z	bruenig		whereis
+2007-01-01T04:58:00.000Z	bruenig		which
+2007-01-01T04:58:00.000Z	bruenig		find
+2007-01-01T04:58:00.000Z	bruenig		those are some good ones
+2007-01-01T04:59:00.000Z	chip__		Hi everyoe, I just got xbuntu up and running, my first attempt at Linux, I have few questions on three areas I need help on
+2007-01-01T04:59:00.000Z	bruenig	chip__	fire away
+2007-01-01T05:00:00.000Z	bruenig	chip__	I can't think of any reason why that would happen
+2007-01-01T05:02:00.000Z	chip__		I'm not using dial-up, I have FiOS
+2007-01-01T05:02:00.000Z	bruenig	chip__	you can use gmail in normal html
+2007-01-01T05:04:00.000Z	chip__		it's okay BigBam...  I figured it was
+2007-01-01T05:06:00.000Z	chip__		I think it's a java thing, I just visited a java game site and it closed on me...
+2007-01-01T05:07:00.000Z	chip__		I have installed the java plugins and apps
+2007-01-01T05:07:00.000Z	bruenig	chip__	you aren't running on 64 bit
+2007-01-01T05:08:00.000Z	chip__		www.addictinggames.com closes firefox as well as gmail
+2007-01-01T05:09:00.000Z	bruenig	chip__	do you have javascript enabled? not sure if that would make the browser crash but I am fairly certain at least gmail uses it
+2007-01-01T05:09:00.000Z	chip__		i checked the about:plugins and java is all Enabled
+2007-01-01T05:10:00.000Z	bruenig	chip__	javascript, not java
+2007-01-01T05:10:00.000Z	bruenig	chip__	edit>preferences then content

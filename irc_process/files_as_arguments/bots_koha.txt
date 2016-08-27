@@ -1,0 +1,5 @@
+huginn
+logbot
+pastebot
+jenkins_koha
+wahanui

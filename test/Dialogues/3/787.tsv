@@ -1,0 +1,6 @@
+2007-01-01T05:10:00.000Z	floppyears		how can I connect a mac os x and ubuntu directly over ethernet cable to share files ?
+2007-01-01T05:10:00.000Z	lord_ceiphas	floppyears	plug in the crosslink-cable and use ftp/smb/http or anything else
+2007-01-01T05:11:00.000Z	floppyears		thanks lord_ceiphas
+2007-01-01T05:11:00.000Z	lord_ceiphas	floppyears	but you have to set the ips manually to the same subnet but the last number has to be another
+2007-01-01T05:13:00.000Z	lord_ceiphas		why widescreen, 1600x1200 see more/get more ;-)
+2007-01-01T05:14:00.000Z	floppyears	lord_ceiphas	I have smb working right now, and they can connect just fine, but now I want to connect both computers directly with a cable

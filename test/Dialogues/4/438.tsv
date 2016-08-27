@@ -1,0 +1,4 @@
+2007-01-01T11:37:00.000Z	s34n		http://parker1.co.uk/mythtv_ubuntu.php claims mythtc is available through univers/multiverse, but I don't see it
+2007-01-01T11:38:00.000Z	tyme-	s34n	it isnt
+2007-01-01T11:45:00.000Z	s34n	tyme-	is it available from a convenient repo?
+2007-01-01T11:46:00.000Z	tyme-	s34n	i don't know, i just did apt-cache search for you

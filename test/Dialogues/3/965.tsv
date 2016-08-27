@@ -1,0 +1,18 @@
+2007-01-01T09:25:00.000Z	niko_m		i'm downloading the christian distribution of xubuntu now
+2007-01-01T09:25:00.000Z	niko_m		the edgy release
+2007-01-01T09:25:00.000Z	niko_m		if i like the live cd i'm going to install it on my hard drive but not the whole thing i'm running win xp  pro
+2007-01-01T09:25:00.000Z	niko_m		how much space should i leave for xubuntu?
+2007-01-01T09:26:00.000Z	niko_m		will 10 gigs do?
+2007-01-01T09:26:00.000Z	niko_m		i have a 320 external hard drive also that is fat 32
+2007-01-01T09:26:00.000Z	gnomefreak	niko_m	personally i would use 10gigs at the least
+2007-01-01T09:28:00.000Z	niko_m		so is 10 gigs enough for a basic install of xubutnu edgy?
+2007-01-01T09:28:00.000Z	gnomefreak	niko_m	yes xubuntu is about 2-3gig
+2007-01-01T09:29:00.000Z	gnomefreak	niko_m	that leaves around 7ish gigs for other apps music whatever you want
+2007-01-01T09:29:00.000Z	niko_m		so i just have to use partition commander to resize my windows partition to make space for xubuntu and then when i install linux it will make set xubuntu in the unused space right?
+2007-01-01T09:29:00.000Z	gnomefreak	niko_m	you can use the xubuntu installer to do that
+2007-01-01T09:30:00.000Z	niko_m		i prefer to use partition commander
+2007-01-01T09:30:00.000Z	gnomefreak	niko_m	right there is a part wher eyou can choose how much space to use
+2007-01-01T09:30:00.000Z	niko_m		then just run the xubuntu install and tell it to used the unused space and make whaterver paritions it wants for linux
+2007-01-01T09:31:00.000Z	gnomefreak	niko_m	thats fine
+2007-01-01T09:31:00.000Z	niko_m		will xubuntu install grub?
+2007-01-01T09:31:00.000Z	gnomefreak	niko_m	yes

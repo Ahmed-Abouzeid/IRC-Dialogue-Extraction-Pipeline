@@ -1,0 +1,5 @@
+2007-01-01T11:39:00.000Z	adam_		I get this message: audiotestsrc wave=sine freq=512 ! audioconvert ! audioresample ! gconfaudiosink: The resource is busy or not .
+2007-01-01T11:41:00.000Z	adam_		can anyone point me in the right direction for ubuntu audio help?
+2007-01-01T11:41:00.000Z	mwe	adam_	#ubuntu is a good place to get help with that ;)
+2007-01-01T11:44:00.000Z	adam_	mwe	thats what I was hoping... I'll have a look at some links and see what I can do.
+2007-01-01T11:46:00.000Z	mwe	adam_	people are usually helpful in here. crimsun is _the_ sound guru. I don't think he's around right now though

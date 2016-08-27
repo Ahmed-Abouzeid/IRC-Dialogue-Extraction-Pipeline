@@ -1,0 +1,1569 @@
+
+
+
+
+
+
+
+
+IRC log for #koha, 2016-08-08
+
+
+
+
+
+
+
+
+
+ 
+
+        ← Previous day |
+     
+    Channels |
+#koha index |
+Today |
+    
+    Search |
+    Google Search
+| Plain-Text
+    | plain, newest first |
+    
+    summary
+
+
+
+
+IRC log for #koha, 2016-08-08
+All times shown according to UTC.
+
+
+
+
+
+Time
+S
+Nick
+Message
+
+
+00:05
+
+
+Francesca joined #koha
+
+
+00:25
+
+* dcook
+read scrollback
+
+
+00:26
+
+dcook
+Teenage dcook would not have been fond of tying a tie during high school
+
+
+00:26
+
+dcook
+Although I think I liked the idea of a uniform just so that I didn't have to pick out clothes to wear when I did drag myself into the classroom..
+
+
+00:26
+
+* dcook
+probably would've preferred something from a sci fi movie rather than a suit and tie though
+
+
+00:32
+
+jcamins
+dcook: you would've been brilliant young Wesley Crusher?
+
+
+00:37
+
+dcook
+It's been a long time since I watched TNG, but I think I disliked Wesley Crusher :p
+
+
+00:38
+
+dcook
+I think I was pro-borg and yet anti-conformity
+
+
+00:38
+
+dcook
+Quite the paradox
+
+
+00:38
+
+dcook
+Maybe I just liked the borg aesthetic and order :p
+
+
+00:39
+
+jcamins
+Everyone disliked brilliant young Wesley Crusher.
+
+
+00:40
+
+dcook
+hehe
+
+
+00:40
+
+dcook
+I think I disliked how chipper he seemed
+
+
+00:40
+
+dcook
+I was a bit more of a moody teenager
+
+
+00:40
+
+dcook
+Wesley Crusher seemed eager to please, and that was the opposite of what I wanted to do
+
+
+01:08
+
+
+Francesca joined #koha
+
+
+01:25
+
+
+Francesca joined #koha
+
+
+01:27
+
+
+mario_ joined #koha
+
+
+01:46
+
+wizzycrayfish
+dunno crusher gave his mum some serious trouble occasionally :P
+
+
+01:46
+
+wizzycrayfish
+we have gone full nerd.
+
+
+02:09
+
+dcook
+lol
+
+
+02:09
+
+dcook
+Nah, I think this is still low level nerd
+
+
+02:09
+
+dcook
+If we were arguing specific details from particular episodes... that would be full nerd
+
+
+02:10
+
+dcook
+Or debating Captain Kirk vs Captain Picard
+
+
+02:10
+
+wizzycrayfish
+as if there is a debate to be had there.
+
+
+02:10
+
+wizzycrayfish
+because we all know picard is better. :P
+
+
+02:10
+
+dcook
+hehe
+
+
+02:11
+
+dcook
+I'm still only midway through TOS at the moment
+
+
+02:11
+
+dcook
+Been sidetracked by Outlander
+
+
+02:11
+
+dcook
+And now organizing old photos on my desktop via an app on my phone as I hold a sleeping baby all evening
+
+
+02:12
+
+wizzycrayfish
+how old is baby now?
+
+
+02:12
+
+wizzycrayfish
+i forget ^.^
+
+
+02:15
+
+dcook
+Mmm almost 6 months
+
+
+02:15
+
+dcook
+Getting their first tooth :3
+
+
+02:16
+
+wizzycrayfish
+noice!
+
+
+02:27
+
+dcook
+:)
+
+
+02:30
+
+wizzycrayfish
+well I mean not nice becaues teeth hurt and stuff.
+
+
+02:36
+
+dcook
+Yeah, for sure
+
+
+02:36
+
+dcook
+But they're growing up!
+
+
+02:36
+
+dcook
+Ahhhhhhh
+
+
+02:38
+
+
+CHRIS111110 joined #koha
+
+
+03:06
+
+
+CHRIS111111 joined #koha
+
+
+03:14
+
+
+Francesca joined #koha
+
+
+03:19
+
+
+JoshB joined #koha
+
+
+03:28
+
+
+mario joined #koha
+
+
+03:30
+
+
+mario joined #koha
+
+
+04:04
+
+
+geek_cl joined #koha
+
+
+04:11
+
+
+cait joined #koha
+
+
+04:13
+
+
+CHRIS111112 joined #koha
+
+
+04:38
+
+
+mario joined #koha
+
+
+04:43
+
+
+magnuse joined #koha
+
+
+04:44
+
+* magnuse
+waves
+
+
+04:50
+
+wizzycrayfish
+hi
+
+
+04:50
+
+wahanui
+bonjour, wizzycrayfish
+
+
+04:50
+
+magnuse
+wizzycrayfish!
+
+
+04:50
+
+wahanui
+rumour has it wizzycrayfish is up early
+
+
+04:50
+
+wizzycrayfish
+magnuse \o/
+
+
+04:50
+
+magnuse
+crayfish?
+
+
+04:51
+
+wizzycrayfish
+blame eythian
+
+
+04:51
+
+wizzycrayfish
+(also I'm on a different computer and I can't be bothered to set up my bouncer lol)
+
+
+04:51
+
+dcook
+hehe
+
+
+04:51
+
+dcook
+Isn't magnuse up super early?
+
+
+04:51
+
+dcook
+Also...
+
+
+04:51
+
+wizzycrayfish
+yeah I was just thinking that
+
+
+04:51
+
+dcook
+"Some of the most significant recent developments in Canadian currency were the withdrawal of the $1, $2, and $1,000 notes in 1987, 1996, and 2000 respectively. The $1 and $2 denominations have been replaced with coins, colloquially referred to as the "loonie" and "toonie" respectively. In 2000, the $1,000 note was removed at the request of the Solicitor General of Canada and the Royal Canadian Mounted Police, as it was reported that they were largely
+
+
+04:51
+
+dcook
+being used for money laundering and organized crime."
+
+
+04:52
+
+dcook
+Fun fact ^
+
+
+04:52
+
+wizzycrayfish
+hehe loonie and toonie
+
+
+04:52
+
+dcook
+Back at my parents' house, I actually still have a few old Canadian $1 bills
+
+
+04:52
+
+wizzycrayfish
+i loooove $1 and $2 coins
+
+
+04:52
+
+dcook
+One of my favourite things about Australia? They call them "one dollar coin" and "two dollar coin"
+
+
+04:52
+
+dcook
+Loonie and toonie...
+
+
+04:52
+
+wizzycrayfish
+though oz's ones are so bewildering
+
+
+04:52
+
+dcook
+wizzycrayfish: They're the royals of coins!
+
+
+04:52
+
+dcook
+Yeah?
+
+
+04:52
+
+wizzycrayfish
+why are the 2's smaller than the 1s?
+
+
+04:52
+
+* magnuse
+is up at the regular time, but noone else is up yet, so i might as well try and work a little
+
+
+04:53
+
+wizzycrayfish
+MAKES NO SENSE
+
+
+04:53
+
+dcook
+Because good things come in small packages?
+
+
+04:53
+
+wizzycrayfish
+pft
+
+
+04:53
+
+dcook
+hehe
+
+
+04:53
+
+dcook
+I like that they're smaller
+
+
+04:53
+
+wizzycrayfish
+nz does it properly.
+
+
+04:53
+
+dcook
+I can have a pocketful of $2 coins and have it add up without weighing me down
+
+
+04:53
+
+dcook
+Yeah?
+
+
+04:53
+
+dcook
+How big is your 50 cent piece?
+
+
+04:53
+
+magnuse
+our coins have all the wrong sizes
+
+
+04:53
+
+wizzycrayfish
+appropriately sized in order :P
+
+
+04:53
+
+dcook
+magnuse: How long have you been awake?
+
+
+04:54
+
+magnuse
+23 minutes
+
+
+04:54
+
+dcook
+wizzycrayfish: Ok, that does sound amazing
+
+
+04:54
+
+magnuse
+24
+
+
+04:54
+
+dcook
+magnuse: Ok, that doesn't seem so bad. You have kids so I'll allow it
+
+
+04:54
+
+* dcook
+went to bed at 3am and woke up at 8am?
+
+
+04:54
+
+magnuse
+thanks
+
+
+04:54
+
+dcook
+np
+
+
+04:54
+
+magnuse
+ouch!
+
+
+04:54
+
+dcook
+^_^
+
+
+04:54
+
+magnuse
+:-)
+
+
+04:54
+
+wizzycrayfish
+5 is alright tho
+
+
+04:54
+
+wizzycrayfish
+that's enough to get some dreams in
+
+
+04:54
+
+dcook
+Yeah, it's a good night of sleep
+
+
+04:54
+
+* magnuse
+needs 8 hours
+
+
+04:54
+
+dcook
+I don't know why people even get more than 5
+
+
+04:54
+
+dcook
+Yeah?
+
+
+04:54
+
+* dcook
+hasn't gotten 8 hours in...
+
+
+04:55
+
+dcook
+I used to be a 9 hour person myself
+
+
+04:55
+
+wizzycrayfish
+I'm ok with 6-7
+
+
+04:55
+
+magnuse
+with less than 8 i'm a wreck
+
+
+04:55
+
+dcook
+Or.. or... 2 hours. I had some good times in uni on 2 hours of sleep
+
+
+04:55
+
+magnuse
+hehe
+
+
+04:55
+
+wizzycrayfish
+now get down in to the 2-3-4's and I'm a right wreck
+
+
+04:55
+
+magnuse
+i'm getting old
+
+
+04:55
+
+dcook
+It is handy being in one's twenties when having a baby... no doubt about that
+
+
+04:56
+
+wizzycrayfish
+<withering stare>
+
+
+04:56
+
+dcook
+I see a lot of wealthy people pushing around prams
+
+
+04:56
+
+dcook
+wizzycrayfish: You know, that's the first thing you ever wrote to me on IRC :p
+
+
+04:56
+
+wizzycrayfish
+what?
+
+
+04:56
+
+dcook
+Back in 2012
+
+
+04:56
+
+dcook
+<withering stare>
+
+
+04:56
+
+wizzycrayfish
+hehe no way
+
+
+04:56
+
+dcook
+Well, worded slightly differently
+
+
+04:56
+
+dcook
+haha yep
+
+
+04:56
+
+wizzycrayfish
+seriously?
+
+
+04:56
+
+magnuse
+lulz
+
+
+04:56
+
+wizzycrayfish
+that can't be tru
+
+
+04:56
+
+dcook
+I think I said something rather stupid, and you gave me a withering one
+
+
+04:56
+
+dcook
+hehe
+
+
+04:57
+
+dcook
+Me and jcamins were having a bit of a heated back and forth
+
+
+04:57
+
+wizzycrayfish
+I'm not sure I've said that to anyone else!
+
+
+04:57
+
+dcook
+I could probably find it in the archives..
+
+
+04:57
+
+wizzycrayfish
+lol maybe
+
+
+04:57
+
+dcook
+Funny how time changes things
+
+
+04:58
+
+dcook
+#koha has been so good for me
+
+
+04:58
+
+dcook
+H'okay... 2013 ... probably march..
+
+
+04:58
+
+dcook
+2012 i mean
+
+
+04:59
+
+dcook
+Hmm maybe it wasn't withering..
+
+
+05:00
+
+wizzycrayfish
+http://irc.koha-community.org/[…]3-02-05#i_1176687
+
+
+05:00
+
+wizzycrayfish
+loool
+
+
+05:00
+
+dcook
+lol
+
+
+05:01
+
+dcook
+I wonder why that was 2013...
+
+
+05:01
+
+dcook
+So it couldn't have been one of the first things you ever said to me
+
+
+05:01
+
+wizzycrayfish
+clearly it was memorable :P
+
+
+05:01
+
+dcook
+lol
+
+
+05:01
+
+dcook
+Just a little bit!
+
+
+05:02
+
+
+Francesca joined #koha
+
+
+05:02
+
+dcook
+It's weird...I'm not finding my earlier stuff
+
+
+05:02
+
+dcook
+Google seems to think this is my earliest mention http://irc.koha-community.org/koha/2012-03-16
+
+
+05:03
+
+dcook
+But surely I was on IRC before I sent in that patch..
+
+
+05:04
+
+magnuse
+the irc log search has 2012-06-27 as the first date
+
+
+05:04
+
+magnuse
+http://irc.koha-community.org/[…]oha;q=;offset=750
+
+
+05:04
+
+dcook
+Yeah I was just about to post that
+
+
+05:04
+
+dcook
+Lost my connection for a sec though :p
+
+
+05:04
+
+dcook
+Bizarre
+
+
+05:05
+
+magnuse
+i disconnected you so i could say it first
+
+
+05:05
+
+dcook
+lol
+
+
+05:05
+
+dcook
+Tricksy!
+
+
+05:05
+
+magnuse
+did you change your nick?
+
+
+05:05
+
+dcook
+And after I permitted you to get up at that time...
+
+
+05:05
+
+dcook
+Maybe?
+
+
+05:05
+
+wahanui
+Maybe is a momentaneous error
+
+
+05:05
+
+dcook
+I would doubt it... but maybe
+
+
+05:05
+
+* dcook
+ponders
+
+
+05:05
+
+dcook
+That must be it
+
+
+05:05
+
+dcook
+Mmmm
+
+
+05:05
+
+dcook
+Originally... I did use a web client
+
+
+05:05
+
+dcook
+So maybe I did use whatever nickname was autogenerated
+
+
+05:06
+
+dcook
+As I didn't think I was really going to be sticking around :p
+
+
+05:06
+
+magnuse
+"05:50 dcook I installed 3.8.0 back in May" :-)
+
+
+05:06
+
+dcook
+This is really shaking my memory confidence... haha
+
+
+05:06
+
+dcook
+I started in January that year..
+
+
+05:06
+
+dcook
+But I suppose I didn't start really working on Koha until later
+
+
+05:07
+
+dcook
+"05:52caitcustomizations are always trouble"
+
+
+05:07
+
+dcook
+^
+
+
+05:07
+
+dcook
+That's the thing I remember most... haha
+
+
+05:08
+
+magnuse
+and your whole job was dealing with customizations?
+
+
+05:08
+
+dcook
+At that stage for sure
+
+
+05:08
+
+dcook
+We were on 3.2 and so behind the times
+
+
+05:08
+
+dcook
+Of course, we still have way too many local customizations...
+
+
+05:09
+
+dcook
+And now I'm busy with non-Koha work so I can't upstream stuff..
+
+
+05:09
+
+* dcook
+shouldn't even be here right now
+
+
+05:09
+
+magnuse
+bbl
+
+
+05:09
+
+dcook
+laters magnuse
+
+
+05:09
+
+dcook
+I must have come in with a different nick earlier... as I don't see jcamins getting short with me :p
+
+
+05:10
+
+dcook
+Ugh, I need to stop reading this. I can never stand records of me fromt he past :p
+
+
+05:10
+
+dcook
+wizzycrayfish: But yes. Withering look... stayed in my memory :p
+
+
+05:13
+
+
+laurence joined #koha
+
+
+05:17
+
+
+Francesca joined #koha
+
+
+05:27
+
+
+cait joined #koha
+
+
+06:11
+
+
+fridolin joined #koha
+
+
+06:12
+
+
+cait left #koha
+
+
+06:27
+
+
+drojf joined #koha
+
+
+06:28
+
+drojf
+morning #koha
+
+
+06:37
+
+dcook
+yo drojf
+
+
+06:38
+
+drojf
+hola dcook
+
+
+06:42
+
+* magnuse
+waves again
+
+
+06:42
+
+
+Francesca joined #koha
+
+
+06:43
+
+drojf
+hei magnuse
+
+
+06:43
+
+magnuse
+moin drojf
+
+
+06:54
+
+mveron
+Hi again #koha
+
+
+06:54
+
+drojf
+hi mveron
+
+
+06:54
+
+
+morgane joined #koha
+
+
+06:54
+
+mveron
+:-)
+
+
+06:56
+
+drojf
+if somebody feels like playing: https://apt.abunchofthings.net/koha-nightly/
+
+
+06:56
+
+drojf
+looks like it works
+
+
+06:56
+
+morgane
+hi #koha !
+
+
+06:56
+
+drojf
+hi morgane
+
+
+06:57
+
+morgane
+hi drojf :)
+
+
+06:58
+
+magnuse
+hi morgane
+
+
+06:58
+
+magnuse
+morgane: will you be at the hackfest, or is your job done by then?
+
+
+07:01
+
+morgane
+hi magnuse, during the hackfest my university course will have begun :s but I will do my best to come sometimes.
+
+
+07:02
+
+magnuse
+cool!
+
+
+07:04
+
+morgane
+:)
+
+
+07:08
+
+
+sophie_m joined #koha
+
+
+07:13
+
+drojf
+apparently it's world cat day
+
+
+07:14
+
+drojf
+which is totally not worldcat day
+
+
+07:14
+
+drojf
+cats++
+
+
+07:18
+
+
+gaetan_B joined #koha
+
+
+07:18
+
+gaetan_B
+hello
+
+
+07:19
+
+drojf
+hi gaetan_B
+
+
+07:27
+
+
+sophie_m joined #koha
+
+
+07:32
+
+mveron
+drojf: Cool, your koha-nightly, just tested it to confirm Bug 17069 with an additional server...
+
+
+07:32
+
+huginn
+Bug http://bugs.koha-community.org[…]_bug.cgi?id=17069 blocker, P5 - low, ---, koha-bugs, NEW , Can't create new patron category on the intranet
+
+
+07:32
+
+mveron
+drojf++
+
+
+07:34
+
+drojf
+mveron: yay. the bug sounds bad though
+
+
+07:37
+
+drojf
+later #koha
+
+
+07:45
+
+
+cait joined #koha
+
+
+07:51
+
+cait
+thx mveron
+
+
+07:51
+
+mveron
+welcome :-)
+
+
+07:53
+
+cait
+glad it worked for you too - Christopher got me a bit worried last night, but it worked really well for me
+
+
+07:54
+
+cait
+mveron: did you notice that you have to enter amounts with a comma now when adding a fine/fee manually?
+
+
+07:54
+
+cait
+it seems to be related to the new entry thing - and it's only in that one place
+
+
+07:54
+
+cait
+have to go, bbl
+
+
+08:12
+
+eythian
+hi
+
+
+08:14
+
+mveron
+@later tell cait Could not reproduce comma problem with manually adding fine / fee, may be I did not search at the right place
+
+
+08:14
+
+huginn
+mveron: The operation succeeded.
+
+
+08:18
+
+
+Francesca joined #koha
+
+
+08:20
+
+
+marcelr joined #koha
+
+
+08:20
+
+marcelr
+hi #koha
+
+
+08:22
+
+
+Francesca joined #koha
+
+
+08:22
+
+
+ashimema joined #koha
+
+
+08:43
+
+marcelr
+mveron++ # fast response
+
+
+08:43
+
+mveron
+welcome :-)
+
+
+09:14
+
+morgane
+hi, I try to reset my database, so I recreate it then when I do a updatedatabase.pl I have the following error : DBIx::Class::Row::get_column(): No such column 'serialseq_x' on Koha::Schema::Result::Serial at installer/data/mysql/updatedatabase.pl line 11518. I don't know what to do, any idea ?
+
+
+09:21
+
+eythian
+how did you reset it?
+
+
+09:21
+
+
+Francesca joined #koha
+
+
+09:23
+
+morgane
+eythian: I droped and created it then I put a demo dump. and I just solved my problem :) thanks
+
+
+09:24
+
+eythian
+cool :) I'd have guessed that the demo was from a different version and the update didn't kick in for some reason.
+
+
+09:30
+
+morgane
+yes the demo was from an older version, but I run several times the updatedatabase.pl and now it seems to work.
+
+
+
+
+
+        ← Previous day |
+     
+    Channels |
+#koha index |
+Today |
+    
+    Search |
+    Google Search
+| Plain-Text
+    | plain, newest first |
+    
+    summary
+
+
+Powered by ilbot.
+Any questions ask rangi on #koha on irc.oftc.net
+
+
+
+
+
+
+

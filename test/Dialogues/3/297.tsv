@@ -1,0 +1,19 @@
+2007-01-01T11:46:00.000Z	crimsun	adam_	hi
+2007-01-01T11:47:00.000Z	adam_		crimsun! Great, some help. I am trying to get a lexicon omega working on a p4, asus motherboard (p5p800). Connected to this computer through xdmcp... any tips?
+2007-01-01T11:48:00.000Z	adam_		the computers are right next to eacothe, so I don't expect the sound to come from my laptop....
+2007-01-01T11:49:00.000Z	crimsun	adam_	what features aren't working? snd-usb-audio should be able to drive the -basic- inputs/outputs, but you'll need quirks added for the remaining additional ones
+2007-01-01T11:52:00.000Z	adam_		crumsun: that's pretty much all I need right now. I have two outs and two ins by th look of things. snd_usb_audio is loaded and all, I can change in system preferences, sound to my omega and usb devices but the good old volume control in the panel doesn't find it?!?! Neither does alsamixer or alsamixer gnome. Test sounds worked, but now fail giving me this message:audiotestsrc wave=sine freq=512 ! audioconvert ! audioresample ! gconfaudio
+2007-01-01T11:52:00.000Z	crimsun	adam_	``asoundconf list'' in a Terminal
+2007-01-01T11:53:00.000Z	adam_	crimsun	there I see my omega...
+2007-01-01T11:54:00.000Z	crimsun	adam_	I need the output from that command
+2007-01-01T11:54:00.000Z	adam_		ICH5, Omega, UART
+2007-01-01T11:55:00.000Z	crimsun	adam_	``grep defaults.pcm.card ~/.asoundrc.asoundconf''
+2007-01-01T11:56:00.000Z	adam_		!defaults.pcm.card Omega
+2007-01-01T11:57:00.000Z	crimsun	adam_	and is ``aplay /usr/share/sounds/*up.wav'' audible?
+2007-01-01T11:58:00.000Z	crimsun	adam_	right, so you do need a quirk
+2007-01-01T11:59:00.000Z	adam_	crimsun	doing some transalting from swedish on those errors---
+2007-01-01T11:59:00.000Z	adam_		whats a quirk?
+2007-01-01T11:59:00.000Z	crimsun	adam_	please file a bug against linux-source-2.6.17, attaching the output from ``lsusb -v''
+2007-01-01T11:59:00.000Z	crimsun	adam_	the Omega is not supported in its current configuration; it'll need to be added to the source code.
+2007-01-01T12:00:00.000Z	crimsun	adam_	after you've filed the bug, please tell me the bug #
+2007-01-01T12:00:00.000Z	adam_	crimsun	sorry about the french.....BUGGER

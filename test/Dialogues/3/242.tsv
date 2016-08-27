@@ -1,0 +1,17 @@
+2007-01-01T01:50:00.000Z	Innomen	bruenig	lmao
+2007-01-01T05:12:00.000Z	Innomen		i feel i should tell you its on the other machine
+2007-01-01T05:14:00.000Z	bruenig	Innomen	sudo apt-get install network-manager-gnome
+2007-01-01T05:15:00.000Z	Innomen		someone answer my Q? am i downloading something or am i installing something already built in?
+2007-01-01T05:15:00.000Z	bruenig	Innomen	I just gave you the command
+2007-01-01T05:16:00.000Z	bruenig	Innomen	you are downloading it
+2007-01-01T05:16:00.000Z	Innomen		http://www.debianadmin.com/enable-wpa-wireless-access-point-in-ubuntu-linux.html
+2007-01-01T05:16:00.000Z	bruenig	Innomen	http://mirrors.kernel.org/ubuntu/pool/main/n/network-manager/network-manager-gnome_0.6.3-2ubuntu6_i386.deb
+2007-01-01T05:16:00.000Z	bruenig	Innomen	got tons of dependencies though
+2007-01-01T05:17:00.000Z	Innomen		dependancies?
+2007-01-01T05:17:00.000Z	bruenig	Innomen	here are its list of dependencies http://packages.ubuntu.com/edgy/net/network-manager-gnome
+2007-01-01T05:17:00.000Z	Innomen		as in things required before it will run?
+2007-01-01T05:17:00.000Z	bruenig	Innomen	yeah
+2007-01-01T05:17:00.000Z	Innomen		i see, is there a complete package?
+2007-01-01T05:17:00.000Z	bruenig	Innomen	once you have an internet connection those will all be taken care of by apt-get
+2007-01-01T05:17:00.000Z	Innomen		i see
+2007-01-01T05:17:00.000Z	bruenig	Innomen	not sure

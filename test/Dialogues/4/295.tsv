@@ -1,0 +1,3 @@
+2007-01-01T04:08:00.000Z	smurf		how do i install something through apt-get and override my custom configuration with the default one? for exemple... i've changed my apache2.conf file and i want to reinstall apache restoring its default configuration
+2007-01-01T04:09:00.000Z	adaptr	smurf	no need to reinstall.. just run dpkg-reconfigure apache2
+2007-01-01T04:10:00.000Z	smurf	adaptr	thanks

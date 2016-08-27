@@ -1,0 +1,40 @@
+2007-01-01T04:52:00.000Z	Core		Anderson????????????????????
+2007-01-01T04:52:00.000Z	Core		Brazillian????????
+2007-01-01T04:52:00.000Z	Core		Brasileiro cara?
+2007-01-01T04:53:00.000Z	Core		Does soemone can help me?
+2007-01-01T04:54:00.000Z	lord_ceiphas	Core	whats your problem?
+2007-01-01T04:54:00.000Z	Core		I have a very improved machine and Ubuntu seems don't be able to handle with it
+2007-01-01T04:54:00.000Z	Core		I'm running Kurumim instead
+2007-01-01T04:54:00.000Z	lord_ceiphas	Core	maybe a core2duo with a jmicron-chipset?
+2007-01-01T04:55:00.000Z	Core		My machine is:
+2007-01-01T04:56:00.000Z	Core		Core 2 Duo E6300, mobo Intel DD946GZis, HD SATA2 160GB, DDR2 533MHz 1GB Kingstom
+2007-01-01T04:56:00.000Z	lord_ceiphas	Core	is a jmicron-controller on this board? if yes try to disable usb for installing
+2007-01-01T05:11:00.000Z	Core		when someone talk to me the nick highlights
+2007-01-01T05:12:00.000Z	lord_ceiphas	Core	type the name ant hit tab
+2007-01-01T05:13:00.000Z	Core		sorry people
+2007-01-01T05:13:00.000Z	Core		!msg | mnoir
+2007-01-01T05:14:00.000Z	Core		no one works
+2007-01-01T05:15:00.000Z	lord_ceiphas	Core	that has to do with the kernel... 2.6.17 or belo wont work on core2duo boards
+2007-01-01T05:16:00.000Z	lord_ceiphas		get a linux with a shipped 2.6.18-kernel
+2007-01-01T05:17:00.000Z	Core	lord_ceiphas	2.6.17?
+2007-01-01T05:17:00.000Z	Core		what's the one wich come with Ubuntu 6.06?
+2007-01-01T05:17:00.000Z	lord_ceiphas	Core	fedora core6 does install also
+2007-01-01T05:19:00.000Z	Core		the newer is Ubuntu 6.06
+2007-01-01T05:19:00.000Z	lord_ceiphas	Core	the kernel is the heart of linux, and the kernel with the number 2.6.17 will not run on core2duo mainboards so you have to get a linux with kernel 2.6.18 or higher
+2007-01-01T05:19:00.000Z	Core	lord_ceiphas	but the kernel of Ubuntu 6.06 is 2.6.17?
+2007-01-01T05:20:00.000Z	lord_ceiphas	Core	yes... and that is the problem
+2007-01-01T05:21:00.000Z	Core		With debian the problem is at least SATA
+2007-01-01T05:21:00.000Z	lord_ceiphas	Core	are you listening?
+2007-01-01T05:22:00.000Z	lord_ceiphas		LISTEN
+2007-01-01T05:22:00.000Z	Core	lord_ceiphas	yes, but another user said the kernel is not
+2007-01-01T05:23:00.000Z	Core	lord_ceiphas	adaptr, 2.6.15-27
+2007-01-01T05:23:00.000Z	lord_ceiphas	Core	you will never get a linux running on a core2duo-board if you use a linux with kernel 2.6.17 or lower... so go and find a distro that HAS a higher kernel shipped
+2007-01-01T05:23:00.000Z	Core	lord_ceiphas	sorru! I was confused with what adaptr saidx
+2007-01-01T05:24:00.000Z	Core	lord_ceiphas	I'll believe you
+2007-01-01T05:24:00.000Z	Core	lord_ceiphas	I thought the problem was SATA, but is C2D...
+2007-01-01T05:24:00.000Z	lord_ceiphas	Core	or disable usb for installing and get youselv a new kernel compiled after instzallation (that was my way)
+2007-01-01T05:25:00.000Z	lord_ceiphas	Core	it is not SATA and also not C2D its the JMICRON-PATA controller on your board
+2007-01-01T05:25:00.000Z	Core	lord_ceiphas	hummmm...
+2007-01-01T05:26:00.000Z	Core	lord_ceiphas	disable USB????
+2007-01-01T05:27:00.000Z	lord_ceiphas	Core	try to disable usb in bios, so maybe the installation will work (it did for me
+2007-01-01T05:28:00.000Z	Core	lord_ceiphas	and boot options on the CD prompt? No one? Coz there is something regarding USB detection...

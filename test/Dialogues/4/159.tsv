@@ -1,0 +1,50 @@
+2007-01-01T01:10:00.000Z	LinAsH	phr34ck	you must download the .run driver
+2007-01-01T01:10:00.000Z	phr34ck	LinAsH	what's the that?
+2007-01-01T01:11:00.000Z	phr34ck		I mean, the hole idea of me switching to Linux is because I want to do everything, and so I understand what's going on.
+2007-01-01T01:11:00.000Z	LinAsH		it's a script that build the .deb package for the ati driver
+2007-01-01T01:12:00.000Z	LinAsH	phr34ck	what's your ati card ?
+2007-01-01T01:16:00.000Z	LinAsH	phr34ck	the current driver doesn't support 3D ?
+2007-01-01T01:17:00.000Z	phr34ck	LinAsH	what do you mean ?
+2007-01-01T01:20:00.000Z	phr34ck		what does Fakeroot do? I saw it twice today.
+2007-01-01T01:20:00.000Z	LinAsH	phr34ck	can you post your /etc/xorg.conf in pastbin.com ?
+2007-01-01T01:23:00.000Z	phr34ck		how can select all and copy ?
+2007-01-01T01:23:00.000Z	LinAsH	phr34ck	open it with gedit
+2007-01-01T01:25:00.000Z	phr34ck		I have to install *missing plugins* in firefox *Sighs*
+2007-01-01T01:26:00.000Z	LinAsH	phr34ck	for pastebin.com ?
+2007-01-01T01:26:00.000Z	phr34ck		flash player
+2007-01-01T01:26:00.000Z	LinAsH	phr34ck	there is no flash !
+2007-01-01T01:27:00.000Z	phr34ck		isn't the website http://pastebin.com ?
+2007-01-01T01:28:00.000Z	LinAsH	phr34ck	yes, very odd
+2007-01-01T01:28:00.000Z	phr34ck		something is wrong.
+2007-01-01T01:28:00.000Z	phr34ck		It's opening adv. website
+2007-01-01T01:29:00.000Z	phr34ck		Related Categories
+2007-01-01T01:29:00.000Z	phr34ck		Chat and Forum
+2007-01-01T01:29:00.000Z	phr34ck		Chat Avenue
+2007-01-01T01:29:00.000Z	phr34ck		Filipino Chat Rooms
+2007-01-01T01:29:00.000Z	phr34ck		Kids Chat Online
+2007-01-01T01:29:00.000Z	phr34ck		Free Chat Rooms for Kids
+2007-01-01T01:29:00.000Z	phr34ck		Golf Chat
+2007-01-01T01:29:00.000Z	phr34ck		and stuff like htat.
+2007-01-01T01:29:00.000Z	phr34ck		I can finally say it's UBUNTU BABY !!
+2007-01-01T01:29:00.000Z	LinAsH	phr34ck	my first adress was wrong
+2007-01-01T01:29:00.000Z	LinAsH		it's pastebin.com and not pastbin.com
+2007-01-01T01:35:00.000Z	phr34ck		take a look people, and tell me how to edit it so I can use my resolution.
+2007-01-01T01:36:00.000Z	LinAsH	phr34ck	at line 93 the driver is vesa : it should be radeon
+2007-01-01T01:38:00.000Z	phr34ck	LinAsH	that's the only thing I should change ?
+2007-01-01T01:38:00.000Z	LinAsH	phr34ck	yes
+2007-01-01T01:39:00.000Z	phr34ck		should I reset something, or something ?
+2007-01-01T01:39:00.000Z	LinAsH	phr34ck	for this use the 'root' mode with 'sudo gedit /etc/X11/xorg.conf'
+2007-01-01T01:40:00.000Z	LinAsH	phr34ck	logout and then press alt+ctrl+backspace
+2007-01-01T01:40:00.000Z	phr34ck	LinAsH	that's what I did, yes.
+2007-01-01T01:40:00.000Z	phr34ck		I won't lose this session if I did so ?
+2007-01-01T01:41:00.000Z	LinAsH	phr34ck	yeah but that's the price ;)
+2007-01-01T01:41:00.000Z	phr34ck	LinAsH	the hell I won't. I'll wait till the updates are finished.
+2007-01-01T01:42:00.000Z	LinAsH	phr34ck	you should indeed !
+2007-01-01T01:43:00.000Z	LinAsH	phr34ck	btw I believe the best resolution for 154 is 1280x800 not 1280x768
+2007-01-01T01:44:00.000Z	phr34ck	LinAsH	I'm not sure if it's supported, but will try it ...... when I log out =)
+2007-01-01T01:55:00.000Z	phr34ck		I used to change PS1 or something, so I can get a customised line
+2007-01-01T01:55:00.000Z	LinAsH	phr34ck	export
+2007-01-01T01:55:00.000Z	phr34ck		?*
+2007-01-01T01:56:00.000Z	LinAsH	phr34ck	you mean bash variable ?
+2007-01-01T01:57:00.000Z	phr34ck		isn't Bash variables Global variables ?
+2007-01-01T01:58:00.000Z	LinAsH	phr34ck	what is PS1 for ?

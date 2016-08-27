@@ -1,0 +1,8 @@
+2007-01-01T04:51:00.000Z	mnoir	phr34ck	you can use the fuser command to discover who is using
+2007-01-01T04:52:00.000Z	phr34ck	mnoir	how do I use that ?
+2007-01-01T04:52:00.000Z	phr34ck		and something is wrong, my processor is running at full speed ....
+2007-01-01T04:53:00.000Z	mnoir	phr34ck	type man fuser - complete instructions will appear as if magic :)
+2007-01-01T04:53:00.000Z	mnoir	phr34ck	sounds like something is running away - use top to see
+2007-01-01T04:54:00.000Z	mnoir	phr34ck	:)
+2007-01-01T04:55:00.000Z	phr34ck		?
+2007-01-01T04:55:00.000Z	mnoir	phr34ck	naa - use kill or killall if you cannot find it in a terminal

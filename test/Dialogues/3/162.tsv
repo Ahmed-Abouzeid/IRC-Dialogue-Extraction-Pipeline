@@ -1,0 +1,22 @@
+2007-01-01T05:22:00.000Z	amicrawler		i have dapper want to goto edgy
+2007-01-01T05:22:00.000Z	adaptr	amicrawler	gksu update-manager -c and click on upgrade....
+2007-01-01T05:23:00.000Z	amicrawler		i hvae the dvd in my drive now
+2007-01-01T05:23:00.000Z	adaptr	amicrawler	it's been running here for the last 2 hours or so.. expect a bit of a wait :)
+2007-01-01T05:28:00.000Z	amicrawler		<ubotu> it wants a cd not a dvd
+2007-01-01T05:28:00.000Z	adaptr	amicrawler	don;'t need either - just an Internet connection
+2007-01-01T05:29:00.000Z	amicrawler		<floating> how to extract .ace ?   do a unace
+2007-01-01T05:55:00.000Z	amicrawler		i downloaded the dvd iso and made it  now i need to know. howto upgrade with out mess up my home dir with this dvd. is there a how to for this ?
+2007-01-01T05:56:00.000Z	adaptr	amicrawler	why not just upgrade over the Internet ?
+2007-01-01T05:56:00.000Z	amicrawler		i can't
+2007-01-01T05:56:00.000Z	adaptr	amicrawler	as pointed out earlier: gksu update-manager -c
+2007-01-01T05:56:00.000Z	amicrawler		some of my
+2007-01-01T05:56:00.000Z	amicrawler		i did that
+2007-01-01T05:56:00.000Z	amicrawler		errors
+2007-01-01T05:56:00.000Z	adaptr	amicrawler	then just add the dvd to your sources.list
+2007-01-01T05:57:00.000Z	amicrawler		how?
+2007-01-01T05:58:00.000Z	amicrawler		<adaptr> how do i add my dvd to my src list ?
+2007-01-01T06:02:00.000Z	amicrawler		people  you tell me these things  but i do not know how to add my dvd to the src list .  i can add reg src stuff  but do not know to add a dvd to my src
+2007-01-01T06:05:00.000Z	adaptr	amicrawler	if you did not alter the original list the dapper CD is still in there.. just replace it with somehting that looks right for the edgy dvd
+2007-01-01T06:05:00.000Z	adaptr	amicrawler	it has to be mounted first, and you'll have to do that
+2007-01-01T06:05:00.000Z	amicrawler		in my src list
+2007-01-01T06:05:00.000Z	amicrawler		now do i do a upgrade

@@ -1,0 +1,4 @@
+2007-01-01T10:26:00.000Z	Boknoy		I was wondering if anyone knows of a decent freeware app for x86 emulation for the purpose of testing distros in Windows before deciding which distro to switch to? VirtualPC type of thing, but freeware... don't want to be formatting and reinstalling all the time just trying to decide which one to use
+2007-01-01T10:26:00.000Z	arrenlex	Boknoy	qemu
+2007-01-01T10:26:00.000Z	arrenlex		!qemu | Boknoy
+2007-01-01T10:27:00.000Z	arrenlex	Boknoy	Also, MS has released Virtual PC. It is now free.

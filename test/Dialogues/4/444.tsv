@@ -1,0 +1,52 @@
+2007-01-01T10:14:00.000Z	tyme-		i downloaded 3gb of data from system update and NOTHING was installed and cache was cleared
+2007-01-01T10:14:00.000Z	BHSPitMonkey	tyme-	hear, hear
+2007-01-01T10:15:00.000Z	BHSPitMonkey	tyme-	Suse was the first distro I ever used... it's lucky that it didn't completely turn me away from linux :P
+2007-01-01T10:16:00.000Z	tyme-		its decent, but buggy and slow compared to ubuntu
+2007-01-01T10:16:00.000Z	BHSPitMonkey	tyme-	you also used KDE, though, right?
+2007-01-01T10:22:00.000Z	tyme-	BHSPitMonkey	what card?
+2007-01-01T10:22:00.000Z	BHSPitMonkey	tyme-	some belkin. f5d7000 or something like that
+2007-01-01T10:23:00.000Z	BHSPitMonkey	tyme-	it showed up as a network device ootb, but IMO Ubuntu needs to ship with network-manager (applet)
+2007-01-01T10:23:00.000Z	tyme-		i thought it did, BHSPitMonkey
+2007-01-01T10:23:00.000Z	BHSPitMonkey	tyme-	nope.
+2007-01-01T10:23:00.000Z	tyme-		actually im positive it does
+2007-01-01T10:23:00.000Z	BHSPitMonkey	tyme-	umm, I would have noticed.
+2007-01-01T10:23:00.000Z	tyme-		i never installed a network manager app, it came with the distro
+2007-01-01T10:24:00.000Z	BHSPitMonkey	tyme-	I have a disk with the packages I had to collect to install nm-applet
+2007-01-01T10:24:00.000Z	tyme-		i dont use NM
+2007-01-01T10:24:00.000Z	BHSPitMonkey	tyme-	I said that IMO ubuntu needs to ship with it.
+2007-01-01T10:25:00.000Z	tyme-		the live cd was able to pick up my card and allow me to set essid / wep key
+2007-01-01T10:25:00.000Z	BHSPitMonkey	tyme-	it also gets really fun with WPA and its variants.
+2007-01-01T10:26:00.000Z	tyme-		secure enough.
+2007-01-01T10:26:00.000Z	BHSPitMonkey	tyme-	eh. All I hear from people is that WEP is a joke, as far as getting into an AP.
+2007-01-01T10:27:00.000Z	BHSPitMonkey	tyme-	so Ubuntu shouldn't let users easily use WiFi?  Oh, and consider the method you have to use to connect to a network, if you were on a laptop and roamed.
+2007-01-01T10:28:00.000Z	tyme-	BHSPitMonkey	im on a laptop and used wifi out of the box
+2007-01-01T10:28:00.000Z	tyme-		it clicked the applet on gnome task bar, entered in required info and i was connected to my network
+2007-01-01T10:28:00.000Z	BHSPitMonkey	tyme-	so every time you want to use a different AP, you go and redo your settings? (Oh, and also cross your fingers for WEP)
+2007-01-01T10:29:00.000Z	tyme-	BHSPitMonkey	well yes, the default network manager app that ships with Ubuntu isn't advanced enough for that
+2007-01-01T10:30:00.000Z	tyme-	BHSPitMonkey	but all you have to do is get the internet up and running, add and remove packages you want or dont need (network manager) and its fixed. I can see this might be a problem for linux newbies but with a little brain power and research it wouldn't take that long to figure out
+2007-01-01T10:31:00.000Z	BHSPitMonkey	tyme-	network-manager is an official gnome component, it has a very nice interface, excellent little bars icon on the notification area... it really needs to just come with ubuntu
+2007-01-01T10:33:00.000Z	BHSPitMonkey	tyme-	the point is, on both my systems, and on my friends whose I set up, I wasn't able to use wireless out of the box. It required me to collect network-manager and its dependencies on a disk, or plug the computer into an ethernet router.
+2007-01-01T10:33:00.000Z	BHSPitMonkey	tyme-	and WiFi is frankly an area in which Ubuntu just falls short to XP, and it doesn't have to.
+2007-01-01T10:33:00.000Z	tyme-	BHSPitMonkey	why? what was so difficult? If you can use windows network manager to add an AP you could easily do so in Ubuntu
+2007-01-01T10:34:00.000Z	tyme-		Linux and Windows = Apples and Oranges
+2007-01-01T10:34:00.000Z	BHSPitMonkey	tyme-	the equivalent to using windows' AP connection tools is network-manager.
+2007-01-01T10:34:00.000Z	tyme-		of course it's going to be tougher in Linux, but Ubuntu does a great job of giving you all the tools you need right out of the box
+2007-01-01T10:35:00.000Z	tyme-		ipw2200 jasin?
+2007-01-01T10:36:00.000Z	BHSPitMonkey	tyme-	Ubuntu's focus is making something that anyone can use, at least as intuitively as one could use Windows.
+2007-01-01T10:37:00.000Z	tyme-	BHSPitMonkey	you're right, it doesnt show the AP's near you, you have to actually set ESSID and Hex key.
+2007-01-01T10:37:00.000Z	tyme-		but if you have no idea how to do that, why would you install linux in the first place?
+2007-01-01T10:37:00.000Z	BHSPitMonkey	tyme-	just because I can accomplish something in ubuntu, doesn't mean I'm satisfied with how it was implemented. Nobody would bother developing an easy-to-use system, since developers are power users anyway.
+2007-01-01T10:38:00.000Z	BHSPitMonkey	tyme-	I'm more concerned about being able to tell people that they can have success with ubuntu, and be able to keep to my word...
+2007-01-01T10:38:00.000Z	tyme-	BHSPitMonkey	right on. i agree the shipped app could be a LOT better but it works if you're using it at home and already know how to connect computers to your network
+2007-01-01T10:38:00.000Z	BHSPitMonkey	tyme-	it's really disheartening to have to go back and watch aspects fall short, after I tell people the superiority of linux
+2007-01-01T10:39:00.000Z	BHSPitMonkey	tyme-	if it's a stationary computer, it's essentially stranded.
+2007-01-01T10:39:00.000Z	tyme-	BHSPitMonkey	it picks up and connects to any AP without encryption
+2007-01-01T10:40:00.000Z	BHSPitMonkey	tyme-	and sometimes that's not acceptable
+2007-01-01T10:40:00.000Z	BHSPitMonkey		saying it's good enough for a group of people doesn't satisfy me :)
+2007-01-01T10:41:00.000Z	tyme-	BHSPitMonkey	you can't say that for ANY application
+2007-01-01T10:41:00.000Z	tyme-		nor use it.
+2007-01-01T10:41:00.000Z	BHSPitMonkey	tyme-	well, it's very likely you dislike most of the utilities that make up ubuntu.
+2007-01-01T10:43:00.000Z	BHSPitMonkey		I tried all the ones I heard about most often
+2007-01-01T10:43:00.000Z	tyme-	BHSPitMonkey	same.
+2007-01-01T10:45:00.000Z	tyme-		Oh i had redhat for a couple days. wasnt that great.
+2007-01-01T10:45:00.000Z	BHSPitMonkey	tyme-	same situation actually

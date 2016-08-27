@@ -1,0 +1,5 @@
+2007-01-01T11:28:00.000Z	mwe	alecjw	that wont work for fat
+2007-01-01T11:29:00.000Z	mwe	alecjw	fat doesn't know about permissions
+2007-01-01T11:29:00.000Z	mwe	alecjw	you need to use mount options like umask
+2007-01-01T11:29:00.000Z	alecjw	mwe	oh right. i thought FAT =>16 coyuld handle them
+2007-01-01T11:29:00.000Z	mwe	alecjw	well it doesn't ;)

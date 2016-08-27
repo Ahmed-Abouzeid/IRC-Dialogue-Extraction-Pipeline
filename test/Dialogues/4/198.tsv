@@ -1,0 +1,6 @@
+2007-01-01T05:18:00.000Z	raef55		i downloaded opera for linux as a tar.gz file . how do i nstall it
+2007-01-01T05:18:00.000Z	bruenig	raef55	why not get the ubuntu deb?
+2007-01-01T05:19:00.000Z	raef55		don't know where to get it didn't see it
+2007-01-01T05:21:00.000Z	bruenig	raef55	open up a fresh terminal and copy and paste the following, wget ftp://ftp.130th.net/pub/mirror/opera/linux/910/final/en/i386/shared/opera_9.10-20061214.6-shared-qt_en_i386.deb && sudo dpkg -i opera_9.10-20061214.6-shared-qt_en_i386.deb
+2007-01-01T05:21:00.000Z	bruenig	raef55	the entire thing after the comma, all on one line
+2007-01-01T05:21:00.000Z	raef55		thanks

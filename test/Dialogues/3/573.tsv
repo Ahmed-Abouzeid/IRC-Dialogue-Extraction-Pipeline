@@ -1,0 +1,7 @@
+2007-01-01T04:56:00.000Z	jannu1		any idea how i can remove shortcuts (link to folder) at my desktop?
+2007-01-01T04:58:00.000Z	jannu1	jasin	Link targe: /media/e
+2007-01-01T04:59:00.000Z	jasin	jannu1	have you tried ussing the gconf-editor ? Open that up and goto apps / natulis / desktop
+2007-01-01T05:00:00.000Z	jasin	jannu1	thats how I add and delete stuff from the desktop in gnome.
+2007-01-01T05:01:00.000Z	jannu1	jasin	thx ill try
+2007-01-01T05:04:00.000Z	jasin		disabled legacy usb support
+2007-01-01T05:06:00.000Z	jannu1	jasin	i cant find shortcuts here

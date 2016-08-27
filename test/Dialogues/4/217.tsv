@@ -1,0 +1,7 @@
+2007-01-01T05:10:00.000Z	robtp	Innomen	gnome-network-manager is good
+2007-01-01T05:10:00.000Z	Innomen	robtp	i first booted ubuntu like 30 seconds ago, so, is that something i would download or is it built in?
+2007-01-01T05:11:00.000Z	robtp	Innomen	something to download
+2007-01-01T05:11:00.000Z	Innomen		cool
+2007-01-01T05:11:00.000Z	robtp	Innomen	sudo apt-get install gnome-network-manager, then add the network-monitor applet to your panel
+2007-01-01T05:12:00.000Z	robtp	Innomen	errr.... yeah network-manager-gnome
+2007-01-01T05:12:00.000Z	robtp	Innomen	and dont add that to your panel, run nm-applet instead

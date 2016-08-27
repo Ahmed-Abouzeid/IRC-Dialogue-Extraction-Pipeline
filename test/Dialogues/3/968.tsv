@@ -1,0 +1,3 @@
+2007-01-01T06:38:00.000Z	nilleso		ARGH, ubuntu keeps overwriting motd with it's own... How do I stop that? =/
+2007-01-01T06:39:00.000Z	Seveas	nilleso	check the crontabs, it's somewhere in there
+2007-01-01T06:39:00.000Z	nilleso		Thanks Seveas

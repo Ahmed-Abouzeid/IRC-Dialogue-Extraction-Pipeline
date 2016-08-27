@@ -1,0 +1,79 @@
+2007-01-01T07:00:00.000Z	vvlaw		what's going on?
+2007-01-01T07:00:00.000Z	xtknight	vvlaw	close synaptic
+2007-01-01T07:08:00.000Z	vvlaw	xtknight	i did not use the synaptic to install soft
+2007-01-01T07:08:00.000Z	xtknight	vvlaw	that message will happen if you have synaptic open, or if you do not prefix the 'apt-get install' command with sudio
+2007-01-01T07:10:00.000Z	vvlaw		xtknight,yes...maybe i apt-get install something and something to crash
+2007-01-01T07:10:00.000Z	xtknight	vvlaw	what are you trying to install and how?   use this to install a package from the terminal: sudo apt-get install package-name
+2007-01-01T07:11:00.000Z	vvlaw		just now, i tried to sudo apt-get install mplayer win32codecs
+2007-01-01T07:12:00.000Z	xtknight	vvlaw	you are still getting the same error message?
+2007-01-01T07:13:00.000Z	vvlaw		xtknight,yeah...maybe there have something to interrupt
+2007-01-01T07:13:00.000Z	xtknight	vvlaw	are you sure the synaptic program is not open?
+2007-01-01T07:14:00.000Z	xtknight	vvlaw	i can't think of any other reason why that error would occur
+2007-01-01T07:14:00.000Z	vvlaw		xtknight,do you use mplayer ?
+2007-01-01T07:14:00.000Z	xtknight	vvlaw	yes sometimes
+2007-01-01T07:15:00.000Z	vvlaw		xtknight,install it by apt-get install?
+2007-01-01T07:15:00.000Z	xtknight	vvlaw	yes i did:  sudo apt-get install mplayer
+2007-01-01T07:15:00.000Z	xtknight	vvlaw	but i have not tried w32codecs
+2007-01-01T07:16:00.000Z	vvlaw		xtknight,yesterday i did  that.and it worked fine.but it showed the mp3lib error.so i tried to reinstall by the sources
+2007-01-01T07:17:00.000Z	xtknight	vvlaw	so mplayer is not installed at the moment?
+2007-01-01T07:18:00.000Z	vvlaw		it was installed.but the video don't have the xv output
+2007-01-01T07:18:00.000Z	xtknight	vvlaw	ok, so you tried to recompile to get the xv output, correct?
+2007-01-01T07:18:00.000Z	vvlaw		xtknight,yes :)
+2007-01-01T07:19:00.000Z	xtknight	vvlaw	did you use apt-get source -b, or did you download the source and do ./configure , etc ??
+2007-01-01T07:20:00.000Z	vvlaw	xtknight	of cause.use ./configure --enable-gui --enable-real --enable-mp3lib...and so on
+2007-01-01T07:20:00.000Z	vvlaw		xtknight,but i forgot to add the ./configure --enable-xv fuction
+2007-01-01T07:20:00.000Z	xtknight	vvlaw	ok, did you get to 'make install'?
+2007-01-01T07:20:00.000Z	xtknight	vvlaw	oh i see, so you compiled it to begin with and didn't use the mplayer out of the apt-get repository?
+2007-01-01T07:20:00.000Z	vvlaw		xtknight,yes.use the commandmake && sudo make install
+2007-01-01T07:22:00.000Z	vvlaw		xtknight,i compiled it after i apt-get install later.
+2007-01-01T07:22:00.000Z	xtknight	vvlaw	ok, so is mplayer installed right now?  you are trying to install the mplayer from apt-get instead now, correct?
+2007-01-01T07:23:00.000Z	vvlaw		xtknight,yes :)
+2007-01-01T07:23:00.000Z	xtknight	vvlaw	alright, so i guess we're back to the beginning...u typed `sudo apt-get install mplayer` and you are getting this error: `E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?`
+2007-01-01T07:24:00.000Z	vvlaw		xtknight,certainly :)
+2007-01-01T07:24:00.000Z	xtknight	vvlaw	type this and tell me the output:  ps ax | grep synaptic
+2007-01-01T07:25:00.000Z	vvlaw	xtknight	vvlaw@vvlaw-laptop:~/tools/player/MPlayer-1.0rc1$ ps ax | grep synaptic
+2007-01-01T07:25:00.000Z	vvlaw		19240 pts/1    R+     0:00 grep synaptic
+2007-01-01T07:25:00.000Z	vvlaw		vvlaw@vvlaw-laptop:~/tools/player/MPlayer-1.0rc1$
+2007-01-01T07:27:00.000Z	xtknight	vvlaw	can you tell me exactly what you are typing that causes that error?
+2007-01-01T07:28:00.000Z	vvlaw	xtknight	maybe i install something by the apt and it crash there.but i forgot what software i install:(
+2007-01-01T07:29:00.000Z	xtknight	vvlaw	type this: sudo apt-get install
+2007-01-01T07:29:00.000Z	xtknight		put nothing after 'install'...this will just check your apt-get system
+2007-01-01T07:30:00.000Z	xtknight	vvlaw	just do what kherman said...it should fix your problem..we already verified u didn't have synaptic open and you're using sudo so something just went wrong...
+2007-01-01T07:31:00.000Z	vvlaw	xtknight	yes. i fixed :)
+2007-01-01T07:31:00.000Z	vvlaw		w32codecs is already the newest version.
+2007-01-01T07:32:00.000Z	xtknight	vvlaw	no, not really.  but you can do this: sudo dpkg --purge mplayer w32codecs
+2007-01-01T07:32:00.000Z	xtknight	vvlaw	and then do: sudo apt-get install mplayer w32codecs.....after all that it will definitely be what is in the repositories and not what you compiled yourself
+2007-01-01T07:33:00.000Z	vvlaw	xtknight	something got
+2007-01-01T07:33:00.000Z	vvlaw		dpkg - warning: while removing w32codecs, directory `/usr/lib/codecs' not empty so not removed.
+2007-01-01T07:33:00.000Z	xtknight	vvlaw	please use pastebin ( http://paste.ubuntu-nl.org )  just copy the text there and paste the URL it gives you
+2007-01-01T07:33:00.000Z	xtknight	vvlaw	but only for the next time you have to paste something
+2007-01-01T07:34:00.000Z	xtknight	vvlaw	that warning is fine, just install mplayer and w32codecs again
+2007-01-01T07:41:00.000Z	xtknight		what's the command to show every version of a given package (it shows every version u can get from all the repositories in ur index)?
+2007-01-01T07:42:00.000Z	vvlaw		xtknight,http://paste.ubuntu-nl.org/87/
+2007-01-01T07:42:00.000Z	vvlaw	xtknight	something did not reinstall.
+2007-01-01T07:42:00.000Z	vvlaw		xtknight,and did not repleace it
+2007-01-01T07:44:00.000Z	xtknight	vvlaw	it looks like your mplayer fonts are missing
+2007-01-01T07:44:00.000Z	xtknight	vvlaw	i really don't know what to do from there, the fonts should be available online somewhere
+2007-01-01T07:45:00.000Z	vvlaw	xtknight	lol.. the font is not important. the xv output and alsa support is aimportant
+2007-01-01T07:46:00.000Z	xtknight	vvlaw	oh, i thought that error was stopping you
+2007-01-01T07:46:00.000Z	xtknight	vvlaw	my mplayer has xv and alsa support and i didnt compile it :/
+2007-01-01T07:47:00.000Z	vvlaw		xtknight,yeap . yester i apt and install it , it has xv and alsa support
+2007-01-01T07:47:00.000Z	vvlaw		xtknight,but from i compiled it , they were gone :(
+2007-01-01T07:49:00.000Z	xtknight	vvlaw	that is very odd..... so `mplayer -vo help` reports no xv when you use the apt-get version of mplayer?
+2007-01-01T07:51:00.000Z	vvlaw	xtknight	maybe .because i want to back of that version
+2007-01-01T07:53:00.000Z	xtknight	vvlaw	sorry, i guess you will have to compile again..  i dont know why xv is not in your version by default though
+2007-01-01T07:53:00.000Z	vvlaw		xtknight,do you know the xv support fuction? --enable-xv?
+2007-01-01T07:54:00.000Z	xtknight	vvlaw	i don't know, sorry, all i know is XV is enabled for me when I do `sudo apt-get install mplayer`.  ive never had to compile mplayer for XV or alsa support
+2007-01-01T07:55:00.000Z	vvlaw	xtknight	it's ok...thanks for your help :)
+2007-01-01T07:59:00.000Z	xtknight	vvlaw	you are missing a dash/hyphen at the end of your command
+2007-01-01T08:00:00.000Z	vvlaw	xtknight	oh:( forgot to add -
+2007-01-01T08:04:00.000Z	vvlaw		xtknight,compile error:(
+2007-01-01T08:05:00.000Z	xtknight	vvlaw	do you use edgy , 32-bit or 64-bit?  i might be able to make a package for you
+2007-01-01T08:05:00.000Z	xtknight	vvlaw	though it would be better if we debugged your compile problems
+2007-01-01T08:07:00.000Z	vvlaw	xtknight	edgy 32bit :)
+2007-01-01T08:07:00.000Z	xtknight	vvlaw	what is the compile error?
+2007-01-01T08:08:00.000Z	vvlaw	xtknight	http://paste.ubuntu.org.cn/1271
+2007-01-01T08:11:00.000Z	xtknight	vvlaw	sorry, the site is very slow for me so you'll have to wait a second
+2007-01-01T08:16:00.000Z	xtknight	vvlaw	it still hasn't loaded.  i may have to wait till tomorrow to help, i have to sleep soon :P
+2007-01-01T08:17:00.000Z	vvlaw		xthnight. it desn't matter,but can i have your another contacts?
+2007-01-01T08:18:00.000Z	xtknight	vvlaw	email xt.knight@gmail.com or i am `xtknight` at forums.anandtech.com

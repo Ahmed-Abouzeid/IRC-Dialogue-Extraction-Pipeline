@@ -1,0 +1,5 @@
+2007-01-01T01:04:00.000Z	ubotu		To install the Ati/NVidia drivers for your video card, see https://help.ubuntu.com/community/BinaryDriverHowto
+2007-01-01T01:05:00.000Z	phr34ck		Should I use Alien to transform it to .deb file and install ?
+2007-01-01T01:05:00.000Z	ubotu	phr34ck	To install the Ati/NVidia drivers for your video card, see https://help.ubuntu.com/community/BinaryDriverHowto
+2007-01-01T01:34:00.000Z	phr34ck		where I can find Java interpreter ?
+2007-01-01T01:34:00.000Z	ubotu	phr34ck	To install a Java compiler/interpreter on Ubuntu, look at https://help.ubuntu.com/community/Java - For the Sun Java runtime install sun-java5-jre from the !Multiverse repository

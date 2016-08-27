@@ -1,0 +1,11 @@
+2007-01-01T01:26:00.000Z	kenthomson		!alternate
+2007-01-01T01:26:00.000Z	kakalto		I boot ubuntu in CLI-only, and the screensaver (blank screen) goes on every 10 minutes or so, how can I either change the time for this, or turn it off?
+2007-01-01T01:27:00.000Z	kenthomson	kakalto	there is some command to kill the gnome-screensaver
+2007-01-01T01:27:00.000Z	kakalto	kenthomson	does gnome-screensaver even run when there's no X?
+2007-01-01T01:29:00.000Z	kenthomson		!ask | kitsune1
+2007-01-01T01:29:00.000Z	kakalto	kenthomson	do you even know what CLI means?
+2007-01-01T01:29:00.000Z	kakalto		I run ubuntu-minimal
+2007-01-01T01:30:00.000Z	kakalto	kenthomson	then why are you telling me how to kill gnomescreensaver (I assume runs on X), and how to kill X... when I don't run X?
+2007-01-01T01:31:00.000Z	kakalto	kenthomson	I don't run X!
+2007-01-01T01:32:00.000Z	kenthomson		Goodbye all! and have a nice day! HAPPY UBUNT-ing :)
+2007-01-01T01:32:00.000Z	kakalto	kenthomson	it's not a conventional screensaver... the screen blanks after 10 minutes or so. This is the screensaver I wish to either change the time for, or remove completely.

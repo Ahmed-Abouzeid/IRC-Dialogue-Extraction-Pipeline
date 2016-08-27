@@ -1,0 +1,16 @@
+2007-01-01T07:24:00.000Z	Jaggz-		Okay... well.. I was just trying to install a VIM plugin/script for svn/cvs integration -- and it requires vim 7
+2007-01-01T07:24:00.000Z	JosefK	Jaggz-	if you fancy converting, Emacs' support for SVN is damn good
+2007-01-01T07:25:00.000Z	JosefK	Jaggz-	you're probably right, it took me a while to get used to it too
+2007-01-01T07:27:00.000Z	JosefK	Jaggz-	similar kind of thing in Emacs, and it's trivial to setup a defun/bind for an interactive function that would diff the current file against version-n, and output it to another buffer
+2007-01-01T07:31:00.000Z	Jaggz-		* If I move to some part of code, hitting a key to show me, to the side, the previous version and the differences -- another key would go another version back.
+2007-01-01T07:31:00.000Z	JosefK	Jaggz-	emacs can do that easily
+2007-01-01T07:31:00.000Z	Jaggz-		but showing it kind of to the side
+2007-01-01T07:32:00.000Z	JosefK	Jaggz-	sure, just split the window horizontally
+2007-01-01T07:32:00.000Z	JosefK	Jaggz-	http://randolphcarter.myby.co.uk/linux/emacs.png - my rails model editing setup
+2007-01-01T07:32:00.000Z	JosefK	Jaggz-	tiny 8 line emacs-lisp script to setup those windows
+2007-01-01T07:34:00.000Z	Jaggz-		okay.. so what.. install xemacs?
+2007-01-01T07:35:00.000Z	JosefK	Jaggz-	http://debs.peadrop.com/dists/edgy/backports/
+2007-01-01T07:39:00.000Z	Jaggz-		not to be too irritating -- but why is the windows emacs subdir (http://ftp.gnu.org/pub/gnu/emacs/windows/) having files that are tar.gz'ed?
+2007-01-01T07:41:00.000Z	JosefK	Jaggz-	probably because they're free, and can easily be decompressed on windows :)
+2007-01-01T07:42:00.000Z	Jaggz-		do you guys code in windows?
+2007-01-01T07:43:00.000Z	Jaggz-		I'd like to write a small C program in windows sometime.  I've not done coding in MS stuff since DOS days, and a couple visual basic programs.

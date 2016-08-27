@@ -1,0 +1,6 @@
+2007-01-01T10:59:00.000Z	hjmills		what stuff do i need to install for java in firefox?
+2007-01-01T10:59:00.000Z	mwe		!java | hjmills
+2007-01-01T10:59:00.000Z	mwe	hjmills	it comes with the plugin as well
+2007-01-01T11:00:00.000Z	hjmills	mwe	that was the important bit - i didnt know if that was the plugin and all
+2007-01-01T11:00:00.000Z	mwe	hjmills	come back if you can't get java to work in your browser after you have installed that
+2007-01-01T11:00:00.000Z	mwe	hjmills	you probably need to create a symlink. We'll explain how

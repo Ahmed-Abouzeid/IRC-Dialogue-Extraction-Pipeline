@@ -1,0 +1,34 @@
+2007-01-01T12:33:00.000Z	thelinuxguy		Do man mount in a terminal to know... :-)
+2007-01-01T12:34:00.000Z	kenthomson	thelinuxguy	please explain this to me sudo mount /dev/hda1 /media/windows/ -t vfat -o iocharset=utf8,umask=000, i want a explanation for -t vfat -o iocharset=utf8,umask=000 ONLY, and the man page is too cryptic :)
+2007-01-01T12:35:00.000Z	thelinuxguy		tnx jame1, you beat me to it... :-)
+2007-01-01T12:36:00.000Z	kenthomson	thelinuxguy	jame1: will this work? sudo mount /dev/hda1 /media/windows vfat?
+2007-01-01T12:37:00.000Z	thelinuxguy		see http://www.tech-faq.com/umask.shtml for explanation about umask
+2007-01-01T12:38:00.000Z	kenthomson	thelinuxguy	jame1:  So sudo mount /dev/hda1 /media/windows -t vfat
+2007-01-01T12:38:00.000Z	thelinuxguy		UMASK is a Unix environment variable which automatically sets file permissions on newly created files.
+2007-01-01T12:39:00.000Z	thelinuxguy		hold on to the defaults, they just work fine in most cases
+2007-01-01T12:44:00.000Z	thelinuxguy		cybercod; select boot in defaults in your bios to restore things ?
+2007-01-01T12:45:00.000Z	kenthomson	thelinuxguy	jame1 cybercod could you please help me with the above question?
+2007-01-01T12:46:00.000Z	thelinuxguy		sorry kenthomson, I'm using strictly kde here... no gnome....
+2007-01-01T12:47:00.000Z	kenthomson	thelinuxguy	any special reason for your inclination towards KDE?
+2007-01-01T12:47:00.000Z	kenthomson	thelinuxguy	i used KDE and found it to be too cluttered, and favouring the ZEN mentality i shifted to GNOME
+2007-01-01T12:47:00.000Z	thelinuxguy	kenthomson	yes, I just like KDE better, but that's only a matter of taste, isn't it...
+2007-01-01T12:48:00.000Z	kenthomson	thelinuxguy	and there is some reason for everyone's taste, so my question is what in KDE suits your taste?:)
+2007-01-01T12:59:00.000Z	thelinuxguy	kenthomson	there doesn't seem to be any package availeble that's providing disks-admin in ubuntu ?
+2007-01-01T01:00:00.000Z	kenthomson	thelinuxguy	yes
+2007-01-01T01:01:00.000Z	thelinuxguy	kenthomson	the command seems to be gone, it was there before edgy...
+2007-01-01T01:01:00.000Z	kenthomson	thelinuxguy	doesn't work in 6.10
+2007-01-01T01:02:00.000Z	thelinuxguy	kenthomson	like I said, it used to work in Dapper !
+2007-01-01T01:04:00.000Z	thelinuxguy	kenthomson	I've found it: install with sudo apt-get install pysdm
+2007-01-01T01:04:00.000Z	thelinuxguy		then you will find it under system...Administration.....Storage Device Manager
+2007-01-01T01:04:00.000Z	thelinuxguy		Reply With Quote
+2007-01-01T01:05:00.000Z	kenthomson	thelinuxguy	thank you for informing, help is much appreciated can you tell me how did you find it out
+2007-01-01T01:06:00.000Z	thelinuxguy	kenthomson	I searched the ubuntu forums on http://www.ubuntuforums.org
+2007-01-01T01:06:00.000Z	kenthomson	thelinuxguy	:)
+2007-01-01T01:06:00.000Z	kenthomson	thelinuxguy	now that the package is installed what command do i enter at the CLI to get that disks thing?
+2007-01-01T01:08:00.000Z	thelinuxguy		kenthomson; read the whole thread on http://www.ubuntuforums.org/showthread.php?t=317742&highlight=disks-admin+in+edgy
+2007-01-01T01:08:00.000Z	kenthomson	thelinuxguy	let me do that
+2007-01-01T01:09:00.000Z	thelinuxguy		kenthomson; it's possible that you need to logout - and login - to see the changes in the gnome menu...
+2007-01-01T01:10:00.000Z	kenthomson	thelinuxguy	worked like a charm! Thank you, and one more thing this psydm thingy is not the same as System>admin>Disks But it shall work well too
+2007-01-01T01:11:00.000Z	kenthomson	thelinuxguy	sorry for the misinformation its the same thing :)
+2007-01-01T01:11:00.000Z	thelinuxguy		kenthomson; glad I could help ! Happy New Year ! :-)
+2007-01-01T01:12:00.000Z	thelinuxguy	kenthomson	Cheers ! :-)

@@ -1,0 +1,58 @@
+2007-01-01T02:36:00.000Z	AidanL		Despite doiing sudo  dpkg-reconfigure xserver-xorg i am still getting the error.
+2007-01-01T02:37:00.000Z	AidanL		Anyone have any ideas?
+2007-01-01T02:38:00.000Z	Phlosten	AidanL	only 1 graphics card?
+2007-01-01T02:38:00.000Z	AidanL		YEs
+2007-01-01T02:39:00.000Z	AidanL		I have onboard but they are off by auto if a PCI-E is inserted. Which it is.
+2007-01-01T02:40:00.000Z	AidanL		I am assuming my problem lies with my graphics card?
+2007-01-01T02:43:00.000Z	Phlosten	AidanL	what is your graphics card?
+2007-01-01T02:44:00.000Z	AidanL		I have an x800 PCI-E
+2007-01-01T02:44:00.000Z	AidanL		(ATI)
+2007-01-01T02:44:00.000Z	Phlosten	AidanL	what driver are you using?
+2007-01-01T02:45:00.000Z	AidanL		On what? Ubuntu?
+2007-01-01T02:45:00.000Z	AidanL		Or on Windows?
+2007-01-01T02:45:00.000Z	Phlosten	AidanL	Ubuntu
+2007-01-01T02:45:00.000Z	AidanL		I havn't installed a driver yet... I haven't been able to get on to install one.
+2007-01-01T02:46:00.000Z	Phlosten	AidanL	dpk-reconfigure xserver-xorg would have specified a driver, do you remember what it was?
+2007-01-01T02:46:00.000Z	AidanL		No I shall do it again
+2007-01-01T02:46:00.000Z	Phlosten	AidanL	at a guess it is probably guessing the wrong one
+2007-01-01T02:47:00.000Z	AidanL		It picked it up as an x800
+2007-01-01T02:47:00.000Z	Phlosten	AidanL	can you pastebin your /etc/X11/xorg.conf file?
+2007-01-01T02:47:00.000Z	AidanL		If I can access it...
+2007-01-01T02:47:00.000Z	Phlosten	AidanL	what driver is reconfigure suggesting?
+2007-01-01T02:48:00.000Z	AidanL	Phlosten	One moment
+2007-01-01T02:49:00.000Z	AidanL		X server driver: the selected one is ATI
+2007-01-01T02:49:00.000Z	AidanL		Which it what it is so I press OK
+2007-01-01T02:50:00.000Z	Phlosten	AidanL	as a test i would change that to 'vesa'
+2007-01-01T02:50:00.000Z	AidanL		Then it identifies it as ATI TECHNOLOGIES, Inc. R423 UK [Radeon x800SE (PCI-E)] 
+2007-01-01T02:51:00.000Z	AidanL		Pholsten I will select that. For the rest of the reconfigure do I leave it as the default entries?
+2007-01-01T02:51:00.000Z	Phlosten	AidanL	yeah, should be fine to leave defaults
+2007-01-01T02:52:00.000Z	Phlosten	AidanL	every card should work with vesa, except the performance will suck, but it will confirm whether it is driver or not
+2007-01-01T02:52:00.000Z	AidanL		Another Fatal error. Although it did come up with some pixels at the top of the screen then they quickly disappeared.
+2007-01-01T02:54:00.000Z	AidanL		The fatal error reads: Could not open default font 'fixed' XIO fatal error 104 (connection reset by peer) on X server :0.0 after 0 resquests (0known processed) with 0 events remaining. xauth: error in locking authority file /home/aidan/.Xauthority
+2007-01-01T02:54:00.000Z	Phlosten	AidanL	what ubuntu version is this?
+2007-01-01T02:55:00.000Z	AidanL		6.10 - (Alternate download) as I had major problems with the main normal download.
+2007-01-01T02:55:00.000Z	Phlosten	AidanL	yes, i am fairly sure your card isnt supported by the included ATI driver
+2007-01-01T02:55:00.000Z	AidanL		O
+2007-01-01T02:56:00.000Z	AidanL		I see... Ubuntu 5.1 worked ok. Although that had to be uninstalled as my wireless adaptor wasn't compatible. So... Where do I go from here do you think?
+2007-01-01T02:56:00.000Z	Phlosten	AidanL	sounds like you may want to do some manual tweaking of your xorg.conf file
+2007-01-01T02:57:00.000Z	AidanL		How do I access that... I hate to sound thick...
+2007-01-01T02:57:00.000Z	Phlosten	AidanL	a bit hard when you dont have a desktop
+2007-01-01T02:57:00.000Z	Phlosten	AidanL	you have a terminal prompt open?
+2007-01-01T02:57:00.000Z	AidanL		Yeah it is on screen now.
+2007-01-01T02:59:00.000Z	Phlosten	AidanL	type 'sudo nano /etc/X11/xorg.conf'
+2007-01-01T02:59:00.000Z	AidanL		Command not found.
+2007-01-01T03:00:00.000Z	AidanL		that is what I am getting. I am probably doing something wrong...
+2007-01-01T03:02:00.000Z	Phlosten	AidanL	try just 'nano'
+2007-01-01T03:02:00.000Z	AidanL	Phlosten	- nano: command not found
+2007-01-01T03:02:00.000Z	Phlosten	AidanL	ok, you dont have nano, its a text editor
+2007-01-01T03:02:00.000Z	AidanL		I see...
+2007-01-01T03:03:00.000Z	Phlosten	AidanL	which is odd, as it is a default installed package
+2007-01-01T03:03:00.000Z	AidanL		It failed on the installing software bit. Perhaps that would explain it... :$
+2007-01-01T03:03:00.000Z	Phlosten	AidanL	ah right, that might explain the font error too, it might be missing something
+2007-01-01T03:04:00.000Z	Phlosten	AidanL	try running this 'sudo apt-get install ubuntu-desktop'
+2007-01-01T03:04:00.000Z	AidanL		Pholsten Will do. By the way I really do appriciate the help :)
+2007-01-01T03:05:00.000Z	Phlosten	AidanL	ubuntu-desktop is a meta package that will instead all the base ubuntu install, so if you are missing something it should fix it up
+2007-01-01T03:06:00.000Z	AidanL	Phlosten	I will inform once it is done. It is 10% now lol.
+2007-01-01T03:06:00.000Z	Phlosten	AidanL	haha, its missing a few bits then ;)
+2007-01-01T03:17:00.000Z	AidanL	Phlosten	It has finished. Although Failed to fetch cdrom: [Ubuntu 6.10 _edgy eft_ release 1386 (20061025.1] /pool/main/g/gcj-41/libgcj7-0_4.1.1-14ubunutu7_1386.deb MD5Sum mismatch
+2007-01-01T03:18:00.000Z	Phlosten	AidanL	sounds like your cd might have had a problem

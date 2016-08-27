@@ -1,0 +1,24 @@
+2007-01-01T06:03:00.000Z	billstei	rchf	I have Radeon 9200 and I tried to get 3D working and it didn't go well.  Gave up until I get a lot smarter.
+2007-01-01T06:05:00.000Z	rchf	billstei	I'm not even trying to get 3D working.  Just trying for the full 1440x900 I had under ubuntu before my latest reinstall.  Any ideas?
+2007-01-01T06:07:00.000Z	billstei	rchf	not much of an expert, but I edited /etc/X11/xorg.conf manually and inserted 1600x1200 res that I wanted and I have that now.  It did not auto-detect my monitor correctly
+2007-01-01T06:11:00.000Z	rchf	billstei	thanks, I did that a few times and made sure the resulting xorg.conf doesn't have 1048x768 even in it and yet - there it is still in 1048x768.  Weird.  I also did autodetect and that produced a new and somewhat interesting xorg.conf but no change in video resolution in the display.  Almost like I'm editing the wrong xorg.conf (I checked).
+2007-01-01T06:13:00.000Z	billstei	rchf	maybe it falls back on the VESA driver and ignores the xorg.conf ?  I have no idea, sorry, just ignorant guessing
+2007-01-01T06:14:00.000Z	rchf	billstei	maybe - I'm pretty new to this level of the dungeon.
+2007-01-01T06:14:00.000Z	billstei	rchf	there be radeon dragons
+2007-01-01T06:15:00.000Z	rchf	billstei	you aren't kidding.  Lets hope their new owners (AMD), do follow through on hints of opening the source.
+2007-01-01T06:17:00.000Z	billstei	rchf	i think the radeon issues (for me) began when XFree86 switched to XOrg, but at least I'm actually back running linux now
+2007-01-01T06:18:00.000Z	rchf	billstei	what is the 3D supposed to do, not really 3D right?  Faster polygonal rendering?
+2007-01-01T06:19:00.000Z	billstei	rchf	i don't actually do any gaming, but my Firefox renders very slow, and I hate that
+2007-01-01T06:20:00.000Z	rchf	billstei	there are some firefox tweaks out there.  I tried them and they did wonders.  Should be available as an extension called fasterfox.
+2007-01-01T06:20:00.000Z	billstei	rchf	actually all the 2D window move/redraws are slow
+2007-01-01T06:21:00.000Z	billstei	rchf	for a minute there I actually thought the browser WAS the operating system
+2007-01-01T06:22:00.000Z	rchf	billstei	I can see how that could get old fast.  Can you try avoiding the problem by finding if there is a way to have window moves just be outlines?  Yes - Netscape was right but just to early with the slogan to save itself from M$'s heel.
+2007-01-01T06:25:00.000Z	billstei	rchf	not sure if window moves can be tweaked, but I'm too stubborn to change it.
+2007-01-01T06:28:00.000Z	rchf	billstei	I hope you win  and write it up!
+2007-01-01T06:30:00.000Z	rchf	billstei	can you tell me where one gets/finds 'aticonfig'?
+2007-01-01T06:30:00.000Z	billstei	rchf	gonna get a new MB with dual core and nvidia, because no computer is truly happy until it jumps right off the desk and finishes even before you tell it to begin
+2007-01-01T06:31:00.000Z	rchf	billstei	sounds like something we all need.  I just don't want it finishing my sentences for me.
+2007-01-01T06:32:00.000Z	billstei	rchf	i don't have aticonfig
+2007-01-01T06:33:00.000Z	billstei	rchf	but now that I know that others have it I want it
+2007-01-01T06:33:00.000Z	rchf	billstei	!  all the FAQs on drivers for ATI keep mentioning it.  Must be obvious but haven't stumbled into it.  thx
+2007-01-01T06:36:00.000Z	rchf	billstei	thanks - gotta go - happy new year.

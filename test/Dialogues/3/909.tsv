@@ -1,0 +1,14 @@
+2007-01-01T11:02:00.000Z	AidanL		Could someone assist me with the install of ndiswrapper. I am struggling... again.
+2007-01-01T11:03:00.000Z	mwe	AidanL	you got to a little more specific ;)
+2007-01-01T11:03:00.000Z	mwe	AidanL	got to be*
+2007-01-01T11:04:00.000Z	AidanL		I am using a USB stick to transfer the ndiswrapper tar.gz file.
+2007-01-01T11:04:00.000Z	mwe	AidanL	source code?
+2007-01-01T11:04:00.000Z	mwe	AidanL	can you extract it and compile?
+2007-01-01T11:05:00.000Z	AidanL		extract*
+2007-01-01T11:05:00.000Z	mwe	AidanL	but not compile?
+2007-01-01T11:05:00.000Z	AidanL		I don't think so. But I am not sure. (forgive me, I am new to all this)
+2007-01-01T11:05:00.000Z	mwe	AidanL	you need to install linux-headers-$(uname -r) and build-essential or else it wont compile
+2007-01-01T11:07:00.000Z	mwe	AidanL	building from source and installing a binary .deb are fundamentally different ;)
+2007-01-01T11:12:00.000Z	AidanL		I have installed ndiswrapper from a .dab package. Whereabouts will it be stored so I can access it?
+2007-01-01T11:12:00.000Z	AidanL		I have found it. Forgive me.
+2007-01-01T11:12:00.000Z	mwe	AidanL	if it worked, sudo modprobe ndiswrapper should work

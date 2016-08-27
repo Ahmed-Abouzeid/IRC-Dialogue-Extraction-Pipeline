@@ -1,0 +1,8 @@
+2007-01-01T02:19:00.000Z	lardarse	slacker_nl	fow do you tell that a symlink is a symlink ?
+2007-01-01T02:19:00.000Z	lardarse		how*
+2007-01-01T02:19:00.000Z	slacker_nl	lardarse	if you see this: /etc/alternatives/vi -> /usr/bin/vim
+2007-01-01T02:20:00.000Z	slacker_nl	lardarse	that tells me /etc/alternatives/vi points to /usr/bin/vim
+2007-01-01T02:20:00.000Z	lardarse	slacker_nl	which command... ls -altr ?
+2007-01-01T02:20:00.000Z	slacker_nl	lardarse	yeah, ls -l will also do it :)
+2007-01-01T02:21:00.000Z	lardarse	slacker_nl	aah, useful. thanks
+2007-01-01T02:22:00.000Z	slacker_nl	lardarse	yw

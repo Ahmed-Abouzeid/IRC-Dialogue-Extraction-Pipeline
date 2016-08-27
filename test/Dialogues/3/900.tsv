@@ -1,0 +1,65 @@
+2007-01-01T11:08:00.000Z	MuffY		what is everyones favourite text editor
+2007-01-01T11:08:00.000Z	MuffY		as in code editor (C/C++ code)
+2007-01-01T11:08:00.000Z	mwe	MuffY	that's a religous question ;)
+2007-01-01T11:08:00.000Z	MuffY		i know :P
+2007-01-01T11:08:00.000Z	MuffY		but i have no idea now
+2007-01-01T11:08:00.000Z	mwe	MuffY	probably vim or emacs
+2007-01-01T11:09:00.000Z	MuffY		so after the rampage i'll have some options to choose from
+2007-01-01T11:09:00.000Z	MuffY		woo
+2007-01-01T11:09:00.000Z	MuffY		will check now, and please don't start a holy war while i'm gone =p
+2007-01-01T11:11:00.000Z	MuffY		with syntax highlighting and such
+2007-01-01T11:11:00.000Z	mwe	MuffY	emacs. don't believe people who tell you to use vim ;)
+2007-01-01T11:13:00.000Z	MuffY		(i installed ubuntu about 8 hours ago, so i'm a bit new =))
+2007-01-01T11:13:00.000Z	mwe	MuffY	yeah. try them both. I was just promoting my personal favorite ;)
+2007-01-01T11:14:00.000Z	MuffY		bash says vimtutor is nonexistent
+2007-01-01T11:14:00.000Z	mwe	MuffY	sudo aptitude install vim
+2007-01-01T11:14:00.000Z	MuffY		~                           by Bram Moolenaar et al.  << that's a dutchie =)
+2007-01-01T11:15:00.000Z	mwe	MuffY	oh
+2007-01-01T11:15:00.000Z	MuffY		at least his name is dutch
+2007-01-01T11:15:00.000Z	mwe	MuffY	vim is supposed to provide vimtutor
+2007-01-01T11:16:00.000Z	MuffY		it's just a terminal window :/
+2007-01-01T11:16:00.000Z	mwe	MuffY	yes ;)
+2007-01-01T11:17:00.000Z	MuffY		:p
+2007-01-01T11:17:00.000Z	mwe	MuffY	now start typing ;)
+2007-01-01T11:17:00.000Z	MuffY		but it doesn;t highlight anything =(
+2007-01-01T11:17:00.000Z	mwe	MuffY	:q! to quit or :w to save the file. it will use highlighting by default I think. there is gvim if you want a more windows like thingy
+2007-01-01T11:18:00.000Z	mwe	MuffY	it should hightlight depending on the extension by default I think
+2007-01-01T11:20:00.000Z	MuffY		my eeeyyeesss
+2007-01-01T11:20:00.000Z	mwe	MuffY	only files with extension like .c or whatever will be highlighted in vim I think
+2007-01-01T11:24:00.000Z	MuffY		w for saving, q for quit
+2007-01-01T11:25:00.000Z	mwe	MuffY	! means don't ask me for confirmation. just do what I tell you. I know what I'm doing
+2007-01-01T11:26:00.000Z	MuffY		but i don;t knwo whta i'm doing (yet), and it says some things are wrong, i guess i should have copied the comments xD
+2007-01-01T11:26:00.000Z	mwe	MuffY	what does it complain about ?
+2007-01-01T11:32:00.000Z	MuffY		i even made up the commands ^_^
+2007-01-01T11:32:00.000Z	mwe	MuffY	woah ;)
+2007-01-01T11:32:00.000Z	MuffY		i feel so 1337 now :p
+2007-01-01T11:32:00.000Z	mwe	MuffY	you are indeed
+2007-01-01T11:51:00.000Z	MuffY		and you can edit anything =D
+2007-01-01T11:51:00.000Z	mwe	MuffY	completely different though
+2007-01-01T11:51:00.000Z	MuffY		but i like it
+2007-01-01T11:52:00.000Z	mwe	MuffY	The biggest downsid IMO is most commercial software/hardware vendors don't give a damn about linux
+2007-01-01T11:53:00.000Z	mwe		!es
+2007-01-01T11:53:00.000Z	MuffY	mwe	of course they don't it's quite hard to actually sell anything proprietary (did i spell that right) for linux
+2007-01-01T11:53:00.000Z	MuffY		especially if you're a small company
+2007-01-01T11:54:00.000Z	mwe	MuffY	I know. it's not because of the OS though. it's because linux is not so common
+2007-01-01T11:54:00.000Z	MuffY		also true
+2007-01-01T11:54:00.000Z	MuffY		but what about the GNU license things
+2007-01-01T11:55:00.000Z	mwe	MuffY	you can sell closed source commercial software for linux if you like
+2007-01-01T11:55:00.000Z	MuffY		i know, but for some reason most people get the free software
+2007-01-01T11:55:00.000Z	MuffY		i wonder why
+2007-01-01T11:56:00.000Z	MuffY		;)
+2007-01-01T11:56:00.000Z	mwe	MuffY	heh
+2007-01-01T11:56:00.000Z	mwe	MuffY	maybe I'd by something if anything was available ;)
+2007-01-01T11:57:00.000Z	MuffY	mwe	i mean, if you're just a desktop user there's not really a point in buying things that might be a bit better than the free ones, but which new features you're not going to use anyway
+2007-01-01T11:57:00.000Z	mwe	MuffY	I use linux only for my laptop but I keep windows on the desktop PC so I can play my favorite games
+2007-01-01T11:58:00.000Z	mwe	MuffY	there is no good alternative for my favorite games. if you're satisfied with frozen-bubble you'll be ok though
+2007-01-01T11:58:00.000Z	MuffY	mwe	yeah, i read gaming and linux don't go together (damn game developers), except if you have linux on your xbox :P
+2007-01-01T11:58:00.000Z	mwe	MuffY	right
+2007-01-01T11:58:00.000Z	mwe	MuffY	a few games work
+2007-01-01T11:58:00.000Z	MuffY	mwe	i'm not really a gamer anyway, and i've got enough entertainment with my Wii anyway ;)
+2007-01-01T11:59:00.000Z	mwe	MuffY	then you wont miss anything. I'm not much of a gamer either except for a week a few times a year
+2007-01-01T12:00:00.000Z	MuffY	mwe	explain? you get a game and play it for a week straight until you've beat it?
+2007-01-01T12:00:00.000Z	MuffY		i challenge him for a game of:....
+2007-01-01T12:00:00.000Z	mwe	MuffY	something like that. for example I had a week I didn't know what to do and played hitman bloddmoney
+2007-01-01T12:01:00.000Z	mwe		he
+2007-01-01T12:01:00.000Z	mwe		yeah ;)

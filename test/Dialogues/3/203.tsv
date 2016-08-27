@@ -1,0 +1,158 @@
+2007-01-01T01:28:00.000Z	Asc		Fear my 56k
+2007-01-01T01:28:00.000Z	awilcox	Asc	hahahahahahahahaha
+2007-01-01T01:28:00.000Z	Asc		Good luck getting it working, in any case.
+2007-01-01T01:59:00.000Z	Asc		could be tricky then
+2007-01-01T02:00:00.000Z	awilcox	Asc	could you help me?
+2007-01-01T02:01:00.000Z	Asc	awilcox	i can try, but I'm not a repository of all knowledge.
+2007-01-01T02:01:00.000Z	awilcox	Asc	I'm not asking for Wikipedia, I'm asking for Xorg help.  :)
+2007-01-01T02:01:00.000Z	Asc	awilcox	You're trying to get an ATI card working, if I remember correctly?
+2007-01-01T02:02:00.000Z	awilcox	Asc	Okay I just installed this Kubuntu 6.06LTS installation today.  After getting everything configured correctly I noticed that it had the /tmp and /home mount points mixed up
+2007-01-01T02:03:00.000Z	awilcox		When I did sudo /etc/init.d/kdm stop and then startx from the command line, Xorg caught sig11
+2007-01-01T02:03:00.000Z	Asc	awilcox	Okay, give me a minute to read through that
+2007-01-01T02:09:00.000Z	Asc	awilcox	let me see if I've got this straight.  Your mount points are now okay, but something crashed and now the display doesn't work?
+2007-01-01T02:10:00.000Z	awilcox	Asc	something like that
+2007-01-01T02:11:00.000Z	awilcox	Asc	console mode works (e.g. I'm on irssi right now) but in graphics mode it just goes black and then back to the KDM login promprt
+2007-01-01T02:11:00.000Z	awilcox		s/promprt/prompt/
+2007-01-01T02:11:00.000Z	Asc	awilcox	Okay.  Do remember if the ksomething that crashed was more like 'kdesktop' or like 'kthread'?
+2007-01-01T02:13:00.000Z	awilcox	Asc	something like ksomethingconf or ksomethingconfigure
+2007-01-01T02:14:00.000Z	Asc	awilcox	Okay, sounds like a configuration daemon.
+2007-01-01T02:14:00.000Z	awilcox	Asc	yeah but that error doesn't come up anymore
+2007-01-01T02:15:00.000Z	awilcox	Asc	now it just goes black and then comes back the KDM prompt
+2007-01-01T02:15:00.000Z	awilcox	Asc	and when I did sudo /etc/init.d/kdm stop followed by startx I got X server caught signal 11
+2007-01-01T02:15:00.000Z	Asc	awilcox	Did you get KDE to start at some point previously?
+2007-01-01T02:16:00.000Z	awilcox	Asc	yeah
+2007-01-01T02:22:00.000Z	Asc	awilcox	Just a point of curiosity.  /etc/fstab is using /dev/*s instead of UUIDs?
+2007-01-01T02:22:00.000Z	Asc		Although I've not used Kubuntu
+2007-01-01T02:23:00.000Z	awilcox	Asc	yeah
+2007-01-01T02:24:00.000Z	awilcox		EVERYTHING ELSE stayed the same
+2007-01-01T02:24:00.000Z	Asc	awilcox	Do a 'ps -e | more' and make sure that nothing KDE related is still running
+2007-01-01T02:25:00.000Z	awilcox		Should I kill kthread?
+2007-01-01T02:26:00.000Z	Asc	awilcox	no
+2007-01-01T02:26:00.000Z	Asc	awilcox	With the small-numbered processeds, k stand for kernel instead of KDE
+2007-01-01T02:26:00.000Z	awilcox	Asc	oh oops :P
+2007-01-01T02:27:00.000Z	Asc		although it WOULD be interesting
+2007-01-01T02:27:00.000Z	awilcox	Asc	hahahahahahahahahaha
+2007-01-01T02:27:00.000Z	Asc	awilcox	kill the KDMs and KDM_greet, for starters
+2007-01-01T02:27:00.000Z	awilcox	Asc	shall I /etc/init.d/kdm stop first?
+2007-01-01T02:28:00.000Z	Asc	awilcox	It's worth a try.  I have no experience with init.d/kdm
+2007-01-01T02:28:00.000Z	awilcox	Asc	okay
+2007-01-01T02:29:00.000Z	awilcox	Asc	okay after doing /etc/init.d/kdm stop all of them went away
+2007-01-01T02:29:00.000Z	Asc		awilxox: I guess it probably works pretty much the same way as init.d/gdm, but who knows.
+2007-01-01T02:29:00.000Z	Asc	awilcox	are you doing startx with sudo or not?
+2007-01-01T02:29:00.000Z	awilcox	Asc	yes it works like gdm
+2007-01-01T02:30:00.000Z	awilcox	Asc	no sudo, I don't on my laptop so I am not here
+2007-01-01T02:30:00.000Z	awilcox	Asc	should I sudo?
+2007-01-01T02:30:00.000Z	Asc	awilcox	hmm.
+2007-01-01T02:30:00.000Z	awilcox		it's an NVIDIA GeForce 6100 IGP on an nFORCE 4 (IIRC?) chipset
+2007-01-01T02:30:00.000Z	Asc	awilcox	On my install (which started as 5.04 and I've abused a whole lot) startx stopped working.
+2007-01-01T02:31:00.000Z	Asc	awilcox	Just for fun, try starting with 'sudo kdm'
+2007-01-01T02:31:00.000Z	awilcox	Asc	okay and okay
+2007-01-01T02:31:00.000Z	awilcox	Asc	sudo startx did same thing
+2007-01-01T02:32:00.000Z	Asc		0_o
+2007-01-01T02:32:00.000Z	awilcox	Asc	what, should X not SIGSEG?  (IIRC that's #11)
+2007-01-01T02:33:00.000Z	awilcox	Asc	which explains why KDM keeps rebooting, X is crashing so it automatically restarts X
+2007-01-01T02:33:00.000Z	Asc	awilcox	That is displayed when you try to sudo startx/kdm in the tty?  Not when trying to log in?
+2007-01-01T02:33:00.000Z	awilcox	Asc	correct, sudo startx OR just regular ol startx
+2007-01-01T02:34:00.000Z	Asc	awilcox	Sounds like it.  Um, hmm.
+2007-01-01T02:34:00.000Z	awilcox	Asc	sounds like what?
+2007-01-01T02:36:00.000Z	awilcox	Asc	hmm
+2007-01-01T02:37:00.000Z	Asc	awilcox	try tail ~/.xsession-errors and see if anything interesting comes out
+2007-01-01T02:44:00.000Z	Asc	awilcox	Anything?
+2007-01-01T02:44:00.000Z	awilcox	Asc	same ol same ol
+2007-01-01T02:44:00.000Z	Asc		bugger
+2007-01-01T02:45:00.000Z	Asc	awilcox	try tail ~/.xsession-errors and tail /var/log/daemon.log, see if anything interesting comes out
+2007-01-01T02:45:00.000Z	awilcox	Asc	okay
+2007-01-01T02:46:00.000Z	awilcox	Asc	yep something interesting
+2007-01-01T02:46:00.000Z	awilcox		.xsession-errors was basically empty, only one line
+2007-01-01T02:46:00.000Z	awilcox		but /var/log/daemon.log
+2007-01-01T02:47:00.000Z	awilcox		oh BOY daemon.log:
+2007-01-01T02:47:00.000Z	awilcox	Asc	Dec 31 20:38:19 localhost kdm_greet[4894] : Can't open default user face
+2007-01-01T02:47:00.000Z	awilcox	Asc	Dec 31 20:38:19 localhost kdm_greet[4894] : Internal error: memory corruption detected
+2007-01-01T02:47:00.000Z	awilcox		oops
+2007-01-01T02:48:00.000Z	awilcox		actually the timestap for that last one should be 20:39:47
+2007-01-01T02:48:00.000Z	awilcox		then
+2007-01-01T02:48:00.000Z	awilcox		Dec 31 20:39:48 localhost kdm[4817] : X server for display :0 terminated unexpectedly
+2007-01-01T02:48:00.000Z	Asc		I'm gonna go with 'hmm'
+2007-01-01T02:48:00.000Z	awilcox		Dec 31 20:39:51 localhost kdm_greet[4946] : Can't open default user face
+2007-01-01T02:48:00.000Z	awilcox	Asc	you mean, you can't help EITHER?!
+2007-01-01T02:49:00.000Z	awilcox		Shall I run another MemTest86+?
+2007-01-01T02:49:00.000Z	awilcox	Asc	another thing
+2007-01-01T02:49:00.000Z	Asc	awilcox	not just yet
+2007-01-01T02:50:00.000Z	awilcox	Asc	it's a 2000MHz processor OCed to 2050MHz (yes only 50MHz more), running at 35 celsius, 94 fahrenheit
+2007-01-01T02:50:00.000Z	awilcox		too hot?
+2007-01-01T02:50:00.000Z	Asc	awilcox	Although it's true to say that I doubt I can help.  I'm so far out of my depth the fish have lanterns on.  But I can thrash around a little more.
+2007-01-01T02:50:00.000Z	Asc	awilcox	I think that should be okay
+2007-01-01T02:52:00.000Z	Asc	awilcox	I'm doing a search on that error.  It's returned a few results, so maybe someone more knowledgeable than I has recorded how to fix it
+2007-01-01T02:52:00.000Z	awilcox	Asc	is there an advanced support?  a level II?  #ubuntu-reallyhardquestions ?
+2007-01-01T02:52:00.000Z	Asc	awilcox	Not that I know of.
+2007-01-01T02:54:00.000Z	Asc	awilcox	you're using the fglxr driver?
+2007-01-01T02:54:00.000Z	awilcox	Asc	no clue
+2007-01-01T02:54:00.000Z	awilcox	Asc	how to check?
+2007-01-01T02:55:00.000Z	Asc	awilcox	Hrrm.  Was there anything on the line in ~.xsession-errors
+2007-01-01T02:57:00.000Z	awilcox	Asc	that line just said Xsession started at blah....
+2007-01-01T02:57:00.000Z	Asc	awilcox	cat /etc/X11/xorg.conf | grep fglxr
+2007-01-01T02:57:00.000Z	awilcox		I just have glx
+2007-01-01T02:57:00.000Z	awilcox		NO glxr just glx
+2007-01-01T02:58:00.000Z	Asc	awilcox	ls -lo / | grep /tmp and tell me what the permissions on your /tmp directory are
+2007-01-01T03:01:00.000Z	Asc	awilcox	ping
+2007-01-01T03:04:00.000Z	Asc		They probably won't
+2007-01-01T03:04:00.000Z	awilcox	Asc	ls -lo / | grep /tmp came up nothing
+2007-01-01T03:05:00.000Z	Asc		we had one of those big shell-type ones explode on a tomato plant once and it was fine
+2007-01-01T03:05:00.000Z	awilcox	Asc	yipes
+2007-01-01T03:05:00.000Z	awilcox	Asc	anyways should ls -lo / | grep /tmp come up anything?
+2007-01-01T03:05:00.000Z	Asc		after that we learned to use clamps if we wanted to set off more than one at the same time
+2007-01-01T03:06:00.000Z	Asc	awilcox	Well, if it returns nothing you probably don't have a /tmp directory
+2007-01-01T03:06:00.000Z	awilcox	Asc	I do
+2007-01-01T03:06:00.000Z	Asc		0_o er, hrm
+2007-01-01T03:06:00.000Z	awilcox	Asc	even a .X11-unix file in /tmp
+2007-01-01T03:07:00.000Z	Asc	awilcox	try cd /;ls -lo | grep tmp
+2007-01-01T03:07:00.000Z	awilcox	Asc	okay
+2007-01-01T03:08:00.000Z	awilcox	Asc	drwxrwxrwt  6 root  1024 2006-12-31 20:39 tmp
+2007-01-01T03:11:00.000Z	awilcox		how much does Canonical or whoever charge for paid support?
+2007-01-01T03:11:00.000Z	Asc	awilcox	starting to run out of ideas, but I've got maybe two left
+2007-01-01T03:12:00.000Z	Asc	awilcox	Are you trying to use xgl?
+2007-01-01T03:12:00.000Z	awilcox	Asc	no
+2007-01-01T03:15:00.000Z	Asc		Although I'd love to know how you're using pastebin from the terminal
+2007-01-01T03:16:00.000Z	awilcox	Asc	well there IS lynx/w3c
+2007-01-01T03:16:00.000Z	awilcox		if I do sudo Xorg
+2007-01-01T03:16:00.000Z	Asc	awilcox	don't try it then
+2007-01-01T03:24:00.000Z	awilcox	Asc	back from the split yet?
+2007-01-01T03:25:00.000Z	Asc	awilcox	it's a long shot but you might try installing xdm and trying to log in from there
+2007-01-01T03:25:00.000Z	Asc		I don't know about this one, but there were at least three seperate servers
+2007-01-01T03:25:00.000Z	Asc		I'm guessing more like five
+2007-01-01T03:26:00.000Z	awilcox	Asc	wow really?
+2007-01-01T03:26:00.000Z	Asc	awilcox	I joined a second server while it was out.  The one I was on had 109 people, and the one I joined had 169.  So there were at least three, and probably more.
+2007-01-01T03:26:00.000Z	awilcox	Asc	wow.
+2007-01-01T03:29:00.000Z	awilcox	Asc	I will try XDM now, thanks
+2007-01-01T03:29:00.000Z	Asc	awilcox	Everybody else having this problem either has their /tmp permissions set wrong, or is using glx
+2007-01-01T03:29:00.000Z	Asc	awilcox	My final guess would be that maybe KDE doesn't know where the /tmp directory is.
+2007-01-01T03:34:00.000Z	Asc	awilcox	Somebody said this about the error messages: The message relates to KDM's icon view during login but that isn't Ubuntu's default--did you manually edit the configuration files to turn that on?
+2007-01-01T03:34:00.000Z	awilcox	Asc	no
+2007-01-01T03:34:00.000Z	awilcox	Asc	I didn't do that
+2007-01-01T03:35:00.000Z	Asc	awilcox	Have you got any other DTEs or WMs you can try logging in to?
+2007-01-01T03:35:00.000Z	awilcox	Asc	no
+2007-01-01T03:35:00.000Z	awilcox	Asc	should I?
+2007-01-01T03:36:00.000Z	Asc	awilcox	No, not really.  They might work though, if the problem is with KDE.
+2007-01-01T03:42:00.000Z	Asc	awilcox	I suppose you're dead set on running KDE?
+2007-01-01T03:42:00.000Z	awilcox	Asc	yes, well this is my FRIEND's computer
+2007-01-01T03:43:00.000Z	Asc	awilcox	I suppose he's dead set on running KDE?
+2007-01-01T03:43:00.000Z	awilcox	Asc	yes SHE is.
+2007-01-01T03:44:00.000Z	Asc	awilcox	I'm very short on ideas now.  One of them would be to reinstall.
+2007-01-01T03:44:00.000Z	awilcox	Asc	ahhhhhhh noooooo it takes forever to get the stupid hardware to work right
+2007-01-01T03:47:00.000Z	Asc		Where does KDE keep its' config files?
+2007-01-01T03:47:00.000Z	awilcox	Asc	well
+2007-01-01T03:47:00.000Z	awilcox	Asc	~/kde/share/apps/...
+2007-01-01T03:48:00.000Z	awilcox	Asc	normally there
+2007-01-01T03:48:00.000Z	awilcox		.kde
+2007-01-01T03:49:00.000Z	Asc	awilcox	As a last resort, you could maybe search through those for references to tmp and face and see if one is wrong, but that's really grasping at straws
+2007-01-01T03:50:00.000Z	Asc		Gah, I need to get around to installing KDE so I can test this sort of thing
+2007-01-01T03:52:00.000Z	Asc	awilcox	To make searching easier you could do something like 'sudo find -t file -exec cat {} \; | grep tmp > ~/tempfile' and go through the file.
+2007-01-01T03:52:00.000Z	Asc		(and run that in the .kde directory or it'll explode :p
+2007-01-01T03:53:00.000Z	awilcox	Asc	hmm?
+2007-01-01T03:53:00.000Z	awilcox	Asc	what do I do with that?
+2007-01-01T03:53:00.000Z	Asc	awilcox	As a last resort, you could maybe search through those for references to tmp and face and see if one is wrong, but that's really grasping at straws
+2007-01-01T03:54:00.000Z	awilcox	Asc	
+2007-01-01T03:54:00.000Z	awilcox	Asc	it says
+2007-01-01T03:54:00.000Z	Asc	awilcox	But, yeah.  Let me know how xdm works out.
+2007-01-01T03:59:00.000Z	Asc	awilcox	Wish I knew how to fix it.  Good luck with the reinstall.
+2007-01-01T03:59:00.000Z	awilcox	Asc	thanks

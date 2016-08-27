@@ -1,0 +1,27 @@
+2007-01-01T12:20:00.000Z	cybercod		should be accessible... a small panel maybe?
+2007-01-01T12:20:00.000Z	cybercod		good night samuel
+2007-01-01T12:21:00.000Z	jame1		I'm trying to get a Safecom SWLU-5400 USB wireless adapter to work under ndiswrapper. It will install the driver (as seen in ndisgtk) but it says hardware isn't present - it is. How can I get it to work please?
+2007-01-01T12:22:00.000Z	cybercod		you may be grabbing the wrong file... which file you selecting with ndiswapper?
+2007-01-01T12:22:00.000Z	jame1	cybercod	official INF from manufacturer
+2007-01-01T12:22:00.000Z	cybercod		are there more than one file in the driver package?
+2007-01-01T12:22:00.000Z	jame1	cybercod	but I did try to compile the ubuntu zd1211 driver... not sure if it's conflicting but then I disabled it via modprobe -r zd1211
+2007-01-01T12:23:00.000Z	jame1	cybercod	yes but only for 9x, ME etc - i chose the provided XP one (only three/four files)
+2007-01-01T12:23:00.000Z	cybercod		tried all files individually?
+2007-01-01T12:23:00.000Z	jame1	cybercod	including .sys etc?
+2007-01-01T12:23:00.000Z	cybercod		i had one driver that ndiswrapper took something other than inf
+2007-01-01T12:23:00.000Z	cybercod		;D
+2007-01-01T12:24:00.000Z	cybercod		with a name like shemale... i think I'll have to pass
+2007-01-01T12:24:00.000Z	jame1	cybercod	yeah i tried all three files, it only accepts .inf but maybe i should do it via terminal?
+2007-01-01T12:24:00.000Z	cybercod		i doubt it would make a difference jame
+2007-01-01T12:25:00.000Z	cybercod		its probably mounted in /media
+2007-01-01T12:25:00.000Z	jame1	cybercod	hm then do you think it's a conflicting ubuntu driver - the zd1211 one?
+2007-01-01T12:25:00.000Z	cybercod		you can also find out in Disks
+2007-01-01T12:25:00.000Z	cybercod		you may need to blacklist like for broadcom... i dunno
+2007-01-01T12:26:00.000Z	cybercod		if ubuntu has a driver for it that isn't working, you'd need to blacklist it before using ndiswrapper
+2007-01-01T12:30:00.000Z	cybercod		just make the folder first
+2007-01-01T12:30:00.000Z	jame1	cybercod	once i've added to the blacklist, how do i update/refresh?
+2007-01-01T12:32:00.000Z	cybercod		come in there jason with the MondoLinks!
+2007-01-01T12:33:00.000Z	jame1	cybercod	any help please?
+2007-01-01T12:33:00.000Z	cybercod		jame1... you could just reboot... or Ctrl+Alt+Backspace may do it... there's probably a mount command but I don't know it
+2007-01-01T12:33:00.000Z	jame1	cybercod	ok cheers
+2007-01-01T12:35:00.000Z	jame1		vfat is the partition type, iocharset means it will parse filenames in UTF-8 format, and someone else can explain umask

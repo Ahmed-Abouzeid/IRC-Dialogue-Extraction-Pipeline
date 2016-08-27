@@ -1,0 +1,11 @@
+2007-01-01T05:10:00.000Z	jisatsu_		anyone know of an ID3 editor which supports artwork?
+2007-01-01T05:10:00.000Z	floppyears		hi
+2007-01-01T05:10:00.000Z	floppyears		I have a mac laptop that I want to share files with my ubuntu server
+2007-01-01T05:10:00.000Z	floppyears		I have heard that I can hook up both of them toether through a ethernet cable and share files
+2007-01-01T05:11:00.000Z	floppyears		what software do I need on the ubuntu side ?
+2007-01-01T05:11:00.000Z	floppyears		is is smb or netalk ?
+2007-01-01T05:11:00.000Z	jisatsu_	floppyears	I think you need a particular ethernet cable
+2007-01-01T05:11:00.000Z	floppyears	jisatsu_	yes it's called crossover, but mac os x can use a regular cable and do the conversion :)
+2007-01-01T05:12:00.000Z	jisatsu_	floppyears	ah ok :)
+2007-01-01T05:15:00.000Z	floppyears		anybody ?
+2007-01-01T05:17:00.000Z	jisatsu_	floppyears	I know virtually nothing about networking, but from what I know, the connection should be accessible from system, administration, networking. but I don't know about sharing files between them

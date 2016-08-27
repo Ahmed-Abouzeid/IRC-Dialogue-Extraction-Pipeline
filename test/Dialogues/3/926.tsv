@@ -1,0 +1,6 @@
+2007-01-01T07:17:00.000Z	Nookie		does anyone knows if there is a chance to set in gnome what fonts kde apps will use?????
+2007-01-01T07:18:00.000Z	mwe	Nookie	you'd set that in kcontrol even if you run the program in gnome
+2007-01-01T07:19:00.000Z	Nookie	mwe	okej
+2007-01-01T07:19:00.000Z	mwe	Nookie	sudo apt-get install kcontrol if you don't have it
+2007-01-01T07:19:00.000Z	Nookie	mwe	yeah =)
+2007-01-01T07:19:00.000Z	Nookie	mwe	thanx dude

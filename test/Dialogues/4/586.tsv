@@ -1,0 +1,4 @@
+2007-01-01T05:07:00.000Z	con-man		yup
+2007-01-01T05:08:00.000Z	un_operateur	con-man	maybe -- wine /path/to/file.exe ?
+2007-01-01T05:08:00.000Z	con-man		where do I put that sh file
+2007-01-01T05:09:00.000Z	un_operateur	con-man	chmod u+x /usr/bin/wow.sh

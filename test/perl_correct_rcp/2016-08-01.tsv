@@ -1,0 +1,620 @@
+2016-08-01T00:11:00.000Z	gfldex		m: role R {}; sub f(R $r){ dd $r}; my Int $v = 1 but R; f($v);
+2016-08-01T00:11:00.000Z	camelia		rakudo-moar fa84f1: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Calling f(Int) will never work with declared signature (R $r)␤at <tmp>:1␤------> 3b f(R $r){ dd $r}; my Int $v = 1 but R; 7⏏5f($v);␤»
+2016-08-01T00:11:00.000Z	gfldex		should that work?
+2016-08-01T00:12:00.000Z	gfldex		m: role R {}; sub f($r){ dd $r}; my Int $v = 1 but R; f($v); dd $v, $v ~~ R;
+2016-08-01T00:12:00.000Z	camelia		rakudo-moar fa84f1: OUTPUT«Int+{R} $r = 1␤Int+{R} $v = 1␤Bool::True␤»
+2016-08-01T00:16:00.000Z	BenGoldberg	bisectable	m: my (::N); N::x
+2016-08-01T00:16:00.000Z	bisectable	BenGoldberg	On both starting points (good=2015.12 bad=fa84f13) the exit code is 1 and the output is identical as well
+2016-08-01T00:16:00.000Z	bisectable	BenGoldberg	Output on both points: Cannot call method 'AT-KEY' on a null object␤  in block <unit> at /tmp/sPmv84pXBd line 1␤
+2016-08-01T00:21:00.000Z	BenGoldberg	bisectable	m: role Foo[$x] { }; say Foo[42].WHO.^name
+2016-08-01T00:21:00.000Z	bisectable	BenGoldberg	On both starting points (good=2015.12 bad=fa84f13) the exit code is 0 and the output is identical as well
+2016-08-01T00:21:00.000Z	bisectable	BenGoldberg	Output on both points: VMNull
+2016-08-01T00:23:00.000Z	BenGoldberg		m: say chr 2**63
+2016-08-01T00:23:00.000Z	camelia		rakudo-moar fa84f1: OUTPUT«␀␤»
+2016-08-01T00:23:00.000Z	BenGoldberg		m: say chr 2**63-2
+2016-08-01T00:23:00.000Z	camelia		rakudo-moar fa84f1: OUTPUT«chr codepoint cannot be negative␤  in block <unit> at <tmp> line 1␤␤»
+2016-08-01T00:24:00.000Z	BenGoldberg		m: multi sub cross() { }
+2016-08-01T00:24:00.000Z	camelia		rakudo-moar fa84f1: ( no output )
+2016-08-01T00:24:00.000Z	BenGoldberg	bisectable	multi sub cross() { }
+2016-08-01T00:24:00.000Z	bisectable	BenGoldberg	On both starting points (good=2015.12 bad=fa84f13) the exit code is 0 and the output is identical as well
+2016-08-01T00:24:00.000Z	bisectable	BenGoldberg	Output on both points:
+2016-08-01T00:25:00.000Z	BenGoldberg	bisectable	m: for 0..0xffff -> $i { say $i if $i %% 100; my $c = try { :16(uniprop($i.chr, "Bidi_Mirroring_Glyph")).chr }; say "{$i.fmt("%04x")}: {$i.chr} ~ $c" if $c.defined}
+2016-08-01T00:26:00.000Z	bisectable	BenGoldberg	On both starting points (good=2015.12 bad=fa84f13) the exit code is 0 and the output is identical as well
+2016-08-01T00:26:00.000Z	bisectable	BenGoldberg	https://gist.github.com/e95d​4d857b72a3228436239d74d3a598
+2016-08-01T00:26:00.000Z	BenGoldberg		m: for 0..0xffff -> $i { say $i if $i %% 100; my $c = try { :16(uniprop($i.chr, "Bidi_Mirroring_Glyph")).chr }; say "{$i.fmt("%04x")}: {$i.chr} ~ $c" if $c.defined}
+2016-08-01T00:26:00.000Z	camelia		rakudo-moar fa84f1: OUTPUT«(signal SEGV)0␤100␤200␤»
+2016-08-01T00:29:00.000Z	AlexDaniel		commit releases for 0..0xffff -> $i { say $i if $i %% 100; my $c = try { :16(uniprop($i.chr, "Bidi_Mirroring_Glyph")).chr }; say "{$i.fmt("%04x")}: {$i.chr} ~ $c" if $c.defined}
+2016-08-01T00:30:00.000Z	AlexDaniel		ah right
+2016-08-01T00:30:00.000Z	AlexDaniel		commit: releases for 0..0xffff -> $i { say $i if $i %% 100; my $c = try { :16(uniprop($i.chr, "Bidi_Mirroring_Glyph")).chr }; say "{$i.fmt("%04x")}: {$i.chr} ~ $c" if $c.defined}
+2016-08-01T00:30:00.000Z	committable	AlexDaniel	https://gist.github.com/5394​28256414be39c0bc9716bfa35e69
+2016-08-01T00:31:00.000Z	AlexDaniel	BenGoldberg	bisectable does not catch SEGVs properly yet :(
+2016-08-01T00:32:00.000Z	AlexDaniel		… especially when they are fixed?
+2016-08-01T00:32:00.000Z	BenGoldberg		But not fixed for camelia?
+2016-08-01T00:32:00.000Z	AlexDaniel		m: for 0..0xffff -> $i { say $i if $i %% 100; my $c = try { :16(uniprop($i.chr, "Bidi_Mirroring_Glyph")).chr }; say "{$i.fmt("%04x")}: {$i.chr} ~ $c" if $c.defined}
+2016-08-01T00:32:00.000Z	camelia		rakudo-moar fa84f1: OUTPUT«(signal SEGV)0␤100␤200␤»
+2016-08-01T00:32:00.000Z	AlexDaniel		commit: HEAD for 0..0xffff -> $i { say $i if $i %% 100; my $c = try { :16(uniprop($i.chr, "Bidi_Mirroring_Glyph")).chr }; say "{$i.fmt("%04x")}: {$i.chr} ~ $c" if $c.defined}
+2016-08-01T00:32:00.000Z	committable	AlexDaniel	¦«HEAD»: 0␤100␤200 «exit signal = SEGV (11)»
+2016-08-01T00:32:00.000Z	AlexDaniel		ah
+2016-08-01T00:34:00.000Z	AlexDaniel	MasterDuke	am I reading that incorrectly or does the one above say that it is OK on HEAD?
+2016-08-01T00:34:00.000Z	AlexDaniel	MasterDuke	I mean this one: https://gist.github.com/Whateverabl​e/539428256414be39c0bc9716bfa35e69
+2016-08-01T00:34:00.000Z	AlexDaniel	MasterDuke	I mean, if it does, then it's a bug :)
+2016-08-01T02:12:00.000Z	konobi		.tell pmurias well, es6 has support on all modern browsers... though a few still have aspects that aren't implementent yet. Thankfully we can use babel to transpile from pure es6 to es5, or combo of es5/es6 for different browsers support (or use polyfills)
+2016-08-01T02:12:00.000Z	yoleaux	konobi	I'll pass your message to pmurias.
+2016-08-01T02:12:00.000Z	yoleaux		31 Jul 2016 19:31Z <pmurias> konobi: I'm applying your refactoring piece by piece as there was a bit of things that where breaking stuff and also I prefer run the tests after relatively small changes rather then debug complex interactions
+2016-08-01T02:13:00.000Z	konobi		.tell pmurias yup... it had all been working up until a small change around code-ref/core/sixmodel =0(
+2016-08-01T02:13:00.000Z	yoleaux	konobi	I'll pass your message to pmurias.
+2016-08-01T02:30:00.000Z	konobi		.tell pmurias i have a feeling it might be due to a missunderstanding somewhere of how the 'this' keyword works
+2016-08-01T02:30:00.000Z	yoleaux	konobi	I'll pass your message to pmurias.
+2016-08-01T03:03:00.000Z	geekosaur	dalek	pinged out about 8 hours ago...
+2016-08-01T03:09:00.000Z	MasterDuke	BenGoldberg	FYI, you were calling bisectable with an 'm: ' in front of your code. it should actually be valid Perl 6 (the 'm: ' will just be a label), but it's probably not what you intended
+2016-08-01T03:10:00.000Z	MasterDuke	AlexDaniel	yeah, something seems off there
+2016-08-01T03:27:00.000Z	harmil		Think I found my problem with an attribute becoming the type, Callable, but not sure why...
+2016-08-01T03:27:00.000Z	harmil		m: class NotComposed { has &.func = ~*; }; class IsRat does Rational[Int,Int] { has &.func = ~* }; class IsReal does Real { has &.func = ~* }; say "In NotComposed, func={NotComposed.new.func.perl}"; say "In IsRat, func={IsRat.new.func.perl}"; say "In IsReal, func={IsReal.new.func.perl}"
+2016-08-01T03:27:00.000Z	camelia		rakudo-moar fa84f1: OUTPUT«In NotComposed, func={ ... }␤In IsRat, func=Callable␤In IsReal, func={ ... }␤»
+2016-08-01T03:28:00.000Z	harmil		It seems that any class that does Rational has its callable attributes munged.
+2016-08-01T03:29:00.000Z	* geekosaur		thinks that looks like a rakudobug...
+2016-08-01T03:30:00.000Z	harmil		Yeah, I was just checking to see if I was doing something stupid before sending email
+2016-08-01T05:06:00.000Z	andrzejku		hi :)
+2016-08-01T05:10:00.000Z	holyghost		hello
+2016-08-01T05:12:00.000Z	andrzejku		I am looking for Perl friend
+2016-08-01T05:14:00.000Z	holyghost		try #perl
+2016-08-01T05:15:00.000Z	holyghost		lots of good mainframe basic dude around here :-)
+2016-08-01T05:15:00.000Z	andrzejku		ok
+2016-08-01T05:15:00.000Z	holyghost		s/dude/dudes
+2016-08-01T05:15:00.000Z	andrzejku		thank you
+2016-08-01T05:18:00.000Z	andrzejku	holyghost	you are very good
+2016-08-01T06:59:00.000Z	moritz		\o
+2016-08-01T06:59:00.000Z	Zoffix		o/
+2016-08-01T07:06:00.000Z	ufobat		hello :-)
+2016-08-01T07:07:00.000Z	Woodi		hi today :)
+2016-08-01T07:10:00.000Z	Woodi		I wonder what unmapped memory is... FreeBSD got patch that improves mem performance 35% - 135%  https://reviews.freebsd.org/D7195  do they just removed we-have-infinity-lot-of-memory layer ?
+2016-08-01T07:12:00.000Z	moritz		"this can improve the performance 1.35X ~ 2.35x for FIO on hyperv."
+2016-08-01T07:12:00.000Z	moritz		what is FIO?
+2016-08-01T07:22:00.000Z	Woodi		file IO ?
+2016-08-01T07:24:00.000Z	Woodi		probably this  https://wiki.mikejung.biz/Benchmarking
+2016-08-01T07:36:00.000Z	Zoffix		New blog post "Hacking on The Rakudo Perl 6 Compiler: Mix Your Fix": http://perl6.party/post/Hacking-on-​Rakudo-Perl-6-Compiler-Mix-Your-Fix
+2016-08-01T07:59:00.000Z	moritz	Zoffix	you seem to be unaware of local ettiquette. It's called "lol I blug" here :-)
+2016-08-01T09:04:00.000Z	ab6tract		good *, #perl6
+2016-08-01T09:04:00.000Z	ab6tract		i ran into something interesting while working on the Sereal port last Friday
+2016-08-01T09:05:00.000Z	ab6tract		an array of Nums failed to smartmatch against an array of equivalent Rats
+2016-08-01T09:05:00.000Z	ab6tract		calling .perl.EVAL on the array of Nums would make the smart match work
+2016-08-01T09:06:00.000Z	ab6tract		i'm not sure how to craft a minimal example for this, because every approach i have used to reproduce would Just Work, except for the original test case based on a real Sereal blob
+2016-08-01T09:10:00.000Z	ab6tract		eg: "    not ok 3 - ARRAY -- got: $[1.23e0, 4.56e0, 7.89e0]expected: $[1.23, 4.56, 7.89]"
+2016-08-01T09:10:00.000Z	ab6tract		m: say  $[1.23e0, 4.56e0, 7.89e0] ~~ $[1.23, 4.56, 7.89]
+2016-08-01T09:10:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤»
+2016-08-01T09:10:00.000Z	ab6tract		so, wtf?
+2016-08-01T09:21:00.000Z	ab6tract		too early for the heavy questions, maybe?
+2016-08-01T09:25:00.000Z	moritz	ab6tract	what types do you get there?
+2016-08-01T09:25:00.000Z	moritz	ab6tract	are these "vanilla" Array objects, or parameterized? (Array[Num] or so)?
+2016-08-01T09:26:00.000Z	ab6tract	moritz	they are vanilla. the data gets encoded in Sereal as a double and gets read back out through a C function that casts to double (NativeCall return type specified as num64)
+2016-08-01T09:27:00.000Z	ab6tract		JSON::Tiny and JSON::Fast don't seem to support Nums, and only pass back Rats (the expected result is saved into a json file when generating the corpus of Sereal files (p5 script))
+2016-08-01T09:27:00.000Z	moritz		m: my num64 $n = 1e1; say [$n] ~~ [1e1]
+2016-08-01T09:27:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤»
+2016-08-01T09:28:00.000Z	moritz		m: my num64 $n = 1e1; say [$n] ~~ [10.0]
+2016-08-01T09:28:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤»
+2016-08-01T09:28:00.000Z	ab6tract	moritz	indeed. exactly as happens to me: any attempt to get a non-ok result from  $[1.23e0, 4.56e0, 7.89e0] ~~ $[1.23, 4.56, 7.89] fails
+2016-08-01T09:28:00.000Z	ab6tract		and even calling .perl.EVAL on the object (should be a no-op, correct) makes it pass
+2016-08-01T09:33:00.000Z	ab6tract		so it's unclear how to even create a portable test case
+2016-08-01T09:34:00.000Z	ab6tract		i can work around it by calling .Str.Rat on the result from the read_double C call
+2016-08-01T09:34:00.000Z	ab6tract		(custom function we wrote for getting doubles out of a blob)
+2016-08-01T09:35:00.000Z	ab6tract		but that feels very much like a hack, because the expression works fine when i type it in manually!
+2016-08-01T09:35:00.000Z	moritz	ab6tract	can you get a minimal example that mimics the double extraction?
+2016-08-01T09:35:00.000Z	moritz		s/get/produce/
+2016-08-01T09:39:00.000Z	ab6tract		without the underlying C code?
+2016-08-01T09:40:00.000Z	ab6tract		was just about to try it with pack/unpack, but it doesn't seem to support nums yet
+2016-08-01T09:53:00.000Z	psch		m: use NativeCall; sub fabs(num64 $) is native {*}; my $x = fabs(1e1); say [$x] ~~ [10.0]
+2016-08-01T09:53:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«False␤»
+2016-08-01T09:54:00.000Z	psch		m: use NativeCall; sub fabs(num64 $) is native {*}; my $x = fabs(1e1); say [$x] ~~ [10.0]; say $x
+2016-08-01T09:54:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«False␤(Mu)␤»
+2016-08-01T09:54:00.000Z	ab6tract	psch	lol, why didn't i think of that
+2016-08-01T09:54:00.000Z	psch		m: use NativeCall; sub fabs(num64 $) is native returns num64 {*}; my $x = fabs(1e1); say [$x] ~~ [10.0]; say $x
+2016-08-01T09:54:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤10␤»
+2016-08-01T09:54:00.000Z	psch	ab6tract	no idea :)
+2016-08-01T09:54:00.000Z	ab6tract		damnit, same issue
+2016-08-01T09:54:00.000Z	ab6tract		fuck
+2016-08-01T09:55:00.000Z	ab6tract		so, that doesn't actually help in the end
+2016-08-01T09:55:00.000Z	psch		well, it does help insofar the its probably not NC directly
+2016-08-01T09:55:00.000Z	psch		s/the/that/
+2016-08-01T09:56:00.000Z	ab6tract		the C code just does a memcpy from the relevant buf and it's return values are consistent with the inputs
+2016-08-01T10:00:00.000Z	ab6tract		what really gets my goat is the .perl.EVAL part...
+2016-08-01T10:04:00.000Z	psch		m: use NativeCall; sub fabs(num32 $) is native returns num32 {*}; my $x = fabs(1e1); say [$x] ~~ [10.0]; say $x
+2016-08-01T10:05:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤10␤»
+2016-08-01T10:05:00.000Z	psch		well, definitely weird :)
+2016-08-01T10:10:00.000Z	ab6tract		i've noticed that other serialization libs just do .Str.Rat
+2016-08-01T10:11:00.000Z	ab6tract		i was wondering if that is based on consensus for a best approach or..
+2016-08-01T10:12:00.000Z	psch		m: use nqp; use NativeCall; sub fabs(num32 $) is native returns num32 {*}; my $x = fabs(1e1); say nqp::what($x)
+2016-08-01T10:12:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«(Num)␤»
+2016-08-01T10:13:00.000Z	ab6tract		m: use nqp; use NativeCall; sub fabs(num32 $) is native returns num32 {*}; say nqp::what( fabs(1e1) )
+2016-08-01T10:13:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«(Num)␤»
+2016-08-01T10:14:00.000Z	psch		i guess that also boxes on moar..?
+2016-08-01T10:16:00.000Z	ab6tract	psch	sorry, how do you mean?
+2016-08-01T10:16:00.000Z	psch	ab6tract	well, the native sub returns a native type
+2016-08-01T10:16:00.000Z	psch	ab6tract	but Num isn't
+2016-08-01T10:17:00.000Z	psch		fwiw, i'm not sure r-j does it differently - we can't really have a WHAT for native types i think
+2016-08-01T10:17:00.000Z	ab6tract		right, yeah
+2016-08-01T10:17:00.000Z	psch		j: use nqp; say nqp::what(my num32 $ = 1e1)
+2016-08-01T10:17:00.000Z	camelia		rakudo-jvm cd19db: OUTPUT«(Num)␤»
+2016-08-01T10:18:00.000Z	ab6tract		this actually makes sense to me
+2016-08-01T10:18:00.000Z	ab6tract		as otherwise you would never have a solid way to get the value into anything else
+2016-08-01T10:18:00.000Z	ab6tract		since you can't call a coercion method on an unboxed
+2016-08-01T10:19:00.000Z	timotimo		i inputted my password wrong 2 times and now it seems like i'm getting to wait for an hour before i'm allowed to try again?
+2016-08-01T10:20:00.000Z	timotimo		oh ...
+2016-08-01T10:20:00.000Z	timotimo	dalek	died again
+2016-08-01T10:20:00.000Z	timotimo		no, i mean
+2016-08-01T10:20:00.000Z	timotimo		hack.p6c.org died again
+2016-08-01T10:20:00.000Z	psch		oh
+2016-08-01T10:20:00.000Z	psch		i logged in like 20 minutes ago
+2016-08-01T10:20:00.000Z	psch		$ uptime 10:20:38 up 25 days, 17:15,  4 users,  load average: 6409.08, 6379.62, 6306.41
+2016-08-01T10:20:00.000Z	timotimo		yeah
+2016-08-01T10:21:00.000Z	psch		that i think is a record..?
+2016-08-01T10:21:00.000Z	timotimo		*shrug*
+2016-08-01T10:21:00.000Z	timotimo		i'm going to force-kill hack
+2016-08-01T10:22:00.000Z	moritz	timotimo	thank you
+2016-08-01T10:23:00.000Z	timotimo		no need for thanks
+2016-08-01T10:23:00.000Z	timotimo		... if only we could figure out what makes the virtual discs freak out like that?
+2016-08-01T10:23:00.000Z	TEttinger		maybe thanking people fixes it but only temporarily
+2016-08-01T10:24:00.000Z	timotimo		makes sense
+2016-08-01T10:24:00.000Z	moritz	TEttinger	more permanent solutions would be very welcome, yes
+2016-08-01T10:24:00.000Z	TEttinger		and saying "thank you" actually reduces the reliability of the discs. clearly we need to switch to "cheerio, guvnah!"
+2016-08-01T10:25:00.000Z	ab6tract	psch	here's the C code -- https://github.com/ab5tract/Sereal​/blob/perl6/Perl6/ext/decode.c#L86
+2016-08-01T10:25:00.000Z	ab6tract		and here's the sereal decoder -- https://github.com/ab5tract/Sereal/blob​/perl6/Perl6/lib/Sereal/Decoder.pm6#L64
+2016-08-01T10:25:00.000Z	ab6tract		just in case you get curious :)
+2016-08-01T10:26:00.000Z	moritz	TEttinger	why do I get the distinct feeling you're trolling?
+2016-08-01T10:28:00.000Z	timotimo		not trolling, just making light of the situation
+2016-08-01T10:33:00.000Z	TEttinger		if I was trolling it would be a very different sense
+2016-08-01T10:33:00.000Z	TEttinger		joking is more transparent
+2016-08-01T10:33:00.000Z	TEttinger		trolling might be,
+2016-08-01T10:34:00.000Z	TEttinger		hey can perl6 help me find this one prime number, it's like my favorite but I forgot it and it's 4242 decimal places
+2016-08-01T10:35:00.000Z	TEttinger		which would be followed by attempts at guessing primes and returned with "no, not it"
+2016-08-01T10:38:00.000Z	moritz		I guess I just don't appreciate your sense of humor, then
+2016-08-01T10:39:00.000Z	TEttinger		that's fine. I don't have a great one
+2016-08-01T10:39:00.000Z	TEttinger		I'm also very sleepy
+2016-08-01T10:39:00.000Z	TEttinger		good night
+2016-08-01T10:39:00.000Z	moritz		sleep well, and dream of an improved sense of humor
+2016-08-01T10:39:00.000Z	TEttinger		oh, long running process
+2016-08-01T10:39:00.000Z	TEttinger		this thing will stay online, watching, judging, in silence
+2016-08-01T11:45:00.000Z	ab6tract		the intrigue continues... if I call .Str.Num on the num64 it *also* passes the smartmatch
+2016-08-01T11:46:00.000Z	ab6tract		of course, smart match is not all that intelligent about arrays, so what one really wants to use is is-deeply
+2016-08-01T11:47:00.000Z	ab6tract		which fails when comparing Nums to Rats
+2016-08-01T11:47:00.000Z	ab6tract		m: use Test; is-deeply [1.1e0], [1.1], "the same?";
+2016-08-01T11:47:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«not ok 1 - the same?␤␤# Failed test 'the same?'␤# at <tmp> line 1␤# expected: $[1.1]␤#      got: $[1.1e0]␤»
+2016-08-01T11:48:00.000Z	ab6tract		m: say [ [], [], [] ] ~~ [ [], [ [] ], [] ]
+2016-08-01T11:48:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤»
+2016-08-01T11:49:00.000Z	ab6tract		m:  [ [], ['a'], [] ] ~~ [ [], [ ['a'] ], [] ]
+2016-08-01T11:49:00.000Z	camelia		rakudo-moar 4b934d: ( no output )
+2016-08-01T11:49:00.000Z	ab6tract		m: say  [ [], ['a'], [] ] ~~ [ [], [ ['a'] ], [] ]
+2016-08-01T11:49:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤»
+2016-08-01T11:50:00.000Z	ab6tract		wow... is-deeply agrees with smartmatch here
+2016-08-01T11:50:00.000Z	ab6tract		great
+2016-08-01T11:50:00.000Z	masak		m: say @?INC
+2016-08-01T11:50:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Variable '@?INC' is not declared␤at <tmp>:1␤------> 3say 7⏏5@?INC␤»
+2016-08-01T11:50:00.000Z	masak		no @?INC ?
+2016-08-01T11:51:00.000Z	masak		do S11 and S28 need an update? or will @?INC come back?
+2016-08-01T11:51:00.000Z	ilmari		m: say $*REPO.repo-chain
+2016-08-01T11:51:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«(inst#/home/camelia/.perl6 inst#/home/camelia/rakudo-​m-inst-2/share/perl6/site inst#/home/camelia/rakudo-m​-inst-2/share/perl6/vendor inst#/home/camelia/rakudo-m-inst-2/share/perl6 CompUnit::Repository::AbsolutePath.new(next-repo => CompUnit::Repository::NQ…»
+2016-08-01T11:52:00.000Z	masak		I just wanted to know whether '.' was in @?INC (which I guess it's not)
+2016-08-01T11:53:00.000Z	ilmari		there's no '.' my $*REPO.repo-chain
+2016-08-01T11:53:00.000Z	ilmari		AFAICT
+2016-08-01T11:56:00.000Z	jnthn		No, @?INC won't come back :)
+2016-08-01T11:57:00.000Z	jnthn		You'd have to use lib '.' to get the cwd into the repo chain
+2016-08-01T11:57:00.000Z	masak		I just wanted to check that it wasn't there by default
+2016-08-01T11:58:00.000Z	ilmari		and I see 'use lib'  resolves it to an absoulte path at use time, unlike perl5
+2016-08-01T12:01:00.000Z	ab6tract		m: my @a = [ [], ['a'], [] ]; my @b =  [ [], [ ['a'] ], [] ]; say @a ~~ @b; use Test; is-deeply @a, @b, "how are these the same?"
+2016-08-01T12:01:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤ok 1 - how are these the same?␤»
+2016-08-01T12:01:00.000Z	ab6tract		why is it that i always manage to use p6 in a way that shows weird and disturbing seams?
+2016-08-01T12:04:00.000Z	masak		m: say [ ['a'] ].perl
+2016-08-01T12:04:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«["a"]␤»
+2016-08-01T12:04:00.000Z	masak	ab6tract	it's the one-element rule you're encountering
+2016-08-01T12:04:00.000Z	masak		m: my @a = [ [], ['a'], [] ]; my @b =  [ [], [ ['a'], ], [] ]; say @a ~~ @b; use Test; is-deeply @a, @b, "how are these the same?"
+2016-08-01T12:04:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«False␤not ok 1 - how are these the same?␤␤# Failed test 'how are these the same?'␤# at <tmp> line 1␤# expected: $[[], [["a"],], []]␤#      got: $[[], ["a"], []]␤»
+2016-08-01T12:05:00.000Z	ab6tract		fair enough, i thought that might be the case
+2016-08-01T12:05:00.000Z	masak		I don't know if there's a good doc page somewhere explaining that...
+2016-08-01T12:05:00.000Z	masak		...but that's clearly what's happening
+2016-08-01T12:05:00.000Z	ab6tract	masak	unfortunately this doesn't explain my "array of Nums fails to smartmatch with array of Rats unless that array of Nums has .perl.EVAL called on itself"
+2016-08-01T12:06:00.000Z	masak		m: say [1e0, 2e0] ~~ [1.0, 2.0]
+2016-08-01T12:06:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤»
+2016-08-01T12:06:00.000Z	masak		worksforme :)
+2016-08-01T12:06:00.000Z	ab6tract		that is exactly my issue
+2016-08-01T12:07:00.000Z	masak		you sure you're not experiencing floating-point fuzziness or something?
+2016-08-01T12:07:00.000Z	ab6tract		m:     not ok 3 - ARRAY -- got: $[1.23e0, 4.56e0, 7.89e0]expected: $[1.23, 4.56, 7.89]
+2016-08-01T12:07:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Two terms in a row␤at <tmp>:1␤------> 3 ARRAY -- got: $[1.23e0, 4.56e0, 7.89e0]7⏏5 expected: $[1.23, 4.56, 7.89]␤    expecting any of:␤        infix␤        infix stopper␤        postfix␤…»
+2016-08-01T12:07:00.000Z	ab6tract		oops
+2016-08-01T12:07:00.000Z	ab6tract		"    not ok 3 - ARRAY -- got: $[1.23e0, 4.56e0, 7.89e0]expected: $[1.23, 4.56, 7.89]"
+2016-08-01T12:07:00.000Z	ab6tract		now, try to craft a case where those two don't pass ok
+2016-08-01T12:08:00.000Z	ab6tract	masak	and if I call .Str.Num on those Nums it will pass the smartmatch
+2016-08-01T12:09:00.000Z	masak		m: say [1.23e0, 4.56e0, 7.89e0] ~~ [1.23, 4.56, 7.89]
+2016-08-01T12:09:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤»
+2016-08-01T12:09:00.000Z	masak		dunno what you're doing, but it works here
+2016-08-01T12:09:00.000Z	ab6tract		that's my point, masak. i am running into an error case
+2016-08-01T12:09:00.000Z	ab6tract		you cannot get those to fail smartmatch
+2016-08-01T12:09:00.000Z	masak		are you sure your test is using smartmatching?
+2016-08-01T12:09:00.000Z	ab6tract		yes
+2016-08-01T12:09:00.000Z	masak		wait, you want them to *fail* smartmatching?
+2016-08-01T12:10:00.000Z	masak		m: say 1.23e0 ~~ 1.23
+2016-08-01T12:10:00.000Z	camelia		rakudo-moar 4b934d: OUTPUT«True␤»
+2016-08-01T12:10:00.000Z	ab6tract		no, i want them to pass. and they pass when inputting manually
+2016-08-01T12:10:00.000Z	ab6tract		they only fail in the code that i am testing
+2016-08-01T12:10:00.000Z	ab6tract		but even the got and expected values will pass smartmatch when put in manually
+2016-08-01T12:11:00.000Z	ab6tract		and the code i am testing will pass smartmatch if i do $a_of_nums.perl.EVAL ~~ $b
+2016-08-01T12:11:00.000Z	masak		what's the name of the assertion sub you're calling?
+2016-08-01T12:11:00.000Z	ab6tract		but not if i do $a_of_nums ~~ $b
+2016-08-01T12:11:00.000Z	ab6tract		'ok'
+2016-08-01T12:11:00.000Z	masak		aha, and the expression you pass contains a smartmatch?
+2016-08-01T12:11:00.000Z	ab6tract		yup
+2016-08-01T12:11:00.000Z	masak		how have the Nums been produced?
+2016-08-01T12:12:00.000Z	ab6tract		from a C routine: https://github.com/ab5tract/Sereal​/blob/perl6/Perl6/ext/decode.c#L86
+2016-08-01T12:12:00.000Z	masak		the plotchki thickens
+2016-08-01T12:13:00.000Z	ab6tract		here is the nativecall definition: https://github.com/ab5tract/Sereal/blob/perl6/​Perl6/lib/Sereal/Decoder/Reader/Native.pm6#L21
+2016-08-01T12:13:00.000Z	ab6tract		and here is the line of code that pulls a double from the buf
+2016-08-01T12:13:00.000Z	ab6tract		https://github.com/ab5tract/Sereal/blob​/perl6/Perl6/lib/Sereal/Decoder.pm6#L39
+2016-08-01T12:13:00.000Z	masak		ok, I now urge you to golf this
+2016-08-01T12:13:00.000Z	masak		like, down to something ridiculously small, like three lines of code
+2016-08-01T12:13:00.000Z	ab6tract		really not sure how to golf something that needs an object file
+2016-08-01T12:13:00.000Z	masak		you'll think of something, I'm sure :D
+2016-08-01T12:13:00.000Z	ab6tract		doing it just with NativeCall doesn't trigger the same issue
+2016-08-01T12:14:00.000Z	masak		right now there is too much code not contributing to the bug
+2016-08-01T12:16:00.000Z	ab6tract		right, but the smallest possible test case still requires a C compilation phase
+2016-08-01T12:16:00.000Z	ab6tract		i'll see what i can do
+2016-08-01T12:16:00.000Z	masak		++ab6tract
+2016-08-01T12:17:00.000Z	masak		sometimes during especially intense golfing sessions, the C compilation phase (or equivalent) goes away
+2016-08-01T12:20:00.000Z	ab6tract		m: use nqp; use NativeCall; sub fabs(num32 $) is native returns num32 {*}; say nqp::what( fabs(1e1) ); say [ fabs(1e1) ] ~~ [ 10.0 ]
+2016-08-01T12:20:00.000Z	camelia		rakudo-moar 4ee104: OUTPUT«(Num)␤True␤»
+2016-08-01T12:20:00.000Z	ab6tract		m: use nqp; use NativeCall; sub fabs(num32 $) is native returns num64 {*}; say nqp::what( fabs(1e1) ); say [ fabs(1e1) ] ~~ [ 10.0 ]
+2016-08-01T12:20:00.000Z	camelia		rakudo-moar 4ee104: OUTPUT«(Num)␤False␤»
+2016-08-01T12:21:00.000Z	ab6tract		m: use nqp; use NativeCall; sub fabs(num64 $) is native returns num64 {*}; say nqp::what( fabs(1e1) ); say [ fabs(1e1) ] ~~ [ 10.0 ]
+2016-08-01T12:21:00.000Z	camelia		rakudo-moar 4ee104: OUTPUT«(Num)␤True␤»
+2016-08-01T12:21:00.000Z	ab6tract		whoa
+2016-08-01T12:21:00.000Z	ab6tract		should i expect the second one to work?
+2016-08-01T12:25:00.000Z	ab6tract		answer: no, because num32 <> num64 and thus it gets mangled on way through the fabs routine
+2016-08-01T12:31:00.000Z	naser		hello
+2016-08-01T12:31:00.000Z	naser		what are some good books on perl6, i found some on amazon but they are 10+ years old..
+2016-08-01T12:31:00.000Z	tadzik		there aren't any
+2016-08-01T12:32:00.000Z	tadzik		whatever's in http://perl6.org/documentation/ is your best bet at learning it :)
+2016-08-01T12:32:00.000Z	kalkin-		Is it true that TT is working on a Perl6 book?
+2016-08-01T12:33:00.000Z	naser		I am feeling confused about this language, looks like an old yet new language, no books except few old ones..
+2016-08-01T12:33:00.000Z	perlpilot	naser	if the books you have found on amazon are "Perl 6 and Parrot Essentials" and "Perl 6 Now", the first is no longer relevant and the second is more of a Perl 5 book  :)
+2016-08-01T12:34:00.000Z	kalkin-	naser	What helped me a lot is reading learnXinYminutes and the docs. Anything beyond that, wouldn't be in a Beginners Book anyway.
+2016-08-01T12:35:00.000Z	kalkin-		This channels is also very helpful and filled with kind people
+2016-08-01T12:36:00.000Z	kalkin-		What I personally missing the most a Good Practice guide, to learn what is the Perl6 way to do this or that, but there can be a Good Practices guide, because now one really knows how Good Practices should be.
+2016-08-01T12:37:00.000Z	naser		i wish i could find something i can view offline on an e-reader..
+2016-08-01T12:38:00.000Z	naser		probably i could scrap the content of perl6 site and turn it into an epub document...
+2016-08-01T12:39:00.000Z	jeek		https://www.facebook.com/DaTwe​ekaz/videos/10153828034206794/
+2016-08-01T12:39:00.000Z	jeek		asciidoc converts to epub pretty easily
+2016-08-01T12:40:00.000Z	kalkin-		pod2mobi would be nice, to read the docs on the kindle
+2016-08-01T12:40:00.000Z	kalkin-		I like the way you can read The Art of Unix Programming or Ruby on Rails docs on a Kindle. It is very comfortable
+2016-08-01T12:50:00.000Z	apejens	kalkin-	it looks like https://metacpan.org/pod/EBook::MOBI kan do pod -> mobi? It has a plugin for it, and a small example, but might need to write the actual script `pod2mobi`
+2016-08-01T12:51:00.000Z	kalkin-	apejens	My impression was that Pod5 and 6 differ, am I wrong?
+2016-08-01T12:51:00.000Z	apejens		ahh, lol, I didn't see I was in #perl6, sorry!
+2016-08-01T12:52:00.000Z	apejens	kalkin-	but perhaps a pod6 input plugin wouldn't be too hard to write
+2016-08-01T12:52:00.000Z	kalkin-	apejens	i will look in to it, when i have time. Thanks for the hint
+2016-08-01T13:25:00.000Z	[Coke]		.tell pmurias I'm ok with using a cutting edge JS. There are compilers to get us to an older version if needed, no? (I think getting something working all the way through the stack is more important at this point, so if the newer JS makes your job easier...)
+2016-08-01T13:25:00.000Z	yoleaux	[Coke]	I'll pass your message to pmurias.
+2016-08-01T14:03:00.000Z	avar		Is Inline::Perl6 unmaintained? Trying to compile it on Rakudo star 2016.07 yields an error about a missing 'frames' struct member.
+2016-08-01T14:03:00.000Z	avar		Looking at moarvm.git jnthn removed that back in march in 824748d
+2016-08-01T14:04:00.000Z	[Coke]		buggable, source?
+2016-08-01T14:05:00.000Z	[Coke]		avar;it's not tested as part of the rakudo release process.
+2016-08-01T14:05:00.000Z	avar		Which is apparently an internal API now, so my attempt to patch this to use the new API failed: https://metacpan.org/source/NINE​/Inline-Perl6-0.05/Perl6.xs#L91
+2016-08-01T14:06:00.000Z	avar		Right, but it's also looking like I'm the only one who's tried to install this on a star release in ~6 months :){
+2016-08-01T14:06:00.000Z	ab6tract		:S
+2016-08-01T14:08:00.000Z	ugexe		ahem i think you mean 4 months and 28 days
+2016-08-01T14:08:00.000Z	avar		Anyway, a monkeypatch of getting rid of everytihng after ? seems to "work": https://metacpan.org/source/NINE​/Inline-Perl6-0.05/Perl6.xs#L91
+2016-08-01T14:20:00.000Z	avar	nine	*ping*
+2016-08-01T14:20:00.000Z	[Coke]		avar; can you open an issue for this here: https://github.com/niner/Inline-Perl6 so nine sees it?
+2016-08-01T14:20:00.000Z	[Coke]		heh. didn't see your ping yet. :)
+2016-08-01T14:20:00.000Z	avar		will open an issue anyway..
+2016-08-01T14:22:00.000Z	avar		https://github.com/niner/Inline-Perl6/issues/1 :)
+2016-08-01T14:23:00.000Z	[Coke]		avar++
+2016-08-01T14:24:00.000Z	[Coke]	nine	might want to update links in the p5 distro of I:6 so that it points back to github.
+2016-08-01T14:24:00.000Z	[Coke]		(metacpan wants me to open a ticket in cpan's RT.
+2016-08-01T14:29:00.000Z	avar	[Coke]	nine : I also opened this issue asking "why the multiplicity?" https://github.com/niner/Inline-Perl6/issues/2
+2016-08-01T14:29:00.000Z	kid51		First time I've ever seen Perl 6 in a job posting:  https://jobs.perl.org/job/20342
+2016-08-01T14:30:00.000Z	[Coke]	kid51	woohoo
+2016-08-01T14:31:00.000Z	[Coke]	kid51	I'm actually using Perl 6 in a project at work myself, very happy.
+2016-08-01T14:31:00.000Z	ugexe		wanted: senior perl6 web developer
+2016-08-01T14:33:00.000Z	TimToady		maybe someone just fatfingered it :)
+2016-08-01T14:33:00.000Z	moritz		do I qualify if I'm a senior web developer, and a senior Perl 6 developer? :-)
+2016-08-01T14:34:00.000Z	[Coke]	TimToady	killjoy. :P
+2016-08-01T14:36:00.000Z	stmuk_		it says PHP 7 as well .. just looks like a BS jobpost mangled by an agent or manager
+2016-08-01T14:45:00.000Z	nine	avar	thanks for the reports! I'm a bit ill right now but will have a look once I feel better. Inline::Perl6 hasn't seen much action as you may actually be the very first user ;)
+2016-08-01T14:53:00.000Z	avar	nine	Yeah no rush at all, I'm just playing with this stuff for a hobby project
+2016-08-01T15:04:00.000Z	ab6tract		well, some of us colleagues of avar have evil-er plans in mind ;)
+2016-08-01T15:05:00.000Z	ab6tract		but it isn't a rush in our case, either
+2016-08-01T15:10:00.000Z	pmurias		maybe that job post is a bait and switch trap, they will promise you Perl 6 and make you write PHP? ;)
+2016-08-01T15:10:00.000Z	yoleaux		02:12Z <konobi> pmurias: well, es6 has support on all modern browsers... though a few still have aspects that aren't implementent yet. Thankfully we can use babel to transpile from pure es6 to es5, or combo of es5/es6 for different browsers support (or use polyfills)
+2016-08-01T15:10:00.000Z	yoleaux		02:13Z <konobi> pmurias: yup... it had all been working up until a small change around code-ref/core/sixmodel =0(
+2016-08-01T15:10:00.000Z	yoleaux		02:30Z <konobi> pmurias: i have a feeling it might be due to a missunderstanding somewhere of how the 'this' keyword works
+2016-08-01T15:10:00.000Z	yoleaux		13:25Z <[Coke]> pmurias: I'm ok with using a cutting edge JS. There are compilers to get us to an older version if needed, no? (I think getting something working all the way through the stack is more important at this point, so if the newer JS makes your job easier...)
+2016-08-01T15:15:00.000Z	pmurias		.tell konobi arrow function having different this semantics was one of the problems
+2016-08-01T15:15:00.000Z	yoleaux	pmurias	I'll pass your message to konobi.
+2016-08-01T15:21:00.000Z	dalek		doc: 245236e | (Tom Browder)++ | doc/Language/tables.pod6:
+2016-08-01T15:21:00.000Z	dalek		doc: correct example table
+2016-08-01T15:21:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/245236edc0
+2016-08-01T15:22:00.000Z	dalek		doc: 7632895 | (Tom Browder)++ | doc/Language/tables.pod6:
+2016-08-01T15:22:00.000Z	dalek		doc: correct spelling
+2016-08-01T15:22:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/7632895fe4
+2016-08-01T15:43:00.000Z	tbrowder		don't see pragma when searching docsl zoffix's last blog post is great but first time i've seen "use monkey-guts" mentioned to enable nqp in p6
+2016-08-01T15:45:00.000Z	tailgate		say I have an array @r = <(a b) (c d) (e f)>. Can I name the tuple values in a lambda, like @r.map({->($x, $y) $x ~ $y})?
+2016-08-01T15:47:00.000Z	jnthn		Yes, pretty much like you did it, just need the block around the lambda body
+2016-08-01T15:47:00.000Z	jnthn		Also, <(a b) (c d) (e f)> looks a bit confused :)
+2016-08-01T15:47:00.000Z	tailgate	jnthn	lol I just figured that out
+2016-08-01T15:48:00.000Z	tailgate		thnaks
+2016-08-01T15:48:00.000Z	jnthn		m: my @r = <a b>, <c d>, <e f>; say @r.map(-> [$x, $y] { $x ~ $y })
+2016-08-01T15:48:00.000Z	camelia		rakudo-moar 4ee104: OUTPUT«(ab cd ef)␤»
+2016-08-01T15:48:00.000Z	tbrowder		ref rakudo dev: i've installed panda now system-wide (using its bootstrap instructions) along with rakudo head; however, panda can't find the source of p6 modules. do i have to download my own p6 module repo so "panda install" will work?
+2016-08-01T16:01:00.000Z	gtodd1		any heavy git users have an opinion on the best/simplest/safest way to maintain source control for an application developing and using/working with at the same time?
+2016-08-01T16:02:00.000Z	[Coke]	tbrowder	what are you doing that can't find the source of p6 modules?
+2016-08-01T16:02:00.000Z	[Coke]		also, are you behind a firewall?
+2016-08-01T16:03:00.000Z	gtodd		by that I mean say I'm writing a module and using it in an app ... eventually I will have a repo for my application based on Module.p6m  and a repo for Module.p6m
+2016-08-01T16:04:00.000Z	[Coke]		I would just start out with repos for both things
+2016-08-01T16:05:00.000Z	gtodd		I was thinking of instead of pushing an pulling a ton up and down from bitbucket or github I could just have a branch "myapp" I switch into to add my own configuration etc. and then the main branch for the module itself ...
+2016-08-01T16:05:00.000Z	gtodd		I guess if I'm going to go that way eventually I might as well do it now
+2016-08-01T16:05:00.000Z	gtodd		and have two repos
+2016-08-01T16:06:00.000Z	jnthn		Provided the module is in a folder and isolated, it's possible to extract its history separately using git filter-branch later
+2016-08-01T16:07:00.000Z	jnthn		If you go the two repo route from the start, git subtree may help make it less annoying
+2016-08-01T16:07:00.000Z	gtodd		ok ... I thought I could have a branch specific remote so when I pushed it would be automagically pushing the right stuff to the right place
+2016-08-01T16:07:00.000Z	gtodd		it just doesn't seem big enough yet
+2016-08-01T16:07:00.000Z	jnthn		Remtoes are always branch specific anyway :)
+2016-08-01T16:07:00.000Z	jnthn		Well, uh
+2016-08-01T16:08:00.000Z	gtodd		Oh good :)  ...
+2016-08-01T16:08:00.000Z	jnthn		Branches each have their own remote branch, and those might have different remotes
+2016-08-01T16:08:00.000Z	pmurias	[Coke]	it should be possible to compile the runtime parts using the new javascript into the old version
+2016-08-01T16:08:00.000Z	jnthn		I'd probably use subtree or something though...
+2016-08-01T16:08:00.000Z	jnthn		Or just fix it later with filter-branch
+2016-08-01T16:09:00.000Z	dalek		doc: f39e6d4 | Altai-man++ | doc/Type/A (3 files):
+2016-08-01T16:09:00.000Z	dalek		doc: Now examples from pages of Any/Array/Attribute are compilable. See https://github.com/perl6/doc/issues/776
+2016-08-01T16:09:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/f39e6d407b
+2016-08-01T16:10:00.000Z	gtodd	jnthn	OK thanks the other bit of the puzzle is I have a number of toy apps  (in perl6   perl5 Catalyst etc.) that are set up specifically to deploy or run on heroku or aws and where I want to abstract out the the non-specifc to me bits in order to have a public branch I can push to git-hub say
+2016-08-01T16:11:00.000Z	gtodd	jnthn	filter-branch seems interesting
+2016-08-01T16:11:00.000Z	gtodd		I think I will do one that way and one with 2 repos and see which is more "natural"
+2016-08-01T16:12:00.000Z	gtodd		for each application :)
+2016-08-01T16:12:00.000Z	jnthn		:)
+2016-08-01T16:14:00.000Z	dalek		doc: 4258331 | (Wenzel P. P. Peppmeyer)++ | util/extract-examples.p6:
+2016-08-01T16:14:00.000Z	dalek		doc: extract example based on .modified unless --force
+2016-08-01T16:14:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/42583314d4
+2016-08-01T16:31:00.000Z	jdv79	unmatched}	your blogging pace is impressive
+2016-08-01T16:34:00.000Z	moritz		not just pace, also quality
+2016-08-01T16:35:00.000Z	jdv79		i already commended him on that point months ago:)
+2016-08-01T16:35:00.000Z	jdv79		but yes, of course
+2016-08-01T16:36:00.000Z	jdv79		and very much an inspiration to try to do more
+2016-08-01T17:05:00.000Z	tbrowder		[Coke}: I am no longer using rakudobrew.  I am using the head of rakudo (git clone) and installing it in a system-wide location (with suitable path in my .bash_aliases).  I installed panda from a git clone using its bootstrap and it also is installed system-wide using its default path (which I also have in my bash_aliases).  Yhus panda and perl6 (and nqp,
+2016-08-01T17:05:00.000Z	tbrowder		etc.) are available from any dir.  The problem is panda can't find modules when I command installation, so I need help to fix my dev environment so all play nicely together.
+2016-08-01T17:05:00.000Z	tbrowder		s/Yhus/Thus
+2016-08-01T17:06:00.000Z	tbrowder	[Coke]	see finger fumble above
+2016-08-01T17:07:00.000Z	tbrowder		[Code]: no firewall
+2016-08-01T17:44:00.000Z	dalek		doc: 5ae4076 | (Wenzel P. P. Peppmeyer)++ | doc/Language/operators.pod6:
+2016-08-01T17:44:00.000Z	dalek		doc: make operators.pod6 compile
+2016-08-01T17:44:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/5ae40767cb
+2016-08-01T17:51:00.000Z	[Coke]	tbrowder	I still don't understand what you mean.
+2016-08-01T17:51:00.000Z	[Coke]		can't find a module to -install-? or cannot find a module to use?
+2016-08-01T17:51:00.000Z	[Coke]		and rakudobrew or not, if you installed panda with the perl6 you already isntalled, you should be ok.
+2016-08-01T17:52:00.000Z	[Coke]		if it's somehow tied to the old rakudobrew you mentioned, I wouldn
+2016-08-01T17:52:00.000Z	[Coke]		t expecet that to work
+2016-08-01T18:56:00.000Z	konobi		moo
+2016-08-01T18:56:00.000Z	yoleaux		15:15Z <pmurias> konobi: arrow function having different this semantics was one of the problems
+2016-08-01T19:08:00.000Z	dogbert17		o/ #perl6
+2016-08-01T19:09:00.000Z	dogbert17	huggable	buggable
+2016-08-01T19:09:00.000Z	dogbert17	huggable	buggable
+2016-08-01T19:11:00.000Z	dogbert17		have written up some docs for Pair.invert. Comments welcome : https://gist.github.com/dogbert17​/211c376936c7c1442cdfa2a826ecc16c
+2016-08-01T19:15:00.000Z	perlpilot	dogbert17	what about an example with ('Perl' => %hash).invert  ?
+2016-08-01T19:18:00.000Z	perlpilot		or even ('Perl' => { foo => "bar", baz => "blat" }).invert   # I'm not sure your description is quite right either.  I think it's not about Positional, but rather Iterable
+2016-08-01T19:19:00.000Z	dogbert17	perlpilot	that might force me to make some changes :)
+2016-08-01T19:20:00.000Z	dogbert17	perlpilot	I believe that you're right, back to the drawing board then
+2016-08-01T19:21:00.000Z	dogbert17		m: say ('Perl' => (1..5)).invert
+2016-08-01T19:21:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«(1 => Perl 2 => Perl 3 => Perl 4 => Perl 5 => Perl)␤»
+2016-08-01T19:22:00.000Z	dogbert17		yeah, the positional rubbish must go
+2016-08-01T19:24:00.000Z	hankache		good evening #perl6
+2016-08-01T19:25:00.000Z	perlpilot		hello hankache
+2016-08-01T19:25:00.000Z	hankache		hi perlpilot
+2016-08-01T19:30:00.000Z	* lizmat		starts working on the P6W
+2016-08-01T19:30:00.000Z	hankache		lizmat++
+2016-08-01T19:32:00.000Z	masak		++lizmat
+2016-08-01T19:33:00.000Z	hankache		[+] (lizmat)
+2016-08-01T19:33:00.000Z	* lizmat		feels identified
+2016-08-01T19:34:00.000Z	AlexDaniel		m: say [+] ‘lizmat’
+2016-08-01T19:34:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«Cannot convert string to number: base-10 number must begin with valid digits or '.' in '3⏏5lizmat' (indicated by ⏏)␤  in block <unit> at <tmp> line 1␤␤Actually thrown at:␤  in block <unit> at <tmp> line 1␤␤»
+2016-08-01T19:34:00.000Z	AlexDaniel		m: say [-] ‘lizmat’
+2016-08-01T19:34:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«lizmat␤»
+2016-08-01T19:35:00.000Z	hankache		how come? ^^^
+2016-08-01T19:36:00.000Z	AlexDaniel	hankache	#128757 #128758
+2016-08-01T19:36:00.000Z	synopsebot6		Link:  https://rt.perl.org/rt3//Publ​ic/Bug/Display.html?id=128757
+2016-08-01T19:36:00.000Z	synopsebot6		Link:  https://rt.perl.org/rt3//Publ​ic/Bug/Display.html?id=128758
+2016-08-01T19:36:00.000Z	bdmatatu		Hi all, is it possible to inherit from Date but override the formatter?
+2016-08-01T19:37:00.000Z	TEttinger	lizmat	is a number in radix 36 or higher
+2016-08-01T19:38:00.000Z	jdv79		is react a "supply" block?
+2016-08-01T19:38:00.000Z	AlexDaniel		m: say :36<lizmat>
+2016-08-01T19:38:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«1301684645␤»
+2016-08-01T19:38:00.000Z	zostay	jdv79	yes, it just doesn't return a Supply
+2016-08-01T19:38:00.000Z	gfldex	bdmatatu	see https://github.com/rakudo/rakud​o/blob/nom/src/core/Date.pm#L24
+2016-08-01T19:39:00.000Z	timotimo		yup, it immediately noms all the values that you'd normally get from the supply block
+2016-08-01T19:39:00.000Z	AlexDaniel		m: say :35<lizmat>
+2016-08-01T19:39:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Couldn't process entire number: 2/6 int chars, 2/-1 fractional chars␤at <tmp>:1␤------> 3say :35<lizmat>7⏏5<EOL>␤»
+2016-08-01T19:39:00.000Z	AlexDaniel		↑ what?
+2016-08-01T19:39:00.000Z	AlexDaniel		2/-1 fractional chars? What is it all about?
+2016-08-01T19:39:00.000Z	lizmat	AlexDaniel	perhaps because that excludes "z"  Or do you mean the LTAness ?
+2016-08-01T19:40:00.000Z	dogbert17	perlpilot	have updated the gist, i.e. https://gist.github.com/dogbert17​/211c376936c7c1442cdfa2a826ecc16c  (feels like I have entered deep waters ...)
+2016-08-01T19:40:00.000Z	AlexDaniel	lizmat	LTAness
+2016-08-01T19:40:00.000Z	TEttinger		yeah, radix 35 would be 0-9a-y, but agreed on the unusual error
+2016-08-01T19:40:00.000Z	AlexDaniel		I feel like I already rakudobugged this…
+2016-08-01T19:40:00.000Z	TEttinger		it does say the general point though, that it can't process the number
+2016-08-01T19:41:00.000Z	bdmatatu		Thanks gfldex, looks like inheriting from that is a bit tricky
+2016-08-01T19:41:00.000Z	gfldex	bdmatatu	all you need to do is provide your own .new
+2016-08-01T19:41:00.000Z	lizmat	bdmatatu	looks to me that you don't need to inherit from Date, but just specify a :formatter parameter ?
+2016-08-01T19:41:00.000Z	AlexDaniel		hmm maybe not
+2016-08-01T19:42:00.000Z	bdmatatu		I was going to use the same formatter in a few places, so thought a class would be better.
+2016-08-01T19:42:00.000Z	perlpilot		dogbert17++ Looks good to me.  I don't have any other commentary.  :)
+2016-08-01T19:42:00.000Z	tx0h		hi
+2016-08-01T19:42:00.000Z	dogbert17	perlpilot	:) thx
+2016-08-01T19:43:00.000Z	lizmat		class MyDate is Date { method new(|c) { self.Date.new(|c, :formatter( { ... } ) } }
+2016-08-01T19:43:00.000Z	lizmat		self.Date::new
+2016-08-01T19:44:00.000Z	tx0h		i'm not sure if i have overseen something, but is there no way in bailador to use a scalar as a Template::Mojo ?
+2016-08-01T19:44:00.000Z	jdv79		are supply and react doc'd?
+2016-08-01T19:44:00.000Z	jdv79		search seems to fail me
+2016-08-01T19:46:00.000Z	dalek		doc: 522a231 | (Jan-Olof Hendig)++ | doc/Type/Pair.pod6:
+2016-08-01T19:46:00.000Z	dalek		doc: Added docs for Pair.invert. perlpilot++
+2016-08-01T19:46:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/522a231a81
+2016-08-01T19:47:00.000Z	bdmatatu	lizmat	thanks, works great!
+2016-08-01T19:47:00.000Z	dalek		doc: 5f18bbf | (Wenzel P. P. Peppmeyer)++ | doc/Language/operators.pod6:
+2016-08-01T19:47:00.000Z	dalek		doc: better example
+2016-08-01T19:47:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/5f18bbfd97
+2016-08-01T19:47:00.000Z	dalek		doc: ca3eef2 | (Wenzel P. P. Peppmeyer)++ | Makefile:
+2016-08-01T19:47:00.000Z	dalek		doc: add make examples-clean
+2016-08-01T19:47:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/ca3eef2d15
+2016-08-01T19:50:00.000Z	dalek		doc: 71caed5 | (Wenzel P. P. Peppmeyer)++ | doc/Language/concurrency.pod6:
+2016-08-01T19:50:00.000Z	dalek		doc: add whenever and react to index
+2016-08-01T19:50:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/71caed5638
+2016-08-01T19:50:00.000Z	gfldex	jdv79	^^^
+2016-08-01T19:51:00.000Z	jdv79		thanks
+2016-08-01T19:52:00.000Z	pochi		m: my $a; $a = $a+1
+2016-08-01T19:52:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«Use of uninitialized value of type Any in numeric context  in block <unit> at <tmp> line 1␤»
+2016-08-01T19:53:00.000Z	pochi		perl5 tells me which variable it thinks is uninitialized: "Use of uninitialized value $a in addition (+) at -e line 1."
+2016-08-01T19:53:00.000Z	hoelzro		perl 6 does, sometimes
+2016-08-01T19:53:00.000Z	pochi		would that be possible in perl6 as well?
+2016-08-01T19:53:00.000Z	hoelzro		m: my $a; say "$a"
+2016-08-01T19:53:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«Use of uninitialized value $a of type Any in string context␤Any of .^name, .perl, .gist, or .say can stringify undefined things, if needed.  in block <unit> at <tmp> line 1␤␤»
+2016-08-01T19:54:00.000Z	hoelzro		it is possible, we just need to find the right code to change =)
+2016-08-01T19:54:00.000Z	pochi		:-)
+2016-08-01T19:58:00.000Z	travis-ci		Doc build errored. Wenzel P. P. Peppmeyer 'add whenever and react to index'
+2016-08-01T19:58:00.000Z	travis-ci		https://travis-ci.org/perl6/doc/builds/148988171 https://github.com/perl6/doc/com​pare/ca3eef2d1540...71caed56380e
+2016-08-01T20:02:00.000Z	dogbert17		is "string".comb the fastest way to split a string into a list of characters or might there be an alternative hiding in the docs somewhere?
+2016-08-01T20:03:00.000Z	hoelzro		huh, turns out that's super easy to add (the uninitialized value variable name thing)
+2016-08-01T20:03:00.000Z	hoelzro	pochi	want to make a contribution to Perl 6? =)
+2016-08-01T20:03:00.000Z	pochi		I was looking in Mu.pm :-)
+2016-08-01T20:04:00.000Z	hoelzro		that's the place to look!
+2016-08-01T20:04:00.000Z	pochi		compiling ...
+2016-08-01T20:04:00.000Z	hoelzro		want more hints, or would you prefer to figure it out on your own?
+2016-08-01T20:05:00.000Z	pochi		I just tried to copy-paste the code from the string case
+2016-08-01T20:05:00.000Z	sena_kun		I don't see anywhere in the docs(grep too) usage of "=begin output". Why nobody used it over years? It seems to be a valid pod code.
+2016-08-01T20:05:00.000Z	hoelzro	pochi	did it work?
+2016-08-01T20:06:00.000Z	hoelzro	sena_kun	that's the POD code for "example output of a chunk of code", right?
+2016-08-01T20:06:00.000Z	sena_kun	hoelzro	sure.
+2016-08-01T20:06:00.000Z	pochi	hoelzro	still compiling
+2016-08-01T20:06:00.000Z	hoelzro	sena_kun	yeah, it seems like it would be very useful
+2016-08-01T20:06:00.000Z	gfldex	sena_kun	did you check if the renderers support it too?
+2016-08-01T20:07:00.000Z	sena_kun	gfldex	nope. That's why I'm asking. (:
+2016-08-01T20:07:00.000Z	gfldex	sena_kun	i believe they don't. It wouldn't be hard to change that tho.
+2016-08-01T20:07:00.000Z	sena_kun		Let's try it locally...
+2016-08-01T20:09:00.000Z	sena_kun	gfldex	it's just we often use `code` block to show output. The easy solution is to just do a `:skip-test` and to worry, but I'm interested.
+2016-08-01T20:10:00.000Z	pmurias		hi
+2016-08-01T20:10:00.000Z	sena_kun		s/to/don't
+2016-08-01T20:10:00.000Z	sena_kun		Ah.
+2016-08-01T20:12:00.000Z	pochi	hoelzro	no go :-( Seems $name just is the empty string
+2016-08-01T20:18:00.000Z	hoelzro	pochi	could you show me the diff of the change you made?
+2016-08-01T20:20:00.000Z	AlexDaniel		m: sub hello { say 42 }; say &hello
+2016-08-01T20:20:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«sub hello () { #`(Sub|54567296) ... }␤»
+2016-08-01T20:20:00.000Z	AlexDaniel		how can I do the same thing with a method?
+2016-08-01T20:20:00.000Z	AlexDaniel		and is it even possible?
+2016-08-01T20:21:00.000Z	AlexDaniel		m: class Foo { method hello { say 42 } }; my $x = Foo.new; say $x.&hello
+2016-08-01T20:21:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Undeclared routine:␤    hello used at line 1. Did you mean 'shell'?␤␤»
+2016-08-01T20:21:00.000Z	gfldex	AlexDaniel	you have to use the MOP
+2016-08-01T20:22:00.000Z	jnthn		Foo.^lookup('hello')
+2016-08-01T20:23:00.000Z	AlexDaniel		m: class Foo { method hello { say 42 } }; my $x = Foo.new; $x.^lookup(‘hello’)($x)
+2016-08-01T20:23:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«42␤»
+2016-08-01T20:23:00.000Z	AlexDaniel		so does not work as nicely on an instance
+2016-08-01T20:24:00.000Z	pochi	hoelzro	https://pastee.org/3ncbm
+2016-08-01T20:24:00.000Z	jnthn		"does not work as nicely"?
+2016-08-01T20:24:00.000Z	jnthn		Works just the same
+2016-08-01T20:25:00.000Z	AlexDaniel	jnthn	well, I have to pass the object itself if I want to call it
+2016-08-01T20:25:00.000Z	tbrowder	[Coke]	Sorry, when I first installed panda I tried to install a module (don't remember which) and panda couldn't find it.  I just tried "panda install Linenoise" and it recognized it being installed.  Sorry for the  wasted bandwidth--looks like a non-problem now.
+2016-08-01T20:25:00.000Z	jnthn		Sure, methods need an object to work on.
+2016-08-01T20:25:00.000Z	AlexDaniel	jnthn	sure, I just hoped that it will be done for me
+2016-08-01T20:26:00.000Z	jnthn		Ah. That's now how Perl 6 OO works :)
+2016-08-01T20:26:00.000Z	jnthn		And if you do want that, closures are really compact in Perl 6.
+2016-08-01T20:26:00.000Z	hoelzro	pochi	that's weird - a similiar patch worked for me
+2016-08-01T20:26:00.000Z	AlexDaniel		yeah
+2016-08-01T20:26:00.000Z	jnthn		{$x.hello} is quite a bit shorter than $x.^lookup('hello') :)
+2016-08-01T20:27:00.000Z	pochi	hoelzro	You are right, it works on the 'my $a ...' example :-)
+2016-08-01T20:27:00.000Z	gfldex	jnthn	.assuming is defined for Routine, that includes Method, but there is no easy way to call that method.
+2016-08-01T20:27:00.000Z	zostay	tx0h	i'm not sure i understand the question, the call to template() in bailador takes a string (scalar) containing the template, doesn't it?
+2016-08-01T20:27:00.000Z	AlexDaniel	jnthn	except that .hello is a multimethod in my case, and it seems like it will be a bit longer to preserve that
+2016-08-01T20:27:00.000Z	pochi	hoelzro	but not on my actual usecase :-)
+2016-08-01T20:29:00.000Z	jnthn		m: say '-> |c { $x.foo(|c) }'.chars
+2016-08-01T20:29:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«20␤»
+2016-08-01T20:29:00.000Z	pochi		m: class Foo { has Numeric $.a; method foo() { $.a = $.a + 1 } }; Foo.new.foo
+2016-08-01T20:29:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«Use of uninitialized value of type Numeric in numeric context  in method foo at <tmp> line 1␤Cannot modify an immutable Numeric␤  in method foo at <tmp> line 1␤  in block <unit> at <tmp> line 1␤␤»
+2016-08-01T20:29:00.000Z	jnthn		m: say '$x.^lookup("foo")'.chars
+2016-08-01T20:29:00.000Z	camelia		rakudo-moar 5c5ef1: OUTPUT«17␤»
+2016-08-01T20:29:00.000Z	jnthn		Only just and I was generous with whitespace :)
+2016-08-01T20:30:00.000Z	sena_kun		It seems current renderers treat `output` as plain paragraph.
+2016-08-01T20:31:00.000Z	pochi	hoelzro	seems the warning about uninitialized variables can't handle attributes, because the string example doesn't work if it's a string attribute
+2016-08-01T20:32:00.000Z	hoelzro	pochi	ahhh...what's your exact usecase?
+2016-08-01T20:32:00.000Z	AlexDaniel	jnthn	okay, that might work
+2016-08-01T20:32:00.000Z	AlexDaniel	jnthn	thanks
+2016-08-01T20:32:00.000Z	pochi	hoelzro	see a couple of lines above, I asked camelia :-)
+2016-08-01T20:35:00.000Z	hoelzro		ahhh, that makes sense
+2016-08-01T20:35:00.000Z	hoelzro		hmm
+2016-08-01T20:35:00.000Z	hoelzro		I really want to make that work now.
+2016-08-01T20:45:00.000Z	tx0h	zostay	no, it's just a path. that means that every time you request a page the file must get opened, read and closed.
+2016-08-01T20:51:00.000Z	zostay		ah, i see, i misread the code... skipped the template method in Bailador::App
+2016-08-01T20:52:00.000Z	zostay		app.renderer.render('text', ...) ought to do what you want
+2016-08-01T20:54:00.000Z	tx0h		oh, i didn't saw that? let me try. ty.
+2016-08-01T20:56:00.000Z	zostay		np, i haven't used bailador in a while myself, i just read the code on github, but something like what i wrote is possible
+2016-08-01T20:59:00.000Z	* tx0h		nods
+2016-08-01T21:00:00.000Z	tx0h		it works, 2nd argument (3rd) must be an array with the vars for the template
+2016-08-01T21:05:00.000Z	jdv79		was there any word on using private class attrs from a role?
+2016-08-01T21:09:00.000Z	jdv79		at present, and from memory, it seems there is no solution
+2016-08-01T21:11:00.000Z	lizmat		and another Perl 6 Weekly hits the Net: https://p6weekly.wordpress.com/201​6/08/01/2016-31-an-end-of-an-era/
+2016-08-01T21:12:00.000Z	dalek		doc: 5bb9af9 | Altai-man++ | doc/Type/ (2 files):
+2016-08-01T21:12:00.000Z	dalek		doc: AttributeContainer and Proc/Async now compile
+2016-08-01T21:12:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/5bb9af92f8
+2016-08-01T21:34:00.000Z	travis-ci		Doc build passed. Altai-man 'AttributeContainer and Proc/Async now compile'
+2016-08-01T21:34:00.000Z	travis-ci		https://travis-ci.org/perl6/doc/builds/149013626 https://github.com/perl6/doc/com​pare/71caed56380e...5bb9af92f822
+2016-08-01T21:46:00.000Z	jdv79		m: my @a = 1,2,3;my $h = {k => {k2 => @a}}; for $h.values>><k2>.list {.say}
+2016-08-01T21:46:00.000Z	camelia		rakudo-moar 67b654: OUTPUT«[1 2 3]␤»
+2016-08-01T21:46:00.000Z	jdv79		shouldn't that list flatten out there?
+2016-08-01T22:11:00.000Z	gfldex	sena_kun	i tried to implement =begin output and found that the parser eats indentation and newlines
+2016-08-01T22:16:00.000Z	sena_kun	gfldex	you investigated Pod::To::HTML?
+2016-08-01T22:16:00.000Z	gfldex	sena_kun	i'm using Pod::To::BigPage, easier to change because it's basicly just a flat list of multies
+2016-08-01T22:20:00.000Z	gfldex	sena_kun	https://gist.github.com/gfldex/5​f99bea644df1b692d23ce42e0d5c028
+2016-08-01T22:25:00.000Z	sena_kun	gfldex	I see. Maybe I should to magically know it, but still. It looks like every Pod::To-like module has it's own way to parse Pod content, am I wrong? Or parsing already built-in into compiler as a part of language?
+2016-08-01T22:26:00.000Z	sena_kun		Ah, I'm wrong, actually.
+2016-08-01T22:27:00.000Z	gfldex	sena_kun	rakudo does all the parsing of the actual .pod6 file. It outputs the data structure in the gist. There are a few shortcomings that different renderers deal with in different ways.
+2016-08-01T22:27:00.000Z	sena_kun	gfldex	ah, now I understand it. Thanks. Let's see...
+2016-08-01T22:29:00.000Z	gfldex	sena_kun	how nodes are rendered depends on their parent nodes, at times generations deep. util/extract-examples.p6 is a simple example how to deal with that.
+2016-08-01T22:30:00.000Z	gfldex		i tried to build a round-tripping Pod::To::Perl6 for easy testing both of a renderer and the pod6 part of the grammer and got stuck.
+2016-08-01T22:32:00.000Z	sena_kun	gfldex	I'm looking at Grammar.nqp now and it seems we have to extend it a little bit if we want it to treat `=begin output` in a special way.
+2016-08-01T22:33:00.000Z	sena_kun		Since internal parser treats `=begin something` as just plain paragraph, where all spaces and newlines are eaten.
+2016-08-01T22:34:00.000Z	gfldex	sena_kun	if you want to dig into it, Pod::Block could do with a parent attribute and if filename/linenumber could be preserved it would make it much easier for renderers to complain about dupe index entries and other problems.
+2016-08-01T22:38:00.000Z	sena_kun	gfldex	I'm not sure my attempts can give some result, but I'll try to investigate it further. Also, I thought about the examples compilation: we can fix up at least two common-case problems in automatical way using grep. I'll prepare PR a bit leter, I suppose.
+2016-08-01T22:39:00.000Z	sena_kun		*later
+2016-08-01T22:39:00.000Z	sena_kun		It'll take me some time to do a proper review of the diff.
+2016-08-01T22:43:00.000Z	sena_kun		sgrepgrep/sed@
+2016-08-01T23:28:00.000Z	lambd0x		Hi everyone!
+2016-08-01T23:28:00.000Z	jdv79		europe might be sleeping
+2016-08-01T23:28:00.000Z	jdv79		plus its monday
+2016-08-01T23:29:00.000Z	sena_kun	lambd0x	0/
+2016-08-01T23:29:00.000Z	lambd0x	sena_kun	\o
+2016-08-01T23:31:00.000Z	lambd0x		People, how can I declare a continuous extending bidimensional array in perl 6.
+2016-08-01T23:31:00.000Z	dalek		doc: 057226c | dmaestro++ | doc/Type/Int.pod6:
+2016-08-01T23:31:00.000Z	dalek		doc: Clarify description of lsb, msb
+2016-08-01T23:31:00.000Z	dalek		doc:
+2016-08-01T23:31:00.000Z	dalek		doc: Description of msb was slightly misleading, as the indexing referred to is always from the right.
+2016-08-01T23:31:00.000Z	dalek		doc: Clarified both lsb and msb.
+2016-08-01T23:31:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/057226c2aa
+2016-08-01T23:31:00.000Z	dalek		doc: 8405f0b | (Wenzel P. P. Peppmeyer)++ | doc/Type/Int.pod6:
+2016-08-01T23:31:00.000Z	dalek		doc: Merge pull request #779 from dmaestro/clarify_Int_msb_description
+2016-08-01T23:31:00.000Z	dalek		doc:
+2016-08-01T23:31:00.000Z	dalek		doc: Clarify description of lsb, msb
+2016-08-01T23:31:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/8405f0bab5
+2016-08-01T23:32:00.000Z	dalek		doc: d0dfc5a | Altai-man++ | html/js/main.js:
+2016-08-01T23:32:00.000Z	dalek		doc: The TOC animation was removed
+2016-08-01T23:32:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/d0dfc5ab6f
+2016-08-01T23:32:00.000Z	dalek		doc: ce02d33 | (Wenzel P. P. Peppmeyer)++ | html/js/main.js:
+2016-08-01T23:32:00.000Z	dalek		doc: Merge pull request #783 from perl6/animation-has-gone
+2016-08-01T23:32:00.000Z	dalek		doc:
+2016-08-01T23:32:00.000Z	dalek		doc: The TOC animation was removed
+2016-08-01T23:32:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/ce02d3374b
+2016-08-01T23:33:00.000Z	lambd0x		Is there a way to do it? E.g. my @array; is a single-dimensional array that's continuous extending..
+2016-08-01T23:34:00.000Z	gfldex		m: my @a[*;*]
+2016-08-01T23:34:00.000Z	camelia		rakudo-moar e411e5: OUTPUT«Jagged array shapes not yet implemented. Sorry. ␤  in block <unit> at <tmp> line 1␤␤»
+2016-08-01T23:35:00.000Z	gfldex	lambd0x	^^^
+2016-08-01T23:36:00.000Z	gfldex		m: my @a; @a[1;1] = 10; dd @a;
+2016-08-01T23:36:00.000Z	camelia		rakudo-moar e411e5: OUTPUT«Array @a = [Any, [Any, 10]]␤»
+2016-08-01T23:36:00.000Z	gfldex		that means you can use multi dim arrays but there is no constraint on the dimensions. If you need that you will have to implement that by hand.
+2016-08-01T23:37:00.000Z	gfldex		m: my @a; @a[1;1] = 10; dd @a.pairs;
+2016-08-01T23:37:00.000Z	camelia		rakudo-moar e411e5: OUTPUT«(0 => Any, 1 => $[Any, 10]).Seq␤»
+2016-08-01T23:37:00.000Z	gfldex		also, .pairs and a few other methods don't do what they should.
+2016-08-01T23:38:00.000Z	gfldex		m: my @a; @a[1;1] = 10; dd @a.elems;
+2016-08-01T23:38:00.000Z	camelia		rakudo-moar e411e5: OUTPUT«2␤»
+2016-08-01T23:44:00.000Z	lambd0x	gfldex	so this is really a feature that still needs to be implemented.. wow
+2016-08-01T23:45:00.000Z	lambd0x		Well, at least I can use a statically defined multidimensional array at will. That might be sufficient for the time being.
+2016-08-01T23:46:00.000Z	lambd0x	gfldex	thanks for answering

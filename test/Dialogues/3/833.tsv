@@ -1,0 +1,6 @@
+2007-01-01T05:40:00.000Z	marelo		i don't think it's in the sbin.... but i might be wrong
+2007-01-01T05:40:00.000Z	marelo		after that you can just /patch/to/apache2/apache2 start
+2007-01-01T05:41:00.000Z	marelo		or put /path/to/apache2/ in your system PATH and just call apache2 start
+2007-01-01T05:41:00.000Z	clouseau__	marelo	normally I'd do which apache2 to find it, but that returns nothing
+2007-01-01T05:42:00.000Z	marelo		i've just installed unreal tournament in my laptop (running kubuntu) but the game is too slow... what could the problem be?
+2007-01-01T05:43:00.000Z	clouseau__	marelo	I only have a shell. How do I install the desktop environment?

@@ -1,0 +1,17 @@
+2007-01-01T02:03:00.000Z	awilcox		When I did sudo /etc/init.d/kdm stop and then startx from the command line, Xorg caught sig11
+2007-01-01T02:03:00.000Z	arrenlex	awilcox	What's the output of ls -ld ~ /tmp ?
+2007-01-01T02:15:00.000Z	arrenlex	awilcox	still curious: What's the output of ls -ld ~ /tmp ?
+2007-01-01T02:16:00.000Z	awilcox	arrenlex	I said already, it never got the /tmp mount point, stupid setup didn't know it WAS to mount at /tmp
+2007-01-01T02:16:00.000Z	arrenlex	awilcox	So you're trying to start X without a /tmp ?
+2007-01-01T02:16:00.000Z	awilcox	arrenlex	no ti's on /
+2007-01-01T02:16:00.000Z	awilcox		s/ti/it/
+2007-01-01T02:16:00.000Z	arrenlex	awilcox	What's on /?
+2007-01-01T02:16:00.000Z	awilcox		the / mountpoint, /dev/hda1, contains the /tmp folder
+2007-01-01T02:16:00.000Z	arrenlex	awilcox	So you do have a /tmp.
+2007-01-01T02:17:00.000Z	awilcox	arrenlex	yes, just not a separate partition
+2007-01-01T02:17:00.000Z	arrenlex	awilcox	So tell me what that command prints.
+2007-01-01T02:17:00.000Z	arrenlex	awilcox	Yes.
+2007-01-01T02:18:00.000Z	awilcox	arrenlex	drwxrwxr-x 10 jwilcox jwilcox 4096 2006-12-31 19:08 /home/jwilcox
+2007-01-01T02:18:00.000Z	awilcox	arrenlex	drwxrwxrwt 12 root   root   1024 2006-12-31 19:04 /tmp
+2007-01-01T02:19:00.000Z	arrenlex	awilcox	Everything looks fine. That's not the problem thenl sorry to bother you.
+2007-01-01T02:19:00.000Z	awilcox	arrenlex	not a bother

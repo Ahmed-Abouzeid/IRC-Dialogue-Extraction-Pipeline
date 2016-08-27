@@ -1,0 +1,34 @@
+2007-01-01T08:03:00.000Z	arrenlex	Marelo	what's the output of glxinfo | grep ender?
+2007-01-01T08:03:00.000Z	Marelo	arrenlex	just a minute
+2007-01-01T08:05:00.000Z	Marelo	arrenlex	directe rendering: no; OpenGL render string: Mesa X11
+2007-01-01T08:06:00.000Z	arrenlex	Marelo	direct rendering: no indicates to me you don't have 3D acceleration.
+2007-01-01T08:06:00.000Z	arrenlex	Marelo	That's not exactly what it says, but you can't have 3D accel without direct rendering.
+2007-01-01T08:06:00.000Z	Marelo	arrenlex	but my card have it, doesn't it? its a Intel i915
+2007-01-01T08:07:00.000Z	Marelo		i915GM/GMS
+2007-01-01T08:07:00.000Z	arrenlex	Marelo	and you have xserver-xorg-video-i810 installed?
+2007-01-01T08:08:00.000Z	Marelo	arrenlex	yes
+2007-01-01T08:08:00.000Z	arrenlex	Marelo	And you're not running XGL or something like that? Just plain old X?
+2007-01-01T08:08:00.000Z	Marelo	arrenlex	well, i think so. just kde
+2007-01-01T08:09:00.000Z	arrenlex	Marelo	And what's the output of: cat /etc/X11/xorg.conf | grep i810 | wc -l
+2007-01-01T08:09:00.000Z	arrenlex	Marelo	Should be a number.
+2007-01-01T08:10:00.000Z	Marelo	arrenlex	the result is 1
+2007-01-01T08:10:00.000Z	arrenlex	Marelo	Okay. Pastebin your /var/log/Xorg.0.log
+2007-01-01T08:13:00.000Z	arrenlex	Marelo	Also, it would be nice if you pastebin your /etc/X11/xorg.conf just in case
+2007-01-01T08:14:00.000Z	Marelo	arrenlex	http://paste.ubuntu-nl.org/136/
+2007-01-01T08:15:00.000Z	Marelo	arrenlex	http://paste.ubuntu-nl.org/138/  <-- xorg.conf
+2007-01-01T08:15:00.000Z	Marelo	arrenlex	give some seconds, will restar irc
+2007-01-01T08:57:00.000Z	Marelo	arrenlex	are you there?
+2007-01-01T08:57:00.000Z	arrenlex	Marelo	Yessir. But I told you, I'm out of ideas for you. = /
+2007-01-01T08:58:00.000Z	Marelo	arrenlex	I know, i know, i kinda solved the problem. hehehe let me explain: i think the problem was in the MESA package installed in my kubuntu, it was the swraster (software rendering) that's why the game was too slow
+2007-01-01T08:59:00.000Z	arrenlex	Marelo	Yes, I told you, you didn't have 3D acceleration. I was confused as to why.
+2007-01-01T08:59:00.000Z	Marelo	arrenlex	so i uninstalled it and installed the mesa direct rendering, or something like that
+2007-01-01T08:59:00.000Z	arrenlex	Marelo	That has to be the vaguest description ever, but I'm glad you fixed it. xD
+2007-01-01T09:00:00.000Z	Marelo	arrenlex	but now the game is ULTRA FAST, unplayable, even the game clock is fast
+2007-01-01T09:00:00.000Z	arrenlex	Marelo	LOL XD
+2007-01-01T09:00:00.000Z	arrenlex	Marelo	Is this a game you're running with wine?
+2007-01-01T09:00:00.000Z	Marelo	arrenlex	it's really really fast, like fast fowarding a tape hehehe
+2007-01-01T09:00:00.000Z	Marelo	arrenlex	no! the game is native
+2007-01-01T09:01:00.000Z	arrenlex	Marelo	What game is this?
+2007-01-01T09:01:00.000Z	Marelo	arrenlex	unreal tournament
+2007-01-01T09:02:00.000Z	arrenlex	Marelo	A quick google search found a thread on the ubuntu forums where this problem was discussed http://www.ubuntuforums.org/showthread.php?t=214088&page=1
+2007-01-01T09:02:00.000Z	arrenlex	Marelo	Maybe that'll help... good luck!

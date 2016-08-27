@@ -1,0 +1,4 @@
+2007-01-01T02:01:00.000Z	superkirbyartist		I am in bad situation: whenever I start my computer, beryl-manager loads and freezes system.
+2007-01-01T02:01:00.000Z	arrenlex	superkirbyartist	Boot into recovery mode and remove the package using the command line.
+2007-01-01T02:02:00.000Z	superkirbyartist	arrenlex	That can help me for #2, but how do I make aiglx load?
+2007-01-01T02:02:00.000Z	arrenlex	superkirbyartist	I'm not even quite sure what AIGLX /is/, so don't ask me. :)

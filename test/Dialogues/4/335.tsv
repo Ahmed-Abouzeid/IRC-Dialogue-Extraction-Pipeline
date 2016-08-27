@@ -1,0 +1,15 @@
+2007-01-01T03:28:00.000Z	Dicander		When I tried to install it using apt I got the message mozilla-dev has no release candidate and they suggested that I install libnspr-dev instead. I did, but the error remained. Does anyone know what I might try?
+2007-01-01T03:28:00.000Z	sukarn	Dicander	type in a terminal - sudo apt-get install mozilla-dev
+2007-01-01T03:30:00.000Z	sukarn	Dicander	do you have all the repos enabled?
+2007-01-01T03:31:00.000Z	Dicander	sukarn	I tried that and got: The package is not available but another package refers to it. This package might replace it: libnspr-dev. Mozilla-dev has no release candidate (rough translation from the actual Swedish messages i got)
+2007-01-01T03:32:00.000Z	sukarn		can anyone help me with what I said a while ago? -
+2007-01-01T03:32:00.000Z	sukarn		can someone tell me how to build raid arrays (mdadm)? I have a single hard drive (80 GB) from weston digital. I am using 7.04 (testing), and there seems to be some problem with raid arrays in mdadm, causing initramfs-tools to fall back to emergency procedures. while i am able to boot with these kernels, the boot process is very slow, login takes a lot of time, and hard drive activity causes a lot of cpu usage
+2007-01-01T03:33:00.000Z	Dicander	sukarn	No I haven't enabled any non-default repos. How do I do that?
+2007-01-01T03:34:00.000Z	sukarn	Dicander	the package is in the universe repositories
+2007-01-01T03:34:00.000Z	sukarn	Dicander	type in a terminal - gksudo gedit /etc/apt/sources.list
+2007-01-01T03:35:00.000Z	sukarn	Dicander	then uncomment (remove #) the lines that say universe
+2007-01-01T03:35:00.000Z	Dicander	sukarn	Thanks. I'll try that
+2007-01-01T03:36:00.000Z	sukarn	Dicander	you'll need to do a sudo apt-get update before you can inatall mozilla-dev
+2007-01-01T03:54:00.000Z	Dicander	sukarn	It still does not work. It says mozilla-dev has no release candidate.
+2007-01-01T03:54:00.000Z	Dicander		I suppose I could just download it and install it myself.
+2007-01-01T03:55:00.000Z	sukarn	Dicander	you'll need to do a sudo apt-get update before you can inatall mozilla-dev

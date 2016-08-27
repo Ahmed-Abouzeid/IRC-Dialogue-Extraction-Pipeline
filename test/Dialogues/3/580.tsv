@@ -1,0 +1,15 @@
+2007-01-01T10:16:00.000Z	jasin		i'm a student so I have tohave a working word processer and abi-word seems to be the best in linux but it still dont work as good as word 2003, so i'll probably have to run vista in a separate system.
+2007-01-01T10:17:00.000Z	BHSPitMonkey	jasin	does OOo not do it for you?
+2007-01-01T10:18:00.000Z	jasin		BHsp, it is, I use abiword
+2007-01-01T10:18:00.000Z	BHSPitMonkey	jasin	arrenlex's question... so true
+2007-01-01T10:20:00.000Z	BHSPitMonkey	jasin	even beginning to compare OOo to vista as a resource hog is laughable
+2007-01-01T11:03:00.000Z	jasin		I have partition magic on a boot disk, runs frm dos, it works fine for creating linux paritition, except for it limiting you to 2 gig swap partitions.
+2007-01-01T11:03:00.000Z	BHSPitMonkey	jasin	why would you ever need anything bigger????
+2007-01-01T11:04:00.000Z	jasin		BHsp, swap shoudl be 2 times total memory installed, thats a standard rule of thumb.
+2007-01-01T11:04:00.000Z	BHSPitMonkey	jasin	that's not applicable anymore.
+2007-01-01T11:05:00.000Z	jasin		if you want to swap all your memory or half of when you run out yes it does.
+2007-01-01T11:05:00.000Z	BHSPitMonkey	jasin	a PC with 2GB of RAM, for example, doesn't really need a swap partition. (even though ubuntu requires one, I hear)
+2007-01-01T11:05:00.000Z	jasin		BHsp, depends on what one is doing with that system.
+2007-01-01T11:06:00.000Z	BHSPitMonkey	jasin	if you're doing tasks which require over 2GB of ram, in that case, swap isn't going to cover it.
+2007-01-01T11:06:00.000Z	jasin		I have 2 gigs and the system nevrr usses the swap, btu i dont really do very intensive things.
+2007-01-01T11:07:00.000Z	jasin		BHSp, thats why linux only runs resources out of ram when their used.

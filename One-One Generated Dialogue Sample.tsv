@@ -1,0 +1,15 @@
+2005-01-10T11:32:00.000Z	dcstimm		will SMP be enabled in the next version of the livecd?
+2005-01-10T11:32:00.000Z	fabbione	dcstimm	unlikely
+2005-01-10T11:32:00.000Z	dcstimm	fabbione	why not?
+2005-01-10T11:32:00.000Z	fabbione		because SMP doesn't always work on UP machines
+2005-01-10T11:32:00.000Z	dcstimm	fabbione	it should detect it
+2005-01-10T11:33:00.000Z	fabbione		it would reduce compatibility
+2005-01-10T11:33:00.000Z	dcstimm	fabbione	it should boot the kernel it needs, or give me the option
+2005-01-10T11:33:00.000Z	dcstimm	fabbione	how so?
+2005-01-10T11:33:00.000Z	fabbione	dcstimm	an option would be more appropriate. It is impossible for the bootloader to detect SMP/UP
+2005-01-10T11:34:00.000Z	fabbione	dcstimm	because not all the hardware is designed with proper specifications
+2005-01-10T11:34:00.000Z	dcstimm	fabbione	true
+2005-01-10T11:34:00.000Z	dcstimm	fabbione	it should still have it
+2005-01-10T11:34:00.000Z	dcstimm		the option
+2005-01-10T11:34:00.000Z	fabbione	dcstimm	you should file a wishlist bug against the live cd
+2005-01-10T11:35:00.000Z	fabbione	dcstimm	but the only problem i see in the operation is space wise

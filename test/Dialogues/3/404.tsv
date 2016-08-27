@@ -1,0 +1,4 @@
+2007-01-01T10:34:00.000Z	VerdRousseau		I have a .deb file and I want to install it, I double click it but says cant install because of permissions; how do I do this as root?
+2007-01-01T10:35:00.000Z	fr500__	VerdRousseau	it should try to escalate premissions automatically, anyway gksudo gdebi debfile.deb
+2007-01-01T10:47:00.000Z	VerdRousseau		Anyone know where to find gtkwifi?
+2007-01-01T10:47:00.000Z	fr500__	VerdRousseau	i guess you gotta add it to the panel, right click the panel and add it, should try networkmanager tho

@@ -1,0 +1,13 @@
+2007-01-01T11:16:00.000Z	tonyyarusso	compengi	I'm not sure I understand what you mean.
+2007-01-01T11:17:00.000Z	compengi	tonyyarusso	i want to send files using terminal from my linux pc to my shell, i had used scp for the backwards process. can it be done the other way using scp?
+2007-01-01T11:18:00.000Z	tonyyarusso	compengi	sure, if you have the user and IP of the other machine, and it has an ssh server installed
+2007-01-01T11:19:00.000Z	compengi	tonyyarusso	i used scp like this. scp user@shell.machine.here:/folder/here /to/my/directory/
+2007-01-01T11:20:00.000Z	compengi	tonyyarusso	and that was copying process
+2007-01-01T11:21:00.000Z	compengi	tonyyarusso	and now i want to copy from my pc to the shell machine
+2007-01-01T11:21:00.000Z	tonyyarusso	compengi	So the other way would be scp /to/my/directory/ user@shell.machine.here:/folder/here/
+2007-01-01T11:21:00.000Z	compengi	tonyyarusso	okay let me try it then
+2007-01-01T11:25:00.000Z	compengi	tonyyarusso	thanks alot, it worked :D
+2007-01-01T11:36:00.000Z	compengi	tonyyarusso	could tell me please how to delete a dir from the ssh?
+2007-01-01T11:37:00.000Z	tonyyarusso	compengi	'rmdir' is the command
+2007-01-01T11:37:00.000Z	compengi	tonyyarusso	it says directory not empty
+2007-01-01T11:38:00.000Z	tonyyarusso	compengi	there's an option in the man page if you want to delete a non-empty directory

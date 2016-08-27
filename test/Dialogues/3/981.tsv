@@ -1,0 +1,39 @@
+2007-01-01T05:17:00.000Z	jasin	nn531	you need an mp3 lib, or easier, just install vlc :p
+2007-01-01T05:17:00.000Z	nn531		k  becasue when I do xmmc it doesnt find any packages
+2007-01-01T05:18:00.000Z	jasin	nn531	use the command sudo apt-get install vlc
+2007-01-01T05:18:00.000Z	nn531		and that's really starting to get annoying
+2007-01-01T05:18:00.000Z	jasin	nn531	vlc is a media player, it'll do mp3s
+2007-01-01T05:18:00.000Z	nn531	jasin	couldnt find vlc
+2007-01-01T05:18:00.000Z	jasin	nn531	did you type the command I gave you?
+2007-01-01T05:18:00.000Z	nn531		yeah
+2007-01-01T05:19:00.000Z	jasin	nn531	here's more specific instructions: http://www.videolan.org/vlc/download-debian.html
+2007-01-01T05:19:00.000Z	jasin	nn531	do whats stated on that page
+2007-01-01T05:32:00.000Z	jasin		kind of off topic but did any see that stuff about that broncos player? so sad
+2007-01-01T05:33:00.000Z	nn531	jasin	what broncos player??
+2007-01-01T05:34:00.000Z	jasin		Denver Broncos cornerback Darrent Williams
+2007-01-01T05:34:00.000Z	jasin		he was shot to death, randomly.
+2007-01-01T05:44:00.000Z	jasin	nn531	like I told you, install vlc it'll do mp3 playback
+2007-01-01T05:44:00.000Z	jasin	nn531	the page I gave you has instructions on installing it
+2007-01-01T05:44:00.000Z	nn531	jasin	thepage wouldntwork for me
+2007-01-01T05:44:00.000Z	nn531	jasin	I cant view it correctly
+2007-01-01T05:44:00.000Z	jasin	nn531	what wouldnt work? tell me
+2007-01-01T05:45:00.000Z	nn531	jasin	hold on let me bringit up again
+2007-01-01T05:46:00.000Z	nn531	jasin	it wont let me view the entire page, I get to For a normal install, do: then I cant go down anyfurther
+2007-01-01T05:46:00.000Z	jasin	nn531	use the instructions listed on the vlc ubuntu page not the debian, http://www.videolan.org/vlc/download-ubuntu.html
+2007-01-01T05:47:00.000Z	nn531	jasin	k, I was wondering why you gave me the debian page
+2007-01-01T05:47:00.000Z	jasin	nn531	the instructions are this: 1. sudo apt-get update 2. sudo apt-get install vlc vlc-plugin-esd 3. sudo apt-get install libdvdcss2
+2007-01-01T05:47:00.000Z	nn531		jasin:i cant update, not connected to the internet, dial up wont work with ubuntu
+2007-01-01T05:48:00.000Z	jasin	nn531	well you'll have to go online to install mp3 support, there is no mp3 support natively
+2007-01-01T05:48:00.000Z	nn531		k
+2007-01-01T05:49:00.000Z	jasin	nn531	vlc is just onhe player that supports mp3
+2007-01-01T05:49:00.000Z	jasin	nn531	vlc is just one player that supports mp3
+2007-01-01T05:49:00.000Z	nn531	jasin	I did manage to install libdvdcss2 whatever
+2007-01-01T05:49:00.000Z	jasin	nn531	one of many
+2007-01-01T05:49:00.000Z	jasin	nn531	how? you said you were not online
+2007-01-01T05:49:00.000Z	nn531		i used my external hard drive
+2007-01-01T05:49:00.000Z	jasin	nn531	btw, thats the lib for dvd playback not mp3
+2007-01-01T05:50:00.000Z	jasin		stormx, if they have the libraries installed, yes.
+2007-01-01T05:51:00.000Z	jasin		stromx, umm no, you need the mp3 library to playback mp3s
+2007-01-01T05:51:00.000Z	jasin		stromx, no way around that
+2007-01-01T05:51:00.000Z	nn531	jasin	i'll wait till I have my wireless later tonight
+2007-01-01T05:51:00.000Z	nn531	jasin	& xtknight: thanks alot

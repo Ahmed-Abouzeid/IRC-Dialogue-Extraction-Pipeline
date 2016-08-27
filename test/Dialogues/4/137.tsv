@@ -1,0 +1,56 @@
+2007-01-01T11:03:00.000Z	phr34ck		is there a way to save all currently installed packages into an external or something ?
+2007-01-01T11:03:00.000Z	fritsch	phr34ck	you think as kind of backup?
+2007-01-01T11:03:00.000Z	phr34ck	fritsch	yes
+2007-01-01T11:03:00.000Z	fritsch	phr34ck	i would suggest you to use partimage
+2007-01-01T11:03:00.000Z	phr34ck		because I downloaded so many updates, and I don't want to do that each time I install Ubuntu.
+2007-01-01T11:04:00.000Z	fritsch	phr34ck	this save your whole partition, tars it and here you go
+2007-01-01T11:04:00.000Z	phr34ck	fritsch	will give it a try thanks.
+2007-01-01T11:05:00.000Z	fritsch	phr34ck	be careful to save the image to another partition
+2007-01-01T11:05:00.000Z	fritsch	phr34ck	you cannot backup a partition and write the backup to it
+2007-01-01T11:05:00.000Z	phr34ck	fritsch	sure.
+2007-01-01T11:05:00.000Z	phr34ck		First I have to search for the software ;p
+2007-01-01T11:05:00.000Z	fritsch	phr34ck	sudo apt-get install partimage
+2007-01-01T11:05:00.000Z	phr34ck		Thanks.
+2007-01-01T11:07:00.000Z	fritsch	phr34ck	wrong proxy?
+2007-01-01T11:08:00.000Z	phr34ck	fritsch	I want to ask you. How can I permentaly change the mac addres?
+2007-01-01T11:08:00.000Z	fritsch	phr34ck	permanent, also when your computer is poered off
+2007-01-01T11:08:00.000Z	phr34ck		each time I boot Ubuntu, I go to change the mac address .. it's a pain in the behind.
+2007-01-01T11:08:00.000Z	fritsch	phr34ck	no go (for easy)
+2007-01-01T11:08:00.000Z	fritsch	phr34ck	but you could run a random mac change script
+2007-01-01T11:09:00.000Z	fritsch	phr34ck	just install macchanger
+2007-01-01T11:09:00.000Z	phr34ck	fritsch	Do you think it will be easy to create a script and run it at boot ?
+2007-01-01T11:09:00.000Z	fritsch	phr34ck	very easy
+2007-01-01T11:09:00.000Z	fritsch	phr34ck	sudo apt-get install macchanger
+2007-01-01T11:09:00.000Z	fritsch	phr34ck	after that just look over the readme
+2007-01-01T11:10:00.000Z	phr34ck	fritsch	thanks a lot.
+2007-01-01T11:10:00.000Z	fritsch	phr34ck	no problem
+2007-01-01T11:10:00.000Z	phr34ck	fritsch	partimage will save all these packages, yes ?
+2007-01-01T11:10:00.000Z	fritsch	phr34ck	it will same your partition
+2007-01-01T11:10:00.000Z	fritsch	phr34ck	as an image
+2007-01-01T11:11:00.000Z	phr34ck		So lets say I have formatted my computer, how can I restore it?
+2007-01-01T11:11:00.000Z	fritsch	phr34ck	you just want to save the downloaded pacakges?
+2007-01-01T11:11:00.000Z	fritsch	phr34ck	you boot with lets say knoppix (or something else)
+2007-01-01T11:11:00.000Z	phr34ck	fritsch	yeah something like that.
+2007-01-01T11:11:00.000Z	fritsch	phr34ck	then you run partimage an just play your old image in
+2007-01-01T11:11:00.000Z	phr34ck		I don't want that to happen when I install ubuntu ...
+2007-01-01T11:11:00.000Z	fritsch	phr34ck	some packages are in /var/cache/apt/archives/
+2007-01-01T11:12:00.000Z	fritsch	phr34ck	but i do not think just saving them ist sufficant
+2007-01-01T11:12:00.000Z	fritsch	phr34ck	because having the packages is not a mirror itself (a packages mirror)
+2007-01-01T11:13:00.000Z	phr34ck	fritsch	form where I can launch those 2 programs you gave me?
+2007-01-01T11:13:00.000Z	fritsch	phr34ck	just open a terminal
+2007-01-01T11:13:00.000Z	fritsch	phr34ck	sudo partimage
+2007-01-01T11:13:00.000Z	fritsch	phr34ck	but, one last time, be very careful
+2007-01-01T11:13:00.000Z	phr34ck	fritsch	will do mate.
+2007-01-01T11:17:00.000Z	fritsch	phr34ck	an apt proxy you could also install
+2007-01-01T11:17:00.000Z	phr34ck	fritsch	I'm looking for something that will do my work at boot time. Like each time I want to change the mac-address and that happens each time I want to connect to the internet, I do the following:
+2007-01-01T11:18:00.000Z	phr34ck		I just want these 3 steps to be done at boot time.
+2007-01-01T11:20:00.000Z	fritsch	phr34ck	just a script like this
+2007-01-01T11:20:00.000Z	fritsch	phr34ck	#!/bin/sh
+2007-01-01T11:20:00.000Z	fritsch	phr34ck	ifconfig eth0 down
+2007-01-01T11:21:00.000Z	fritsch	phr34ck	macchanger eth0 YOUR MAC
+2007-01-01T11:21:00.000Z	fritsch	phr34ck	thats all
+2007-01-01T11:21:00.000Z	phr34ck	fritsch	interesting.
+2007-01-01T11:21:00.000Z	phr34ck		Do you know how I can configure my boot >?
+2007-01-01T11:21:00.000Z	fritsch	phr34ck	easiest way is:
+2007-01-01T11:21:00.000Z	phr34ck		Like Ubuntu does some stuff that I don't need bluetooth and raid and stuff like that
+2007-01-01T11:22:00.000Z	fritsch	phr34ck	just append these lines to /etc/init.d/bootmisc.sh

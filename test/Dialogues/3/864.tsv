@@ -1,0 +1,7 @@
+2007-01-01T08:30:00.000Z	Lynoure	mino789456	I know almost nothing about the non-free driver, so if your matter is with that, perhaps someone else can, but we have one of those cards here and it should work reasonably well with the open source driver as well.
+2007-01-01T08:35:00.000Z	mino789456	Lynoure	my problem is that it worked until update, non-free driver fglrx and I try 8.28.8driver from ATI website too, and of course I try open-source, but non of them worked with 3D acceleration :(
+2007-01-01T08:38:00.000Z	mino789456	Lynoure	my problem is that it worked until update, non-free driver fglrx and I try 8.28.8driver from ATI website too, and of course I try open-source, but non of them worked with 3D acceleration :(
+2007-01-01T08:40:00.000Z	mino789456		and I dont know what version of Ubuntu, but I installed Dapper, how could I know what version of Ubuntu I have?
+2007-01-01T08:42:00.000Z	Lynoure	mino789456	You updated to edgy? I had heard of that happening and did not do it (that being one of the reasons). Sorry, maybe someone else knows what to do
+2007-01-01T08:45:00.000Z	mino789456	Lynoure	no its Dapper, 6.06.1 LTS, so how can I install the FOSS driver, remove fglrx and install xserver-xorg-video-ati, as arrenlex advice me?
+2007-01-01T08:45:00.000Z	Lynoure	mino789456	arrenlex usually gives good advice, so go for it.

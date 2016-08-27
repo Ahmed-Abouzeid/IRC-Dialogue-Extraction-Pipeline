@@ -1,0 +1,12 @@
+2007-01-01T12:41:00.000Z	Boknoy		hello how to view proxy squid?so i could test my proxy squid in winxp browser if its workin or not
+2007-01-01T12:42:00.000Z	jame1	Boknoy	you have to set the machine running the proxy as the proxy server on the winxp machine
+2007-01-01T12:42:00.000Z	Boknoy	jame1	its different box sir
+2007-01-01T12:43:00.000Z	Boknoy		jame1:i just want to test it in windowsxp
+2007-01-01T12:43:00.000Z	jame1	Boknoy	what browser are you using?
+2007-01-01T12:43:00.000Z	Boknoy		jame1:firefox in windowsxp
+2007-01-01T12:43:00.000Z	Boknoy		jame1:and IE
+2007-01-01T12:44:00.000Z	jame1	Boknoy	well in Firefox, open the options dialog and click Connection Settings. There you can specify a proxy server
+2007-01-01T12:44:00.000Z	jame1	Boknoy	then you just type in the IP address of the machine running proxy and all requests will be routed through it instead
+2007-01-01T12:46:00.000Z	Boknoy		jame1:i dont know my proxy in ubuntu =/
+2007-01-01T12:47:00.000Z	Boknoy		jame1:how to know and view the proxy and port?
+2007-01-01T12:47:00.000Z	jame1	Boknoy	I've PM'ed you

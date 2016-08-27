@@ -1,0 +1,35 @@
+2004-08-13T17:18:00.000Z	rach		logbot is on the job :-)
+2004-08-13T17:18:00.000Z	chris		yep
+2004-08-13T17:18:00.000Z	rach		thanks chris that's ripper
+2004-08-13T17:19:00.000Z	chris		ill just rewrite timebot.pl and put it up on koha.org so that the logs are viewable
+2004-08-13T17:22:00.000Z	rach		cool
+2004-08-13T17:38:00.000Z	chris		http://koha.org/cgi-bin/logs.pl hows that look?
+2004-08-13T17:41:00.000Z	rach		ugly but good :-)
+2004-08-13T17:41:00.000Z	chris		:), we can tweak the html if we want, but it does seem to be all logging now
+2004-08-13T17:44:00.000Z	rach		cool
+2004-08-13T17:50:00.000Z	ToyKeeper		Yeek!
+2004-08-13T17:50:00.000Z	chris		hehe, bigbrother is watching u, the client or the server?, to use the client u have to start the daemon, then make sure u have marc switched on in system preferences .. go to acquisitions, search on title, choose add new, then u should be at a page that has a z3950 search button on it, if u type an isbn number into the isbn number box on that page, and hit z3950 search, off it will go, oh, in admin/parameters .. you will need to have set up a list of z39.50 servers to use, z3950-daemon-launch.sh is the script to start the daemon, it lives in /usr/local/koha/intranet/scripts/z3950daemon, if /usr/local/koha is where u installed koha
+2004-08-13T05:24:00.000Z	chris	paul	are u about?
+2004-08-13T05:24:00.000Z	paul		yes., g' day
+2004-08-13T05:24:00.000Z	chris		ignore the bot if it messages u, ill fix that
+2004-08-13T05:24:00.000Z	paul		(waiting for a friend, for lunch)
+2004-08-13T05:25:00.000Z	chris		does http://www.koha.org/irc/ work for you now?
+2004-08-13T05:25:00.000Z	paul		yes, http://koha.org/cgi-bin/logs.pl
+2004-08-13T05:25:00.000Z	chris		cool
+2004-08-13T05:25:00.000Z	paul		that was all ?, me i've a question.
+2004-08-13T05:25:00.000Z	chris		fire away
+2004-08-13T05:26:00.000Z	paul		what about changing my status to project admin on sf ?
+2004-08-13T05:26:00.000Z	chris		can do, ill do that now while i remember
+2004-08-13T05:26:00.000Z	paul		ok, if you do it now, i'll add veleda as commiter, and the 2.1.1 will have a new module to print barcodes ;-), (i've read their code, it's clean. really=, )
+2004-08-13T05:27:00.000Z	chris		for the changing language thing .. im working on a nice way so it only shows u the languages that are available in the theme ur in
+2004-08-13T05:27:00.000Z	paul		nice., there's a sub  for this in systempreferences.pl
+2004-08-13T05:27:00.000Z	chris		excellent ill use that :(, :-) even
+2004-08-13T05:28:00.000Z	paul		getalllanguages, it's in C4::Search.pm
+2004-08-13T05:29:00.000Z	chris		try that
+2004-08-13T05:29:00.000Z	paul		(don't ask me why, i'm not the author ;-) ), ok, i leave for lunch. My friend is here.
+2004-08-13T05:29:00.000Z	chris		ahh that might be a different thing, i think thats for the catalogue, ie the language a book is published in, have a good lunch
+2004-08-13T05:30:00.000Z	paul_lunc		no
+2004-08-13T05:30:00.000Z	chris		right .. in that case i might see what calls it and move it out of Search.pm, cos i thought it was for the catalogue since it was in there, put it in C4::Koha instead, since Search.pm will die when the new fast search comes along, anyway, ill talk to you later, and ur now an admin
+2004-08-13T10:06:00.000Z	owen		Hi logbot!
+2004-08-13T10:06:00.000Z	paul		www.koha.org/irc is new., hosted by katipo, hi owen
+2004-08-13T10:08:00.000Z	owen		Hi paul, Will there also be an interface that lets you see logs for each day?, Okay

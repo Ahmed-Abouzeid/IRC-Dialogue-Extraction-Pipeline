@@ -1,0 +1,4 @@
+2007-01-01T03:26:00.000Z	lilly		how do i forcefully unmount a mounted image?
+2007-01-01T03:26:00.000Z	HawkeV	lilly	umount -l /mounted/thingy
+2007-01-01T03:26:00.000Z	HawkeV		that's an ehl, not a one
+2007-01-01T03:26:00.000Z	lilly	HawkeV	ok

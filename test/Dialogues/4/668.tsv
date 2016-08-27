@@ -1,0 +1,42 @@
+2007-01-01T06:28:00.000Z	Marelo		Hello! I've just installed unreal tournament on my laptop but the game is to slow! Even in the menus, the mouse movement... What could the problem be??
+2007-01-01T06:29:00.000Z	xtknight		i think he wants small icons like windows
+2007-01-01T06:29:00.000Z	Marelo	xtknight	how can i set up that? my vid card is a Intel Mobile i915
+2007-01-01T06:31:00.000Z	Marelo	xtknight	how can i set up that? my vid card is a Intel Mobile i915
+2007-01-01T06:32:00.000Z	Marelo	xtknight	well, then, what can I do? the drivers is the latest from ubuntu repository (and they told me here last night that Intel released GPL theirs drivers, so the ubuntu repository version is, in a way, official drivers)
+2007-01-01T06:34:00.000Z	Marelo		Hello! I've just installed unreal tournament on my laptop but the game is to slow! Even in the menus, the mouse movement... What could the problem be??
+2007-01-01T06:40:00.000Z	Marelo	xtknight	thanks. i'm going to have a look
+2007-01-01T06:43:00.000Z	Marelo	xtknight	what case do i fit in? Intel driver for X.org, DRM kernel module or Mesa 3D GL driver? I'm on this page: http://www.intellinuxgraphics.org/download.html
+2007-01-01T06:44:00.000Z	Marelo	xtknight	hehehe so...?
+2007-01-01T06:52:00.000Z	Marelo	xtknight	what could i do in that case, then? am I doomed to not play UT in linux? :(
+2007-01-01T06:53:00.000Z	xtknight	Marelo	i am really not sure, sorry.  consider getting a discrete 3D graphics card
+2007-01-01T06:53:00.000Z	xtknight	Marelo	such as NVIDIA GeForce or ATI Radeon
+2007-01-01T06:53:00.000Z	xtknight		dustrigroove: i believe safe graphics mode is broken on edgy
+2007-01-01T06:54:00.000Z	Marelo	xtknight	sigh... but at the store i bought it, there were customers opinios saying that they played several games just fine... game still newer than UT.
+2007-01-01T06:54:00.000Z	xtknight	Marelo	ok, intel i915 correct?
+2007-01-01T06:54:00.000Z	Marelo	xtknight	actually i used to play UT in a 16 mb video card, win 98, with 128 ram
+2007-01-01T06:54:00.000Z	Marelo	xtknight	yeah, that's right
+2007-01-01T06:56:00.000Z	xtknight	Marelo	i think the included xorg drivers for intel can enable DRI (acceleration) for the i915
+2007-01-01T06:56:00.000Z	Marelo	xtknight	and how can i do it. the last drivers from repository are already installed
+2007-01-01T06:59:00.000Z	Marelo	xtknight	sorry for bugging you, I can see you are pretty requisited here, but are you look over my issue?
+2007-01-01T07:00:00.000Z	xtknight	Marelo	its ok i need to keep myself busy ;)   sorry i am really not sure how to intel i915 dri off the top of my head
+2007-01-01T07:00:00.000Z	xtknight	Marelo	http://downloadmirror.intel.com/df-support/8211/ENG/relnotes.htm
+2007-01-01T07:01:00.000Z	Marelo	xtknight	thanks. but what distro should i download? there's no debian, nor ubuntu...
+2007-01-01T07:02:00.000Z	xtknight	Marelo	uhhhh gee i have no idea.  type lspci and get the exact model..is it i915GM or something?  it seems like theres some suffix to i915
+2007-01-01T07:03:00.000Z	Marelo	xtknight	Intel Corporation Mobile 915GM/GMS/910GML Express Graphics Controller (rev 04)
+2007-01-01T07:04:00.000Z	xtknight	Marelo	thanks thats what i needed
+2007-01-01T07:04:00.000Z	xtknight	Marelo	try http://dri.freedesktop.org/wiki/Download
+2007-01-01T07:06:00.000Z	Marelo	xtknight	thanks. what you advise a novice like me do? the binarys or the source?
+2007-01-01T07:06:00.000Z	xtknight	Marelo	binary
+2007-01-01T07:09:00.000Z	Marelo	xtknight	my xorg is 7.0, so i can ignore that page you sent me and go straight to the http://dri.freedesktop.org/snapshots/?
+2007-01-01T07:10:00.000Z	xtknight	Marelo	uhh i think so
+2007-01-01T07:12:00.000Z	Marelo	xtknight	i'm downloading http://dri.freedesktop.org/snapshots/i915-20060403-linux.i386.tar.bz2
+2007-01-01T07:13:00.000Z	xtknight	Marelo	i only see xorg 6.9 support, i dont know about xorg 7.0 for intel i'm no familiar with intel cihps
+2007-01-01T07:13:00.000Z	Marelo	xtknight	well, it's expected to have retro-compatibility, no?
+2007-01-01T07:14:00.000Z	xtknight	Marelo	u mean an xorg 6.9 driver will work on 7.0?  sorry, not sure about that
+2007-01-01T07:25:00.000Z	Marelo	xtknight	i downloaded, but in the step it woul compile the drm kernel there was a error
+2007-01-01T07:26:00.000Z	xtknight	Marelo	sudo apt-get install build-essential kernel-headers-`uname -r`....the rest should be listed in the intel docs somewhere
+2007-01-01T07:29:00.000Z	xtknight	Marelo	the i810 driver should work with i915gm and dri...thats about all i know regarding your situation
+2007-01-01T07:29:00.000Z	Marelo	xtknight	it said impossible to find package kernel-headers-2.6.15-27-386
+2007-01-01T07:29:00.000Z	xtknight	Marelo	linux-headers-`uname -r`   sorry
+2007-01-01T07:30:00.000Z	xtknight	Marelo	i'm going AFK for a bit, I'll have to help you later
+2007-01-01T07:31:00.000Z	Marelo	xtknight	ok... :/ thanks for everything!

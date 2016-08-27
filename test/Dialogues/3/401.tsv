@@ -1,0 +1,4 @@
+2007-01-01T01:33:00.000Z	fr500		hello
+2007-01-01T01:33:00.000Z	fr500		how can i make gksudo apps use the same theme as my normal apps
+2007-01-01T01:33:00.000Z	fr500		like gdebi, etherreal, etc
+2007-01-01T01:34:00.000Z	awilcox	fr500	change the theme of the root user, I'm not sure how but it's doable, wait for someone more knowledgeable

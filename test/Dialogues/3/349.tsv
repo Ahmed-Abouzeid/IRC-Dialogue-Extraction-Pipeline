@@ -1,0 +1,6 @@
+2007-01-01T04:29:00.000Z	e\ectro_		for some reason, it takes 40-60 seconds to mount an NFS share
+2007-01-01T04:30:00.000Z	HawkeV	e\ectro_	is portmap running?
+2007-01-01T04:30:00.000Z	HawkeV		/etc/init.d/portmap restart
+2007-01-01T04:31:00.000Z	HawkeV		then remount
+2007-01-01T04:31:00.000Z	HawkeV		portmap isn't necessarily needed with nfs
+2007-01-01T04:31:00.000Z	HawkeV		it does speed things up tho

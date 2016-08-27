@@ -1,0 +1,31 @@
+2007-01-01T04:03:00.000Z	superkirbyartist		Skippy MP3!  I use Xubuntu and gxine to play MP3s and it skips a lot!
+2007-01-01T04:05:00.000Z	Asc	superkirbyartist	'sudo hdparm /dev/hd*' | grep using_dma' and make sure dma is on on all your disks
+2007-01-01T04:06:00.000Z	Asc		but without any of the apostrophes
+2007-01-01T04:06:00.000Z	Asc		including the one after the *
+2007-01-01T04:08:00.000Z	Asc		surfinkid: Is it an external modem, or a winmodem?
+2007-01-01T04:09:00.000Z	superkirbyartist		The grep command IS SLOW.
+2007-01-01T04:10:00.000Z	Asc		surfnkid: Yeah, what ubotu said is probably your best bet.  I could help with an external modem.
+2007-01-01T04:10:00.000Z	Asc	superkirbyartist	it shouldn't be.  That command took me a good fraction of a second to run
+2007-01-01T04:10:00.000Z	superkirbyartist	Asc	I'm talking Pentium MMX 266mhz 2GB HD 172MB RAM
+2007-01-01T04:11:00.000Z	Asc	superkirbyartist	Okay, but still not more than a few seconds probably
+2007-01-01T04:11:00.000Z	superkirbyartist		I ctrl+C it it was slow.
+2007-01-01T04:11:00.000Z	Asc	superkirbyartist	Might be worth checking the spelling. sudo hdparm /dev/hd* | grep using_dma
+2007-01-01T04:13:00.000Z	superkirbyartist		|lastexile| wait
+2007-01-01T04:14:00.000Z	Asc	superkirbyartist	HAve you tried any other players?
+2007-01-01T04:15:00.000Z	superkirbyartist		I'm using dma and still skips with all CPU activity.
+2007-01-01T04:15:00.000Z	Asc	superkirbyartist	just for fun, use the console to run mplayer on one of the files
+2007-01-01T04:16:00.000Z	superkirbyartist		Where can I get madplay?
+2007-01-01T04:16:00.000Z	Asc	superkirbyartist	Could be tricky, we're using different kernels.
+2007-01-01T04:16:00.000Z	superkirbyartist		mplayer?
+2007-01-01T04:17:00.000Z	superkirbyartist	Asc	How do you know?  And where can I get a command line player.
+2007-01-01T04:17:00.000Z	Asc	superkirbyartist	I think it should come with a standard install.  'mplayer filename'
+2007-01-01T04:17:00.000Z	superkirbyartist		mplayer is not a command
+2007-01-01T04:17:00.000Z	Asc	superkirbyartist	I'm using a kernel compiled for 686, which wouldn't work on your hardware.
+2007-01-01T04:18:00.000Z	superkirbyartist		Is one installed already?  Where can I download a small command line player?
+2007-01-01T04:18:00.000Z	Asc	superkirbyartist	Do you have spare disk space to play with?
+2007-01-01T04:18:00.000Z	superkirbyartist		Not vlc, takes long to download.
+2007-01-01T04:18:00.000Z	superkirbyartist	Asc	like 500mb
+2007-01-01T04:18:00.000Z	superkirbyartist		|lastexile| how to obtain it?
+2007-01-01T04:18:00.000Z	Asc	superkirbyartist	madplay is in the repositories.  'sudo apt-get install madplay'
+2007-01-01T04:19:00.000Z	superkirbyartist		Thank you!  I needed a precompiled apt-get mp3 player!
+2007-01-01T04:19:00.000Z	Asc	superkirbyartist	You can also use 'sudo apt-get install mplayer' to get mplayer, but it's a 3.5 MB download.

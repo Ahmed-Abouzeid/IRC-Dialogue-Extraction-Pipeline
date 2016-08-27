@@ -1,0 +1,4 @@
+2007-01-01T02:35:00.000Z	Pickles		I was thinking about setting up a ubuntu fileserver, but the only two options presented in the ubuntu server install were LAMP and DNS. any recomendations?
+2007-01-01T02:36:00.000Z	kitche	Pickles	install LAMP if you wish then install Samba
+2007-01-01T02:38:00.000Z	Pickles		can samba be installed on the desktop version of ubuntu?
+2007-01-01T02:39:00.000Z	kitche	Pickles	yes

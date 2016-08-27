@@ -1,0 +1,4 @@
+2007-01-01T04:44:00.000Z	con-man		how do I kill a process listed in ps -A
+2007-01-01T04:45:00.000Z	Asc	con-man	kill [process number] 
+2007-01-01T04:45:00.000Z	Asc	con-man	If you want to, you can also use 'kill $(prgrep [process name] ' to find and kill all instances of a process name
+2007-01-01T04:46:00.000Z	Asc		with a closing parenthesis though

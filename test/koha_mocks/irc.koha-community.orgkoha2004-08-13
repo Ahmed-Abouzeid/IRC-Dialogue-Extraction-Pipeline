@@ -1,0 +1,473 @@
+
+
+
+
+
+
+
+
+IRC log for #koha, 2004-08-13
+
+
+
+
+
+
+
+
+
+ 
+Channels |
+#koha index |
+Today |
+    
+        
+        
+        Next day → |
+    
+    Search |
+    Google Search
+| Plain-Text
+    | plain, newest first |
+    
+    summary
+
+
+
+
+IRC log for #koha, 2004-08-13
+All times shown according to UTC.
+
+
+
+
+
+Time
+S
+Nick
+Message
+
+
+17:18
+
+rach
+logbot is on the job :-)
+
+
+17:18
+
+chris
+yep
+
+
+17:18
+
+rach
+thanks chris that's ripper
+
+
+17:19
+
+chris
+ill just rewrite timebot.pl and put it up on koha.org so that the logs are viewable
+
+
+17:22
+
+rach
+cool
+
+
+17:38
+
+chris
+http://koha.org/cgi-bin/logs.pl hows that look?
+
+
+17:41
+
+rach
+ugly but good :-)
+
+
+17:41
+
+chris
+:)
+
+
+17:42
+
+chris
+we can tweak the html if we want, but it does seem to be all logging now
+
+
+17:44
+
+rach
+cool
+
+
+17:50
+
+ToyKeeper
+Yeek!
+
+
+17:50
+
+chris
+hehe
+
+
+17:50
+
+chris
+bigbrother is watching u
+
+
+18:27
+
+chris
+the client or the server?
+
+
+18:30
+
+chris
+to use the client u have to start the daemon, then make sure u have marc switched on in system preferences .. go to acquisitions, search on title, choose add new, then u should be at a page that has a z3950 search button on it
+
+
+18:30
+
+chris
+if u type an isbn number into the isbn number box on that page
+
+
+18:30
+
+chris
+and hit z3950 search, off it will go
+
+
+18:31
+
+chris
+oh, in admin/parameters .. you will need to have set up a list of z39.50 servers to use
+
+
+18:31
+
+chris
+z3950-daemon-launch.sh is the script to start the daemon
+
+
+18:32
+
+chris
+it lives in /usr/local/koha/intranet/scripts/z3950daemon
+
+
+18:32
+
+chris
+if /usr/local/koha is where u installed koha
+
+
+05:24
+
+chris
+paul: are u about?
+
+
+05:24
+
+paul
+yes. 
+
+
+05:24
+
+paul
+g' day
+
+
+05:24
+
+chris
+ignore the bot if it messages u, ill fix that
+
+
+05:24
+
+paul
+(waiting for a friend, for lunch)
+
+
+05:25
+
+chris
+does http://www.koha.org/irc/ work for you now?
+
+
+05:25
+
+paul
+yes
+
+
+05:25
+
+paul
+http://koha.org/cgi-bin/logs.pl
+
+
+05:25
+
+chris
+cool
+
+
+05:25
+
+paul
+that was all ?
+
+
+05:25
+
+paul
+me i've a question.
+
+
+05:25
+
+chris
+fire away
+
+
+05:26
+
+paul
+what about changing my status to project admin on sf ?
+
+
+05:26
+
+chris
+can do
+
+
+05:26
+
+chris
+ill do that now while i remember
+
+
+05:26
+
+paul
+ok, if you do it now, i'll add veleda as commiter
+
+
+05:26
+
+paul
+and the 2.1.1 will have a new module to print barcodes ;-)
+
+
+05:26
+
+paul
+(i've read their code, it's clean. really=
+
+
+05:26
+
+paul
+)
+
+
+05:27
+
+chris
+for the changing language thing .. im working on a nice way so it only shows u the languages that are available in the theme ur in
+
+
+05:27
+
+paul
+nice.
+
+
+05:27
+
+paul
+there's a sub  for this in systempreferences.pl
+
+
+05:27
+
+chris
+excellent ill use that :(
+
+
+05:27
+
+chris
+:-) even
+
+
+05:28
+
+paul
+getalllanguages
+
+
+05:29
+
+paul
+it's in C4::Search.pm
+
+
+05:29
+
+chris
+try that
+
+
+05:29
+
+paul
+(don't ask me why, i'm not the author ;-) )
+
+
+05:29
+
+paul
+ok, i leave for lunch. My friend is here.
+
+
+05:29
+
+chris
+ahh that might be a different thing
+
+
+05:29
+
+chris
+i think thats for the catalogue, ie the language a book is published in
+
+
+05:29
+
+chris
+have a good lunch
+
+
+05:30
+
+paul_lunc
+no
+
+
+05:30
+
+chris
+right .. in that case i might see what calls it and move it out of Search.pm
+
+
+05:30
+
+chris
+cos i thought it was for the catalogue since it was in there
+
+
+05:31
+
+chris
+put it in C4::Koha instead
+
+
+05:32
+
+chris
+since Search.pm will die when the new fast search comes along
+
+
+05:32
+
+chris
+anyway, ill talk to you later, and ur now an admin
+
+
+10:06
+
+owen
+Hi logbot!
+
+
+10:06
+
+paul
+www.koha.org/irc is new.
+
+
+10:06
+
+paul
+hosted by katipo
+
+
+10:06
+
+paul
+hi owen
+
+
+10:08
+
+owen
+Hi paul
+
+
+10:08
+
+owen
+Will there also be an interface that lets you see logs for each day?
+
+
+10:10
+
+owen
+Okay
+
+
+
+
+Channels |
+#koha index |
+Today |
+    
+        
+        
+        Next day → |
+    
+    Search |
+    Google Search
+| Plain-Text
+    | plain, newest first |
+    
+    summary
+
+
+Powered by ilbot.
+Any questions ask rangi on #koha on irc.oftc.net
+
+
+
+
+
+
+

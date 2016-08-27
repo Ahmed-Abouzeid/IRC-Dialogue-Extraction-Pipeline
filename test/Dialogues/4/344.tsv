@@ -1,0 +1,54 @@
+2007-01-01T04:53:00.000Z	superkirbyartist		Can someone help me install criawips please?
+2007-01-01T04:53:00.000Z	robtp	superkirbyartist	straight apt-get or synpatic or adept doesnt work?
+2007-01-01T04:53:00.000Z	robtp		!package criawips
+2007-01-01T04:53:00.000Z	superkirbyartist		Apt-get, all manners don't work, robtp :(
+2007-01-01T04:54:00.000Z	robtp		ermm
+2007-01-01T04:54:00.000Z	robtp	superkirbyartist	are you running edgy or dapper?
+2007-01-01T04:54:00.000Z	superkirbyartist		edgy xubuntu robtp
+2007-01-01T04:55:00.000Z	robtp	superkirbyartist	see the messages i sent to you?
+2007-01-01T04:55:00.000Z	superkirbyartist		Npe robtp sorry dialup.
+2007-01-01T04:56:00.000Z	robtp	superkirbyartist	did you enable the unvirse component which criawips is in?
+2007-01-01T04:56:00.000Z	superkirbyartist		Yes.
+2007-01-01T04:56:00.000Z	robtp	superkirbyartist	run synaptic, go to Edit > ok nevermind
+2007-01-01T04:57:00.000Z	superkirbyartist		It says packets defectueux when I apt-get, peeps.
+2007-01-01T04:57:00.000Z	robtp	superkirbyartist	in english does that mean packets lost?
+2007-01-01T04:57:00.000Z	superkirbyartist	robtp	Defective/broken package but earlier there are also dependency problems.
+2007-01-01T04:58:00.000Z	robtp	superkirbyartist	try apt-get dist-upgrade and/or apt-get -f install
+2007-01-01T05:03:00.000Z	robtp	superkirbyartist	did you try the two things i suggested?
+2007-01-01T05:04:00.000Z	superkirbyartist	robtp	I did apt-get -f didn't work.  What was other one?
+2007-01-01T05:04:00.000Z	superkirbyartist		wow = for linux?
+2007-01-01T05:04:00.000Z	robtp	superkirbyartist	its prob not gonna help, but apt-get dist-upgrade
+2007-01-01T05:05:00.000Z	superkirbyartist		No way robtp!  Bandwidth killer!  I'm on dialup!
+2007-01-01T05:06:00.000Z	robtp	superkirbyartist	there are a lot to do?
+2007-01-01T05:06:00.000Z	superkirbyartist		50 MB robtp
+2007-01-01T05:07:00.000Z	robtp	superkirbyartist	it does the same thing when i try to install so, ill see about resolving it here
+2007-01-01T05:07:00.000Z	robtp	superkirbyartist	the package is broken
+2007-01-01T05:08:00.000Z	superkirbyartist	robtp	I need to use madplay for mp3, because this laptop is kinda old.  Please do try to help me install Criawips or lightweight presentation program.
+2007-01-01T05:09:00.000Z	robtp	superkirbyartist	hmmm, you could try the kde one which is pretty lightweight but its gonna pull in a lot of dependecies
+2007-01-01T05:09:00.000Z	robtp	superkirbyartist	openoffice.org impress is a nonstarter?
+2007-01-01T05:09:00.000Z	robtp	superkirbyartist	which means it wont work?
+2007-01-01T05:09:00.000Z	superkirbyartist	robtp	impress uses java.  I need lightweight.
+2007-01-01T05:10:00.000Z	robtp	superkirbyartist	i thought so :(
+2007-01-01T05:13:00.000Z	superkirbyartist	robtp	any luck?
+2007-01-01T05:14:00.000Z	superkirbyartist		robtp?
+2007-01-01T05:14:00.000Z	robtp	superkirbyartist	still going
+2007-01-01T05:14:00.000Z	robtp	superkirbyartist	what kind of presentation are you trying to show?
+2007-01-01T05:15:00.000Z	superkirbyartist	robtp	powerpoint
+2007-01-01T05:16:00.000Z	robtp	superkirbyartist	try installing ppthtml
+2007-01-01T05:16:00.000Z	robtp	superkirbyartist	i think that conversts ppts to html
+2007-01-01T05:16:00.000Z	superkirbyartist	robtp	Yeah, but I can't make nor edit :(
+2007-01-01T05:17:00.000Z	robtp	superkirbyartist	yeah, thats true... it doesnt convert too well either
+2007-01-01T05:18:00.000Z	robtp	superkirbyartist	im not sure, the package may be fixed at some point, but its pretty old
+2007-01-01T05:18:00.000Z	superkirbyartist	robtp	the criawips?
+2007-01-01T05:18:00.000Z	robtp	superkirbyartist	yeah, is dling koffice an option?
+2007-01-01T05:19:00.000Z	superkirbyartist	robtp	if it won't kill my bandwidth... usually xfce supports both gnome and kde fine.
+2007-01-01T05:19:00.000Z	superkirbyartist	robtp	so sudo apt-get install...
+2007-01-01T05:19:00.000Z	robtp	superkirbyartist	if i had to guess id say it would be less than 30mb but i dont really know
+2007-01-01T05:20:00.000Z	superkirbyartist	robtp	package name please?
+2007-01-01T05:20:00.000Z	robtp	superkirbyartist	kpresenter
+2007-01-01T05:21:00.000Z	robtp	superkirbyartist	i just used it to open something and the result was *pretty* ugly
+2007-01-01T05:22:00.000Z	superkirbyartist		Good guess, robtp, I'm on dialup, and it takes 100MB roughly.  robtp: criawips or kpresenter?
+2007-01-01T05:22:00.000Z	robtp	superkirbyartist	ouchhhh it probably pulls in all of kdelibs and a good part of kdebase... i was talking about kpresenter
+2007-01-01T05:22:00.000Z	robtp	superkirbyartist	im not sure i can help you, sorry :( i gotta go work
+2007-01-01T05:23:00.000Z	robtp	superkirbyartist	good luck
+2007-01-01T05:23:00.000Z	superkirbyartist		bye robtp thank you.

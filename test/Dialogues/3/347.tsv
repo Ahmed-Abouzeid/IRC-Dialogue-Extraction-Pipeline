@@ -1,0 +1,3 @@
+2007-01-01T10:55:00.000Z	AidanL		How do I get to root in terminal as I need to get to root in order to make install for ndiswrapper.
+2007-01-01T10:56:00.000Z	doviende	AidanL	sudo make install
+2007-01-01T10:57:00.000Z	AidanL		it tells me no rule to make target 'install'

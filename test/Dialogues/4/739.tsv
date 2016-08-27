@@ -1,0 +1,3 @@
+2007-01-01T07:55:00.000Z	asc__		Is there a program in a defauly install that can translate hex into text?
+2007-01-01T07:56:00.000Z	zcat[1] 	asc__	python asc() will do one character at a time. Not sure what else will do it
+2007-01-01T07:56:00.000Z	asc__		zcat:okay, that should work

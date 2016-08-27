@@ -1,0 +1,450 @@
+2010-01-20T00:24:00.000Z	chris_n2		@wunder 28334
+2010-01-20T00:24:00.000Z	munin	chris_n2	The current temperature in Dunn, North Carolina is 9.6�C (7:18 PM EST on January 19, 2010). Conditions: Clear. Humidity: 46%. Dew Point: -2.0�C. Windchill: 10.0�C. Pressure: 29.56 in 1000.9 hPa (Falling).
+2010-01-20T01:13:00.000Z	chris		owen++
+2010-01-20T02:10:00.000Z	chris_n2		owen++
+2010-01-20T02:55:00.000Z	chris		git log --decorate --graph --oneline
+2010-01-20T03:00:00.000Z	chris_n2		fatal: unrecognized argument: --oneline
+2010-01-20T03:01:00.000Z	chris		ahh old version of git
+2010-01-20T03:01:00.000Z	chris_n2		git version 1.6.0.4
+2010-01-20T03:02:00.000Z	chris		--pretty=oneline
+2010-01-20T03:03:00.000Z	chris_n2		that works, --oneline works in git version 1.6.3.3, neat
+2010-01-20T03:04:00.000Z	chris		yeah handy
+2010-01-20T03:04:00.000Z	chris_n2		did you learn that at a seminar today?
+2010-01-20T03:04:00.000Z	chris		at a git wrangling one right now, by scott chacon (who is a guru)
+2010-01-20T03:05:00.000Z	chris_n2		cool
+2010-01-20T03:05:00.000Z	chris		talking about rebasing now, and affirming that koha does it the right way, so thats nice, (ie we should rebase before sending patches)
+2010-01-20T03:07:00.000Z	chris_n2		nice to know that
+2010-01-20T03:11:00.000Z	chris		wow, you can do some scarily powerful stuff
+2010-01-20T03:17:00.000Z	* chris_n2		grips the edge of his seat with excitement :-)
+2010-01-20T03:20:00.000Z	chris		looking at all the different merge tools, now we are talking about gitattributes, how you can use it to diff binary files
+2010-01-20T03:22:00.000Z	chris_n2		that's one session I'd love to be at
+2010-01-20T03:22:00.000Z	chris		its all being recorded, ill post to the devel list when it is put up somewhere, its one you want to be able to pause
+2010-01-20T03:23:00.000Z	chris_n2		great
+2010-01-20T03:23:00.000Z	chris		so you can try things, http://bit.ly/git-wrangling
+2010-01-20T03:34:00.000Z	Jo		Hi all. Is anyone able to help me find out the date and tme of the Koha community meeting please. I know its early Feb but can't find it on koha.org and struggling a abit wuith irc logs
+2010-01-20T03:35:00.000Z	chris		the next one?, http://wiki.koha.org/doku.php?[…]etingnotes10feb02, ok, gotta go offline for a bit
+2010-01-20T03:36:00.000Z	Amit		hi chris, good morning #koha
+2010-01-20T03:37:00.000Z	Jo		hiya AMit
+2010-01-20T03:37:00.000Z	Amit		heya Jo
+2010-01-20T03:37:00.000Z	Jo		thankjs Chris
+2010-01-20T03:44:00.000Z	chris_n2		hey Amit
+2010-01-20T03:45:00.000Z	Amit		heya Chris_n2, @wunder New Delhi
+2010-01-20T03:45:00.000Z	munin	Amit	The current temperature in New Delhi, India is 8.0�C (8:30 AM IST on January 20, 2010). Conditions: Fog. Humidity: 100%. Dew Point: 8.0�C. Windchill: 7.0�C. Pressure: 30.12 in 1020 hPa (Steady).
+2010-01-20T03:45:00.000Z	chris_n2		@wunder 28334
+2010-01-20T03:45:00.000Z	munin	chris_n2	The current temperature in Dunn, North Carolina is 8.6�C (10:42 PM EST on January 19, 2010). Conditions: Clear. Humidity: 74%. Dew Point: 4.0�C. Windchill: 9.0�C. Pressure: 29.59 in 1001.9 hPa (Falling).
+2010-01-20T03:46:00.000Z	chris_n2		humid in New Delhi today, raining maybe?
+2010-01-20T04:01:00.000Z	Jo		@wunder Wellington
+2010-01-20T04:01:00.000Z	munin	Jo	Error: No such location could be found.
+2010-01-20T04:07:00.000Z	Amit		@wunder Dehradun india
+2010-01-20T04:07:00.000Z	munin	Amit	The current temperature in Dehradun, India is 6.0�C (8:30 AM IST on January 20, 2010). Conditions: Haze. Humidity: 87%. Dew Point: 5.0�C. Pressure: 30.16 in 1021 hPa.
+2010-01-20T04:07:00.000Z	Amit		@wunder Bangalore
+2010-01-20T04:07:00.000Z	munin	Amit	The current temperature in Bangalore, India is 19.0�C (8:30 AM IST on January 20, 2010). Conditions: Haze. Humidity: 77%. Dew Point: 16.0�C.
+2010-01-20T04:35:00.000Z	chris_n2		g'night #koha
+2010-01-20T06:16:00.000Z	Amit		heya richard
+2010-01-20T06:16:00.000Z	richard		hiya Amit, how's things going?
+2010-01-20T07:06:00.000Z	Ropuch		Morning #koha
+2010-01-20T07:24:00.000Z	imp		moin
+2010-01-20T07:25:00.000Z	Amit		heya nicomo, Ropuch, imp
+2010-01-20T07:26:00.000Z	nicomo		hi Amit
+2010-01-20T09:51:00.000Z	magnus		jo++ # http://library-matters.blogspo[…]-my-universe.html
+2010-01-20T10:04:00.000Z	chris		its a great blog post
+2010-01-20T10:04:00.000Z	* chris		has just got back from drinking with some git developers
+2010-01-20T10:04:00.000Z	chris		so may be incoherent
+2010-01-20T10:06:00.000Z	masonj		heya, i just got back from band-practice...
+2010-01-20T10:09:00.000Z	chris		cool :) you were mentioned in the blog post
+2010-01-20T10:09:00.000Z	masonj		hi Amit too , happy new year
+2010-01-20T10:11:00.000Z	paul_p		hello masonj, magnus, chris & al
+2010-01-20T10:12:00.000Z	masonj		hiya paul
+2010-01-20T10:12:00.000Z	magnus		hello paul_p et al
+2010-01-20T10:12:00.000Z	masonj		and magnus :)
+2010-01-20T10:12:00.000Z	magnus		and masonj
+2010-01-20T10:13:00.000Z	chris		heya paul_p
+2010-01-20T10:13:00.000Z	chris	paul_p	try git log --decorate --graph --oneline
+2010-01-20T10:14:00.000Z	magnus		nice
+2010-01-20T10:18:00.000Z	chris		one of the tips i learnt today, more at http://bit.ly/git-wrangling
+2010-01-20T10:23:00.000Z	masonj		nice pdf layout and graphics
+2010-01-20T10:24:00.000Z	chris		yeah was a good talk, from someone who really knows there stuff, their too
+2010-01-20T10:28:00.000Z	Amit		hi masonj happy new year to you too
+2010-01-20T10:38:00.000Z	hdl_laptop		happy new year Amit
+2010-01-20T10:51:00.000Z	chilts		yeah, gonna alias 'git tree' to 'git log --decorate --graph --pretty=oneline' (I have v1.6.0.4 unfortunately, --pretty=oneline === --oneline)
+2010-01-20T10:52:00.000Z	Amit		hi hdl_laptop same to u
+2010-01-20T13:21:00.000Z	chris_n		g'morning
+2010-01-20T13:24:00.000Z	* jwagner		makes an indistinct mumble resembling "good morning"
+2010-01-20T13:29:00.000Z	hdl_laptop		good morning
+2010-01-20T13:41:00.000Z	oceb		morning
+2010-01-20T13:44:00.000Z	owen		Hi oceb
+2010-01-20T13:49:00.000Z	oceb		hi owen, do you know why advanced search with Date of publication, distribution (260c) isn't workin on opac?
+2010-01-20T13:51:00.000Z	owen	oceb	Does it return no results, or incorrect results?
+2010-01-20T13:51:00.000Z	oceb		never return results =/
+2010-01-20T13:52:00.000Z	owen	oceb	What version of Koha?
+2010-01-20T13:52:00.000Z	oceb		3.0.5
+2010-01-20T13:57:00.000Z	owen		Are you referring to the "publication date range" option?
+2010-01-20T13:58:00.000Z	oceb		exactly! :D, when i put a date p.e. "1998" or "-2009" or "1997-" it doesn't return results, but without a date, it returns...
+2010-01-20T13:59:00.000Z	owen		I assume other searches are working okay?
+2010-01-20T13:59:00.000Z	oceb		yeah
+2010-01-20T14:00:00.000Z	owen		Maybe someone else here can verify: Does the publication date search work by looking at 008?
+2010-01-20T14:01:00.000Z	oceb		uhmmm, how i can do a date search on 008 ?
+2010-01-20T14:02:00.000Z	owen	oceb	I thought the publication date range search *did* search on the date in 008, but I'm hoping someone else here can tell me if that's correct
+2010-01-20T14:03:00.000Z	oceb		=O, I thought that search was on the field 260c
+2010-01-20T14:06:00.000Z	owen		260c can contain non-numeric data, so you can't ask a computer to do numeric comparisons on it without attempting to sanitize it., I thought the pub date search worked with 008 because of that.
+2010-01-20T14:08:00.000Z	schuster		I can't verify but from my experience with Bib dates so far depending I suspect it is coming from the biblio.copyrightdate or biblioitems, but I'm not sure
+2010-01-20T14:08:00.000Z	oceb		=o, omg
+2010-01-20T14:08:00.000Z	schuster		where that is being derived from and scrubbed to a single number.  I have not compared that, but will take a look.
+2010-01-20T14:09:00.000Z	oceb		i think 99% of my books doesn't have a date in 008 >.<, i'll test one, im putting a date on a book and now im reindexing, omg, it works!, thanks owen :), now i need to put all dates from 260c to 008 =(
+2010-01-20T14:22:00.000Z	owen	oceb	sounds like a job for a Perl guru
+2010-01-20T14:24:00.000Z	* owen		thinks we had to do the same thing at one point, but it wasn't me that did it
+2010-01-20T14:24:00.000Z	schuster		so it is pulling the date from the 008 - do you know is that how it got the information for the biblio.copyrightdate as well?
+2010-01-20T14:26:00.000Z	* chris_n		heads off to fix a naughty win32 box
+2010-01-20T14:26:00.000Z	schuster		shame on that box... ;), Owen - I want to thank you again for your help last week..  I'm really excited about the possibilities, now I just have to do something with it!
+2010-01-20T14:27:00.000Z	owen		Sure thing schuster, I know you'd asked me about it before and I'm glad you pestered me about it
+2010-01-20T14:27:00.000Z	Ropuch		Hm, I need to fix 008 with dates from 260c too, This means some perl exercisies ;>
+2010-01-20T14:32:00.000Z	jwagner	owen	you're talking about the 008 positions 7-10 for the pubyear, correct?
+2010-01-20T14:32:00.000Z	owen		Yes
+2010-01-20T14:32:00.000Z	jwagner		Thanks.  I have a site that's getting data converted by Marcive right now -- a timely reminder to send them to make sure that's getting filled in.
+2010-01-20T14:38:00.000Z	oceb		wow, not everithing is perl :), here in my library we have some code written in php to modifiy both marc and marcxml, but I am learning Perl little by little with koha :D
+2010-01-20T14:49:00.000Z	hdl_laptop	oceb	:'(, learning PERL with koha is a hard school
+2010-01-20T14:50:00.000Z	schuster		MarcEdit again might be able to help in that job...  I know I've used it's find x and place it in y feature several times.  Don't know how it would work on a leader/008 field.
+2010-01-20T14:51:00.000Z	chris_n		bye chris_n2
+2010-01-20T14:51:00.000Z	hdl_laptop		schuster++
+2010-01-20T14:51:00.000Z	schuster		Question to the list - has anyone else seen this?  http://bagno.be/localcovers.html  - would it still work?
+2010-01-20T14:52:00.000Z	oceb	hdl_laptop	yeah.... when i come here, i have no idea of what is perl :S, perl is... powerfull but... some complicated to beginners :D Php is friendly with beginners :) Anyway im happy with koha and my newbie-knowledge of perl
+2010-01-20T14:56:00.000Z	schuster		interesting regarding the 008 - biblios.copyrightdate comes from the 260c though in the database NOT the 008., I just ran a test.
+2010-01-20T15:06:00.000Z	schuster	chris	- just went through the git presentation - it is powerful - glad you understand it!!!
+2010-01-20T15:07:00.000Z	owen		That's what I like about git: I can get stuff done with it, and people smarter than me can do magic with it.
+2010-01-20T15:07:00.000Z	schuster		magic - kinda like owen the wizard with css ;), I just did some further testing and biblios.copyrightdate - scrubs everything except the first set of numbers. ie 2010, [p2009] in copyrightdate shows 2010, with [p2009], 2010 shows 2009..., When searching what is displayed on the bib screen is the copyrightdate field so in the example above 2010, then 2009 not the full MARC representation., ok new question for the techies.  I may also post it to the koha-devel list for responses.  I have 53,000 pictures of students on a remote server., I tried to scp them in, but guess what there are limitations, so I'm thinking of setting up a cron job to setup the fileshare on the windows box, and then issue a set of scp commands once a week in the middle of the night to copy them over., then at the end of the cron would be the script I have to mass add them., Thoughts suggestions?  I'm a librarian here remember that when you respond. thanks....
+2010-01-20T15:49:00.000Z	wizzyrea		hm, why do you have to add all 53k of them every week?
+2010-01-20T15:54:00.000Z	wizzyrea	schuster	maybe I'm not understanding your need, you have 53k photos and you can only move X with scp, so you're thinking of moving batches of them? Or you have 53k photos that you need to add every week, or... something else
+2010-01-20T15:55:00.000Z	owen	wizzyrea	Looks like he put more details into a message to koha-devel
+2010-01-20T15:56:00.000Z	schuster		There are files put on a share for several departments to use of pictures of all the kids.  I never know when they get put there, and the dates on the files are the dates they are taken by the photographer, hence the reason for loading ALL of them., If there are problems with pictures the librarian lets me know and I inform the powers that be to adjust the photo names etc... to make them match correctly.  We use the photos with the grade book program, and lunchline.
+2010-01-20T15:57:00.000Z	wizzyrea		Ah, sorry I didn't look at my list mail
+2010-01-20T15:58:00.000Z	schuster		sorry I was somewhat brief here in my description.
+2010-01-20T16:00:00.000Z	wizzyrea		it's too bad it's a windows server, you could rsync
+2010-01-20T16:03:00.000Z	chris_n		you can still rsync, http://www.aboutmyip.com/About[…]App/DeltaCopy.jsp
+2010-01-20T16:03:00.000Z	wizzyrea		I didn't realize there was a windows version ^.^, oh sweet, had no idea, thanks chris
+2010-01-20T16:04:00.000Z	wizzyrea	chris_n	
+2010-01-20T16:04:00.000Z	chris_n		I use it to sync my main webradio broadcast server with the warm-standby box
+2010-01-20T16:05:00.000Z	chris_n	schuster	you can do a share if you use samba
+2010-01-20T16:05:00.000Z	wizzyrea		are you the king of shoehorning windows in to unix shoes?
+2010-01-20T16:05:00.000Z	chris_n		but rsync is probably the thing here
+2010-01-20T16:05:00.000Z	chris_n	wizzyrea	I like to see windows in a vbox frame inside of my gnome interface
+2010-01-20T16:05:00.000Z	wizzyrea		LOL, I frankly can't stand to look at it anymore >.>
+2010-01-20T16:07:00.000Z	chris_n	schuster	you can setup rsync on your koha box and deltacopy on your win32 box and away you go
+2010-01-20T16:07:00.000Z	wizzyrea		that has other benefits too, right? Like, he might not have to do all 53k?
+2010-01-20T16:07:00.000Z	chris_n		rsync will only pickup on the file changes as well (if you like) which will reduce the load on the network after the initial replication
+2010-01-20T16:08:00.000Z	wizzyrea		yes, that's what I was thinking of
+2010-01-20T16:08:00.000Z	chris_n		great minds think alike they say ;-), or at least get stuck in the same rut
+2010-01-20T16:08:00.000Z	wizzyrea		haha
+2010-01-20T16:13:00.000Z	schuster		Thanks chris_n AGAIN!  I'll look into this...  I don't have control of the windows box only access to pull/copy from so will have to play with it.
+2010-01-20T16:20:00.000Z	mgcleveland_		Hello, I have a questions addbiblio.pl not working, the page is blank when it's loaded via the OPAC site
+2010-01-20T16:20:00.000Z	* chris_n		shamelessly encourages a prospective Koha user to maintain their own installation of Koha
+2010-01-20T16:20:00.000Z	mgcleveland_		is that directed at me?, (chris_n)
+2010-01-20T16:21:00.000Z	wizzyrea_		erm, do you mean in the staff interface?
+2010-01-20T16:21:00.000Z	mgcleveland_		yep, the staff interface
+2010-01-20T16:21:00.000Z	chris_n		mgcleveland: sorry, no :-)
+2010-01-20T16:21:00.000Z	mgcleveland_		(thanks for the response), haha, no worries
+2010-01-20T16:21:00.000Z	chris_n		but feel free to maintain your own as well :-)
+2010-01-20T16:21:00.000Z	mgcleveland_		haha, I'm trying!, but there's just so much perl spaghetti code!
+2010-01-20T16:22:00.000Z	owen	mgcleveland_	What version of Koha? Does your browser display any javascript errors?
+2010-01-20T16:22:00.000Z	wizzyrea_		mg do you have access to your koha error log?
+2010-01-20T16:22:00.000Z	mgcleveland_		yes I have access to the logs and there is no error, (no javascript errors either)
+2010-01-20T16:23:00.000Z	wizzyrea		what browser are you using?
+2010-01-20T16:23:00.000Z	mgcleveland_		firefox, here's the weird thing, I have other instances on different servers, and this page works on them, i've diffed the files and there is no difference in the files!, I assume there must be something wrong with  my config or database, but I jsut don't know where to start looking
+2010-01-20T16:25:00.000Z	schuster		Permissions on the file?
+2010-01-20T16:25:00.000Z	mgcleveland_		i have root on everything, oh, sorry, good cal, l, let me check, only needs 755, right?
+2010-01-20T16:27:00.000Z	wizzyrea		it's just blank?, apache errors?
+2010-01-20T16:27:00.000Z	mgcleveland_		I checked the apache logs, as well, but I'll do a re-check, (koha error log is blank), apache log has no errors pertaining to my session
+2010-01-20T16:29:00.000Z	wizzyrea		it's got to be something obvious
+2010-01-20T16:29:00.000Z	mgcleveland_		that's what I'm thinking, but I can't put my finger on it, like I said, I suspect some config or DB issue
+2010-01-20T16:30:00.000Z	wizzyrea		do you have itypes defined?, have you been through the system preferences to set up a library?, 2nd being more important probably
+2010-01-20T16:30:00.000Z	mgcleveland_		let me see
+2010-01-20T16:31:00.000Z	wizzyrea		(if you don't have a library, I don't think it will let you add bibs(, (it definitely won't let you add patrons)
+2010-01-20T16:31:00.000Z	mgcleveland_		(i'm a CS/programmer guy, so when it comes to the library aspects of the system I'm a little lost, but I'll try to hang :) )
+2010-01-20T16:31:00.000Z	wizzyrea		we get that a lot :)
+2010-01-20T16:31:00.000Z	mgcleveland_		haha, so how can I see if a library exists?
+2010-01-20T16:32:00.000Z	wizzyrea		more -> administration -> libraries and groups
+2010-01-20T16:32:00.000Z	mgcleveland_		oh yes
+2010-01-20T16:32:00.000Z	wizzyrea		should list them
+2010-01-20T16:32:00.000Z	mgcleveland_		we have 7 branches listed
+2010-01-20T16:32:00.000Z	wizzyrea		okies, not that...
+2010-01-20T16:32:00.000Z	mgcleveland_		with no categories set, is this important?
+2010-01-20T16:33:00.000Z	wizzyrea		I'm taking it that you installed with the default data?, so you should have default categories and itypes
+2010-01-20T16:33:00.000Z	mgcleveland_		yes I did, but we've added data since then, I really apologize but I have a meeting in 15
+2010-01-20T16:33:00.000Z	wizzyrea		Ah ok, np np
+2010-01-20T16:33:00.000Z	mgcleveland_		thank you so much for your help
+2010-01-20T16:33:00.000Z	wizzyrea		we're ez
+2010-01-20T16:33:00.000Z	mgcleveland_		i'll be back in a few!
+2010-01-20T16:34:00.000Z	wizzyrea		ttyl :), ttyl :), eerks lol, bad typing, bad, so the koha.org vendor list page is worthless now, right?, I mean, it lists some
+2010-01-20T16:42:00.000Z	schuster		Evidently from the discussion yesterday...
+2010-01-20T16:42:00.000Z	wizzyrea		well, here's my task, I'm supposed to come up with a list of the major players in the Koha Community, and their significant contributions, which should be easy enough
+2010-01-20T16:44:00.000Z	owen	wizzyrea	chris and nicomo have both done work analyzing the git logs to identify the primary contributors
+2010-01-20T16:45:00.000Z	wizzyrea		yea I'm looking at it, http://stats.workbuffer.org/3.2.0.html among others
+2010-01-20T16:51:00.000Z	owen	wizzyrea	I know PTFS Europe has applied to appear on the list (ages ago) and more recently Mill Run Technology Solutions, Who knows if others have applied and either gotten no response or gave up because the submission form is broken.
+2010-01-20T16:54:00.000Z	wizzyrea		yea... mason still works at katipo?
+2010-01-20T16:56:00.000Z	wizzyrea	chris_n	who do you work for?
+2010-01-20T16:57:00.000Z	jwagner	gmcharlt	online?
+2010-01-20T16:57:00.000Z	magnus		libriotech should be listed, but i havn't bothered to apply yet...
+2010-01-20T17:02:00.000Z	masonj	wizzyrea	officially, i work for KohaAloha (my own company), but i do work as a contractor to Katipo ;)
+2010-01-20T17:02:00.000Z	wizzyrea		(I know, I should know this)
+2010-01-20T17:04:00.000Z	chris_n		@later tell wizzyrea FBC (Foundations Bible College) and contract from time to time
+2010-01-20T17:04:00.000Z	munin	chris_n	The operation succeeded.
+2010-01-20T17:05:00.000Z	masonj		@later tell wizzyrea officially, i work for KohaAloha (my own company), but i do work as a contractor to Katipo ;)
+2010-01-20T17:05:00.000Z	munin	masonj	The operation succeeded.
+2010-01-20T17:05:00.000Z	wizzyrea_		ty ty, sry, our internets went funky
+2010-01-20T17:06:00.000Z	chris_n		funky_internet--
+2010-01-20T17:10:00.000Z	gmcharlt		jwagner_meeting: ?
+2010-01-20T17:20:00.000Z	oceb		hi brendan
+2010-01-20T17:21:00.000Z	hdl_laptop		hi gmcharlt brendan
+2010-01-20T17:21:00.000Z	brendan		good morning
+2010-01-20T17:22:00.000Z	sekjal		morning, brendan
+2010-01-20T17:22:00.000Z	owen		Hi brendan
+2010-01-20T17:22:00.000Z	brendan		must be nighttime for you hdl_laptop
+2010-01-20T17:22:00.000Z	hdl_laptop		only 18PM
+2010-01-20T17:23:00.000Z	brendan		@wunder 93117
+2010-01-20T17:23:00.000Z	munin	brendan	The current temperature in Northwest Goleta, Goleta, California is 11.3�C (9:16 AM PST on January 20, 2010). Conditions: Light Thunderstorms and Rain. Humidity: 89%. Dew Point: 10.0�C. Pressure: 29.58 in 1001.6 hPa (Rising).  Coastal Flood Advisory in effect until 7 am PST this morning...
+2010-01-20T17:23:00.000Z	paul_p		not 18PM, 6PM ;-)
+2010-01-20T17:23:00.000Z	brendan		yup my office flooded this morning :(
+2010-01-20T17:24:00.000Z	sekjal		uck, sorry brendan.  anything badly damaged?
+2010-01-20T17:24:00.000Z	brendan		the rug, but everything else was off the ground, glad that I plan for silly things like floods, in a place that only rains for a month out of the year
+2010-01-20T17:25:00.000Z	sekjal	brendan	 definitely, I remember waking up at 4am to my apartment flooding.  Mad dash across a squishy carpet to get my CPU off the floor
+2010-01-20T17:26:00.000Z	moodaepo		@wunder 56001
+2010-01-20T17:26:00.000Z	munin	moodaepo	The current temperature in Mankato, Minnesota is -6.0�C (11:15 AM CST on January 20, 2010). Conditions: Overcast. Humidity: 100%. Dew Point: -6.0�C. Windchill: -14.0�C. Pressure: 29.85 in 1011 hPa (Steady).  Winter Weather Advisory in effect until 6 am CST Thursday...
+2010-01-20T17:32:00.000Z	chris		morning
+2010-01-20T17:32:00.000Z	owen		Hi chris
+2010-01-20T17:32:00.000Z	chris_n		heya chris
+2010-01-20T17:33:00.000Z	oceb		how i can put my location info? D=
+2010-01-20T17:36:00.000Z	* chris		is trying to figure out what sessions to go to today
+2010-01-20T17:49:00.000Z	masonj	chris	hopefully see you at/after the keynote
+2010-01-20T17:50:00.000Z	schuster		have a great day everyone..., @wunder 75074
+2010-01-20T17:50:00.000Z	munin	schuster	The current temperature in Brookview, Plano, Texas is 18.6�C (11:45 AM CST on January 20, 2010). Conditions: Overcast. Humidity: 85%. Dew Point: 16.0�C. Pressure: 29.00 in 981.9 hPa (Falling).
+2010-01-20T17:50:00.000Z	schuster		I'm off to play for the afternoon!
+2010-01-20T17:51:00.000Z	chris		sounds good masonj
+2010-01-20T17:51:00.000Z	owen		I'd do like schuster if I had his weather
+2010-01-20T18:09:00.000Z	wizzyrea_		huh, http://api.jquery.com/ changed from mediawiki to wordpress for their CMS.
+2010-01-20T18:18:00.000Z	jwagner	gmcharlt	still around?
+2010-01-20T18:18:00.000Z	gmcharlt	jwagner	what's up?
+2010-01-20T18:19:00.000Z	jwagner		I think I remember you saying you were going to push a bunch of patches to the current head -- has that happened?, One of our developers wants to get the latest head with all the patches/bugfixes.
+2010-01-20T18:20:00.000Z	gmcharlt		look for it over the weekend
+2010-01-20T18:20:00.000Z	jwagner		OK, I'll tell him.  Thanks.
+2010-01-20T18:20:00.000Z	gmcharlt		the dev can also take a gander at the biblibre 3.2_community branch
+2010-01-20T18:24:00.000Z	jwagner		OK.
+2010-01-20T18:26:00.000Z	chris		register trademarks??????
+2010-01-20T18:27:00.000Z	chris	wizzyrea_	you might need to have a chat with your boss, i fear in order to move things along he is gonna start another set of worries
+2010-01-20T18:27:00.000Z	wizzyrea_		erm... I think that was a list of things that a foundation could (but KUDOS won't, necessarily), do, don't read too much into it, he's in agreement, more along the lines of "get a move on and get it done"
+2010-01-20T18:29:00.000Z	chris		ppl need to be more careful with words is all im saying
+2010-01-20T18:29:00.000Z	wizzyrea_		KUDOS doesn't have any interest that I know of to register any trademarks regarding koha
+2010-01-20T18:30:00.000Z	sekjal		we have never mentioned trademarks at all in any of the discussions I've been in on
+2010-01-20T18:30:00.000Z	wizzyrea_		he's an administrator, he is simply referring to the things a foundation *can* do, and in order to do them, you must have the foundation
+2010-01-20T18:30:00.000Z	chris		cool, now anyone who reads the irc logs knows that, but anyone who reads the mailing list could be confused into thinking KUDOS is the foundation
+2010-01-20T18:31:00.000Z	sekjal		that's easy enough to fix... one sec
+2010-01-20T18:31:00.000Z	chris		thanks sekjal, its always easier to stop arguments before they start :)
+2010-01-20T18:32:00.000Z	wizzyrea_		rather, a non profit 501c3 agency
+2010-01-20T18:33:00.000Z	Ropuch		Evening #koha
+2010-01-20T18:33:00.000Z	chris		hiya Ropuch
+2010-01-20T18:35:00.000Z	sekjal		email sent.  time for a meeting.  bbl
+2010-01-20T18:36:00.000Z	chris		sekjal+++, sekjal++, even, ok bus time
+2010-01-20T18:51:00.000Z	wizzyrea_		gl with the bus
+2010-01-20T19:00:00.000Z	* chris_n		takes a deep breath and presses the 'send' button
+2010-01-20T19:01:00.000Z	chris_n		perhaps /me should have read the buffer first :-)
+2010-01-20T19:03:00.000Z	wizzyrea_		heh, jim's grown, he can take it, though I'm sure that he didn't actually mean it in the way it's being read
+2010-01-20T19:04:00.000Z	* chris_n		has had that happen before too
+2010-01-20T19:05:00.000Z	wizzyrea_		he said the magic word "trademark", and "foundation"
+2010-01-20T19:05:00.000Z	* wizzyrea_		shudders
+2010-01-20T19:05:00.000Z	chris_n		the community is a bit sensitive atm
+2010-01-20T19:05:00.000Z	wizzyrea_		heh, yea, and by "sure" I know that he knows about the HLT/Official Foundation situation, more importantly comprehends the importance of that effort, and even more importantly respects that there is a need for it, and you all don't know this, but he's set up several non profit foundations in his career, *helped to set up, yea, he's my boss, but he's not a nub., he is, and we are, committed to the principles of free software, and we have every interest in seeing Koha succeed., there. I'm done., :)
+2010-01-20T19:10:00.000Z	* chris_n		applauds
+2010-01-20T19:35:00.000Z	* jwagner		thinks true joy is not wanting to do a telecon, and finding out the other person has forgotten about it & left for the day :-)
+2010-01-20T19:35:00.000Z	gmcharlt		jwagner++
+2010-01-20T19:36:00.000Z	wizzyrea_	owen	what do you think about the following screenshot, how can we make this display better, http://screencast.com/t/M2RlNTY0
+2010-01-20T19:36:00.000Z	jwagner		That just made my afternoon!
+2010-01-20T19:37:00.000Z	wizzyrea_		the items display is what I'm referring to, on bibs that have lots of items, the results list is very... icky
+2010-01-20T19:37:00.000Z	owen		To say the least
+2010-01-20T19:37:00.000Z	wizzyrea_		or maybe that's fixed in more recent versions
+2010-01-20T19:37:00.000Z	owen		Not that I know of
+2010-01-20T19:37:00.000Z	jwagner		I'm not owen, but I think it would be better if the items list was just another line after the bib display instead of in a separate column.  That would give it a much wider table cell to run across.
+2010-01-20T19:38:00.000Z	chris_n		@quote add jwagner thinks true joy is not wanting to do a telecon, and finding out the other person has forgotten about it & left for the day :-)
+2010-01-20T19:38:00.000Z	munin	chris_n	The operation succeeded.  Quote #51 added.
+2010-01-20T19:38:00.000Z	wizzyrea_		well, it shows several things that it may not need to
+2010-01-20T19:38:00.000Z	jwagner	chris_n	you had to do that, didn't you :-(
+2010-01-20T19:38:00.000Z	wizzyrea_		why does it show the call number for checked out items, for example, it's out, you're not going to find it
+2010-01-20T19:39:00.000Z	owen		...not that that buys you much space
+2010-01-20T19:39:00.000Z	richard		hi
+2010-01-20T19:40:00.000Z	wizzyrea_		true, but what if you 1. used the library short name instead of full name, 2. removed the call number 3. changed date due: to Due only for on loan items
+2010-01-20T19:40:00.000Z	jwagner	wizzyrea	this is staff side, correct?  Is there any value to even showing the call numbers at this stage?  Maybe just a Library A (7 copies), Library B (2 copies) etc.
+2010-01-20T19:41:00.000Z	wizzyrea_		well I was wondering about that too, I think that for AVAILABLE items it doesn't hurt to show a lot of info, but for checked out or lost items... just as well to go to the bib detail, to find out the dilly, yes, thsi is the staff side, oh and you've got shelving location in there too, so axe that, so, as an example, on loan: Baldwin, Due 01/28/2010, Basehor, Due XXX, etc, 1-2 lines instead of 6, i'm more just curious if anyone else has an opinion on how it can be made better, I know it's not a priority, i'm willing to try to fix it myself, but don't want to do anything that would make people upset, fix/change
+2010-01-20T19:45:00.000Z	owen		Needs a wider discussion
+2010-01-20T19:46:00.000Z	mgcleveland_	wizzyrea_	you still there?
+2010-01-20T19:46:00.000Z	wizzyrea		yep
+2010-01-20T19:46:00.000Z	mgcleveland_		ok I'm back, do you remember what we were talking about?
+2010-01-20T19:46:00.000Z	wizzyrea		there are more people around now, you might go over your issue, again, for their benefit, but yes, I remember :)
+2010-01-20T19:46:00.000Z	mgcleveland_		will do, In a nutshell, my addbiblio.pl page is not working, it works on other instances of Koha I have and the files, when diffed, are identical, this leads me to believe it's a config or DB problem
+2010-01-20T19:48:00.000Z	* jwagner		thinks "Curses, foiled again!" Others at the site called me to pick up the telecon!
+2010-01-20T19:52:00.000Z	mgcleveland_		sooooooooo, any ideas?
+2010-01-20T19:52:00.000Z	wizzyrea		we know that you have libraries, and you're sure you have item types
+2010-01-20T19:52:00.000Z	mgcleveland_		right, we've got branches, as for the item types, let me check, well as I said, I'm a computer person, hence the lag on figuring out the library stuff
+2010-01-20T19:59:00.000Z	mgcleveland_	wizzyrea	could I find that by exploring the mysql DB?
+2010-01-20T20:00:00.000Z	wizzyrea		more -> administration -> Item Types
+2010-01-20T20:00:00.000Z	mgcleveland_		I == idiot
+2010-01-20T20:00:00.000Z	wizzyrea		mine looks like this, for example, http://screencast.com/t/ZWE1YmVkN
+2010-01-20T20:00:00.000Z	mgcleveland_		yep, we've got 3
+2010-01-20T20:01:00.000Z	wizzyrea		okies
+2010-01-20T20:01:00.000Z	mgcleveland_		so we've got branches and item types
+2010-01-20T20:01:00.000Z	wizzyrea		and you've got nothing in your koha error log and nothing in your apache log, and addbiblio.pl won't come up
+2010-01-20T20:01:00.000Z	mgcleveland_		correct, you want to see a screenshot of addbiblio?
+2010-01-20T20:02:00.000Z	wizzyrea		how are you getting to it, more -> cataloging -> new record?
+2010-01-20T20:02:00.000Z	mgcleveland_		I click on the "Add MARC" link, it's under "Cataloging"
+2010-01-20T20:03:00.000Z	wizzyrea		ok, if you do more -> cataloging -> new record what happens?, this is what mine looks like: http://screencast.com/t/ODVlMzg1Z
+2010-01-20T20:03:00.000Z	mgcleveland_		same thing happens, also, I think we may be using different versions of Koha, let me see what mine is right quick
+2010-01-20T20:04:00.000Z	wizzyrea		seems likely, in which case I probably can't help you, if you do more -> about koha what does it say in koha version, I'm wondering if you don't have frameworks (though this may not be germane if you are not using 3.0 at least), http://screencast.com/t/ODVlMzg1Z, because when you click the button, you should see frameworks
+2010-01-20T20:06:00.000Z	mgcleveland_		I have frameworks (I'm pretty sure), when I go to biblio framework, I have default populated
+2010-01-20T20:07:00.000Z	wizzyrea		I"m curious, can you add members/patrons?, to this install?
+2010-01-20T20:08:00.000Z	mgcleveland_		trying...
+2010-01-20T20:08:00.000Z	wizzyrea		hi paul
+2010-01-20T20:09:00.000Z	jwagner	paul_p	what are you doing online this late?  (Not that it's not good to see you, but....)
+2010-01-20T20:10:00.000Z	mgcleveland_	wizzyrea	I can add patrons
+2010-01-20T20:10:00.000Z	paul_p		hi jwagner. Just updating some personal pictures & docs, and auto-logged on irc ;-)
+2010-01-20T20:10:00.000Z	wizzyrea		then it's not something to do with javascript, probably
+2010-01-20T20:10:00.000Z	mgcleveland_		yeah I didn't think it was, no browser complaints, anyway
+2010-01-20T20:11:00.000Z	wizzyrea		what version were you running?
+2010-01-20T20:11:00.000Z	mgcleveland_		well I can't figure that damn thing out!, I think it's 2.2.9
+2010-01-20T20:11:00.000Z	wizzyrea		Ah, yea, I can't help you sorry lol I only know 3
+2010-01-20T20:11:00.000Z	mgcleveland_		balls!
+2010-01-20T20:11:00.000Z	wizzyrea		hahaha, curious why you'd want to run 2.2.9 though
+2010-01-20T20:12:00.000Z	mgcleveland_		this is driving me crazy!, Not sure why we're on the older version, I have an instance of 3 running, but this is our production instance that has the problem
+2010-01-20T20:12:00.000Z	* wizzyrea		sings "it's much beeeettter"
+2010-01-20T20:12:00.000Z	jwagner	paul_p	OK, you're forgiven :-)
+2010-01-20T20:12:00.000Z	mgcleveland_		I know!, I know it's better!
+2010-01-20T20:12:00.000Z	wizzyrea		:)
+2010-01-20T20:12:00.000Z	mgcleveland_		maybe we didn't want to risk the problems that always come with migration
+2010-01-20T20:13:00.000Z	wizzyrea		yes, librarians like to hold on to that one, sorry I've never run 2.2.9, well, that's not true exactly
+2010-01-20T20:14:00.000Z	mgcleveland_		also, we're serving ours in Persian
+2010-01-20T20:14:00.000Z	wizzyrea		but I've never run it seriously
+2010-01-20T20:14:00.000Z	mgcleveland_		and there is no translation for 3.0, (i think)
+2010-01-20T20:14:00.000Z	wizzyrea		Ahh, well that would do it too
+2010-01-20T20:14:00.000Z	mgcleveland_		yeah, balls again!, so is 2.2.9 not supported any more?
+2010-01-20T20:15:00.000Z	wizzyrea		you could always get someone to do a translation, or help get one started
+2010-01-20T20:15:00.000Z	mgcleveland_		we actually are working on it
+2010-01-20T20:15:00.000Z	wizzyrea		Yay!
+2010-01-20T20:15:00.000Z	mgcleveland_		I think my boss is dealing with that aspect of the project, yeah
+2010-01-20T20:16:00.000Z	wizzyrea		it is, but there are a lot more people using 3.0.x than 2.2.9
+2010-01-20T20:16:00.000Z	mgcleveland_		shoot, well I can start migrating the data to our sandbox 3.0.x instance and see how that goes
+2010-01-20T20:19:00.000Z	chris		back, and in the keynote .. by glynn moody ... its awesome so far
+2010-01-20T20:20:00.000Z	mgcleveland_	chris	, do you know much about 2.2.x?
+2010-01-20T20:20:00.000Z	wizzyrea		(yea, if anybody were to know about it, it would likely be chris)
+2010-01-20T20:20:00.000Z	mgcleveland_		woo hoo!
+2010-01-20T20:20:00.000Z	chris		cant really talk at the moment, busy listening
+2010-01-20T20:20:00.000Z	mgcleveland_		oh ok
+2010-01-20T20:20:00.000Z	chris		i do know you shouldnt use it, :)
+2010-01-20T20:20:00.000Z	mgcleveland_		i know i know!, let me know when you have a minute, I have a weird situation
+2010-01-20T20:21:00.000Z	chris		unfortunately im at a conference all day, and all tomorrow, so drop me an email, chrisbigballofwax.co.nz
+2010-01-20T20:21:00.000Z	mgcleveland_		ok, yeah that would be great, thanks!
+2010-01-20T20:22:00.000Z	* chris_n		designs a cool looking new search box for his opac header and tries desperately to get the css to behave :-P
+2010-01-20T20:23:00.000Z	* wizzyrea		smacks chris_n's CSS into submission. Get! In! Your! Place!
+2010-01-20T20:23:00.000Z	owen		If only smacking it helped.
+2010-01-20T20:23:00.000Z	chris		http://www.lca2010.org.nz/prog[…]chedule/video/mfc
+2010-01-20T20:24:00.000Z	jwagner	owen	it depends on the size of the baseball bat (or other implement) you use to DO the smacking :-)
+2010-01-20T20:24:00.000Z	chris		if anyone wants to listen to glynn explain why sharing is so important
+2010-01-20T20:24:00.000Z	wizzyrea		me me oh me
+2010-01-20T20:29:00.000Z	chris_n	owen	what are the 'translControl' div's ?
+2010-01-20T20:30:00.000Z	chris_n	wizzyrea	that must have worked, 'cause it just dropped into place ;-)
+2010-01-20T20:31:00.000Z	chris		jim kent, saved us from the human genes being patented ... free software ftw
+2010-01-20T20:31:00.000Z	wizzyrea		my coworkers claim I have an aura..., I didn't know it worked over the internet too., an aura that makes computers behave in my presence, that is., I don't believe it but eh
+2010-01-20T20:32:00.000Z	owen	chris_n	I'm not exactly sure what they do, but they're related to googleindictransliteration.js
+2010-01-20T20:33:00.000Z	chris		thats freaking awesome, GNU/Linux saved (most) of the human genome from gene patents
+2010-01-20T20:33:00.000Z	mgcleveland_		hey wizzy
+2010-01-20T20:33:00.000Z	wizzyrea		yes?
+2010-01-20T20:33:00.000Z	mgcleveland_		would addbiblio.pl be the same code in 3.0.x and 2.2.x?
+2010-01-20T20:33:00.000Z	wizzyrea		i'm guessing no
+2010-01-20T20:33:00.000Z	mgcleveland_		hmmm, that's weird, because I think my working instance is 3.0.x
+2010-01-20T20:34:00.000Z	wizzyrea		hard to say without knowing for sure
+2010-01-20T20:34:00.000Z	mgcleveland_		yeah it is, and I diffed that with my production instance and they were the same, aaahh!, (no revelation)
+2010-01-20T20:35:00.000Z	* chris_n		thinks his genes are copyrighted in any case ;-)
+2010-01-20T20:35:00.000Z	wizzyrea		maybe the revelation is that addbiblio.pl needs to be reverted to a 2.2.9 version
+2010-01-20T20:35:00.000Z	mgcleveland_		hahaha
+2010-01-20T20:35:00.000Z	chris_n		what she said, I find it highly unlikely that the two would be the same
+2010-01-20T20:36:00.000Z	mgcleveland_		I'm sure I have the addbiblio.pl of the correct instance, i just don't know which version the production instance is!~, and I can't find it anywhere!
+2010-01-20T20:36:00.000Z	wizzyrea		well... you have a weird problem, and an even wierder code congruency on possibly completely different versions, that's just a recipe for wierdness if I've ever heard one
+2010-01-20T20:37:00.000Z	mgcleveland_		hahaha, is there anywhere in the source code/DB where I can see which version I have?
+2010-01-20T20:37:00.000Z	* wizzyrea		does not know 2.2.9
+2010-01-20T20:37:00.000Z	mgcleveland_		btw, we also have a weird theme, so everything is hard to find, what about in 3.0.x?
+2010-01-20T20:37:00.000Z	wizzyrea		mg, which library do you work for?
+2010-01-20T20:38:00.000Z	mgcleveland_		I'm suspicious that we actually are running 3.0.x, University of Arizona, I'm a student, :)
+2010-01-20T20:38:00.000Z	chris_n		mgcleveland: you can try opening your production addbiblio.pl in a text editor and see if the version is noted there
+2010-01-20T20:38:00.000Z	wizzyrea		O.o Ah
+2010-01-20T20:38:00.000Z	mgcleveland_		I have root access to the code, i'll just check the code directly
+2010-01-20T20:38:00.000Z	chris		go to the about.pl page, http://your.staff.interface/cgi-bin/koha/about.pl
+2010-01-20T20:38:00.000Z	mgcleveland_		chris!, nice!
+2010-01-20T20:38:00.000Z	* chris_n		jumps back into the CSS pool for more fun
+2010-01-20T20:39:00.000Z	chris		and/or look in the db
+2010-01-20T20:39:00.000Z	mgcleveland_		it is 2.2.9, I think our theme has no link to about.pl, >(
+2010-01-20T20:39:00.000Z	chris		systempreferences table has a version number (if its 3.0.0 or later)
+2010-01-20T20:39:00.000Z	wizzyrea		aside, I didn't realize uni of ariz. was doing much with koha
+2010-01-20T20:39:00.000Z	mgcleveland_		it's a special project, I'm not working on the library's main site, it's a grant we've been working on for a few years, partnering with Kabul University in Afghanistan
+2010-01-20T20:40:00.000Z	chris		what you should do, is get someone working on translate.koha.org
+2010-01-20T20:40:00.000Z	mgcleveland_		we do have them doing that, at least we started on it
+2010-01-20T20:41:00.000Z	wizzyrea		and move it to 3.0 (or 3.2, which is relatively imminent)
+2010-01-20T20:41:00.000Z	mgcleveland_		we're a little overwhelmed with work and fulfilling the grant expectations
+2010-01-20T20:41:00.000Z	chris		yeah
+2010-01-20T20:41:00.000Z	mgcleveland_		agreed
+2010-01-20T20:41:00.000Z	chris		http://translate.koha.org/fa/  hasnt changed in a while
+2010-01-20T20:41:00.000Z	mgcleveland_		not farsi, persian, or is it listed as farsi?, I can't remember, I don't do the farsi stuff, my boss and some coworkers do that
+2010-01-20T20:42:00.000Z	chris		that is persian
+2010-01-20T20:42:00.000Z	mgcleveland_		my favorite languages are C, C++, etc..., :)
+2010-01-20T20:43:00.000Z	chris		i think its a bit late now, but i suspect this a good example of why getting involved in the community early vs later is a good idea
+2010-01-20T20:43:00.000Z	mgcleveland_		yeah
+2010-01-20T20:43:00.000Z	wizzyrea		yes, definitely, a very good example
+2010-01-20T20:43:00.000Z	mgcleveland_		well this was working for a long time
+2010-01-20T20:43:00.000Z	chris		*nod*
+2010-01-20T20:43:00.000Z	mgcleveland_		and suddenly isn't
+2010-01-20T20:43:00.000Z	wizzyrea		... what changed?
+2010-01-20T20:44:00.000Z	mgcleveland_		I'm not sure
+2010-01-20T20:44:00.000Z	chris		and if it had been committed back (the translation etc) then 3.0 would have it
+2010-01-20T20:44:00.000Z	mgcleveland_		I wish i knew!, oh you're talking about the translation
+2010-01-20T20:44:00.000Z	chris		and any code mods
+2010-01-20T20:44:00.000Z	mgcleveland_		is that the project that uses pootle?
+2010-01-20T20:44:00.000Z	chris		silos = bad
+2010-01-20T20:45:00.000Z	chris	mgcleveland_	yeah we use pootle for translating koha
+2010-01-20T20:45:00.000Z	* chris		is currently translation manager
+2010-01-20T20:45:00.000Z	mgcleveland_		gotcha, yeah like I said I'm not involved with the translation part, maybe you've spoken with my boss then, I know he contacted someone about it, Yan Han is his name
+2010-01-20T20:46:00.000Z	wizzyrea		do a lot of people have superlibrarian access? or access to the system?
+2010-01-20T20:46:00.000Z	owen		Proof that silos are bad: http://www.theconcentrium.com/[…]ns/Silo/00cap.jpg
+2010-01-20T20:46:00.000Z	mgcleveland_		nope, ^^wizzyrea
+2010-01-20T20:46:00.000Z	chris		ah yeah, i have talked with him
+2010-01-20T20:46:00.000Z	mgcleveland_		haha, cool!, small world
+2010-01-20T20:46:00.000Z	wizzyrea		there aren't many people in the koha world that chris hasn't talked to lol
+2010-01-20T20:46:00.000Z	mgcleveland_		haha, a celebrity!, ok guys, well I appreciate your help, I may be back tomorrow
+2010-01-20T20:47:00.000Z	wizzyrea		well, i encourage you to think about what has changed, have a beer, relax your mind, the answer will come
+2010-01-20T20:47:00.000Z	mgcleveland_	wizzyrea	agreed, haha
+2010-01-20T20:47:00.000Z	wizzyrea		:)
+2010-01-20T20:48:00.000Z	mgcleveland_		it's only 1:45pm!, 3.75 hours to go!, haha, adios!
+2010-01-20T20:49:00.000Z	CGI487		hi everybody, I am trying to make zebra run as a daemon on suse linux but still can't, anyone here install koha 3.0.5 on suse linux ?
+2010-01-20T20:53:00.000Z	owen		Do the CGI* people have no patience, or are they more prone to flaky connections?
+2010-01-20T20:54:00.000Z	chris		both
+2010-01-20T21:11:00.000Z	chris_n		here's a screenshot of some of the opac customizations I've been working on for the library here, http://www.screencast.com/t/ZjU0OGRiNz
+2010-01-20T21:12:00.000Z	wizzyrea		oh that's beautiful chris_n
+2010-01-20T21:12:00.000Z	owen		Very nice
+2010-01-20T21:13:00.000Z	chris_n		tnx, and especially to owen's blogs and the npl website (which I have combed through with firebug to pickup tips)
+2010-01-20T21:14:00.000Z	owen		I wonder if PTFS will continue "Koha Express?", On the one hand, it seems to fill a need for small libraries who don't want to invest too much
+2010-01-20T21:14:00.000Z	wizzyrea		I hope they at least give it a different name
+2010-01-20T21:14:00.000Z	owen		On the other hand, PTFS doesn't have to compete in the same way LibLime [felt they] did
+2010-01-20T21:15:00.000Z	wizzyrea		always makes me think of coffee
+2010-01-20T21:16:00.000Z	sekjal		I'm still keen to get a turnkeylinux application of Koha going on.  Download, slap on some (virtual) machine somewhere, and play, I think the difficulty is in the details with that, though
+2010-01-20T21:20:00.000Z	wizzyrea		yes, I like that idea too sekjal, or launch that puppy to the cloud, they have super funky music on the webcast from linux conf AU, I dig
+2010-01-20T21:24:00.000Z	chris_n		looks like owen 's running a patch mill today :-)
+2010-01-20T21:26:00.000Z	wizzyrea		owen++
+2010-01-20T21:29:00.000Z	hdl_laptop	gmcharlt	I wonder whether Kyle patches for patroncards and rotating collections should get into Community., It was sent on patches., And was welcome.
+2010-01-20T21:29:00.000Z	gmcharlt	hdl_laptop	I agree, it should
+2010-01-20T21:29:00.000Z	hdl_laptop		ok., it looks smooth enough to enter.
+2010-01-20T21:30:00.000Z	chris_n		bbl
+2010-01-20T21:45:00.000Z	masonj		.
+2010-01-20T21:45:00.000Z	BobB		Hi Mason, you there?
+2010-01-20T21:45:00.000Z	masonj		yes i am :)
+2010-01-20T21:48:00.000Z	masonj	BobB	moo
+2010-01-20T21:51:00.000Z	masonj	chris	moof
+2010-01-20T22:04:00.000Z	chris		bug3000, bug 3000
+2010-01-20T22:04:00.000Z	munin		Bug http://bugs.koha.org/cgi-bin/b[…]w_bug.cgi?id=3000 enhancement, PATCH-Sent, ---, gmcharltgmail.com, RESOLVED FIXED, Tool needed for catalogers (and other librarians) to bulk change itypes and collection codes
+2010-01-20T22:34:00.000Z	wizzyrea		ok, that makes me feel happy and like squeeing, that's a very good feature
+2010-01-20T22:59:00.000Z	* chris_n2		wonders which feature
+2010-01-20T23:27:00.000Z	brendan		cya later #koha
+2010-01-20T23:44:00.000Z	Nate		goodnight #koha
+2010-01-20T23:49:00.000Z	moodaepo		@wunder 56001
+2010-01-20T23:49:00.000Z	munin	moodaepo	The current temperature in Mankato, Minnesota is -2.0�C (5:35 PM CST on January 20, 2010). Conditions: Overcast. Humidity: 74%. Dew Point: -6.0�C. Windchill: -8.0�C. Pressure: 29.81 in 1009 hPa (Steady).

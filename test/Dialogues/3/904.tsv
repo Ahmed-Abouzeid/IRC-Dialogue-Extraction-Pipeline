@@ -1,0 +1,22 @@
+2007-01-01T11:26:00.000Z	kamui		what do I need to put into my /etc/fstab to allow a fat32 external hard drive to automount at boot AND allow any user to write to it?
+2007-01-01T11:26:00.000Z	kamui		right now I haev /dev/sda1       /media/BACKUP   auto    user,auto       0       0
+2007-01-01T11:27:00.000Z	kamui		I thought the USER option there allowed anyone to write to it
+2007-01-01T11:27:00.000Z	mwe	kamui	you need umask=000 as well under options
+2007-01-01T11:27:00.000Z	kamui		nwe: umask=666?
+2007-01-01T11:27:00.000Z	mwe	kamui	or umask=0000 rather
+2007-01-01T11:27:00.000Z	mwe	kamui	no
+2007-01-01T11:27:00.000Z	mwe	kamui	it's a mask
+2007-01-01T11:28:00.000Z	mwe	kamui	umask=666 would mean perms read only
+2007-01-01T11:28:00.000Z	mwe	kamui	listen to me please. I know what I'm talking about
+2007-01-01T11:29:00.000Z	kamui	mwe	I am, I just made the change
+2007-01-01T11:30:00.000Z	mwe	kamui	does it work now? if not paste /etc/fstab to paste.ubuntu-nl.org
+2007-01-01T11:30:00.000Z	kamui	mwe	gotta remount real quick, seems that since Its also being used by samba, I can't just unmount
+2007-01-01T11:30:00.000Z	mwe	kamui	oh
+2007-01-01T11:31:00.000Z	mwe	kamui	kill samba if you have to
+2007-01-01T11:33:00.000Z	kamui	mwe	sorry, looked like I was IN irssi from the directory
+2007-01-01T11:34:00.000Z	mwe	kamui	yes?
+2007-01-01T11:34:00.000Z	kamui	mwe	and after a full unmount and mount, not just the -o remount, I was able to create a directory as my regular user ;)
+2007-01-01T11:35:00.000Z	kamui	mwe	thanks a ton.  Let me just check and makes sure that my samba users can now write to teh drive and I think Ill be in great shape
+2007-01-01T11:35:00.000Z	mwe	kamui	that's great. the umask is working then. does ls -l the mount point confirm it?
+2007-01-01T11:35:00.000Z	mwe	kamui	well that depends on the samba configuration but mounting it right is a necessity
+2007-01-01T11:35:00.000Z	kamui	mwe	yep, everyting is WRX for owner, user, group, tho Im now the owner...

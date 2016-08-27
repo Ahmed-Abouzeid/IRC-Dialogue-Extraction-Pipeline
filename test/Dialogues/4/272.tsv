@@ -1,0 +1,13 @@
+2007-01-01T05:32:00.000Z	robtp		hi everyone: some of my keys dont work, can anyone help
+2007-01-01T05:32:00.000Z	siv0x		does this: ln -s /home/siv0x/.wine/Program\ Files/steam/steam.exe look correct, so that i can, wine steam.exe ?
+2007-01-01T05:32:00.000Z	robtp	siv0x	don't you need another argument to ln, or does it create one on . by default?
+2007-01-01T05:33:00.000Z	siv0x	robtp	i wouldnt know, thats why i'm asking : )
+2007-01-01T05:34:00.000Z	robtp	siv0x	try ln -s (that dir name) ./steam.exe
+2007-01-01T05:35:00.000Z	siv0x	robtp	k i'll try, sec.
+2007-01-01T05:37:00.000Z	robtp		suspend!! it works fine!!
+2007-01-01T05:37:00.000Z	siv0x	robtp	okay, you are right, but i mistaken, i needed to do ln -s <diff dir> ./steam.exe how do i delete that ln -s ? so i can add the other one instead?
+2007-01-01T05:38:00.000Z	robtp		Can anyone tell me what the difference between suspend and hibernate is?
+2007-01-01T05:38:00.000Z	robtp		you can just remove the steam.exe, all that file is is a link
+2007-01-01T05:38:00.000Z	robtp	siv0x	or you can make a new one using ln -sf, it will overwrite the old one (f being force)
+2007-01-01T05:39:00.000Z	siv0x	robtp	i need it to be drive_c instead of wine: could not load LZ:\\home\\siv0x\\Steam.exe: Module not found : (
+2007-01-01T05:40:00.000Z	robtp	siv0x	i might not be the one to ask

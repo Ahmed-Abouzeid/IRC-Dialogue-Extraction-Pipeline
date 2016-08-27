@@ -1,0 +1,16 @@
+2007-01-01T04:44:00.000Z	lord_ceiphas		how do i enable the virtual consoles tty1-tty6?
+2007-01-01T04:45:00.000Z	mnoir	lord_ceiphas	they should be there already
+2007-01-01T04:46:00.000Z	mnoir	lord_ceiphas	for all 1-6?
+2007-01-01T04:46:00.000Z	lord_ceiphas	mnoir	yes
+2007-01-01T04:46:00.000Z	mnoir		what happens when you press return?
+2007-01-01T04:47:00.000Z	lord_ceiphas	mnoir	if i do this often, my x-xerver crashes
+2007-01-01T04:47:00.000Z	mnoir	lord_ceiphas	hmm - odd
+2007-01-01T04:47:00.000Z	lord_ceiphas	mnoir	if i hit return, i go to a new blank line (the cursor moves down)
+2007-01-01T04:49:00.000Z	mnoir	lord_ceiphas	maybe - i forgot where ttys are configged
+2007-01-01T04:49:00.000Z	lord_ceiphas	mnoir	in the character devices-menu there is no tty
+2007-01-01T04:50:00.000Z	lord_ceiphas	mnoir	maybe ill try the 2.6.18 again... that major bug should be corrected there, too
+2007-01-01T04:50:00.000Z	mnoir	lord_ceiphas	maybe...
+2007-01-01T05:38:00.000Z	lord_ceiphas		i just made a typo and now dont want to reboot
+2007-01-01T05:39:00.000Z	mnoir	lord_ceiphas	??
+2007-01-01T05:39:00.000Z	lord_ceiphas		i made a crtl-c after 3secs, but dont know what has been killed
+2007-01-01T05:39:00.000Z	mnoir	lord_ceiphas	i see a backup restoration in yer future....

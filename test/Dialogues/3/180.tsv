@@ -1,0 +1,8 @@
+2007-01-01T02:24:00.000Z	arrenlex		!root | blackhawk08
+2007-01-01T02:24:00.000Z	arrenlex		!mount | blackhawk08
+2007-01-01T02:27:00.000Z	AidanL		I have installed Ubuntu however when I go onto it I have text only and have been asked to login. I don't understand what to do. I thought it booted up, you entered your username and password then got onto your desktop...
+2007-01-01T02:27:00.000Z	arrenlex	AidanL	Ideally, yes. You have a problem.
+2007-01-01T02:27:00.000Z	arrenlex	AidanL	Was there anything odd about your install?
+2007-01-01T02:27:00.000Z	arrenlex	AidanL	Do you have the gdm package installed?
+2007-01-01T02:28:00.000Z	AidanL		Thanks awilcox, however it has told me there is a Fatal Error:(
+2007-01-01T02:28:00.000Z	arrenlex	AidanL	Ah, then you have a big problem. Can you be more specific than a fatal error?

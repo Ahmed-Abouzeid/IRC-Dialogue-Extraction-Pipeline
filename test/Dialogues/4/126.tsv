@@ -1,0 +1,15 @@
+2007-01-01T03:52:00.000Z	php-freak		says something about some file names need to be shorten cuase of joliet extensinos?
+2007-01-01T03:54:00.000Z	php-freak		the debug message said something about could not burn due to root?
+2007-01-01T03:54:00.000Z	php-freak		how do i burn files that are in the root?
+2007-01-01T03:55:00.000Z	hexidigital		php-freak::  sudo before your command/
+2007-01-01T03:55:00.000Z	hexidigital		*?
+2007-01-01T03:55:00.000Z	php-freak	hexidigital	I'm burning a cd?
+2007-01-01T03:55:00.000Z	hexidigital		php-freak::  what program?
+2007-01-01T03:56:00.000Z	php-freak		k3b dvd & cd burning
+2007-01-01T03:56:00.000Z	hexidigital		php-freak::  *what program are you using?
+2007-01-01T03:56:00.000Z	hexidigital		php-freak::  in terminal, sudo k3b
+2007-01-01T03:57:00.000Z	hexidigital		heh... aren't all mcmuffins mcmuffins of doom? high cholesterol ftw
+2007-01-01T03:57:00.000Z	php-freak	hexidigital	what if it says it needs to shorten file naems because of joliet extension, and ask if i want to continue right before i get raedy to burn it?
+2007-01-01T03:58:00.000Z	hexidigital		php-freak::  it's worth a shot trying, otherwise you will have to copy the file to a different directory & change the name
+2007-01-01T03:58:00.000Z	hexidigital		MuffY::  no, it has Mc before it
+2007-01-01T03:58:00.000Z	hexidigital		MuffY::  ah :)

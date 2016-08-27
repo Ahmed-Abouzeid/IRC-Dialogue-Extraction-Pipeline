@@ -1,0 +1,5 @@
+2007-01-01T05:40:00.000Z	lumaQQ		when i drag a file into the /usr/share  folder is just dont drop there?  is that cos i need to log in as root first?? (^-^)?
+2007-01-01T05:40:00.000Z	mnoir	lumaQQ	or run nautilus in superuser mode
+2007-01-01T05:40:00.000Z	lumaQQ	mnoir	how do i do that?
+2007-01-01T05:41:00.000Z	mnoir	lumaQQ	1 way: in terminal: gksudo nautilus
+2007-01-01T05:41:00.000Z	mnoir	lumaQQ	there are others i think

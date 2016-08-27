@@ -1,0 +1,7 @@
+2007-01-01T02:32:00.000Z	hexidigital		MuffY::  yes
+2007-01-01T02:32:00.000Z	kenthomson	hexidigital	thats a harsh comment, that the problem is a GNOME thing
+2007-01-01T02:32:00.000Z	hexidigital		kenthomson::  KDE had no problems, i haven't been able to figure anything else... so, 1+1=...
+2007-01-01T02:32:00.000Z	hexidigital		MuffY::  :-P
+2007-01-01T02:33:00.000Z	hexidigital		kenthomson::  nothing against Gnome, but i feel it is Gnome specific
+2007-01-01T02:34:00.000Z	hexidigital		kitsune1::  sudo aptitude install nvidia-glx (or appropriate binary) && sudo nvidia-glx-config enable  -- then restart X
+2007-01-01T02:35:00.000Z	hexidigital		eh... i forgot about that

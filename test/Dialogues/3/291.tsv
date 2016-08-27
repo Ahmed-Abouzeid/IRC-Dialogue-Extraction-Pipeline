@@ -1,0 +1,15 @@
+2007-01-01T12:03:00.000Z	con-man		whats wrong
+2007-01-01T12:05:00.000Z	bruenig	con-man	run winecfg
+2007-01-01T12:06:00.000Z	con-man		there is a dir, /usr/local/bin/wine
+2007-01-01T12:08:00.000Z	bruenig	con-man	what happens when you do, winecfg in the terminal
+2007-01-01T12:09:00.000Z	con-man	bruenig	winecfg loads the wine options window
+2007-01-01T12:09:00.000Z	bruenig	con-man	ok, then it should all be good, wine whatever.exe, what does that do
+2007-01-01T12:10:00.000Z	con-man	bruenig	bash: /usr/bin/wine: No such file or directory
+2007-01-01T12:10:00.000Z	bruenig	con-man	is /usr/local/bin not in your PATH?
+2007-01-01T12:11:00.000Z	con-man	bruenig	bash: /usr/bin/wine: No such file or directory
+2007-01-01T12:11:00.000Z	bruenig	con-man	well try this, /usr/local/bin/wine whatever.exe
+2007-01-01T12:12:00.000Z	bruenig	con-man	I don't understand why you compiled it, there is a bleeding edge wine repo
+2007-01-01T12:12:00.000Z	con-man	bruenig	works
+2007-01-01T12:12:00.000Z	bruenig	con-man	well just do that from now on then
+2007-01-01T12:12:00.000Z	con-man	bruenig	can I fix it though?
+2007-01-01T12:12:00.000Z	bruenig	con-man	if open up /etc/environment, make sure that in the PATH you have /usr/local/bin

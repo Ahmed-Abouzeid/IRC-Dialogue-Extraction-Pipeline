@@ -1,0 +1,7 @@
+2007-01-01T10:11:00.000Z	blue-frog		in the menu layout gui there is a debian menu, how can I activate it and will it list programs not showing in the other menus?
+2007-01-01T10:12:00.000Z	Kingsqueak	blue-frog	install menu and menu-xdg
+2007-01-01T10:14:00.000Z	blue-frog	Kingsqueak	ty but is it automatic afterwards? the readme is not very talkative
+2007-01-01T10:14:00.000Z	Kingsqueak	blue-frog	yes, anything packaged with a menu entry just shows up
+2007-01-01T10:15:00.000Z	Kingsqueak	blue-frog	will take a few mins after initial install to generate all the stuff, but then the Debian menu will be selectable and work
+2007-01-01T10:15:00.000Z	blue-frog	Kingsqueak	oh ok so it is automatic and there's nothing to launch to initiate it?
+2007-01-01T10:16:00.000Z	Kingsqueak	blue-frog	you just need to enable the Debian menu to be viewable, that's it

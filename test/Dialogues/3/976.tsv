@@ -1,0 +1,34 @@
+2007-01-01T01:52:00.000Z	fotofo		k cool
+2007-01-01T01:53:00.000Z	fotofo		checking it out
+2007-01-01T01:53:00.000Z	fotofo		thanks
+2007-01-01T01:55:00.000Z	fotofo		that earthquake in taiwan is really starting to piss me off
+2007-01-01T01:55:00.000Z	nn	fotofo	you? My cheap hw source is on hold
+2007-01-01T01:55:00.000Z	nn	fotofo	meaning im having to wait for my damn 5$ mobos and CPUs
+2007-01-01T01:56:00.000Z	nn		which puts my projects on hold bc ya. i'm poor :)
+2007-01-01T01:56:00.000Z	fotofo	nn	well at least you have usable internet
+2007-01-01T01:56:00.000Z	fotofo	nn	i can buy for you in beijing and fedex if you need it NOW :-)
+2007-01-01T02:01:00.000Z	nn	fotofo	if it's already mounted, mount -o remount,rw /mountpoint
+2007-01-01T02:01:00.000Z	nn	fotofo	else mount -a
+2007-01-01T02:01:00.000Z	fotofo	nn	whats the rw?
+2007-01-01T02:01:00.000Z	nn	fotofo	read-write
+2007-01-01T02:02:00.000Z	nn		but much code must be done
+2007-01-01T02:04:00.000Z	fotofo	nn	fotoflo@fotoflo-desktop:/dev$ sudo mount -o remount,rw /dev/hda1
+2007-01-01T02:04:00.000Z	fotofo		mount: /media/windows not mounted already, or bad option
+2007-01-01T02:05:00.000Z	fotofo		its already mounted
+2007-01-01T02:05:00.000Z	nn	fotofo	did you use -o remount,rw ?
+2007-01-01T02:05:00.000Z	fotofo		fotoflo@fotoflo-desktop:/dev$ sudo mount -o remount,rw /dev/hda1
+2007-01-01T02:06:00.000Z	fotofo	nn	yeah
+2007-01-01T02:06:00.000Z	nn	fotofo	ahh not mounted already?
+2007-01-01T02:07:00.000Z	fotofo		mounted
+2007-01-01T02:07:00.000Z	fotofo		listening to an MP3 from it
+2007-01-01T02:08:00.000Z	fotofo	nn	i think i need to put vfat in there,
+2007-01-01T02:08:00.000Z	fotofo		not sure of the syntax
+2007-01-01T02:09:00.000Z	nn	fotofo	/dev/whatever /media/windows vfat auto 0 0
+2007-01-01T02:10:00.000Z	nn	fotofo	no space between the ,rw
+2007-01-01T02:11:00.000Z	fotofo	nn	only worked with the space
+2007-01-01T02:11:00.000Z	nn	fotofo	thats incorrect then
+2007-01-01T02:11:00.000Z	nn	fotofo	if unmounted, mount -t vfat /dev/hda1 /media/windows
+2007-01-01T02:12:00.000Z	nn		but i run off a thumbdrive too..
+2007-01-01T02:13:00.000Z	fotofo	nn	that didnt work
+2007-01-01T02:13:00.000Z	fotofo		so it must be a bad option
+2007-01-01T02:14:00.000Z	nn	fotofo	strange.. ;\

@@ -1,0 +1,4799 @@
+
+
+
+
+
+
+
+
+IRC log for #koha, 2010-01-20
+
+
+
+
+
+
+
+
+
+ 
+
+        ← Previous day |
+     
+    Channels |
+#koha index |
+Today |
+    
+        
+        
+        Next day → |
+    
+    Search |
+    Google Search
+| Plain-Text
+    | plain, newest first |
+    
+    summary
+
+
+
+
+IRC log for #koha, 2010-01-20
+All times shown according to UTC.
+
+
+
+
+
+Time
+S
+Nick
+Message
+
+
+00:24
+
+chris_n2
+@wunder 28334
+
+
+00:24
+
+munin
+chris_n2: The current temperature in Dunn, North Carolina is 9.6�C (7:18 PM EST on January 19, 2010). Conditions: Clear. Humidity: 46%. Dew Point: -2.0�C. Windchill: 10.0�C. Pressure: 29.56 in 1000.9 hPa (Falling).
+
+
+00:57
+
+
+pianohackr|work left #koha
+
+
+01:02
+
+
+pianohackr|work joined #koha
+
+
+01:13
+
+chris
+owen++
+
+
+01:41
+
+
+davi left #koha
+
+
+02:05
+
+
+pianohackr|work left #koha
+
+
+02:10
+
+chris_n2
+owen++
+
+
+02:55
+
+chris
+git log --decorate --graph --oneline
+
+
+03:00
+
+chris_n2
+fatal: unrecognized argument: --oneline
+
+
+03:01
+
+chris
+ahh old version of git
+
+
+03:01
+
+chris_n2
+git version 1.6.0.4
+
+
+03:02
+
+chris
+--pretty=oneline
+
+
+03:03
+
+chris_n2
+that works
+
+
+03:04
+
+chris_n2
+--oneline works in git version 1.6.3.3
+
+
+03:04
+
+chris_n2
+neat
+
+
+03:04
+
+chris
+yeah handy
+
+
+03:04
+
+chris_n2
+did you learn that at a seminar today?
+
+
+03:04
+
+chris
+at a git wrangling one right now
+
+
+03:05
+
+chris
+by scott chacon (who is a guru)
+
+
+03:05
+
+chris_n2
+cool
+
+
+03:05
+
+chris
+talking about rebasing now
+
+
+03:06
+
+chris
+and affirming that koha does it the right way
+
+
+03:06
+
+chris
+so thats nice
+
+
+03:06
+
+chris
+(ie we should rebase before sending patches)
+
+
+03:07
+
+chris_n2
+nice to know that
+
+
+03:11
+
+chris
+wow, you can do some scarily powerful stuff
+
+
+03:17
+
+* chris_n2
+grips the edge of his seat with excitement :-)
+
+
+03:20
+
+chris
+looking at all the different merge tools
+
+
+03:21
+
+chris
+now we are talking about gitattributes
+
+
+03:22
+
+chris
+how you can use it to diff binary files
+
+
+03:22
+
+chris_n2
+that's one session I'd love to be at
+
+
+03:22
+
+chris
+its all being recorded
+
+
+03:23
+
+chris
+ill post to the devel list when it is put up somewhere
+
+
+03:23
+
+chris
+its one you want to be able to pause
+
+
+03:23
+
+chris_n2
+great
+
+
+03:23
+
+chris
+so you can try things
+
+
+03:32
+
+chris
+http://bit.ly/git-wrangling
+
+
+03:32
+
+
+Jo joined #koha
+
+
+03:34
+
+Jo
+Hi all. Is anyone able to help me find out the date and tme of the Koha community meeting please. I know its early Feb but can't find it on koha.org and struggling a abit wuith irc logs
+
+
+03:35
+
+chris
+the next one?
+
+
+03:36
+
+chris
+http://wiki.koha.org/doku.php?[…]etingnotes10feb02
+
+
+03:36
+
+
+Amit joined #koha
+
+
+03:36
+
+chris
+ok, gotta go offline for a bit
+
+
+03:36
+
+Amit
+hi chris
+
+
+03:36
+
+Amit
+good morning #koha
+
+
+03:37
+
+Jo
+hiya AMit
+
+
+03:37
+
+Amit
+heya Jo
+
+
+03:37
+
+Jo
+thankjs Chris
+
+
+03:44
+
+chris_n2
+hey Amit
+
+
+03:45
+
+
+Topic for #koha is now Discussion channel for the Koha ILS | Newsletter #1 Released: http://bit.ly/5fKZA5 | IRC meeting: Tuesday, 2 February 2010 at 19:00 UTC+0 
+
+
+03:45
+
+Amit
+heya Chris_n2
+
+
+03:45
+
+Amit
+@wunder New Delhi
+
+
+03:45
+
+munin
+Amit: The current temperature in New Delhi, India is 8.0�C (8:30 AM IST on January 20, 2010). Conditions: Fog. Humidity: 100%. Dew Point: 8.0�C. Windchill: 7.0�C. Pressure: 30.12 in 1020 hPa (Steady).
+
+
+03:45
+
+chris_n2
+@wunder 28334
+
+
+03:45
+
+munin
+chris_n2: The current temperature in Dunn, North Carolina is 8.6�C (10:42 PM EST on January 19, 2010). Conditions: Clear. Humidity: 74%. Dew Point: 4.0�C. Windchill: 9.0�C. Pressure: 29.59 in 1001.9 hPa (Falling).
+
+
+03:46
+
+chris_n2
+humid in New Delhi today
+
+
+03:46
+
+chris_n2
+raining maybe?
+
+
+04:01
+
+Jo
+@wunder Wellington
+
+
+04:01
+
+munin
+Jo: Error: No such location could be found.
+
+
+04:06
+
+
+Topic for #koha is now Next Community meeting 2nd Feb 2010 at 1900 UTC
+
+
+04:07
+
+Amit
+@wunder Dehradun india
+
+
+04:07
+
+munin
+Amit: The current temperature in Dehradun, India is 6.0�C (8:30 AM IST on January 20, 2010). Conditions: Haze. Humidity: 87%. Dew Point: 5.0�C. Pressure: 30.16 in 1021 hPa.
+
+
+04:07
+
+Amit
+@wunder Bangalore
+
+
+04:07
+
+munin
+Amit: The current temperature in Bangalore, India is 19.0�C (8:30 AM IST on January 20, 2010). Conditions: Haze. Humidity: 77%. Dew Point: 16.0�C.
+
+
+04:08
+
+
+Jo left #koha
+
+
+04:35
+
+
+richard left #koha
+
+
+04:35
+
+chris_n2
+g'night #koha
+
+
+05:30
+
+
+richard joined #koha
+
+
+06:16
+
+Amit
+heya richard
+
+
+06:16
+
+richard
+hiya Amit
+
+
+06:16
+
+richard
+how's things going?
+
+
+06:34
+
+
+nicomo joined #koha
+
+
+06:53
+
+
+indradg joined #koha
+
+
+06:54
+
+
+indradg left #koha
+
+
+07:06
+
+Ropuch
+Morning #koha
+
+
+07:22
+
+
+richard left #koha
+
+
+07:24
+
+imp
+moin
+
+
+07:25
+
+Amit
+heya nicomo, Ropuch, imp
+
+
+07:26
+
+nicomo
+hi Amit
+
+
+07:41
+
+
+laurence joined #koha
+
+
+07:44
+
+
+magnus joined #koha
+
+
+08:21
+
+
+Kivutar joined #koha
+
+
+08:38
+
+
+paul_p joined #koha
+
+
+09:35
+
+
+davi joined #koha
+
+
+09:51
+
+magnus
+jo++ # http://library-matters.blogspo[…]-my-universe.html
+
+
+10:04
+
+chris
+its a great blog post
+
+
+10:04
+
+* chris
+has just got back from drinking with some git developers
+
+
+10:04
+
+chris
+so may be incoherent
+
+
+10:06
+
+masonj
+heya
+
+
+10:06
+
+masonj
+i just got back from band-practice...
+
+
+10:09
+
+chris
+cool :) you were mentioned in the blog post
+
+
+10:09
+
+masonj
+hi Amit too , happy new year
+
+
+10:11
+
+paul_p
+hello masonj, magnus, chris & al
+
+
+10:12
+
+masonj
+hiya paul
+
+
+10:12
+
+magnus
+hello paul_p et al
+
+
+10:12
+
+masonj
+and magnus :)
+
+
+10:12
+
+magnus
+and masonj
+
+
+10:13
+
+chris
+heya paul_p
+
+
+10:13
+
+chris
+paul_p: try git log --decorate --graph --oneline
+
+
+10:14
+
+magnus
+nice
+
+
+10:18
+
+chris
+one of the tips i learnt today
+
+
+10:19
+
+chris
+more at http://bit.ly/git-wrangling
+
+
+10:23
+
+masonj
+nice pdf layout and graphics
+
+
+10:24
+
+chris
+yeah was a good talk, from someone who really knows there stuff
+
+
+10:24
+
+chris
+their too
+
+
+10:28
+
+Amit
+hi masonj happy new year to you too
+
+
+10:38
+
+hdl_laptop
+happy new year Amit
+
+
+10:51
+
+chilts
+yeah, gonna alias 'git tree' to 'git log --decorate --graph --pretty=oneline' (I have v1.6.0.4 unfortunately, --pretty=oneline === --oneline)
+
+
+10:52
+
+Amit
+hi hdl_laptop same to u
+
+
+11:52
+
+
+Kivutar left #koha
+
+
+11:53
+
+
+nahuel left #koha
+
+
+12:09
+
+
+laurence left #koha
+
+
+12:14
+
+
+Amit left #koha
+
+
+12:38
+
+
+jwagner joined #koha
+
+
+12:39
+
+
+collum joined #koha
+
+
+13:21
+
+chris_n
+g'morning
+
+
+13:24
+
+
+owen joined #koha
+
+
+13:24
+
+* jwagner
+makes an indistinct mumble resembling "good morning"
+
+
+13:29
+
+hdl_laptop
+good morning
+
+
+13:32
+
+
+nahuel joined #koha
+
+
+13:33
+
+
+paul_p left #koha
+
+
+13:33
+
+
+paul_p joined #koha
+
+
+13:33
+
+
+Kivutar joined #koha
+
+
+13:36
+
+
+gmcharlt left #koha
+
+
+13:36
+
+
+gmcharlt joined #koha
+
+
+13:40
+
+
+oceb joined #koha
+
+
+13:41
+
+oceb
+morning
+
+
+13:44
+
+owen
+Hi oceb
+
+
+13:49
+
+oceb
+hi owen
+
+
+13:51
+
+oceb
+do you know why advanced search with Date of publication, distribution (260c) isn't workin on opac?
+
+
+13:51
+
+
+schuster joined #koha
+
+
+13:51
+
+owen
+oceb: Does it return no results, or incorrect results?
+
+
+13:51
+
+oceb
+never return results =/
+
+
+13:52
+
+owen
+oceb: What version of Koha?
+
+
+13:52
+
+oceb
+3.0.5
+
+
+13:57
+
+owen
+Are you referring to the "publication date range" option?
+
+
+13:58
+
+oceb
+exactly! :D
+
+
+13:59
+
+oceb
+when i put a date p.e. "1998" or "-2009" or "1997-" it doesn't return results
+
+
+13:59
+
+oceb
+but without a date, it returns...
+
+
+13:59
+
+owen
+I assume other searches are working okay?
+
+
+13:59
+
+oceb
+yeah
+
+
+14:00
+
+owen
+Maybe someone else here can verify: Does the publication date search work by looking at 008?
+
+
+14:01
+
+oceb
+uhmmm
+
+
+14:01
+
+oceb
+how i can do a date search on 008 ?
+
+
+14:02
+
+owen
+oceb: I thought the publication date range search *did* search on the date in 008, but I'm hoping someone else here can tell me if that's correct
+
+
+14:03
+
+oceb
+=O
+
+
+14:04
+
+oceb
+I thought that search was on the field 260c
+
+
+14:06
+
+owen
+260c can contain non-numeric data, so you can't ask a computer to do numeric comparisons on it without attempting to sanitize it.
+
+
+14:06
+
+owen
+I thought the pub date search worked with 008 because of that.
+
+
+14:08
+
+schuster
+I can't verify but from my experience with Bib dates so far depending I suspect it is coming from the biblio.copyrightdate or biblioitems, but I'm not sure
+
+
+14:08
+
+oceb
+=o
+
+
+14:08
+
+oceb
+omg
+
+
+14:08
+
+schuster
+where that is being derived from and scrubbed to a single number.  I have not compared that, but will take a look.
+
+
+14:09
+
+oceb
+i think 99% of my books doesn't have a date in 008 >.<
+
+
+14:09
+
+oceb
+i'll test one, im putting a date on a book and now im reindexing
+
+
+14:19
+
+oceb
+omg
+
+
+14:19
+
+oceb
+it works!
+
+
+14:19
+
+oceb
+thanks owen :)
+
+
+14:20
+
+oceb
+now i need to put all dates from 260c to 008 =(
+
+
+14:22
+
+owen
+oceb: sounds like a job for a Perl guru
+
+
+14:24
+
+* owen
+thinks we had to do the same thing at one point, but it wasn't me that did it
+
+
+14:24
+
+schuster
+so it is pulling the date from the 008 - do you know is that how it got the information for the biblio.copyrightdate as well?
+
+
+14:26
+
+* chris_n
+heads off to fix a naughty win32 box
+
+
+14:26
+
+schuster
+shame on that box... ;)
+
+
+14:27
+
+schuster
+Owen - I want to thank you again for your help last week..  I'm really excited about the possibilities, now I just have to do something with it!
+
+
+14:27
+
+owen
+Sure thing schuster, I know you'd asked me about it before and I'm glad you pestered me about it
+
+
+14:27
+
+Ropuch
+Hm, I need to fix 008 with dates from 260c too
+
+
+14:28
+
+Ropuch
+This means some perl exercisies ;>
+
+
+14:32
+
+jwagner
+owen, you're talking about the 008 positions 7-10 for the pubyear, correct?
+
+
+14:32
+
+owen
+Yes
+
+
+14:32
+
+jwagner
+Thanks.  I have a site that's getting data converted by Marcive right now -- a timely reminder to send them to make sure that's getting filled in.
+
+
+14:38
+
+oceb
+wow
+
+
+14:38
+
+oceb
+not everithing is perl :)
+
+
+14:39
+
+oceb
+here in my library we have some code written in php to modifiy both marc and marcxml
+
+
+14:40
+
+oceb
+but I am learning Perl little by little with koha :D
+
+
+14:49
+
+hdl_laptop
+oceb: :'(
+
+
+14:49
+
+
+chris_n2 left #koha
+
+
+14:49
+
+hdl_laptop
+learning PERL with koha is a hard school
+
+
+14:50
+
+schuster
+MarcEdit again might be able to help in that job...  I know I've used it's find x and place it in y feature several times.  Don't know how it would work on a leader/008 field.
+
+
+14:51
+
+chris_n
+bye chris_n2
+
+
+14:51
+
+hdl_laptop
+schuster++
+
+
+14:51
+
+schuster
+Question to the list - has anyone else seen this?  http://bagno.be/localcovers.html  - would it still work?
+
+
+14:52
+
+oceb
+hdl_laptop : yeah.... when i come here, i have no idea of what is perl :S
+
+
+14:54
+
+oceb
+perl is... powerfull but... some complicated to beginners :D Php is friendly with beginners :) Anyway im happy with koha and my newbie-knowledge of perl
+
+
+14:56
+
+schuster
+interesting regarding the 008 - biblios.copyrightdate comes from the 260c though in the database NOT the 008.
+
+
+14:56
+
+
+chris_n left #koha
+
+
+14:56
+
+schuster
+I just ran a test.
+
+
+14:57
+
+
+chris_n joined #koha
+
+
+15:06
+
+schuster
+chris - just went through the git presentation - it is powerful - glad you understand it!!!
+
+
+15:07
+
+owen
+That's what I like about git: I can get stuff done with it, and people smarter than me can do magic with it.
+
+
+15:07
+
+schuster
+magic - kinda like owen the wizard with css ;)
+
+
+15:08
+
+schuster
+I just did some further testing and biblios.copyrightdate - scrubs everything except the first set of numbers. ie 2010, [p2009] in copyrightdate shows 2010, with [p2009], 2010 shows 2009...
+
+
+15:10
+
+schuster
+When searching what is displayed on the bib screen is the copyrightdate field so in the example above 2010, then 2009 not the full MARC representation.
+
+
+15:22
+
+
+sekjal joined #koha
+
+
+15:36
+
+schuster
+ok new question for the techies.  I may also post it to the koha-devel list for responses.  I have 53,000 pictures of students on a remote server.
+
+
+15:37
+
+schuster
+I tried to scp them in, but guess what there are limitations, so I'm thinking of setting up a cron job to setup the fileshare on the windows box, and then issue a set of scp commands once a week in the middle of the night to copy them over.
+
+
+15:37
+
+schuster
+then at the end of the cron would be the script I have to mass add them.
+
+
+15:38
+
+schuster
+Thoughts suggestions?  I'm a librarian here remember that when you respond. thanks....
+
+
+15:49
+
+wizzyrea
+hm, why do you have to add all 53k of them every week?
+
+
+15:52
+
+
+brendan joined #koha
+
+
+15:54
+
+wizzyrea
+schuster: maybe I'm not understanding your need, you have 53k photos and you can only move X with scp, so you're thinking of moving batches of them? Or you have 53k photos that you need to add every week
+
+
+15:54
+
+wizzyrea
+or... something else
+
+
+15:55
+
+owen
+wizzyrea: Looks like he put more details into a message to koha-devel
+
+
+15:56
+
+schuster
+There are files put on a share for several departments to use of pictures of all the kids.  I never know when they get put there, and the dates on the files are the dates they are taken by the photographer
+
+
+15:56
+
+schuster
+hence the reason for loading ALL of them.
+
+
+15:57
+
+schuster
+If there are problems with pictures the librarian lets me know and I inform the powers that be to adjust the photo names etc... to make them match correctly.  We use the photos with the grade book program, and lunchline.
+
+
+15:57
+
+wizzyrea
+Ah, sorry I didn't look at my list mail
+
+
+15:58
+
+schuster
+sorry I was somewhat brief here in my description.
+
+
+16:00
+
+wizzyrea
+it's too bad it's a windows server, you could rsync
+
+
+16:03
+
+chris_n
+you can still rsync
+
+
+16:03
+
+chris_n
+http://www.aboutmyip.com/About[…]App/DeltaCopy.jsp
+
+
+16:03
+
+wizzyrea
+I didn't realize there was a windows version ^.^
+
+
+16:04
+
+wizzyrea
+oh sweet, had no idea, thanks chris
+
+
+16:04
+
+wizzyrea
+chris_n
+
+
+16:04
+
+chris_n
+I use it to sync my main webradio broadcast server with the warm-standby box
+
+
+16:05
+
+chris_n
+schuster: you can do a share if you use samba
+
+
+16:05
+
+wizzyrea
+are you the king of shoehorning windows in to unix shoes?
+
+
+16:05
+
+chris_n
+but rsync is probably the thing here
+
+
+16:05
+
+chris_n
+wizzyrea: I like to see windows in a vbox frame inside of my gnome interface
+
+
+16:05
+
+wizzyrea
+LOL
+
+
+16:06
+
+wizzyrea
+I frankly can't stand to look at it anymore >.>
+
+
+16:07
+
+chris_n
+schuster: you can setup rsync on your koha box and deltacopy on your win32 box and away you go
+
+
+16:07
+
+wizzyrea
+that has other benefits too, right? Like, he might not have to do all 53k?
+
+
+16:07
+
+chris_n
+rsync will only pickup on the file changes as well (if you like) which will reduce the load on the network after the initial replication
+
+
+16:08
+
+wizzyrea
+yes, that's what I was thinking of
+
+
+16:08
+
+chris_n
+great minds think alike they say ;-)
+
+
+16:08
+
+chris_n
+or at least get stuck in the same rut
+
+
+16:08
+
+wizzyrea
+haha
+
+
+16:13
+
+schuster
+Thanks chris_n AGAIN!  I'll look into this...  I don't have control of the windows box only access to pull/copy from so will have to play with it.
+
+
+16:18
+
+
+wizzyrea_ joined #koha
+
+
+16:18
+
+
+wizzyrea left #koha
+
+
+16:20
+
+
+mgcleveland_ joined #koha
+
+
+16:20
+
+mgcleveland_
+Hello, I have a questions addbiblio.pl not working
+
+
+16:20
+
+mgcleveland_
+the page is blank when it's loaded via the OPAC site
+
+
+16:20
+
+* chris_n
+shamelessly encourages a prospective Koha user to maintain their own installation of Koha
+
+
+16:20
+
+mgcleveland_
+is that directed at me?
+
+
+16:21
+
+mgcleveland_
+(chris_n)
+
+
+16:21
+
+wizzyrea_
+erm, do you mean in the staff interface?
+
+
+16:21
+
+mgcleveland_
+yep, the staff interface
+
+
+16:21
+
+chris_n
+mgcleveland: sorry, no :-)
+
+
+16:21
+
+mgcleveland_
+(thanks for the response)
+
+
+16:21
+
+mgcleveland_
+haha, no worries
+
+
+16:21
+
+chris_n
+but feel free to maintain your own as well :-)
+
+
+16:21
+
+mgcleveland_
+haha, I'm trying!
+
+
+16:22
+
+mgcleveland_
+but there's just so much perl spaghetti code!
+
+
+16:22
+
+owen
+mgcleveland_: What version of Koha? Does your browser display any javascript errors?
+
+
+16:22
+
+wizzyrea_
+mg do you have access to your koha error log?
+
+
+16:22
+
+
+wizzyrea_ is now known as wizzyrea
+
+
+16:22
+
+mgcleveland_
+yes I have access to the logs and there is no error
+
+
+16:22
+
+
+Kivutar left #koha
+
+
+16:22
+
+mgcleveland_
+(no javascript errors either)
+
+
+16:23
+
+wizzyrea
+what browser are you using?
+
+
+16:23
+
+mgcleveland_
+firefox
+
+
+16:23
+
+mgcleveland_
+here's the weird thing
+
+
+16:23
+
+mgcleveland_
+I have other instances on different servers, and this page works on them
+
+
+16:23
+
+mgcleveland_
+i've diffed the files and there is no difference in the files!
+
+
+16:23
+
+mgcleveland_
+I assume there must be something wrong with  my config or database, but I jsut don't know where to start looking
+
+
+16:25
+
+schuster
+Permissions on the file?
+
+
+16:25
+
+mgcleveland_
+i have root on everything
+
+
+16:25
+
+mgcleveland_
+oh, sorry
+
+
+16:25
+
+mgcleveland_
+good cal
+
+
+16:25
+
+mgcleveland_
+l
+
+
+16:25
+
+mgcleveland_
+let me check
+
+
+16:25
+
+mgcleveland_
+only needs 755, right?
+
+
+16:27
+
+wizzyrea
+it's just blank?
+
+
+16:27
+
+wizzyrea
+apache errors?
+
+
+16:27
+
+mgcleveland_
+I checked the apache logs, as well, but I'll do a re-check
+
+
+16:28
+
+mgcleveland_
+(koha error log is blank)
+
+
+16:29
+
+mgcleveland_
+apache log has no errors pertaining to my session
+
+
+16:29
+
+wizzyrea
+it's got to be something obvious
+
+
+16:29
+
+mgcleveland_
+that's what I'm thinking
+
+
+16:29
+
+mgcleveland_
+but I can't put my finger on it
+
+
+16:30
+
+mgcleveland_
+like I said, I suspect some config or DB issue
+
+
+16:30
+
+wizzyrea
+do you have itypes defined?
+
+
+16:30
+
+wizzyrea
+have you been through the system preferences to set up a library?
+
+
+16:30
+
+wizzyrea
+2nd being more important probably
+
+
+16:30
+
+mgcleveland_
+let me see
+
+
+16:31
+
+wizzyrea
+(if you don't have a library, I don't think it will let you add bibs(
+
+
+16:31
+
+wizzyrea
+(it definitely won't let you add patrons)
+
+
+16:31
+
+mgcleveland_
+(i'm a CS/programmer guy, so when it comes to the library aspects of the system I'm a little lost, but I'll try to hang :) )
+
+
+16:31
+
+wizzyrea
+we get that a lot :)
+
+
+16:31
+
+mgcleveland_
+haha
+
+
+16:31
+
+mgcleveland_
+so how can I see if a library exists?
+
+
+16:32
+
+wizzyrea
+more -> administration -> libraries and groups
+
+
+16:32
+
+mgcleveland_
+oh yes
+
+
+16:32
+
+wizzyrea
+should list them
+
+
+16:32
+
+mgcleveland_
+we have 7 branches listed
+
+
+16:32
+
+wizzyrea
+okies, not that...
+
+
+16:32
+
+mgcleveland_
+with no categories set, is this important?
+
+
+16:33
+
+wizzyrea
+I'm taking it that you installed with the default data?
+
+
+16:33
+
+wizzyrea
+so you should have default categories and itypes
+
+
+16:33
+
+mgcleveland_
+yes I did, but we've added data since then
+
+
+16:33
+
+mgcleveland_
+I really apologize but I have a meeting in 15
+
+
+16:33
+
+wizzyrea
+Ah ok
+
+
+16:33
+
+wizzyrea
+np np
+
+
+16:33
+
+mgcleveland_
+thank you so much for your help
+
+
+16:33
+
+wizzyrea
+we're ez
+
+
+16:33
+
+mgcleveland_
+i'll be back in a few!
+
+
+16:34
+
+wizzyrea
+ttyl :)
+
+
+16:34
+
+wizzyrea
+ttyl :)
+
+
+16:34
+
+wizzyrea
+eerks lol
+
+
+16:34
+
+wizzyrea
+bad typing, bad
+
+
+16:35
+
+wizzyrea
+so the koha.org vendor list page is worthless now, right?
+
+
+16:35
+
+wizzyrea
+I mean, it lists some
+
+
+16:42
+
+schuster
+Evidently from the discussion yesterday...
+
+
+16:42
+
+wizzyrea
+well, here's my task
+
+
+16:43
+
+wizzyrea
+I'm supposed to come up with a list of the major players in the Koha Community
+
+
+16:43
+
+wizzyrea
+and their significant contributions
+
+
+16:43
+
+wizzyrea
+which should be easy enough
+
+
+16:44
+
+owen
+wizzyrea: chris and nicomo have both done work analyzing the git logs to identify the primary contributors
+
+
+16:45
+
+wizzyrea
+yea I'm looking at it
+
+
+16:47
+
+
+brendan left #koha
+
+
+16:49
+
+wizzyrea
+http://stats.workbuffer.org/3.2.0.html among others
+
+
+16:51
+
+owen
+wizzyrea: I know PTFS Europe has applied to appear on the list (ages ago) and more recently Mill Run Technology Solutions
+
+
+16:52
+
+owen
+Who knows if others have applied and either gotten no response or gave up because the submission form is broken.
+
+
+16:54
+
+wizzyrea
+yea... mason still works at katipo?
+
+
+16:56
+
+wizzyrea
+chris_n who do you work for?
+
+
+16:57
+
+jwagner
+gmcharlt, online?
+
+
+16:57
+
+magnus
+libriotech should be listed, but i havn't bothered to apply yet...
+
+
+17:01
+
+
+jwagner is now known as jwagner_meeting
+
+
+17:02
+
+masonj
+wizzyrea: officially, i work for KohaAloha (my own company), but i do work as a contractor to Katipo ;)
+
+
+17:02
+
+
+wizzyrea_ joined #koha
+
+
+17:02
+
+wizzyrea
+(I know, I should know this)
+
+
+17:02
+
+
+wizzyrea left #koha
+
+
+17:04
+
+chris_n
+@later tell wizzyrea FBC (Foundations Bible College) and contract from time to time
+
+
+17:04
+
+munin
+chris_n: The operation succeeded.
+
+
+17:05
+
+masonj
+@later tell wizzyrea officially, i work for KohaAloha (my own company), but i do work as a contractor to Katipo ;)
+
+
+17:05
+
+munin
+masonj: The operation succeeded.
+
+
+17:05
+
+wizzyrea_
+ty ty
+
+
+17:05
+
+wizzyrea_
+sry, our internets went funky
+
+
+17:06
+
+chris_n
+funky_internet--
+
+
+17:10
+
+gmcharlt
+jwagner_meeting: ?
+
+
+17:20
+
+
+brendan joined #koha
+
+
+17:20
+
+oceb
+hi brendan
+
+
+17:21
+
+hdl_laptop
+hi gmcharlt brendan
+
+
+17:21
+
+brendan
+good morning
+
+
+17:22
+
+sekjal
+morning, brendan
+
+
+17:22
+
+owen
+Hi brendan
+
+
+17:22
+
+brendan
+must be nighttime for you hdl_laptop
+
+
+17:22
+
+hdl_laptop
+only 18PM
+
+
+17:23
+
+brendan
+@wunder 93117
+
+
+17:23
+
+munin
+brendan: The current temperature in Northwest Goleta, Goleta, California is 11.3�C (9:16 AM PST on January 20, 2010). Conditions: Light Thunderstorms and Rain. Humidity: 89%. Dew Point: 10.0�C. Pressure: 29.58 in 1001.6 hPa (Rising).  Coastal Flood Advisory in effect until 7 am PST this morning... 
+
+
+17:23
+
+paul_p
+not 18PM, 6PM ;-)
+
+
+17:23
+
+brendan
+yup my office flooded this morning :(
+
+
+17:24
+
+sekjal
+uck, sorry brendan.  anything badly damaged?
+
+
+17:24
+
+brendan
+the rug, but everything else was off the ground
+
+
+17:25
+
+brendan
+glad that I plan for silly things like floods, in a place that only rains for a month out of the year
+
+
+17:25
+
+sekjal
+brendan:  definitely
+
+
+17:25
+
+sekjal
+I remember waking up at 4am to my apartment flooding.  Mad dash across a squishy carpet to get my CPU off the floor
+
+
+17:26
+
+moodaepo
+@wunder 56001
+
+
+17:26
+
+munin
+moodaepo: The current temperature in Mankato, Minnesota is -6.0�C (11:15 AM CST on January 20, 2010). Conditions: Overcast. Humidity: 100%. Dew Point: -6.0�C. Windchill: -14.0�C. Pressure: 29.85 in 1011 hPa (Steady).  Winter Weather Advisory in effect until 6 am CST Thursday... 
+
+
+17:32
+
+chris
+morning
+
+
+17:32
+
+owen
+Hi chris
+
+
+17:32
+
+chris_n
+heya chris
+
+
+17:33
+
+oceb
+how i can put my location info? D=
+
+
+17:34
+
+
+Nate joined #koha
+
+
+17:35
+
+
+francharb joined #koha
+
+
+17:36
+
+* chris
+is trying to figure out what sessions to go to today
+
+
+17:47
+
+
+collum left #koha
+
+
+17:48
+
+
+saorge_ joined #koha
+
+
+17:49
+
+masonj
+chris: hopefully see you at/after the keynote
+
+
+17:50
+
+schuster
+have a great day everyone...
+
+
+17:50
+
+schuster
+@wunder 75074
+
+
+17:50
+
+munin
+schuster: The current temperature in Brookview, Plano, Texas is 18.6�C (11:45 AM CST on January 20, 2010). Conditions: Overcast. Humidity: 85%. Dew Point: 16.0�C. Pressure: 29.00 in 981.9 hPa (Falling).
+
+
+17:50
+
+schuster
+I'm off to play for the afternoon!
+
+
+17:51
+
+chris
+sounds good masonj
+
+
+17:51
+
+
+schuster left #koha
+
+
+17:51
+
+owen
+I'd do like schuster if I had his weather
+
+
+17:52
+
+
+paul_p left #koha
+
+
+17:54
+
+
+saorge left #koha
+
+
+18:02
+
+
+francharb left #koha
+
+
+18:09
+
+wizzyrea_
+huh, http://api.jquery.com/ changed from mediawiki to wordpress for their CMS.
+
+
+18:18
+
+
+jwagner_meeting is now known as jwagner
+
+
+18:18
+
+jwagner
+gmcharlt, still around?
+
+
+18:18
+
+gmcharlt
+jwagner: what's up?
+
+
+18:19
+
+jwagner
+I think I remember you saying you were going to push a bunch of patches to the current head -- has that happened?
+
+
+18:19
+
+
+jdavidb joined #koha
+
+
+18:19
+
+jwagner
+One of our developers wants to get the latest head with all the patches/bugfixes.
+
+
+18:20
+
+gmcharlt
+look for it over the weekend
+
+
+18:20
+
+jwagner
+OK, I'll tell him.  Thanks.
+
+
+18:20
+
+gmcharlt
+the dev can also take a gander at the biblibre 3.2_community branch
+
+
+18:24
+
+jwagner
+OK.
+
+
+18:26
+
+chris
+register trademarks??????
+
+
+18:27
+
+chris
+wizzyrea_: you might need to have a chat with your boss, i fear in order to move things along he is gonna start another set of worries
+
+
+18:27
+
+wizzyrea_
+erm... I think that was a list of things that a foundation could (but KUDOS won't, necessarily)
+
+
+18:27
+
+wizzyrea_
+do
+
+
+18:28
+
+wizzyrea_
+don't read too much into it
+
+
+18:28
+
+wizzyrea_
+he's in agreement
+
+
+18:28
+
+wizzyrea_
+more along the lines of "get a move on and get it done"
+
+
+18:29
+
+chris
+ppl need to be more careful with words is all im saying
+
+
+18:29
+
+wizzyrea_
+KUDOS doesn't have any interest that I know of to register any trademarks regarding koha
+
+
+18:30
+
+sekjal
+we have never mentioned trademarks at all in any of the discussions I've been in on
+
+
+18:30
+
+wizzyrea_
+he's an administrator, he is simply referring to the things a foundation *can* do
+
+
+18:30
+
+wizzyrea_
+and in order to do them, you must have the foundation
+
+
+18:30
+
+chris
+cool, now anyone who reads the irc logs knows that, but anyone who reads the mailing list could be confused into thinking KUDOS is the foundation
+
+
+18:31
+
+sekjal
+that's easy enough to fix... one sec
+
+
+18:31
+
+chris
+thanks sekjal
+
+
+18:31
+
+chris
+its always easier to stop arguments before they start :)
+
+
+18:32
+
+wizzyrea_
+rather, a non profit 501c3 agency
+
+
+18:33
+
+Ropuch
+Evening #koha
+
+
+18:33
+
+chris
+hiya Ropuch
+
+
+18:35
+
+sekjal
+email sent.  time for a meeting.  bbl
+
+
+18:36
+
+
+sekjal is now known as sekjal-away
+
+
+18:36
+
+chris
+sekjal+++
+
+
+18:36
+
+chris
+sekjal++
+
+
+18:36
+
+chris
+even
+
+
+18:38
+
+
+owen is now known as owen-away
+
+
+18:50
+
+chris
+ok bus time
+
+
+18:51
+
+wizzyrea_
+gl with the bus
+
+
+18:59
+
+
+owen-away is now known as owen
+
+
+19:00
+
+* chris_n
+takes a deep breath and presses the 'send' button
+
+
+19:01
+
+chris_n
+perhaps /me should have read the buffer first :-)
+
+
+19:03
+
+wizzyrea_
+heh
+
+
+19:04
+
+wizzyrea_
+jim's grown, he can take it, though I'm sure that he didn't actually mean it in the way it's being read
+
+
+19:04
+
+* chris_n
+has had that happen before too
+
+
+19:05
+
+wizzyrea_
+he said the magic word "trademark"
+
+
+19:05
+
+wizzyrea_
+and "foundation"
+
+
+19:05
+
+* wizzyrea_
+shudders
+
+
+19:05
+
+chris_n
+the community is a bit sensitive atm
+
+
+19:05
+
+wizzyrea_
+heh, yea
+
+
+19:07
+
+wizzyrea_
+and by "sure" I know that he knows about the HLT/Official Foundation situation, more importantly comprehends the importance of that effort, and even more importantly respects that there is a need for it
+
+
+19:07
+
+wizzyrea_
+and you all don't know this, but he's set up several non profit foundations in his career
+
+
+19:08
+
+wizzyrea_
+*helped to set up
+
+
+19:08
+
+wizzyrea_
+yea, he's my boss, but he's not a nub.
+
+
+19:09
+
+wizzyrea_
+he is, and we are, committed to the principles of free software, and we have every interest in seeing Koha succeed.
+
+
+19:09
+
+wizzyrea_
+there. I'm done.
+
+
+19:09
+
+wizzyrea_
+:)
+
+
+19:10
+
+* chris_n
+applauds
+
+
+19:35
+
+* jwagner
+thinks true joy is not wanting to do a telecon, and finding out the other person has forgotten about it & left for the day :-)
+
+
+19:35
+
+gmcharlt
+jwagner++
+
+
+19:36
+
+wizzyrea_
+owen: what do you think about the following screenshot, how can we make this display better
+
+
+19:36
+
+wizzyrea_
+http://screencast.com/t/M2RlNTY0
+
+
+19:36
+
+jwagner
+That just made my afternoon!
+
+
+19:37
+
+wizzyrea_
+the items display is what I'm referring to
+
+
+19:37
+
+wizzyrea_
+on bibs that have lots of items, the results list is very... icky
+
+
+19:37
+
+owen
+To say the least
+
+
+19:37
+
+wizzyrea_
+or maybe that's fixed in more recent versions
+
+
+19:37
+
+owen
+Not that I know of
+
+
+19:37
+
+jwagner
+I'm not owen, but I think it would be better if the items list was just another line after the bib display instead of in a separate column.  That would give it a much wider table cell to run across.
+
+
+19:38
+
+chris_n
+@quote add jwagner thinks true joy is not wanting to do a telecon, and finding out the other person has forgotten about it & left for the day :-)
+
+
+19:38
+
+munin
+chris_n: The operation succeeded.  Quote #51 added.
+
+
+19:38
+
+wizzyrea_
+well, it shows several things that it may not need to
+
+
+19:38
+
+jwagner
+chris_n, you had to do that, didn't you :-(
+
+
+19:38
+
+wizzyrea_
+why does it show the call number for checked out items, for example
+
+
+19:38
+
+wizzyrea_
+it's out, you're not going to find it
+
+
+19:39
+
+owen
+...not that that buys you much space
+
+
+19:39
+
+
+richard joined #koha
+
+
+19:39
+
+richard
+hi
+
+
+19:40
+
+wizzyrea_
+true, but what if you 1. used the library short name instead of full name, 2. removed the call number 3. changed date due: to Due only for on loan items
+
+
+19:40
+
+jwagner
+wizzyrea, this is staff side, correct?  Is there any value to even showing the call numbers at this stage?  Maybe just a Library A (7 copies), Library B (2 copies) etc.
+
+
+19:41
+
+wizzyrea_
+well I was wondering about that too
+
+
+19:41
+
+wizzyrea_
+I think that for AVAILABLE items it doesn't hurt to show a lot of info
+
+
+19:41
+
+wizzyrea_
+but for checked out or lost items... just as well to go to the bib detail
+
+
+19:41
+
+wizzyrea_
+to find out the dilly
+
+
+19:41
+
+wizzyrea_
+yes, thsi is the staff side
+
+
+19:42
+
+wizzyrea_
+oh and you've got shelving location in there too
+
+
+19:42
+
+wizzyrea_
+so axe that
+
+
+19:42
+
+wizzyrea_
+so, as an example
+
+
+19:42
+
+wizzyrea_
+on loan: Baldwin, Due 01/28/2010
+
+
+19:43
+
+wizzyrea_
+Basehor, Due XXX
+
+
+19:43
+
+wizzyrea_
+etc
+
+
+19:43
+
+wizzyrea_
+1-2 lines instead of 6
+
+
+19:44
+
+wizzyrea_
+i'm more just curious if anyone else has an opinion on how it can be made better
+
+
+19:44
+
+wizzyrea_
+I know it's not a priority
+
+
+19:44
+
+wizzyrea_
+i'm willing to try to fix it myself, but don't want to do anything that would make people upset
+
+
+19:44
+
+wizzyrea_
+fix/change
+
+
+19:45
+
+
+wizzyrea_ is now known as wizzyrea
+
+
+19:45
+
+owen
+Needs a wider discussion
+
+
+19:46
+
+mgcleveland_
+wizzyrea_ you still there?
+
+
+19:46
+
+wizzyrea
+yep
+
+
+19:46
+
+mgcleveland_
+ok I'm back
+
+
+19:46
+
+mgcleveland_
+do you remember what we were talking about?
+
+
+19:46
+
+wizzyrea
+there are more people around now, you might go over your issue
+
+
+19:46
+
+wizzyrea
+again
+
+
+19:46
+
+wizzyrea
+for their benefit
+
+
+19:46
+
+wizzyrea
+but yes, I remember :)
+
+
+19:46
+
+mgcleveland_
+will do
+
+
+19:47
+
+mgcleveland_
+In a nutshell, my addbiblio.pl page is not working
+
+
+19:47
+
+mgcleveland_
+it works on other instances of Koha I have and the files, when diffed, are identical
+
+
+19:47
+
+mgcleveland_
+this leads me to believe it's a config or DB problem
+
+
+19:48
+
+* jwagner
+thinks "Curses, foiled again!" Others at the site called me to pick up the telecon!
+
+
+19:50
+
+
+francharb joined #koha
+
+
+19:50
+
+
+francharb left #koha
+
+
+19:52
+
+mgcleveland_
+sooooooooo
+
+
+19:52
+
+mgcleveland_
+any ideas?
+
+
+19:52
+
+wizzyrea
+we know that you have libraries, and you're sure you have item types
+
+
+19:52
+
+mgcleveland_
+right, we've got branches
+
+
+19:53
+
+mgcleveland_
+as for the item types, let me check
+
+
+19:57
+
+mgcleveland_
+well as I said, I'm a computer person
+
+
+19:57
+
+mgcleveland_
+hence the lag on figuring out the library stuff
+
+
+19:59
+
+mgcleveland_
+wizzyrea, could I find that by exploring the mysql DB?
+
+
+20:00
+
+wizzyrea
+more -> administration -> Item Types
+
+
+20:00
+
+mgcleveland_
+I == idiot
+
+
+20:00
+
+wizzyrea
+mine looks like this, for example
+
+
+20:00
+
+wizzyrea
+http://screencast.com/t/ZWE1YmVkN
+
+
+20:00
+
+mgcleveland_
+yep, we've got 3
+
+
+20:01
+
+wizzyrea
+okies
+
+
+20:01
+
+mgcleveland_
+so we've got branches and item types
+
+
+20:01
+
+wizzyrea
+and you've got nothing in your koha error log and nothing in your apache log, and addbiblio.pl won't come up
+
+
+20:01
+
+mgcleveland_
+correct
+
+
+20:01
+
+mgcleveland_
+you want to see a screenshot of addbiblio?
+
+
+20:02
+
+wizzyrea
+how are you getting to it, more -> cataloging -> new record?
+
+
+20:02
+
+mgcleveland_
+I click on the "Add MARC" link
+
+
+20:02
+
+mgcleveland_
+it's under "Cataloging"
+
+
+20:03
+
+wizzyrea
+ok, if you do more -> cataloging -> new record what happens?
+
+
+20:03
+
+wizzyrea
+this is what mine looks like: http://screencast.com/t/ODVlMzg1Z
+
+
+20:03
+
+mgcleveland_
+same thing happens
+
+
+20:03
+
+mgcleveland_
+also, I think we may be using different versions of Koha
+
+
+20:04
+
+mgcleveland_
+let me see what mine is right quick
+
+
+20:04
+
+wizzyrea
+seems likely, in which case I probably can't help you
+
+
+20:04
+
+wizzyrea
+if you do more -> about koha what does it say in koha version
+
+
+20:06
+
+wizzyrea
+I'm wondering if you don't have frameworks (though this may not be germane if you are not using 3.0 at least)
+
+
+20:06
+
+wizzyrea
+http://screencast.com/t/ODVlMzg1Z
+
+
+20:06
+
+wizzyrea
+because when you click the button, you should see frameworks
+
+
+20:06
+
+mgcleveland_
+I have frameworks (I'm pretty sure)
+
+
+20:07
+
+mgcleveland_
+when I go to biblio framework, I have default populated
+
+
+20:07
+
+wizzyrea
+I"m curious, can you add members/patrons?
+
+
+20:08
+
+wizzyrea
+to this install?
+
+
+20:08
+
+mgcleveland_
+trying...
+
+
+20:08
+
+
+paul_p joined #koha
+
+
+20:08
+
+wizzyrea
+hi paul
+
+
+20:09
+
+jwagner
+paul_p, what are you doing online this late?  (Not that it's not good to see you, but....)
+
+
+20:10
+
+mgcleveland_
+wizzyrea, I can add patrons
+
+
+20:10
+
+paul_p
+hi jwagner. Just updating some personal pictures & docs, and auto-logged on irc ;-)
+
+
+20:10
+
+wizzyrea
+then it's not something to do with javascript, probably
+
+
+20:10
+
+mgcleveland_
+yeah I didn't think it was
+
+
+20:10
+
+mgcleveland_
+no browser complaints, anyway
+
+
+20:11
+
+wizzyrea
+what version were you running?
+
+
+20:11
+
+mgcleveland_
+well I can't figure that damn thing out!
+
+
+20:11
+
+mgcleveland_
+I think it's 2.2.9
+
+
+20:11
+
+wizzyrea
+Ah
+
+
+20:11
+
+wizzyrea
+yea, I can't help you sorry lol I only know 3
+
+
+20:11
+
+mgcleveland_
+balls!
+
+
+20:11
+
+wizzyrea
+hahaha
+
+
+20:12
+
+wizzyrea
+curious why you'd want to run 2.2.9 though
+
+
+20:12
+
+mgcleveland_
+this is driving me crazy!
+
+
+20:12
+
+mgcleveland_
+Not sure why we're on the older version
+
+
+20:12
+
+mgcleveland_
+I have an instance of 3 running
+
+
+20:12
+
+mgcleveland_
+but this is our production instance that has the problem
+
+
+20:12
+
+* wizzyrea
+sings "it's much beeeettter"
+
+
+20:12
+
+jwagner
+paul_p, OK, you're forgiven :-)
+
+
+20:12
+
+mgcleveland_
+I know!
+
+
+20:12
+
+mgcleveland_
+I know it's better!
+
+
+20:12
+
+wizzyrea
+:)
+
+
+20:12
+
+mgcleveland_
+maybe we didn't want to risk the problems that always come with migration
+
+
+20:13
+
+wizzyrea
+yes, librarians like to hold on to that one
+
+
+20:13
+
+wizzyrea
+sorry I've never run 2.2.9
+
+
+20:13
+
+
+sekjal-away is now known as sekjal
+
+
+20:13
+
+wizzyrea
+well, that's not true exactly
+
+
+20:14
+
+mgcleveland_
+also, we're serving ours in Persian
+
+
+20:14
+
+wizzyrea
+but I've never run it seriously
+
+
+20:14
+
+mgcleveland_
+and there is no translation for 3.0
+
+
+20:14
+
+mgcleveland_
+(i think)
+
+
+20:14
+
+wizzyrea
+Ahh, well that would do it too
+
+
+20:14
+
+mgcleveland_
+yeah
+
+
+20:14
+
+mgcleveland_
+balls again!
+
+
+20:15
+
+mgcleveland_
+so is 2.2.9 not supported any more?
+
+
+20:15
+
+wizzyrea
+you could always get someone to do a translation, or help get one started
+
+
+20:15
+
+mgcleveland_
+we actually are working on it
+
+
+20:15
+
+
+jdavidb left #koha
+
+
+20:15
+
+wizzyrea
+Yay!
+
+
+20:15
+
+mgcleveland_
+I think my boss is dealing with that aspect of the project
+
+
+20:15
+
+mgcleveland_
+yeah
+
+
+20:16
+
+wizzyrea
+it is, but there are a lot more people using 3.0.x than 2.2.9
+
+
+20:16
+
+mgcleveland_
+shoot
+
+
+20:16
+
+mgcleveland_
+well I can start migrating the data to our sandbox 3.0.x instance and see how that goes
+
+
+20:19
+
+chris
+back
+
+
+20:20
+
+chris
+and in the keynote .. by glynn moody ... its awesome so far
+
+
+20:20
+
+mgcleveland_
+chris
+
+
+20:20
+
+mgcleveland_
+do you know much about 2.2.x?
+
+
+20:20
+
+wizzyrea
+(yea, if anybody were to know about it, it would likely be chris)
+
+
+20:20
+
+mgcleveland_
+woo hoo!
+
+
+20:20
+
+chris
+cant really talk at the moment, busy listening
+
+
+20:20
+
+mgcleveland_
+oh ok
+
+
+20:20
+
+chris
+i do know you shouldnt use it
+
+
+20:20
+
+chris
+:)
+
+
+20:20
+
+mgcleveland_
+i know i know!
+
+
+20:21
+
+mgcleveland_
+let me know when you have a minute, I have a weird situation
+
+
+20:21
+
+chris
+unfortunately im at a conference all day, and all tomorrow
+
+
+20:21
+
+chris
+so drop me an email
+
+
+20:21
+
+chris
+chrisbigballofwax.co.nz
+
+
+20:21
+
+mgcleveland_
+ok, yeah that would be great
+
+
+20:21
+
+mgcleveland_
+thanks!
+
+
+20:22
+
+* chris_n
+designs a cool looking new search box for his opac header and tries desperately to get the css to behave :-P
+
+
+20:23
+
+* wizzyrea
+smacks chris_n's CSS into submission. Get! In! Your! Place!
+
+
+20:23
+
+owen
+If only smacking it helped.
+
+
+20:23
+
+
+collum joined #koha
+
+
+20:23
+
+chris
+http://www.lca2010.org.nz/prog[…]chedule/video/mfc
+
+
+20:24
+
+jwagner
+owen, it depends on the size of the baseball bat (or other implement) you use to DO the smacking :-)
+
+
+20:24
+
+chris
+if anyone wants to listen to glynn explain why sharing is so important
+
+
+20:24
+
+wizzyrea
+me me oh me
+
+
+20:29
+
+chris_n
+owen: what are the 'translControl' div's ?
+
+
+20:30
+
+chris_n
+wizzyrea: that must have worked, 'cause it just dropped into place ;-)
+
+
+20:31
+
+chris
+jim kent, saved us from the human genes being patented ... free software ftw
+
+
+20:31
+
+wizzyrea
+my coworkers claim I have an aura...
+
+
+20:31
+
+wizzyrea
+I didn't know it worked over the internet too.
+
+
+20:32
+
+wizzyrea
+an aura that makes computers behave in my presence, that is.
+
+
+20:32
+
+wizzyrea
+I don't believe it but eh
+
+
+20:32
+
+owen
+chris_n: I'm not exactly sure what they do, but they're related to googleindictransliteration.js
+
+
+20:33
+
+chris
+thats freaking awesome, GNU/Linux saved (most) of the human genome from gene patents
+
+
+20:33
+
+mgcleveland_
+hey wizzy
+
+
+20:33
+
+wizzyrea
+yes?
+
+
+20:33
+
+mgcleveland_
+would addbiblio.pl be the same code in 3.0.x and 2.2.x?
+
+
+20:33
+
+wizzyrea
+i'm guessing no
+
+
+20:33
+
+mgcleveland_
+hmmm
+
+
+20:33
+
+mgcleveland_
+that's weird
+
+
+20:33
+
+
+collum left #koha
+
+
+20:33
+
+mgcleveland_
+because I think my working instance is 3.0.x
+
+
+20:34
+
+wizzyrea
+hard to say without knowing for sure
+
+
+20:34
+
+mgcleveland_
+yeah it is
+
+
+20:34
+
+mgcleveland_
+and I diffed that with my production instance and they were the same
+
+
+20:34
+
+mgcleveland_
+aaahh!
+
+
+20:34
+
+mgcleveland_
+(no revelation)
+
+
+20:35
+
+* chris_n
+thinks his genes are copyrighted in any case ;-)
+
+
+20:35
+
+wizzyrea
+maybe the revelation is that addbiblio.pl needs to be reverted to a 2.2.9 version
+
+
+20:35
+
+mgcleveland_
+hahaha
+
+
+20:35
+
+chris_n
+what she said
+
+
+20:35
+
+chris_n
+I find it highly unlikely that the two would be the same
+
+
+20:36
+
+mgcleveland_
+I'm sure I have the addbiblio.pl of the correct instance
+
+
+20:36
+
+mgcleveland_
+i just don't know which version the production instance is!~
+
+
+20:36
+
+mgcleveland_
+and I can't find it anywhere!
+
+
+20:36
+
+wizzyrea
+well... you have a weird problem, and an even wierder code congruency on possibly completely different versions
+
+
+20:37
+
+wizzyrea
+that's just a recipe for wierdness if I've ever heard one
+
+
+20:37
+
+mgcleveland_
+hahaha
+
+
+20:37
+
+mgcleveland_
+is there anywhere in the source code/DB where I can see which version I have?
+
+
+20:37
+
+* wizzyrea
+does not know 2.2.9
+
+
+20:37
+
+mgcleveland_
+btw, we also have a weird theme, so everything is hard to find
+
+
+20:37
+
+mgcleveland_
+what about in 3.0.x?
+
+
+20:37
+
+wizzyrea
+mg, which library do you work for?
+
+
+20:38
+
+mgcleveland_
+I'm suspicious that we actually are running 3.0.x
+
+
+20:38
+
+mgcleveland_
+University of Arizona
+
+
+20:38
+
+mgcleveland_
+I'm a student
+
+
+20:38
+
+mgcleveland_
+:)
+
+
+20:38
+
+chris_n
+mgcleveland: you can try opening your production addbiblio.pl in a text editor and see if the version is noted there
+
+
+20:38
+
+wizzyrea
+O.o Ah
+
+
+20:38
+
+mgcleveland_
+I have root access to the code
+
+
+20:38
+
+mgcleveland_
+i'll just check the code directly
+
+
+20:38
+
+chris
+go to the about.pl page
+
+
+20:38
+
+chris
+http://your.staff.interface/cgi-bin/koha/about.pl
+
+
+20:38
+
+mgcleveland_
+chris!
+
+
+20:38
+
+mgcleveland_
+nice!
+
+
+20:38
+
+* chris_n
+jumps back into the CSS pool for more fun
+
+
+20:39
+
+chris
+and/or look in the db
+
+
+20:39
+
+mgcleveland_
+it is 2.2.9
+
+
+20:39
+
+mgcleveland_
+I think our theme has no link to about.pl
+
+
+20:39
+
+mgcleveland_
+>(
+
+
+20:39
+
+chris
+systempreferences table has a version number (if its 3.0.0 or later)
+
+
+20:39
+
+wizzyrea
+aside, I didn't realize uni of ariz. was doing much with koha
+
+
+20:39
+
+mgcleveland_
+it's a special project
+
+
+20:39
+
+mgcleveland_
+I'm not working on the library's main site
+
+
+20:40
+
+mgcleveland_
+it's a grant we've been working on for a few years
+
+
+20:40
+
+mgcleveland_
+partnering with Kabul University in Afghanistan
+
+
+20:40
+
+chris
+what you should do
+
+
+20:40
+
+chris
+is get someone working on translate.koha.org
+
+
+20:40
+
+mgcleveland_
+we do have them doing that
+
+
+20:40
+
+mgcleveland_
+at least we started on it
+
+
+20:41
+
+wizzyrea
+and move it to 3.0 (or 3.2, which is relatively imminent)
+
+
+20:41
+
+mgcleveland_
+we're a little overwhelmed with work and fulfilling the grant expectations
+
+
+20:41
+
+chris
+yeah
+
+
+20:41
+
+mgcleveland_
+agreed
+
+
+20:41
+
+chris
+http://translate.koha.org/fa/  hasnt changed in a while
+
+
+20:41
+
+mgcleveland_
+not farsi
+
+
+20:41
+
+mgcleveland_
+persian
+
+
+20:41
+
+mgcleveland_
+or is it listed as farsi?
+
+
+20:41
+
+mgcleveland_
+I can't remember
+
+
+20:41
+
+mgcleveland_
+I don't do the farsi stuff
+
+
+20:42
+
+mgcleveland_
+my boss and some coworkers do that
+
+
+20:42
+
+chris
+that is persian
+
+
+20:42
+
+mgcleveland_
+my favorite languages are C, C++, etc...
+
+
+20:42
+
+mgcleveland_
+:)
+
+
+20:43
+
+chris
+i think its a bit late now, but i suspect this a good example of why getting involved in the community early vs later is a good idea
+
+
+20:43
+
+mgcleveland_
+yeah
+
+
+20:43
+
+wizzyrea
+yes, definitely, a very good example
+
+
+20:43
+
+mgcleveland_
+well this was working for a long time
+
+
+20:43
+
+chris
+*nod*
+
+
+20:43
+
+mgcleveland_
+and suddenly isn't
+
+
+20:43
+
+wizzyrea
+... what changed?
+
+
+20:44
+
+mgcleveland_
+I'm not sure
+
+
+20:44
+
+chris
+and if it had been committed back (the translation etc) then 3.0 would have it
+
+
+20:44
+
+mgcleveland_
+I wish i knew!
+
+
+20:44
+
+mgcleveland_
+oh you're talking about the translation
+
+
+20:44
+
+chris
+and any code mods
+
+
+20:44
+
+mgcleveland_
+is that the project that uses pootle?
+
+
+20:44
+
+chris
+silos = bad
+
+
+20:45
+
+chris
+mgcleveland_: yeah we use pootle for translating koha
+
+
+20:45
+
+* chris
+is currently translation manager
+
+
+20:45
+
+mgcleveland_
+gotcha, yeah like I said I'm not involved with the translation part
+
+
+20:45
+
+mgcleveland_
+maybe you've spoken with my boss then, I know he contacted someone about it
+
+
+20:45
+
+mgcleveland_
+Yan Han is his name
+
+
+20:46
+
+wizzyrea
+do a lot of people have superlibrarian access? or access to the system?
+
+
+20:46
+
+owen
+Proof that silos are bad: http://www.theconcentrium.com/[…]ns/Silo/00cap.jpg
+
+
+20:46
+
+mgcleveland_
+nope
+
+
+20:46
+
+mgcleveland_
+^^wizzyrea
+
+
+20:46
+
+chris
+ah yeah, i have talked with him
+
+
+20:46
+
+mgcleveland_
+haha, cool!
+
+
+20:46
+
+mgcleveland_
+small world
+
+
+20:46
+
+wizzyrea
+there aren't many people in the koha world that chris hasn't talked to lol
+
+
+20:46
+
+mgcleveland_
+haha, a celebrity!
+
+
+20:47
+
+mgcleveland_
+ok guys, well I appreciate your help
+
+
+20:47
+
+mgcleveland_
+I may be back tomorrow
+
+
+20:47
+
+wizzyrea
+well, i encourage you to think about what has changed
+
+
+20:47
+
+
+paul_p left #koha
+
+
+20:47
+
+wizzyrea
+have a beer, relax your mind, the answer will come
+
+
+20:47
+
+mgcleveland_
+wizzyrea: agreed
+
+
+20:47
+
+mgcleveland_
+haha
+
+
+20:47
+
+wizzyrea
+:)
+
+
+20:48
+
+mgcleveland_
+it's only 1:45pm!
+
+
+20:48
+
+mgcleveland_
+3.75 hours to go!
+
+
+20:48
+
+mgcleveland_
+haha
+
+
+20:48
+
+mgcleveland_
+adios!
+
+
+20:48
+
+
+mgcleveland_ left #koha
+
+
+20:49
+
+
+CGI487 joined #koha
+
+
+20:49
+
+CGI487
+hi everybody
+
+
+20:49
+
+
+jwagner left #koha
+
+
+20:49
+
+CGI487
+I am trying to make zebra run as a daemon on suse linux but still can't
+
+
+20:50
+
+CGI487
+anyone here install koha 3.0.5 on suse linux ?
+
+
+20:51
+
+
+CGI487 left #koha
+
+
+20:53
+
+owen
+Do the CGI* people have no patience, or are they more prone to flaky connections?
+
+
+20:54
+
+chris
+both
+
+
+21:01
+
+
+davi left #koha
+
+
+21:02
+
+
+davi joined #koha
+
+
+21:11
+
+chris_n
+here's a screenshot of some of the opac customizations I've been working on for the library here
+
+
+21:11
+
+chris_n
+http://www.screencast.com/t/ZjU0OGRiNz
+
+
+21:12
+
+wizzyrea
+oh that's beautiful chris_n
+
+
+21:12
+
+owen
+Very nice
+
+
+21:13
+
+
+nicomo left #koha
+
+
+21:13
+
+chris_n
+tnx
+
+
+21:13
+
+chris_n
+and especially to owen's blogs and the npl website (which I have combed through with firebug to pickup tips)
+
+
+21:14
+
+owen
+I wonder if PTFS will continue "Koha Express?"
+
+
+21:14
+
+owen
+On the one hand, it seems to fill a need for small libraries who don't want to invest too much
+
+
+21:14
+
+wizzyrea
+I hope they at least give it a different name
+
+
+21:14
+
+owen
+On the other hand, PTFS doesn't have to compete in the same way LibLime [felt they] did
+
+
+21:15
+
+wizzyrea
+always makes me think of coffee
+
+
+21:16
+
+sekjal
+I'm still keen to get a turnkeylinux application of Koha going on.  Download, slap on some (virtual) machine somewhere, and play
+
+
+21:16
+
+sekjal
+I think the difficulty is in the details with that, though
+
+
+21:18
+
+
+CGI695 left #koha
+
+
+21:20
+
+wizzyrea
+yes, I like that idea too sekjal
+
+
+21:21
+
+wizzyrea
+or launch that puppy to the cloud
+
+
+21:21
+
+
+owen left #koha
+
+
+21:22
+
+wizzyrea
+they have super funky music on the webcast from linux conf AU
+
+
+21:22
+
+wizzyrea
+I dig
+
+
+21:24
+
+chris_n
+looks like owen 's running a patch mill today :-)
+
+
+21:26
+
+wizzyrea
+owen++
+
+
+21:26
+
+
+Nate left #koha
+
+
+21:27
+
+
+Nate joined #koha
+
+
+21:29
+
+hdl_laptop
+gmcharlt: I wonder whether Kyle patches for patroncards and rotating collections should get into Community.
+
+
+21:29
+
+hdl_laptop
+It was sent on patches.
+
+
+21:29
+
+hdl_laptop
+And was welcome.
+
+
+21:29
+
+gmcharlt
+hdl_laptop: I agree, it should
+
+
+21:29
+
+hdl_laptop
+ok.
+
+
+21:29
+
+hdl_laptop
+it looks smooth enough to enter.
+
+
+21:30
+
+chris_n
+bbl
+
+
+21:44
+
+
+BobB joined #koha
+
+
+21:45
+
+masonj
+.
+
+
+21:45
+
+BobB
+Hi Mason, you there?
+
+
+21:45
+
+masonj
+yes i am :)
+
+
+21:48
+
+masonj
+BobB: moo
+
+
+21:50
+
+
+BobB left #koha
+
+
+21:51
+
+masonj
+chris: moof
+
+
+21:53
+
+
+BobB joined #koha
+
+
+21:59
+
+
+brendan_ joined #koha
+
+
+21:59
+
+
+brendan left #koha
+
+
+21:59
+
+
+brendan_ is now known as brendan
+
+
+22:04
+
+chris
+bug3000
+
+
+22:04
+
+chris
+bug 3000
+
+
+22:04
+
+munin
+Bug http://bugs.koha.org/cgi-bin/b[…]w_bug.cgi?id=3000 enhancement, PATCH-Sent, ---, gmcharltgmail.com, RESOLVED FIXED, Tool needed for catalogers (and other librarians) to bulk change itypes and collection codes
+
+
+22:07
+
+
+chris_n2 joined #koha
+
+
+22:15
+
+
+sekjal left #koha
+
+
+22:34
+
+wizzyrea
+ok, that makes me feel happy and like squeeing
+
+
+22:35
+
+wizzyrea
+that's a very good feature
+
+
+22:40
+
+
+magnus left #koha
+
+
+22:51
+
+
+nahuel left #koha
+
+
+22:59
+
+* chris_n2
+wonders which feature
+
+
+23:00
+
+
+nahuel joined #koha
+
+
+23:19
+
+
+bebbi joined #koha
+
+
+23:26
+
+
+nahuel left #koha
+
+
+23:27
+
+brendan
+cya later #koha
+
+
+23:35
+
+
+nahuel joined #koha
+
+
+23:37
+
+
+brendan left #koha
+
+
+23:44
+
+Nate
+goodnight #koha
+
+
+23:44
+
+
+Nate left #koha
+
+
+23:49
+
+moodaepo
+@wunder 56001
+
+
+23:49
+
+munin
+moodaepo: The current temperature in Mankato, Minnesota is -2.0�C (5:35 PM CST on January 20, 2010). Conditions: Overcast. Humidity: 74%. Dew Point: -6.0�C. Windchill: -8.0�C. Pressure: 29.81 in 1009 hPa (Steady).
+
+
+23:54
+
+
+nahuel left #koha
+
+
+23:57
+
+
+brendan joined #koha
+
+
+
+
+
+        ← Previous day |
+     
+    Channels |
+#koha index |
+Today |
+    
+        
+        
+        Next day → |
+    
+    Search |
+    Google Search
+| Plain-Text
+    | plain, newest first |
+    
+    summary
+
+
+Powered by ilbot.
+Any questions ask rangi on #koha on irc.oftc.net
+
+
+
+
+
+
+

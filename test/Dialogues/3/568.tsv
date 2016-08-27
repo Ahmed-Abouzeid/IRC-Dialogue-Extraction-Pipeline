@@ -1,0 +1,7 @@
+2007-01-01T05:50:00.000Z	jasin		stormx, if they have the libraries installed, yes.
+2007-01-01T05:50:00.000Z	Stormx2	jasin	Incorrect.
+2007-01-01T05:51:00.000Z	jasin		stromx, no way around that
+2007-01-01T05:51:00.000Z	Stormx2	jasin	BMP, BMPx and Audacious support MP3 playback in-the-box
+2007-01-01T05:52:00.000Z	jasin		stormx2, and those are not installed by default are they? Like i originally said, he will have to download a media player that supports mp3 playback
+2007-01-01T05:52:00.000Z	jasin		stormx, come on man, you is not following along.
+2007-01-01T05:53:00.000Z	Stormx2	jasin	Right. But what you were saying is that you need certain libraries for mp3 playback in any media player. Thats wrong. The libraries for gstreamer to understand MP3 are not installed by default, but a lot of players don't have a gstreamer backend

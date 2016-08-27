@@ -1,0 +1,24 @@
+2007-01-01T05:03:00.000Z	maddash	con-man	prefix with sudo
+2007-01-01T05:04:00.000Z	maddash	con-man	what did you issue to the cmd-line?
+2007-01-01T05:05:00.000Z	maddash	con-man	tell me what you typed
+2007-01-01T05:05:00.000Z	maddash	con-man	the whole thing
+2007-01-01T05:06:00.000Z	maddash	con-man	are you trying to issue a wow command?
+2007-01-01T05:06:00.000Z	maddash	con-man	what are you trying to do?
+2007-01-01T05:07:00.000Z	maddash	con-man	shell script?
+2007-01-01T05:07:00.000Z	con-man		yup
+2007-01-01T05:07:00.000Z	maddash	con-man	ok, so just create an sh file and paste in that command
+2007-01-01T05:08:00.000Z	con-man		where do I put that sh file
+2007-01-01T05:08:00.000Z	maddash	con-man	/usr/bin
+2007-01-01T05:08:00.000Z	maddash	con-man	you'll need sudo to do that...
+2007-01-01T05:08:00.000Z	maddash	con-man	do you have gedit? type into a command line, sudo gedit /usr/bin/wow
+2007-01-01T05:09:00.000Z	maddash	con-man	you'll get a window, and paste in that wine cmd you sent me
+2007-01-01T05:09:00.000Z	maddash	con-man	did you do sudo gedit /usr/bin/wow?
+2007-01-01T05:09:00.000Z	con-man	maddash	yes
+2007-01-01T05:10:00.000Z	maddash	con-man	did you set your sudo password?...
+2007-01-01T05:10:00.000Z	con-man	maddash	in the file?
+2007-01-01T05:11:00.000Z	maddash	con-man	have you ever issued a root password? ie, done something like sudo passwd?
+2007-01-01T05:13:00.000Z	con-man	maddash	and yes I have issued a sudo password before
+2007-01-01T05:14:00.000Z	maddash	con-man	ok. another (perhaps better?) way of doing this is to create a bash alias...
+2007-01-01T05:14:00.000Z	con-man	maddash	I did chmod 1777 to it and it works
+2007-01-01T05:14:00.000Z	maddash	con-man	http://ubuntuforums.org/showthread.php?t=44458
+2007-01-01T05:14:00.000Z	maddash	con-man	in case the script thingy didn't work

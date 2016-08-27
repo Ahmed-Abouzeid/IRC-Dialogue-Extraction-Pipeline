@@ -1,0 +1,10 @@
+2007-01-01T01:18:00.000Z	witless		where do i add ~/bin to my path ?
+2007-01-01T01:18:00.000Z	awilcox	witless	~/bin  or  /bin ?
+2007-01-01T01:18:00.000Z	witless	awilcox	~/bin
+2007-01-01T01:19:00.000Z	awilcox	witless	somewhere in your .bashrc IIRC
+2007-01-01T01:19:00.000Z	awilcox		How often can you repeat a question on this channel without being considered a pest?
+2007-01-01T01:20:00.000Z	witless	awilcox	this isn't getting picked up with gdm
+2007-01-01T01:22:00.000Z	awilcox		*X*org.conf
+2007-01-01T01:22:00.000Z	witless	awilcox	when i start gnome-terminal, i want ~/bin to be in my path
+2007-01-01T01:22:00.000Z	awilcox		witless what shell do you use?  BASH?  CSH?  korn?  something else?  or just the default one (which would be BASH, BTW)
+2007-01-01T01:23:00.000Z	witless	awilcox	bash

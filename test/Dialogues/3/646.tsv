@@ -1,0 +1,4 @@
+2007-01-01T01:12:00.000Z	euan		I'm stuck with a 640x480 desktop, that's the max available to me.  Before I stuffed it up I could go as high as 1600x1200 (not that my eyes could)
+2007-01-01T01:14:00.000Z	kenthomson	euan	Do sudo dpkg-reconfigure xserver-xorg, and follow the simple instructions, sticking to the defaults as much as possible. IN the driver section select nv if you have nvidia card or VESA if you dont know, in the resolutions thing put a * by clicking space in the appropriate resolutions in that wizard
+2007-01-01T01:14:00.000Z	euan		Thanks kenthomson, I'll try that.
+2007-01-01T01:15:00.000Z	kenthomson	euan	after that restart X by pressing ctrl-alt-backspace or simple reboot the computer

@@ -1,0 +1,35 @@
+2007-01-01T05:18:00.000Z	dsock		hey all.  I can't get my fresh Ubuntu 6.10 install to connect to the internet. onboard ethernet on a P5B Deluxe.  any ideas?
+2007-01-01T05:18:00.000Z	maddash	dsock	sudo ifup?
+2007-01-01T05:20:00.000Z	dsock	maddash	i haven't tried that. I will try that. have you got any other ideas. this is a dual boot system. I'm on another OS right now
+2007-01-01T05:20:00.000Z	maddash	dsock	ok, go back to the other system, and do an sudo ifconfig -a
+2007-01-01T05:20:00.000Z	maddash	dsock	see if your network card is being detected by ubuntu
+2007-01-01T05:21:00.000Z	dsock	maddash	k, i'm actually pretty certain it's being detected. i see it in the device manager
+2007-01-01T05:23:00.000Z	maddash	dsock	ok, do sudo ifup ** where ** is the name of the network interface - something like eth0, eth1, etc
+2007-01-01T05:24:00.000Z	dsock	maddash	alright, thanks a lot
+2007-01-01T05:24:00.000Z	maddash	dsock	np
+2007-01-01T05:38:00.000Z	dsock	maddash	I got this message- ifup: interface eth0 already configured
+2007-01-01T05:39:00.000Z	maddash	dsock	so were you able to connect? I assume that eth0 corresponds to your network card.
+2007-01-01T05:41:00.000Z	dsock	maddash	eth0 is my network card.  but on the ASUS P5B Deluxe, there are TWO onboard ethernet jacks, only one is showing up. I was not able to connect
+2007-01-01T05:41:00.000Z	maddash	dsock	2 jacks? for 2 seperate cards?
+2007-01-01T05:42:00.000Z	maddash	dsock	if you have 2 cards, then does eth0 correspond to the right one?
+2007-01-01T05:43:00.000Z	dsock	maddash	good point.  I hadn't thought about switching the cable.
+2007-01-01T05:44:00.000Z	dsock	maddash	but I don't understand why only one of them show up.
+2007-01-01T05:45:00.000Z	maddash	dsock	not sure I comprehend. you're telling me that sudo ifconfig -a doesn't show the proper network card?
+2007-01-01T05:46:00.000Z	maddash	dsock	I assume you did a standard ubuntu install via an install cd. during the installation, did the installer detect both cards?
+2007-01-01T05:47:00.000Z	dsock	maddash	i forgot to try that. the only thing i tried was sudo ifup **
+2007-01-01T05:47:00.000Z	maddash	dsock	good god.
+2007-01-01T05:47:00.000Z	dsock	maddash	the install said nothing of network cards
+2007-01-01T05:48:00.000Z	maddash	dsock	the install should've attempted to detect network interfaces. all of them. wireless/wired/modem/whatever.
+2007-01-01T05:49:00.000Z	maddash	dsock	if you didn't do sudo ifconfig -a , then how do you know what to put for sudo ifup **???
+2007-01-01T05:49:00.000Z	dsock	maddash	i looked it up in device manager, actually
+2007-01-01T05:50:00.000Z	dsock	maddash	and i remember from earlier ubuntu installations, that the install would look for network interfaces, but i did not notice it this time.
+2007-01-01T05:50:00.000Z	maddash		oh crap - gotta chk nbc 4
+2007-01-01T05:50:00.000Z	maddash	dsock	again, do a sudo ifconfig -a. that's all I have to say.
+2007-01-01T05:51:00.000Z	dsock	maddash	okay, thanks for your help
+2007-01-01T06:01:00.000Z	dsock	maddash	sudo ifconfig -a produced about 3 paragraphs of results.
+2007-01-01T06:01:00.000Z	maddash	dsock	sudo ifconfig -a > ~/netdat
+2007-01-01T06:02:00.000Z	maddash	dsock	and read at your own pace
+2007-01-01T06:02:00.000Z	maddash	dsock	you have to open ~/netdat
+2007-01-01T06:02:00.000Z	dsock	maddash	k
+2007-01-01T06:03:00.000Z	dsock		maddish: thanks again
+2007-01-01T06:03:00.000Z	maddash	dsock	np. that's a lot of network interfaces, btw.

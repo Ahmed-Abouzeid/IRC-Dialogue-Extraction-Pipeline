@@ -1,0 +1,10 @@
+2007-01-01T03:06:00.000Z	adaptr		January 1st... seems like the perfect time to upgrade to edgy
+2007-01-01T03:07:00.000Z	BloodHunter		k
+2007-01-01T03:07:00.000Z	adaptr	BloodHunter	connect in what way ? I know of at least 2 dozen I can use
+2007-01-01T03:07:00.000Z	BloodHunter		i mean like use it to control the comp :P
+2007-01-01T03:07:00.000Z	adaptr	BloodHunter	rdesktop
+2007-01-01T03:09:00.000Z	BloodHunter		does ubuntu automatically install the drivers for graphics card, mainboard and so on, or i have to do that myself
+2007-01-01T03:09:00.000Z	adaptr	BloodHunter	what video card do you have ?
+2007-01-01T03:09:00.000Z	adaptr	BloodHunter	enable all repos and fetch restricted-modules for your kernel.. that includes the nvidia closed source driver, and you're all set
+2007-01-01T03:10:00.000Z	BloodHunter		how? :P
+2007-01-01T03:10:00.000Z	adaptr	BloodHunter	go to system -> synaptic and search for restricted-modules

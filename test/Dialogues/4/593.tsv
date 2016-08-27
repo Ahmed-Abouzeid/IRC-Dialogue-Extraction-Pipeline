@@ -1,0 +1,8 @@
+2007-01-01T12:30:00.000Z	hendrickvp		Does anyone know if GD2 is in Ubuntu Server?
+2007-01-01T12:30:00.000Z	un_operateur	hendrickvp	GD2 as in GD, the graphics toolkit?
+2007-01-01T12:31:00.000Z	hendrickvp	un_operateur	is the an apt-get for it?
+2007-01-01T12:31:00.000Z	un_operateur	hendrickvp	errm,  http://packages.ubuntu.com/cgi-bin/search_packages.pl?keywords=gd2&searchon=names&subword=1&version=edgy&release=all
+2007-01-01T12:32:00.000Z	un_operateur	hendrickvp	maybe this one -- libgd2-xpm
+2007-01-01T12:33:00.000Z	hendrickvp	un_operateur	I'm looking at it
+2007-01-01T12:35:00.000Z	hendrickvp	un_operateur	so i would just download and install into the corresponding files...?
+2007-01-01T12:35:00.000Z	un_operateur	hendrickvp	if you apt-get install libgd2-xpm, you should have everything you need

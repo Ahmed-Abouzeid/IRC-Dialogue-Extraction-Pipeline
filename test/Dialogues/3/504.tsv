@@ -1,0 +1,11 @@
+2007-01-01T11:08:00.000Z	MuffY		i know :P
+2007-01-01T11:08:00.000Z	hjmills	MuffY	vim
+2007-01-01T11:18:00.000Z	hjmills	MuffY	run sudo updatedb && locate vimrc then edit that file and turn syntax highlighting on
+2007-01-01T11:19:00.000Z	MuffY	hjmills	it gives a how to use apt-get thing
+2007-01-01T11:19:00.000Z	MuffY		so i think the syntax isn;t right
+2007-01-01T11:19:00.000Z	hjmills	MuffY	that update db && ... command?
+2007-01-01T11:20:00.000Z	MuffY		nm hjmills
+2007-01-01T11:20:00.000Z	hjmills	MuffY	that shouldnt be anything to do with apt
+2007-01-01T11:20:00.000Z	hjmills	MuffY	kk
+2007-01-01T11:33:00.000Z	MuffY		|_3t5 T4|_|< |_13|< T|-|15
+2007-01-01T11:33:00.000Z	hjmills	MuffY	vim being modal is gd - most of the time you will be in insert mode and can type v happily but press escape to get out of insert mode and u can jump akk over the text, do find and replace, delete whole blocks of text etc all without the help of a rodent

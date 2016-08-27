@@ -1,0 +1,36 @@
+2007-01-01T01:59:00.000Z	kitche	marelo	what video card?
+2007-01-01T02:00:00.000Z	marelo	kitche	how can i look this? (I'm new to linux)
+2007-01-01T02:00:00.000Z	kitche	marelo	glxinfo will give you information
+2007-01-01T02:02:00.000Z	kitche	marelo	ok pastebin your /etc/X11/xorg.conf
+2007-01-01T02:05:00.000Z	marelo	kitche	http://pastebin.com/848748
+2007-01-01T02:05:00.000Z	kitche	marelo	ah you pasted on the slow pastebin site :( thats ok though
+2007-01-01T02:06:00.000Z	marelo	kitche	sorry <:] 
+2007-01-01T02:06:00.000Z	kitche	marelo	ok your using the i810 drivers for a i915 that's probably your problem might want to install the official intel drivers
+2007-01-01T02:07:00.000Z	marelo	kitche	are you sure? where can i download this? will it mess up my widescreen resolution? (it give some headaches till i get it working...)
+2007-01-01T02:09:00.000Z	marelo	kitche	and (k)ubuntu doesn't have a driver for i915? Cause i fresh installed it, so it't the driver that came with kubuntu
+2007-01-01T02:12:00.000Z	marelo	kitche	hello?
+2007-01-01T02:12:00.000Z	kitche	marelo	sudo apt-get install xorg-video-intel
+2007-01-01T02:12:00.000Z	kitche	marelo	the xorg part might be xserver-video-intel
+2007-01-01T02:13:00.000Z	marelo	kitche	ok
+2007-01-01T02:13:00.000Z	marelo	kitche	do you think that's also the problem that my fullscreen videos are slow the same way?
+2007-01-01T02:13:00.000Z	kitche	marelo	could be
+2007-01-01T02:14:00.000Z	marelo	kitche	it said it couldn't find the package
+2007-01-01T02:16:00.000Z	marelo	kitche	the description of i810: This package provides the driver for the Intel i8xx and i9xx family of chipsets, including i810, i815, i830, i845, i855, i865, i915, and i945 series chips.
+2007-01-01T02:16:00.000Z	kitche	marelo	ok let me find it
+2007-01-01T02:16:00.000Z	marelo	kitche	look above
+2007-01-01T02:17:00.000Z	kitche	marelo	yeah but those are open source drivers from Xorg not from Intel
+2007-01-01T02:17:00.000Z	marelo		ohh
+2007-01-01T02:17:00.000Z	marelo	kitche	i think it won't be in the repository, then, will it?
+2007-01-01T02:19:00.000Z	kitche	marelo	see if you have xserver-xorg-video-Intel installed
+2007-01-01T02:19:00.000Z	kitche	marelo	nevermind let me do some searching
+2007-01-01T02:21:00.000Z	marelo	kitche	I have xserver-xorg-driver-i810, that one I sent the description
+2007-01-01T02:21:00.000Z	marelo	kitche	in the description also says: This package provides the driver for the Intel i8xx and i9xx family of chipsets, including i810, i815, i830, i845, i855, i865, i915, and i945 series chips.
+2007-01-01T02:21:00.000Z	marelo		oops sorry
+2007-01-01T02:21:00.000Z	marelo	kitche	also says: X.Org X server -- Intel i8xx, i9xx display driver
+2007-01-01T02:22:00.000Z	marelo		(Intel)
+2007-01-01T02:23:00.000Z	kitche	marelo	hmm seems like the driver from Intel is part of Xorg already
+2007-01-01T02:23:00.000Z	marelo	kitche	sigh.... what do i do, then?
+2007-01-01T02:24:00.000Z	kitche	marelo	change your xorg.conf the driver part of i915 see if that helps any
+2007-01-01T02:24:00.000Z	marelo		instead i810 edit to i915??
+2007-01-01T02:24:00.000Z	marelo	kitche	instead i810 edit to i915??
+2007-01-01T02:26:00.000Z	kitche	marelo	yeah since I know i915 drivers can do direct rendering glxinfo should have told you if it was using direct rendering or not

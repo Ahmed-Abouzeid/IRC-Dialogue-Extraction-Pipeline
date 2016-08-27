@@ -1,0 +1,5 @@
+2007-01-01T04:51:00.000Z	jasin		I really wish torvald or the folks over at ubuntu would fix the whole acpi, apm, acip stuff
+2007-01-01T04:51:00.000Z	lord_ceiphas	jasin	but 2.6.19.1 brings up some strange errors
+2007-01-01T05:04:00.000Z	jasin		disabled legacy usb support
+2007-01-01T05:05:00.000Z	lord_ceiphas	jasin	with c2d-boards you often have to disable usb completely (but only for kernel 2.6.17 and below
+2007-01-01T05:08:00.000Z	lord_ceiphas	jasin	who cares ;-)

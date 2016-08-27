@@ -1,0 +1,37 @@
+2007-01-01T07:17:00.000Z	cmweb		Why would my machine have an active HDD light on if no processes but gaim are taking place? i mean it is really acting up i have no utilities that user the hardrive yet it is constantly doing this and slowing my machine down
+2007-01-01T07:18:00.000Z	xtknight	cmweb	maybe it is updating your file system search index??
+2007-01-01T07:56:00.000Z	cmweb		How do i get beryl, apt-get ?
+2007-01-01T07:57:00.000Z	cmweb		How is beryl obtained
+2007-01-01T07:57:00.000Z	xtknight	cmweb	just google `ubuntu beryl`
+2007-01-01T07:58:00.000Z	cmweb		i wish this thing would stop indexing
+2007-01-01T07:59:00.000Z	cmweb		is thweir any way to make it stop doing that
+2007-01-01T07:59:00.000Z	cmweb		its draging my performance dowwn with it
+2007-01-01T08:03:00.000Z	cmweb		what does the hard drive do in down time?
+2007-01-01T08:04:00.000Z	xtknight	cmweb	put your `dmesg` in pastebin, and maybe we can help you
+2007-01-01T08:04:00.000Z	cmweb		dmesg?
+2007-01-01T08:04:00.000Z	cmweb		you mean the iostat output?
+2007-01-01T08:04:00.000Z	xtknight	cmweb	type it in the terminal
+2007-01-01T08:05:00.000Z	cmweb		Yeah im going to paste bin that
+2007-01-01T08:06:00.000Z	cmweb		Its kinda hard for me to getinto paste bin with this thing being like it is
+2007-01-01T08:07:00.000Z	xtknight	cmweb	well is there anything in dmesg indicating an index operation?  what about just rebooting? that may fix it as bad as it sounds
+2007-01-01T08:07:00.000Z	cmweb	xtknight	i reboot once then in five minutes after its all done it does it again
+2007-01-01T08:08:00.000Z	xtknight	cmweb	im afraid i need a dmesg to properly debug it, but maybe u can sneak one in before the 5 mins is up
+2007-01-01T08:10:00.000Z	xtknight	cmweb	your drives are operating in PIO, try enabling dma (`sudo hdparm -d1 /dev/hdN`) N being ur drive
+2007-01-01T08:12:00.000Z	cmweb	xtknight	they just sprung up even more active
+2007-01-01T08:12:00.000Z	cmweb		i mean it
+2007-01-01T08:13:00.000Z	cmweb		i mean   it sprung up
+2007-01-01T08:13:00.000Z	xtknight	cmweb	hmmm that's not good ;)
+2007-01-01T08:13:00.000Z	cmweb		thirteen minutes after here
+2007-01-01T08:14:00.000Z	cmweb		/dev/hda:
+2007-01-01T08:14:00.000Z	cmweb		setting using_dma to 1 (on)
+2007-01-01T08:14:00.000Z	cmweb		using_dma    =  1 (on)
+2007-01-01T08:16:00.000Z	cmweb	xtknight	got any ideas
+2007-01-01T08:16:00.000Z	xtknight	cmweb	youre saying it got worse, righT?
+2007-01-01T08:17:00.000Z	cmweb	xtknight	year some what
+2007-01-01T08:17:00.000Z	xtknight	cmweb	sorry, i relaly dont know why your HDs are being accessed so much, i would have thought dma would offload some of the processing off the cpu
+2007-01-01T08:17:00.000Z	cmweb		yeah*
+2007-01-01T08:19:00.000Z	cmweb		How long could it take to map 64 GB?
+2007-01-01T08:19:00.000Z	xtknight	cmweb	map it, what do u mean?
+2007-01-01T08:20:00.000Z	cmweb		what is it suposedly doing, from what you can tell from the log
+2007-01-01T08:20:00.000Z	xtknight	cmweb	i am not sure dmesg contains much info
+2007-01-01T08:23:00.000Z	cmweb		Sorry xtknight, but did that say anything?

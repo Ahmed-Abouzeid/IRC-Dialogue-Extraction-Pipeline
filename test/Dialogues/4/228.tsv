@@ -1,0 +1,10 @@
+2007-01-01T06:48:00.000Z	rye78		I got a small stupid question for you ubuntu users, I'd first liek to say I know my way around linux (recompiling linux, changing permissions, basic stuff like that), and before i moved to ubuntu...is ubuntu...well..'respectable'?, I dont want to be using something that is like...fisher price.  I hope someone knows what I mean so they can elaborate =/
+2007-01-01T06:48:00.000Z	h3xis	rye78	depends who you ask
+2007-01-01T06:48:00.000Z	h3xis	rye78	i think it is, but it's fine, really
+2007-01-01T06:49:00.000Z	rye78		I'd use pure debian, but I can NEVER get gnome looking good, ha, im terrible with X
+2007-01-01T06:49:00.000Z	rye78		And ubuntu looks secksi
+2007-01-01T06:50:00.000Z	h3xis	rye78	it's the same XD just get a secksi theme
+2007-01-01T06:51:00.000Z	rye78	h3xis	I could never get any distro looking as nice (in my eyes) as my old fedora box:  http://i48.photobucket.com/albums/f239/codvx/Screenshot-1.png
+2007-01-01T06:52:00.000Z	h3xis	rye78	that theme is bluecurve. just find it and use it :P
+2007-01-01T07:11:00.000Z	rye78		oh
+2007-01-01T07:12:00.000Z	h3xis	rye78	if you want su back type sudo makepasswd and choose a root password and you will be able to use su from then on

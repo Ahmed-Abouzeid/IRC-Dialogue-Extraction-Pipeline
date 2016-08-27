@@ -1,0 +1,26 @@
+2007-01-01T04:36:00.000Z	Aar0n444		Yeah
+2007-01-01T04:36:00.000Z	peacekpr	Aar0n444	what type of laptop?
+2007-01-01T04:37:00.000Z	Aar0n444		No power-save to my knowledge. It's an Acer travelmate 212TXV
+2007-01-01T04:38:00.000Z	peacekpr	Aar0n444	hmm... no experience with an Acer
+2007-01-01T04:38:00.000Z	Aar0n444		I'm only trying to get this to work, so I can apt-get something that I need to get ndiswrapper working
+2007-01-01T04:38:00.000Z	Aar0n444		Apparently I need the kernel source
+2007-01-01T04:40:00.000Z	peacekpr	Aar0n444	install linux-headers
+2007-01-01T04:41:00.000Z	Aar0n444	peacekpr	How, when I'm trying to do this so i CAN connect to the net
+2007-01-01T04:42:00.000Z	peacekpr		use your ethernet card? are you having Wifi problems or ethernet problems?
+2007-01-01T04:42:00.000Z	Aar0n444		My ethernet isn't even detected. My WiFi is, but doesn't work. So I'm trying to get ndiswrapper working
+2007-01-01T04:44:00.000Z	peacekpr	Aar0n444	why did you use pci=noacpi ?
+2007-01-01T04:45:00.000Z	Aar0n444		I read about others using it because their machines wouldn't boot. Mine wouldn't either, so I tried it and it then worked.
+2007-01-01T04:46:00.000Z	peacekpr	Aar0n444	wouldn't boot meaning it wouldn't detect the hard drive?
+2007-01-01T04:48:00.000Z	peacekpr	Aar0n444	hmm... not the issue was thinking... if it was your hard drive, i'd suggest using pci=nomsi and give it a whirl
+2007-01-01T04:49:00.000Z	Aar0n444		Peachkpr, I put in the live CD, I boot into it, then I press F6, then I just add to the end pci=nomsi  ?
+2007-01-01T04:50:00.000Z	peacekpr	Aar0n444	not going to promise it will work, but worth a shot :)
+2007-01-01T04:50:00.000Z	Aar0n444		Just trying it now
+2007-01-01T04:51:00.000Z	peacekpr		i'm scared of messing with the bootloader
+2007-01-01T04:52:00.000Z	Aar0n444	peacekpr	no luck.
+2007-01-01T04:52:00.000Z	Aar0n444		I don't think
+2007-01-01T04:52:00.000Z	peacekpr	Aar0n444	bummer
+2007-01-01T04:52:00.000Z	peacekpr	Aar0n444	and you said you can't get into your BIOS to mess with the power saving options?
+2007-01-01T04:52:00.000Z	Aar0n444		I can get into the BIOS fine
+2007-01-01T04:54:00.000Z	peacekpr	Aar0n444	google turned up no help, eh?
+2007-01-01T04:54:00.000Z	Aar0n444		/bing/sh: can't access tty; job control turned off
+2007-01-01T04:55:00.000Z	peacekpr	Aar0n444	dunno what that means ;)

@@ -1,0 +1,8 @@
+2007-01-01T07:39:00.000Z	ubotu	asfalt	Wireless documentation can be found at https://help.ubuntu.com/community/WifiDocs
+2007-01-01T09:06:00.000Z	asfalt		!samba
+2007-01-01T09:06:00.000Z	ubotu		samba is is the way to cooperate with Windows environments. Links with more info: https://wiki.ubuntu.com/MountWindowsSharesPermanently and http://help.ubuntu.com/ubuntu/serverguide/C/windows-networking.html - Samba can be administered via the web with SWAT
+2007-01-01T09:06:00.000Z	asfalt		i like this bot, very handy ;)
+2007-01-01T09:08:00.000Z	asfalt		speaking of which, i removed ekiga which seems to have removed ubuntu-desktop . i somewhat have a feeling i need the ubuntu-desktop package
+2007-01-01T09:09:00.000Z	ubotu	asfalt	k/ed/x/ubuntu-desktop is a metapackage. It depends upon other packages and brings them in; you can safely remove it, but it is recommended that you re-install it when upgrading.
+2007-01-01T09:09:00.000Z	asfalt		awesome again
+2007-01-01T09:09:00.000Z	asfalt		thanks

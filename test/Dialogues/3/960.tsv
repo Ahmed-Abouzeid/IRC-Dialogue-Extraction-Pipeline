@@ -1,0 +1,14 @@
+2007-01-01T04:44:00.000Z	nelsonuwp		anyone ever have any problems with the dvd playback in 6.10?
+2007-01-01T04:44:00.000Z	cafuego_	nelsonuwp	I do, Totem basically won't. mplayer works fine, though.
+2007-01-01T04:45:00.000Z	nelsonuwp	cafuego_	i read something saying it should work, but I dont have the libdvd file..or package
+2007-01-01T04:46:00.000Z	cafuego_	nelsonuwp	I do, and it will won't work <heh>
+2007-01-01T04:46:00.000Z	cafuego_	nelsonuwp	Install 'libdvdread3' and then run the script in /usr/share/doc/libdvdread3/examples
+2007-01-01T04:46:00.000Z	nelsonuwp		i dont have that file
+2007-01-01T04:46:00.000Z	cafuego_		Like I saidk, install the package first
+2007-01-01T04:47:00.000Z	nelsonuwp	cafuego_	is it already therewith ubuntu?
+2007-01-01T04:47:00.000Z	nelsonuwp		or do I need to dl it?
+2007-01-01T04:47:00.000Z	cafuego_	nelsonuwp	Not if you doidn't install it. Check with 'dpkg -l libdvdread3'
+2007-01-01T04:50:00.000Z	nelsonuwp	cafuego_	no packages found
+2007-01-01T04:50:00.000Z	cafuego_	nelsonuwp	'sudo apt-get install libdvdread3'
+2007-01-01T04:52:00.000Z	nelsonuwp	cafuego_	could not get lock blah blah blah, unable to lock the administration directory
+2007-01-01T04:52:00.000Z	cafuego_	nelsonuwp	make sure no other package admin tool is currently running and try again.

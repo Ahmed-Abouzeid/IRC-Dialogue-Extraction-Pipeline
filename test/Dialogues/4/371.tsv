@@ -1,0 +1,11 @@
+2007-01-01T03:45:00.000Z	tehArtist		Hello
+2007-01-01T03:45:00.000Z	tehArtist		I could use some help
+2007-01-01T03:47:00.000Z	tehArtist		I have an HP Media Center M7160n, I'm attempting to install Ubuntu 6.10 edgy. When I boot the live CD, I have no keyboard support, so I attempted the alternative text based install, and It wants to know what disk drive driver I would like to use? Does anyone know which drive I should use for the Sata I 250GB drive?
+2007-01-01T03:47:00.000Z	genericuser	tehArtist	depends on your hard drive controller, not your actual drive
+2007-01-01T03:47:00.000Z	tehArtist		No dmc_ thats whats odd
+2007-01-01T03:49:00.000Z	tehArtist	genericuser	how do I go about choosing the proper HDD controller for an OEM?
+2007-01-01T03:49:00.000Z	genericuser	tehArtist	depends on your manufacturer - actually, if it wasn't auto-detected, you have problems
+2007-01-01T03:49:00.000Z	tehArtist		Thats what I assumed
+2007-01-01T03:51:00.000Z	tehArtist		Any other *nix Distro's that have a partition resizer made into the install?
+2007-01-01T03:51:00.000Z	genericuser	tehArtist	dunno
+2007-01-01T03:52:00.000Z	genericuser	tehArtist	MS Windows?

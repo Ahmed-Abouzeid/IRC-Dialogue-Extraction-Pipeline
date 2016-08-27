@@ -1,0 +1,6 @@
+2007-01-01T07:48:00.000Z	jasin		The /media/cdrom0 links back to /dev/hdc, that is .. if hdc is your cdrom.
+2007-01-01T07:48:00.000Z	Seveas	jasin	it does not
+2007-01-01T07:49:00.000Z	jasin		and a /media/cdrom
+2007-01-01T07:49:00.000Z	Seveas	jasin	which is the mountpoint of /dev/cdrom
+2007-01-01T07:50:00.000Z	jasin		seveas, not on my system its not. /dev/hdc is the mount point on my system.
+2007-01-01T07:50:00.000Z	Seveas	jasin	ls -lad /dev/hdc and paste the output

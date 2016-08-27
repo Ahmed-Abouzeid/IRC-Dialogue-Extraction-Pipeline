@@ -1,0 +1,18 @@
+2007-01-01T06:43:00.000Z	al		Another question, I had installed a FireStarter for my ubuntu, but When I try to start it , it said PPP0(my internet connection) not actived, fail to start it . It's a pppoe connection, it already dialed and eth0 is ok either, buy why, thanks
+2007-01-01T06:44:00.000Z	h3xis	al	why are you wanting to run firestarter on a ppp connection?
+2007-01-01T06:44:00.000Z	al		I'm a newbie to linux, so i can't set up firewall without firestarter
+2007-01-01T06:44:00.000Z	al		something like it, simple
+2007-01-01T06:44:00.000Z	h3xis	al	why do you need to change the default rules?
+2007-01-01T06:45:00.000Z	al		default rules? Can default rules allow aMule or Az p2p.. these things?
+2007-01-01T06:46:00.000Z	h3xis	al	yes, those will work
+2007-01-01T06:46:00.000Z	al		what apps i dont need?  amule?
+2007-01-01T06:47:00.000Z	al		h3XIS, how to do that?  use the default rules, IPTAbles?
+2007-01-01T06:47:00.000Z	h3xis	al	you dont need to mess with them, theyre fine as is
+2007-01-01T06:50:00.000Z	al		hello.. Ubuntu didnt start a firewall by default, isnt it?  how terrible without at least a simple firewall in the world
+2007-01-01T06:50:00.000Z	h3xis	al	yes, it does
+2007-01-01T06:53:00.000Z	al		Did you guys mean, on a lonely pc, it is not neccessary to setup a firewall, or its not useful?
+2007-01-01T06:53:00.000Z	h3xis	al	it's not necessary. it is fine as is
+2007-01-01T06:54:00.000Z	al		So you dont have any firewall?
+2007-01-01T06:54:00.000Z	h3xis	al	iptables is a firewall
+2007-01-01T06:55:00.000Z	al		thank u all^
+2007-01-01T06:55:00.000Z	al		fedora

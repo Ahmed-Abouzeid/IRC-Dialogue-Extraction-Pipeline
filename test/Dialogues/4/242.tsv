@@ -1,0 +1,27 @@
+2007-01-01T10:48:00.000Z	BHSPitMonkey	sc4ttrbrain	how do you intend on installing mac
+2007-01-01T10:48:00.000Z	sc4ttrbrain	BHSPitMonkey	using .img and dd
+2007-01-01T10:49:00.000Z	BHSPitMonkey	sc4ttrbrain	are you on a PPC system or an intel/amd?
+2007-01-01T10:49:00.000Z	BHSPitMonkey	sc4ttrbrain	and you're dd'ing from an Intel mac?
+2007-01-01T10:49:00.000Z	sc4ttrbrain	BHSPitMonkey	no
+2007-01-01T10:51:00.000Z	BHSPitMonkey	sc4ttrbrain	I think you should instead be using PearPC, either within Ubuntu or Windows. Or both, and keep the disk image and config in the data partition.
+2007-01-01T10:51:00.000Z	sc4ttrbrain	BHSPitMonkey	no,i want to boot it natively
+2007-01-01T10:52:00.000Z	BHSPitMonkey	sc4ttrbrain	am I really the first to point out that you can't do that?
+2007-01-01T10:52:00.000Z	sc4ttrbrain	BHSPitMonkey	cant do what? install mac? havent u heard macosx?
+2007-01-01T10:53:00.000Z	sc4ttrbrain	BHSPitMonkey	yup,i mean,as long as u have sse2 or 3 u can install mac on it right?
+2007-01-01T10:54:00.000Z	BHSPitMonkey	sc4ttrbrain	and it runs on PowerPC processors.    There's also osx-x86, which is what runs on the new Intel-based macs, but you can't use that on a normal PC.  At least, not without using an illegal, hacked version
+2007-01-01T10:55:00.000Z	sc4ttrbrain	BHSPitMonkey	dont worry,even though im using it ,i will only use it to know whether its worth to buy ;)
+2007-01-01T10:56:00.000Z	BHSPitMonkey	sc4ttrbrain	and as far as safely splitting that partition, 1) Backup, 2) Delete, 3) Make Two, 4) Restore Backup
+2007-01-01T10:57:00.000Z	sc4ttrbrain	BHSPitMonkey	cant i just use gparted > 1.unmount that part. 2.resize 3.create new ?
+2007-01-01T10:58:00.000Z	BHSPitMonkey	sc4ttrbrain	resizing a partition is ALWAYS dangerous.
+2007-01-01T10:58:00.000Z	sc4ttrbrain	BHSPitMonkey	how dangerous? :D
+2007-01-01T10:58:00.000Z	BHSPitMonkey	sc4ttrbrain	never do a resize unless you're prepared to deal with the possible consequences. (Losing it all.)
+2007-01-01T10:59:00.000Z	BHSPitMonkey	sc4ttrbrain	is it absolutely impossible to backup this data
+2007-01-01T11:00:00.000Z	sc4ttrbrain	BHSPitMonkey	so,if i was to resize it from windows then it safe?since it contains windows only data....will this change the number of root partition /dev/hdXX
+2007-01-01T11:00:00.000Z	sc4ttrbrain		?
+2007-01-01T11:01:00.000Z	BHSPitMonkey	sc4ttrbrain	windows won't resize partitions.
+2007-01-01T11:01:00.000Z	sc4ttrbrain	BHSPitMonkey	it can,using partition magic
+2007-01-01T11:01:00.000Z	BHSPitMonkey	sc4ttrbrain	is it ntfs?
+2007-01-01T11:01:00.000Z	sc4ttrbrain	BHSPitMonkey	fat32
+2007-01-01T11:01:00.000Z	BHSPitMonkey	sc4ttrbrain	windows != partition magic
+2007-01-01T11:02:00.000Z	sc4ttrbrain		:p
+2007-01-01T11:02:00.000Z	BHSPitMonkey	sc4ttrbrain	personally, I've never used partition magic.

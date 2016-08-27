@@ -1,0 +1,18 @@
+2007-01-01T03:21:00.000Z	adaptr	HawkeV	keep it nice
+2007-01-01T03:22:00.000Z	HawkeV	adaptr	rgr
+2007-01-01T03:27:00.000Z	HawkeV	adaptr	you only want ECC if your processor is compatible with it
+2007-01-01T03:27:00.000Z	HawkeV		otherwise you'll run into more underlying issues
+2007-01-01T03:28:00.000Z	adaptr	HawkeV	well, strictly, it is only useful if the *mainboard* supports it, but yeah.
+2007-01-01T03:28:00.000Z	adaptr	HawkeV	ECC support is not dependent on the CPU
+2007-01-01T03:31:00.000Z	HawkeV	adaptr	raid10 swraid ain't gonna happen
+2007-01-01T03:32:00.000Z	adaptr	HawkeV	don't be silly - it's standard on 2.6 kernels
+2007-01-01T03:32:00.000Z	HawkeV	adaptr	you're on crack bro
+2007-01-01T03:32:00.000Z	HawkeV		2.6 supports natively, 0,1,3,5 and possibly 6
+2007-01-01T03:32:00.000Z	adaptr	HawkeV	it won't actually increase performance over raid-5 i software, since you'd have to run raid 0 on top of raid 1 , but it is certainly possible
+2007-01-01T03:33:00.000Z	adaptr	HawkeV	please stop talking out of your rear end :)
+2007-01-01T03:33:00.000Z	HawkeV	adaptr	heh
+2007-01-01T03:33:00.000Z	HawkeV	adaptr	do you have any life experience in a real environment with raid, or is this just what you read on google?
+2007-01-01T03:33:00.000Z	HawkeV		\
+2007-01-01T03:34:00.000Z	adaptr	HawkeV	what do you mean by real life experience ? I run about 50 HP proliant servers with any thinkable combination of raid and hardware controllers, including a cluster setup with a fully redundant MSA1500 w/ 14x 72GB Ultra320 on fibre channel
+2007-01-01T03:36:00.000Z	HawkeV	adaptr	then you should well know that swraid doesn't fly in that environment
+2007-01-01T03:36:00.000Z	adaptr	HawkeV	what environment ? what are you talking about ?

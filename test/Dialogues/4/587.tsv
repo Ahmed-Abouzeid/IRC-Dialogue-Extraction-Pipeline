@@ -1,0 +1,4 @@
+2007-01-01T05:03:00.000Z	con-man_		i added this command but it wont work: bash: /usr/local/bin/wow: Permission denied
+2007-01-01T05:04:00.000Z	un_operateur	con-man_	type -a sudo
+2007-01-01T05:05:00.000Z	con-man_		:D
+2007-01-01T05:06:00.000Z	un_operateur	con-man_	what does issuing /usr/bin/sudo give you?

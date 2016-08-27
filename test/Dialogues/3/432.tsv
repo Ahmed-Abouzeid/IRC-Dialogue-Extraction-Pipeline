@@ -1,0 +1,10 @@
+2007-01-01T08:12:00.000Z	Jordan_U	grndslm	Was he using the backports repository by any chance?
+2007-01-01T08:12:00.000Z	grndslm	Jordan_U	i'm pretty sure we both have the same sources.list, but not 100%
+2007-01-01T08:12:00.000Z	grndslm	Jordan_U	and that means yes backports was uncommented
+2007-01-01T08:13:00.000Z	Jordan_U	grndslm	Ok, that means that you should ( I believe ) both be using the flash 9 beta now.
+2007-01-01T08:13:00.000Z	Jordan_U		!automatix
+2007-01-01T08:14:00.000Z	grndslm	Jordan_U	yup, i definitely have the flash 9 beta...but fullscreen no worky for me
+2007-01-01T08:14:00.000Z	Jordan_U	grndslm	Does your friend?
+2007-01-01T08:14:00.000Z	grndslm	Jordan_U	yup...there's no otherway fullscreen could work for him, right??
+2007-01-01T08:15:00.000Z	Jordan_U	grndslm	I don't know, I have never tried full screen before myself
+2007-01-01T08:16:00.000Z	grndslm	Jordan_U	yea, it's just the strangest thing that it only works on his computer and i use the same sources.list file & same aptitude install <all packages here> for all my computers...but no fullscreen on my computers

@@ -1,0 +1,29 @@
+2007-01-01T04:00:00.000Z	LameBMX	sukarn	
+2007-01-01T04:00:00.000Z	LameBMX		what kind of computer is this .. adaptr im curious if its an OEM computer that set his drives in a fakeraid array for him
+2007-01-01T04:00:00.000Z	LameBMX		:)
+2007-01-01T04:01:00.000Z	sukarn		its a PC that I use in my home
+2007-01-01T04:01:00.000Z	LameBMX	sukarn	what kind of PC is this
+2007-01-01T04:01:00.000Z	LameBMX		dell homemade etc
+2007-01-01T04:01:00.000Z	sukarn	LameBMX	assembled
+2007-01-01T04:02:00.000Z	LameBMX		okay so you picked up that parts and built it yourself correct sukarn
+2007-01-01T04:02:00.000Z	sukarn	LameBMX	not myself, a technician did it about 3 months ago
+2007-01-01T04:02:00.000Z	LameBMX		i just dont want you to toy with raid on your new deal on a fakeraid and find out you toasted your windows install
+2007-01-01T04:03:00.000Z	LameBMX		well id advise checkin with that tech about if he setup a raid array
+2007-01-01T04:03:00.000Z	sukarn	LameBMX	I have windows installed, but I don't use it. Windows doesn't matter to me.
+2007-01-01T04:05:00.000Z	LameBMX		k sukarn i was just buttin in for a quick second so you didnt accidently undo a fakeraid array and find something didnt work right lol
+2007-01-01T04:05:00.000Z	sukarn	LameBMX	Doesn't seem possible. He only checked that the display was on when he assembled the PC
+2007-01-01T04:06:00.000Z	LameBMX		ahhh cool cool
+2007-01-01T04:06:00.000Z	sukarn	LameBMX	I really mean it. I found out after bringing the PC home that he had not even connected the HDD to the power supply
+2007-01-01T04:06:00.000Z	sukarn	LameBMX	I did that myself though
+2007-01-01T04:09:00.000Z	LameBMX		oh yea Maheanuu i remember ya now ... personally for vid work i would have bounced between a couple raid 0's and left the 5th for storage
+2007-01-01T04:09:00.000Z	sukarn	LameBMX	and Maheanuu thanks for all this help.
+2007-01-01T04:40:00.000Z	sukarn		you forgot the raid discussion we were having a while ago?
+2007-01-01T04:42:00.000Z	LameBMX	sukarn	they are always worth a try
+2007-01-01T04:43:00.000Z	LameBMX	sukarn	that should make no difference .. is you set the controller to pata mode you will have them appear to be ide drives .. hda instead of sda
+2007-01-01T04:45:00.000Z	LameBMX	sukarn	at the grub boot screen ...
+2007-01-01T04:46:00.000Z	LameBMX	sukarn	is this installed or livecd
+2007-01-01T04:46:00.000Z	sukarn	LameBMX	which one? the initrd line or the one before that? its installed
+2007-01-01T04:47:00.000Z	LameBMX		goto second line .. the long one with hernal and junk
+2007-01-01T04:47:00.000Z	sukarn	LameBMX	ok, thanks. i'll try that now
+2007-01-01T04:47:00.000Z	LameBMX		good luck
+2007-01-01T04:47:00.000Z	sukarn	LameBMX	bye

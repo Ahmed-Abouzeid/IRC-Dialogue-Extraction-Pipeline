@@ -1,0 +1,28 @@
+2007-01-01T07:14:00.000Z	dev		any clue why ubuntu would do this but not gentoo?
+2007-01-01T07:14:00.000Z	xtknight	dev	jmicron controller by any chance?
+2007-01-01T07:15:00.000Z	dev	xtknight	no i dont think so, ich8 chipset, gigabyte 965p
+2007-01-01T07:15:00.000Z	xtknight	dev	i have the same board and im getting the same errors
+2007-01-01T07:16:00.000Z	dev	xtknight	hah nice.. well, it works fine in gentoo.. im not sure why
+2007-01-01T07:16:00.000Z	xtknight	dev	newer kernel probably
+2007-01-01T07:16:00.000Z	xtknight	dev	well i still get 'drive is confused'
+2007-01-01T07:16:00.000Z	dev	xtknight	2.6.18 vs 2.6.17 in ubuntu..
+2007-01-01T07:16:00.000Z	xtknight	dev	2.6.18 fixes jmicron issues
+2007-01-01T07:16:00.000Z	xtknight	dev	i have some kernels here if u want to try these: http://www.ubuntuforums.org/showthread.php?t=326343
+2007-01-01T07:17:00.000Z	dev	xtknight	nice man, thanks
+2007-01-01T07:17:00.000Z	xtknight	dev	i have not tried burning cds in ubuntu though, im not sure if the dvd drives on my jmicron operate correctly during burning
+2007-01-01T07:17:00.000Z	dev	xtknight	i'll see whats up, i know this dvdrw is good in windows and gentoo.  so you're right its probably the kernel.
+2007-01-01T07:17:00.000Z	xtknight	dev	k
+2007-01-01T07:18:00.000Z	dev	xtknight	this board given me alot of problem.  the 965p.  i feel like gigabyte released a beta product and is testing it on us :P
+2007-01-01T07:18:00.000Z	dev	xtknight	running firmware 8 and stuff
+2007-01-01T07:18:00.000Z	xtknight	dev	works fine in windows though
+2007-01-01T07:18:00.000Z	xtknight	dev	same here, bios f8
+2007-01-01T07:18:00.000Z	dev	xtknight	yup@! :)
+2007-01-01T07:18:00.000Z	xtknight	dev	do you have rev2.0 of DS3?
+2007-01-01T07:18:00.000Z	dev	xtknight	yes
+2007-01-01T07:19:00.000Z	xtknight	dev	yeah, same, well we all have the same problems
+2007-01-01T07:19:00.000Z	xtknight	dev	so how did u get ubuntu installed, or didn't you?
+2007-01-01T07:19:00.000Z	dev	xtknight	had no problems useing hte ich8 sata controllers, i didnt use the gigabyte ones.  woulda been impossible
+2007-01-01T07:20:00.000Z	dev	xtknight	didnt have any graphics problems
+2007-01-01T07:20:00.000Z	dev		(xfs 7950gt 512meg)
+2007-01-01T07:20:00.000Z	xtknight	dev	yeah, same, but edgy wouldnt even use my ich8.  i had to use dapper.  but i had to use a usb-cdrom drive.  then usb is suppoesd to be problematic so oh wow...fortunately usb was not a problem for my config so i was able to get dapper installed then i distupgaded to edgy
+2007-01-01T07:56:00.000Z	dev	xtknight	that kernel makes my pata drives go away

@@ -1,0 +1,754 @@
+2016-07-01T00:10:00.000Z	kurahaupo	Zoffix	qualitatively yes, quantitatively no
+2016-07-01T00:11:00.000Z	kurahaupo		faster is more actions per unit of time
+2016-07-01T00:12:00.000Z	Zoffix		which is equivalent to one action per smaller unit of time ¯\_(ツ)_/¯
+2016-07-01T00:13:00.000Z	kurahaupo	Zoffix	numerically no
+2016-07-01T00:13:00.000Z	kurahaupo		that's why you got a negative answer initially
+2016-07-01T00:14:00.000Z	Zoffix		I got a negative answer because I was too lazy to type abs() for relative difference formula :) [one of] which is abs($a-$b)/max(abs($a), abs($b))
+2016-07-01T00:15:00.000Z	Zoffix		m: my $a  = 1 + 28.933/60; my $b = 2 + 1.467/60; say "{abs($a-$b)/max(abs($a), abs($b))*100}% faster"
+2016-07-01T00:15:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«26.7842295% faster␤»
+2016-07-01T00:15:00.000Z	kurahaupo		no, you actually got the right answer -- the change in time was -26%
+2016-07-01T00:16:00.000Z	Zoffix		After I rearranged the formula to not need abs/max, sure.
+2016-07-01T00:17:00.000Z	timotimo	Zoffix	you may prefer infix:<max> over &max in this case
+2016-07-01T00:17:00.000Z	timotimo		although it doesn't bind tighter than / does
+2016-07-01T00:17:00.000Z	timotimo		so you'll need parens either way :\
+2016-07-01T00:20:00.000Z	kurahaupo	Zoffix	if minutes-per-run decreases by 26% (less time), then runs-per-minute increases by 36% (faster)
+2016-07-01T00:21:00.000Z	kurahaupo	Zoffix	leaving out the abs was not a mistake
+2016-07-01T00:22:00.000Z	Zoffix		m: my $x  = 1 + 28.933/60; my $y = 2 + 1.467/60; my \Δ = $x - $y; say "{Δ/$y*100}% faster"
+2016-07-01T00:22:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«-26.7842295% faster␤»
+2016-07-01T00:22:00.000Z	Zoffix	kurahaupo	I give you "if minutes-per-run decreases by 26% (less time), then runs-per-minute increases by 36% (more runs)"
+2016-07-01T00:22:00.000Z	kurahaupo	Zoffix	s/faster/more time/
+2016-07-01T00:23:00.000Z	Zoffix		But "faster" is an ambiguous word here
+2016-07-01T00:23:00.000Z	Zoffix		https://xkcd.com/309/
+2016-07-01T00:23:00.000Z	* Zoffix		leaves to play Far Cry 4
+2016-07-01T00:23:00.000Z	timotimo		have fun!
+2016-07-01T00:25:00.000Z	kurahaupo		:-)
+2016-07-01T00:26:00.000Z	* kurahaupo		goes back to lurking for another year
+2016-07-01T00:37:00.000Z	sortiz		\o #perl6
+2016-07-01T01:14:00.000Z	dalek		doc: cfffec8 | (Daniel Green)++ | doc/Type/IO/Path.pod6:
+2016-07-01T01:14:00.000Z	dalek		doc: IO::Path.mode doesn't belong in the timestamp section
+2016-07-01T01:14:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/cfffec8bee
+2016-07-01T01:14:00.000Z	dalek		doc: 5e90e17 | (Daniel Green)++ | doc/Language/5to6-perlfunc.pod6:
+2016-07-01T01:14:00.000Z	dalek		doc: Fix link in 5to6-perlfunc.pod6. AlexDaniel++
+2016-07-01T01:14:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/5e90e17ff2
+2016-07-01T01:14:00.000Z	dalek		doc: 0a788a8 | (Zoffix Znet)++ | doc/ (2 files):
+2016-07-01T01:14:00.000Z	dalek		doc: Merge pull request #655 from MasterDuke17/IOPath_cleanup
+2016-07-01T01:14:00.000Z	dalek		doc:
+2016-07-01T01:14:00.000Z	dalek		doc: IO::Path.mode doesn't belong in the timestamp section
+2016-07-01T01:14:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/0a788a854e
+2016-07-01T01:16:00.000Z	Zoffix		.tell moritz I recall you mentioning to point out contributors who might use a commit bit. Here's a candidate: https://github.com/MasterDuke17?​tab=overview&amp;period=monthly
+2016-07-01T01:16:00.000Z	yoleaux	Zoffix	I'll pass your message to moritz.
+2016-07-01T02:15:00.000Z	AlexDaniel	Zoffix	it feels like we need shotgun: instead of bisect: :)
+2016-07-01T02:16:00.000Z	AlexDaniel		you can't really use bisect if something was broken/fixed several times
+2016-07-01T02:16:00.000Z	AlexDaniel		so why bother with bisection when you can simply run something on every commit…
+2016-07-01T02:18:00.000Z	AlexDaniel		let's see
+2016-07-01T02:18:00.000Z	AlexDaniel		bisect: class Foo { method new { self.bless: *, :foo<bar> } }.new
+2016-07-01T02:18:00.000Z	bisectable	AlexDaniel	(2016-06-12) https://github.com/rakudo/rakudo/commit/4179bdc
+2016-07-01T02:19:00.000Z	AlexDaniel		bisect: good=2016.01.1 class Foo { method new { self.bless: *, :foo<bar> } }.new
+2016-07-01T02:19:00.000Z	bisectable	AlexDaniel	no build for such “good” revision
+2016-07-01T02:19:00.000Z	AlexDaniel		um, fine
+2016-07-01T02:19:00.000Z	AlexDaniel		bisect: good=2016.02 class Foo { method new { self.bless: *, :foo<bar> } }.new
+2016-07-01T02:19:00.000Z	bisectable	AlexDaniel	(2016-06-12) https://github.com/rakudo/rakudo/commit/4179bdc
+2016-07-01T02:20:00.000Z	AlexDaniel		bisect: good=2d9202c class Foo { method new { self.bless: *, :foo<bar> } }.new
+2016-07-01T02:20:00.000Z	bisectable	AlexDaniel	no build for such “good” revision
+2016-07-01T02:20:00.000Z	Zoffix		That was just a measurement error. It wasn't actually broken in 2016.01
+2016-07-01T02:21:00.000Z	AlexDaniel		ah, okay
+2016-07-01T02:22:00.000Z	AlexDaniel		there's still a problem though
+2016-07-01T02:22:00.000Z	AlexDaniel		bisect: use REPL; say 1
+2016-07-01T02:22:00.000Z	bisectable	AlexDaniel	exit code is 1 on both starting points, bisecting by using the output
+2016-07-01T02:22:00.000Z	bisectable	AlexDaniel	(2015-12-25) https://github.com/rakudo/rakudo/commit/07fecb5
+2016-07-01T02:22:00.000Z	AlexDaniel		why!
+2016-07-01T02:22:00.000Z	Zoffix		m: use REPL
+2016-07-01T02:22:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«===SORRY!===␤REPL is a builtin type. You can use it without loading a module.␤»
+2016-07-01T02:30:00.000Z	AlexDaniel		.tell psch so the reason why it points to 2015-12-25 is because it says “Could not find REPL in:” and then it prints paths…
+2016-07-01T02:30:00.000Z	yoleaux	AlexDaniel	I'll pass your message to psch.
+2016-07-01T02:34:00.000Z	AlexDaniel		omg SVG favicons are only supported in firefox
+2016-07-01T02:42:00.000Z	AlexDaniel		bisect: EVAL “use REPL” if 1; CATCH { exit 0 if $_ ~~ /builtin/; exit 1 }
+2016-07-01T02:42:00.000Z	bisectable	AlexDaniel	exit code on a “good” revision is 1 (which is bad), bisecting with inverted logic
+2016-07-01T02:42:00.000Z	bisectable	AlexDaniel	(2016-03-24) https://github.com/rakudo/rakudo/commit/f7d1c4b
+2016-07-01T02:42:00.000Z	AlexDaniel		.tell psch You probably wanted something like this: bisect: EVAL “use REPL” if 1; CATCH { exit 1 if $_ ~~ /builtin/; exit 0 }
+2016-07-01T02:42:00.000Z	yoleaux	AlexDaniel	I'll pass your message to psch.
+2016-07-01T02:42:00.000Z	AlexDaniel		oops, if 1 :D
+2016-07-01T02:51:00.000Z	dalek		ecosystem: e338a9a | (Andy Weidenbaum)++ | META.list:
+2016-07-01T02:51:00.000Z	dalek		ecosystem: Add module File::Presence
+2016-07-01T02:51:00.000Z	dalek		ecosystem: review: https://github.com/perl6/e​cosystem/commit/e338a9a0da
+2016-07-01T02:51:00.000Z	dalek		ecosystem: d2696e9 | (Zoffix Znet)++ | META.list:
+2016-07-01T02:51:00.000Z	dalek		ecosystem: Merge pull request #225 from atweiden/file-presence
+2016-07-01T02:51:00.000Z	dalek		ecosystem:
+2016-07-01T02:51:00.000Z	dalek		ecosystem: Add module File::Presence: https://github.com/atweiden/file-presence
+2016-07-01T02:51:00.000Z	dalek		ecosystem: review: https://github.com/perl6/e​cosystem/commit/d2696e9546
+2016-07-01T03:42:00.000Z	Xliff		m: say (1|2|3).type
+2016-07-01T03:42:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«Method 'type' not found for invocant of class 'Int'␤  in any  at gen/moar/m-Metamodel.nqp line 3138␤  in block <unit> at <tmp> line 1␤␤»
+2016-07-01T03:42:00.000Z	Xliff		m: say (1|2|3).^name
+2016-07-01T03:42:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«Junction␤»
+2016-07-01T03:42:00.000Z	Xliff		AARGH!
+2016-07-01T03:42:00.000Z	Xliff		Y'all need to warn C ppl about that!
+2016-07-01T03:43:00.000Z	TEttinger		m: say (1 ^ 2)
+2016-07-01T03:43:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«one(1, 2)␤»
+2016-07-01T03:44:00.000Z	TEttinger		m: say (1^2)
+2016-07-01T03:44:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«one(1, 2)␤»
+2016-07-01T03:44:00.000Z	TEttinger		m: say (1^2^3)
+2016-07-01T03:44:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«one(1, 2, 3)␤»
+2016-07-01T03:44:00.000Z	TEttinger		what does ^ do? not xor apparently
+2016-07-01T03:45:00.000Z	Zoffix	TEttinger	no, it creates a one Junction
+2016-07-01T03:45:00.000Z	Zoffix	huggable	Junction
+2016-07-01T03:45:00.000Z	huggable	Zoffix	Logical superposition of values: https://docs.perl6.org/type/Junction
+2016-07-01T03:46:00.000Z	TEttinger		neat
+2016-07-01T03:46:00.000Z	Zoffix		m: say 1 xor 2
+2016-07-01T03:46:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«1␤»
+2016-07-01T03:46:00.000Z	Zoffix		m: say 0b10001 +^ 0b111111
+2016-07-01T03:46:00.000Z	AlexDaniel		m: say (1+^2+^3)
+2016-07-01T03:46:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«46␤»
+2016-07-01T03:46:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«0␤»
+2016-07-01T03:47:00.000Z	Zoffix		m: say 0b10001 xor 0b111111
+2016-07-01T03:47:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«17␤»
+2016-07-01T03:47:00.000Z	* Zoffix		expected both to give same values :S
+2016-07-01T03:47:00.000Z	Zoffix		m: say (0b10001 xor 0b111111).base: 2
+2016-07-01T03:47:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«Nil␤»
+2016-07-01T03:48:00.000Z	Zoffix		m: say (0b10001 xor 0b111111)
+2016-07-01T03:48:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«Nil␤»
+2016-07-01T03:48:00.000Z	Zoffix		mkay
+2016-07-01T03:49:00.000Z	Zoffix		m: say (False xor True)
+2016-07-01T03:49:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«True␤»
+2016-07-01T03:49:00.000Z	Zoffix		(it's Boolean)
+2016-07-01T03:56:00.000Z	ShimmerFairy		xor is lower-precedence ^^ , btw.
+2016-07-01T03:56:00.000Z	dalek		doc: 90cb587 | (Zoffix Znet)++ | doc/Language/traps.pod6:
+2016-07-01T03:56:00.000Z	dalek		doc: Include bitwise ops in traps
+2016-07-01T03:56:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/90cb587285
+2016-07-01T03:57:00.000Z	Zoffix		Doesn't seem to be documented
+2016-07-01T03:57:00.000Z	ShimmerFairy	Zoffix	how about the other lower-prec ones, and and or? :)
+2016-07-01T03:58:00.000Z	Zoffix		They are
+2016-07-01T03:58:00.000Z	ShimmerFairy		weird, then.
+2016-07-01T03:59:00.000Z	dalek		doc: cad79c4 | (Zoffix Znet)++ | doc/Language/traps.pod6:
+2016-07-01T03:59:00.000Z	dalek		doc: Fix typo
+2016-07-01T03:59:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/cad79c4cd0
+2016-07-01T04:00:00.000Z	ShimmerFairy	Zoffix	your addition on bitwise ops accidentally calls +& a boolean op, instead of ?&
+2016-07-01T04:01:00.000Z	dalek		doc: 7477803 | (Zoffix Znet)++ | doc/Language/traps.pod6:
+2016-07-01T04:01:00.000Z	dalek		doc: Fix typo
+2016-07-01T04:01:00.000Z	dalek		doc:
+2016-07-01T04:01:00.000Z	dalek		doc: ShimmerFairy++
+2016-07-01T04:01:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/74778032a3
+2016-07-01T04:01:00.000Z	Zoffix		Proof that it's time to go to bed \o
+2016-07-01T04:02:00.000Z	ShimmerFairy		o/
+2016-07-01T04:09:00.000Z	ugexe		install perl6 module from .tar.gz archive with CURI extracting each individual file as needed with 0 perl6 dependencies: https://gist.github.com/ugexe/2​ca5464cd440ab651f9409f575ec3dac
+2016-07-01T06:00:00.000Z	moritz	Zoffix	thanks, I've invited MasterDuke17
+2016-07-01T06:00:00.000Z	yoleaux		01:16Z <Zoffix> moritz: I recall you mentioning to point out contributors who might use a commit bit. Here's a candidate: https://github.com/MasterDuke17?​tab=overview&amp;period=monthly
+2016-07-01T06:31:00.000Z	dalek		doc: 446d434 | (Matt Oates)++ | doc/Language/traps.pod6:
+2016-07-01T06:31:00.000Z	dalek		doc: Change string not iterable example
+2016-07-01T06:31:00.000Z	dalek		doc:
+2016-07-01T06:31:00.000Z	dalek		doc: This example is really bad since .flip on a string is the best way to reverse a string, so this document is really just introducing another trap for the user. I've changed it instead to sorting characters which I don't believe there is a string method for?
+2016-07-01T06:31:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/446d434de6
+2016-07-01T06:33:00.000Z	Ulti		turns out I have a commit bit... might be worth nerfing early adopter sloths like me
+2016-07-01T06:34:00.000Z	AlexDaniel		+1 for .sort
+2016-07-01T06:43:00.000Z	Woodi		morning #perl6 :)
+2016-07-01T06:50:00.000Z	Woodi		finally I got to installing R2016.06. and must say that it is very paintfull to be user of something which is in fast development mode ;)  that speedups just *after* the release... at least 2016.06 catched some, lizmat++ ; jnthn++ :)
+2016-07-01T06:56:00.000Z	moritz		is "paintful" the same as "colorful"? :-)
+2016-07-01T06:57:00.000Z	Woodi	moritz	no :)
+2016-07-01T07:01:00.000Z	abraxxa		Hi ;)
+2016-07-01T07:03:00.000Z	Woodi		o/
+2016-07-01T07:39:00.000Z	dalek		bisectbot: 55a10e8 | (Aleks-Daniel Jakimenko-Aleksejev)++ | bot.pl:
+2016-07-01T07:40:00.000Z	dalek		bisectbot: Allow bot name as a prefix
+2016-07-01T07:40:00.000Z	dalek		bisectbot:
+2016-07-01T07:40:00.000Z	dalek		bisectbot: Given that people still try to do ｢bisectable: somecodehere｣, it is time to
+2016-07-01T07:40:00.000Z	dalek		bisectbot: allow it.
+2016-07-01T07:40:00.000Z	dalek		bisectbot:
+2016-07-01T07:40:00.000Z	dalek		bisectbot: Note that ｢bisectable: bisect: somecodehere｣ is still not valid. If you do
+2016-07-01T07:40:00.000Z	dalek		bisectbot: that, it will run fine because “bisect:” will be treated as a Perl 6 label,
+2016-07-01T07:40:00.000Z	dalek		bisectbot: but that's still misuse.
+2016-07-01T07:40:00.000Z	dalek		bisectbot: review: https://github.com/perl6/b​isectbot/commit/55a10e86dc
+2016-07-01T07:42:00.000Z	dalek		bisectbot: 166dd5a | (Aleks-Daniel Jakimenko-Aleksejev)++ | bot.pl:
+2016-07-01T07:42:00.000Z	dalek		bisectbot: Remove debug output (oops)
+2016-07-01T07:42:00.000Z	dalek		bisectbot: review: https://github.com/perl6/b​isectbot/commit/166dd5a006
+2016-07-01T07:44:00.000Z	AlexDaniel	bisectable	for ‘q b c d’.words -> $a, $b { };
+2016-07-01T07:44:00.000Z	bisectable		exit code on a “good” revision is 1 (which is bad), bisecting with inverted logic
+2016-07-01T07:44:00.000Z	bisectable	AlexDaniel	(2016-03-01) https://github.com/rakudo/rakudo/commit/1b6c901
+2016-07-01T07:44:00.000Z	AlexDaniel		ok
+2016-07-01T07:48:00.000Z	moritz		nice!
+2016-07-01T08:24:00.000Z	Woodi		so, in my baby-perl6 "benchmark" R*2016.04 was 24.25, R2016.05 was 23.25, same for R2016.06 and R2016.07.01 is 21.25  where 1 is some Perl5 script (a bit deoptimized with HOP...)
+2016-07-01T08:24:00.000Z	moritz		so, the trend is good
+2016-07-01T08:25:00.000Z	Woodi		yes, but we got long spring to recover after xmass :)
+2016-07-01T08:27:00.000Z	AlexDaniel		in other words, 21 months to go? :)
+2016-07-01T08:29:00.000Z	Woodi		now possibly it would be nice to look for holes/niches in "production environments"... maybe something like generating C code. or somethingsomething virtualization ? :)
+2016-07-01T08:29:00.000Z	Woodi	AlexDaniel	you are so optimistic :)
+2016-07-01T08:30:00.000Z	AlexDaniel	Woodi	not really, just a bit linear :)
+2016-07-01T08:30:00.000Z	* moritz		wonders why this "compiling to C" meme never dies
+2016-07-01T08:30:00.000Z	Woodi	moritz	becouse it's close to CPU and we have kind of CPU that we have :)\
+2016-07-01T08:31:00.000Z	AlexDaniel	Woodi	in fact, it is 22 months till global catastrophe due to artificial intelligence
+2016-07-01T08:31:00.000Z	Woodi	AlexDaniel	2012 was worse perspective :)
+2016-07-01T08:33:00.000Z	Woodi		do we Still faster then Moose ? what about comparing to other Moo'ses ?
+2016-07-01T08:34:00.000Z	AlexDaniel		https://docs.perl6.org/language/fa​q#Is_Perl_6_fast_enough_for_me%3F
+2016-07-01T08:34:00.000Z	AlexDaniel		no idea
+2016-07-01T08:34:00.000Z	AlexDaniel		I guess that we have to run these snippets to find out :D
+2016-07-01T08:50:00.000Z	moritz	Woodi	still, it's a fallacy. MoarVM is also written in C, so we already get the speed that C can give us
+2016-07-01T08:54:00.000Z	ShimmerFairy	moritz	actually, I'd argue ultimately compiling to your CPU's native assembler is better than that of a VM built on top of your CPU :P
+2016-07-01T08:55:00.000Z	Woodi	moritz	but PMCs are not native types...
+2016-07-01T08:59:00.000Z	moritz	ShimmerFairy	but the need for the VM features doesn't go away by compiling Perl 6 to C
+2016-07-01T08:59:00.000Z	moritz		you still need garbage collecition, multi dispatch, named arguments and all that stuff
+2016-07-01T08:59:00.000Z	Woodi	AlexDaniel	Mojo 2.96s; Moose 9.68; Perl6 17,36s; Moose (mutable classes) 142,92s
+2016-07-01T09:00:00.000Z	ShimmerFairy	moritz	that feels like an overly-literal approach to what's basically source translation; you wouldn't need e.g. named arguments if my P6 script never uses them.
+2016-07-01T09:05:00.000Z	Woodi	moritz	my use case is: some portal using 100 (sorry, late 90s numbers ;) ) Intel servers doing PHP apps like postcards.portal.com/news/sport/music/.... and no money to buy more servers; moust apps are same PHP code with different content. I think that if that apps will be in C it would be like 50 unused servers...
+2016-07-01T09:07:00.000Z	Woodi		...so HLL is good for prototyping but when it is working it needs to be rewrited into something generating native code...
+2016-07-01T09:07:00.000Z	jkramer		Ahoy
+2016-07-01T09:07:00.000Z	Woodi		eg. sysV init scripts was too long a "scripts" ;)
+2016-07-01T09:07:00.000Z	Woodi		hi jkramer :)
+2016-07-01T09:08:00.000Z	jkramer		I'm not sure if I'm doing something wrong or if I might have found a bug. I have this line: my %short-flags <== map { $_.short => $_ } <== grep { $_.short } <== @!options;
+2016-07-01T09:08:00.000Z	jkramer		It works fine, but if I put linebreaks in front of the <=='s, I get a syntax error
+2016-07-01T09:08:00.000Z	jkramer		About a missing '>'
+2016-07-01T09:10:00.000Z	pmurias		re compiling to C, why would be that better than what MoarVM is currently doing and compiling to machine code?
+2016-07-01T09:12:00.000Z	ShimmerFairy	pmurias	the only big plus that comes to my mind is "way more portable source" (as in, someone's far more likely to have a spare gcc on hand than a spare rakudo)
+2016-07-01T09:13:00.000Z	ShimmerFairy	pmurias	but yeah, making it somehow possible to do mbc->asm would be of comparable usefulness.
+2016-07-01T09:13:00.000Z	gfldex		m: https://gist.github.com/gfldex/d​083f6925f0472ee8a1fab7817d45910
+2016-07-01T09:13:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Unable to parse expression in quote words; couldn't find final '>'␤        ␤at <tmp>:5␤------> 3    <== @options;7⏏5<EOL>␤    expecting any of:␤        postfix␤        quote words␤       …»
+2016-07-01T09:14:00.000Z	gfldex		m: https://gist.github.com/gfldex/d​083f6925f0472ee8a1fab7817d45910
+2016-07-01T09:14:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Shaped variable declarations not yet implemented. Sorry. ␤at <tmp>:3␤------> 3    <== map { $_.uc =>7⏏5 $_ }\␤»
+2016-07-01T09:15:00.000Z	gfldex	jkramer	feed operators are not propery implemented yet, the error message is LTA tho
+2016-07-01T09:16:00.000Z	jkramer	gfldex	Ok, thanks
+2016-07-01T09:18:00.000Z	pmurias	ShimmerFairy	the runtime is needed, so we would need to bundle up a rakudo
+2016-07-01T09:19:00.000Z	ShimmerFairy	pmurias	for what, the C idea? Not for a sufficiently clever translator :P
+2016-07-01T09:26:00.000Z	pmurias		If you get someone to rewrite in program in C it likely won't need the Rakudo runtime
+2016-07-01T09:28:00.000Z	ShimmerFairy		Well sure, humans usually count as sufficiently clever translators :)
+2016-07-01T09:28:00.000Z	pmurias		only ones I can imagine
+2016-07-01T09:28:00.000Z	ShimmerFairy	pmurias	I think at minimum it should dynamically link what it wants (e.g. libmoar.so). Bundling a static library into it, or otherwise forcing someone to cart around the runtime with the program, would be quite LTA.
+2016-07-01T09:31:00.000Z	pmurias	ShimmerFairy	isn't carting around everything that's needed what people want when they package around things as an executable for linux?
+2016-07-01T09:32:00.000Z	ShimmerFairy	pmurias	not really. Windows, yeah, but on Linux the magic is that you _don't_ have to package up all the libraries you need :)
+2016-07-01T09:36:00.000Z	moritz		static linking and fat-packaging still has advantages on linux
+2016-07-01T09:36:00.000Z	Woodi	pmurias	just tested: strace nqpSayA  401 syscals; strace cSayA 28...
+2016-07-01T09:37:00.000Z	pmurias	Woodi	?
+2016-07-01T09:38:00.000Z	Woodi	pmurias	so execution time is 20+ times shorter...
+2016-07-01T09:38:00.000Z	Woodi		m: say 401/28
+2016-07-01T09:38:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«14.321429␤»
+2016-07-01T09:38:00.000Z	Woodi		ok, 14 :)
+2016-07-01T09:39:00.000Z	ShimmerFairy	moritz	I've personally never run into a situation where that's genuinely helpful. .so's are just too nice :)
+2016-07-01T09:39:00.000Z	pmurias	Woodi	we are not at hand written performance yet
+2016-07-01T09:40:00.000Z	Woodi	pmurias	but it's not about us, just how things generally are...
+2016-07-01T09:40:00.000Z	Woodi		and of coursse making C code is harder then HLL but it's why HLL is for ptototyping and then "evaluating" :)
+2016-07-01T09:41:00.000Z	pmurias	Woodi	there is nothing forcing things to be that way
+2016-07-01T09:44:00.000Z	pmurias	Woodi	if I wanted to waste the time I could make NQP emit hand written quality C code for hello world programs
+2016-07-01T09:45:00.000Z	pmurias		or other stupid benchmark of the month
+2016-07-01T10:01:00.000Z	jkramer		Another question: why does this work: my @foo = grep { ... }, @stuff; my $bar = @foo.first; But not: my $bar = first grep { ... }, @stuff ?
+2016-07-01T10:02:00.000Z	tbrowder		morning #perl6
+2016-07-01T10:02:00.000Z	jkramer		Oh nevermind, I get it. When called as a sub the first argument is a matcher.
+2016-07-01T10:02:00.000Z	jkramer		Ha, that's genious actually, saves me a grep :)
+2016-07-01T10:03:00.000Z	tbrowder		what's the policy on leaving debug code in source for at least a while?
+2016-07-01T10:14:00.000Z	gregf_	jkramer	grep is a global function, whereas first is a method
+2016-07-01T10:15:00.000Z	gregf_		m: say ([1..10].grep: { $_ %% 3 }).first
+2016-07-01T10:15:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«3␤»
+2016-07-01T10:16:00.000Z	gregf_		well, there i guess, grep is a method call :| #confusing
+2016-07-01T10:17:00.000Z	ShimmerFairy		lots of things are provided in both sub and method form for convenience and preferred programming style.
+2016-07-01T10:20:00.000Z	pmurias	tbrowder	you mean leaving in commented out debugging comment in rakudo source code?
+2016-07-01T10:20:00.000Z	tbrowder		yes
+2016-07-01T10:20:00.000Z	psch	tbrowder	if it's generally useful and meaningful and hidden behind an env var, i'd say go ahead
+2016-07-01T10:20:00.000Z	yoleaux		02:30Z <AlexDaniel> psch: so the reason why it points to 2015-12-25 is because it says “Could not find REPL in:” and then it prints paths…
+2016-07-01T10:20:00.000Z	yoleaux		02:42Z <AlexDaniel> psch: You probably wanted something like this: bisect: EVAL “use REPL” if 1; CATCH { exit 1 if $_ ~~ /builtin/; exit 0 }
+2016-07-01T10:23:00.000Z	tbrowder	pmurias	okay, thanks, i don't want to abuse it but i'm preparing a PR that might need some retries before being accepted and might need more debugging
+2016-07-01T10:24:00.000Z	timotimo		i've probably done it differently in the past, but it's favorable to not leave debug output around for bisectability and such. though it's probably no big deal
+2016-07-01T10:25:00.000Z	psch		right, the big thing is that you have to work for it to come out
+2016-07-01T10:25:00.000Z	psch		like, we have RAKUDO_MODULE_DEBUG around for what, a year?
+2016-07-01T10:25:00.000Z	psch		but that's fine, cause without the env var it doesn't get in the way
+2016-07-01T10:25:00.000Z	timotimo		ah, well, if you put it behind an env var, that's probably fine
+2016-07-01T10:25:00.000Z	timotimo		i wonder if the checks for rakudo module debug are optimized at all, or if they are a performance drain
+2016-07-01T10:25:00.000Z	dalek		doc: 628efba | (Jan-Olof Hendig)++ | doc/Type/Date.pod6:
+2016-07-01T10:25:00.000Z	dalek		doc: Expanded the doc for Date.Str
+2016-07-01T10:25:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/628efba759
+2016-07-01T10:25:00.000Z	psch		that's an interesting question, yeah
+2016-07-01T10:26:00.000Z	psch		iirc $RMD is lexical everywhere its used..?
+2016-07-01T10:28:00.000Z	timotimo		i haven't looked at all
+2016-07-01T10:28:00.000Z	timotimo		just a random thought that came to my mind
+2016-07-01T10:29:00.000Z	timotimo		like how if you have a benchmark with a while loop that compares an int against @*ARGS[0], it'll be a million times slower than if you .Int it once and put it into a variable, or even into a native variable
+2016-07-01T10:30:00.000Z	psch		41 lines with $RMD
+2016-07-01T10:30:00.000Z	psch		well, two are from CUR::Perl5
+2016-07-01T10:30:00.000Z	psch		the rest is PrecompRepo, World, RepoRegistry, in descent amount
+2016-07-01T10:31:00.000Z	timotimo		descent was a great game
+2016-07-01T10:31:00.000Z	psch		+ing
+2016-07-01T10:31:00.000Z	psch		:|
+2016-07-01T10:31:00.000Z	psch		well, descending /o\
+2016-07-01T10:35:00.000Z	nine		I'm quite sure that $RMD costs some performance and I'm very much looking forward to a time when we can remove it. Will also make the code nicer.
+2016-07-01T10:35:00.000Z	timotimo		yay
+2016-07-01T10:36:00.000Z	timotimo		*sigh*, the thing about my virtual desktop setup is that i don't have enough virtual desktops right next to my irc/browser/jabber desktop :P
+2016-07-01T10:37:00.000Z	DrForr		Enlightenment splits desktops per display, default of 4 each.
+2016-07-01T10:38:00.000Z	psch		well, the naive benchmark i whipped up here is actually half a second slower without $RMD :S
+2016-07-01T10:38:00.000Z	timotimo		i want both my displays to switch at the same time
+2016-07-01T10:38:00.000Z	timotimo		haha, that's great :D
+2016-07-01T10:39:00.000Z	psch		ah shucks, now i tossed a change i had been working on :|
+2016-07-01T10:39:00.000Z	psch		well, not too bad
+2016-07-01T10:40:00.000Z	psch		cause it also would need some design input anyway
+2016-07-01T10:40:00.000Z	psch		#127924 that is
+2016-07-01T10:40:00.000Z	nine		tossed?
+2016-07-01T10:40:00.000Z	psch		yeah, checkout .
+2016-07-01T10:41:00.000Z	psch		'cause i wanted to get rid of the comment-out-$RMD changes but forgot there was other changes around
+2016-07-01T10:41:00.000Z	psch		no big deal though, it didn't really work yet anyway and i still recall what i did do :)
+2016-07-01T10:41:00.000Z	timotimo		oof
+2016-07-01T10:41:00.000Z	timotimo		do you know of git checkout -p ?
+2016-07-01T10:41:00.000Z	psch		yeah
+2016-07-01T10:42:00.000Z	psch		i might eventually learn to always do confirm-y stuff, but apparently not yet :)
+2016-07-01T10:44:00.000Z	timotimo		i suppose you have to get hurt often enough in order to really build that habit :\
+2016-07-01T10:45:00.000Z	psch		anyway, the thing with the ticket above is, that if &return inside an 'is rw' Routine is what we have &return-rw for now, (1) is return-rw still allowed in a not-'is rw' Routine? (2) do we actually still need &return-rw if not (1)?
+2016-07-01T10:46:00.000Z	psch		https://rt.perl.org/Public/​Bug/Display.html?id=127924 # because synopsebot is on vacation apparently
+2016-07-01T10:54:00.000Z	nine		I lost an evening of playing Diablo II this week due to a git checkout .
+2016-07-01T10:54:00.000Z	nine		Recovered the progress in a speedrun though :)
+2016-07-01T10:55:00.000Z	psch		Diablo II is something i will never start playing again :P
+2016-07-01T11:01:00.000Z	jkramer		Is there some syntax sugar to avoid having to type long namespaces/class/enum paths too often? Something like this would help: enum Foo <A B>; Need::These::Values::{A,B}
+2016-07-01T11:01:00.000Z	sjn		\o
+2016-07-01T11:01:00.000Z	timotimo		importing should help
+2016-07-01T11:02:00.000Z	jkramer		I mean Need::These::Values::Foo::{A,B} of course
+2016-07-01T11:02:00.000Z	jkramer		I'm actually in the same module
+2016-07-01T11:02:00.000Z	timotimo		m: enum Foo::Bar::Baz <A B C>; say Foo::Bar::Baz::<A B C>.perl
+2016-07-01T11:02:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«(Foo::Bar::Baz::A, Foo::Bar::Baz::B, Foo::Bar::Baz::C)␤»
+2016-07-01T11:02:00.000Z	jkramer		Although the enum is in a different class
+2016-07-01T11:03:00.000Z	jkramer		Ah neat, thanks a bunch!
+2016-07-01T11:04:00.000Z	sjn		what's the idiomatic way of sorting a hash by key (or by value, for that matter)?
+2016-07-01T11:05:00.000Z	psch		m: my \CURI = CompUnit::Repository::Installation; say CURI.perl
+2016-07-01T11:05:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«CompUnit::Repository::Installation␤»
+2016-07-01T11:05:00.000Z	psch	jkramer	an alternative i suppose ^^^
+2016-07-01T11:05:00.000Z	psch		m: my %h = :2b, :1c, :3a; say %h.sort; say %h.sort: *.value
+2016-07-01T11:05:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«(a => 3 b => 2 c => 1)␤(c => 1 b => 2 a => 3)␤»
+2016-07-01T11:06:00.000Z	sjn	psch	thanks! :)
+2016-07-01T11:07:00.000Z	* sjn		tried with %h.sort(:value) and that didn't do anything
+2016-07-01T11:07:00.000Z	psch		right, sort takes a positional Callable
+2016-07-01T11:07:00.000Z	sjn		I now see the errors of may ways :)
+2016-07-01T11:08:00.000Z	sjn		should nonsensical parameters to sort give a warning?
+2016-07-01T11:08:00.000Z	ShimmerFairy		not nonsensical named params to methods :D
+2016-07-01T11:08:00.000Z	psch		no nonsensical named parameter will every give a warning
+2016-07-01T11:08:00.000Z	psch		well, to methods, yes, ShimmerFairy++
+2016-07-01T11:09:00.000Z	ShimmerFairy		(it's the ~totally sensible~ magic of *%_ that ~definitely~ deserves to be a part of P6)
+2016-07-01T11:14:00.000Z	sjn		m: my %h = :2b, :1c, :3a; for %h.sort.kv -> $nums, $letters { say $letters };
+2016-07-01T11:14:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«a => 3␤b => 2␤c => 1␤»
+2016-07-01T11:14:00.000Z	sjn		doesn't .kv actually return the key?
+2016-07-01T11:14:00.000Z	sjn		seems it returns a pair
+2016-07-01T11:14:00.000Z	ShimmerFairy		m: say {:2b,:1c:3a}.kv.perl
+2016-07-01T11:14:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«("a", 3, "c", 1, "b", 2).Seq␤»
+2016-07-01T11:15:00.000Z	ShimmerFairy		m: for {:2b,:1c:3a}.kv { say $_ }
+2016-07-01T11:15:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«a␤3␤c␤1␤b␤2␤»
+2016-07-01T11:15:00.000Z	ShimmerFairy		m: for {:2b,:1c:3a}.kv -> ($nums, $letters) { say $letters }
+2016-07-01T11:15:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«Too few positionals passed; expected 2 arguments but got 0 in sub-signature␤  in block <unit> at <tmp> line 1␤␤»
+2016-07-01T11:15:00.000Z	ShimmerFairy		m: for {:2b,:1c:3a}.kv -> $nums, $letters { say $letters }
+2016-07-01T11:15:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«3␤1␤2␤»
+2016-07-01T11:15:00.000Z	psch		m: my %h = :2b, :1c, :3a; %h.sort.WHAT.say
+2016-07-01T11:15:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«(List)␤»
+2016-07-01T11:15:00.000Z	psch		m: my %h = :2b, :1c, :3a; %h.sort[0].say
+2016-07-01T11:15:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«a => 3␤»
+2016-07-01T11:16:00.000Z	psch		.kv on a List gives you ($index, $value)
+2016-07-01T11:16:00.000Z	ShimmerFairy	psch	oh, I think I get it
+2016-07-01T11:16:00.000Z	ShimmerFairy		yeah, that
+2016-07-01T11:16:00.000Z	psch		.sort returns a sorted list of Pairs
+2016-07-01T11:16:00.000Z	ShimmerFairy	sjn	I mean
+2016-07-01T11:16:00.000Z	psch		m: my %h = :2b, :1c, :3a; for %h.sort.kv -> $, (:$key, :$value) { say "$key: $value" };
+2016-07-01T11:16:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«a: 3␤b: 2␤c: 1␤»
+2016-07-01T11:17:00.000Z	sjn		that looks a little cludgey.. :-(
+2016-07-01T11:17:00.000Z	psch	sjn	well, a Hash itself cannot be sorted :)
+2016-07-01T11:17:00.000Z	psch		so the result must be something that retains order
+2016-07-01T11:18:00.000Z	psch		m: my %h = :2b, :1c, :3a; for %h.sort -> (:$key, :$value) { say "$key: $value" };
+2016-07-01T11:18:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«a: 3␤b: 2␤c: 1␤»
+2016-07-01T11:18:00.000Z	psch		you can just drop the .kv though
+2016-07-01T11:18:00.000Z	sjn		right
+2016-07-01T11:18:00.000Z	psch		'cause the k in kv is just the index anyway vOv
+2016-07-01T11:19:00.000Z	lizmat	Woodi	I feel your pain, but some optimizations are not without risk to the ecosystem out there
+2016-07-01T11:20:00.000Z	lizmat	Woodi	so we like to get them out just after the release, so that we have a month for fixing any ecosystem breakage
+2016-07-01T11:21:00.000Z	Woodi	lizmat	of course, just like no software upgrades on Friday :)
+2016-07-01T11:23:00.000Z	sjn		funny, psch's example doesn't work on my rakudo build (a few weeks old).
+2016-07-01T11:23:00.000Z	sjn		has there been any work on things like that lately?
+2016-07-01T11:23:00.000Z	psch		star-m: my %h = :2b, :1c, :3a; for %h.sort -> (:$key, :$value) { say "$key: $value" };
+2016-07-01T11:23:00.000Z	camelia		star-m 2016.04: OUTPUT«a: 3␤b: 2␤c: 1␤»
+2016-07-01T11:24:00.000Z	psch	sjn	what's your $*PERL.compiler?
+2016-07-01T11:24:00.000Z	sjn	psch	currently under recompilation :)
+2016-07-01T11:24:00.000Z	psch		heh :)
+2016-07-01T11:24:00.000Z	psch		well, it's fine in 2016.04 and it's fine now
+2016-07-01T11:24:00.000Z	sjn		lots of build warnings though
+2016-07-01T11:24:00.000Z	psch		might have been something intermittenly weird, no idea
+2016-07-01T11:28:00.000Z	timotimo		https://twitter.com/rpy/status/622291301002670080  <3
+2016-07-01T11:32:00.000Z	sjn		m: my %h = :2b, :1c, :3a; for %h.sort -> (:$numbers, :$letters
+2016-07-01T11:32:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Malformed parameter␤at <tmp>:1␤------> 3a; for %h.sort -> (:$numbers, :$letters7⏏5<EOL>␤    expecting any of:␤        constraint␤»
+2016-07-01T11:33:00.000Z	sjn		m: my %h = :2b, :1c, :3a; for %h.sort -> (:$numbers, :$lettersmy %h = :2b, :1c, :3a; for %h.sort -> (:$numbers, :$letters
+2016-07-01T11:33:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Malformed parameter␤at <tmp>:1␤------> 3; for %h.sort -> (:$numbers, :$lettersmy7⏏5 %h = :2b, :1c, :3a; for %h.sort -> (:$n␤    expecting any of:␤        constraint␤»
+2016-07-01T11:33:00.000Z	sjn		dammit
+2016-07-01T11:34:00.000Z	psch	sjn	that's not gonna work.  (:$key, :$value) is an unpacking sub-signature
+2016-07-01T11:34:00.000Z	sjn		m: my %h = :2b, :1c, :3a; for %h.sort -> (:$numbers, :$letters) { say "$numbers: $letters" } # should work
+2016-07-01T11:34:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«2 unexpected named arguments passed (key,value) in sub-signature␤  in block <unit> at <tmp> line 1␤␤»
+2016-07-01T11:34:00.000Z	psch		m: (a => 1).^attributes.say
+2016-07-01T11:34:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«(Mu $!key Mu $!value)␤»
+2016-07-01T11:34:00.000Z	sjn		hm
+2016-07-01T11:35:00.000Z	psch		m: class A { has $.frobniz; }; with A.new(:1frobniz) -> (:$frobniz) { say $frobniz }
+2016-07-01T11:35:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«1␤»
+2016-07-01T11:36:00.000Z	lizmat		m: my %h = :2b, :1c, :3a; for %h.sort -> (:key($numbers), :value($letters)) { say "$numbers: $letters" }  # must use key/value names
+2016-07-01T11:36:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«a: 3␤b: 2␤c: 1␤»
+2016-07-01T11:36:00.000Z	sjn		ok, so I have a hash, I'd like the pairs of them to end up in two variable I've named, and I'd like to have it done in a sorted way, so I can iterate over it
+2016-07-01T11:37:00.000Z	sjn	lizmat	has the way :)
+2016-07-01T11:37:00.000Z	lizmat		sort generates Pair, Pairs attributes are "key" and "value"
+2016-07-01T11:37:00.000Z	lizmat		hence you *must* use :key / :value
+2016-07-01T11:37:00.000Z	timotimo		i'd describe it as "sort uses .List, which on a hash gives you a list of Pair objects"
+2016-07-01T11:38:00.000Z	lizmat		:$key is just short for :key($key)
+2016-07-01T11:38:00.000Z	sjn		ok
+2016-07-01T11:39:00.000Z	sjn		and you have to use the paranthesis around those, because we're "unpacking" the Pairs?
+2016-07-01T11:39:00.000Z	lizmat		that's my understanding, yes
+2016-07-01T11:39:00.000Z	lizmat		it's basically a signature
+2016-07-01T11:39:00.000Z	timotimo		aye, the thing after -> is a signature
+2016-07-01T11:39:00.000Z	timotimo		right
+2016-07-01T11:39:00.000Z	timotimo		if you have :$key, :$value, you expect two named arguments
+2016-07-01T11:40:00.000Z	timotimo		when you have (:$key, :$value), you expect a single argument
+2016-07-01T11:40:00.000Z	timotimo		and that gets unpacked
+2016-07-01T11:40:00.000Z	sjn		right
+2016-07-01T11:40:00.000Z	sjn		a signature
+2016-07-01T11:40:00.000Z	sjn		sjn's brain is going all bendy from this
+2016-07-01T11:41:00.000Z	gfldex		https://docs.perl6.org/type/Sig​nature#Destructuring_Parameters <-- we even got tha doced!
+2016-07-01T11:41:00.000Z	sjn		bendy-warpy
+2016-07-01T11:41:00.000Z	gfldex		i wonder if we should put /type/Signature at the front page :)
+2016-07-01T11:41:00.000Z	sjn		or wendy-barpy? o_O
+2016-07-01T11:41:00.000Z	timotimo		:P
+2016-07-01T11:42:00.000Z	lizmat		.oO( bendy-warpy salvetion )
+2016-07-01T11:43:00.000Z	sjn		:)
+2016-07-01T11:44:00.000Z	sjn		anyhoo, thanks for the help!
+2016-07-01T11:45:00.000Z	* DrForr		waves to lizmat. *hug*
+2016-07-01T11:45:00.000Z	* lizmat		waves back to DrForr :-)
+2016-07-01T12:03:00.000Z	iH2O		hello perl6ers
+2016-07-01T12:04:00.000Z	timotimo		hey
+2016-07-01T12:04:00.000Z	iH2O		hmm
+2016-07-01T12:09:00.000Z	jkramer		How can I get the message/string from a Failure without the "(HANDLED)" prefix?
+2016-07-01T12:10:00.000Z	timotimo		m: sub test { fail "oh no" }; test().^methods.say
+2016-07-01T12:10:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«(DESTROY AT-POS AT-KEY defined handled Int Num Numeric mess sink CALL-ME FALLBACK STORE new Bool Str gist perl exception backtrace AT-POS AT-KEY BIND-POS ASSIGN-KEY STORE iterator sink unshift chrs FALLBACK gist Numeric Str BIND-KEY new ords push ASSIGN-PO…»
+2016-07-01T12:10:00.000Z	DrForr		Hee.
+2016-07-01T12:10:00.000Z	timotimo		m: sub test { fail "oh no" }; test().^attributes.say
+2016-07-01T12:10:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«(Mu $!exception Mu $!backtrace int $!handled)␤»
+2016-07-01T12:10:00.000Z	andreoss	masak	in 007 there's no way to access object properties through a sub stored in this object?
+2016-07-01T12:10:00.000Z	timotimo		hmm.
+2016-07-01T12:10:00.000Z	loren		m: say "substr1: " ~ ("a" x 3 ~ "b" x 5).substr(1), " substr2: " ~ ("a" x 3 ~ "b" x 5).substr(2);
+2016-07-01T12:11:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«substr1: aabbbbb substr2: aabbbb␤»
+2016-07-01T12:11:00.000Z	timotimo	loren	old bug :(
+2016-07-01T12:11:00.000Z	lizmat	jkramer	probably $failure.exception.message
+2016-07-01T12:11:00.000Z	timotimo		indeed, lizmat
+2016-07-01T12:11:00.000Z	loren		...oh, ..
+2016-07-01T12:11:00.000Z	timotimo		m: sub test { fail "oh no" }; test().exception.perl.say
+2016-07-01T12:11:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«X::AdHoc.new(payload => "oh no")␤»
+2016-07-01T12:11:00.000Z	jkramer	lizmat	Yup, thanks!
+2016-07-01T12:11:00.000Z	loren		So quickly ...
+2016-07-01T12:12:00.000Z	timotimo		i'm too dumb to fix it; it's in our implementation of ropes
+2016-07-01T12:14:00.000Z	lizmat	loren	which is why concatenated strings are not actually always contiguous in memory in MoarVM
+2016-07-01T12:14:00.000Z	gfldex		isn't `fail` a control flow thing?
+2016-07-01T12:14:00.000Z	gfldex		m: dd &fail
+2016-07-01T12:14:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«Sub fail = sub fail (| is raw) { #`(Sub|46380296) ... }␤»
+2016-07-01T12:14:00.000Z	timotimo		yeah, it causes the routine it's used in to return
+2016-07-01T12:15:00.000Z	* gfldex		fires up vim
+2016-07-01T12:15:00.000Z	loren	lizmat	en, i see
+2016-07-01T12:16:00.000Z	timotimo		m: my $thing = "a" x 3 ~ "b" x 5; say "substr1: " ~ $thing.substr(1), " substr2: " ~ $thing.substr(2);
+2016-07-01T12:16:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«substr1: aabbbbb substr2: aabbbb␤»
+2016-07-01T12:16:00.000Z	timotimo		m: my $thing = "a" x 3 ~ "b" x 5; $thing ~~ /../; say "substr1: " ~ $thing.substr(1), " substr2: " ~ $thing.substr(2);
+2016-07-01T12:16:00.000Z	camelia		rakudo-moar e9019e: OUTPUT«substr1: aabbbbb substr2: abbbbb␤»
+2016-07-01T12:17:00.000Z	timotimo		^- running a regex on a string is one of the operations that forces a rope to collapse into a contiguous piece of memory
+2016-07-01T12:17:00.000Z	timotimo		that's why those two behave differently
+2016-07-01T12:21:00.000Z	lizmat	timotimo	is there a way to programmatically force a rope collapse ?
+2016-07-01T12:21:00.000Z	timotimo		nqp::flattenrope
+2016-07-01T12:21:00.000Z	lizmat		could make debugging easier / faster ?
+2016-07-01T12:21:00.000Z	DrForr		Take away its via... never mind :)
+2016-07-01T12:22:00.000Z	dalek		doc: 98ef33c | (Wenzel P. P. Peppmeyer)++ | doc/Language/control.pod6:
+2016-07-01T12:22:00.000Z	dalek		doc: add fail to Control Flow
+2016-07-01T12:22:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/98ef33c8dd
+2016-07-01T12:22:00.000Z	jnthn		I don't think we expose the flattenrope op as an nqp:: op...
+2016-07-01T12:22:00.000Z	jnthn		The regex code-gen just spits out out
+2016-07-01T12:23:00.000Z	jnthn		The simplest way now is just the $str ~~ /<?>/ :)
+2016-07-01T12:24:00.000Z	jkramer		How can I split a string into single characters? I only found .ords and that gives me codepoints. Do I need to do something like .split(//) like in P5 or is there a nicer way?
+2016-07-01T12:24:00.000Z	timotimo		use .comb
+2016-07-01T12:25:00.000Z	jkramer		Thanks, that seems to work. Still getting used to all the new/"unusual" method names :)
+2016-07-01T12:25:00.000Z	loren	timotimo	lizmat  thanks, learned a lot ..
+2016-07-01T12:25:00.000Z	timotimo		you ain't never heard of "spurt" before? ;)
+2016-07-01T12:26:00.000Z	timotimo		spurt ain't no method i ever heard of. they speak I/O in spurt?
+2016-07-01T12:28:00.000Z	jkramer		Is it like spit/spew in some P5 slurp modules? :D
+2016-07-01T12:37:00.000Z	lizmat		comments welcome on https://github.com/rakudo/r​akudo/commit/516b997a4a26d
+2016-07-01T12:40:00.000Z	Juerd	lizmat	I use the REPL to show mostly the here-mark in error messages to people, every time LTA error messages in other languages come up at the hackerspace
+2016-07-01T12:40:00.000Z	lizmat		well, I would like to keep the HERE mark, but was too lazy to dive into keeping it
+2016-07-01T12:41:00.000Z	lizmat		but I think we can agree on the <unknown file> nonsense not being needed ?
+2016-07-01T12:48:00.000Z	lizmat	Juerd	fix coming up
+2016-07-01T12:55:00.000Z	ab6tract		o/ #perl6
+2016-07-01T12:56:00.000Z	Juerd	lizmat	Unknown file isn't just unneeded, it's wrong :)
+2016-07-01T13:01:00.000Z	ab6tract		i seem to remember reading something about a 400x performance improvement recently courtesy of jnthn++
+2016-07-01T13:01:00.000Z	ab6tract		but can't seem to find a reference to it anymore
+2016-07-01T13:04:00.000Z	lizmat	Juerd	https://github.com/rakudo/rakudo/commit/12f12a5869
+2016-07-01T13:05:00.000Z	Juerd	lizmat	Yay. Would like to retain the line number if it's not 1 though. Haven't done it yet with p6, but in p5 I sometimes generate code and shove that in stdin
+2016-07-01T13:05:00.000Z	Juerd		But it's a weird use case. Not sure if it's worth any effort.
+2016-07-01T13:12:00.000Z	lizmat	Juerd	https://github.com/rakudo/rakudo/commit/8a2ffacdb9
+2016-07-01T13:13:00.000Z	Juerd		Looks great!
+2016-07-01T13:13:00.000Z	Juerd		Not annoying anymore in the common use cases, still awesome in the less common use case.
+2016-07-01T13:14:00.000Z	lizmat		fg
+2016-07-01T13:14:00.000Z	lizmat		oops
+2016-07-01T13:31:00.000Z	* masak		jumps to the foreground!
+2016-07-01T13:33:00.000Z	lizmat		.oO( finally :-)
+2016-07-01T13:35:00.000Z	masak		sorry, I've been backgrounded lately
+2016-07-01T13:40:00.000Z	dalek		doc: b694438 | (Wenzel P. P. Peppmeyer)++ | doc/Language/control.pod6:
+2016-07-01T13:40:00.000Z	dalek		doc: fix fail example
+2016-07-01T13:40:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/b6944382dd
+2016-07-01T14:43:00.000Z	* AlexDaniel		trying to get some more eyes on some old doc issues
+2016-07-01T14:54:00.000Z	Zoffix		nqp-m: grammar Foo { token TOP { <meow>+ }; token meow { . } }; Foo.HOW.trace-on(Foo); Foo.parse('fobar');
+2016-07-01T14:54:00.000Z	camelia		nqp-moarvm: OUTPUT«Calling parse␤  Calling TOP␤    Calling meow␤    Calling meow␤    Calling meow␤    Calling meow␤    Calling meow␤    Calling meow␤»
+2016-07-01T14:54:00.000Z	Zoffix		m: grammar Foo { token TOP { <meow>+ }; token meow { . } }; Foo.HOW.trace-on(Foo); Foo.parse('fobar');
+2016-07-01T14:54:00.000Z	camelia		rakudo-moar 1d4c11: OUTPUT«Method 'trace-on' not found for invocant of class 'Perl6::Metamodel::GrammarHOW'␤  in block <unit> at <tmp> line 1␤␤»
+2016-07-01T14:55:00.000Z	* Zoffix		is a bit surprised that feature is unavailable in P6, since it's very handy
+2016-07-01T14:55:00.000Z	Zoffix		Or is it just a case of NIY?
+2016-07-01T14:56:00.000Z	psch	Zoffix	it's in Grammar::Debugger i think
+2016-07-01T14:56:00.000Z	Zoffix	psch	it implements it's own meta object
+2016-07-01T14:57:00.000Z	psch	Zoffix	yeah, it still supplies that exact feature, doesn't it?
+2016-07-01T14:57:00.000Z	psch	Zoffix	i'm also assuming that if we could have had that from nqp easily, it probably would've come from there
+2016-07-01T14:58:00.000Z	psch	Zoffix	further, i also think that we only have it in nqp to help develop rakudo
+2016-07-01T14:58:00.000Z	psch	Zoffix	that's not to say that you couldn't take it as NYI and try and get it working in CORE, i just don't know how necessary it is to ship by default
+2016-07-01T14:59:00.000Z	psch		nqp-m: grammar G { }; nqp::say(G.HOW(G))
+2016-07-01T14:59:00.000Z	camelia		nqp-moarvm: OUTPUT«cannot stringify this␤   at <tmp>:1  (<ephemeral file>:<mainline>)␤ from gen/moar/stage2/NQPHLL.nqp:1505  (/home/camelia/rakudo-m-inst-1/sh​are/nqp/lib/NQPHLL.moarvm:eval)␤ from gen/moar/stage2/NQPHLL.nqp:1708  (/home/camelia/rakudo-m-inst-1/share/nqp/lib/NQP…»
+2016-07-01T14:59:00.000Z	psch		nqp-m: grammar G { }; nqp::say(G.HOW.name(G))
+2016-07-01T14:59:00.000Z	camelia		nqp-moarvm: OUTPUT«G␤»
+2016-07-01T14:59:00.000Z	psch		nqp-m: grammar G { }; nqp::say(nqp::how(G))
+2016-07-01T14:59:00.000Z	camelia		nqp-moarvm: OUTPUT«cannot stringify this␤   at <tmp>:1  (<ephemeral file>:<mainline>)␤ from gen/moar/stage2/NQPHLL.nqp:1505  (/home/camelia/rakudo-m-inst-1/sh​are/nqp/lib/NQPHLL.moarvm:eval)␤ from gen/moar/stage2/NQPHLL.nqp:1708  (/home/camelia/rakudo-m-inst-1/share/nqp/lib/NQP…»
+2016-07-01T14:59:00.000Z	psch		eh, that's not gonna help...
+2016-07-01T15:00:00.000Z	psch		anyway, the method seems to sit on NQPClassHOW, which makes it not grammar-specific
+2016-07-01T15:01:00.000Z	Zoffix		ok
+2016-07-01T15:01:00.000Z	psch		nqp-m: grammar G { }; nqp::say(G.HOW.HOW.name(G.HOW)) # that's what i was looking for :|
+2016-07-01T15:01:00.000Z	camelia		nqp-moarvm: OUTPUT«NQPClassHOW␤»
+2016-07-01T15:01:00.000Z	AlexDaniel		bisect: my $p1 = start die "I’m dead"; my $p2 = start ~"I’m alive"; try await Promise.allof($p1, $p2); say .result for grep { .status ~~ ‘Kept’}, $p1, $p2;
+2016-07-01T15:01:00.000Z	bisectable	AlexDaniel	on both starting points the exit code is 0 and the output is identical as well
+2016-07-01T15:01:00.000Z	AlexDaniel		meh
+2016-07-01T15:03:00.000Z	psch	Zoffix	what i'm mostly trying to say is that it exists in nqp as a debugging aid for developing rakudo, but it's never been speculated as a CORE feature for Perl 6
+2016-07-01T15:03:00.000Z	psch	Zoffix	i'm not sure that was clear, and i'm also a bit worried i came of too harsh... :)
+2016-07-01T15:06:00.000Z	Zoffix		I got it. Thanks.
+2016-07-01T15:13:00.000Z	dogbert17		m: say "Womble"
+2016-07-01T15:13:00.000Z	camelia		rakudo-moar 1d4c11: OUTPUT«Womble␤»
+2016-07-01T15:14:00.000Z	dogbert17		o/ does anyone have time to give my latest doc gist a once over? https://gist.github.com/dogbert17​/2b669457ea9e4e3203f050222350323d
+2016-07-01T15:25:00.000Z	moritz	dogbert17	looks good, the only odd thing is the useage of Baggy:_
+2016-07-01T15:26:00.000Z	dogbert17	moritz	it's from the src
+2016-07-01T15:26:00.000Z	moritz	dogbert17	it's redundant nonetheless
+2016-07-01T15:27:00.000Z	moritz		method ACCEPTS($other)
+2016-07-01T15:27:00.000Z	dogbert17	moritz	ok, should I remove it?
+2016-07-01T15:27:00.000Z	moritz		just as precise
+2016-07-01T15:27:00.000Z	moritz		yes, please
+2016-07-01T15:27:00.000Z	dogbert17	moritz	consider it done :)
+2016-07-01T15:27:00.000Z	* moritz		does
+2016-07-01T15:27:00.000Z	moritz		dogbert17++
+2016-07-01T15:28:00.000Z	dogbert17		only two more methods to go in Baggy, categorize-list and classify-list, arrrgh
+2016-07-01T15:29:00.000Z	AlexDaniel		dogbert17++
+2016-07-01T15:30:00.000Z	AlexDaniel		actually, ++ everyone working on the docs. The graph here is awesome: https://github.com/perl6/doc/graphs/contributors
+2016-07-01T15:31:00.000Z	* [Coke]		drinks hotel coffee
+2016-07-01T15:34:00.000Z	jdv79		is there an p6 event somewhere?
+2016-07-01T15:34:00.000Z	dalek		doc: ae2951b | (Jan-Olof Hendig)++ | doc/Type/Baggy.pod6:
+2016-07-01T15:34:00.000Z	dalek		doc: Added docs for Baggy.ACCEPTS. moritz++
+2016-07-01T15:34:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/ae2951bd5c
+2016-07-01T15:35:00.000Z	* moritz		doesn't write nearly as much docs as he wishes these days
+2016-07-01T15:37:00.000Z	[Coke]	jdv79	nope, just a family trip. today is a chill day.
+2016-07-01T15:38:00.000Z	dalek		doc: 84b55f6 | coke++ | t/pod6.t:
+2016-07-01T15:38:00.000Z	dalek		doc: no pod, just pod6
+2016-07-01T15:38:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/84b55f6f92
+2016-07-01T15:38:00.000Z	jdv79		o
+2016-07-01T15:45:00.000Z	[Coke]		when bisectable finds a difference in outputs, does it save it? that might be useful.
+2016-07-01T15:49:00.000Z	AlexDaniel	[Coke]	no, but we should probably think about merging bisectable with camelia
+2016-07-01T15:50:00.000Z	[Coke]		anyone looking to help out core developers, there are 28 tickets that need perl6 tests written for them.
+2016-07-01T15:52:00.000Z	[Coke]		https://i.imgur.com/e3z4aWq.jpg #perl
+2016-07-01T16:03:00.000Z	kyclark		Given my $bag = <a b b c>.Bag, how would I find the item with the highest count (b)?
+2016-07-01T16:08:00.000Z	[Coke]		m: my $bag = <a b b c>.Bag; ($bag.sort: *.value).reverse[0].key.say
+2016-07-01T16:08:00.000Z	camelia		rakudo-moar 1d4c11: OUTPUT«b␤»
+2016-07-01T16:09:00.000Z	[Coke]		m: my $bag = <a b b c>.Bag; ($bag.sort: *.value)[*-1].key.say
+2016-07-01T16:09:00.000Z	camelia		rakudo-moar 1d4c11: OUTPUT«b␤»
+2016-07-01T16:09:00.000Z	[Coke]		do we have a list of ways to get things into search from .pod6 files on doc?
+2016-07-01T16:12:00.000Z	kyclark		Thanks, [Coke]
+2016-07-01T16:17:00.000Z	[Coke]		zoffix: what's de23b7c  on perl6/doc ?
+2016-07-01T16:17:00.000Z	dalek		Heuristic branch merge: pushed 253 commits to doc/makefile by coke
+2016-07-01T16:25:00.000Z	psch		m: my $bag = <a b b c>.Bag; ($bag.sort: -*.value).first.key.say
+2016-07-01T16:25:00.000Z	camelia		rakudo-moar 1d4c11: OUTPUT«b␤»
+2016-07-01T16:25:00.000Z	travis-ci		Doc build failed. Will "Coke" Coleda 'Merge branch 'master' into makefile'
+2016-07-01T16:25:00.000Z	travis-ci		https://travis-ci.org/perl6/doc/builds/141661878 https://github.com/perl6/doc/com​pare/1bfdaf28bafd...e8ef3e10636b
+2016-07-01T16:40:00.000Z	Zoffix	[Coke]	it's a commit that lets us use SASS (http://sass-lang.com/), which is CSS superset that makes it easier to write CSS code. It's the same thing we use on perl6.org and modules.perl6.org and the dev app can automatically generate the CSS from SASS (also part of that commit).
+2016-07-01T16:41:00.000Z	[Coke]		danke. was trying to suss it out from way too little info (the .gitignore). :)
+2016-07-01T16:45:00.000Z	timotimo		.o( it's developed by Dr Suass )
+2016-07-01T16:46:00.000Z	Zoffix		The .gitignore stuff are files generated by the Mojolicious::Plugin::AssetPack plugin that converts SASS. It's basically a cache, so it doesn't have to convert them each time the app is started (if there weren't any changes) and those files are not needed in the repo.
+2016-07-01T16:46:00.000Z	[Coke]		seeing a ton of Any of .^name, .perl, .gist, or .say can stringify undefined things, if needed.  in sub extract-pod at htmlify.p6 line 189 again in doc build.
+2016-07-01T16:51:00.000Z	nebg		hello everyone... can somebody suggest me a good software to do UML schemes which works on linux ?
+2016-07-01T16:54:00.000Z	[Coke]		I did not realize UML was still a thing.
+2016-07-01T16:55:00.000Z	timotimo		i used to use an eclipse plugin if i'm remembering correctly
+2016-07-01T16:56:00.000Z	AlexDaniel	nebg	about a year ago I had to deal with UML and found nothing
+2016-07-01T16:56:00.000Z	AlexDaniel		well, there was something, but it was very buggy and was crashing every five minutes
+2016-07-01T16:56:00.000Z	timotimo		there's potentially a web app that's better than every single desktop app out there :P
+2016-07-01T16:57:00.000Z	nebg	timotimo	ok tell me
+2016-07-01T16:57:00.000Z	AlexDaniel		… which is a good indication of how popular UML is…
+2016-07-01T16:57:00.000Z	timotimo		i have no idea. it was just a guess
+2016-07-01T16:57:00.000Z	nebg	timotimo	are you a professor ?
+2016-07-01T16:57:00.000Z	timotimo		i am not
+2016-07-01T16:58:00.000Z	timotimo		i'm just as unhelpful as one
+2016-07-01T16:58:00.000Z	AlexDaniel		I think that I ended up drawing something in https://www.draw.io/ … which is not primarily an UML thing, but believe me it works better than other UML software
+2016-07-01T16:58:00.000Z	AlexDaniel		the drawback is that it is not free software
+2016-07-01T17:00:00.000Z	AlexDaniel		… but at least you don't have to install proprietary crap on your computer, which is what UML is about…
+2016-07-01T17:00:00.000Z	* AlexDaniel		is getting emotional
+2016-07-01T17:09:00.000Z	zostay		the last time i used real UML was 2000 when it was required for course work by a prof that also thought that cocomo and tracking daily LOC were valuable practices...
+2016-07-01T17:11:00.000Z	stmuk		its just stick figures isn't it?
+2016-07-01T17:11:00.000Z	AlexDaniel	stmuk	a bit more than that, but yeah
+2016-07-01T17:11:00.000Z	stmuk		I even bought a book on it once years back
+2016-07-01T17:11:00.000Z	stmuk		when it was all the rage
+2016-07-01T17:11:00.000Z	AlexDaniel		how many pages in that book?
+2016-07-01T17:12:00.000Z	geekosaur		...and how much semantic content per page?
+2016-07-01T17:12:00.000Z	stmuk		it was the quite slim one
+2016-07-01T17:13:00.000Z	stmuk		UML Distilled!
+2016-07-01T17:14:00.000Z	AlexDaniel		“More than 300,000 developers have benefited from past editions of UML Distilled”
+2016-07-01T17:14:00.000Z	AlexDaniel		how do they know that they actually benefited?
+2016-07-01T17:17:00.000Z	gfldex	AlexDaniel	they asked the head of marketing
+2016-07-01T17:17:00.000Z	AlexDaniel		why not 1 million then?
+2016-07-01T17:18:00.000Z	gfldex		hard to tell. I'm not really into marketing.
+2016-07-01T17:19:00.000Z	AlexDaniel	timotimo	OK, some time ago you said (I believe it was you) that I should probably move bisectable to hack
+2016-07-01T17:19:00.000Z	AlexDaniel	timotimo	which is a great idea because I have a rather small ssd on my server… :)
+2016-07-01T17:19:00.000Z	AlexDaniel	timotimo	so what's the process? I should send someone my pub key, right?
+2016-07-01T17:22:00.000Z	timotimo		yup
+2016-07-01T17:44:00.000Z	kyclark		I have a list of files that should all have the same number of lines.  I'd like to read one line from each file until I've exhausted all of them.  Is that a Supply or a Channel?  What's the most elegant Perl 6 way to do this?
+2016-07-01T17:46:00.000Z	timotimo		well, .lines() on the .IO gives you a lazy Seq, you should be able to turn that into either a Channel or a Supply with .Channel and .Supply
+2016-07-01T17:46:00.000Z	timotimo		but it's not really async I/O that way
+2016-07-01T17:47:00.000Z	timotimo		but for supplies there's a zip combinator
+2016-07-01T17:47:00.000Z	AlexDaniel		why does it have to be a channel or a supply?
+2016-07-01T17:47:00.000Z	timotimo		really, i'd just [Z] @filenames>>.IO>>.lines
+2016-07-01T17:48:00.000Z	timotimo		that doesn't actually run the stuff in parallel, but your bottleneck is probably I/O here, so there's not terribly much to win
+2016-07-01T17:53:00.000Z	kyclark		It doesn't have to be a Supply, but I'm exploring here and was wondering if that is an appropriate solution.  The zipper is cool.  Just checking, to loop this idea, I'd basically do "for [Z] @files>>.IO>>.lines -> @values {}"?
+2016-07-01T17:53:00.000Z	timotimo		aye
+2016-07-01T17:54:00.000Z	kyclark		What's bad ass is that I can guess at about half of this and get it right.  Also, cool that I can -> $values and it works, too.
+2016-07-01T17:55:00.000Z	timotimo		right, having a $ vs an @ in a signature only makes a difference if you have an @foo and you don't get passed something Positional
+2016-07-01T18:39:00.000Z	Zoffix		Does NQP have a dd analogue for data dumping? I really need one and rather not reinvent wheels
+2016-07-01T18:39:00.000Z	timotimo		some things support .DUMP
+2016-07-01T18:40:00.000Z	timotimo		qast trees have a .dump, i think
+2016-07-01T18:40:00.000Z	Zoffix		nqp-m: my %h := nqp::hash('foo', 'bar', 'ber', 'bor'); say(%h.DUMP)
+2016-07-01T18:40:00.000Z	camelia		nqp-moarvm: OUTPUT«Cannot find method 'DUMP': no method cache and no .^find_method␤   at <tmp>:1  (<ephemeral file>:<mainline>)␤ from gen/moar/stage2/NQPHLL.nqp:1505  (/home/camelia/rakudo-m-inst-2/sh​are/nqp/lib/NQPHLL.moarvm:eval)␤ from gen/moar/stage2/NQPHLL.nqp:1708  (/home…»
+2016-07-01T18:42:00.000Z	timotimo		yeah, not those
+2016-07-01T18:42:00.000Z	timotimo		you have to for over a hash to output it
+2016-07-01T19:18:00.000Z	dalek		doc: ffeab7e | (Zoffix Znet)++ | doc/Language/grammars.pod6:
+2016-07-01T19:18:00.000Z	dalek		doc: Clarify specialness of TOP token
+2016-07-01T19:18:00.000Z	dalek		doc:
+2016-07-01T19:18:00.000Z	dalek		doc: It's special only insofar as it's the default values
+2016-07-01T19:18:00.000Z	dalek		doc: of the :rule parameter in parse methods.
+2016-07-01T19:18:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/ffeab7ed74
+2016-07-01T19:24:00.000Z	dalek		doc: 24c6013 | (Zoffix Znet)++ | doc/Language/grammars.pod6:
+2016-07-01T19:24:00.000Z	dalek		doc: Document use of methods in a Grammar
+2016-07-01T19:24:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/24c6013d11
+2016-07-01T20:07:00.000Z	sortiz		\o #perl6
+2016-07-01T20:08:00.000Z	lizmat	timotimo	ah, perhaps not....
+2016-07-01T20:08:00.000Z	lizmat		I probably shouldn't talk about things I don't know enough about  :-)
+2016-07-01T20:09:00.000Z	timotimo		tbh, i don't know much about this particular area either
+2016-07-01T20:12:00.000Z	pmurias		I seems it might be changed by nqp::bindattr when compiling and replacing a stub at runtime, will have to play around with that tommorow
+2016-07-01T20:12:00.000Z	timotimo		could be. for some reason i thought it might perhaps be changed via boxing
+2016-07-01T20:13:00.000Z	pmurias		I recently discovered that me trying to pass the invocant as javascript this was a stupid idea
+2016-07-01T20:14:00.000Z	pmurias		as the calling convention when compiled to js needs to be obj.foo(CTX, NAMED, obj, pos1, pos2) rather than obj.foo(CTX, NAMED, pos1, pos2)
+2016-07-01T20:52:00.000Z	jnthn	pmurias	There's also .wrap that can change $!do, iirc
+2016-07-01T21:24:00.000Z	dalek		doc: 8c4a8b8 | (Zoffix Znet)++ | doc/Language/grammars.pod6:
+2016-07-01T21:24:00.000Z	dalek		doc: Document always succeed assertion
+2016-07-01T21:24:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/8c4a8b8fac
+2016-07-01T21:25:00.000Z	Zoffix		(couldn't think of a less stupid example)
+2016-07-01T21:34:00.000Z	dalek		doc: a0f174e | (Zoffix Znet)++ | doc/Language/grammars.pod6:
+2016-07-01T21:34:00.000Z	dalek		doc: Use a better example for always succeed assertion
+2016-07-01T21:34:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/a0f174e641
+2016-07-01T21:53:00.000Z	[Coke]		f
+2016-07-01T21:54:00.000Z	[Coke]		wow, this window is still connected! :)
+2016-07-01T21:55:00.000Z	dalek		doc: 48758be | (Zoffix Znet)++ | doc/Language/grammars.pod6:
+2016-07-01T21:55:00.000Z	dalek		doc: Fix unwanted display of X<>
+2016-07-01T21:55:00.000Z	dalek		doc: review: https://github.com/perl6/doc/commit/48758beef2
+2016-07-01T22:00:00.000Z	Zoffix		m: grammar Args { rule TOP { $<op>=<[+-]> <mode: $<op>> }; token mode ($mode) { { say "Mode is $mode"; } } }.parse('+(255, 435, 777)');
+2016-07-01T22:00:00.000Z	camelia		rakudo-moar 5bd5a5: OUTPUT«Use of Nil in string context  in block  at <tmp> line 1␤Mode is ␤»
+2016-07-01T22:00:00.000Z	Zoffix		Is there a way to pass a matched thing as an argument to another token? Like above, I'd want $mode to be $<op>
+2016-07-01T22:01:00.000Z	dalek		Heuristic branch merge: pushed 125 commits to doc/tws-test by coke
+2016-07-01T22:10:00.000Z	[Coke]		What is the purpose of the $(NULL) in the makefile on doc? just to avoid not having a backslash on the last line in case we add more?
+2016-07-01T22:11:00.000Z	[Coke]		(by Josh Soref)
+2016-07-01T22:11:00.000Z	Zoffix	[Coke]	did anyone sign up to do the release on the 15th?
+2016-07-01T22:16:00.000Z	[Coke]		nope
+2016-07-01T22:17:00.000Z	Zoffix	[Coke]	I'd like to do it, if there's an opening for a volunteer.
+2016-07-01T22:18:00.000Z	[Coke]		there are only spots left for volunteers at this point!
+2016-07-01T22:18:00.000Z	[Coke]		yes, please, thank you
+2016-07-01T22:18:00.000Z	lizmat		++Zoffix
+2016-07-01T22:18:00.000Z	Zoffix		Sweet.
+2016-07-01T22:33:00.000Z	[Coke]	tbrowder	if you tell me your RT id, I can assign you as the owner of 128221
+2016-07-01T22:37:00.000Z	tbrowder		not sure of the ID but my user name (ID?) is <tom.browdergmail.com> (have I saidRT is the pits?)
+2016-07-01T22:37:00.000Z	tbrowder		nickname tbrowder
+2016-07-01T22:40:00.000Z	[Coke]		that doesn't appear to be the email address tied to your nick, btw. assigned the ticket to you
+2016-07-01T22:42:00.000Z	tbrowder		i just added the nickname a bit ago, it may not have taken effect yet
+2016-07-01T22:42:00.000Z	tbrowder		and thanks, [Coke]
+2016-07-01T22:43:00.000Z	rgrinberg		Is perl6 better than perl for writing 1 liners in the cli?
+2016-07-01T22:44:00.000Z	rgrinberg		Wondering if it's worth the time to replace perl for that use case.
+2016-07-01T22:46:00.000Z	AlexDaniel	rgrinberg	it depends
+2016-07-01T22:47:00.000Z	parabolize		m: my token foo { \d+ }; my token bar { <foo> \w+ }; '123yarp?' ~~ / <bar> { say $<bar><foo> } /;
+2016-07-01T22:47:00.000Z	camelia		rakudo-moar ff8362: OUTPUT«｢123｣␤»
+2016-07-01T22:47:00.000Z	AlexDaniel	rgrinberg	for example, performance and startup time may be important to you in some cases
+2016-07-01T22:47:00.000Z	AlexDaniel	rgrinberg	in which case perl 5 is going to perform much better
+2016-07-01T22:48:00.000Z	AlexDaniel		but other times, yeah, perl 6 works nicely. Try it and see if it works for you
+2016-07-01T22:48:00.000Z	parabolize	Zoffix	^ Something like that?
+2016-07-01T22:48:00.000Z	rgrinberg		I've read over https://github.com/dnmfarrell/Perl6-One-Liners and it does seem like some things were polished.
+2016-07-01T22:49:00.000Z	rgrinberg		don't see anything particularly compelling
+2016-07-01T22:54:00.000Z	AlexDaniel		hugg
+2016-07-01T22:54:00.000Z	AlexDaniel	huggable	dunno
+2016-07-01T22:54:00.000Z	huggable	AlexDaniel	¯\_(ツ)_/¯
+2016-07-01T22:56:00.000Z	ugexe		good error messages are a pretty good reason
+2016-07-01T22:57:00.000Z	timotimo		for a one-liner, the better regex syntax may not be such a big deal
+2016-07-01T22:57:00.000Z	timotimo		it's easier to write and read, but if you only write it once, read it never again ...
+2016-07-01T23:02:00.000Z	timotimo	rgrinberg	the fact that perl6 uses rats by default for mathematics can help in unexpected ways
+2016-07-01T23:03:00.000Z	timotimo		also, we're the only ones - besides Swift - who do unicode right
+2016-07-01T23:03:00.000Z	timotimo		arguably
+2016-07-01T23:03:00.000Z	psch		"arguably besides swift" or "arguably right"?
+2016-07-01T23:03:00.000Z	psch		i honestly don't know, fwiw
+2016-07-01T23:04:00.000Z	timotimo		arguably right
+2016-07-01T23:04:00.000Z	timotimo		if you consider having graphemes as the basic unit of strings as the default being the only right way to have unicode
+2016-07-01T23:06:00.000Z	psch		so just to confirm, swift thinks the right way to do it is the same thing we (...probably jnthn++) decided to do it?
+2016-07-01T23:06:00.000Z	psch		s/thing/way/
+2016-07-01T23:08:00.000Z	psch	Zoffix	re: http://irclog.perlgeek.de/p​erl6/2016-07-01#i_12771601
+2016-07-01T23:08:00.000Z	psch		m: grammar G { token TOP { (.) {} <foo($0)> }; token foo($a) { "$a" ** 2 } }; G.parse("aaa").say
+2016-07-01T23:08:00.000Z	camelia		rakudo-moar ff8362: OUTPUT«｢aaa｣␤ 0 => ｢a｣␤ foo => ｢aa｣␤»
+2016-07-01T23:08:00.000Z	psch	Zoffix	note though that it suffers from a (already ticketed afaik) bug which doesn't update the captures in time
+2016-07-01T23:08:00.000Z	psch		as per the following
+2016-07-01T23:09:00.000Z	psch		m: grammar G { token TOP { (.) <foo($0)> }; token foo($a) { "$a" ** 2 } }; G.parse("aaa").say
+2016-07-01T23:09:00.000Z	camelia		rakudo-moar ff8362: OUTPUT«Use of Nil in string context  in regex foo at <tmp> line 1␤Use of Nil in string context  in regex foo at <tmp> line 1␤Nil␤»
+2016-07-01T23:09:00.000Z	psch	Zoffix	without the sequence point we apparently don't have $0 yet, which iirc is something we have ticketed already
+2016-07-01T23:10:00.000Z	* timotimo		created a few tickets on the perl6-one-liners repo
+2016-07-01T23:10:00.000Z	timotimo		it'd be cool if someone could review them
+2016-07-01T23:12:00.000Z	[Coke]		GAH DOC SO SLOOOOW
+2016-07-01T23:12:00.000Z	timotimo		.seen mouq
+2016-07-01T23:12:00.000Z	yoleaux		I saw Mouq 7 Jan 2016 04:12Z in #perl6: <Mouq> Juerd++ regardless :) even reading good code sucks
+2016-07-01T23:13:00.000Z	Zoffix		m: grammar Args { rule TOP { $<op>=<[+-]> {} <mode: $<op>> }; token mode ($mode) { { say "Mode is $mode"; } } }.parse('+(255, 435, 777)');
+2016-07-01T23:13:00.000Z	camelia		rakudo-moar ff8362: OUTPUT«Mode is +␤»
+2016-07-01T23:13:00.000Z	Zoffix		psch++ sweet, thanks.
+2016-07-01T23:14:00.000Z	Zoffix	parabolize	pretty much yeah. It's just the bug that bit me apparently. I didn't realize we could use tokens outside a grammar too. Neat.
+2016-07-01T23:16:00.000Z	psch	timotimo	the issues (on https://github.com/dnmfarrell/Perl6-One-Liners/, right?) look appropriate to me at least
+2016-07-01T23:16:00.000Z	psch		though i'm a sucker for using % instead of %% at least occasionally vOv
+2016-07-01T23:16:00.000Z	timotimo		:)
+2016-07-01T23:16:00.000Z	timotimo		i think it's good to show off that all operators can be metaop-negated
+2016-07-01T23:16:00.000Z	timotimo		(well, not all, of course)
+2016-07-01T23:17:00.000Z	timotimo		(all iffy ones, at least)
+2016-07-01T23:17:00.000Z	psch		i'm really bad at keeping in mind which ones aren't iffy; i only recall list and item assignment
+2016-07-01T23:18:00.000Z	psch		...which reminds me of the somewhat embarrassing bug we still have there :(
+2016-07-01T23:18:00.000Z	psch		m: say 3 !=3
+2016-07-01T23:18:00.000Z	camelia		rakudo-moar ff8362: OUTPUT«Cannot modify an immutable Int␤  in block <unit> at <tmp> line 1␤␤»
+2016-07-01T23:19:00.000Z	timotimo		m: say 4 !+ 4
+2016-07-01T23:19:00.000Z	camelia		rakudo-moar ff8362: OUTPUT«5===SORRY!5=== Error while compiling <tmp>␤Cannot negate + because additive operators are not iffy enough␤at <tmp>:1␤------> 3say 4 !7⏏5+ 4␤    expecting any of:␤        infix␤        infix stopper␤»
+2016-07-01T23:20:00.000Z	AlexDaniel	[Coke]	I feel your pain
+2016-07-01T23:20:00.000Z	Zoffix		not... iffy enough? HAH
+2016-07-01T23:22:00.000Z	* Zoffix		isn't even sure how to parse that
+2016-07-01T23:22:00.000Z	Zoffix		Only those that go sour can be used? XD
+2016-07-01T23:22:00.000Z	timotimo		it must be sufficiently if-like
+2016-07-01T23:23:00.000Z	timotimo		like ==/eq/eqv, or %%, ...
+2016-07-01T23:24:00.000Z	Zoffix		:)
+2016-07-01T23:24:00.000Z	Zoffix		http://www.dictionary.com/browse/iffy
+2016-07-01T23:25:00.000Z	timotimo		it's a pun :)
+2016-07-01T23:26:00.000Z	psch		well, a cursory glance says the !=1 issue is somewhere in EXPR
+2016-07-01T23:26:00.000Z	psch		which probably explains why it's been around so long :P
+2016-07-01T23:26:00.000Z	AlexDaniel		https://docs.perl6.org/language/glossary#iffy meh
+2016-07-01T23:27:00.000Z	* psch		goes back to not-programming for now
+2016-07-01T23:27:00.000Z	psch		that probably means sleep soon o/
+2016-07-01T23:29:00.000Z	AlexDaniel	psch	what about programming in your dreams? :)
+2016-07-01T23:35:00.000Z	timotimo		the != 1 issue?
+2016-07-01T23:36:00.000Z	psch	AlexDaniel	i probably wouldn't remember if i did any of that... :)
+2016-07-01T23:36:00.000Z	psch	timotimo	not the != 1 issue, the !=1 issue :S
+2016-07-01T23:36:00.000Z	psch		m: say 1 !=1
+2016-07-01T23:36:00.000Z	camelia		rakudo-moar ff8362: OUTPUT«Cannot modify an immutable Int␤  in block <unit> at <tmp> line 1␤␤»
+2016-07-01T23:36:00.000Z	psch		m: say 1 != 1
+2016-07-01T23:36:00.000Z	camelia		rakudo-moar ff8362: OUTPUT«False␤»
+2016-07-01T23:36:00.000Z	psch	timotimo	that ^^^
+2016-07-01T23:37:00.000Z	psch	timotimo	as mentioned, i'm pretty sure it's something in EXPR makes us misparse the latter as meta op ! to infix:<=>
+2016-07-01T23:37:00.000Z	psch		+that
+2016-07-01T23:39:00.000Z	timotimo		oh, huh
+2016-07-01T23:39:00.000Z	psch		it's ticketed for like 3 years or so i think...
+2016-07-01T23:39:00.000Z	psch		but it's also deep in the guts that no one wants to touch, soooo... :)
+2016-07-01T23:39:00.000Z	timotimo		wow
+2016-07-01T23:39:00.000Z	timotimo		yeah :D
+2016-07-01T23:41:00.000Z	psch		well,just about two and a half years
+2016-07-01T23:41:00.000Z	psch		and apparently *i* ticketed it /o\
+2016-07-01T23:41:00.000Z	psch		https://rt.perl.org/Public/​Bug/Display.html?id=121108
+2016-07-01T23:42:00.000Z	timotimo		hah
+2016-07-01T23:42:00.000Z	psch		this does *not* mean i have to fix it :P
+2016-07-01T23:43:00.000Z	psch		i honestly just get more scared that STD already did that wrong
+2016-07-01T23:43:00.000Z	psch		'cause i'm pretty sure the STD author is a better programmer than me :S
+2016-07-01T23:46:00.000Z	timotimo		:)
+2016-07-01T23:55:00.000Z	ShimmerFairy		m: say 1!= 1
+2016-07-01T23:55:00.000Z	camelia		rakudo-moar ff8362: OUTPUT«False␤»
+2016-07-01T23:56:00.000Z	geekosaur		"better programmer" does not mean "infallible". it might not even mean "more infallible"
+2016-07-01T23:59:00.000Z	ShimmerFairy	psch	apparently the bad one parses != as an "infix_prefix_meta_operator", for more info
+2016-07-01T23:59:00.000Z	psch	ShimmerFairy	i did look at --target=parse
+2016-07-01T23:59:00.000Z	psch	ShimmerFairy	it still just points at EXPR as the point of divergence

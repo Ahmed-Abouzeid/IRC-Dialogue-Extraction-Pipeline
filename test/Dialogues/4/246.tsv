@@ -1,0 +1,7 @@
+2007-01-01T08:49:00.000Z	scribebox		ermm, how would i update the fstab/format etc etc..
+2007-01-01T08:50:00.000Z	bruenig	scribebox	sudo fdisk -l, find the device name and format it like everything else in the fstab
+2007-01-01T08:52:00.000Z	scribebox		can someone make me a new fstab :D
+2007-01-01T08:52:00.000Z	scribebox		so i can just ftp it over ;p
+2007-01-01T08:52:00.000Z	scribebox		and be done with it...
+2007-01-01T08:52:00.000Z	scribebox		and maybe i can learn by example..
+2007-01-01T08:53:00.000Z	bruenig	scribebox	with the new UID stuff, I am kind of behind, so I am probably not the best help

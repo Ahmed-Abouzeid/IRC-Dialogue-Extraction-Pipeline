@@ -1,0 +1,4 @@
+2007-01-01T10:39:00.000Z	AidanL		My wireless isn't even being picked up:(. It shows up when I do lsusb in Terminal.
+2007-01-01T10:40:00.000Z	fr500__	AidanL	try ndiswrapper
+2007-01-01T10:41:00.000Z	AidanL		My problem is, is that I can't get ndiswrapper installed because my USB isn't being picked up therefore I cannot transfer the ndiswrapper files over to Ubuntu.
+2007-01-01T10:41:00.000Z	fr500__	AidanL	try ndiswrapper

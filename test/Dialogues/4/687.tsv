@@ -1,0 +1,44 @@
+2007-01-01T04:44:00.000Z	donald		anyone familiar with libdvdread errors?
+2007-01-01T04:44:00.000Z	xtknight	donald	yeah ive debugged those before
+2007-01-01T04:45:00.000Z	xtknight	donald	uhhh u need DeCSS
+2007-01-01T04:45:00.000Z	donald	xtknight	i got it. twice, 2 diff versions and same thing
+2007-01-01T04:45:00.000Z	xtknight	donald	try rebooting?  i dont know why it is is needed but that fixed it for me
+2007-01-01T04:46:00.000Z	xtknight		probably restarts some service that i dont know the name of
+2007-01-01T04:46:00.000Z	donald	xtknight	the error happens in mplayer, dvd-rip, vobcopy, dvdbackup, but not in gxine, where dvd playback is perfect
+2007-01-01T04:46:00.000Z	xtknight	donald	sure xgine uses libdvdread?
+2007-01-01T04:46:00.000Z	donald	xtknight	i have restarted about 10 times in the 2 days ive had this problem
+2007-01-01T04:46:00.000Z	donald	xtknight	i assume so. or does xine have something that does it?
+2007-01-01T04:47:00.000Z	xtknight	donald	try running gxine from the terminal, it should print to output and give you some clues as to what libraries its using
+2007-01-01T04:47:00.000Z	donald	xtknight	wait gxine does, because is till get this: libdvdread: CHECK_VALUE failed in ifo_read.c but no crash
+2007-01-01T04:48:00.000Z	donald	xtknight	thats where im getting my output, ive been running everything in terminal
+2007-01-01T04:48:00.000Z	xtknight	donald	does the whole dvd play without issue or does just the first part work?  cuz i got that error and only the very first portion would play in SOME players, and in those few players it has then crashed so in effect nothing worked
+2007-01-01T04:49:00.000Z	donald	xtknight	in gxine the whole thing plays. but in mplayer only the intro before it freezes, then with vobcopy and dvdbackup, it only copies the first 15mb of the file before freezing, same error
+2007-01-01T04:49:00.000Z	donald	xtknight	i checked the files vobcopy and dvdbackup made, and they stop only a LITTLE bit further than mplayer got
+2007-01-01T04:50:00.000Z	xtknight	donald	hmm, i dont know.  i eventually got mine to operate after continuously googling, unfortunately that's all i can suggest.  i dont remember if my error was the same though
+2007-01-01T04:50:00.000Z	donald	xtknight	alright. ill try with another dvd later, and if that doesnt work maybe i cant find something in forums or get back on here later, thanks
+2007-01-01T04:50:00.000Z	xtknight	donald	are there any errors before that?  like ones dealing with chapters
+2007-01-01T04:51:00.000Z	donald	xtknight	let me check...
+2007-01-01T04:52:00.000Z	donald	xtknight	another thing: when i run vobcopy or dvdbackup, it will copy the entire 695mb menu file, but freezes at 15mb when it gets to the feature: VTS_01_1.VOB
+2007-01-01T04:53:00.000Z	donald	xtknight	no errors at the beginning as far as i can tell. ive seen other people complain on forums but no solutions. so it may be a bug, or this particular dvd.
+2007-01-01T04:53:00.000Z	xtknight	donald	paste the whole error output into pastebin, ill see if i recognize any of the errors, i recall getting the ifo_read one but also another and i cant remember which one i was able to fix
+2007-01-01T04:54:00.000Z	donald	xtknight	pastebin? lol
+2007-01-01T04:54:00.000Z	xtknight	donald	ya URL is in the Channel topic
+2007-01-01T04:54:00.000Z	xtknight	donald	irc lags when u paste over 3 lines at a time
+2007-01-01T04:55:00.000Z	donald	xtknight	yeah i knew u couldnt paste in the channel. just havent been around long enough to know about pastebin
+2007-01-01T04:59:00.000Z	donald	xtknight	do you need the url to the paste now?
+2007-01-01T04:59:00.000Z	xtknight	donald	sure
+2007-01-01T04:59:00.000Z	donald	xtknight	http://paste.ubuntu-nl.org/120/
+2007-01-01T05:01:00.000Z	xtknight	donald	it may be the particular dvd i guess
+2007-01-01T05:01:00.000Z	donald	xtknight	yeah, its complaining about video packets, but when i use cache it still messes up. it doesnt crash, but i have to kill mplayer after it freezes.
+2007-01-01T05:03:00.000Z	donald	xtknight	could it be the a52 format?
+2007-01-01T05:03:00.000Z	xtknight	donald	i think it's just saying that because a52 is trying to decode corrupted info
+2007-01-01T05:04:00.000Z	xtknight		was anyone able to install Feisty on their Core 2 Duo?  I just got errors in both the GUI and alternate installers but feisty livecd booted fine
+2007-01-01T05:04:00.000Z	donald	xtknight	alright. im still guessing its libdvdread then. ill try another dvd later, thanks
+2007-01-01T05:20:00.000Z	xtknight		!repositories
+2007-01-01T05:23:00.000Z	donald	xtknight	i just tried mplayer starting on a chapter other than chapter 1 and playback is perfect. im guessing its some kind of copy protection on chapter 1 of the dvd.
+2007-01-01T05:25:00.000Z	xtknight		i have some core 2 duo kernels here: http://www.ubuntuforums.org/showthread.php?t=326343
+2007-01-01T05:26:00.000Z	donald	xtknight	i got playback to work on chapters other than chapter 1
+2007-01-01T05:26:00.000Z	xtknight	donald	yeah , sorry im not sure because mine would only do the intro and then it would just stop
+2007-01-01T05:26:00.000Z	donald	xtknight	same here. copy protection?
+2007-01-01T05:27:00.000Z	xtknight	donald	i can't remember what i did to fix it.  but the document on restricted formats on ubuntu wiki + a reboot did it for me.  32bit or 64bit?
+2007-01-01T05:27:00.000Z	donald	xtknight	64bit processor, but 32bit ubuntu

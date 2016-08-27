@@ -1,0 +1,564 @@
+2013-03-24T00:10:00.000Z	cddr		Saw someone asking about SHA earlier which reminded me to ask. Is anyone interested in getting NaCL in Lisp? Someone made a nice easily buildable lib out of the weird stuff that djb released.
+2013-03-24T00:27:00.000Z	wbooze		oh man someone used updating-output with a cache value but without :all-new t
+2013-03-24T00:27:00.000Z	wbooze		so resizing my window, the fields do not get recomputed from scratch...and some cache values linger in....
+2013-03-24T00:27:00.000Z	cddr		"Inclusion of this material in some "cookbook""
+2013-03-24T00:27:00.000Z	cddr		is expressly not permitted
+2013-03-24T00:28:00.000Z	wbooze		i put the :all-new t argument in the updating-output form and now resize works as expected....
+2013-03-24T00:29:00.000Z	wbooze		at least on new-action via mouse or via reset, but not via resizing window alone....
+2013-03-24T00:30:00.000Z	wbooze		so there's another clutch.... /me reads on....
+2013-03-24T01:05:00.000Z	wbooze		oh must implement a window-resize as event to handle-repaint....
+2013-03-24T01:29:00.000Z	sw2wolf		Program tried to wait with no scheduler. [Condition of type SIMPLE-ERROR] when calling (apply (timer-function i) (timer-args i)) in CLISP ?
+2013-03-24T01:29:00.000Z	minion	sw2wolf	memo from pjb: I would use my cl-stepper, and diff its output on the various implementations.  <01:30:38><sw2wolf> In fact i want to know why stumpw:unmap-message-window is called both in SBCL and CCL, but NOT in clisp for the same message window ...
+2013-03-24T01:29:00.000Z	minion	sw2wolf	memo from pjb: for one thing, cl-stepper has its own *step-trace-output*.
+2013-03-24T01:31:00.000Z	Bike	sw2wolf	probably timers don't work outside the context stumpwm sets up.
+2013-03-24T01:32:00.000Z	sw2wolf	Bike	the (timer-function i) => #'unmap-message-window, it is called normally in CCL and SBCL
+2013-03-24T01:33:00.000Z	sw2wolf		only CLISP reports such a weird error
+2013-03-24T01:34:00.000Z	sw2wolf		so that the same message window donot disappear when timer expired in CLISP.
+2013-03-24T01:35:00.000Z	Bike		Error's from clx/dependent.lisp. Have at it.
+2013-03-24T01:36:00.000Z	sw2wolf		CCL,SBCL and CLISP use same CLX from QuickLisp, i donot understand why only CLISP error ?
+2013-03-24T01:37:00.000Z	sw2wolf	Bike	thx, i will have a look at clx/dependent.lisp
+2013-03-24T01:37:00.000Z	Bike		It's conditionalized on the implementation.
+2013-03-24T01:38:00.000Z	sw2wolf		In fact i donot understand the meaning of "Program tried to wait with no scheduler" ?
+2013-03-24T01:39:00.000Z	sw2wolf		`(apply (timer-function i) (timer-args i))` should be a standard function call in CL
+2013-03-24T01:39:00.000Z	Bike		If you'd have looked at the function in question, unmap-message-window, you'd notice that it calls clx functions.
+2013-03-24T01:40:00.000Z	Bike		clx in turn does some nonstandard things with timers, etc.
+2013-03-24T01:40:00.000Z	sw2wolf		yes
+2013-03-24T01:42:00.000Z	sw2wolf		the #unmap-message-windows is simple: http://paste.lisp.org/display/136306
+2013-03-24T01:43:00.000Z	Bike		Yes. Maybe you could learn something by looking at the xlib functions.
+2013-03-24T01:44:00.000Z	sw2wolf		then the problem is associated with CLX ?
+2013-03-24T01:44:00.000Z	Bike		Why do you think I told you to look at a CLX file.
+2013-03-24T01:46:00.000Z	sw2wolf		Error's from clx/dependent.lisp. Have at it.
+2013-03-24T01:48:00.000Z	sw2wolf	Bike	How can i make CLISP use its own CLX instead of the CLX from QuickLisp ?
+2013-03-24T01:49:00.000Z	Bike		No idea.
+2013-03-24T01:54:00.000Z	sw2wolf		By debugging, the error is caused by (xlib:window-map-state (screen-message-window (current-screen))) in CLISP ?
+2013-03-24T01:55:00.000Z	sw2wolf		it reports "Program tried to wait with no scheduler ..."
+2013-03-24T02:39:00.000Z	gendl		Hi, how can I make Slime print something to the *slime-repl ..* just after it starts up?
+2013-03-24T02:47:00.000Z	sw2wolf	gendl	maybe (add-hook 'slime-connected-hook 'foobar t)
+2013-03-24T02:48:00.000Z	sw2wolf		in #'foobar you can print what you want ?
+2013-03-24T02:53:00.000Z	gendl		the stuff i want to print is standard output from the connected common lisp
+2013-03-24T02:53:00.000Z	gendl		basically a startup message from the CL
+2013-03-24T02:53:00.000Z	gendl		which normally goes to the *inferior-lisp* buffer,
+2013-03-24T02:54:00.000Z	gendl		but the user will likely not see it there.
+2013-03-24T02:57:00.000Z	Fare		isn't there already a slime contrib that prints a random message?
+2013-03-24T03:00:00.000Z	gendl	Fare	did you see my patch the other day for missing fasl-files for combine-fasls ?
+2013-03-24T03:00:00.000Z	gendl		my ham-handed patch
+2013-03-24T03:03:00.000Z	gendl		anyway it looks like the problem is fixed in 2.32.26...
+2013-03-24T03:03:00.000Z	gendl		no more "WTF" message
+2013-03-24T03:07:00.000Z	Fare		yes, I saw th
+2013-03-24T03:07:00.000Z	Fare		but there is no more WTF in 2.32.26 -- are you using it?
+2013-03-24T03:10:00.000Z	Fare		just pushed a 2.32.27, for good measure
+2013-03-24T03:12:00.000Z	gendl		yes i see the WTF is commented out
+2013-03-24T03:12:00.000Z	gendl		i'll get .27
+2013-03-24T03:15:00.000Z	gendl		 and not even any more commented WTF in 2.32.27
+2013-03-24T03:18:00.000Z	gendl		the monofasl loads so much faster than the equivalent list o' fasls. I guess all that file opening & closing really adds up.
+2013-03-24T03:18:00.000Z	gendl		at least on Allegro, it does.
+2013-03-24T03:18:00.000Z	gendl		on CCL, not so much diff.
+2013-03-24T03:19:00.000Z	gendl		haven't played with it on SBCL yet
+2013-03-24T03:20:00.000Z	gendl		or LW
+2013-03-24T03:21:00.000Z	gendl		another thing is, it's so nice to be able to have a single fasl file sitting there for any particular release
+2013-03-24T03:21:00.000Z	gendl		so it's always possible to rebuild that release at a moment's notice, without compiling anything
+2013-03-24T04:44:00.000Z	dont_oracle		anyone here try reading let of lambda yet?
+2013-03-24T04:44:00.000Z	dont_oracle		seems interesting
+2013-03-24T04:44:00.000Z	gendl		you mean Let over Lambda ?
+2013-03-24T04:48:00.000Z	p_nathan		yes, dont_oracle. I have read it.
+2013-03-24T04:49:00.000Z	p_nathan		why do you ask?
+2013-03-24T04:49:00.000Z	dont_oracle		what do you think? I was perusing the section about perl regex vs lisp perl compatible rege and how lisps can be 2x as fast
+2013-03-24T04:49:00.000Z	dont_oracle		that was interesting
+2013-03-24T04:50:00.000Z	dont_oracle		I got a copy as a gift
+2013-03-24T04:50:00.000Z	dont_oracle		but I am not a good enuf lisper yet to read it i think
+2013-03-24T04:50:00.000Z	dont_oracle		I bought barksi land of lisp
+2013-03-24T04:50:00.000Z	dont_oracle		since ansi cmmon lisp by graham kinda left me off the rails in ch4
+2013-03-24T04:50:00.000Z	p_nathan		I think Mr. Hoyte is a bit over the top in his advocacy. I find LoL to contain very interesting approaches to scope management, and its a lesson and a thinking to read his macros
+2013-03-24T04:52:00.000Z	p_nathan		I would agree that if you write your macros in such a way that it optimizes the generated code, you will get significant performance speedups.
+2013-03-24T04:52:00.000Z	Bike		He does regexes through macros?
+2013-03-24T04:52:00.000Z	p_nathan		It's also worth noting that fast code isn't written in Python/Perl/Ruby - their fast code tends to be FFI'd out to C libs.
+2013-03-24T04:53:00.000Z	p_nathan		I suspect that pure interpreted dynamic languages are dog slow & memory hogs compared to SBCL..
+2013-03-24T04:53:00.000Z	p_nathan	Bike	Hoyte breaks down some of cl-ppcre
+2013-03-24T04:53:00.000Z	p_nathan	dont_oracle	Practical Common Lisp and a Gentle Introduction to Symbolic Computation are fairly traditional beginners books
+2013-03-24T04:54:00.000Z	Bike	dont_oracle	The classic short intro on regexes is http://swtch.com/~rsc/regexp/regexp1.html, I think.
+2013-03-24T04:54:00.000Z	dont_oracle		:)
+2013-03-24T04:55:00.000Z	dont_oracle		ah yes the gentle intro
+2013-03-24T04:55:00.000Z	Xach		Don't feed gavino.
+2013-03-24T04:55:00.000Z	dont_oracle		I have a copy I downlaoded somewherehere.
+2013-03-24T04:55:00.000Z	Bike		Sorry?
+2013-03-24T04:55:00.000Z	p_nathan	Xach	beg pardon?
+2013-03-24T04:56:00.000Z	Xach	dont_oracle	is also known as gavino. trolling twerp.
+2013-03-24T04:57:00.000Z	p_nathan		oh.
+2013-03-24T04:57:00.000Z	Xach		see, for example, http://ccl.clozure.com/irc-logs/lisp/2013-03/lisp-2013.03.17.txt
+2013-03-24T04:58:00.000Z	Bike		Eugh.
+2013-03-24T05:00:00.000Z	p_nathan		ewww
+2013-03-24T05:01:00.000Z	p_nathan	Bike	thats a cool page on regexps, havn't seen it before
+2013-03-24T05:08:00.000Z	Bike	p_nathan	regexes are fun. eminently practical but lots of mathy stuff to 'em too.
+2013-03-24T07:16:00.000Z	dioxirane		there is a package "cl-general-arithmetic" of which I don't know the utility and the Fateman's work to create an interface to MPFR for lisp is not enought good?
+2013-03-24T07:49:00.000Z	dioxirane		maybe would be nice to extend to a wide number of OS and lisp implemenations the Fateman's Lisp source code for the QD interface
+2013-03-24T07:50:00.000Z	dioxirane		maybe using even Quicklisp to semplify the end-user work.
+2013-03-24T08:47:00.000Z	mcLovinIZme		hi
+2013-03-24T09:35:00.000Z	kiuma		hello lispers
+2013-03-24T09:38:00.000Z	kiuma		hello H4ns, I've read your article on planet.lisp.org . Do you know you can also use openoffice/libreoffice started in server mode to handle MS documents ?
+2013-03-24T09:56:00.000Z	sepi		I'm writing an irc bot using cl-irc. For this, I'm running the cl-irc mail loop which is a blocking call. What would be an easy library to use that would allow me to run the cl-irc mail loop in a separate thread so I can use my repl while the bot is running? I'm also using trivial-timers to repeatedly check and set a channel's topic
+2013-03-24T09:57:00.000Z	H4ns	kiuma	i've never done that.
+2013-03-24T09:58:00.000Z	kiuma		You can stay with sbcl and you can do whatever you want with MS and OO documents
+2013-03-24T09:58:00.000Z	kiuma		OO server IRRC does not support threads
+2013-03-24T09:59:00.000Z	H4ns	kiuma	how do i talk to oo server?
+2013-03-24T09:59:00.000Z	stassats`	sepi	bordeaux-threads
+2013-03-24T09:59:00.000Z	kiuma	H4ns	via socket
+2013-03-24T09:59:00.000Z	H4ns	kiuma	what protocol?  is there a client library written in cl available?
+2013-03-24T10:00:00.000Z	kiuma	H4ns	I don't think so
+2013-03-24T10:00:00.000Z	H4ns	kiuma	well, that, and the fact that oo is a pain to set up on headless systems makes me think that abcl + apache poi is not so bad after all, but thanks.
+2013-03-24T10:01:00.000Z	sepi	stassats`	I was wondering if cl-async could help, but afaik it has it's own blocking main loop
+2013-03-24T10:01:00.000Z	kiuma	H4ns	it was just to let you know since oo headless is sometime an hidden thing
+2013-03-24T10:02:00.000Z	H4ns	kiuma	it is used by another group in my company to write letters.
+2013-03-24T10:02:00.000Z	kiuma		mmm...
+2013-03-24T10:03:00.000Z	kiuma		In a software I sell I use another method if you are interested
+2013-03-24T10:03:00.000Z	stassats`	sepi	why do you need to check the topic, though? the topic change is broadcast
+2013-03-24T10:03:00.000Z	sepi	stassats`	actually I poll an mpd to update the topic
+2013-03-24T10:04:00.000Z	stassats`		does somebody care what you listen to?
+2013-03-24T10:04:00.000Z	kiuma		I let the user write using oepnoffice, then I've created an openoffice plugin (a toolbar button) that allows me to transmit the document to the server
+2013-03-24T10:04:00.000Z	stassats`		anyhow, minion is run in a separate thread and it wakes up every minute, if it's not woken up by messages, to check if it is still connected
+2013-03-24T10:06:00.000Z	stassats`		that's the code which does that: https://github.com/stassats/lisp-bots/blob/master/irc-bot/connection.lisp
+2013-03-24T10:06:00.000Z	kiuma		the docuemtn comes from the server in open format, where I set hidden variables inside the document. This way the document is transmitted to the server with its metadata.
+2013-03-24T10:08:00.000Z	antonv		hi
+2013-03-24T10:08:00.000Z	stassats`		it uses iolib to do wait-until-fd-ready, cl-irc uses usocket, but you can still get the underlying fd from the implementation
+2013-03-24T10:08:00.000Z	sepi	stassats`	it's a bot that controls the mpd which plays the music for a room full of nerds. They care what's playing
+2013-03-24T10:10:00.000Z	dtw	sepi	Here's by CL eval bot. It uses cl-triviel-irc, though. There's a thread for calling TRIVIAL-IRC:HANDLE, which receives and handles incoming messages. https://github.com/tlikonen/cl-eval-bot
+2013-03-24T10:11:00.000Z	H4ns	kiuma	no, thanks.  i just need to read and write excel files.
+2013-03-24T10:16:00.000Z	sepi	stassats`	interesting, thanks!
+2013-03-24T10:22:00.000Z	ehu		hi
+2013-03-24T11:16:00.000Z	dioxirane	kiuma	have you a blog/site that explain exhaustively how you do to handle spreadsheet in CL? If yes could you post me yhe link? Thx a lot..
+2013-03-24T11:27:00.000Z	dioxirane	kiuma	maybe would be interesting discuss a bit about the use of the Java UNO API , even for take into account the open side of the world.
+2013-03-24T12:11:00.000Z	Lunix011		
+2013-03-24T12:12:00.000Z	Lunix011		
+2013-03-24T12:12:00.000Z	stassats`		you can stop now
+2013-03-24T12:25:00.000Z	bia		I'm totaly newbie. Why it (defun fact (x) (if (= x 0) (let x 1) (let x (* x (fact(- x 1))))) (format t "~A " x)) can't work in sbcl with "Malformed LET bindings"? Me want print series of x values calculation.
+2013-03-24T12:26:00.000Z	Ralt		(let ((x 1)) (* x 2))
+2013-03-24T12:26:00.000Z	Ralt		this is the construct to be used ^
+2013-03-24T12:26:00.000Z	Ralt		(let x 1) is clearly no good
+2013-03-24T12:26:00.000Z	stassats`	bia	what are you using to learn CL?
+2013-03-24T12:27:00.000Z	bia		Paul Graham ANSI Common Lisp
+2013-03-24T12:29:00.000Z	stassats`		is it that bad?
+2013-03-24T12:29:00.000Z	bia		I'm not clearly understend why let in is ugly in this case.
+2013-03-24T12:30:00.000Z	``Erik		the 'let' form creates a new binding which isn't what you'd want in that function... (defun fact (x) (if (= x 0) 1 (fact (- x 1))) is probably more what you're looking for?
+2013-03-24T12:30:00.000Z	stassats`	``Erik	that just avoid learning how to use let
+2013-03-24T12:30:00.000Z	stassats`		avois
+2013-03-24T12:30:00.000Z	stassats`		avoids
+2013-03-24T12:31:00.000Z	``Erik		yeah.. because you're doing nothing that needs a new binding :) if you want to use let, it's more like (let ((x 0) (y 1)) (format t "x: ~d~%" x) (format t "x*y= ~d~%" (* x y)))
+2013-03-24T12:32:00.000Z	``Erik		(that creates two new variables, 'x' and 'y', and then uses them)
+2013-03-24T12:35:00.000Z	bia		Hm ok. How in my case, the 'state of art' printing expression to output sries of x variable states?
+2013-03-24T14:03:00.000Z	pjb	minion	memo for sw2wolf: I'd bet it means you've compiled clisp without thread support. <02:38:38><sw2wolf> In fact i donot understand the meaning of "Program tried to wait with no scheduler" ?
+2013-03-24T14:03:00.000Z	minion		Remembered. I'll tell sw2wolf when he/she/it next speaks.
+2013-03-24T14:07:00.000Z	wakeup		hi
+2013-03-24T14:07:00.000Z	wakeup		say, how does SBCL represent a signal? eg. what are valid arguments for sb-ext:process-kill's SIGNAL parameter?
+2013-03-24T14:09:00.000Z	stassats`		1 2 3 4 5 6
+2013-03-24T14:11:00.000Z	pjb	bia	you can use PRINT to print expressions.
+2013-03-24T14:12:00.000Z	pjb	bia	a nice thing about PRINT is that it returns its first argument, so you can wrap any existing expression (that returns a single interesting value) in a PRINT: (defun fact (x) (print (if (= (print x) 0) 1 (fact (- x 1)))))
+2013-03-24T14:21:00.000Z	cddr		dlowe: Did you notice I updated my pull request for local-time?
+2013-03-24T14:33:00.000Z	wakeup	stassats`	but how do I get the correct value for say, SIGINT?
+2013-03-24T14:34:00.000Z	stassats`		sb-posix:sigint
+2013-03-24T14:35:00.000Z	wakeup		thnks
+2013-03-24T14:44:00.000Z	dioxirane	wakeup	if you want, take a look at sys/signal.h
+2013-03-24T14:47:00.000Z	dioxirane	wakeup	or tipe a "man signal" in a shell
+2013-03-24T14:48:00.000Z	dioxirane		*type
+2013-03-24T14:48:00.000Z	wakeup		I will happily use a implementation defined variable
+2013-03-24T14:49:00.000Z	wakeup		or constant
+2013-03-24T14:53:00.000Z	dioxirane	wakeup	apropos signal to find many useful man pages! :)
+2013-03-24T14:58:00.000Z	dioxirane	wakeup	sure , you don't need to know thw ANSI C signal handling even if it's an awesome topic, but even more awesome is possibly to know what you are using
+2013-03-24T15:01:00.000Z	wakeup	dioxirane	as in a queue of instructions for the scheduler?
+2013-03-24T15:02:00.000Z	wakeup		does anyone know if there is a counterpart in CCL to SBCL's sb-ext:process-wait ?
+2013-03-24T15:03:00.000Z	wakeup		Basically I need a way to unwind-protect the blocking part of an external process
+2013-03-24T15:03:00.000Z	wakeup		so that I can kill the process in case the thread is destroyed
+2013-03-24T15:03:00.000Z	wakeup		works fine in SBCL...
+2013-03-24T15:09:00.000Z	wakeup		can't see a clean way to do it with their API, maybe they are already handling it correctly...
+2013-03-24T15:11:00.000Z	dioxirane	wakeup	maybe I'll start reading the CCL Documentation... try to read the Chapter 7, and if you want 7.7 "Threads Dictionary"
+2013-03-24T15:12:00.000Z	stassats`		ccl::external-process-wait
+2013-03-24T15:16:00.000Z	dioxirane		..mmm, sure, maybe would be better try to run an external program..
+2013-03-24T15:18:00.000Z	Fare	wakeup	what are you trying to do, already?
+2013-03-24T15:18:00.000Z	dioxirane		maybe using CCL run-program ...
+2013-03-24T15:18:00.000Z	Fare		for synchronous calls to external programs, uiop:run-program is your friend
+2013-03-24T15:19:00.000Z	Fare		(or its friendlier front-end, inferior-shell:run)
+2013-03-24T15:19:00.000Z	Fare		for asynchronous calls, try executor.
+2013-03-24T15:20:00.000Z	dioxirane		good to know.. thx Fare!
+2013-03-24T15:20:00.000Z	wakeup	Fare	basicyll I wrote something similar to inferior-shell, because inferior-shell seemed bloated
+2013-03-24T15:21:00.000Z	replcated		I'm having trouble using a CFFI defcstruct in a package other than the defining one, which I mentioned earlier this week, but now I have a minimal example, http://paste.lisp.org/+2X6H.
+2013-03-24T15:22:00.000Z	Fare	wakeup	bloated??? How so?
+2013-03-24T15:22:00.000Z	stassats`	replcated	wrong package of slots
+2013-03-24T15:22:00.000Z	Fare		and assuming inferior-shell itself you don't like -- why not still use uiop:run-program ?
+2013-03-24T15:23:00.000Z	Fare		also, if you know how to make inferior-shell better, I accept patches
+2013-03-24T15:23:00.000Z	stassats`	replcated	export style, size, and class-name
+2013-03-24T15:23:00.000Z	Fare		(saying that... I realize I've been so busy to not reply to a few contributors. My bad)
+2013-03-24T15:23:00.000Z	replcated	stassats`	Thought I'd tried that.  Will give it another go.
+2013-03-24T15:24:00.000Z	wakeup	Fare	probably because I have written a package EXTERNAl-PROGRAM which does exactly that, running programs synchronously.
+2013-03-24T15:25:00.000Z	Fare		I don't remember the details, but when I last looked, no package had the coverage of uiop:run-program (nee xcvb-driver:run-program/).
+2013-03-24T15:25:00.000Z	wakeup	Fare	Well I cant go ito specifics about inferior-shell. But when I considered using it I got scared off by its dependencies and lack of modularity. I have now a DSL that executes commands, and a macro for generic piping.
+2013-03-24T15:25:00.000Z	wakeup		which is all I need and its two tiny libs with alsmost no dependencies
+2013-03-24T15:25:00.000Z	Fare		uiop:run-program itself has no dependencies
+2013-03-24T15:25:00.000Z	Fare		and it's part of asdf3, so always loaded in the near future.
+2013-03-24T15:25:00.000Z	replcated	stassats`	No clue what I was missing before.  That works.  Thanks.
+2013-03-24T15:25:00.000Z	wakeup		good to know about uiop:run-progra
+2013-03-24T15:25:00.000Z	Fare		inferior-shell has dependencies, true dat -- but it's all in quicklisp.
+2013-03-24T15:26:00.000Z	Fare		lack of modularity -- I'm not sure what you mean.
+2013-03-24T15:27:00.000Z	Fare		is your DSL documented? I'd like to see it.
+2013-03-24T15:27:00.000Z	wakeup		its basically a big blob that does "magic of a unix shell"
+2013-03-24T15:27:00.000Z	wakeup		it is documented, not released
+2013-03-24T15:28:00.000Z	wakeup		but its really simple, basically its just a macro SH, invoked like (SH symbols "strings" (expressions) $variables ...)
+2013-03-24T15:29:00.000Z	wakeup		it stringifies everything  except symbols in the for of $symbol to allow direct variable injection and lists (expressions to be evaluated)
+2013-03-24T15:29:00.000Z	wakeup		s/for/form
+2013-03-24T15:29:00.000Z	wakeup		the first argument is the program name the rest are arguments
+2013-03-24T15:30:00.000Z	wakeup		then there is a completely unrelated, but useful in combination, macro PIPE
+2013-03-24T15:31:00.000Z	wakeup		which basically does what | does with the syntax of (PIPE EXPR1 EXPR2) -> EXPR1 | EXPR2
+2013-03-24T15:32:00.000Z	wakeup		this all was inspired by INFERIOR_-SHELL
+2013-03-24T15:32:00.000Z	wakeup		so kudos to you!
+2013-03-24T15:32:00.000Z	wakeup		I just thought I could implement what I need from inferior-shell with less code that fits in my head nicely
+2013-03-24T15:35:00.000Z	wakeup	Fare	is there an official release of uiop:run-program ?
+2013-03-24T15:37:00.000Z	Fare		yes
+2013-03-24T15:37:00.000Z	Fare		it's part of uiop
+2013-03-24T15:37:00.000Z	wakeup	stassats`	thats no exposed in the API.
+2013-03-24T15:37:00.000Z	Fare		which is in quicklisp
+2013-03-24T15:38:00.000Z	Fare		and it's part of asdf3
+2013-03-24T15:38:00.000Z	Fare		I use (run `(....)) as my DSL.
+2013-03-24T15:40:00.000Z	wakeup	Fare	did you figure out how to handle binary piping between external processes?
+2013-03-24T15:40:00.000Z	replcated		Would it be considered unorthodox to use keyword symbols for slot names to avoid having to export them all or refer to them by package?
+2013-03-24T15:40:00.000Z	wakeup		Thats the one thing where I got stuck.
+2013-03-24T15:41:00.000Z	wakeup	replcated	oh yes
+2013-03-24T15:41:00.000Z	wakeup	replcated	if you need to automatically export lots of symbols, use a macro or function that does it automatically
+2013-03-24T15:42:00.000Z	wakeup		generally using keywords is good for symbolic parameters, but slot names?
+2013-03-24T15:42:00.000Z	wakeup		slots of what exactly?
+2013-03-24T15:42:00.000Z	replcated		A bunch of CFFI structs.
+2013-03-24T15:42:00.000Z	wakeup		structs for instance define accessors automatically, which can then be exported
+2013-03-24T15:43:00.000Z	wakeup	replcated	wrap the routine that defines the struct with a function/macro that exports the structs accessors
+2013-03-24T15:44:00.000Z	replcated		My gut feeling was it shouldn't be done.  But I'll have to dig deeper into packages to pull that off.  Thanks for validating what I thought I should do.
+2013-03-24T15:45:00.000Z	stassats`	wakeup	pipes don't care about the type
+2013-03-24T15:46:00.000Z	wakeup	stassats`	exactly
+2013-03-24T15:46:00.000Z	wakeup	stassats`	common lisp does
+2013-03-24T15:46:00.000Z	stassats`		common lisp doesn't have pipes
+2013-03-24T15:47:00.000Z	wakeup	stassats`	thanks for you time
+2013-03-24T15:48:00.000Z	wakeup	replcated	you just have to call EXPORT
+2013-03-24T15:48:00.000Z	stassats`		so, you want to be bitter instead of explaining what your problem is
+2013-03-24T15:48:00.000Z	replcated	wakeup	Just found that.
+2013-03-24T15:49:00.000Z	wakeup	replcated	http://paste.lisp.org/display/136314
+2013-03-24T15:49:00.000Z	wakeup	replcated	this is a case where I used it, in the snipped *html-elements* is a list of symbols '(a br p table ...)
+2013-03-24T15:50:00.000Z	stassats`	replcated	exporting symbols is very easy in slime, just C-c x
+2013-03-24T15:50:00.000Z	wakeup	stassats`	I asked fare a question he might have come across while implementing inferior-shell
+2013-03-24T15:50:00.000Z	wakeup	stassats`	you don't even know what I am talking about
+2013-03-24T15:50:00.000Z	stassats`		sorry, i didn't know the conversation was private
+2013-03-24T15:51:00.000Z	stassats`		and i'm not allowed to inquire for more details
+2013-03-24T15:51:00.000Z	wakeup		dont be bitter
+2013-03-24T15:51:00.000Z	wakeup		;)
+2013-03-24T15:53:00.000Z	stassats`		i don't see how the type matters, if you create a pipe with pipe(2), it is binary already
+2013-03-24T15:53:00.000Z	wakeup	replcated	don't try to copy my example too closely, its one of my early lisp programs. But the basic pattern is define and export a symbol in one routine
+2013-03-24T15:55:00.000Z	wakeup	stassats`	I take it you are genuinely interested, excuse me for my rudeness. Basically both fare and I implemented pipes in CL. When you run an external program in CL you have to decide what type the stream is going to that the external program writes to.
+2013-03-24T15:56:00.000Z	wakeup		when you choose binary, which isn't even an option in some impls as far as I remember, then you need babel or similar to get the characters, when you chose characters, you cant pipe e.g. gzip
+2013-03-24T15:56:00.000Z	stassats`	wakeup	so you're putting the data through lisp even if you just connect two different processes, as in, a | b?
+2013-03-24T15:57:00.000Z	wakeup	stassats`	yes because that way you can also connect precesses and lisp functions
+2013-03-24T15:57:00.000Z	wakeup		or just lisp functions
+2013-03-24T15:58:00.000Z	wakeup		the goal here is to achieve maximum interop between unix and a CL development environment
+2013-03-24T15:58:00.000Z	stassats`		i would have used FFI and bivalent streams
+2013-03-24T16:00:00.000Z	wakeup	stassats`	a possible approach
+2013-03-24T16:00:00.000Z	wakeup		I used a gray-stream queue
+2013-03-24T16:11:00.000Z	bia	pjb	thx. not exectly what im want but just simple work
+2013-03-24T16:37:00.000Z	dioxirane	bia	..sometimes it'is better start reading about BLFS before reading about LFS.. but "exactly" does not means nothing.. and remember: "God is real, unless explictly declared as integer!!!"
+2013-03-24T16:38:00.000Z	stassats`	dioxirane	what kind of nonsense is that?
+2013-03-24T16:40:00.000Z	stassats`		ah, you used to have some different name, but the random nonsense stayed the same
+2013-03-24T16:42:00.000Z	dioxirane		ok, I'm sorry for the nonsense...
+2013-03-24T18:17:00.000Z	Xach		drewc: I get "The name "DREWC.ORG/SMUG/PURE" does not designate any package." Do you know why that might be?
+2013-03-24T18:19:00.000Z	mooglenorph		Is there anything that would run lisp "bare" on a xen instance?
+2013-03-24T18:19:00.000Z	mooglenorph		like this, but for common lisp http://erlangonxen.org/
+2013-03-24T18:23:00.000Z	stassats`		see http://www.lisphacker.com/projects/sbcl-os/how-it-works-2008-04-19.txt
+2013-03-24T18:24:00.000Z	stassats`		http://www.lisphacker.com/projects/sbcl-os/project-map/
+2013-03-24T18:24:00.000Z	mooglenorph		I guess, would it be easier to target Xen for that than the bare x86?
+2013-03-24T18:25:00.000Z	mooglenorph		My motivation: I need to take a grad-level compiler course and a grad-level os course, requirements for my phd
+2013-03-24T18:25:00.000Z	mooglenorph		I could probably use contributions to a bare-metal lisp as a project for both courses.
+2013-03-24T18:26:00.000Z	stassats`	minion	movitz?
+2013-03-24T18:26:00.000Z	minion		movitz: No definition was found in the first 5 lines of http://www.cliki.net/movitz
+2013-03-24T18:26:00.000Z	mooglenorph		Problem being that I have basically no experience with this level of programming, I'm mostly in theoretical CS and statistics. But lisp is my favorite language for writing random stuff in.
+2013-03-24T18:26:00.000Z	mooglenorph		Thank you for the pointers.
+2013-03-24T18:27:00.000Z	p_l		Xen might be easier target, but you still will have the thing that gave nyef problems
+2013-03-24T18:27:00.000Z	p_l		namely how to make the device-handling code (and other such critical sections) be in appropriate places in memory etc.
+2013-03-24T18:28:00.000Z	mooglenorph		I will dig through these notes and try to familiarize myself with SBCL.
+2013-03-24T18:29:00.000Z	mooglenorph		Which is the lisp implementation I use anyway... I've never looked into the source before, though.
+2013-03-24T18:30:00.000Z	stassats`		sbcl source is not really directly comprehensible
+2013-03-24T18:30:00.000Z	mooglenorph		Heh. Is there a "guide for noobs"
+2013-03-24T18:30:00.000Z	stassats`		step 1: become not-a-nooob
+2013-03-24T18:30:00.000Z	mooglenorph		Or maybe I would be better served by trying to port a simpler lisp to Xen?
+2013-03-24T18:31:00.000Z	stassats`		no current CL implementation is simple
+2013-03-24T18:33:00.000Z	mooglenorph		I meant not a CL, I guess. More tractable, but certainly less interesting.
+2013-03-24T18:34:00.000Z	_tca		hmm gambit scheme on xen
+2013-03-24T18:34:00.000Z	stassats`	minion	lisp500
+2013-03-24T18:34:00.000Z	minion		lisp500: A 500-line-or-less implementation of a basic Lisp, available at http://www.modeemi.fi/~chery/lisp500/
+2013-03-24T18:35:00.000Z	flip214	mooglenorph	how about simply putting a lisp as an init-process on eg. linux? would solve all the hardware-abstraction, only "drivers" to the tty and so on need to be written.
+2013-03-24T18:35:00.000Z	flip214		(ie. vt100, ansi, xterm, whatever you like)
+2013-03-24T18:36:00.000Z	stassats`		i think the idea is to only have network interaction
+2013-03-24T18:37:00.000Z	mooglenorph		Also you wouldn't have to deal with an underlying linux system to deploy large clusters of instances running lisp code.
+2013-03-24T18:38:00.000Z	mooglenorph		And it "forces" you to do everything in cl, backed by a network.
+2013-03-24T18:38:00.000Z	mooglenorph		basically, leads to some fun architectural problems.
+2013-03-24T18:39:00.000Z	mooglenorph		So, good for a project to pursue across a couple classes for someone who likes distributed computing & lisp. Unless it isn't really tractable, in which case I'll need to find something else to do...
+2013-03-24T18:49:00.000Z	flip214		well, IMO you'd have to reimplement too much. Perhaps it would be possible to boot SBCL via eg. PXE into a XEN or KVM, using virtio for the network, though ...
+2013-03-24T18:51:00.000Z	flip214		hmmm, virtio_net.c for linux is only 42kB ....
+2013-03-24T18:52:00.000Z	p_l	flip214	and does a lot of work being a rather "full" implementation
+2013-03-24T18:52:00.000Z	stassats`		ILTWYS"O"
+2013-03-24T18:55:00.000Z	flip214	stassats`	`wc -l drivers/scsi/advansys.c` => 12855
+2013-03-24T18:58:00.000Z	flip214		./drivers/net/wireless/brcm80211/brcmsmac/phy/phy_n.c is 938168 bytes ... so the virtio should be a fairly simple thing, at least in relative terms.
+2013-03-24T19:52:00.000Z	enymo		hello
+2013-03-24T19:52:00.000Z	enymo		trying to install cl-mysql from windows
+2013-03-24T19:52:00.000Z	enymo		using slime and quicklisp
+2013-03-24T19:52:00.000Z	enymo		running into a foreign library error
+2013-03-24T19:53:00.000Z	ehu	enymo	which implementation?
+2013-03-24T19:53:00.000Z	Xach		Did you install the foreign library?
+2013-03-24T19:53:00.000Z	enymo		wondering what are the proper steps to specify a foreign library on windows
+2013-03-24T19:53:00.000Z	enymo		libmysql
+2013-03-24T19:53:00.000Z	ehu	enymo	I mean: sbcl, ccl, ecl, abcl, clisp?
+2013-03-24T19:53:00.000Z	enymo		it's installed by downloading this file: http://dev.mysql.com/downloads/connector/c/
+2013-03-24T19:53:00.000Z	enymo		oh
+2013-03-24T19:53:00.000Z	enymo		sbcl
+2013-03-24T19:53:00.000Z	enymo		i didn't restart slime or emacs... maybe i should?
+2013-03-24T19:57:00.000Z	enymo		thinking about following these steps: http://common-lisp.net/project/cffi/manual/html_node/_002aforeign_002dlibrary_002ddirectories_002a.html
+2013-03-24T19:57:00.000Z	enymo		but it also says i don't have to use cffi's foreign-library-directories
+2013-03-24T20:06:00.000Z	enymo	ehu	actually...forgot that i'm using ccl on windows (sbcl on other devices)
+2013-03-24T20:10:00.000Z	enymo	ehu	Xach, just like i did when i tried to quickload cl-cairo a while ago on my mac, i edited the define-foreign-library of the cl-mysql package (in system.lisp) to look for libmysql in the right directory... i'm sure there's a better way like setting updating the PATH env variable but also wondering if there isn't another more lispy way to do so...
+2013-03-24T20:11:00.000Z	Xach	enymo	I'm not sure, sorry. I mostly test with sbcl on linux where a lot of that stuff Just Works.
+2013-03-24T20:12:00.000Z	enymo	Xach	lol, yea i love that... i wish i could just work on Linux
+2013-03-24T20:12:00.000Z	enymo	Xach	but so much goodness on Windows, including games (which i don't have time to play)
+2013-03-24T20:15:00.000Z	Fade		kinky
+2013-03-24T20:16:00.000Z	lukego		Hoi! I'm giving a talk at the Emacs conference on Sunday: "How to write an Emacs-based IDE like SLIME". what should I tell them? :-)
+2013-03-24T20:18:00.000Z	Fade		"it's possible, but so far the only one has been slime."
+2013-03-24T20:18:00.000Z	fe[nl]ix	lukego	use a lisp-like language
+2013-03-24T20:18:00.000Z	LiamH		Franz has/had one, I think.
+2013-03-24T20:20:00.000Z	schoppenhauer		Hello. Is it possible to declare a precise function type in sbcl? I declared (optimize 3), and it complains about not being able to optimize a funcall.
+2013-03-24T20:20:00.000Z	Bike	schoppenhauer	how precise?
+2013-03-24T20:21:00.000Z	schoppenhauer	Bike	well, I know the exact type the functions must have.
+2013-03-24T20:21:00.000Z	Bike		clhs ftype
+2013-03-24T20:21:00.000Z	specbot		http://www.lispworks.com/reference/HyperSpec/Body/d_ftype.htm
+2013-03-24T20:21:00.000Z	schoppenhauer	Bike	I know they take 2 fixnum-arguments, and the return value can be ignored
+2013-03-24T20:21:00.000Z	fe[nl]ix	lukego	or to make sure the guest language has a capable debugger first
+2013-03-24T20:22:00.000Z	Bike	schoppenhauer	(declare (type (function (fixnum fixnum) *) foo bar))
+2013-03-24T20:22:00.000Z	schoppenhauer	Bike	thanks!
+2013-03-24T20:23:00.000Z	schoppenhauer	Bike	that helped!
+2013-03-24T20:23:00.000Z	Bike		cool
+2013-03-24T20:24:00.000Z	lukego	fe[nl]ix	helps to be sure, but I suspect many people will be working backwards from what their favorite target language is
+2013-03-24T20:25:00.000Z	fe[nl]ix	lukego	that's correct, but OTOH I've seen ruby attempts to copy slime falter miserably because the implementation's debugger and introspective facilities are almost non-existent
+2013-03-24T20:26:00.000Z	fe[nl]ix		you can't build SLIME with inadequate material
+2013-03-24T20:26:00.000Z	Fade		the slime-like hack for python using ipython is unsatisfying.
+2013-03-24T20:26:00.000Z	cddr		The js one looks pretty neat https://github.com/swank-js/swank-js
+2013-03-24T20:26:00.000Z	antonv		python has slime-like environment
+2013-03-24T20:27:00.000Z	antonv		http://ipython.org/
+2013-03-24T20:28:00.000Z	antonv		they got  $1.15 millin funding recently
+2013-03-24T20:28:00.000Z	ehu		antgreen: hi!
+2013-03-24T20:28:00.000Z	ehu		duh.
+2013-03-24T20:28:00.000Z	ehu		sorry.
+2013-03-24T20:28:00.000Z	ehu	antonv	hi!
+2013-03-24T20:28:00.000Z	antonv	ehu	hi
+2013-03-24T20:28:00.000Z	fe[nl]ix	antonv	wow
+2013-03-24T20:28:00.000Z	cddr		Though js is probably the most "lisp-like" of all the popular languages. More so than ruby I'd say
+2013-03-24T20:28:00.000Z	ehu	antonv	the index 0 crashes have been solved, if I'm right.
+2013-03-24T20:29:00.000Z	antonv	ehu	yes, thanks. I read the list
+2013-03-24T20:29:00.000Z	ehu		I've mailed attila to add support for GETENV
+2013-03-24T20:29:00.000Z	fe[nl]ix	antonv	on your machine, CMUCL passes the test suite when run from the terminal
+2013-03-24T20:29:00.000Z	antonv		I hope getenv fix will be accepted by cl-l10n
+2013-03-24T20:30:00.000Z	fe[nl]ix	antonv	inside slime, though, it presents the same behavior you've seen before
+2013-03-24T20:30:00.000Z	fe[nl]ix		I don't know why
+2013-03-24T20:30:00.000Z	ehu		it'll be the next quicklisp, at the earliest.
+2013-03-24T20:30:00.000Z	ehu		when's the next quicklisp due, actually?
+2013-03-24T20:30:00.000Z	antonv		about IPyton, it was interesting to see in their video presentation how they discovered (evolved) into archtectrure where sever-side part interacts with client via protocol (like swank/slime in Lisp)
+2013-03-24T20:31:00.000Z	antonv	fe[nl]ix	have you fixed something? because for me it fails from terminal too
+2013-03-24T20:31:00.000Z	antonv	ehu	I think two weeks or more
+2013-03-24T20:31:00.000Z	cddr		Was swank/slime conceived that way from the start?
+2013-03-24T20:31:00.000Z	antonv	cddr	yes
+2013-03-24T20:31:00.000Z	ehu	antonv	ok. that should leave enough time to get a patch into cl-l10n
+2013-03-24T20:31:00.000Z	fe[nl]ix	antonv	see the last line I added to .cmucl-init.lisp
+2013-03-24T20:32:00.000Z	antonv	cddr	previously (I heard) there was enother solution, ILISP or something like this
+2013-03-24T20:32:00.000Z	antonv		(if it was really called ILISP, this is one more analogy to IPython)
+2013-03-24T20:33:00.000Z	antonv	fe[nl]ix	this line makes the test working from terminal?
+2013-03-24T20:34:00.000Z	gendl		so in emacs24.2 on Windows, Slime splits the screen when you start it, and takes only half the screen,
+2013-03-24T20:34:00.000Z	gendl		in emacs 23.3, it doesn't do that.
+2013-03-24T20:35:00.000Z	gendl		is that intentional?
+2013-03-24T20:35:00.000Z	ehu	gendl	so it's working better in 24.2? :-)
+2013-03-24T20:35:00.000Z	gendl		is it supposed to split the screen?
+2013-03-24T20:35:00.000Z	fe[nl]ix	antonv	yes, running mp::startup-idle-and-top-level-loops
+2013-03-24T20:36:00.000Z	fe[nl]ix	antonv	but when run from within slime, it presents the same faulty behavior
+2013-03-24T20:36:00.000Z	Xach		When I used ILISP, I had problems keeping the communications in sync.
+2013-03-24T20:36:00.000Z	Fade	gendl	I think it's probably safe to assume the behaviour is not accidental.
+2013-03-24T20:36:00.000Z	Xach		I think that was partly because I used a very new and untested implementation, SBCL.
+2013-03-24T20:36:00.000Z	wbooze		does (/= 1 2) => T mean both are unequal ?
+2013-03-24T20:36:00.000Z	wbooze		numerically....
+2013-03-24T20:37:00.000Z	Xach	wbooze	/= returns T if no pair of its arguments are =
+2013-03-24T20:37:00.000Z	gendl	Fade	so I guess it just doesn't quite work as intended on 23.3 on Windows and 24.2 is working better.
+2013-03-24T20:37:00.000Z	Xach		scratch that!
+2013-03-24T20:37:00.000Z	Fade		I assumed it was an enhancement when I first saw the behaviour.
+2013-03-24T20:38:00.000Z	Fade		on my machine, it only seems to happen on an emacs frame that is wider than N, where N is > 1/2 screenwidth
+2013-03-24T20:39:00.000Z	Fade		I use stump, so if I have emacs in a window frame that takes up half the screen, slime starts in the whole frame. if the emacs frame takes up the whole width of the monitor, it splits the frame.
+2013-03-24T20:40:00.000Z	antonv	fe[nl]ix	the test doesn't bother me too much
+2013-03-24T20:40:00.000Z	Fade		if you don't like it, I'm sure you could alter the behaviour by configuration, although I don't know offhand where/how.
+2013-03-24T20:40:00.000Z	gendl		and if the emacs window is taller than it is wide, slime splits the frame horizontally instead of vertically.
+2013-03-24T20:41:00.000Z	antonv	fe[nl]ix	I mean if it fails in general, let it fail in my machine too
+2013-03-24T20:41:00.000Z	fe[nl]ix	antonv	but it doesn't fail in general
+2013-03-24T20:41:00.000Z	fe[nl]ix		only sometimes, and I don't understand why
+2013-03-24T20:41:00.000Z	antonv	fe[nl]ix	the test itself has bug - the code is not guaranteed to work
+2013-03-24T20:41:00.000Z	fe[nl]ix		but I'm not going to start debugging the cmucl scheduler
+2013-03-24T20:42:00.000Z	fe[nl]ix	antonv	what do you mean it's not guaranteed ?
+2013-03-24T20:42:00.000Z	antonv	fe[nl]ix	we talk about condition-variable test, right?
+2013-03-24T20:43:00.000Z	antonv	fe[nl]ix	as pkhuong yesterday said, the test uses condition-notify, and condition-notify is guarantees to wake up at least one of the waiting threads
+2013-03-24T20:43:00.000Z	antonv	fe[nl]ix	it can wake up more, but only one is guaranteed
+2013-03-24T20:44:00.000Z	antonv	fe[nl]ix	but the test chains 100 threads, each waiting for the previous. And when the revious test calls condition-notify it is necessary that exactly the next thread wake up and checked that (= i *shared*)
+2013-03-24T20:45:00.000Z	fe[nl]ix	antonv	no, cmucl fails on should-have-thread-interaction
+2013-03-24T20:45:00.000Z	antonv		ah
+2013-03-24T20:46:00.000Z	fe[nl]ix		it's ccl and abcl that have faulty condition-variable implementations
+2013-03-24T20:47:00.000Z	ehu	fe[nl]ix	right.
+2013-03-24T20:47:00.000Z	ehu	fe[nl]ix	I need to moderate your mail through.
+2013-03-24T20:47:00.000Z	ehu		I think I'll copy paste from the moderator warning though.
+2013-03-24T20:48:00.000Z	ehu		or could you subscribe yourself before posting?
+2013-03-24T20:48:00.000Z	fe[nl]ix		I'd rather not follow all the discussions
+2013-03-24T20:49:00.000Z	antonv	fe[nl]ix	can't say about should-have-thread-interaction, but how ccl and abcl are faulty?
+2013-03-24T20:49:00.000Z	schoppenhauer		omg. I would have expected displaced arrays to be pointers to the same memory area. but at least under sbcl, this does not seem to be the case.
+2013-03-24T20:49:00.000Z	antonv		bordeaux-threads docs say condition-notify tries to wake up only 1 thread
+2013-03-24T20:50:00.000Z	fe[nl]ix	antonv	ABCL hangs on that test, which SBCL passes
+2013-03-24T20:50:00.000Z	Bike	schoppenhauer	they carry too much information for that to be easily possible
+2013-03-24T20:51:00.000Z	ehu		ok. copy/pasted the mail to the abcl developers list.
+2013-03-24T20:51:00.000Z	rtoym	fe[nl]ix	FWIW, I applied your code from cmucl ticket 77 that adds join-process.  I have no idea how to implement process-finished-p in ticket 78.
+2013-03-24T20:51:00.000Z	schoppenhauer	Bike	hm. is there a default way to have just a *big* blob of raw memory, and pointers to it? I use arrays of (unsigned-integer 8), non-adjustable, etc.
+2013-03-24T20:51:00.000Z	fe[nl]ix	antonv	that said, since nobody noticed this bug I think it's safe to say that nobody uses condition variables
+2013-03-24T20:51:00.000Z	Bike	schoppenhauer	just keep indices into it?
+2013-03-24T20:52:00.000Z	fe[nl]ix	antonv	so I'll go ahead with the release and try to learn how to implement them properly after that
+2013-03-24T20:52:00.000Z	fe[nl]ix	rtoym	thanks
+2013-03-24T20:52:00.000Z	rtoym	schoppenhauer	I'm pretty sure displaced arrays are pointers into the same array.
+2013-03-24T20:52:00.000Z	antonv	fe[nl]ix	if this bug happens also on the previous version on bordeaux-threads, than we can say, that we detected no regressions, right?
+2013-03-24T20:53:00.000Z	rtoym	fe[nl]ix	No problem.  Especially since you did the work, and I'm clueless about cmucl's multiproc. :-)
+2013-03-24T20:53:00.000Z	antonv	fe[nl]ix	if so, it should not be blocker for the release
+2013-03-24T20:54:00.000Z	fe[nl]ix	antonv	yes, in that sense it's not a regression :)
+2013-03-24T20:57:00.000Z	antonv	fe[nl]ix	on the previous bordeaux-threads I never detected failures on CCL and ABCL: http://common-lisp.net/project/cl-test-grid/library/bordeaux-threads.html
+2013-03-24T20:57:00.000Z	fe[nl]ix	rtoym	that commit doesn't quite work
+2013-03-24T20:58:00.000Z	fe[nl]ix	rtoym	it doesn't touch mp:make-process
+2013-03-24T20:58:00.000Z	rtoym	fe[nl]ix	No?  Oh.
+2013-03-24T20:58:00.000Z	antonv	fe[nl]ix	I want to re-run the tests on the prev version, as I did for the git version. Although the next week will likely be very busy, I hope to do so
+2013-03-24T20:59:00.000Z	fe[nl]ix	rtoym	%make-thread is a bordeaux-threads internal symbol
+2013-03-24T20:59:00.000Z	fe[nl]ix	rtoym	I'll send you a proper patch
+2013-03-24T20:59:00.000Z	rtoym	fe[nl]ix	Sorry about that.  A proper patch would be appreciated.
+2013-03-24T20:59:00.000Z	fe[nl]ix	antonv	that's odd because I didn't change condition variables
+2013-03-24T21:01:00.000Z	antonv	fe[nl]ix	we will see. How soon you want to make the release? Taking into account that the last quicklisp was 2013-03-12 I think there is some time before the next quicklisp, maybe two week
+2013-03-24T21:01:00.000Z	fe[nl]ix		I can wait
+2013-03-24T21:01:00.000Z	antonv	Xach	how do you think, how seen next quicklisp may be released?
+2013-03-24T21:02:00.000Z	antonv	fe[nl]ix	interesting that SBCL passes the test. Maybe SBCL's condition-notify is "fair" - awakes the first thread who in the queue
+2013-03-24T21:04:00.000Z	fe[nl]ix	antonv	ccl also passes on my notebook
+2013-03-24T21:04:00.000Z	antonv	fe[nl]ix	I was wrong about previous results for ABCL and CCL - the very table I posted above contains TIMEOUT for ABCL and CCL
+2013-03-24T21:05:00.000Z	antonv	fe[nl]ix	so it fails _sometimes_
+2013-03-24T21:05:00.000Z	antonv		but ECL previously didn't have any failures
+2013-03-24T21:06:00.000Z	antonv	fe[nl]ix	for the future development of bordeaux-threas, I support what pkhuong said yesterday: if the API provides only one function of contition-notify and condition-broadcast, it's better to chose condition-broadcast
+2013-03-24T21:06:00.000Z	antonv	fe[nl]ix	or provide both
+2013-03-24T21:07:00.000Z	antonv		notifying only one thread is suitable for rare cases, typically we want to notify all the threads
+2013-03-24T21:08:00.000Z	antonv		my java book says: "be very careful with Object.notify, and in most cases just use Object.notifyAll"
+2013-03-24T21:09:00.000Z	fe[nl]ix	antonv	that would require a complete overhaul of B-T
+2013-03-24T21:09:00.000Z	fe[nl]ix		I'm not quite ready for it
+2013-03-24T21:11:00.000Z	antonv	fe[nl]ix	I see. Just said in case sometime in future you will have such desire :)
+2013-03-24T21:12:00.000Z	antonv		in any case, if the failures we see now are the same as they were previously, they should not block you from release of the improvements you already done
+2013-03-24T21:12:00.000Z	antonv		what have you changed BTW?
+2013-03-24T21:13:00.000Z	antonv		on the other hand, I can just do git log...
+2013-03-24T21:13:00.000Z	fe[nl]ix		git log -u --reverse v0.8.2
+2013-03-24T21:14:00.000Z	fe[nl]ix		git log -u --reverse v0.8.2..HEAD
+2013-03-24T21:21:00.000Z	antonv	fe[nl]ix	that's easier to understand :)
+2013-03-24T21:23:00.000Z	dim		is there some common-lisp lib to read information from /proc under linux already?
+2013-03-24T21:27:00.000Z	wbooze		oO, there's no window-configuration-event-width and no window-configuration-event-height methods,gfs and a macro for capturing changes of bounding-boxes ....
+2013-03-24T21:27:00.000Z	wbooze		in mcclim event.lisp....
+2013-03-24T21:27:00.000Z	wbooze		and the one in panes.lisp is trying to use a function named window-configuration-event-width....without success obviously...
+2013-03-24T21:28:00.000Z	wbooze		heh
+2013-03-24T21:28:00.000Z	wbooze		no wonder it does not work....
+2013-03-24T21:28:00.000Z	pjb	minion	memo for stassats`: This is no nonsence.  'GOD' is a variable starting with 'G', therefore if you didn't declare it otherwise, it'll be considered as a REAL number by FORTRAN.  In Fortran, GOD is REAL unless declared INTEGER.
+2013-03-24T21:28:00.000Z	minion		Remembered. I'll tell stassats` when he/she/it next speaks.
+2013-03-24T21:28:00.000Z	fe[nl]ix		no
+2013-03-24T21:28:00.000Z	fe[nl]ix	dim	I wrote http://common-lisp.net/~sionescu/misc/proc.lisp long time ago
+2013-03-24T21:28:00.000Z	fe[nl]ix	wbooze	don't give up
+2013-03-24T21:29:00.000Z	fe[nl]ix		it won't be the last time you say that
+2013-03-24T21:29:00.000Z	wbooze		there's a slot named like that, but no macro nor function really....
+2013-03-24T21:29:00.000Z	dim		I want to get the iowait, fe[nl]ix, and it seems it's not covered in your file, thanks a bunch nonetheless
+2013-03-24T21:30:00.000Z	fe[nl]ix	rtoym	what iowait ?
+2013-03-24T21:30:00.000Z	wbooze		even when you define your own repaint methods it will fail due to that handle-event not working correctly in panes.lisp.... due to misssing gfs, methods and macros in event.lisp
+2013-03-24T21:30:00.000Z	wbooze		oh man
+2013-03-24T21:30:00.000Z	pjb	antonv	And the Death Star was also very well funded by the Empire, compared to the dispersed Jedi who had to live on the land, and even recently, the Death Star got $350,000 funding to be rebuilt!
+2013-03-24T21:30:00.000Z	wbooze		ok
+2013-03-24T21:31:00.000Z	fe[nl]ix	rtoym	http://trac.common-lisp.net/cmucl/ticket/77#comment:3
+2013-03-24T21:32:00.000Z	pjb	schoppenhauer	actually, displaced arrays ARE JUST pointers.  Just like in C, you could have pointers incorporating bounds, the ANSI C languages don't prevent it.
+2013-03-24T21:32:00.000Z	wbooze		so handle-event in panes.lisp tries to get some width and height change, but it can't cause it can't get to that slot....
+2013-03-24T21:33:00.000Z	wbooze		i wonder why they forgot it....
+2013-03-24T21:33:00.000Z	schoppenhauer	pjb	ok. well, my benchmarks went a lot better since I stopped using them. but maybe that had another reason.
+2013-03-24T21:34:00.000Z	wbooze		and it does not fail miserably cause it gets at least a class-object handed over....
+2013-03-24T21:34:00.000Z	pjb	schoppenhauer	big blob of memory = (make-array +big-blob-size+ :element-type '(unsigned-byte 8))  (deftype pointer () `(integer 0 ,(1- +big-blob-size+)))
+2013-03-24T21:34:00.000Z	wbooze		so all that goes unrecognized ...until you try...
+2013-03-24T21:35:00.000Z	pjb	schoppenhauer	well,  since those pointers are bigger than an address, they involve a double indirection.  Depending on the benchmark, this may explain it.
+2013-03-24T21:35:00.000Z	wbooze		unrecognized and without effects....
+2013-03-24T21:35:00.000Z	schoppenhauer	pjb	maybe the more interesting question is: can I prevent bounds checking?
+2013-03-24T21:35:00.000Z	pjb	schoppenhauer	notice that most CL functions have :start and :end parameters.
+2013-03-24T21:36:00.000Z	pjb	schoppenhauer	implementation dependant.  But (declaim (optimize (safety 0) (debug 0) (speed 3))) may let an implementation skip the bound checking.
+2013-03-24T21:36:00.000Z	schoppenhauer	pjb	ok
+2013-03-24T21:36:00.000Z	pjb	schoppenhauer	but I fail to see the point of using a CL compiler if you do that: just use GCC.
+2013-03-24T21:37:00.000Z	antonv	pjb	I saw the Death Start kickstarter beginning, didn't know they finally collected $350,000 :)
+2013-03-24T21:37:00.000Z	schoppenhauer	pjb	it is a time-critical part. and I hate using cffi. even though it would probably be better.
+2013-03-24T21:37:00.000Z	pjb		I'm of the school that says that assertion checking should be left in production code.
+2013-03-24T21:38:00.000Z	pjb	schoppenhauer	then go with the declaim.  Also, try to use simplier CL functions.
+2013-03-24T21:38:00.000Z	schoppenhauer	pjb	ok
+2013-03-24T21:38:00.000Z	pjb		eg. svref instead of aref.
+2013-03-24T21:39:00.000Z	pjb	antonv	http://rt.com/usa/death-star-construction-kickstarter-847/
+2013-03-24T21:39:00.000Z	wbooze		i'm just not sure about those native and mirror things....else i would write it myself....
+2013-03-24T21:39:00.000Z	pjb		now, nobody prevents us to design a CL project and ask for funding on kickstarter or elsewhere.
+2013-03-24T21:39:00.000Z	wbooze		bah
+2013-03-24T21:41:00.000Z	antonv		btw, bountyoss.com has not bad idea, in particular the process how funders first approve the work. Unfortunately the author doesn't push the project into usage
+2013-03-24T21:45:00.000Z	antonv		for Common Lisp, one of the project I would like to see accomplished is fully conforming CL compiling to javascript
+2013-03-24T21:46:00.000Z	DataLinkDroid	antonv	yes, me too :)
+2013-03-24T21:47:00.000Z	pjb	antonv	well, either you like to program computer, or you like to push people around.  I mean, statistically "either", it's conceivable to find people who like or can do both, but it's quite rare.
+2013-03-24T21:47:00.000Z	antonv	DataLinkDroid	whould you be ready to donate some money for such a project?
+2013-03-24T21:48:00.000Z	pjb	antonv	I'd work on a fully conforming CL implementation that is easily retargettable to anything.  I'd make versions run on bash, python, ruby, perl, javascript, C, C++, Java, etc. you get the drift.
+2013-03-24T21:48:00.000Z	antonv	pjb	I was thinking about that too
+2013-03-24T21:49:00.000Z	antonv		it would be probably useful to separate CL core and CL library
+2013-03-24T21:51:00.000Z	antonv		the core consisting of compiler supporting the 25 special operators, and other minimal funcionality necessary to bootstrap full CL. And CL library containing sequence, pretty-printer, conditions, CLOS, etc
+2013-03-24T21:51:00.000Z	antonv	ehu	told me that reader, packages and the 25 special operators are enough for the core
+2013-03-24T21:52:00.000Z	antonv		although, CL implementations already reuse each other code, so maybe formalization of CL core / CL library separation is not so important
+2013-03-24T21:53:00.000Z	wbooze		get-window-size ?
+2013-03-24T21:54:00.000Z	wakeup	antonv	I think there was a paper about defining CL circular, might be interesting for you.
+2013-03-24T21:54:00.000Z	wbooze		hmmm
+2013-03-24T21:55:00.000Z	wakeup	antonv	http://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CC8QFjAA&url=http%3A%2F%2Fciteseerx.ist.psu.edu%2Fviewdoc%2Fdownload%3Fdoi%3D10.1.1.46.9657%26rep%3Drep1%26type%3Dpdf&ei=BXZPUfSXC5C00QXljYHoBA&usg=AFQjCNGFP2JPz6x5LQAY5pwVxGeQ8YfpmA&bvm=bv.44158598,d.d2k&cad=rja
+2013-03-24T21:55:00.000Z	antonv	wakeup	thanks
+2013-03-24T21:55:00.000Z	wakeup		oops sorry
+2013-03-24T21:55:00.000Z	wakeup		link weird google link
+2013-03-24T21:55:00.000Z	wakeup		s/link/long
+2013-03-24T21:56:00.000Z	wakeup		but thats the paper, only about tdefining the special forms though...
+2013-03-24T21:57:00.000Z	wbooze		what would you use for the tranformation, transform-region* or transform-region/transform-rectangle ?
+2013-03-24T21:57:00.000Z	H4ns		there was this trick to make sbcl's build.sh believe that a failing contrib's test did not fail, does anyone remember?
+2013-03-24T21:57:00.000Z	antonv	wakeup	anyway, if starting a project for CL to JS, I am not going to accomplish it myself, it's better for someone experienced in implementing CL to accomplish this
+2013-03-24T22:11:00.000Z	pjb	antonv	for a core, you don't even need a full CL reader.  A much simplified reader without user definable reader macros and other options would be enough to read the CL implementation source.
+2013-03-24T22:11:00.000Z	dim	fe[nl]ix	per-cpu iowait
+2013-03-24T22:11:00.000Z	antonv	pjb	yes, I was thinking about this too
+2013-03-24T22:11:00.000Z	pjb		and otherwise, you can choose another set of primitives than the 25 special operators.
+2013-03-24T22:12:00.000Z	dim	fe[nl]ix	it's available in the /proc/stat file, but apparently you need to read the file twice and make a percentage from the diff in between the reading, or something like that, will run some tests tomorrow... I got the mpstat source code to check how it does the same thing
+2013-03-24T22:12:00.000Z	pjb		Some of them are trivially rewritten as macros, some of them are useless (eg. THE).
+2013-03-24T22:12:00.000Z	Bike		the is useless?
+2013-03-24T22:15:00.000Z	pjb	Bike	it only serves if you want type declarations. You can easily do without, so you can avoid them when writing your implementation.
+2013-03-24T22:16:00.000Z	Bike		mm...
+2013-03-24T22:17:00.000Z	antonv	pjb	we will also need some embedded functions, like cons, car, make-array (maybe in some limited form), aref, right?
+2013-03-24T22:18:00.000Z	antonv		enough to implment all other data structures
+2013-03-24T22:18:00.000Z	antonv	|3b|	we are talking about Core
+2013-03-24T22:19:00.000Z	antonv	|3b|	it would be a minimal set of functionality, allowing to write full CL
+2013-03-24T22:20:00.000Z	antonv	|3b|	so if we want to port CL to other platform, we rewrite Core and everything else just works
+2013-03-24T22:21:00.000Z	|3b|		does 'just works' include decent performance?
+2013-03-24T22:22:00.000Z	|3b|		if it does, you probably want to include math, multiple values, etc in your 'core'
+2013-03-24T22:23:00.000Z	antonv	|3b|	yes, decent performance is required
+2013-03-24T22:23:00.000Z	antonv	|3b|	probably
+2013-03-24T22:23:00.000Z	antonv	|3b|	very likely
+2013-03-24T22:25:00.000Z	antonv	|3b|	I don't think the Core should be absolutely minimal
+2013-03-24T22:27:00.000Z	antonv	|3b|	just make CL more modular, and package the things which are obviously may be implemented as a library, into reusable pieces
+2013-03-24T22:28:00.000Z	antonv		maybe Core should be of size of scheme
+2013-03-24T22:28:00.000Z	pjb		Decent performance can be provided by a compiler.  One that is configurable and can generate and optimize code according to a description of the target machine.
+2013-03-24T22:28:00.000Z	pjb		gcc contains stuff like that.
+2013-03-24T22:29:00.000Z	ehu	antonv	ecl employs that strategy.
+2013-03-24T22:29:00.000Z	|3b|		core the size of GCC sounds fun :p
+2013-03-24T22:30:00.000Z	antonv	ehu	that's why I suspect that the Core formally defined might be not so important, because implementations already do share reusable parts
+2013-03-24T22:35:00.000Z	antonv		If speak about Core, there is also Lisp dialect called Shen. It is implemented that way. There is a minimal core, called K-Lambda, containing 46 functions. Everything else is defined on top if it. This allows to bootstrap the language on top of many platforms: CL, Ruby, Javascript, etc.
+2013-03-24T22:35:00.000Z	antonv		K-Lambda description: http://www.shenlanguage.org/Documentation/shendoc.htm#Kl
+2013-03-24T22:37:00.000Z	pkhuong	antonv	how's performance?
+2013-03-24T22:38:00.000Z	antonv	pkhuong	I honestly don't know, I haven't used shen myself and not advocating it
+2013-03-24T22:39:00.000Z	antonv	pkhuong	on the other hand, I believe it is possible to achieve decent performance with this approach
+2013-03-24T22:40:00.000Z	antonv		in any case, If speak about CL, there are definetly parts for the spec, which are just library written in Lisp, so shaping these parts as library will not affect performance
+2013-03-24T22:41:00.000Z	|3b|		yeah, going the other direction (implementing bits of CL in some subset of CL) is easier
+2013-03-24T22:42:00.000Z	antonv		and only improve it if all sevaral implementations will reuse the library and join efforts in polishing it, instead of repeating each other's work defining cl:set-difference, cl:set-exclusive-or, cl:remove-if-not
+2013-03-24T22:42:00.000Z	pkhuong	antonv	for performance reasons, there's a lot of knowledge about these in SBCL's and CMUCML's compiler.
+2013-03-24T22:43:00.000Z	Bike		with remove-if-not you have imp-defined extensions like sequences
+2013-03-24T22:43:00.000Z	Bike	pkhuong	what is there for r-i-n in sbcl? I see a type deriver
+2013-03-24T22:43:00.000Z	antonv	Bike	if remove-if-not was a library function, then the extensions were portable
+2013-03-24T22:44:00.000Z	Bike		I mean, you could have one library that has r-i-n for vectors and lists, and one that does the extension, and they'd be incompatible.
+2013-03-24T22:44:00.000Z	|3b|		if the extensions were portable, then the library remove-if-not is extended, but other way around might not be true
+2013-03-24T22:44:00.000Z	|3b|		unless the entire type system is in the library too

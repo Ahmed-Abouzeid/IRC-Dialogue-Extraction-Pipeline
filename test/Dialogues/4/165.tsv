@@ -1,0 +1,24 @@
+2007-01-01T01:03:00.000Z	Jordan_U	phr34ck	What video card?
+2007-01-01T01:03:00.000Z	Jordan_U	phr34ck	Using fglrx?
+2007-01-01T01:04:00.000Z	phr34ck	Jordan_U	no idea.
+2007-01-01T01:04:00.000Z	Jordan_U		!ati
+2007-01-01T01:04:00.000Z	phr34ck		How can I check >?
+2007-01-01T01:04:00.000Z	Jordan_U	phr34ck	It is something you have to install yourself, so if you don't know you probably don't have the drivers :)
+2007-01-01T01:05:00.000Z	phr34ck		I downloaded the fglrx but it's .rpm file.
+2007-01-01T01:05:00.000Z	phr34ck		Should I use Alien to transform it to .deb file and install ?
+2007-01-01T01:05:00.000Z	Jordan_U	phr34ck	NO!
+2007-01-01T01:05:00.000Z	phr34ck		What am I suppose to do then >
+2007-01-01T01:05:00.000Z	phr34ck		?*
+2007-01-01T01:05:00.000Z	Jordan_U	phr34ck	It is available in the ubuntu repositories, use the instructions ubotu gave
+2007-01-01T01:07:00.000Z	phr34ck	Jordan_U	I think I downloaded it based on that webpage, if I remember correctly.
+2007-01-01T01:07:00.000Z	Jordan_U	phr34ck	Do you know what a package manager is ?
+2007-01-01T01:08:00.000Z	phr34ck		apt ?
+2007-01-01T01:08:00.000Z	Jordan_U	phr34ck	Yes.
+2007-01-01T01:09:00.000Z	Jordan_U	phr34ck	Ok, I am just confused how you got a .rpm file?
+2007-01-01T01:09:00.000Z	phr34ck	Jordan_U	from ati.com
+2007-01-01T01:09:00.000Z	phr34ck		They said it's the Linux driver.
+2007-01-01T01:10:00.000Z	Jordan_U	phr34ck	Ahh, try the ones from apt first, they install automatically and have a .deb ( using alien can mess things up )
+2007-01-01T01:12:00.000Z	Jordan_U	phr34ck	In debian based systems you generally don't want to install things manually, and IMHO you probably won't learn much from it.
+2007-01-01T01:13:00.000Z	phr34ck	Jordan_U	at least I should understand how it works .. don't you think ?
+2007-01-01T01:14:00.000Z	phr34ck		what's that?
+2007-01-01T01:14:00.000Z	Jordan_U	phr34ck	You would probably learn more reading the man pages ( again just my opinion ) I can find a good tutorial for doing it manually though if you still want to.

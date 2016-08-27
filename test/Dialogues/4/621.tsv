@@ -1,0 +1,6 @@
+2007-01-01T01:10:00.000Z	awilcox		Okay I have problems, first of all it's 64-bit Kubuntu, I know 64-bit distros are bad so I've heard, but just I hope you will try to help me anyways.
+2007-01-01T01:10:00.000Z	awilcox		I screwed up the mount points, /tmp got the /home partition and /home got the /tmp partition
+2007-01-01T01:10:00.000Z	wasabi_	awilcox	They aren't bad if you stick to 100% free software.
+2007-01-01T01:11:00.000Z	awilcox		So I mounted them to different folders, cp -r'd everything on the /tmp partiton to /home2 (the real /home parition) and rebooted
+2007-01-01T01:11:00.000Z	awilcox		now it works, obviously, in command prompt mode
+2007-01-01T01:11:00.000Z	awilcox		but in graphics mode, when I type the password, the screen goes black and then it brings me back to the password prompt

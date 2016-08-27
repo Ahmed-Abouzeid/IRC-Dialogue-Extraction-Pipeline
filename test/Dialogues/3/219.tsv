@@ -1,0 +1,4 @@
+2007-01-01T01:10:00.000Z	awilcox		Okay I have problems, first of all it's 64-bit Kubuntu, I know 64-bit distros are bad so I've heard, but just I hope you will try to help me anyways.
+2007-01-01T01:10:00.000Z	MasterShrek	awilcox	64 distros are awesome
+2007-01-01T01:11:00.000Z	MasterShrek	awilcox	look at /etc/fstab
+2007-01-01T01:12:00.000Z	awilcox	MasterShrek	yeah I already messed with that, and I got it to mount properly

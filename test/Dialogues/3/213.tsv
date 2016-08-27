@@ -1,0 +1,18 @@
+2007-01-01T02:17:00.000Z	auTONYmous	awilcox	what does sudo mount give you?
+2007-01-01T02:17:00.000Z	awilcox	auTONYmous	sudo mount or just mount?
+2007-01-01T02:17:00.000Z	auTONYmous		either (I'm just paranoid)
+2007-01-01T02:19:00.000Z	awilcox	auTONYmous	output of mount?  or just relevant partitions?
+2007-01-01T02:19:00.000Z	auTONYmous		relevant...ensuring they match fstab
+2007-01-01T02:19:00.000Z	awilcox	auTONYmous	okay /dev/hda7 was /home, that should have been /tmp but I didn't set up the mount point during install, and I put /home there by accident
+2007-01-01T02:20:00.000Z	auTONYmous		have you switched it?
+2007-01-01T02:21:00.000Z	awilcox	auTONYmous	asc, arrenlex: so what I did was I formatted /dev/hda8 with mke2fs -j then mounted /dev/hda8 (which SHOULD have been /home) to /home2, then cp -r'd /home/jwilcox /home2, then umounted /dev/hda7, then umounted /dev/hda8 and remounted to /home, then changed /etc/fstab
+2007-01-01T02:21:00.000Z	auTONYmous	awilcox	what's the intended mount point for /home?
+2007-01-01T02:21:00.000Z	awilcox	auTONYmous	/dev/hda8 which is mounted as /home
+2007-01-01T02:26:00.000Z	auTONYmous	awilcox	can you reboot in single user mode:
+2007-01-01T02:26:00.000Z	awilcox	auTONYmous	yes but do what
+2007-01-01T02:28:00.000Z	auTONYmous	awilcox	On startup, pick the Recovery Mode kernel from the Grub list
+2007-01-01T02:28:00.000Z	awilcox	auTONYmous	yes I know HOW, I just don't know WHY...what do I DO with it?
+2007-01-01T02:29:00.000Z	auTONYmous		you'll be in a user mode lower than X, which will help verify that the mount points are all okay. Once you exit, it will continue with multi-user mode boot from that point
+2007-01-01T02:29:00.000Z	awilcox	auTONYmous	FYI I'm not in X, this is irssi and I'm doing all these commands on tty1 (irssi on tty2)
+2007-01-01T02:30:00.000Z	auTONYmous		I figured that, but you're still in runlevel 5...multi-user with X.
+2007-01-01T02:31:00.000Z	awilcox	auTONYmous	will that REALLY make a difference with /etc/fstab though?!

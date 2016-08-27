@@ -1,0 +1,21 @@
+2007-01-01T05:17:00.000Z	amicrawler		how do i upgrade to edgy from dapper
+2007-01-01T05:17:00.000Z	amicrawler		i downloaded the dvd
+2007-01-01T05:18:00.000Z	amicrawler		and i don;t want to loose my home dir
+2007-01-01T05:18:00.000Z	mnoir	amicrawler	is home a sep partition?
+2007-01-01T05:18:00.000Z	amicrawler		don;t know
+2007-01-01T05:19:00.000Z	mnoir	amicrawler	in terminal type df -h and see if there is one line for /home
+2007-01-01T05:20:00.000Z	mnoir	amicrawler	method to save your home will be different depending on answer
+2007-01-01T05:20:00.000Z	amicrawler		amicrawler@amicrawler-desktop:~$ df -h
+2007-01-01T05:20:00.000Z	amicrawler		Filesystem            Size  Used Avail Use% Mounted on
+2007-01-01T05:20:00.000Z	amicrawler		/dev/hda1             112G   59G   48G  56% /
+2007-01-01T05:20:00.000Z	amicrawler		varrun                125M   96K  125M   1% /var/run
+2007-01-01T05:20:00.000Z	amicrawler		varlock               125M  4.0K  125M   1% /var/lock
+2007-01-01T05:20:00.000Z	amicrawler		udev                  125M  172K  125M   1% /dev
+2007-01-01T05:20:00.000Z	amicrawler		devshm                125M     0  125M   0% /dev/shm
+2007-01-01T05:20:00.000Z	amicrawler		amicrawler@amicrawler-desktop:~$
+2007-01-01T05:20:00.000Z	amicrawler		that is what i have
+2007-01-01T05:21:00.000Z	mnoir	amicrawler	downgrade from 6.10 to 6.06 is not common so it can be very time-consuming and tricky - reinstasll is usually faster
+2007-01-01T05:22:00.000Z	mnoir	amicrawler	but you weill need to back up home first if you do not want to lose
+2007-01-01T05:22:00.000Z	amicrawler		i have dapper want to goto edgy
+2007-01-01T05:23:00.000Z	amicrawler		i hvae the dvd in my drive now
+2007-01-01T05:23:00.000Z	mnoir	amicrawler	go to that link and follow nice directions

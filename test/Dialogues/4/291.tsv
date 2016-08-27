@@ -1,0 +1,14 @@
+2007-01-01T09:33:00.000Z	lufis		I'm running the Dapper livecd right now and I want to access some files on a local HD. The partitions on the hd show up in Nautilus but trying to open them doesn't work. I tried umount'ing them and that doesn't work either. Any ideas?
+2007-01-01T09:34:00.000Z	sladen	lufis	what does 'mount' show
+2007-01-01T09:34:00.000Z	lufis	sladen	Mount doesn't show that they're mounted at all, which is strange
+2007-01-01T09:34:00.000Z	sladen	lufis	if you unmonunted them, did you re-mount them
+2007-01-01T09:34:00.000Z	lufis	sladen	Umount won't work
+2007-01-01T09:34:00.000Z	sladen	lufis	what message does it give, what command did you type
+2007-01-01T09:35:00.000Z	sladen	lufis	umount means 'unmount' which means they are no longer accessible
+2007-01-01T09:35:00.000Z	lufis	sladen	Trying to open them in nautilus gives error: device /dev/hda1 is not removable, error: could not execute pmount
+2007-01-01T09:35:00.000Z	lufis	sladen	Right. I was going to unmount them and mount them manually to see if that would work
+2007-01-01T09:35:00.000Z	sladen	lufis	sudo mount ... then
+2007-01-01T09:36:00.000Z	lufis	sladen	Running mount gives: mount: /dev/hda already mounted or /home/ubuntu/Desktop/HD busy
+2007-01-01T09:36:00.000Z	sladen	lufis	mount | grep hda ?
+2007-01-01T09:36:00.000Z	lufis	sladen	Comes back with no text
+2007-01-01T09:40:00.000Z	lufis	sladen	Ahhh, it works now. I had to select a partition ;)

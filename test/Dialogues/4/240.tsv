@@ -1,0 +1,16 @@
+2007-01-01T10:43:00.000Z	sc4ttrbrain		i want to split HD partititon(resize and create new one),should i do it with gparted or within windows?which one is better?
+2007-01-01T10:44:00.000Z	jasin	sc4ttrbrain	do it with gparted
+2007-01-01T10:44:00.000Z	sc4ttrbrain	jasin	then when i reboot to windows,will it recognize the new partition?
+2007-01-01T10:45:00.000Z	jasin	sc4ttrbrain	get the gparted linux livecd, download the iso and burn it to a cd, boot with that and set up your partitions from there.
+2007-01-01T10:45:00.000Z	jasin	sc4ttrbrain	http://gparted.sourceforge.net/livecd.php
+2007-01-01T10:46:00.000Z	jasin	sc4ttrbrain	after their set up with that restart the system and boot into the ubuntu installer with your ubuntu cd
+2007-01-01T10:46:00.000Z	sc4ttrbrain	jasin	i have gparted installed, why should i use live cd? is there any other differeneces?
+2007-01-01T10:46:00.000Z	jasin	sc4ttrbrain	because you can setup the partitions outside of the ubuntu install cd
+2007-01-01T10:46:00.000Z	sc4ttrbrain	jasin	i ve running ubntu :D
+2007-01-01T10:46:00.000Z	jasin	sc4ttrbrain	if you are runing ubuntu why do you need to partition?
+2007-01-01T10:47:00.000Z	sc4ttrbrain	jasin	i ve 3 parttion windows,data,ubuntu, i want to split data into data and mac,because i will install mac on it
+2007-01-01T10:49:00.000Z	jasin	sc4ttrbrain	I never set up my partitions within linux, I like control over how their set up, I like to low level format, check for errors, setup separate partitions not outside of linux in case i run into error,etc.., but thats me.
+2007-01-01T10:49:00.000Z	sc4ttrbrain		BHSPitMonkey; im on pc
+2007-01-01T10:49:00.000Z	jasin	sc4ttrbrain	I never set up my partitions within linux, I like control over how their set up, I like to low level format, check for errors, setup separate partitions outside of linux in case i run into error,etc.., but thats me.
+2007-01-01T05:40:00.000Z	jasin		you do a rescue in recovery mode, use fsck
+2007-01-01T05:41:00.000Z	sc4ttrbrain	jasin	u were talking to me?

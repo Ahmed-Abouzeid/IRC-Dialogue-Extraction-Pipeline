@@ -1,0 +1,3 @@
+2007-01-01T05:40:00.000Z	rchf		anyone install Ubuntu on an Inspiron 9400?  I've got a video resolution problem?
+2007-01-01T05:40:00.000Z	n1gke	rchf	I didn't, but what is the trouble ?
+2007-01-01T05:42:00.000Z	rchf	n1gke	I have installed and the resolution only come up at 1048x768.  I have followed the FAQ and altered xorg.conf to even eliminate that option and the darn screen and the options and the gui remain in 1048x768.  I'm stuck.

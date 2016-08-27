@@ -1,0 +1,45 @@
+2007-01-01T05:14:00.000Z	Core		no one works
+2007-01-01T05:15:00.000Z	adaptr	Core	no better than having one that doesn't work, then
+2007-01-01T05:19:00.000Z	Core		I have debian
+2007-01-01T05:20:00.000Z	adaptr	Core	nope, it's 2.6.15-27
+2007-01-01T05:21:00.000Z	Core		With Turbo Linux too, it seems
+2007-01-01T05:23:00.000Z	adaptr	Core	I know - I told you, and that's what I have running
+2007-01-01T05:24:00.000Z	adaptr	Core	and Edgy has 2.6.17, so you'll have to take a look at Feisty
+2007-01-01T05:26:00.000Z	Core	adaptr	Edgy? Feisty? Codenames?
+2007-01-01T05:27:00.000Z	adaptr	Core	yes
+2007-01-01T05:27:00.000Z	adaptr	Core	release names, actually - dapper was 6.06 (june 2006), edgy is current, 6.10 (october), feisty is next, due out in april or something
+2007-01-01T05:28:00.000Z	Core	adaptr	so 6.10 doesn't works yet???
+2007-01-01T05:28:00.000Z	adaptr	Core	of course it works - what do you mean ?
+2007-01-01T05:28:00.000Z	Core	adaptr	i have to wait the next release?
+2007-01-01T05:29:00.000Z	adaptr	Core	well, like I said, you can try Feisty now - but it is on serious beta
+2007-01-01T05:29:00.000Z	adaptr	Core	or try one of xtknight's kernels, if you;ve been paying attention at all
+2007-01-01T05:30:00.000Z	Core	adaptr	lord_ceiphas said kernel 2.6.17 doesn't works with JMICRON-PATA
+2007-01-01T05:31:00.000Z	adaptr	Core	no he did not - he said repeatedly that 2.6.17 does not work with the core 2 duo
+2007-01-01T05:31:00.000Z	Core	adaptr	and 6.10 has this kernel? right? or higher?
+2007-01-01T05:37:00.000Z	adaptr		!xfree86
+2007-01-01T05:37:00.000Z	Core		--- All People ---: my 6.06 stops after the main menu
+2007-01-01T05:37:00.000Z	adaptr	Core	what is the main menu?
+2007-01-01T05:38:00.000Z	adaptr	Core	the boot screen ? then boot it with the rescue option, so you can see what happens
+2007-01-01T05:39:00.000Z	Core	adaptr	the boot screen, yes
+2007-01-01T05:39:00.000Z	adaptr	Core	can you select the second boot option ? then do so
+2007-01-01T05:40:00.000Z	Core	adaptr	the second option? the same happens
+2007-01-01T05:40:00.000Z	adaptr	Core	then press e to edit the boot options, scroll to the kernel line, add single on the end, and press b to boot
+2007-01-01T05:41:00.000Z	Core	adaptr	wow, secret option! i did not knew this
+2007-01-01T05:41:00.000Z	adaptr	Core	nothing secret about it; man bootparams
+2007-01-01T05:42:00.000Z	Core	adaptr	even this is secret
+2007-01-01T05:42:00.000Z	adaptr	Core	sure, if you like
+2007-01-01T05:42:00.000Z	Core	adaptr	the help of menu does not works fully
+2007-01-01T05:42:00.000Z	adaptr	Core	sorry, that doesn't parse
+2007-01-01T05:43:00.000Z	Core	adaptr	some Fx keys does not work
+2007-01-01T05:43:00.000Z	Core	adaptr	thanks guy
+2007-01-01T05:43:00.000Z	adaptr	Core	np
+2007-01-01T05:43:00.000Z	Core	adaptr	i'll do that
+2007-01-01T05:43:00.000Z	Core	adaptr	and hope to talk again with you from Ubuntu, not Kurumim
+2007-01-01T05:44:00.000Z	adaptr	Core	best of luck then!
+2007-01-01T05:44:00.000Z	Core		--- All People ----: thanks, I'll be back to tell what happened. stay around!
+2007-01-01T06:38:00.000Z	Core	adaptr	HELLO GUY
+2007-01-01T06:38:00.000Z	Core	adaptr	remember me?
+2007-01-01T06:38:00.000Z	adaptr	Core	hiya
+2007-01-01T06:40:00.000Z	Core	adaptr	disabling USB doesn't works :(
+2007-01-01T06:41:00.000Z	Core	adaptr	the same happens
+2007-01-01T06:41:00.000Z	adaptr	Core	no idea what you mean, I think you're confusing me

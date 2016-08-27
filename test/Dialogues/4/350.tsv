@@ -1,0 +1,11 @@
+2007-01-01T02:03:00.000Z	auTONYmous	superkirbyartist	It depends if you have an ATI or Nvidia card...
+2007-01-01T02:03:00.000Z	superkirbyartist	auTONYmous	Nvidia.  Drivers are installed.
+2007-01-01T02:03:00.000Z	auTONYmous		check the Beryl wiki...
+2007-01-01T02:03:00.000Z	superkirbyartist	auTONYmous	How do I load the AIGLX instead of XGL.
+2007-01-01T02:04:00.000Z	auTONYmous		http://wiki.beryl-project.org/wiki/Troubleshooting_AIGLX
+2007-01-01T02:06:00.000Z	superkirbyartist	auTONYmous	I don't know how to load AIGLX.
+2007-01-01T02:07:00.000Z	superkirbyartist		autonymous I don't know what to do to load AIGLX.
+2007-01-01T02:07:00.000Z	auTONYmous	superkirbyartist	It's enabled by default, but you need to remove all your XGL references
+2007-01-01T02:08:00.000Z	superkirbyartist	auTONYmous	How do you do that?  If I do that, will I see AIGLX in my Sessions list?
+2007-01-01T02:09:00.000Z	auTONYmous	superkirbyartist	Nope. You'll just get a standard session. The only way to know is if Beryl Works.
+2007-01-01T02:10:00.000Z	auTONYmous	superkirbyartist	AIGLX is built into Xorg. XGL is the only one run as a separate session (basically a secondary X server running atop the primary)

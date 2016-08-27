@@ -1,0 +1,17 @@
+Name
+Last modified
+Size
+Description
+Parent Directory
+Google Search
+Search
+Today
+Channels
+#perl6 index
+#koha index
+ilbot
+Imprint
+Moritz Lenz
+Enable summary mode
+Turn on filtering by nick
+#wikimedia-traffic.tar.gz

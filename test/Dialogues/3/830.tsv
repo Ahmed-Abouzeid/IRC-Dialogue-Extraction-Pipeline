@@ -1,0 +1,8 @@
+2007-01-01T02:00:00.000Z	arrenlex	marelo	lspci | grep Display
+2007-01-01T02:02:00.000Z	marelo	arrenlex	awilcox: kitche: Display controller: Intel Corporation Mobile 915GM/GMS/910GML Express Graphics Controller (rev 04)
+2007-01-01T08:16:00.000Z	marelo	arrenlex	I'm back...
+2007-01-01T08:17:00.000Z	marelo	arrenlex	I installed a DRI driver from freedesktop site, the last i915 one, but no success either
+2007-01-01T08:21:00.000Z	marelo	arrenlex	you didn't forget about me, did you? O:)
+2007-01-01T08:23:00.000Z	arrenlex	marelo	I don't know; everything checks out. I think you should sudo dpkg-reconfigure xserver-xorg as someone has previously suggested and recreate your conf. Dunno if that will help, though. Sorry... good luck.
+2007-01-01T08:23:00.000Z	arrenlex		!who | l33t
+2007-01-01T08:24:00.000Z	marelo	arrenlex	see?!?! i told you!! grrrrrr

@@ -1,0 +1,16 @@
+2007-01-01T10:28:00.000Z	jerp		aptitude gives me the 'can not get lock' response I've checked the sysguard and I don't see anything running.    adept isn't running, synaptic isn't installed
+2007-01-01T10:28:00.000Z	byp	jerp	root?
+2007-01-01T10:28:00.000Z	jerp		like sudo aptitude ?
+2007-01-01T10:28:00.000Z	byp		aye
+2007-01-01T10:29:00.000Z	jerp	byp	yes, and the terminal display appears and that is where I get the warning
+2007-01-01T10:31:00.000Z	jerp		I ran adept just now and  get,
+2007-01-01T10:31:00.000Z	jerp		You will not be able to change your system settings in any way (install, remove or upgrade software), because another process is using the packaging system database (probably some other Adept application or apt-get or aptitude). Please close the other application before using this one.
+2007-01-01T10:31:00.000Z	jerp		the application opens though
+2007-01-01T10:33:00.000Z	byp	jerp	hmm,  not sure - check ps and look for anything that might be using the database
+2007-01-01T10:34:00.000Z	byp	jerp	ou might want to pipe it through less...
+2007-01-01T10:34:00.000Z	jerp	byp	I don't know what that means   (I carry newb credentials)
+2007-01-01T10:35:00.000Z	byp	jerp	ps -A | less
+2007-01-01T10:35:00.000Z	byp	jerp	then look for anything that might be using the so-called software database like synaptic, apt-get, aptitude, dpkg, whatever else
+2007-01-01T10:38:00.000Z	byp	jerp	sudo killall aptitude
+2007-01-01T10:40:00.000Z	jerp	byp	I guess I'm cleared now :)
+2007-01-01T10:40:00.000Z	byp	jerp	good luck :)

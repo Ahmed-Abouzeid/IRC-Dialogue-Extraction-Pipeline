@@ -1,0 +1,5 @@
+2007-01-01T07:11:00.000Z	rye78		WHy can't I su - in terminal in ubuntu?
+2007-01-01T07:11:00.000Z	rye78		I ahve to type sudo all the damn time
+2007-01-01T07:11:00.000Z	rye78		It's annoying
+2007-01-01T07:11:00.000Z	xtknight	rye78	su is disabled in ubuntu.  `sudo -H -s` is the equivalent to `su`
+2007-01-01T07:11:00.000Z	rye78		oh

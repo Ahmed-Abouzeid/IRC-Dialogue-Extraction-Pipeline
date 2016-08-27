@@ -1,0 +1,4 @@
+2007-01-01T03:43:00.000Z	dmc_		How would i go about installing KDE?
+2007-01-01T03:43:00.000Z	awilcox	dmc_	sudo apt-get install kubuntu-desktop
+2007-01-01T03:44:00.000Z	dmc_		wouldnt it be easier to just install the kde package?
+2007-01-01T03:44:00.000Z	awilcox	dmc_	Kubuntu means happiness, and Ubuntu means like humanity or something like that

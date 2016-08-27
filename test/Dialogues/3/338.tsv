@@ -1,0 +1,51 @@
+2007-01-01T02:41:00.000Z	dom_		i was really hoping to get this resolved right now though
+2007-01-01T02:41:00.000Z	auTONYmous	dom_	does the card show up at all?
+2007-01-01T02:42:00.000Z	auTONYmous		hmm...
+2007-01-01T02:42:00.000Z	auTONYmous		what's iwconfig give you?
+2007-01-01T02:42:00.000Z	dom_		shows the ESSID and the mac of the AP (that's how i know i'm connected)
+2007-01-01T02:43:00.000Z	auTONYmous	dom_	do you have link quality and bit rate???
+2007-01-01T02:43:00.000Z	dom_		link quality = 52/94 and bit rate = 54mb/s
+2007-01-01T02:43:00.000Z	auTONYmous	dom_	and ifconfig gives you an IP address?
+2007-01-01T02:44:00.000Z	dom_		i'm on my laptop right now
+2007-01-01T02:45:00.000Z	auTONYmous	dom_	dhcp or static?
+2007-01-01T02:46:00.000Z	dom_		actually, i've tried both... dhcp right now
+2007-01-01T02:46:00.000Z	auTONYmous	dom_	any other computers on that router?
+2007-01-01T02:46:00.000Z	dom_		+ dhcp
+2007-01-01T02:47:00.000Z	auTONYmous	dom_	did you lock down the router config? (I.E. MAC filtering or something?)
+2007-01-01T02:49:00.000Z	auTONYmous	dom_	turn off the blacklisting for a minute and see if that helps
+2007-01-01T02:49:00.000Z	dom_	auTONYmous	tried it earlier
+2007-01-01T02:49:00.000Z	auTONYmous		no luck?
+2007-01-01T02:49:00.000Z	dom_	auTONYmous	nope
+2007-01-01T02:49:00.000Z	auTONYmous		using WEP or WPA?
+2007-01-01T02:50:00.000Z	auTONYmous		OHHH....
+2007-01-01T02:50:00.000Z	dom_	auTONYmous	i don't think it's a router problem, as i can connect my laptop fine, i can connect my desktop fine in freespire, and right now, i can't even ping 127.0.0.1
+2007-01-01T02:50:00.000Z	auTONYmous	dom_	get Network Manager...
+2007-01-01T02:50:00.000Z	dom_	auTONYmous	got it
+2007-01-01T02:50:00.000Z	auTONYmous		.0.6.3?
+2007-01-01T02:50:00.000Z	auTONYmous		(version number)
+2007-01-01T02:50:00.000Z	dom_	auTONYmous	i've tried configuring w/ the gui, configuring from command line... nothing helps...
+2007-01-01T02:52:00.000Z	auTONYmous	dom_	well, if you're getting and IP assigned, then you're getting past WEP and MAC filtering...
+2007-01-01T02:52:00.000Z	dom_	auTONYmous	...right...
+2007-01-01T02:53:00.000Z	auTONYmous	dom_	and nm-applet is showing connected?
+2007-01-01T02:53:00.000Z	dom_		yup
+2007-01-01T02:53:00.000Z	auTONYmous	dom_	ping your own IP
+2007-01-01T02:53:00.000Z	dom_		can't
+2007-01-01T02:54:00.000Z	dom_	auTONYmous	100% packet loss
+2007-01-01T02:55:00.000Z	dom_	auTONYmous	when i ping localhost -> ping: sendmsg: Operation not permitted
+2007-01-01T02:55:00.000Z	auTONYmous	dom_	never seen THAT before...
+2007-01-01T02:55:00.000Z	dom_	auTONYmous	i know, right? it's insane....
+2007-01-01T02:56:00.000Z	dom_	auTONYmous	i'd chalk it up to a hardware issue... except that it works perfectly in freespire
+2007-01-01T02:56:00.000Z	auTONYmous	dom_	are you using some firewalling?
+2007-01-01T02:56:00.000Z	dom_		iptables is installed but i have no rules setup
+2007-01-01T02:57:00.000Z	auTONYmous	dom_	I assume you're PLANNING to use it...
+2007-01-01T02:57:00.000Z	dom_	auTONYmous	and if i setup eth0 (the hardline) i can ping around and do whatever
+2007-01-01T02:58:00.000Z	auTONYmous	dom_	stumper...truly
+2007-01-01T02:58:00.000Z	dom_	auTONYmous	damnit
+2007-01-01T02:59:00.000Z	auTONYmous	dom_	hang on...
+2007-01-01T02:59:00.000Z	dom_	auTONYmous	i even tried deleting /etc/networking/interfaces and /etc/resolv.conf in an effort to start fresh
+2007-01-01T03:01:00.000Z	auTONYmous	dom_	try this:
+2007-01-01T03:01:00.000Z	auTONYmous		http://www.linuxquestions.org/questions/showthread.php?t=356487
+2007-01-01T03:06:00.000Z	dom_	auTONYmous	no dice
+2007-01-01T03:06:00.000Z	dom_	auTONYmous	deleted EVERY rule, still no ping action
+2007-01-01T03:13:00.000Z	dom_	auTONYmous	did you leave and now come back with an idea?
+2007-01-01T03:13:00.000Z	auTONYmous	dom_	pm

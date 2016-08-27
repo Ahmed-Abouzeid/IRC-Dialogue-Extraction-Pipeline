@@ -1,0 +1,32 @@
+2007-01-01T02:36:00.000Z	hexidigital		fotoflo_::  what about httpd?
+2007-01-01T02:37:00.000Z	fotoflo_	hexidigital	thats what i mean ps -A |grep httpd comes up empty
+2007-01-01T02:37:00.000Z	hexidigital		fotoflo_::  did you just finishing installing?
+2007-01-01T02:38:00.000Z	hexidigital		kitsune1::  sorry, i assumed ubuntu was already installed... i dont know if dl-ing, then installing will work
+2007-01-01T02:38:00.000Z	fotoflo_	hexidigital	well, ive just installed it
+2007-01-01T02:38:00.000Z	hexidigital		fotoflo_::  i mean, did you just install apache?
+2007-01-01T02:38:00.000Z	hexidigital		fotoflo_::  try sudo /etc/init.d/apache2 start (or just apache, depending on version)
+2007-01-01T02:39:00.000Z	fotoflo_	hexidigital	but its running
+2007-01-01T02:40:00.000Z	hexidigital		kitsune1::  that is real wierd... newer video card, i assume?
+2007-01-01T02:41:00.000Z	fotoflo_	hexidigital	same thing, but i got an error on reload
+2007-01-01T02:42:00.000Z	hexidigital		fotoflo_::  what error? about fully qualified domain name, using 127.0.0.1?
+2007-01-01T02:42:00.000Z	fotoflo_	hexidigital	server is still up but still no process
+2007-01-01T02:45:00.000Z	hexidigital		fotoflo_::  ps -A | grep apache
+2007-01-01T02:46:00.000Z	fotoflo_	hexidigital	oh there it is heh
+2007-01-01T02:47:00.000Z	hexidigital		kitsune1::  sorry :(
+2007-01-01T02:48:00.000Z	fotoflo_	hexidigital	found it
+2007-01-01T02:48:00.000Z	fotoflo_		found it all
+2007-01-01T02:49:00.000Z	fotoflo_		excellent thansk
+2007-01-01T02:49:00.000Z	hexidigital		kitsune1::  if you are not pressed on time, you could download the server .iso, and when that finishes installing (and if you can see your screen), you can sudo aptitude install ubuntu-desktop && sudo aptitude install nvidia-{your driver}
+2007-01-01T02:49:00.000Z	hexidigital		fotoflo_::  :) glad to help
+2007-01-01T02:51:00.000Z	hexidigital		kitsune1::  heh.. being a n00b is what makes learning fun :)
+2007-01-01T02:51:00.000Z	fotoflo_		I just want to say that this channel is great! i went into another linux channel recently and someone told me to to dd /dev/zero /dev/hda
+2007-01-01T02:51:00.000Z	fotoflo_		everyone is so helpful here, really sweet
+2007-01-01T02:51:00.000Z	fotoflo_		no of course not
+2007-01-01T02:59:00.000Z	hexidigital		linuxeatswindows::  heh... i hate when i wake up before my fingers
+2007-01-01T02:59:00.000Z	fotoflo_	hexidigital	mkbeer /usr/fridge
+2007-01-01T03:00:00.000Z	hexidigital		fotoflo_::  ./configure beer && make drink && make drink consume
+2007-01-01T03:00:00.000Z	fotoflo_		if it were only that easy
+2007-01-01T03:02:00.000Z	fotoflo_	hexidigital	hey what was that url you sent me a little while ago? it had alot of useful stuff on it
+2007-01-01T03:03:00.000Z	hexidigital		fotoflo_::  url for what? (i dont remember)
+2007-01-01T03:03:00.000Z	fotoflo_		it was like how to do a million things in ubuntu
+2007-01-01T03:03:00.000Z	fotoflo_		maybe it was someone else who sent it to me

@@ -1,0 +1,4 @@
+2007-01-01T11:26:00.000Z	kamui		right now I haev /dev/sda1       /media/BACKUP   auto    user,auto       0       0
+2007-01-01T11:27:00.000Z	alecjw	kamui	if it's jujst the filesystem name that you nned to know, it's vfat
+2007-01-01T11:27:00.000Z	kamui		nwe: umask=666?
+2007-01-01T11:28:00.000Z	alecjw	kamui	it allows anyone to mount/unmount it. to allow anyone to write it, sudo chmod -hR 777 <mountPoint>
