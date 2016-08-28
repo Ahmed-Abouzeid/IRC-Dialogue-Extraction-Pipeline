@@ -9,7 +9,7 @@
  
 - dialogue.py (extract one-one dialogues for each pair of users in logs)
 
-### Run setup.py To Be Able To Use The Above Scripts From Other Modules ###
+### Run setup.py To Be Able To Use And Reference The Above Scripts As A Package Modules ###
 
 ### For Testing Purposes, Below Are Unit-Test & Verification Modules Located In /test ###
 
