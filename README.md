@@ -9,7 +9,7 @@
  
 - dialogue.py (extract one-one dialogues for each pair of users in logs)
 
-The Three Components Are Interfacing With Each Other Via Their Generated Outputs, The Crawler Will Download Files That Can Be Passed As An Argument To The rawirc.py Then These Files Will Be Cleaned And Passed As Another Argument To dialogue.py Which Will Apply The Dialogue Extraction Algorithms And Generate The Dialogues Data-Set 
+The three components are interfacing with each others via their generated outputs, the trawler will download files that can be passed as an argument to the rawirc.py then these files will be cleaned and passed as another argument to dialogue.py which will apply the dialogue extraction algorithms and generate the dialogues data-set 
 
 ### Run setup.py To Be Able To Use And Reference The Above Scripts As A Package Modules ###
 
