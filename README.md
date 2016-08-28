@@ -64,8 +64,9 @@ python dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialo
 python dialogue.py -only_stats yes -extracted_dialogues_path 'path_to/dialogues'
 ```
 ### How To Use The Test Scripts? ###
-The Test Scripts Require Some Mock Data Located in /test Directory, The Paths To These Data Already Configured In The Script, Do Not Change The Hierarchy Of The Mock Data Unless You Will Change It In The Scripts As Well 
-Go To /test Then Run The Below:
+The Test Scripts Require Some Mock Data Located in /test Directory, The Paths To These Data Already Configured In The Script, Do Not Change The Hierarchy Of The Mock Data Unless You Will Change It In The Scripts As Well.
+ 
+To Use, Go To /test Then Run The Below:
 ####test_dialogue.py####
 ```python
 python test_dialogue.py
