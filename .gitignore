@@ -91,6 +91,8 @@ test/Dialogues/
 test/additional.txt
 test/matches.txt
 test/missing.txt
+test/dialogue_b.txt
+test/dialogue_a.txt
 
 # Spyder project settings
 .spyderproject
