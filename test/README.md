@@ -3,7 +3,7 @@
 
 ##test_rawirc.py##
  
- - ####[irc]_correct_cln#### : the post conditions that should be met when running the clean function in the module, generated files will be compared with these files
+ - [irc]_correct_cln : the post conditions that should be met when running the clean function in the module, generated files will be compared with these files
  
  - [irc]_correct_rcp : the post conditions that should be met when running the createRecipient function in the module, generated files will be compared with these files
  
