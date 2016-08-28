@@ -24,7 +24,7 @@
  
  - rest of mocks are hand-crafted in the script itself since they are simple mocks.
  
-###compare_dialogue.py### 
+###compare_dialogue.py###
 
 you just need two already existed dialogues and to set their paths in the script then all will be handled by the script.
 
