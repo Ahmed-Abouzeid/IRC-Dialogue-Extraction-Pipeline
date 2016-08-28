@@ -88,6 +88,9 @@ ENV/
 
 # TEST DATA
 test/Dialogues/
+test/additional.txt
+test/matches.txt
+test/missing.txt
 
 # Spyder project settings
 .spyderproject
