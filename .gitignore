@@ -86,6 +86,9 @@ ENV/
 # IDE
 .idea/
 
+# TEST DATA
+test/Dialogues/
+
 # Spyder project settings
 .spyderproject
 
