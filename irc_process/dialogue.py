@@ -584,21 +584,22 @@ class Dialogue(object):
         filled_holes = 0
         for seg_index in seg_indices:
             if len(non_addressed_msg_p) != 0:
-                for outer_sender in users_addressed_recipients_p:
-                    for recipient in users_addressed_recipients_p[outer_sender]:
+                for current_sender in users_addressed_recipients_p:
+                    for recipient in users_addressed_recipients_p[current_sender]:
                         if recipient != '':
                             as_sender_chat_count += 1
-                    for inner_sender in users_addressed_recipients_p:
-                        for recipient_ in users_addressed_recipients_p[inner_sender]:
-                            if recipient_ == inner_sender:
+                    for other_sender in users_addressed_recipients_p:
+                        for recipient_ in users_addressed_recipients_p[other_sender]:
+                            if recipient_ == current_sender:
                                 as_recipient_chat_count += 1
                     if as_sender_chat_count <= 1 and as_recipient_chat_count <= 1:
                         filled_holes_counts = Dialogue.fill_hole(non_addressed_msg_p,
                                                                  day_index_p, seg_index,
-                                                                 outer_sender, holes)
+                                                                 current_sender, holes)
                         filled_holes += filled_holes_counts
-                    as_sender_chat_count = 0
 
+                    as_sender_chat_count = 0
+                    as_recipient_chat_count = 0
         return filled_holes
 
     @staticmethod
@@ -618,7 +619,6 @@ class Dialogue(object):
             msg_date_time = str.decode(msg[2], 'utf-8')
             msg_sender = str.decode(msg[3], 'utf-8')
             msg_utterance = str.decode(msg[5], 'utf-8')
-
             for sender in senders:
                 sender = sender[0]
                 if sender == msg_sender:
