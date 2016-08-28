@@ -12,14 +12,14 @@ CURSOR = CONN.cursor()
 
 CURSOR.execute('create table Dialogue_aInfo '
                '(file_name text ,sender_usr text, recipient_usr text)')
-CURSOR.execute('CREATE INDEX McGillsender_index ON McGillDialogueInfo '
+CURSOR.execute('CREATE INDEX dia_a_sender_index ON Dialogue_aInfo '
                '(sender_usr)')
-CURSOR.execute('CREATE INDEX McGillrecipient_index ON McGillDialogueInfo '
+CURSOR.execute('CREATE INDEX dia_a_recipient_index ON Dialogue_aInfo '
                '(recipient_usr)')
-CURSOR.execute('create table MineDialogueInfo (file_name text ,sender_usr text,'
+CURSOR.execute('create table Dialogue_bInfo (file_name text ,sender_usr text,'
                ' recipient_usr text)')
-CURSOR.execute('CREATE INDEX Minesender_index ON MineDialogueInfo (sender_usr)')
-CURSOR.execute('CREATE INDEX Minerecipient_index ON MineDialogueInfo (recipient_usr)')
+CURSOR.execute('CREATE INDEX dia_b_sender_index ON Dialogue_bInfo (sender_usr)')
+CURSOR.execute('CREATE INDEX dia_b_recipient_index ON Dialogue_bInfo (recipient_usr)')
 
 DIA_A_PATH = '/users/ahmed/desktop/mcgill_dialogues'
 DIA_B_PATH = '/users/ahmed/desktop/dialogues'
@@ -33,11 +33,11 @@ def load_dialogue_info():
     bar_ = Bar('Processing {} Folder(s).'.format(len(folders)), max=len(folders))
     for folder_ in folders:
         if not folder_.startswith('.'):
-            files = os.listdir(DIA_A_PATH + folder_)
+            files = os.listdir(DIA_A_PATH.rstrip('/') + '/' + folder_)
             for file_ in files:
                 users = []
                 if not file_.startswith('.'):
-                    with open(DIA_A_PATH + folder_ + '/' + file_) as opener:
+                    with open(DIA_A_PATH.rstrip('/') + '/' + folder_ + '/' + file_) as opener:
                         lines = opener.readlines()
                         for line in lines:
                             sender = line.split('\t')[1]
@@ -68,11 +68,11 @@ def load_dialogue_info():
     bar_ = Bar('Processing {} Folder(s).'.format(len(folders)), max=len(folders))
     for folder_ in folders:
         if not folder_.startswith('.'):
-            files = os.listdir(DIA_B_PATH + folder_)
+            files = os.listdir(DIA_B_PATH.rstrip('/') + '/' + folder_)
             for file_ in files:
                 users = []
                 if not file_.startswith('.'):
-                    with open(DIA_B_PATH + folder_ + '/' + file_) as opener:
+                    with open(DIA_B_PATH.rstrip('/') + '/' + folder_ + '/' + file_) as opener:
                         lines = opener.readlines()
                         for line in lines:
                             sender = line.split('\t')[1]
