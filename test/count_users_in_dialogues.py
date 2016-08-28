@@ -3,7 +3,7 @@
 import os
 from progress.bar import Bar
 
-DIA_PATH = '/Users/ahmed/desktop/mcgill_dialogues/'
+DIA_PATH = '/Users/ahmed/desktop/dialogues/'
 FILE_LIST = []
 FOLDERS = os.listdir(DIA_PATH)
 bar_ = Bar('Counting Number of Users In Each Dialogue. Processing {} Folder(s)'

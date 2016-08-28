@@ -21,8 +21,8 @@ CURSOR.execute('create table MineDialogueInfo (file_name text ,sender_usr text,'
 CURSOR.execute('CREATE INDEX Minesender_index ON MineDialogueInfo (sender_usr)')
 CURSOR.execute('CREATE INDEX Minerecipient_index ON MineDialogueInfo (recipient_usr)')
 
-DIA_A_PATH = ''
-DIA_B_PATH = ''
+DIA_A_PATH = '/users/ahmed/desktop/mcgill_dialogues'
+DIA_B_PATH = '/users/ahmed/desktop/dialogues'
 
 
 def load_dialogue_info():

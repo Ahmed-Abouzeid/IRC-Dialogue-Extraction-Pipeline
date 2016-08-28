@@ -7,6 +7,7 @@ import sys
 import logging
 import argparse
 import time
+import re
 import enchant
 import nltk.tokenize
 from nltk import FreqDist
@@ -430,9 +431,10 @@ class Dialogue(object):
 
     @staticmethod
     def __load_dialogues(segmented_dialogues_counter, dialogue_full_path):
-        """Loading Dialogue(s) Into Database so the statistical information called by
-         the calculate_statistics function will be easily and fast fetched"""
-        bar_ = Bar('Loading {} Dialogue(s) Into Database'.format(segmented_dialogues_counter),
+        """Loading Dialogue(s) Information Into Database so the statistical information
+         called by the calculate_statistics function will be easily and fast fetched"""
+        bar_ = Bar('Loading {} Dialogue(s) Information Into Database'
+                   .format(segmented_dialogues_counter),
                    max=segmented_dialogues_counter)
 
         assert os.path.exists(dialogue_full_path), 'NO DIALOGUES FOUND TO GET STATISTICS' \
@@ -448,7 +450,7 @@ class Dialogue(object):
                                 as opener:
                             lines = opener.readlines()
                             for line in lines:
-                                utterance = str.decode(line[3], 'utf-8')
+                                utterance = str.decode(line.split('\t')[3], 'utf-8')
                                 file_id = str.decode(folder_ + '/' + file_, 'utf-8')
                                 save_utterance(file_id, utterance)
                         bar_.next()
@@ -467,6 +469,7 @@ class Dialogue(object):
         Dialogue.__load_dialogues(segmented_dialogues_counter, dialogue_full_path)
         stopwords = nltk.corpus.stopwords.words('english')
         colloquial_counter = 0
+        nstop_words_counter = 0
         words_counter = 0
         all_utterances = []
         bar_ = Bar('Calculating Statistics Over All {} Dialogue(s)'
@@ -484,17 +487,16 @@ class Dialogue(object):
                             all_utterances.append(text_[0])
                             utterance_words = 0
                             if text_[0] != '':
-                                for word_ in text_[0].split(' '):
-
+                                for word_ in re.split("[, \-!?;.]", text_[0]):
                                     word_ = word_.strip().strip('.').strip(',').strip("'")\
                                         .strip(':').strip(';').strip('_').strip('-').strip()\
                                         .strip('!').strip('?')
 
                                     if len(word_) > 0:
                                         if not stem(word_.lower()) in stopwords:
-                                            words_counter += 1
+                                            nstop_words_counter += 1
                                             utterance_words += 1
-
+                                        words_counter += 1
                                         if not DICT.check(word_):
                                             colloquial_counter += 1
                         bar_.next()
@@ -505,12 +507,14 @@ class Dialogue(object):
         get_db_statistics()
         db_stats = get_db_statistics()
         Dialogue.__write_statistics(start_time, segmented_dialogues_counter, all_utterances,
-                                    words_counter, colloquial_counter, db_stats)
+                                    nstop_words_counter, words_counter, colloquial_counter,
+                                    db_stats)
         logging.info('Calculating Statistics Finished')
 
     @staticmethod
     def __write_statistics(start_time, segmented_dialogues_counter, all_utterances,
-                           words_counter, colloquial_counter, db_stats):
+                           nstop_words_counter, words_counter, colloquial_counter,
+                           db_stats):
         """write statistical figures"""
         min_turn_value = db_stats[0]
         max_turn_value = db_stats[1]
@@ -526,10 +530,10 @@ class Dialogue(object):
         print '-----------------------------------------------------------------------------\n'
         print ' - Num Of One-One Dialogue(s): {}'.format(segmented_dialogues_counter)
         print ' - Num Of Utterances: {}'.format(len(all_utterances))
-        print ' - Num Of Words (Excluding Stop-Words): {}'.format(words_counter)
+        print ' - Num Of Words (Excluding Stop-Words): {}'.format(nstop_words_counter)
 
         print ' - Avg Num Of Words (Excluding Stop-Words) Per utterance: {}'.format(
-            round((words_counter / len(all_utterances)), 4))
+            round((nstop_words_counter / len(all_utterances)), 4))
 
         print ' - Avg Num Of Turns In Dialogues: {}'. \
             format(round((sum_turn_value / segmented_dialogues_counter), 4))
@@ -548,13 +552,13 @@ class Dialogue(object):
             format(min_turn_value,
                    round((len(min_turn_dialogue) / segmented_dialogues_counter) * 100, 4))
 
-        print ' - Percentage of Colloquial Text Over All IRC Words' \
-              ' (Excluding Stop-Words): {}%'. \
+        print ' - Percentage of Colloquial Text Over All IRC Words: {}%'. \
             format(round((colloquial_counter / words_counter) * 100, 4))
 
         print '\n Now Computing Top 100 Words Frequency . . . (Might Take Time!)\n'
-        top_words = Dialogue.__filter_top_words(FreqDist(' '.join(all_utterances)
-                                                         .split(' ')).most_common())
+        top_words = Dialogue.__filter_top_words(FreqDist(re.split("[, \-!?;.]", ' '
+                                                                  .join(all_utterances)))
+                                                .most_common())
         print ' - Most Frequent 100 Words (Excluding Stop-Words) Occurred On That IRC' \
               ' Users Utterances: {}\n' \
             .format(Dialogue.__filter_top_words(top_words)[:100])
