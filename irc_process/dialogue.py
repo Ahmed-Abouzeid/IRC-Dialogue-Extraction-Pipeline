@@ -332,7 +332,7 @@ class Dialogue(object):
             print ' -REASON: {}'.format(excep.message)
             logging.error('problem Occurred In write_segmented_dialogues Method')
 
-        logging.info('Writing Segmented Dialogues Started')
+        logging.info('Writing Segmented Dialogues Finished')
         if self.__min_turns != 0:
             final_dialogues_utterances = Dialogue.__skip_dialogues(self.__dialogue_full_path,
                                                                    self.__min_turns)
