@@ -43,27 +43,27 @@ python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_koha.txt' -igno
 ```
 ####rawirc.py On ubuntu IRC####
 ```python
-python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant yes
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant yes
 ```
 ####rawirc.py On Lisp IRC####
 ```python
-python RawIRC.py -raw_data_path '/path_to/crawled_data' -time_regexp '\d\d:\d\d:\d\d' -date_regexp '\d\d\d\d.\d\d.\d\d' -old_date_format %Y.%m.%d -clean_work_path '/output_path' -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant yes -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg yes -rtrim_time 3 -sys_msg_path 'files_as_arguments/sysmsg.txt'
+pypy RawIRC.py -raw_data_path '/path_to/crawled_data' -time_regexp '\d\d:\d\d:\d\d' -date_regexp '\d\d\d\d.\d\d.\d\d' -old_date_format %Y.%m.%d -clean_work_path '/output_path' -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant yes -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg yes -rtrim_time 3 -sys_msg_path 'files_as_arguments/sysmsg.txt'
 ```
 ####rawirc.py On Koha IRC####
 ```python
-python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -time_user_lines 1 -use_enchant yes
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -time_user_lines 1 -use_enchant yes
 ```
 ####rawirc.py On Perl6 IRC####
 ```python
-python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -use_enchant yes
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -use_enchant yes
 ```
 ####dialogue.py On Any IRC Cleaned Output From rawer.py####
 ```python
-python dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_turns 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt'
+pypy dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_turns 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt'
 ```
 ####dialogue.py For Only Statistical Report On Already Extracted Dialogues####
 ```python
-python dialogue.py -only_stats yes -extracted_dialogues_path 'path_to/dialogues'
+pypy dialogue.py -only_stats yes -extracted_dialogues_path 'path_to/dialogues'
 ```
 ### How To Use The Test Scripts? ###
 The Test Scripts Require Some Mock Data Located in /test Directory, The Paths To These Data Already Configured In The Script, Do Not Change The Hierarchy Of The Mock Data Unless You Will Change It In The Scripts As Well.
@@ -71,17 +71,17 @@ The Test Scripts Require Some Mock Data Located in /test Directory, The Paths To
 To Use, Go To /test Then Run The Below:
 ####test_dialogue.py####
 ```python
-python test_dialogue.py
+pypy test_dialogue.py
 ```
 ####test_rawirc.py####
 ```python
-python test_rawirc.py
+pypy test_rawirc.py
 ```
 ####compare_dialogues.py####
 ```python
-python compare_dialogues.py
+pypy compare_dialogues.py
 ```
 ####count_users_in_dialogues.py####
 ```python
-python count_users_in_dialogues.py
+pypy count_users_in_dialogues.py
 ```
