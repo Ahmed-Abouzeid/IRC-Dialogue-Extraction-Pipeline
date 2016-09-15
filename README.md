@@ -15,7 +15,9 @@ The three components are interfacing with each others via their generated output
 
 - pypy
 
-- pyenchant
+- penchant
+
+- nltk
 
 - sqlalchemy
 
