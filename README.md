@@ -11,6 +11,14 @@
 
 The three components are interfacing with each others via their generated outputs, the trawler will download files that can be passed as an argument to the rawirc.py then these files will be cleaned and passed as another argument to dialogue.py which will apply the dialogue extraction algorithms and generate the dialogues data-set 
 
+### Dependecies ###
+
+- pypy
+
+- pyenchant
+
+- sqlalchemy
+
 ### Run setup.py To Be Able To Use And Reference The Above Scripts As A Package Modules ###
 
 ### For Testing Purposes, Below Are Unit-Test & Verification Modules Located In /test ###
