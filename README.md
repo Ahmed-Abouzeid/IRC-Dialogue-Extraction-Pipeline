@@ -51,21 +51,29 @@ python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_perl.txt' -igno
 ```python
 python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_koha.txt' -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1 -allow_clean_url yes
 ```
+####crawler.py On ScummVM IRC - http://logs.scummvm.org####
+```python
+python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_scummvm.txt' -time_out 60 -work_path '/output_path' -one_bite yes -ignored_links_file 'files_as_arguments/ignore.txt'
+```
 ####rawirc.py On ubuntu IRC####
 ```python
-pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant yes
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant 'yes'
 ```
 ####rawirc.py On Lisp IRC####
 ```python
-pypy RawIRC.py -raw_data_path '/path_to/crawled_data' -time_regexp '\d\d:\d\d:\d\d' -date_regexp '\d\d\d\d.\d\d.\d\d' -old_date_format %Y.%m.%d -clean_work_path '/output_path' -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant yes -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg yes -rtrim_time 3 -sys_msg_path 'files_as_arguments/sysmsg.txt'
+pypy RawIRC.py -raw_data_path '/path_to/crawled_data' -time_regexp '\d\d:\d\d:\d\d' -date_regexp '\d\d\d\d.\d\d.\d\d' -old_date_format %Y.%m.%d -clean_work_path '/output_path' -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant 'yes' -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg 'yes' -rtrim_time 3 -sys_msg_path 'files_as_arguments/sysmsg.txt'
 ```
 ####rawirc.py On Koha IRC####
 ```python
-pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -time_user_lines 1 -use_enchant yes
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -time_user_lines 1 -use_enchant 'yes'
 ```
 ####rawirc.py On Perl6 IRC####
 ```python
-pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -use_enchant yes
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -use_enchant 'yes'
+```
+####rawirc.py On ScummVM IRC####
+```python
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\w\w\w\d\d\d\d' -old_date_format %d%b%Y -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant 'yes' -lowercase 'yes'
 ```
 ####dialogue.py On Any IRC Cleaned Output From rawer.py####
 ```python
