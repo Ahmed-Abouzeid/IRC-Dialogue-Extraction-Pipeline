@@ -84,9 +84,13 @@ pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\
 ```python
 pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\:\d\d]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant 'yes' -fix_separator 'yes' -separator 'tab' -old_data_path '/path_to_original_wikimedia_files'
 ```
-####dialogue.py On Any IRC Cleaned Output From rawer.py####
+####dialogue.py On Wikimedia IRC Cleaned Output From rawirc.py####
 ```python
-pypy dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_turns 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt'
+pypy dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_turns 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt' -encoding 'latin-1'
+```
+####dialogue.py On Any Other IRC Cleaned Output From rawirc.py####
+```python
+pypy dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_turns 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt' -encoding 'utf-8'
 ```
 ####dialogue.py For Only Statistical Report On Already Extracted Dialogues####
 ```python
