@@ -93,6 +93,7 @@ test/matches.txt
 test/missing.txt
 test/dialogue_b.txt
 test/dialogue_a.txt
+test/__init__.py
 
 # Spyder project settings
 .spyderproject
