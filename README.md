@@ -11,6 +11,16 @@
 
 The three components are interfacing with each others via their generated outputs, the trawler will download files that can be passed as an argument to the rawirc.py then these files will be cleaned and passed as another argument to dialogue.py which will apply the dialogue extraction algorithms and generate the dialogues data-set 
 
+### Dependecies ###
+
+- pypy
+
+- penchant
+
+- nltk
+
+- sqlalchemy
+
 ### Run setup.py To Be Able To Use And Reference The Above Scripts As A Package Modules ###
 
 ### For Testing Purposes, Below Are Unit-Test & Verification Modules Located In /test ###
@@ -27,43 +37,64 @@ The three components are interfacing with each others via their generated output
 Go To /irc_process Then Run The Below:
 ####crawler.py On Ubuntu IRC - https://irclogs.ubuntu.com####
 ```python
-python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_ubuntu.txt' -file_spider yes -target_format txt -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 3 -white_list_path 'files_as_arguments/white_list.txt'
+python crawler.py -crawl 'yes' -urls_file 'files_as_arguments/urls_ubuntu.txt' -file_spider 'yes' -target_format txt -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 3 -white_list_path 'files_as_arguments/white_list.txt'
 ```
 ####crawler.py On Lisp IRC - http://ccl.clozure.com/irc-logs/lisp/####
 ```python
-python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_lisp.txt' -file_spider yes -target_format txt -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1
+python crawler.py -crawl 'yes' -urls_file 'files_as_arguments/urls_lisp.txt' -file_spider yes -target_format txt -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1
 ```
 ####crawler.py On Perl6 IRC - https://irclog.perlgeek.de/perl6/####
 ```python
-python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_perl.txt' -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1 -allow_clean_url yes
+python crawler.py -crawl 'yes' -urls_file 'files_as_arguments/urls_perl.txt' -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1 -allow_clean_url 'yes'
 ```
 ####crawler.py On Koha IRC - http://irc.koha-community.org/koha/####
 ```python
-python crawler.py -crawl yes -urls_file 'files_as_arguments/urls_koha.txt' -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1 -allow_clean_url yes
+python crawler.py -crawl 'yes' -urls_file 'files_as_arguments/urls_koha.txt' -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1 -allow_clean_url 'yes'
+```
+####crawler.py On ScummVM IRC - http://logs.scummvm.org####
+```python
+python crawler.py -crawl 'yes' -urls_file 'files_as_arguments/urls_scummvm.txt' -time_out 60 -work_path '/output_path' -one_bite 'yes' -ignored_links_file 'files_as_arguments/ignore.txt'
+```
+
+####crawler.py On Wikimedia IRC - http://bots.wmflabs.org/~wm-bot/logs/####
+```python
+python crawler.py -crawl 'yes' -urls_file 'files_as_arguments/urls_wikimedia.txt' -file_spider 'yes' -target_format txt -ignored_links_file 'files_as_arguments/ignore.txt' -time_out 60 -work_path '/output_path' -max_recursion_depth 1
 ```
 ####rawirc.py On ubuntu IRC####
 ```python
-python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant yes
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant 'yes'
 ```
 ####rawirc.py On Lisp IRC####
 ```python
-python RawIRC.py -raw_data_path '/path_to/crawled_data' -time_regexp '\d\d:\d\d:\d\d' -date_regexp '\d\d\d\d.\d\d.\d\d' -old_date_format %Y.%m.%d -clean_work_path '/output_path' -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant yes -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg yes -rtrim_time 3 -sys_msg_path 'files_as_arguments/sysmsg.txt'
+pypy RawIRC.py -raw_data_path '/path_to/crawled_data' -time_regexp '\d\d:\d\d:\d\d' -date_regexp '\d\d\d\d.\d\d.\d\d' -old_date_format %Y.%m.%d -clean_work_path '/output_path' -user_sys_annotation '<,>'  -raw_msg_separator ' ' -use_enchant 'yes' -process_file_reg_exp '(lisp-)(\d\d\d\d-\d\d)' -process_file_date_format %Y-%m -force_remove_sysmsg 'yes' -rtrim_time 3 -sys_msg_path 'files_as_arguments/sysmsg.txt'
 ```
 ####rawirc.py On Koha IRC####
 ```python
-python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -time_user_lines 1 -use_enchant yes
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -time_user_lines 1 -use_enchant 'yes'
 ```
 ####rawirc.py On Perl6 IRC####
 ```python
-python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -use_enchant yes
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\:\d\d)$' -date_regexp '\d\d\d\d-\d\d-\d\d' -old_date_format %Y-%m-%d -clean_work_path '/output_path' -use_enchant 'yes'
 ```
-####dialogue.py On Any IRC Cleaned Output From rawer.py####
+####rawirc.py On ScummVM IRC####
 ```python
-python dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_turns 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt'
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\]' -date_regexp '\d\d\w\w\w\d\d\d\d' -old_date_format %d%b%Y -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant 'yes' -lowercase 'yes'
+```
+####rawirc.py On Wikimedia IRC####
+```python
+pypy rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '\[\d\d:\d\d\:\d\d]' -date_regexp '\d\d\d\d\d\d\d\d' -old_date_format %Y%m%d -clean_work_path '/output_path' -user_sys_annotation '<,>' -time_sys_annotation '[,]' -raw_msg_separator ' ' -use_enchant 'yes' -fix_separator 'yes' -separator 'tab' -old_data_path '/path_to_original_wikimedia_files'
+```
+####dialogue.py On Wikimedia IRC Cleaned Output From rawirc.py####
+```python
+pypy dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_turns 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt' -encoding 'latin-1'
+```
+####dialogue.py On Any Other IRC Cleaned Output From rawirc.py####
+```python
+pypy dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_turns 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt' -encoding 'utf-8'
 ```
 ####dialogue.py For Only Statistical Report On Already Extracted Dialogues####
 ```python
-python dialogue.py -only_stats yes -extracted_dialogues_path 'path_to/dialogues'
+pypy dialogue.py -only_stats yes -extracted_dialogues_path 'path_to/dialogues'
 ```
 ### How To Use The Test Scripts? ###
 The Test Scripts Require Some Mock Data Located in /test Directory, The Paths To These Data Already Configured In The Script, Do Not Change The Hierarchy Of The Mock Data Unless You Will Change It In The Scripts As Well.
@@ -71,17 +102,17 @@ The Test Scripts Require Some Mock Data Located in /test Directory, The Paths To
 To Use, Go To /test Then Run The Below:
 ####test_dialogue.py####
 ```python
-python test_dialogue.py
+pypy test_dialogue.py
 ```
 ####test_rawirc.py####
 ```python
-python test_rawirc.py
+pypy test_rawirc.py
 ```
 ####compare_dialogues.py####
 ```python
-python compare_dialogues.py
+pypy compare_dialogues.py
 ```
 ####count_users_in_dialogues.py####
 ```python
-python count_users_in_dialogues.py
+pypy count_users_in_dialogues.py
 ```
