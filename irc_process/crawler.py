@@ -5,12 +5,14 @@
 __author__ = 'Ahmed Abouzeid'
 
 import os
+import sys
 import shutil
 import argparse
 import logging
 import requests
 from bs4 import BeautifulSoup
 
+sys.setrecursionlimit(10000)
 logging.basicConfig(filename='crawler.log', filemode='w', level=logging.INFO)
 
 ###################################################################################################
@@ -178,7 +180,7 @@ class Crawler(object):
          and no more recursion is required"""
         if one_bite == 'yes':
             print 'Downloading Contents Of Page {}'.format(url)
-            log_bite = parsed_html.getText()
+            log_bite = parsed_html
             try:
                 Crawler.__write_file(path, url, log_bite)
             except IOError as excep:

@@ -1,5 +1,5 @@
 """The RawIRC Module Is The Second Main Component In The IRC Post-Processing Software
-It Works On Cleaning & Recognizing Recipients In Utterances"""
+It Works On Cleaning & Recognizing Recipients In Messages"""
 from __future__ import division
 import os
 import shutil
@@ -80,6 +80,17 @@ logging.basicConfig(filename='RawIRC.log', filemode='w', level=logging.INFO)
 #  19- sys_msg_path: path to sys msg sample file                                                  #
 #                                                                                                 #
 #  20- common_english_path: path to common english text file that is alternative to pyenchant usag#
+#                                                                                                 #
+#  21- lowercase: declares if all user names and candidate recipients should be converted to      #
+#  lower cases before identifying the recipient. that is useful in some ircs                      #
+#                                                                                                 #
+#  22- fix_separator : (yes) indicates that the data fields are not separated by the same         #
+#   separator and should be fixed by replacing the undesired separator                            #
+#                                                                                                 #
+#  23- separator :  if fix_separator was set to 'yes', that parameter indcates the separator to   #
+# be replaced by a normal space as in Ubuntu-like IRCs                                            #
+#                                                                                                 #
+#  24- old_data_path : the path of the data to be separator-fixed                                 #
 ###################################################################################################
 
 
@@ -91,7 +102,8 @@ class RawIRC(object):
                  recipient_only='no', concatenate='no', rtrim_time=0, ltrim_time=0,
                  time_user_lines=0, force_remove_sysmsg='no', use_enchant='no',
                  process_file_reg_exp='', process_file_date_format='', sys_msg_path='',
-                 common_english_path=''):
+                 common_english_path='', lowercase='no', fix_separator='no', separator='',
+                  old_data_path=''):
 
         self.__concatenate = concatenate
         self.__process_file_reg_exp = process_file_reg_exp
@@ -112,15 +124,51 @@ class RawIRC(object):
                                                          'Days_With_Recipients')
         self.__clean_days_concatenation_path = os.path.join(self.__clean_full_path.rstrip('/')+'/',
                                                             'Days_With_Concatenation')
+        self.__fix_separator = fix_separator
+        self.__separator = separator
+        self.__old_data_path = old_data_path
         self.__common_english_path = common_english_path
         self.__sys_msg_path = sys_msg_path
         self.__clean_only = clean_only
+        self.__lowercase = lowercase
         self.__recipient_only = recipient_only
         self.__rtrim_time = int(rtrim_time)
         self.__ltrim_time = int(ltrim_time)
         self.__force_remove_sysmsg = force_remove_sysmsg
         self.__use_enchant = use_enchant
         self.__recipient_reg_exp = re.compile(r'^@?(.*?)([:,\.])?\s(.*)')
+
+    def fix_separator(self):
+        """This function is to fix the separation sometimes found in simple IRCs
+         logs (Ubuntu-like) when the fields are not separated by the same separator. A separator
+          and the data to be fixed path should be specified in the object initialization to run
+           this function. the new path that holds the fixed data is considered the raw data for the
+           rest of the algorithms"""
+        assert self.__separator != '' and self.__old_data_path != '', \
+            '\nNOT ENOUGH INFORMATION WAS GIVEN FOR FIXING SEPARATION.'
+        print '\nFixing IRC Fields Separation First . . .\n'
+        for sub_dir, _, files in os.walk(self.__old_data_path):
+            for file_name in files:
+                if not file_name.startswith('.'):
+                    with open(sub_dir + '/' + file_name, 'r') as file_:
+                        lines = file_.readlines()
+                        for line_ in lines:
+                            try:
+                                if self.__separator == 'tab':
+                                    delimiter = '\t'
+                                elif self.__separator == 'comma':
+                                    delimiter = ','
+                                else:
+                                    print 'You Must Give a Proper Delimiter Name as a Separator To be Replaced.'
+                                    exit()
+                                new_line = line_.split(delimiter)
+                                with open(self.__raw_data_path.rstrip('/') + '/' + file_name, 'a')\
+                                        as new_file:
+                                    new_file.write(str('{} {}'.format(new_line[0],
+                                                                      new_line[1].strip()) + '\n'))
+                            except IndexError:
+                                continue
+        print 'Fixing IRC Fields Finished!\n'
 
     def clean(self):
         """This function is to clean the crawled data and remove system messages and junk lines
@@ -184,20 +232,20 @@ class RawIRC(object):
         """this function goes line by line on the cleaned tsv generated file and search
          for a user name mentioned as the first word in the raw message"""
         start_time = time.time()
-        utterances_count = 0
-        utter_w_recipient_count = 0
+        messages_count = 0
+        msg_w_recipient_count = 0
         if os.path.exists(self.__clean_days_recipients_path):
             shutil.rmtree(self.__clean_days_recipients_path)
         if self.__use_enchant != 'yes':
             common_words = RawIRC.__load_common_english(self.__common_english_path)
         else:
             common_words = set()
-        users = RawIRC.make_user_list(self.__clean_days_path)
+        users = RawIRC.make_user_list(self.__clean_days_path, self.__lowercase)
         print 'Started createRecipient Algorithm....'
         logging.info('Started createRecipient Algorithm')
         try:
             files_counter = RawIRC.__files_count(self.__clean_days_path)
-            bar_ = Bar('Recognizing Utterance Recipient in {} File(s)'
+            bar_ = Bar('Recognizing Message Recipient in {} File(s)'
                        .format(files_counter), max=files_counter)
             files = os.listdir(self.__clean_days_path)
             index_ = len(files) - 1
@@ -205,7 +253,7 @@ class RawIRC(object):
                 if not files[index_].startswith('.'):
                     with open(self.__clean_days_path+'/'+files[index_], 'r') as file_:
                         lines = file_.readlines()
-                        utterances_count += len(lines)
+                        messages_count += len(lines)
                         for line in lines:
                             line = line.split('\t')
                             user_name = line[1]
@@ -217,9 +265,10 @@ class RawIRC(object):
                                                                                users, user_name,
                                                                                match_results[1],
                                                                                line,
-                                                                               common_words)
+                                                                               common_words,
+                                                                               self.__lowercase)
                             if line_to_write.split('\t')[2] != '':
-                                utter_w_recipient_count += 1
+                                msg_w_recipient_count += 1
 
                             RawIRC.__file_writer(self.__clean_days_recipients_path,
                                                  str(files[index_]),
@@ -239,30 +288,30 @@ class RawIRC(object):
                   ' IN FILE {}'\
                 .format(files[index_])
             print ' -Reason: {}'.format(excep.message)
-            logging.error('Problem Occurred While Processing Utterances in createRecipient'
+            logging.error('Problem Occurred While Processing Messages in createRecipient'
                           ' Function. File: %s, Reason: %s', files[index_], excep.message)
             exit(excep.message)
 
         logging.info('Creating Recipients Has Finished')
 
         if self.__concatenate == 'yes':
-            conc_utterances_count = \
-                RawIRC.__concatenate_utterance(self.__clean_days_concatenation_path,
-                                               self.__clean_days_recipients_path,
-                                               self.__delete_cleaned_data)
+            conc_messages_count = \
+                RawIRC.__concatenate_message(self.__clean_days_concatenation_path,
+                                             self.__clean_days_recipients_path,
+                                             self.__delete_cleaned_data)
 
             RawIRC.__report_work_concatenate(self.__clean_days_concatenation_path,
-                                             start_time, conc_utterances_count,
-                                             utter_w_recipient_count)
+                                             start_time, conc_messages_count,
+                                             msg_w_recipient_count)
             RawIRC.__validate_cleaned_data(self.__clean_days_concatenation_path)
 
         else:
             RawIRC.__report_work(self.__clean_days_recipients_path, start_time,
-                                 utterances_count, utter_w_recipient_count)
+                                 messages_count, msg_w_recipient_count)
             RawIRC.__validate_cleaned_data(self.__clean_days_recipients_path)
 
     @staticmethod
-    def make_user_list(clean_days_path):
+    def make_user_list(clean_days_path, lowercase):
         """this function is to create a users list from previous day to compare against
         when searching for recipients in a cleaned raw line"""
         user_list = set()
@@ -292,6 +341,9 @@ class RawIRC(object):
                             if line != '\n':
                                 line = line.split('\t')
                                 user_name = line[1].strip()
+                                if lowercase.lower() == 'yes':
+                                    user_name = user_name.lower()
+
                                 user_list.add(user_name)
 
                     bar_.next()
@@ -311,18 +363,18 @@ class RawIRC(object):
         return user_list
 
     @staticmethod
-    def __concatenate_utterance(result_path, with_recipients_path, delete_cleaned_data):
+    def __concatenate_message(result_path, with_recipients_path, delete_cleaned_data):
         """in case users keep talking during the same time and send several messages
          we concatenate these messages to their original message"""
-        conc_utterances_count = 0
+        conc_messages_count = 0
         if os.path.exists(result_path):
             shutil.rmtree(result_path)
 
         files_counter = RawIRC.__files_count(with_recipients_path)
-        print 'Started concatenateRelevantUtterances Algorithm....'
-        logging.info('Started concatenateRelevantUtterances Algorithm')
+        print 'Started concatenateRelevantMessages Algorithm....'
+        logging.info('Started concatenateRelevantMessages Algorithm')
         try:
-            bar_ = Bar('Concatenating Relevant Utterances in {} File(s)'
+            bar_ = Bar('Concatenating Relevant Messages in {} File(s)'
                        .format(files_counter),
                        max=files_counter)
             files = os.listdir(with_recipients_path)
@@ -331,9 +383,9 @@ class RawIRC(object):
                     with open(with_recipients_path + '/' + file_, 'r') as opener:
                         lines = opener.readlines()
                         counter = \
-                            RawIRC.__check_relevant_utterance(lines, file_,
-                                                              result_path)
-                        conc_utterances_count += counter
+                            RawIRC.__check_relevant_message(lines, file_,
+                                                            result_path)
+                        conc_messages_count += counter
                 bar_.next()
             bar_.finish()
 
@@ -346,12 +398,12 @@ class RawIRC(object):
             print "\nPROBLEM OCCURRED WHILE CONCATENATING RELEVANT UTTERANCES IN FILE {}" \
                 .format(file_)
             print ' -Reason: {}'.format(excep.message)
-            logging.error('Problem Occurred While Concatenating Relevant Utterances in'
+            logging.error('Problem Occurred While Concatenating Relevant Messages in'
                           ' File %s, Possible Reasons: %s', file_, excep.message)
             exit(excep.message)
         logging.info('Concatenation Has Finished')
 
-        return conc_utterances_count
+        return conc_messages_count
 
     def __run_configuration(self):
         """runs some optional given settings like if to load a sys message file to ignore
@@ -523,51 +575,51 @@ class RawIRC(object):
         return time_
 
     @staticmethod
-    def __check_relevant_utterance(lines_p, file_p, path_p):
-        """this function will be invoked by the main concatenate_utterance function,
-        in order to loop through each crawled file lines and find relevant utterances
+    def __check_relevant_message(lines_p, file_p, path_p):
+        """this function will be invoked by the main concatenate_message function,
+        in order to loop through each crawled file lines and find relevant messages
          that belongs to each other"""
         origline = ''
-        utterance = ''
-        day_conc_utterances_count = 0
+        message = ''
+        day_conc_messages_count = 0
         for line in lines_p:
             line = line.split("\t")
             if (line[2] != "" and line != lines_p[len(lines_p) - 1].split("\t")) \
                     or line == lines_p[0].split("\t"):
-                if utterance != "":
+                if message != "":
                     RawIRC.__file_writer(path_p, file_p,
                                          "\t".join([origline[0], origline[1],
                                                     origline[2],
-                                                    utterance.strip("\n") + "\n"]))
-                    day_conc_utterances_count += 1
+                                                    message.strip("\n") + "\n"]))
+                    day_conc_messages_count += 1
 
                     origline = line
-                    utterance = origline[3].strip("\n")
+                    message = origline[3].strip("\n")
                     continue
                 else:
                     origline = line
-                    utterance = origline[3].strip("\n")
+                    message = origline[3].strip("\n")
                     continue
             if (line[1] == origline[1]) and (line[2] == "" or line[2] == origline[2]):
-                utterance += ", " + line[3].strip("\n")
+                message += ", " + line[3].strip("\n")
             else:
                 RawIRC.__file_writer(path_p, file_p,
                                      "\t".join([origline[0], origline[1],
                                                 origline[2],
-                                                utterance.strip("\n") + "\n"]))
-                day_conc_utterances_count += 1
+                                                message.strip("\n") + "\n"]))
+                day_conc_messages_count += 1
 
                 origline = line
-                utterance = origline[3].strip("\n")
+                message = origline[3].strip("\n")
 
             if line == lines_p[len(lines_p) - 1].split("\t"):
                 RawIRC.__file_writer(path_p, file_p, "\t"
                                      .join([origline[0],
                                             origline[1], origline[2],
-                                            utterance.strip("\n") + "\n"]))
-                day_conc_utterances_count += 1
+                                            message.strip("\n") + "\n"]))
+                day_conc_messages_count += 1
 
-        return day_conc_utterances_count
+        return day_conc_messages_count
 
     @staticmethod
     def __load_common_english(path_):
@@ -611,11 +663,13 @@ class RawIRC(object):
 
     @staticmethod
     def __check_candidate_recipient(use_enchant_p, possible_recipient_p, users_p, user_name_p,
-                                    symbol_p, line_p, common_words_p):
-        """this function checks a candidate recipient as the first word in the utterance
+                                    symbol_p, line_p, common_words_p, lowercase):
+        """this function checks a candidate recipient as the first word in the message
          or the word that matches the recipient regular expression (recipient_reg_exp),
-          if all conditions met, so the utterance first word will be recognized as a recipient"""
-
+          if all conditions met, so the message first word will be recognized as a recipient"""
+        if lowercase.lower() == 'yes':
+            possible_recipient_p = possible_recipient_p.lower()
+            user_name_p = user_name_p.lower()
         # if the candidate recipient found in the extracted users from the makeUserList function
         if possible_recipient_p in users_p and possible_recipient_p != user_name_p:
             if use_enchant_p == 'yes':
@@ -661,14 +715,14 @@ class RawIRC(object):
         return line_to_write
 
     @staticmethod
-    def __report_work(work_path, work_start_time, utterances_count, utter_w_recipients_count):
+    def __report_work(work_path, work_start_time, messages_count, msg_w_recipients_count):
         """function to report some statistics for no concatenated results"""
         if not os.path.exists(work_path):
             print '\nNOTHING TO REPORT!\n'
         else:
             logging.info('Getting Results Report')
             print '\n----------------------------------------------------------------------------'
-            print 'Recognizing Utterance Recipient Has Finished.' \
+            print 'Recognizing Message Recipient Has Finished.' \
                   ' Please Check the Results on the Path: "{}"'\
                 .format(work_path.rstrip('/'))
             print 'Time Elapsed Was Approximately {} Minute(s)'\
@@ -677,23 +731,23 @@ class RawIRC(object):
             print '\n-------------------------------'
             print 'IRC Post-Processing Data Statistics:'
             print '-------------------------------'
-            print ' -Number of Utterance(s) is {}'.format(utterances_count)
-            if utterances_count > 0:
-                print ' -Number of Utterance(s) With a Recipient is {}. With a Percentage of {}%'\
-                    .format(utter_w_recipients_count,
-                            round(utter_w_recipients_count/utterances_count*100, 4))
+            print ' -Number of Message(s) is {}'.format(messages_count)
+            if messages_count > 0:
+                print ' -Number of Message(s) With a Recipient is {}. With a Percentage of {}%'\
+                    .format(msg_w_recipients_count,
+                            round(msg_w_recipients_count/messages_count*100, 4))
             print '\n--------------------------------------------------------------------------'
 
     @staticmethod
-    def __report_work_concatenate(work_path, work_start_time, conc_utterances_count,
-                                  utter_w_recipients_count):
+    def __report_work_concatenate(work_path, work_start_time, conc_messages_count,
+                                  msg_w_recipients_count):
         """function to report some statistics for concatenated results"""
         if not os.path.exists(work_path):
             print '\nNOTHING TO REPORT!\n'
         else:
             logging.info('Getting Results Report')
             print '\n----------------------------------------------------------------------------'
-            print 'Recognizing Utterance Recipient Has Finished.' \
+            print 'Recognizing Message Recipient Has Finished.' \
                   ' Please Check the Results on the Path: "{}"'\
                 .format(work_path.rstrip('/'))
             print 'Time Elapsed Was Approximately {} Minute(s)'\
@@ -702,11 +756,11 @@ class RawIRC(object):
             print '\n----------------------------------'
             print 'RawIRC Component Output Statistics:'
             print '----------------------------------\n'
-            print ' -Number of Utterance(s) is {}'.format(conc_utterances_count)
-            if conc_utterances_count > 0:
-                print ' -Number of Utterance(s) With a Recipient is {}. With a Percentage of {}%'\
-                    .format(utter_w_recipients_count,
-                            round(utter_w_recipients_count/conc_utterances_count*100, 4))
+            print ' -Number of Messages(s) is {}'.format(conc_messages_count)
+            if conc_messages_count > 0:
+                print ' -Number of Message(s) With a Recipient is {}. With a Percentage of {}%'\
+                    .format(msg_w_recipients_count,
+                            round(msg_w_recipients_count/conc_messages_count*100, 4))
             print '\n--------------------------------------------------------------------------'
 
     @staticmethod
@@ -727,12 +781,12 @@ class RawIRC(object):
         try:
             new_format = datetime.datetime.strptime(date_string, old_format).strftime(new_format)
             return new_format
-        except BaseException as excep:
+        except ValueError as verror:
             print '\nPROBLEM OCCURRED IN changeDateFormat FUNCTION'
-            print ' -REASON: {}'.format(excep.message)
+            print ' -REASON: {}'.format(verror.message)
             logging.error('Problem Occurred in changeDateFormat Function,'
-                          ' Reason: %s', excep.message)
-            exit(excep.message)
+                          ' Reason: %s', verror.message)
+            exit()
 
     @staticmethod
     def __file_writer(path, file_name, context):
@@ -786,6 +840,10 @@ if __name__ == '__main__':
                                                ' of the crawled data to be processed,'
                                                ' the default is the local folder path',
                         type=str, const='./', default='./', nargs='?')
+
+    PARSER.add_argument('-old_data_path', help='parameter to specify the path'
+                                               ' of the old data to be separator fixed',
+                        type=str, const='', default='', nargs='?')
 
     PARSER.add_argument('-clean_work_path', help="specify the path for the output data,"
                                                  " the default is the local folder", nargs='?',
@@ -845,6 +903,19 @@ if __name__ == '__main__':
                                             ' should be executed, default value is no',
                         nargs='?', const='no', type=str, default='no')
 
+    PARSER.add_argument('-fix_separator', help='(yes)indicates if a wrong field separator'
+                                               'should be replaced',
+                        nargs='?', const='no', type=str, default='no')
+
+    PARSER.add_argument('-separator', help='(tab - comma )indicates which separator will be'
+                                           ' replaced by a space', nargs='?', const='',
+                        type=str, default='')
+
+    PARSER.add_argument('-lowercase', help='(yes)indicates if senders and candidate recipient'
+                                           'will be converted to lowercase before identifying '
+                                           'the recipient',
+                        nargs='?', const='no', type=str, default='no')
+
     PARSER.add_argument('-recipient_only', help='(yes)indicates if only create recipient task'
                                                 ' should be executed, default value is no',
                         nargs='?', const='no', type=str, default='no')
@@ -898,7 +969,12 @@ if __name__ == '__main__':
                      process_file_date_format=ARGM.process_file_date_format,
                      process_file_reg_exp=ARGM.process_file_reg_exp,
                      sys_msg_path=ARGM.sys_msg_path,
-                     common_english_path=ARGM.common_english_path)
+                     common_english_path=ARGM.common_english_path,
+                     lowercase=ARGM.lowercase, fix_separator=ARGM.fix_separator,
+                     separator=ARGM.separator, old_data_path=ARGM.old_data_path)
+
+    if ARGM.fix_separator.lower() == 'yes':
+        RAW_IRC.fix_separator()
 
     if ARGM.clean_only.lower() == 'yes':
         assert ARGM.recipient_only.lower() == 'no', 'Cannot Specify Recipient_Only=yes' \

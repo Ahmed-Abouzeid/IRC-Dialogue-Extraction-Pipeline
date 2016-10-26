@@ -15,8 +15,8 @@ from stemming.porter2 import stem
 from progress.bar import Bar
 from irc_process.ircdb import save_segmented_message, save_segmented_user, get_db_statistics,\
     get_msg_segmented_indices, get_segmented_message, get_senders, get_timing_indices,\
-    get_users_pairs, get_usr_segmented_indices, get_utterances, save_dialogue_turns,\
-    save_utterance
+    get_users_pairs, get_usr_segmented_indices, get_message, save_dialogue_turns,\
+    save_message
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -49,7 +49,7 @@ __author__ = 'Ahmed Abouzeid'
 # extracted dialogues, so you can just call script for statistics without do the Post-Processing#
 # again                                                                                         #
 #                                                                                               #
-# 7- min_turns : specify the minimum number of turns in a dialogue to accept it and write it to #
+# 7- min_utter : specify the minimum number of utterances to accept it and write it to          #
 # a file                                                                                        #
 #                                                                                               #
 # 8- bots_path : parameter takes a value of a file path that contains in each line all IRC bots #
@@ -60,62 +60,66 @@ __author__ = 'Ahmed Abouzeid'
 # the hole filling algorithm should try to find non-addressed messages(gaps) and include them   #
 # in case there were no other users talking with involved current users during that amount of   #
 # time                                                                                          #
+#                                                                                               #
+# 10- encoding : specify the encoding of textual data in the post-processed irc                 #
 #################################################################################################
 
 
 class Dialogue(object):
-    """defines the dialogue class and its objects that process the IRC utterances
+    """defines the dialogue class and its objects that process the IRC messages
      with different algorithms"""
     def __init__(self, clean_work_path='./', dialogue_work_path='./',
                  delete_with_recipient_file='no', time_frame=3,
-                 with_stats='no', only_stats='no', min_turns=3,
-                 bots_path='', gap_time_frame=3):
+                 with_stats='no', only_stats='no', min_utter=3,
+                 bots_path='', gap_time_frame=3, encoding='utf-8'):
         """initialise the dialogue instance"""
         self.__clean_work_path = clean_work_path
         self.__dialogue_work_path = dialogue_work_path
         self.__dialogue_full_path = os.path.join(self.__dialogue_work_path.rstrip('/') + '/',
                                                  'Dialogues')
+        self.__encoding = encoding
         self.__gap_time_frame = gap_time_frame
         self.__delete_with_recipient_file = delete_with_recipient_file
         self.__time_frame = time_frame
         self.__turns_per_weak_dialogue = set()
         self.__with_stats = with_stats
         self.__only_stats = only_stats
-        self.__min_turns = min_turns
+        self.__min_utter = min_utter
         self.__bots_path = bots_path
 
-    def match_utterances(self, day_utterances, day_index, max_seg_index):
-        """match Raw IRC utterances so each response is matched with its initial question in
-         a given time frame (in minutes). The method takes a list of all utterances in a day
+    def match_messages(self, day_messages, day_index, max_seg_index):
+        """match Raw IRC messages so each response is matched with its initial question in
+         a given time frame (in minutes). The method takes a list of all messages in a day
           log irc file and another two arguments as indices to track and identify
-           each utterance in the Data-base"""
-        index = len(day_utterances) - 1
+           each message in the Data-base"""
+        index = len(day_messages) - 1
         last_sender = ''
         last_recipient = ''
         last_index = -1
         found_indices = set()
         non_addressed_msg = set()
         users_addressed_recipients = {}
-        initial_res_date_time = day_utterances[index][2]
+        initial_res_date_time = day_messages[index][2]
         day_segmentation_indices = []
         filled_holes = 0
         while index >= 0:
-            current_recipient = day_utterances[index][4].strip()
+            current_recipient = day_messages[index][4].strip()
             if index == 0 and current_recipient == '':
-                non_addressed_msg.add(day_utterances[index])
-            if Dialogue.is_time_changed(initial_res_date_time, day_utterances[index][2],
+                non_addressed_msg.add(day_messages[index])
+            if Dialogue.is_time_changed(initial_res_date_time, day_messages[index][2],
                                         self.__gap_time_frame) or index == 0:
                 filled_holes_count = self.process_holes(day_index, day_segmentation_indices,
                                                         non_addressed_msg,
-                                                        users_addressed_recipients)
+                                                        users_addressed_recipients,
+                                                        self.__encoding)
                 filled_holes += filled_holes_count
                 non_addressed_msg = set()
                 users_addressed_recipients = {}
                 day_segmentation_indices = []
-                initial_res_date_time = day_utterances[index][2]
+                initial_res_date_time = day_messages[index][2]
 
             if current_recipient != '':
-                candidate_first_response = day_utterances[index]
+                candidate_first_response = day_messages[index]
                 response_index = index
                 inner_index = index - 1
                 candidate_response = True
@@ -123,7 +127,7 @@ class Dialogue(object):
             # if the message was not with a recipient, do not loop over the some minutes
             #  time frame to find a matching initial question
             else:
-                non_addressed_msg.add(day_utterances[index])
+                non_addressed_msg.add(day_messages[index])
                 index -= 1
                 continue
             # if a candidate response found(message with a recipient), then looping over some
@@ -132,83 +136,76 @@ class Dialogue(object):
             if candidate_response:
                 response_sender = candidate_first_response[3]
                 response_recipient = candidate_first_response[4]
-                user1_name = str.decode(max(response_recipient, response_sender), 'utf-8')
-                user2_name = str.decode(min(response_recipient, response_sender), 'utf-8')
+                user1_name = str.decode(max(response_recipient, response_sender), self.__encoding)
+                user2_name = str.decode(min(response_recipient, response_sender), self.__encoding)
                 response_date_time = candidate_first_response[2]
                 while inner_index >= 0:
-                    try:
-                        candidate_initial_question = day_utterances[inner_index]
-                        response_time_index = day_utterances[response_index][0]
-                        question_time_index = day_utterances[inner_index][0]
-                        question_date_time = candidate_initial_question[2]
+                    candidate_initial_question = day_messages[inner_index]
+                    response_time_index = day_messages[response_index][0]
+                    question_time_index = day_messages[inner_index][0]
+                    question_date_time = candidate_initial_question[2]
 
-                        # as long as the previous messages are in the same some minutes time
-                        #  frame to the candidate first response
-                        if not Dialogue.is_time_changed(response_date_time, question_date_time,
-                                                        self.__time_frame):
-                            users_addressed_recipients = Dialogue.update_usr_addr_rec(
-                                users_addressed_recipients, candidate_initial_question,
-                                candidate_first_response)
+                    # as long as the previous messages are in the same some minutes time
+                    #  frame to the candidate first response
+                    if not Dialogue.is_time_changed(response_date_time, question_date_time,
+                                                    self.__time_frame):
+                        users_addressed_recipients = Dialogue.update_usr_addr_rec(
+                            users_addressed_recipients, candidate_initial_question,
+                            candidate_first_response)
 
-                            if Dialogue.is_match(candidate_first_response,
-                                                 candidate_initial_question, found_indices):
-                                if (response_sender == last_sender or response_sender == last_recipient)\
-                                        and (response_recipient == last_recipient or
-                                             response_recipient == last_sender):
+                        if Dialogue.is_match(candidate_first_response,
+                                             candidate_initial_question, found_indices):
+                            if (response_sender == last_sender or response_sender == last_recipient)\
+                                    and (response_recipient == last_recipient or
+                                         response_recipient == last_sender):
 
-                                    index_to_insert = last_index
-                                else:
-                                    index_to_insert = max_seg_index
-                                    last_index = index_to_insert
-                                    day_segmentation_indices.append(max_seg_index)
-                                    last_recipient = response_recipient
-                                    last_sender = response_sender
-                                    max_seg_index -= 1
+                                index_to_insert = last_index
+                            else:
+                                index_to_insert = max_seg_index
+                                last_index = index_to_insert
+                                day_segmentation_indices.append(max_seg_index)
+                                last_recipient = response_recipient
+                                last_sender = response_sender
+                                max_seg_index -= 1
 
-                                Dialogue.__add_to_dialogues(candidate_first_response, day_index,
-                                                            index_to_insert,
-                                                            candidate_initial_question)
-                                save_segmented_user(index_to_insert, user1_name, user2_name)
-                                found_indices.add(response_time_index)
-                                found_indices.add(question_time_index)
-                                break
-                            inner_index -= 1
-                        # if some minutes time frame ended, add any candidate responses left
-                        #  without initial questions
-                        else:
-                            if response_time_index not in found_indices:
-                                if (response_sender == last_sender or response_sender == last_recipient)\
-                                        and (response_recipient == last_recipient
-                                             or response_recipient == last_sender):
-                                    index_to_insert = last_index
-                                else:
-                                    index_to_insert = max_seg_index
-                                    save_segmented_user(index_to_insert, user1_name,
-                                                        user2_name)
-
-                                    last_index = index_to_insert
-                                    last_recipient = response_recipient
-                                    last_sender = response_sender
-                                    max_seg_index -= 1
-
-                                Dialogue.__add_to_dialogues(candidate_first_response, day_index,
-                                                            index_to_insert)
+                            Dialogue.__add_to_dialogues(candidate_first_response, day_index,
+                                                        self.__encoding, index_to_insert,
+                                                        candidate_initial_question)
+                            save_segmented_user(index_to_insert, user1_name, user2_name)
+                            found_indices.add(response_time_index)
+                            found_indices.add(question_time_index)
                             break
-                    except BaseException as excep:
-                        print '\nERROR: PROBLEM OCCURRED IN match_utterances METHOD WHILE' \
-                              ' MATCHING AN INITIAL QUESTION WITH A FIRST RESPONSE.'
-                        print ' -PROBLEMATIC DIALOGUE DATE IS {}'.format(day_index)
-                        print ' -REASON: {}'.format(excep.message)
-                        logging.error('problem Occurred In match_utterances Method')
-                        exit()
+                        inner_index -= 1
+                    # if some minutes time frame ended, add any candidate responses left
+                    #  without initial questions
+                    else:
+                        if response_time_index not in found_indices:
+                            if (response_sender == last_sender or response_sender == last_recipient)\
+                                    and (response_recipient == last_recipient
+                                         or response_recipient == last_sender):
+                                index_to_insert = last_index
+                            else:
+                                index_to_insert = max_seg_index
+                                save_segmented_user(index_to_insert, user1_name,
+                                                    user2_name)
+
+                                last_index = index_to_insert
+                                last_recipient = response_recipient
+                                last_sender = response_sender
+                                max_seg_index -= 1
+
+                            Dialogue.__add_to_dialogues(candidate_first_response, day_index,
+                                                        self.__encoding, index_to_insert)
+                        break
+
         return [max_seg_index, filled_holes]
 
     def extract_dialogues(self):
-        """loads each IRC log single day utterances and pass it to match_utterances method
+        """loads each IRC log single day messages and pass it to match_messages method
          to apply dialogue extraction algorithm and hole-filling algorithm"""
         logging.info('Dialogue Extraction Algorithm Started')
         start_time = time.time()
-        day_utterances = []
+        day_messages = []
         first_call = True
         filled_holes = 0
         max_seg_index = self.__segmentation_index_setup(self.__clean_work_path)
@@ -218,58 +215,61 @@ class Dialogue(object):
         bar_ = Bar('Extracting One-One Dialogue From {} Day(s)'.format(files_count),
                    max=files_count)
         for root_dir, _, files in os.walk(self.__clean_work_path):
-            try:
                 for file_ in sorted(files):
                     if not file_.startswith('.'):
                         with open(str(root_dir) + '/' + file_) as reader_:
                             lines = reader_.readlines()
                             for line_ in lines:
-                                line_ = str(line_).split('\t')
-                                if len(line_) == 4:
-                                    day_index = line_[0].split('T')[0]
-                                    date_time = line_[0]
-                                    sender = line_[1].replace('"', '')
-                                    recipient = line_[2].replace('"', '')
-                                    utterance = line_[3].replace('"', '')
+                                    line_ = str(line_).split('\t')
+                                    if len(line_) == 4:
+                                        day_index = line_[0].split('T')[0]
+                                        date_time = line_[0]
+                                        sender = line_[1].replace('"', '')
+                                        recipient = line_[2].replace('"', '')
+                                        message = line_[3].replace('"', '')
 
-                                    day_utterances.append((item_index, day_index, date_time, sender,
-                                                           recipient, utterance))
-                                    item_index += 1
+                                        day_messages.append((item_index, day_index, date_time, sender,
+                                                             recipient, message))
+                                        item_index += 1
 
-                        if first_call:
-                            processing_states = self.match_utterances(
-                                day_utterances, str.decode(str(file_).strip('.tsv'), 'utf-8'),
-                                max_seg_index)
-                            latest_holes_count = processing_states[1]
-                            filled_holes += latest_holes_count
-                            first_call = False
-                        else:
-                            max_seg_index = processing_states[0]
-                            processing_states = self.match_utterances(
-                                day_utterances, str.decode(str(file_).strip('.tsv'), 'utf-8'),
-                                max_seg_index)
-                            latest_holes_count = processing_states[1]
-                            filled_holes += latest_holes_count
+                        try:
+                            if first_call:
+                                processing_states = self.match_messages(
+                                    day_messages, str.decode(str(file_).strip('.tsv'),
+                                                             self.__encoding),
+                                    max_seg_index)
+                                latest_holes_count = processing_states[1]
+                                filled_holes += latest_holes_count
+                                first_call = False
+                            else:
+                                max_seg_index = processing_states[0]
+                                processing_states = self.match_messages(
+                                    day_messages, str.decode(str(file_).strip('.tsv'),
+                                                             self.__encoding),
+                                    max_seg_index)
+                                latest_holes_count = processing_states[1]
+                                filled_holes += latest_holes_count
 
-                        day_utterances = []
-                        bar_.next()
-            except BaseException as excep:
-                print '\nERROR: PROBLEM OCCURRED IN EXTRACTED DIALOGUES METHOD.'
-                print ' -MOST PROBABLY THE PROBLEM IS IS FILE: "{}"'.format(file_)
-                print ' -REASON: {}'.format(excep.message)
-                logging.error('problem Occurred In dialogue_extraction Method')
-                exit()
+                            day_messages = []
+                            bar_.next()
+                        except BaseException as excep:
+                            print '\nERROR: PROBLEM OCCURRED IN match_messages METHOD WHILE' \
+                                  ' MATCHING AN INITIAL QUESTION WITH A FIRST RESPONSE.'
+                            print ' -PROBLEMATIC DIALOGUE DATE IS {}'.format(day_index)
+                            print ' -REASON: {}'.format(excep.message)
+                            logging.error('problem Occurred In match_messages Method')
+
         bar_.finish()
         logging.info('Dialogue Extraction Algorithm Finished')
         pairs = get_users_pairs()
-        dialogues_utterances_count = self.write_segmented_dialogues(pairs)
+        dialogues_messages_count = self.write_segmented_dialogues(pairs)
         Dialogue.verify_cleaned_data(self.__dialogue_full_path)
         Dialogue.verify_segmentation(self.__dialogue_full_path)
         Dialogue.__report_work(self.__dialogue_full_path, start_time,
-                               filled_holes, dialogues_utterances_count)
+                               filled_holes, dialogues_messages_count)
 
         if self.__with_stats == 'yes':
-            self.calculate_statistics(self.__dialogue_full_path)
+            self.calculate_statistics(self.__dialogue_full_path, self.__encoding)
 
     def write_segmented_dialogues(self, segmented_users_p):
         """handles the writing of segmented dialogues and creates
@@ -277,7 +277,7 @@ class Dialogue(object):
         logging.info('Writing Segmented Dialogues Started')
         segmentation_ids = []
         dialogues = []
-        final_dialogues_utterances = 0
+        final_dialogues_messages = 0
         bots = Dialogue.__load_bots(self.__bots_path)
         segmented_dialogue_counter = len(segmented_users_p)
         if os.path.exists(self.__dialogue_full_path):
@@ -310,12 +310,12 @@ class Dialogue(object):
                         date_time = dialogue_[0]
                         sender = dialogue_[1]
                         recipient = dialogue_[2]
-                        utterance = dialogue_[3]
+                        message = dialogue_[3]
 
                         path = os.path.join(self.__dialogue_full_path, str(folder_name))
                         Dialogue.__file_writer(path, str(file_name) + '.tsv', '\t'
-                                               .join([date_time, sender, recipient, utterance]))
-                        final_dialogues_utterances += 1
+                                               .join([date_time, sender, recipient, message]))
+                        final_dialogues_messages += 1
 
                 segmentation_ids = []
                 file_name += 1
@@ -333,16 +333,16 @@ class Dialogue(object):
             logging.error('problem Occurred In write_segmented_dialogues Method')
 
         logging.info('Writing Segmented Dialogues Finished')
-        if self.__min_turns != 0:
-            final_dialogues_utterances = Dialogue.__skip_dialogues(self.__dialogue_full_path,
-                                                                   self.__min_turns)
+        if self.__min_utter != 0:
+            final_dialogues_message = Dialogue.__skip_dialogues(self.__dialogue_full_path,
+                                                                self.__min_utter)
 
         if self.__delete_with_recipient_file == 'yes':
             if os.path.exists(self.__clean_work_path):
                 shutil.rmtree(self.__clean_work_path)
                 print '\nSystem Is Committed To Remove Old Raw Data According the Parameter:' \
                       ' (delete_with_recipient_file = True). Data Removed.'
-        return final_dialogues_utterances
+        return final_dialogues_message
 
     @staticmethod
     def is_match(candidate_first_response, candidate_initial_question, found_indices):
@@ -358,31 +358,31 @@ class Dialogue(object):
                 and response_time_index not in found_indices)
 
     @staticmethod
-    def __add_to_dialogues(candidate_first_response, day_index, seg_index,
+    def __add_to_dialogues(candidate_first_response, day_index, encoding, seg_index,
                            candidate_initial_question=''):
         """this method adds a matched initial question with first response as a dialogue
          and also in case of only first response found, it adds it to be concatenated
           with relative dialogue """
         response_time_index = candidate_first_response[0]
-        response_date_time = str.decode(candidate_first_response[2], 'utf-8')
-        response_sender = str.decode(candidate_first_response[3], 'utf-8')
-        response_recipient = str.decode(candidate_first_response[4], 'utf-8')
-        response_utterance = str.decode(candidate_first_response[5], 'utf-8')
+        response_date_time = str.decode(candidate_first_response[2], encoding)
+        response_sender = str.decode(candidate_first_response[3], encoding)
+        response_recipient = str.decode(candidate_first_response[4], encoding)
+        response_message = str.decode(candidate_first_response[5], encoding)
 
         save_segmented_message(seg_index, response_time_index, day_index,
                                response_date_time, response_sender,
-                               response_recipient, response_utterance)
+                               response_recipient, response_message)
 
         if candidate_initial_question != '':
             question_time_index = candidate_initial_question[0]
-            question_date_time = str.decode(candidate_initial_question[2], 'utf-8')
-            question_sender = str.decode(candidate_initial_question[3], 'utf-8')
-            question_recipient = str.decode(candidate_initial_question[4], 'utf-8')
-            question_utterance = str.decode(candidate_initial_question[5], 'utf-8')
+            question_date_time = str.decode(candidate_initial_question[2], encoding)
+            question_sender = str.decode(candidate_initial_question[3], encoding)
+            question_recipient = str.decode(candidate_initial_question[4], encoding)
+            question_message = str.decode(candidate_initial_question[5], encoding)
 
             save_segmented_message(seg_index, question_time_index, day_index,
                                    question_date_time, question_sender,
-                                   question_recipient, question_utterance)
+                                   question_recipient, question_message)
 
     @staticmethod
     def __load_bots(bots_path):
@@ -430,7 +430,7 @@ class Dialogue(object):
             prev_sender = sender
 
     @staticmethod
-    def __load_dialogues(segmented_dialogues_counter, dialogue_full_path):
+    def __load_dialogues(segmented_dialogues_counter, dialogue_full_path, encoding):
         """Loading Dialogue(s) Information Into Database so the statistical information
          called by the calculate_statistics function will be easily and fast fetched"""
         bar_ = Bar('Loading {} Dialogue(s) Information Into Database'
@@ -450,14 +450,14 @@ class Dialogue(object):
                                 as opener:
                             lines = opener.readlines()
                             for line in lines:
-                                utterance = str.decode(line.split('\t')[3], 'utf-8')
-                                file_id = str.decode(folder_ + '/' + file_, 'utf-8')
-                                save_utterance(file_id, utterance)
+                                message = str.decode(line.split('\t')[3], encoding)
+                                file_id = str.decode(folder_ + '/' + file_, encoding)
+                                save_message(file_id, message)
                         bar_.next()
         bar_.finish()
 
     @staticmethod
-    def calculate_statistics(dialogue_full_path):
+    def calculate_statistics(dialogue_full_path, encoding):
         """get statistical information from extracted dialogues"""
         logging.info('Calculating Statistics Method Called')
         print 'Fetching Required Python NLTK Data\n'
@@ -466,12 +466,12 @@ class Dialogue(object):
         print 'Extracted Dialogues Statistics Were Requested, That Might Take Some Time.'
         start_time = time.time()
         folders = os.listdir(dialogue_full_path)
-        Dialogue.__load_dialogues(segmented_dialogues_counter, dialogue_full_path)
+        Dialogue.__load_dialogues(segmented_dialogues_counter, dialogue_full_path, encoding)
         stopwords = nltk.corpus.stopwords.words('english')
         colloquial_counter = 0
         nstop_words_counter = 0
         words_counter = 0
-        all_utterances = []
+        all_messages = []
         bar_ = Bar('Calculating Statistics Over All {} Dialogue(s)'
                    .format(segmented_dialogues_counter),
                    max=segmented_dialogues_counter)
@@ -480,12 +480,10 @@ class Dialogue(object):
                 files = os.listdir(dialogue_full_path + '/' + folder_)
                 for file_ in files:
                     if not file_.startswith('.'):
-                        turns = 0
-                        utterances_text = get_utterances(str.decode(folder_ + '/' + file_, 'utf-8'))
-                        for text_ in utterances_text:
-                            turns += 1
-                            all_utterances.append(text_[0])
-                            utterance_words = 0
+                        turns = Dialogue.__count_turns(dialogue_full_path + '/' + folder_ + '/' + file_)
+                        message_text = get_message(str.decode(folder_ + '/' + file_, encoding))
+                        for text_ in message_text:
+                            all_messages.append(text_[0])
                             if text_[0] != '':
                                 for word_ in re.split("[, \-!?;.]", text_[0]):
                                     word_ = word_.strip().strip('.').strip(',').strip("'")\
@@ -495,24 +493,37 @@ class Dialogue(object):
                                     if len(word_) > 0:
                                         if not stem(word_.lower()) in stopwords:
                                             nstop_words_counter += 1
-                                            utterance_words += 1
                                         words_counter += 1
                                         if not DICT.check(word_):
                                             colloquial_counter += 1
                         bar_.next()
                         save_dialogue_turns(str.decode(dialogue_full_path + '/' + folder_ + '/'
-                                                       + file_, 'utf-8'), turns)
+                                                       + file_, encoding), turns)
         bar_.finish()
 
         get_db_statistics()
         db_stats = get_db_statistics()
-        Dialogue.__write_statistics(start_time, segmented_dialogues_counter, all_utterances,
+        Dialogue.__write_statistics(start_time, segmented_dialogues_counter, all_messages,
                                     nstop_words_counter, words_counter, colloquial_counter,
                                     db_stats)
         logging.info('Calculating Statistics Finished')
 
     @staticmethod
-    def __write_statistics(start_time, segmented_dialogues_counter, all_utterances,
+    def __count_turns(file_path):
+        """counting number of turns in a dialogue file"""
+        turns = 0
+        previous_sender = ''
+        with open(file_path, 'r') as file_reader:
+            lines = file_reader.readlines()
+            for line in lines:
+                sender = line.split('\t')[1]
+                if sender != previous_sender:
+                    turns += 1
+                    previous_sender = sender
+        return turns
+
+    @staticmethod
+    def __write_statistics(start_time, segmented_dialogues_counter, all_messages,
                            nstop_words_counter, words_counter, colloquial_counter,
                            db_stats):
         """write statistical figures"""
@@ -529,11 +540,11 @@ class Dialogue(object):
         print 'Final Statistics Before Creating Dialogues Data-set For Supervised-Learning'
         print '-----------------------------------------------------------------------------\n'
         print ' - Num Of One-One Dialogue(s): {}'.format(segmented_dialogues_counter)
-        print ' - Num Of Utterances: {}'.format(len(all_utterances))
+        print ' - Num Of Messages: {}'.format(len(all_messages))
         print ' - Num Of Words (Excluding Stop-Words): {}'.format(nstop_words_counter)
 
-        print ' - Avg Num Of Words (Excluding Stop-Words) Per utterance: {}'.format(
-            round((nstop_words_counter / len(all_utterances)), 4))
+        print ' - Avg Num Of Words (Excluding Stop-Words) Per message: {}'.format(
+            round((nstop_words_counter / len(all_messages)), 4))
 
         print ' - Avg Num Of Turns In Dialogues: {}'. \
             format(round((sum_turn_value / segmented_dialogues_counter), 4))
@@ -552,25 +563,27 @@ class Dialogue(object):
             format(min_turn_value,
                    round((len(min_turn_dialogue) / segmented_dialogues_counter) * 100, 4))
 
-        print ' - Percentage of Colloquial Text Over All IRC Words: {}%'. \
-            format(round((colloquial_counter / words_counter) * 100, 4))
+        print ' - Number of Colloquial words: {} With a percentage of {}% Over' \
+              ' All IRC Words count: {}'\
+            .format(colloquial_counter,
+                    round((colloquial_counter / words_counter) * 100, 4), words_counter)
 
         print '\n Now Computing Top 100 Words Frequency . . . (Might Take Time!)\n'
         top_words = Dialogue.__filter_top_words(FreqDist(re.split("[, \-!?;.]", ' '
-                                                                  .join(all_utterances)))
+                                                                  .join(all_messages)))
                                                 .most_common())
         print ' - Most Frequent 100 Words (Excluding Stop-Words) Occurred On That IRC' \
-              ' Users Utterances: {}\n' \
+              ' Users Messages: {}\n' \
             .format(Dialogue.__filter_top_words(top_words)[:100])
 
     @staticmethod
     def process_holes(day_index_p, indices_p, non_addressed_msg_p,
-                      users_addressed_recipients_p):
+                      users_addressed_recipients_p, encoding):
         """this method is where to apply the hole-filling algorithm, first, it loop through
-         all non-addressed utterances gathered from the match_utterance method, then it fills
-          gaps which are the utterances without an explicitly mentioned recipient, it tries
+         all non-addressed messages gathered from the match_message method, then it fills
+          gaps which are the messages without an explicitly mentioned recipient, it tries
            to guess who was the recipient by checking if only two persons were talking in a
-            given time frame so any un-addressed utterance sent by one of them,
+            given time frame so any un-addressed message sent by one of them,
              will be considered as addressing the other"""
         holes = set()
         as_sender_chat_count = 0  # counts how many users this user is talking to when
@@ -595,7 +608,8 @@ class Dialogue(object):
                     if as_sender_chat_count <= 1 and as_recipient_chat_count <= 1:
                         filled_holes_counts = Dialogue.fill_hole(non_addressed_msg_p,
                                                                  day_index_p, seg_index,
-                                                                 current_sender, holes)
+                                                                 current_sender, holes,
+                                                                 encoding)
                         filled_holes += filled_holes_counts
 
                     as_sender_chat_count = 0
@@ -603,22 +617,22 @@ class Dialogue(object):
         return filled_holes
 
     @staticmethod
-    def fill_hole(non_addressed_msg_p, day_index_p, seg_index_p, user_name_p, holes_p):
+    def fill_hole(non_addressed_msg_p, day_index_p, seg_index_p, user_name_p, holes_p, encoding):
         """this method invoked by the process_holes function, this method responsible
-         for the real filling and insertion to database of these non-addressed utterances
+         for the real filling and insertion to database of these non-addressed messages
           when the conditions met to apply the filling and it matches which non-address
-           utterance is to be added to which dialogue"""
+           message is to be added to which dialogue"""
         # get senders list of a certain day and certain conversation segmentation id
         senders = get_senders(day_index_p, seg_index_p)
         filled_holes_count = 0
         segmentation_index = seg_index_p[0]
-        # match a passed user name to insert a hole utterance to its related segmentation id
+        # match a passed user name to insert a hole message to its related segmentation id
         for msg in non_addressed_msg_p:
 
             msg_time_index = msg[0]
-            msg_date_time = str.decode(msg[2], 'utf-8')
-            msg_sender = str.decode(msg[3], 'utf-8')
-            msg_utterance = str.decode(msg[5], 'utf-8')
+            msg_date_time = str.decode(msg[2], encoding)
+            msg_sender = str.decode(msg[3], encoding)
+            msg_message = str.decode(msg[5], encoding)
             for sender in senders:
                 sender = sender[0]
                 if sender == msg_sender:
@@ -632,12 +646,12 @@ class Dialogue(object):
                             if len(timing_indices) == 0:
                                 save_segmented_message(segmentation_index, msg_time_index,
                                                        day_index_p, msg_date_time,
-                                                       msg_sender, '', msg_utterance)
+                                                       msg_sender, '', msg_message)
                                 filled_holes_count += 1
         return filled_holes_count
 
     @staticmethod
-    def __report_work(dialogue_full_path, start_time, filled_holes, dialogues_utterances_count):
+    def __report_work(dialogue_full_path, start_time, filled_holes, dialogues_messages_count):
         """report segmentation results"""
         print '\n------------------------------------------------------------------------------'
         print 'Dialogues Have Been Segmented For Each Pair of Users. Please Check the Results' \
@@ -651,9 +665,9 @@ class Dialogue(object):
             print 'No Filled Holes Applied In The Processed Dialogue(s)'
 
         else:
-            print 'Percentage of Holes Utterances Found and Filled In All ' \
-                  'Extracted Utterances: {}%'.format\
-            (round((filled_holes/dialogues_utterances_count) * 100, 4))
+            print 'Percentage of Holes Messages Found and Filled In All ' \
+                  'Extracted Messages: {}%'.format\
+            (round((filled_holes/dialogues_messages_count) * 100, 4))
         print '----------------------------------------------------------------------\n'
 
     @staticmethod
@@ -732,15 +746,15 @@ class Dialogue(object):
                                 processed_lines.add(line)
                                 line = line.split('\t')
                                 if len(line) != 4:
-                                    problematic_files.add(path_to_check + '/' + file_)
+                                    problematic_files.add(path_to_check + '/' + folder_ + '/' + file_)
                                     errors.add(
                                         'Bad File Structure, Each File Must Have not less'
                                         ' or more than 4 fields!')
 
                                 data_time = line[0]
                                 sender = line[1]
-                                utterance = line[3]
-                                if len(data_time) == 0 or len(sender) == 0 or len(utterance) == 0:
+                                message = line[3]
+                                if len(data_time) == 0 or len(sender) == 0 or len(message) == 0:
                                     problematic_files.add(path_to_check + '/' + file_)
                                     errors.add('Unexpected Empty String at one of the Fields')
 
@@ -782,14 +796,14 @@ class Dialogue(object):
         return new_list
 
     @staticmethod
-    def __skip_dialogues(path_p, min_turns):
+    def __skip_dialogues(path_p, min_utter):
         """evaluating number of turns in generated dialogues, if less than a certain number,
          then these dialogues will be removed"""
         logging.info('Skipping Dialogues Method Called')
         turns_per_weak_dialogue = set()
-        final_dialogues_utterances = 0
+        final_dialogues_messages = 0
         print '\nEvaluating Number Of Turns In Dialogues. Removing Weak Dialogues According' \
-              ' To parameter (min_turns)'
+              ' To parameter (min_utter)'
         files_count = Dialogue.__files_count(path_p)
         path_to_check = path_p
         if not os.path.exists(path_to_check):
@@ -797,7 +811,7 @@ class Dialogue(object):
                   ' YOU HAVE EXTRACTED THE DIALOGUES FIRST!'
             exit()
         bar_ = Bar('Detecting Dialogue(s) With Turns Less Than {}. Processing {} File(s)'
-                   .format(min_turns, files_count), max=files_count)
+                   .format(min_utter, files_count), max=files_count)
 
         folders = os.listdir(path_to_check)
 
@@ -811,11 +825,11 @@ class Dialogue(object):
                             lines = opener.readlines()
                             turns = len(lines)
 
-                        if turns < min_turns:
+                        if turns < min_utter:
                             turns_per_weak_dialogue\
                                 .add(path_to_check + '/' + folder_ + '/' + file_)
                         else:
-                            final_dialogues_utterances += turns
+                            final_dialogues_messages += turns
                         bar_.next()
         bar_.finish()
         if len(turns_per_weak_dialogue) < 1:
@@ -828,7 +842,7 @@ class Dialogue(object):
                 os.remove(weak_dia)
                 bar_.next()
             bar_.finish()
-        return final_dialogues_utterances
+        return final_dialogues_messages
 
     @staticmethod
     def is_time_changed(initial_date, new_date, time_frame):
@@ -871,11 +885,11 @@ class Dialogue(object):
 
     @staticmethod
     def __segmentation_index_setup(path):
-        """to count how many utterances in all raw data about to be processed,
-         useful to measure the max segmentation index used in a loop through all utterances"""
+        """to count how many messages in all raw data about to be processed,
+         useful to measure the max segmentation index used in a loop through all messages"""
         files_count = Dialogue.__files_count(path)
         max_seg_index = 0
-        bar_ = Bar('Counting All Utterances To Measure Maximum Segmentation Index.'
+        bar_ = Bar('Counting All Messages To Measure Maximum Segmentation Index.'
                    ' Processing {} File(s)'.format(files_count),
                    max=files_count)
         for _, _, files in os.walk(path):
@@ -934,11 +948,16 @@ if __name__ == '__main__':
                                             ' dialogues, default is no', nargs='?',
                         const='no', type=str, default='no')
 
-    PARSER.add_argument('-min_turns', help='by default = 3 and it specify the minimum number of'
-                                           ' turns in extracted dialogues to be accepted,'
-                                           ' if turns were less than that number,'
+    PARSER.add_argument('-min_utter', help='by default = 3 and it specify the minimum number of'
+                                           ' utterances in extracted dialogues to be accepted,'
+                                           ' if utterances were less than that number,'
                                            ' they will be deleted later '
                         , type=int, nargs='?', const=3, default=3)
+
+    PARSER.add_argument('-encoding', help='by default is utf-3 and it specify the encoding '
+                                          'required for the post-processed IRC channel '
+                                          'they will be deleted later '
+                        , type=str, nargs='?', const='utf-8', default='utf-8')
 
     PARSER.add_argument('-bots_path', help='to configure the path from where to load IRC channel'
                                            ' bots names to ignore their messages since they'
@@ -958,11 +977,12 @@ if __name__ == '__main__':
                         delete_with_recipient_file=ARGM.delete_with_recipient_file,
                         time_frame=ARGM.time_frame,
                         with_stats=ARGM.with_stats, only_stats=ARGM.only_stats,
-                        min_turns=ARGM.min_turns, bots_path=ARGM.bots_path)
+                        min_utter=ARGM.min_utter, bots_path=ARGM.bots_path,
+                        encoding=ARGM.encoding)
 
     if ARGM.only_stats == 'yes':
         if ARGM.extracted_dialogues_path != '':
-            Dialogue.calculate_statistics(ARGM.extracted_dialogues_path)
+            Dialogue.calculate_statistics(ARGM.extracted_dialogues_path, ARGM.encoding)
         else:
             print 'YOU MUST GIVE A PATH OF ALREADY EXTRACTED DIALOGUES'
     else:

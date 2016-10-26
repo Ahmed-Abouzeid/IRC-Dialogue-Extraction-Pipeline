@@ -1,4 +1,5 @@
-"""this module is to create sqlalchemy mapper for IRC database to be created"""
+"""this module is to create sqlalchemy mapper for IRC database
+to be created for Post-Processing"""
 
 from sqlalchemy import Column, Integer, String, create_engine, Index
 from sqlalchemy.ext.declarative import declarative_base
@@ -20,7 +21,7 @@ class SegmentedMessage(BASE):
     date_time = Column(String(30))
     sender_name = Column(String(30))
     recipient_name = Column(String(30))
-    utterance = Column(String(800))
+    message = Column(String(800))
 
 
 class SegmentedUser(BASE):
@@ -33,13 +34,13 @@ class SegmentedUser(BASE):
     user2_name = Column(String(30))
 
 
-class Utterance(BASE):
-    """model the utterance table"""
-    __tablename__ = 'tbl_utterance'
+class Message(BASE):
+    """model the message table"""
+    __tablename__ = 'tbl_message'
 
     row_id = Column(Integer, primary_key=True, autoincrement=True)
     dialogue_id = Column(String(100))
-    utterance = Column(String(800))
+    message = Column(String(800))
 
 
 class DialogueTurns(BASE):
@@ -58,7 +59,7 @@ Index('ind_y', SegmentedMessage.segmentation_index)
 Index('ind_z', SegmentedMessage.day_index)
 Index('ind_e', SegmentedUser.user1_name)
 Index('ind_f', SegmentedUser.user2_name)
-Index('ind_w', Utterance.dialogue_id)
+Index('ind_w', Message.dialogue_id)
 Index('ind_q', DialogueTurns.file_name)
 Index('ind_k', DialogueTurns.turns)
 
@@ -73,7 +74,7 @@ IRC_CONNECTION = setup_db()
 
 
 def save_segmented_message(seg_index, time_index, day_index, date_time, sender,
-                           recipient, utterance):
+                           recipient, message):
     """insert segmented message record into DB"""
     insert_ = SegmentedMessage.__table__.insert() \
         .values(segmentation_index=seg_index,
@@ -82,7 +83,7 @@ def save_segmented_message(seg_index, time_index, day_index, date_time, sender,
                 date_time=date_time,
                 sender_name=sender,
                 recipient_name=recipient,
-                utterance=utterance)
+                message=message)
     IRC_CONNECTION.execute(insert_)
 
 
@@ -95,10 +96,10 @@ def save_segmented_user(seg_index, user1_name, user2_name):
     IRC_CONNECTION.execute(insert_)
 
 
-def save_utterance(file_id, line):
-    """insert an utterance with its associate file name and path"""
-    insert_ = Utterance.__table__.insert(). \
-        values(dialogue_id=file_id, utterance=line)
+def save_message(file_id, line):
+    """insert an message with its associate file name and path"""
+    insert_ = Message.__table__.insert(). \
+        values(dialogue_id=file_id, message=line)
     IRC_CONNECTION.execute(insert_)
 
 
@@ -108,11 +109,18 @@ def save_dialogue_turns(file_id, turns):
     IRC_CONNECTION.execute(insert_)
 
 
-def get_utterances(file_id):
-    """retrieve an utterance text from DB for a given file name"""
-    query_ = select([Utterance.utterance]).where(Utterance.dialogue_id == file_id)
-    utterances_text = IRC_CONNECTION.execute(query_).fetchall()
-    return utterances_text
+def get_message(file_id):
+    """retrieve an message text from DB for a given file name"""
+    query_ = select([Message.message]).where(Message.dialogue_id == file_id)
+    message_text = IRC_CONNECTION.execute(query_).fetchall()
+    return message_text
+
+
+def get_all_messages():
+    """retrieve an message text from DB for a given file name"""
+    query_ = select([Message.message])
+    all_messages = IRC_CONNECTION.execute(query_).fetchall()
+    return all_messages
 
 
 def get_usr_segmented_indices(users_pair):
@@ -140,7 +148,7 @@ def get_segmented_message(segmentation_ids):
         query_ = select([SegmentedMessage.date_time,
                          SegmentedMessage.sender_name,
                          SegmentedMessage.recipient_name,
-                         SegmentedMessage.utterance]) \
+                         SegmentedMessage.message]) \
             .where(SegmentedMessage.segmentation_index
                    == segmentation_ids[0]) \
             .order_by(SegmentedMessage.timing_index).distinct()
@@ -150,7 +158,7 @@ def get_segmented_message(segmentation_ids):
         query_ = select([SegmentedMessage.date_time,
                          SegmentedMessage.sender_name,
                          SegmentedMessage.recipient_name,
-                         SegmentedMessage.utterance]) \
+                         SegmentedMessage.message]) \
             .where(SegmentedMessage.segmentation_index.in_(tuple(segmentation_ids))) \
             .order_by(SegmentedMessage.timing_index).distinct()
         dialogues = IRC_CONNECTION.execute(query_).fetchall()

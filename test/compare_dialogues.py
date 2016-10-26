@@ -21,7 +21,7 @@ CURSOR.execute('create table Dialogue_bInfo (file_name text ,sender_usr text,'
 CURSOR.execute('CREATE INDEX dia_b_sender_index ON Dialogue_bInfo (sender_usr)')
 CURSOR.execute('CREATE INDEX dia_b_recipient_index ON Dialogue_bInfo (recipient_usr)')
 
-DIA_A_PATH = '/users/ahmed/desktop/dialogues_old'
+DIA_A_PATH = '/users/ahmed/downloads/dialogs'
 DIA_B_PATH = '/users/ahmed/desktop/ubuntu_results/dialogues'
 
 

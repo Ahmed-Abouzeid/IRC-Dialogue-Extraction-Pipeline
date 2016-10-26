@@ -1,1 +1,9 @@
-https://irclogs.ubuntu.com/
+https://irclogs.ubuntu.com/2004
+https://irclogs.ubuntu.com/2005
+https://irclogs.ubuntu.com/2006
+https://irclogs.ubuntu.com/2007
+https://irclogs.ubuntu.com/2008
+https://irclogs.ubuntu.com/2009
+https://irclogs.ubuntu.com/2010
+https://irclogs.ubuntu.com/2011
+https://irclogs.ubuntu.com/2012
