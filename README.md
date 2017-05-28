@@ -59,7 +59,7 @@ python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\
 ```
 #### dialogue.py On Any IRC Cleaned Output From rawer.py ####
 ```python
-python dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_turns 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt'
+python dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_utter 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt'
 ```
 #### dialogue.py For Only Statistical Report On Already Extracted Dialogues ####
 ```python
