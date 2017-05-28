@@ -13,6 +13,8 @@ The three components are interfacing with each others via their generated output
 
 ### Run setup.py To Be Able To Use And Reference The Above Scripts As A Package Modules ###
 
+### Install pypy For The Best Performance Of Dialogue Extraction Component ###
+
 ### For Testing Purposes, Below Are Unit-Test & Verification Modules Located In /test ###
 
 - compare_dialogues.py (compares two extracted dialogues from the same irc logs but from different algorithms maybe, and report the matched records and the mismatches)
@@ -59,11 +61,11 @@ python rawirc.py -raw_data_path '/path_to/crawled_data' -time_regexp '^(\s*\d\d\
 ```
 #### dialogue.py On Any IRC Cleaned Output From rawer.py ####
 ```python
-python dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_utter 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt'
+pypy dialogue.py -clean_work_path '/path_to/clean/days_with_recipients' -dialogue_work_path '/output_path' -gap_time_frame 3 -min_utter 3 -time_frame 3 -bots_path 'files_as_arguments/bots_[irc_name].txt'
 ```
 #### dialogue.py For Only Statistical Report On Already Extracted Dialogues ####
 ```python
-python dialogue.py -only_stats yes -extracted_dialogues_path 'path_to/dialogues'
+pypy dialogue.py -only_stats yes -extracted_dialogues_path 'path_to/dialogues'
 ```
 ### How To Use The Test Scripts? ###
 The Test Scripts Require Some Mock Data Located in /test Directory, The Paths To These Data Already Configured In The Script, Do Not Change The Hierarchy Of The Mock Data Unless You Will Change It In The Scripts As Well.
