@@ -1,5 +1,10 @@
 ## IRC Processing Software Is A Tool For Gathering And Processing IRC Channels Conversations For Creating One/One Dialogues Files That Can Be Used As Training Data-Set For Deep Neural Networks Used In Dialogue Systems ##
 
+### Relevant Work and Papers
+Check the semantic relatedness and McGill- ubuntu corpus papers for more information about the history and starting point of that repository.
+
+### Published Thesis Link
+The work done in my MSc thesis and theoritical background related to that repository work were published as a book and here is the amazon books link: https://www.amazon.com/Pipeline-Architecture-Domain-Specific-Extraction-Different/dp/3668468648
 
 ### The IRC Processing Software Can Be Used By Running Three Python Scripts (Located In /irc_process) In The Following Order: ###
  
