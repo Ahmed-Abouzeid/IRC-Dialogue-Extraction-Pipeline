@@ -1,4 +1,4 @@
-## IRC Processing Software Is A Tool For Gathering And Processing IRC Channels Conversations For Creating One/One Dialogues Files That Can Be Used As Training Data-Set For Deep Neural Networks Used In Dialogue Systems ##
+## NLP IRC Processing Software Is A Tool For Gathering And Processing IRC Channels Conversations For Creating One/One Dialogues Files That Can Be Used As Training Data-Set For Deep Neural Networks Used In Dialogue Systems ##
 
 ### Relevant Work and Papers
 Check the semantic relatedness and McGill- ubuntu corpus papers for more information about the history and starting point of that repository.
